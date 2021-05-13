@@ -1,0 +1,61 @@
+name: 'fram_doc'
+output_dir: 'docs'
+exclude: ["R", "scripts", "data", "workbooks"]
+
+navbar:
+  title: 'FRAM Documentation'
+  type: inverse
+  left:
+    - text: "Overview"
+      href: index.html
+    - text: "Concepts & Calculations"
+      menu: 
+        - text: "Concepts"
+        - text: "Background & History"
+          href: cc_background.html
+        - text: "Key Assumptions"
+          href: cc_assumptions.html
+        - text: "Associated data"
+          href: cc_data.html
+          
+        - text: "---------"
+        - text: "Calculations"
+        - text: ""
+        - text: "---------"
+        - text: "Other stuff"
+        - text: "thing1"
+        - text: "thing2"
+    - text: "How to Use"
+      menu:
+        - text: "Intro"
+          href: user_intro.html
+        - text: "Prerequisites"
+          href: user_prereq.html
+        - text: "Main menu"
+          href: user_main_menu.html
+        - text: "A basic run"
+          href: user_basic_forward_run.html
+        
+  right:
+    - text: "PFMC"
+      href: https://www.pcouncil.org/salmon/
+    - text: "WDFW"
+      href: https://wdfw.wa.gov/
+    - text: "NWIFC"
+      href: https://nwifc.org/
+
+output:
+  rmarkdown::html_document:
+    theme: yeti
+    number_sections: true
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+    css: rmarkdown.css
+    highlight: textmate
+    mathjax: null
+    df_print: paged
+    includes:
+      before_body: [header.html]
+      after_body: [footer.html]

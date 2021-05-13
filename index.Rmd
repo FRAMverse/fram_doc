@@ -1,0 +1,42 @@
+--- 
+title: "Welcome"
+author: ""
+date: "`r Sys.Date()`"
+description: "Getting to know the Fishery Regulation Assessment Model (FRAM)"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r buildnojekyll, include=FALSE}
+file.create("docs/.nojekyll")
+```
+
+
+<!--html_preserve-->
+<div>
+  <p style="color: #7FFF00; font-weight: italic; text-align:center"> This line was raw html. We may want to do more? </p>
+</div>
+<!--/html_preserve-->
+
+
+```{r welcome, echo=FALSE, out.width='100%'}
+knitr::include_graphics(c("images/fvs_welcome.png"))
+```
+
+The Fishery Regulation Assessment Model (FRAM) is an accounting tool for estimating the impacts of proposed fisheries on [Chinook](https://en.wikipedia.org/wiki/Chinook_salmon) and [Coho](https://en.wikipedia.org/wiki/Coho_salmon) salmon stocks during a fishing season. FRAM is a computer program developed and used by:
+
+ - the Pacific Fishery Management Council [(PFMC)](https://www.pcouncil.org/salmon/background/), 
+ - Washington State, as coordinated by the Washington Department of Fish and Wildlife [(WDFW)](https://wdfw.wa.gov/fishing), 
+ - Washington Treaty Tribes and their supporting organization Northwest Indian Fisheries Commission [(NWIFC)](https://nwifc.org/), 
+ - the Pacific Salmon Commission (Coho only) [(PSC)](https://www.psc.org/),
+ - and the U.S. National Marine Fisheries Service [(NMFS)](https://www.fisheries.noaa.gov/).
+
+Various FRAM outputs inform the compliance of proposed fisheries with conservation and management objectives.
+
+This site includes technical background information and a user guide focused on running the FRAM application, modifying model inputs, and obtaining and interpreting model outputs.
+
+\
+
+```{r logos, echo=FALSE, out.width='100%'}
+knitr::include_graphics(c("images/logos_all.png"))
+```

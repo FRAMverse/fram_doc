@@ -1,0 +1,75 @@
+---
+title: "Prerequisites"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setuprereqs, include=FALSE, results = 'hide', warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
+```
+
+
+FRAM_VS is a Windows-based application that depends on Microsoft Access and Excel. It offers a means to view and adjust inputs, calculate and view outputs, and perform model-related file utilities.
+
+# Program installation
+
+The most recent compiled program executable (`.exe`) file is available within the [`bin/Debug`](https://github.com/FRAMverse/FRAM/tree/master/bin/Debug) subdirectory of the main [source code repository](https://github.com/FRAMverse/FRAM) and will be titled `FRAMVS....exe` with `...` usually corresponding to a dated version such as `FramVS221Dec14.exe`. From the subdirectory view, this file can be directly downloaded via a right-click "save link as". Alternatively, clicking the file link will produce a single file view with a "download" button.
+
+If FRAM has never been installed, the user first needs to run a program `setup.exe` from the [`publish`](https://github.com/FRAMverse/FRAM/tree/master/publish) folder at the main repo. Downloaded and follow instructions to install directories, helper files, and references needed to run FRAM. 
+
+Some known [Installation issues] have solutions. 
+
+# Supporting files
+
+The files needed to run FRAM are available on the NWIFC [Fisheries Services](https://fisheriesservices.nwifc.org/fram-model-runs/) website. Please note, that the file hosting sections of this site are password-protected. Please contact a member of the FRAM team at WDFW or NWIFC for assistance if needed.
+
+The descriptions below highlight key file types for model runs, but are **not a comprehensive inventory** of the many data sources and analysis tools adopted by the salmon comanagers to generate individual model inputs and parameters.
+
+## Project database
+
+The FRAM software executable operates in conjunction with a MS Access `.mdb` database. ^[Note that these files may become larger than 100MB over the course of modeling several runs. However, the "Compact & Repair" functionality in MS Access can often reduce file size, prior to any further compression.] Strictly speaking, this is the only file *required* to perform model runs. The information in the database is organized into more than 20 tables. These [Project database tables] can be grouped into four main categories:
+
+  1. Static, base period tables derived through the process of calibration. These tables provide the historical information the model is based on, such as base period exploitation rates, natural mortality rates, growth functions, etc.
+  2. Annual stock and fishery input data, such as forecasts, quotas, size limits, etc.
+  3. Look-up tables
+  4. Output tables
+
+At the beginning of the pre-season process, a FRAM database is shared that contains the correct base period and starting model runs. Input tables are often edited through FRAM’s user interface (details in [Edit model run]), but can also be edited directly in the database. Similarly, the metadata and controls associated with model runs and base period selection can be manipulated via FRAM’s [Utilities] interface. Typically, a single FRAM database will include numerous individual model runs distinguished by a unique `RunID` field. `RunID` values then link other sets of values across tables, such that a given input or output table can include multiple distinct runs. Chinook and coho modeling currently involve two separate database structures with different tables, and it is advisable to organize modeling files for each species separately.
+
+## TAMM file
+
+While FRAM can run independently of a MS Excel TAMM `.xlsm` file, almost all modeling exercises will involve one or more of these files. An individual TAMM workbook includes stock and fishery input values associated to a single FRAM run/RunID. For preseason model runs, the typical naming convention follows slightly different patterns by species. 
+
+For Chinook, files are named "ChinNNYY", with a "comanager agreed" sequential run number (NN) and the 2-digit year (YY. For example, the final 2019 Chinook model run was "Chin2719". For Coho, the naming convention is “CohoYYNN”, with “Coho” followed by the 2-digit year (YY) and a “co-manager agreed” sequential run number (NN).  The final 2019 Coho model run was “Coho1925”. The sequential run numbers used for each species during a preseason process may not align depending on the number and timing of required model runs. 
+
+## Model run transfer file
+
+Model run transfer files are typically named as such (e.g., "NewModelRunTransfer*.mdb"), and contain only a subset of tables in the encompassing project database. They enable sharing the relevant values for a single run without needing an entire (possibly large) project database. These files are not sufficient or necessary to execute a model run, but facilitate collaboration. A single model run transfer file can contain more than one model run.
+
+## Base period transfer file
+
+Similar to model run transfer files, base period transfer files contain a subset of tables that allow a project database to include relevant values for multiple distinct base periods (i.e. unique BaseID value). It is uncommon to need to incorporate alternative base period parameterizations, particularly within typical preseason modeling. The FRAM [Utilities] section describes the creation and incorporation of these files.
+
+## FRAMVSTemplate file
+
+For both Chinook and Coho, there are option buttons within the FRAM program to call a Microsoft Excel spreadsheet file, referred to as the “FRAMVSTemplate” file, which can be used to either retrieve/import or store/export various types of fishery inputs from a single model run.   The sheets within this workbook are labeled with the associated type of FRAM fishery input:
+
+- *FRAMInput* (main Quota/Scalers window)
+- *FRAM_MSF* (for mark-selective fishery window which is secondary to Quota/Scalers)
+- *FRAM_CNR* (non-retention).
+- *FRAM_Recruits* (Stock Recruits for annual stock abundances)
+
+A template option also exists for loading or exporting target escapement values used in Backwards FRAM runs. Option buttons are available in the FRAM input menus to utilize template files, which can be used to transfer values into or out of the relevant database tables.  FRAMVSTemplate files are used to facilitate collaboration and for transparency and documentation of fishery inputs. 
+
+## RunSheet (Chinook)
+
+For Chinook, the model inputs for Washington state's recreational marine fisheries in Areas 5-13 are currently developed via a separate Excel workbook that integrates data on observed catches, annual regulations, and post-season "validation" FRAM runs. The typical naming convention used for this file is “RunNNYY”, with the Chinook sequential run number (NN) and the 2-digit year (YY). Current software versions (2.19b or higher) include utilities to transfer RunSheet values into the relevant database tables. The “Automate Pass 1 Pass 2 (Chin)” FRAM utility invokes this file.  
+
+## Coweemans (Chinook)
+
+An Excel workbook file used to calculate exploitation rate values related to Columbia River Chinook stocks and compliance with U.S. Endangered Species Act (ESA) guidance.  The typical naming convention used for this file is “Coweeman_ChinNNYY.xlsx”, with the Chinook sequential run number (NN) and the 2-digit year (YY).  These files are mainly used within the PFMC process and only summarize model results.
+
+## Snake River Falls Index (Chinook)
+
+An Excel workbook file is used to evaluate if planned fisheries are within the maximum allowed impacts for the Snake River Fall Chinook stock under the U.S. Endangered Species Act (ESA) guidance.  The typical naming convention used for this file is “SRFI_ChinNNYY.xlsx”, with the Chinook sequential run number (NN) and the 2-digit year (YY).  These files are mainly used within the PFMC process and only summarize model results.
+
