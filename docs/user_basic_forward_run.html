@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>A basic forward run</title>
+
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="rmarkdown.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">FRAM Documentation</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Overview</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Concepts &amp; Calculations
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Concepts</li>
+    <li>
+      <a href="cc_background.html">Background &amp; History</a>
+    </li>
+    <li>
+      <a href="cc_assumptions.html">Key Assumptions</a>
+    </li>
+    <li>
+      <a href="cc_data.html">Associated data</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Calculations</li>
+    <li class="dropdown-header"></li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Other stuff</li>
+    <li class="dropdown-header">thing1</li>
+    <li class="dropdown-header">thing2</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    How to Use
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="user_intro.html">Intro</a>
+    </li>
+    <li>
+      <a href="user_prereq.html">Prerequisites</a>
+    </li>
+    <li>
+      <a href="user_main_menu.html">Main menu</a>
+    </li>
+    <li>
+      <a href="user_basic_forward_run.html">A basic run</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://www.pcouncil.org/salmon/">PFMC</a>
+</li>
+<li>
+  <a href="https://wdfw.wa.gov/">WDFW</a>
+</li>
+<li>
+  <a href="https://nwifc.org/">NWIFC</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<footer style="color: #ff4000; font-weight: bold; text-align:center">
+    <p> !! THIS SITE UNDER DEVELOPMENT !! </p>
+</footer>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">A basic forward run</h1>
+
+</div>
+
+
+<div class="rmdcaution">
+<p>
+This example assumes the current FRAM executable and a suitable database are available. Please ensure that you have these <a href="user_prereq.html">Prerequisites</a>.
+</p>
+</div>
+<p><br />
+</p>
+<p>A forward FRAM model run simulates how a given set of fishing regulations will interact with the annual abundance levels of modeled stocks.</p>
+<div id="perform-a-new-run" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Perform a new run</h1>
+<p>Begin by launching FRAM and continuing to the main menu.</p>
+<p>Now, select a [Project database] by clicking “Open database”. After navigating to and selecting a project database .mdb file, click “open”. FRAM will then prompt for a second selection from among the model runs included in the database. The selected <code>RunID</code> index tells the application which values to read into memory from across the various tables, thereby setting up any further work for that specific model run. Note that the project database name (Database) and model run (RecordSet) are now listed in the lower section of the main menu view.</p>
+<p><em>Attempting to select a [Model run transfer file] or [Base period transfer file] is a common pitfall and will prompt a warning. Transfer files, which are typically indicated as such by name, contain only portions of a subset of the tables needed to run FRAM.</em></p>
+<p><img alt="open_select" src="images/getstarted_open_select.gif"></p>
+<p><br />
+</p>
+</div>
+<div id="make-a-run-copy" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Make a run copy</h1>
+<p>Initializing a new, copied run preserves the old values while exploring new ones.</p>
+<p>If you change inputs to an existing model run and re-run it, FRAM will overwrite the prior results. Thus, it is common practice to copy an existing run, re-name it, change input parameter values, and generate updated model results from the new run.</p>
+<p>Click “FRAM utilities” from the main menu, and then “Copy model run” to reach the copied recordset screen.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>In addition to specifying an informative <code>RunName</code> and <code>RunTitle</code> in the respective fields, the free-text “Comments” field is an important place to document the planned changes, the original run it is based on, the date a change was made and by whom, etc. This is also easily updated later with any further changes (see [Edit model run info]). After entering a good description of what will change, click “Ok - done” to complete the process and return to the FRAM utilities menu, with the newly copied run loaded into memory. <em>Note that this step involves writing to disk and may take a few seconds - no need to panic if FRAM hangs momentarily.</em> Exit to the main menu to continue working on this run.</p>
+<p><img alt="copy_run" src="images/getstarted_copy_run_3.gif"></p>
+<p>When an analysis will include exploring many changes, it may make sense to create multiple new runs that include different subsets of these adjustments, making it easier to isolate the effects of particular new values. However, this choice is also influenced by whether the runs will be shared (by [Model run transfer file]) or informally examined. This is ultimately a matter of balancing the relative ease of sharing a single run with the potential for greater clarity of separate runs that involve only a few adjustments.</p>
+<p><img alt="copy_run_info" src="images/getstarted_copy_run_info.gif"></p>
+</div>
+<div id="make-a-tamm-copy" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Make a TAMM copy</h1>
+<p>In many cases, it will be necessary or useful to associate the newly copied FRAM run with a new copy of the TAMM file linked to the prior run. Outside of FRAM, navigate to the appropriate TAMM file and save a copy with a filename clearly related to the new run name. This file can then be used when running the modified inputs without over-writing the prior run values.</p>
+</div>
+<div id="edit-input-parameter-values" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Edit input parameter values</h1>
+<p>Now that a fresh run exists, clicking the “[Edit model run]” button opens a submenu further divided into “Stock” and “Fishery” buttons. For this example, click the “Quota/Scalers” button in the Fishery section to reach the screen displaying values for each fishery in each time step.</p>
+<p><img alt="edit_run" src="images/getstarted_edit_run_3.gif"></p>
+<p>Fishery impacts in FRAM are controlled by “quotas” and/or “scalers”, and these are in turn controlled by the value of a per-timestep <code>fishery flag</code> (note the meaning of the control flag values are displayed in the lower left of the interface).</p>
+<p>A single fishery can be controlled as either a quota or scaler within a given time step. If flagged as a quota, FRAM will ignore updates to scalers and vice versa. Great care is necessary to assure that values are only changed in the scaler or quota field corresponding to the specified flag. Once run, FRAM will update the corresponding value; i.e. the quota resulting from the modeled scaler. Two digit combo flags are used to model mark-selective and non-selective fisheries in the same time step; i.e. a flag of 18 designates a non-selective scaler and a mark-selective quota fishery.</p>
+<p>When selecting the “Quota/Scalers” screen, FRAM will first present the non-selective fishery control screen. Upon clicking “OK-Done”, FRAM will progress to the mark-selective fishery control screen. <em>Note that fishery flags for mark-selective fisheries are initially entered on the non-selective screen. This will result in the addition of the fishery on the mark-selective control screen.</em></p>
+<p>In FRAM nomenclature, a <code>scaler</code><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> refers to a parameter that acts as a linear coefficient to “scale” another value, often a parameter calibrated to the base period. For example, a <code>recruit scaler</code> is multiplied against a <code>base cohort</code> abundance value, with the resulting stock abundance for the model run year reflecting any changes relative to the base period (e.g., a scaler of <code>1</code> would produce an equal abundance, <code>0.5</code> a halving, and <code>2</code> a doubling). Similarly, a <code>fishery scaler</code> is multiplied against a fishery specific <code>base period exploitation rate</code> to capture increased or decreased intensity of effort relative to the base period years.</p>
+<p>Altering a fishery <code>quota</code> has fairly intuitive implications - it determines the catch associated with the fishery during the time step. Adjusting <code>fishery scalers</code> is similarly possible, but likely requires more prior knowledge of the base period fishery.</p>
+<p>The Chinook example below demonstrates a sequence to modify several fishery input quota values.</p>
+<p>First, to edit a non-selective quota, for Southeast Alaska troll during the July to September time step 3,</p>
+<ul>
+<li>from the main menu click “Edit Model Run”</li>
+<li>then click “Quota/Scalers” (under Fishery)</li>
+<li>then navigate to the specific fishery (row) and time-step (column), to change the input value in TS3Quota (ensure that the flag = 2 for Fishery Quota),</li>
+<li>click twice on the cell and modify the value, then click any other cell in the interface to move “off” your changed cell.</li>
+</ul>
+<p>Next, to edit a mark-selective quota, for Area 10E Sport during the July to September time step 3,</p>
+<ul>
+<li>make sure the fishery has a mark-selective flag on the non-selective control screen,</li>
+<li>click “OK- Done” to continue on to the second fishery input screen specific to editing mark-selective fisheries,</li>
+<li>navigate to the specific fishery and time-step (both in a single row),</li>
+<li>change the input value in Quota (ensure that the flag = 8 for MSF Quota) by clicking twice on the cell, modifying the value, and clicking any other cell in the interface to move “off” your changed cell.</li>
+</ul>
+<p>Then, click “OK- Done” to return to the Input Menu and then exit to the main menu.</p>
+<p>During this sequence, the FRAM application acts as a convenient interface to the project database. For some analyses, it can also make sense to edit values within the appropriate table(s) via another non-FRAM application such as Microsoft Access (e.g., scripting or copying over numerous consistent changes such as “zeroing out” a set of fisheries).</p>
+<p><img alt="edit_run_info" src="images/getstarted_edit_run_info.gif"></p>
+</div>
+<div id="run-the-model" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> Run the model</h1>
+<p>At this point, the new fishery input parameter values are in memory but have not been written to the project database tables, and the output values associated with the run are still those of the original from which it was copied. Accordingly, the next step is to “Save Model Run Inputs” from the main menu, which will prompt to either “Replace Current Model Run” or “Save New Model Run”. Because this example is already using a copied model run, it is appropriate to replace the current model run.</p>
+<p>Note that the FRAM application monitors when a user exits the “Edit model” screens via an “Ok done” button, and will prompt to save changes (not shown below). <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Editing and then saving as a new run at this stage provides an alternative to the copy-first-then-edit approach shown here, but this requires care to avoid accidentally overwriting the old one. It is also worth keeping in mind that changes saved to the underlying database from another external application <em>after</em> the run has been selected will not be in-memory until the run is re-selected.</p>
+<p>Now, the next step is to actually run the model and recalculate model outputs by selecting “Run Model” from the main menu.</p>
+<p>Reaching the “Model Run Specification” submenu presents a number of additional options as buttons and checkboxes (see the [Run Model] section of the [Edit, save and run model] chapter). The “Select TAMM” button enables FRAM to operate in conjunction with a TAMM selected from the resulting dialogue box. After navigating to the new copy of the associated TAMM file created earlier, this file name should now appear under the project database name and model run name. See the [TAMM] section for more background and details on how the TAMM file sends additional input data to FRAM and receives output data from FRAM once the model is run.</p>
+<p>For Chinook, most model runs will not involve additional checkboxes, as these relate to non-standard FRAM modeling purposes.</p>
+<p>For Coho, a commonly used checkbox is “Run Coastal Iterations”, which allows for iterations between FRAM and a Coho TAMM file for Washington coastal terminal fishery inputs.</p>
+<p>When “Run model” is clicked from the Model Run Specifications menu, the FRAM application will quickly cycle through a series of in-memory calculations for each time step, before performing several slower writes to the project database. In particular, the database tables with [Output values] are updated for the current <code>RunID</code>. The process will complete and automatically return to the main menu.</p>
+<p>When the model is starting to run, it will ask “Do you want to SAVE TAMM Transfer Values into TAMM spreadsheet?”. Selecting “Yes” will be appropriate in most cases (and is needed to overwrite [TAMX] and TAMM results based on the new run). FRAM will open the MS Excel TAMM file, even if the program was not open before. Once the model run is complete, the TAMM file used will be open on your computer and will have completed values for the model run. <strong>Be sure to navigate to the open TAMM file and save it to retain the modeled values. Another common pitfall is to complete a model run successfully and overwrite the TAMM values but then forget to save these updates.</strong></p>
+<p><img alt="run_notamm" src="images/getstarted_run_notamm.gif"></p>
+</div>
+<div id="view-the-results" class="section level1" number="6">
+<h1 number="6"><span class="header-section-number">6</span> View the results</h1>
+<p>The two most common places for viewing results are the “Mortality” table in the [Project database tables] and the [TAMM]. The “Mortality” table consists of mortalities by type (non-selective and mark-selective landed catch, drop-off, non-retention, and shaker) at the finest possible scale (stock, age, fishery, and time step). TAMM includes many tabulations of impacts, particularly for Puget Sound fisheries and stocks.</p>
+<p>Output can also be viewed or created on the “Output/Results” menu. Checking mortality per fishery can offer a first look at the effects of adjusting a quota. From the main menu, selecting “Output/Results” leads to a submenu with a “Screen Reports” option, which in turn offers a set of possible reports. Selecting the “Fishery Mortality” checkbox will produce an output window that initially displays landed catch by age, summed across all stocks for each fishery and time step. For Chinook, the “Sum Age Only” button filters the view accordingly. The upper left drop-down menu provides options to view separate components of mortality, including AEQ or “adult-equivalent” values for Chinook.</p>
+<p><img alt="view_fishmort" src="images/getstarted_view_fishmort.gif"></p>
+<p>In this example, note that the July to September time step 3 Southeast Alaska troll and Area 10E Sport landed catch mortality values now match the previously adjusted fishery quota - the changes were correctly incorporated into the run! A typical modeling exercise will include checking several different results, and the [Outputs] section describes the various reports available within the FRAM interface.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Note that creating a completely <em>de novo</em> “new” blank run is not actually possible from the FRAM application, but would require using other tools to initialize a new .mdb with the necessary lookup and parameter tables.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>sometimes also misspelled “scalar”<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Note that prompts to save will occur even if no values have actually changed. If only using edit screens to view current values, then exiting via “cancel” will avoid prompts.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+<footer style="color: #ff4000; font-weight: bold; text-align:center">
+    <p> !! THIS SITE UNDER DEVELOPMENT !! </p>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+
+</body>
+</html>
