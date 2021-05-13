@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r buildnojekyll, include=FALSE}
+```{r buildnojekyll, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, results='hide'}
 file.create("docs/.nojekyll")
 ```
 
