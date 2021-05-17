@@ -8,23 +8,17 @@ navbar:
   left:
     - text: "Overview"
       href: index.html
-    - text: "Concepts & Calculations"
+    - text: "Concepts"
       menu: 
-        - text: "Concepts"
         - text: "Background & History"
           href: cc_background.html
         - text: "Key Assumptions"
           href: cc_assumptions.html
-        - text: "Associated data"
-          href: cc_data.html
-          
-        - text: "---------"
-        - text: "Calculations"
-        - text: ""
-        - text: "---------"
-        - text: "Other stuff"
-        - text: "thing1"
-        - text: "thing2"
+        - text: "FRAMBuilder"
+          href: cc_frambuilder.html
+        - text: "Fishery Mortality"
+        - text: "otherthing1"
+        - text: "otherthing2"
     - text: "How to Use"
       menu:
         - text: "Intro"

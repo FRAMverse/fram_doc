@@ -1,0 +1,87 @@
+---
+title: "FRAMBuilder"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE, results = 'hide', warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
+```
+
+**The following information describes the current framework for Chinook only.** 
+
+# Background and purpose 
+
+Considerable processing is required to translate coded-wire tag (CWT) data from the Regional Mark Processing Center’s (RMPC) Regional Mark Information System (RMIS) database into meaningful units within a FRAM base period (BP) calibration context. Individual tag groups must be associated with a specific FRAM model stock, and tag recoveries at a particular time, location (indicated by RMIS location code), gear type must be mapped to one of FRAM's fisheries and time steps. The FRAMBuilder program and workflow described here was developed to fulfill these needs, among others.
+
+Early in the development of FRAMBuilder and the overall CWT mapping workflow, the base period workgroup (BPW) identified distinct advantages/benefits to leveraging the Pacific Salmon Commission’s Chinook Technical Committee’s (CTC) CWT analysis tools: the Cohort Analysis System (CAS) mapping program and companion database. The BPW ultimately decided to tie FRAMBuilder to the CTC world because this connection: (1) allows for the seamless integration of CTC ‘Auxiliary’ CWT files, agency-supplied/prepared files that supplement or correct known errors/gaps in RMIS’s CWT recovery information; (2) facilitates the efficient inclusion of screened/vetted CWT release groups (i.e., selected by CTC members with regional expertise) into the calibration database; and (3) increases the overlap in information driving models supporting the management decisions of the PSC, the Pacific Fishery Management Council (PFMC), and state–tribal co-managers. Additionally, given partial overlap in the fishery assessment units used by the CTC and in FRAM, the integration of CAS into the FRAM calibration workflow offered efficiency in the form of an initial stage of RMIS-to-FRAM mapping. 
+
+The following provides
+  - a roadmap of the process from raw RMIS CWT release/recovery data to something useable in a FRAM calibration
+  - basic documentation on the structure/function of the FRAMBuilder program, its companion FRAM-CAS database, and the ruleset it follows to get CWT recoveries from the initial CAS stage of mapping to a final FRAM fishery/time step state. As for the tools ‘borrowed’ from the CTC (i.e., CAS.exe), we provide only a brief sketch here and refer the reader to CTC resources for further documentation.
+
+
+# Overview
+
+The procedures to map an individual CWT recovery to a FRAM stock and fishery are conceptually straightforward: in screening candidate codes, make a determination regarding which tags are suitable representatives for model stocks, and then, given recovery details such as RMIS location codes, gear codes, dates, etc., make a determination regarding the model fishery/time step to which the recovery belongs. 
+
+In practice, however, this task is made difficult by the thousands of tag codes representing unique hatchery release groups that are available for consideration. This means that the hundreds of thousands of individual tag recoveries from these groups must all be mapped from the thousands of unique time-location-gear code combinations to one of FRAM’s fisheries. The FRAMBuilder workflow addresses this challenge via to the following steps: 
+
+  1. Select tag groups.
+  2. Query RMIS for release/recovery data.
+  3. Load RMIS query results into the CTC Filter database, and query it to create CAS input files.
+  4. Load tags into CAS (i.e., stage 1 of mapping – to CTC fishery strata).
+  5. Run FRAMBuilder (i.e., map/process recoveries).
+  6. Export data for any necessary post-FRAMBuilder processing to create calibration input files.
+
+```{r fb_overview, echo = FALSE, out.width='100%'}
+knitr::include_graphics("images/fb_overview.png")
+```
+
+In addition to these steps, a handful of other functions can be invoked during step 5, depending on a user’s needs. These are also described further below. The remainder of this document is organized around each of these steps, where each subsection offers both ‘how to’ details and documentation on processing decisions, algorithms, etc. where necessary. 
+
+# Required programs and data files 
+
+## Data files
+
+  - A list of tag codes: A list of tag codes is needed for the purposes of querying RMIS (release/recovery), as well as for populating the CTC Filter database’s ‘STKCDS’ table.
+  - CWT release data: These are the raw release details for the chosen codes, acquired from RMIS via a ‘Tagged Releases’ query; query results are downloaded as a CSV, with the headings specified under Step 2 below.
+  - CWT recovery data: These are the raw recovery details for the selected codes, acquired from RMIS via a ‘Recoveries By Tag Code’ query; query results are downloaded as a CSV, with the headings specified under Step 2 below.
+  - Auxiliary files (or ‘auxiliaries’): These are text files (*.csv or *.txt), prepared by CTC members from a variety of agencies/jurisdictions, that contain supplementary CWT recovery information that is meant to augment (or revise) the CWT information acquired from RMIS for some stocks; these files are typically created on a stock/code basis and are necessary to ensure the calibration process includes the most accurate information. For example, CWT recoveries in escapement—a major anchor point for the type of backwards cohort reconstruction underlying FRAM calibration—are not available via RMIS for many Canadian stocks.
+
+## Microsoft Access Databases
+
+  - The CTC’s Filter Database: This is a Microsoft Access database into which the RMIS release/recovery query results (above), combined with a tag list (‘STKCDS’) are loaded. Using two custom queries, this database returns RELEASES.txt and RECOVERIES.txt files which can be imported directly to the FRAM-CAS database. 
+  - A FRAM-modified CAS database (FRAM-CAS hereafter): This Access database is an adaptation of the CTC CAS database (final preseason 2019 version ), which includes several tables (and added fields to existing tables) designed to (1) cross-walk CTC fishery strata to FRAM fisheries or (2) to house/contain mapped outputs for direct export/use in CAS.
+
+## Programs & companion files
+
+  - FRAMBuilder 2.0: Because FRAMBuilder is very much an interactive program subject to ad hoc changes/revisions to fulfill the BP team’s evolving needs, it hasn’t yet been developed into a distributed, fully compiled .exe file (i.e., ‘production mode’). Thus, the ‘program’ is actually a Microsoft Visual Studio solution (.sln) file that is operated within the development environment (i.e., Visual Studio, version 2008+). The code base and history of modifications can be found at: https://github.com/jon-carey/FRAMBuilder.
+  - The CTC’s CAS (and dll): CAS_1.9.exe and CASLib.dll (2019 versions) 
+  - Visual Studio, version 2008+: To operate FRAMBuilder ‘in the environment’ you will need a compiler; Visual Studio Express for desktops is a good free option (if Professional isn’t on your list of programs).
+  - Others: Although they aren’t tied explicitly to the mapping procedures outlined here, there are both R and OpenBUGS programs that estimate parameters for growth functions from CWT length observations (i.e., mapped to FRAM fishery and size limit regulation) summarized by FRAMBuilder. Jon Carey also has an R program (and input template/files) that estimates missing recoveries for freshwater sport (Puget Sound, Willapa Bay tribs) and estuary sport (Willapa Bay).
+
+
+# Step 1: Select tag groups
+
+# Step 2: Query RMIS for release/recovery data
+
+# Step 3: Filter RMIS data for importing to CAS
+
+# Step 4: Load filtered CWT data into CAS
+
+# Step 5: Run FRAMBuilder
+
+# Step 6: Export data
+
+# FRAMBuilder’s growth function input file preparation feature
+
+# Limitations to FRAMBuilder and opportunities for enhancement
+
+# App A
+
+# App B
+
+# App C
+
+# App D

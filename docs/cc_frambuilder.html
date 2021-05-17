@@ -11,7 +11,7 @@
 
 
 
-<title>Prerequisites</title>
+<title>FRAMBuilder</title>
 
 <script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -437,75 +437,96 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Prerequisites</h1>
+<h1 class="title toc-ignore">FRAMBuilder</h1>
 
 </div>
 
 
-<p>FRAM_VS is a Windows-based application that depends on Microsoft Access and Excel. It offers a means to view and adjust inputs, calculate and view outputs, and perform model-related file utilities.</p>
-<div id="program-installation" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Program installation</h1>
-<p>The most recent compiled program executable (<code>.exe</code>) file is available within the <a href="https://github.com/FRAMverse/FRAM/tree/master/bin/Debug"><code>bin/Debug</code></a> subdirectory of the main <a href="https://github.com/FRAMverse/FRAM">source code repository</a> and will be titled <code>FRAMVS....exe</code> with <code>...</code> usually corresponding to a dated version such as <code>FramVS221Dec14.exe</code>. From the subdirectory view, this file can be directly downloaded via a right-click “save link as”. Alternatively, clicking the file link will produce a single file view with a “download” button.</p>
-<p>If FRAM has never been installed, the user first needs to run a program <code>setup.exe</code> from the <a href="https://github.com/FRAMverse/FRAM/tree/master/publish"><code>publish</code></a> folder at the main repo. Downloaded and follow instructions to install directories, helper files, and references needed to run FRAM.</p>
-<p>Some known [Installation issues] have solutions.</p>
+<p><strong>The following information describes the current framework for Chinook only.</strong></p>
+<div id="background-and-purpose" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Background and purpose</h1>
+<p>Considerable processing is required to translate coded-wire tag (CWT) data from the Regional Mark Processing Center’s (RMPC) Regional Mark Information System (RMIS) database into meaningful units within a FRAM base period (BP) calibration context. Individual tag groups must be associated with a specific FRAM model stock, and tag recoveries at a particular time, location (indicated by RMIS location code), gear type must be mapped to one of FRAM’s fisheries and time steps. The FRAMBuilder program and workflow described here was developed to fulfill these needs, among others.</p>
+<p>Early in the development of FRAMBuilder and the overall CWT mapping workflow, the base period workgroup (BPW) identified distinct advantages/benefits to leveraging the Pacific Salmon Commission’s Chinook Technical Committee’s (CTC) CWT analysis tools: the Cohort Analysis System (CAS) mapping program and companion database. The BPW ultimately decided to tie FRAMBuilder to the CTC world because this connection: (1) allows for the seamless integration of CTC ‘Auxiliary’ CWT files, agency-supplied/prepared files that supplement or correct known errors/gaps in RMIS’s CWT recovery information; (2) facilitates the efficient inclusion of screened/vetted CWT release groups (i.e., selected by CTC members with regional expertise) into the calibration database; and (3) increases the overlap in information driving models supporting the management decisions of the PSC, the Pacific Fishery Management Council (PFMC), and state–tribal co-managers. Additionally, given partial overlap in the fishery assessment units used by the CTC and in FRAM, the integration of CAS into the FRAM calibration workflow offered efficiency in the form of an initial stage of RMIS-to-FRAM mapping.</p>
+<p>The following provides - a roadmap of the process from raw RMIS CWT release/recovery data to something useable in a FRAM calibration - basic documentation on the structure/function of the FRAMBuilder program, its companion FRAM-CAS database, and the ruleset it follows to get CWT recoveries from the initial CAS stage of mapping to a final FRAM fishery/time step state. As for the tools ‘borrowed’ from the CTC (i.e., CAS.exe), we provide only a brief sketch here and refer the reader to CTC resources for further documentation.</p>
 </div>
-<div id="supporting-files" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Supporting files</h1>
-<p>The files needed to run FRAM are available on the NWIFC <a href="https://fisheriesservices.nwifc.org/fram-model-runs/">Fisheries Services</a> website. Please note, that the file hosting sections of this site are password-protected. Please contact a member of the FRAM team at WDFW or NWIFC for assistance if needed.</p>
-<p>The descriptions below highlight key file types for model runs, but are <strong>not a comprehensive inventory</strong> of the many data sources and analysis tools adopted by the salmon comanagers to generate individual model inputs and parameters.</p>
-<div id="project-database" class="section level2" number="2.1">
-<h2 number="2.1"><span class="header-section-number">2.1</span> Project database</h2>
-<p>The FRAM software executable operates in conjunction with a MS Access <code>.mdb</code> database. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Strictly speaking, this is the only file <em>required</em> to perform model runs. The information in the database is organized into more than 20 tables. These [Project database tables] can be grouped into four main categories:</p>
+<div id="overview" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Overview</h1>
+<p>The procedures to map an individual CWT recovery to a FRAM stock and fishery are conceptually straightforward: in screening candidate codes, make a determination regarding which tags are suitable representatives for model stocks, and then, given recovery details such as RMIS location codes, gear codes, dates, etc., make a determination regarding the model fishery/time step to which the recovery belongs.</p>
+<p>In practice, however, this task is made difficult by the thousands of tag codes representing unique hatchery release groups that are available for consideration. This means that the hundreds of thousands of individual tag recoveries from these groups must all be mapped from the thousands of unique time-location-gear code combinations to one of FRAM’s fisheries. The FRAMBuilder workflow addresses this challenge via to the following steps:</p>
 <ol style="list-style-type: decimal">
-<li>Static, base period tables derived through the process of calibration. These tables provide the historical information the model is based on, such as base period exploitation rates, natural mortality rates, growth functions, etc.</li>
-<li>Annual stock and fishery input data, such as forecasts, quotas, size limits, etc.</li>
-<li>Look-up tables</li>
-<li>Output tables</li>
+<li>Select tag groups.</li>
+<li>Query RMIS for release/recovery data.</li>
+<li>Load RMIS query results into the CTC Filter database, and query it to create CAS input files.</li>
+<li>Load tags into CAS (i.e., stage 1 of mapping – to CTC fishery strata).</li>
+<li>Run FRAMBuilder (i.e., map/process recoveries).</li>
+<li>Export data for any necessary post-FRAMBuilder processing to create calibration input files.</li>
 </ol>
-<p>At the beginning of the pre-season process, a FRAM database is shared that contains the correct base period and starting model runs. Input tables are often edited through FRAM’s user interface (details in [Edit model run]), but can also be edited directly in the database. Similarly, the metadata and controls associated with model runs and base period selection can be manipulated via FRAM’s [Utilities] interface. Typically, a single FRAM database will include numerous individual model runs distinguished by a unique <code>RunID</code> field. <code>RunID</code> values then link other sets of values across tables, such that a given input or output table can include multiple distinct runs. Chinook and coho modeling currently involve two separate database structures with different tables, and it is advisable to organize modeling files for each species separately.</p>
+<p><img src="images/fb_overview.png" width="100%" /></p>
+<p>In addition to these steps, a handful of other functions can be invoked during step 5, depending on a user’s needs. These are also described further below. The remainder of this document is organized around each of these steps, where each subsection offers both ‘how to’ details and documentation on processing decisions, algorithms, etc. where necessary.</p>
 </div>
-<div id="tamm-file" class="section level2" number="2.2">
-<h2 number="2.2"><span class="header-section-number">2.2</span> TAMM file</h2>
-<p>While FRAM can run independently of a MS Excel TAMM <code>.xlsm</code> file, almost all modeling exercises will involve one or more of these files. An individual TAMM workbook includes stock and fishery input values associated to a single FRAM run/RunID. For preseason model runs, the typical naming convention follows slightly different patterns by species.</p>
-<p>For Chinook, files are named “ChinNNYY”, with a “comanager agreed” sequential run number (NN) and the 2-digit year (YY. For example, the final 2019 Chinook model run was “Chin2719”. For Coho, the naming convention is “CohoYYNN”, with “Coho” followed by the 2-digit year (YY) and a “co-manager agreed” sequential run number (NN). The final 2019 Coho model run was “Coho1925”. The sequential run numbers used for each species during a preseason process may not align depending on the number and timing of required model runs.</p>
-</div>
-<div id="model-run-transfer-file" class="section level2" number="2.3">
-<h2 number="2.3"><span class="header-section-number">2.3</span> Model run transfer file</h2>
-<p>Model run transfer files are typically named as such (e.g., "NewModelRunTransfer*.mdb"), and contain only a subset of tables in the encompassing project database. They enable sharing the relevant values for a single run without needing an entire (possibly large) project database. These files are not sufficient or necessary to execute a model run, but facilitate collaboration. A single model run transfer file can contain more than one model run.</p>
-</div>
-<div id="base-period-transfer-file" class="section level2" number="2.4">
-<h2 number="2.4"><span class="header-section-number">2.4</span> Base period transfer file</h2>
-<p>Similar to model run transfer files, base period transfer files contain a subset of tables that allow a project database to include relevant values for multiple distinct base periods (i.e. unique BaseID value). It is uncommon to need to incorporate alternative base period parameterizations, particularly within typical preseason modeling. The FRAM [Utilities] section describes the creation and incorporation of these files.</p>
-</div>
-<div id="framvstemplate-file" class="section level2" number="2.5">
-<h2 number="2.5"><span class="header-section-number">2.5</span> FRAMVSTemplate file</h2>
-<p>For both Chinook and Coho, there are option buttons within the FRAM program to call a Microsoft Excel spreadsheet file, referred to as the “FRAMVSTemplate” file, which can be used to either retrieve/import or store/export various types of fishery inputs from a single model run. The sheets within this workbook are labeled with the associated type of FRAM fishery input:</p>
+<div id="required-programs-and-data-files" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Required programs and data files</h1>
+<div id="data-files" class="section level2" number="3.1">
+<h2 number="3.1"><span class="header-section-number">3.1</span> Data files</h2>
 <ul>
-<li><em>FRAMInput</em> (main Quota/Scalers window)</li>
-<li><em>FRAM_MSF</em> (for mark-selective fishery window which is secondary to Quota/Scalers)</li>
-<li><em>FRAM_CNR</em> (non-retention).</li>
-<li><em>FRAM_Recruits</em> (Stock Recruits for annual stock abundances)</li>
+<li>A list of tag codes: A list of tag codes is needed for the purposes of querying RMIS (release/recovery), as well as for populating the CTC Filter database’s ‘STKCDS’ table.</li>
+<li>CWT release data: These are the raw release details for the chosen codes, acquired from RMIS via a ‘Tagged Releases’ query; query results are downloaded as a CSV, with the headings specified under Step 2 below.</li>
+<li>CWT recovery data: These are the raw recovery details for the selected codes, acquired from RMIS via a ‘Recoveries By Tag Code’ query; query results are downloaded as a CSV, with the headings specified under Step 2 below.</li>
+<li>Auxiliary files (or ‘auxiliaries’): These are text files (<em>.csv or </em>.txt), prepared by CTC members from a variety of agencies/jurisdictions, that contain supplementary CWT recovery information that is meant to augment (or revise) the CWT information acquired from RMIS for some stocks; these files are typically created on a stock/code basis and are necessary to ensure the calibration process includes the most accurate information. For example, CWT recoveries in escapement—a major anchor point for the type of backwards cohort reconstruction underlying FRAM calibration—are not available via RMIS for many Canadian stocks.</li>
 </ul>
-<p>A template option also exists for loading or exporting target escapement values used in Backwards FRAM runs. Option buttons are available in the FRAM input menus to utilize template files, which can be used to transfer values into or out of the relevant database tables. FRAMVSTemplate files are used to facilitate collaboration and for transparency and documentation of fishery inputs.</p>
 </div>
-<div id="runsheet-chinook" class="section level2" number="2.6">
-<h2 number="2.6"><span class="header-section-number">2.6</span> RunSheet (Chinook)</h2>
-<p>For Chinook, the model inputs for Washington state’s recreational marine fisheries in Areas 5-13 are currently developed via a separate Excel workbook that integrates data on observed catches, annual regulations, and post-season “validation” FRAM runs. The typical naming convention used for this file is “RunNNYY”, with the Chinook sequential run number (NN) and the 2-digit year (YY). Current software versions (2.19b or higher) include utilities to transfer RunSheet values into the relevant database tables. The “Automate Pass 1 Pass 2 (Chin)” FRAM utility invokes this file.</p>
+<div id="microsoft-access-databases" class="section level2" number="3.2">
+<h2 number="3.2"><span class="header-section-number">3.2</span> Microsoft Access Databases</h2>
+<ul>
+<li>The CTC’s Filter Database: This is a Microsoft Access database into which the RMIS release/recovery query results (above), combined with a tag list (‘STKCDS’) are loaded. Using two custom queries, this database returns RELEASES.txt and RECOVERIES.txt files which can be imported directly to the FRAM-CAS database.</li>
+<li>A FRAM-modified CAS database (FRAM-CAS hereafter): This Access database is an adaptation of the CTC CAS database (final preseason 2019 version ), which includes several tables (and added fields to existing tables) designed to (1) cross-walk CTC fishery strata to FRAM fisheries or (2) to house/contain mapped outputs for direct export/use in CAS.</li>
+</ul>
 </div>
-<div id="coweemans-chinook" class="section level2" number="2.7">
-<h2 number="2.7"><span class="header-section-number">2.7</span> Coweemans (Chinook)</h2>
-<p>An Excel workbook file used to calculate exploitation rate values related to Columbia River Chinook stocks and compliance with U.S. Endangered Species Act (ESA) guidance. The typical naming convention used for this file is “Coweeman_ChinNNYY.xlsx”, with the Chinook sequential run number (NN) and the 2-digit year (YY). These files are mainly used within the PFMC process and only summarize model results.</p>
+<div id="programs-companion-files" class="section level2" number="3.3">
+<h2 number="3.3"><span class="header-section-number">3.3</span> Programs &amp; companion files</h2>
+<ul>
+<li>FRAMBuilder 2.0: Because FRAMBuilder is very much an interactive program subject to ad hoc changes/revisions to fulfill the BP team’s evolving needs, it hasn’t yet been developed into a distributed, fully compiled .exe file (i.e., ‘production mode’). Thus, the ‘program’ is actually a Microsoft Visual Studio solution (.sln) file that is operated within the development environment (i.e., Visual Studio, version 2008+). The code base and history of modifications can be found at: <a href="https://github.com/jon-carey/FRAMBuilder" class="uri">https://github.com/jon-carey/FRAMBuilder</a>.</li>
+<li>The CTC’s CAS (and dll): CAS_1.9.exe and CASLib.dll (2019 versions)</li>
+<li>Visual Studio, version 2008+: To operate FRAMBuilder ‘in the environment’ you will need a compiler; Visual Studio Express for desktops is a good free option (if Professional isn’t on your list of programs).</li>
+<li>Others: Although they aren’t tied explicitly to the mapping procedures outlined here, there are both R and OpenBUGS programs that estimate parameters for growth functions from CWT length observations (i.e., mapped to FRAM fishery and size limit regulation) summarized by FRAMBuilder. Jon Carey also has an R program (and input template/files) that estimates missing recoveries for freshwater sport (Puget Sound, Willapa Bay tribs) and estuary sport (Willapa Bay).</li>
+</ul>
 </div>
-<div id="snake-river-falls-index-chinook" class="section level2" number="2.8">
-<h2 number="2.8"><span class="header-section-number">2.8</span> Snake River Falls Index (Chinook)</h2>
-<p>An Excel workbook file is used to evaluate if planned fisheries are within the maximum allowed impacts for the Snake River Fall Chinook stock under the U.S. Endangered Species Act (ESA) guidance. The typical naming convention used for this file is “SRFI_ChinNNYY.xlsx”, with the Chinook sequential run number (NN) and the 2-digit year (YY). These files are mainly used within the PFMC process and only summarize model results.</p>
 </div>
+<div id="step-1-select-tag-groups" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Step 1: Select tag groups</h1>
 </div>
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p>Note that these files may become larger than 100MB over the course of modeling several runs. However, the “Compact &amp; Repair” functionality in MS Access can often reduce file size, prior to any further compression.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
+<div id="step-2-query-rmis-for-releaserecovery-data" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> Step 2: Query RMIS for release/recovery data</h1>
+</div>
+<div id="step-3-filter-rmis-data-for-importing-to-cas" class="section level1" number="6">
+<h1 number="6"><span class="header-section-number">6</span> Step 3: Filter RMIS data for importing to CAS</h1>
+</div>
+<div id="step-4-load-filtered-cwt-data-into-cas" class="section level1" number="7">
+<h1 number="7"><span class="header-section-number">7</span> Step 4: Load filtered CWT data into CAS</h1>
+</div>
+<div id="step-5-run-frambuilder" class="section level1" number="8">
+<h1 number="8"><span class="header-section-number">8</span> Step 5: Run FRAMBuilder</h1>
+</div>
+<div id="step-6-export-data" class="section level1" number="9">
+<h1 number="9"><span class="header-section-number">9</span> Step 6: Export data</h1>
+</div>
+<div id="frambuilders-growth-function-input-file-preparation-feature" class="section level1" number="10">
+<h1 number="10"><span class="header-section-number">10</span> FRAMBuilder’s growth function input file preparation feature</h1>
+</div>
+<div id="limitations-to-frambuilder-and-opportunities-for-enhancement" class="section level1" number="11">
+<h1 number="11"><span class="header-section-number">11</span> Limitations to FRAMBuilder and opportunities for enhancement</h1>
+</div>
+<div id="app-a" class="section level1" number="12">
+<h1 number="12"><span class="header-section-number">12</span> App A</h1>
+</div>
+<div id="app-b" class="section level1" number="13">
+<h1 number="13"><span class="header-section-number">13</span> App B</h1>
+</div>
+<div id="app-c" class="section level1" number="14">
+<h1 number="14"><span class="header-section-number">14</span> App C</h1>
+</div>
+<div id="app-d" class="section level1" number="15">
+<h1 number="15"><span class="header-section-number">15</span> App D</h1>
 </div>
 
 <footer style="color: #ff4000; font-weight: bold; text-align:center">
