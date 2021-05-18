@@ -11,11 +11,11 @@ navbar:
     - text: "Concepts"
       menu: 
         - text: "Background & History"
-          href: cc_background.html
+          href: concept_background.html
         - text: "Key Assumptions"
-          href: cc_assumptions.html
+          href: concept_assumptions.html
         - text: "FRAMBuilder"
-          href: cc_frambuilder.html
+          href: concept_frambuilder.html
         - text: "Fishery Mortality"
         - text: "otherthing1"
         - text: "otherthing2"
