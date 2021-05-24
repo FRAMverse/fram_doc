@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Backwards FRAM</title>
+
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="rmarkdown.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">FRAM Documentation</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Overview</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Concepts
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="concept_background.html">Background &amp; History</a>
+    </li>
+    <li>
+      <a href="concept_assumptions.html">Key Assumptions</a>
+    </li>
+    <li>
+      <a href="concept_frambuilder.html">FRAMBuilder</a>
+    </li>
+    <li class="dropdown-header">Fishery Mortality</li>
+    <li class="dropdown-header">otherthing1</li>
+    <li class="dropdown-header">otherthing2</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    How to Use
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="user_intro.html">Intro</a>
+    </li>
+    <li>
+      <a href="user_prereq.html">Prerequisites</a>
+    </li>
+    <li>
+      <a href="user_basic_forward_run.html">A basic run</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Main menu options</li>
+    <li>
+      <a href="user_main_menu.html">Main menu</a>
+    </li>
+    <li>
+      <a href="user_edit_model_run.html">Edit model run</a>
+    </li>
+    <li>
+      <a href="user_save_model_inputs.html">Save model inputs</a>
+    </li>
+    <li>
+      <a href="user_run_model.html">Run model</a>
+    </li>
+    <li>
+      <a href="user_backwards_fram.html">Backwards FRAM</a>
+    </li>
+    <li>
+      <a href="user_outputs.html">Output/Results</a>
+    </li>
+    <li>
+      <a href="user_utilities.html">Utilities</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://www.pcouncil.org/salmon/">PFMC</a>
+</li>
+<li>
+  <a href="https://wdfw.wa.gov/">WDFW</a>
+</li>
+<li>
+  <a href="https://nwifc.org/">NWIFC</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<footer style="color: #ff4000; font-weight: bold; text-align:center">
+    <p> !! THIS SITE UNDER DEVELOPMENT !! </p>
+</footer>
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Backwards FRAM</h1>
+
+</div>
+
+
+<p>“Forward” FRAM model runs begin from a forecasted “pre-fishing” cohort and then apportion fishery impacts to the model stocks through the species-specific time steps. This conceptually parallels the observed seasonal progression of salmon returning to spawning grounds and release areas.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>In contrast, a “backward” FRAM (bkFRAM) model run combines observed terminal run size and escapement values with observed catch values to iteratively derive a set of recruit scalers, such that those scalers produce a starting cohort capable of producing the known catch and escapement. Starting cohorts are initial FRAM run sizes before natural mortality, fishing mortality, and maturation. For Chinook, bkFRAM calculates age 3 to 5 starting cohorts, and for Coho, starting cohorts are in units of January Age 3 fish. This process is conceptually related to traditional “run reconstruction” approaches.</p>
+<p>These runs play several important roles.</p>
+<p>During the preseason planning process, Chinook forecasts are commonly reported in terms of terminal run size. Thus, the initial preseason Chinook model run is actually a backwards model run that enables the reconstruction of a starting cohort for all subsequent preseason modeling. This “average run” is a backwards Chinook FRAM run that targets the new season’s terminal return forecasts (by stock) in the context of fishery parameters averaged from recent observed years.</p>
+<p>Following completion of a fishing year, a post-season backwards run is performed to incorporate the most current representation of what actually happened. Note that in addition to the new year, updates to the data characterizing older years may also be integrated during this process. The Pacific Salmon Commission’s Coho Technical Committee (CoTC) conducts post-season Coho model runs to evaluate annual Pacific Salmon Treaty obligations. The salmon co-managers (Washington Treaty Tribes and WDFW) conduct post-season Chinook model runs, which can be found on their website at: <a href="https://fisheriesservices.nwifc.org/fram-model-runs/post-season-fram-modeling/" class="uri">https://fisheriesservices.nwifc.org/fram-model-runs/post-season-fram-modeling/</a></p>
+<p>BkFRAM can be run for an individual stock or a combination of stocks (including all stocks). It requires a “seed” run that contains desired fishery impacts (observed values for post-season runs or recent year average values for pre-season runs). The seed run will also contain starting cohorts for stocks where this parameter is known; i.e. the forecast is already in starting cohort units rather than terminal run size units.</p>
+<p>BkFRAM can run in three modes. The mode is selected using a flag in the input process. Flags are stock-specific, allowing all three flags (values = 0,1,2) to be used in a single bkFRAM model run.</p>
+<ul>
+<li><p>Mode 0 (flag 0): This mode does not use bkFRAM to find starting stock scalars. Instead, FRAM uses the starting cohort values from the existing “StockRecruit” table in the project database.</p></li>
+<li><p>Mode 1 (flag 1): This mode uses an algorithm to iteratively adjust stock recruit scalars until the target abundance is achieved. Target abundances are adipose mark specific. This method is used when the mark rate of a stock is known.</p></li>
+<li><p>Mode 2 (flag 2): This mode is selected when target mark rates are unavailable. Algorithms from mode 1 are used to find the starting stock recruit scalars that result in the combined target abundance (marked and unmarked components). The program will then apply mark rates derived from the existing “StockRecruit” table to split starting cohorts into marked and unmarked components.</p></li>
+</ul>
+<div id="running-bkfram" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Running BkFRAM</h1>
+<p>After selecting “Post Season run” from the FRAM main menu, the Backwards FRAM submenu is presented. The Coho and Chinook versions are slightly different.</p>
+<div class="figure">
+<img src="images/fvs_back_menu.png" alt="The post-season or backwards FRAM submenu for Chinook" width="100%" />
+<p class="caption">
+The post-season or backwards FRAM submenu for Chinook
+</p>
+</div>
+<div class="figure">
+<img src="images/fvs_back_menu_coho.png" alt="The post-season or backwards FRAM submenu for Coho" width="100%" />
+<p class="caption">
+The post-season or backwards FRAM submenu for Coho
+</p>
+</div>
+<p>Next, target abundance values must be set if they are not already. Selecting the ‘Target Escapements” button brings up the Target Escapements for Backwards FRAM menu, which has a slightly different layout for Chinook and Coho.</p>
+</div>
+<div id="target-escapements-for-chinook" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Target escapements for Chinook</h1>
+<p>The values for the FRAM calculations to target must be provided by stock, mark status, and age, in conjunction with a control flag. The effects of flag values are displayed on screen, with <code>0</code> meaning the value is not used, <code>1</code> it is used, and <code>2</code> that it is intended to be automatically split into marked and unmarked components. A flag value of <code>3</code> is deprecated but allowed for legacy compatibility.</p>
+<p>When terminal run size is known for a stock by age and mark status, these can be entered with a flag of “1” in the correspondingly labeled cells. If the mark rate is unknown, enter the combined (marked plus unmarked) abundance in the “TOTAL” row and flag as “2” (i.e. will use mark rates from “seed run”). If you do not wish to overwrite existing cohort sizes for a stock, flag relevant row(s) (Total, Marked, Unmarked) as “0”.</p>
+<p>While the FRAM interface enables editing individual values, the “Import Escapements” option allows an “all-at-once” update via the selection of an MS Excel template file containing model inputs compiled outside of FRAM. Select the “Import Escapements” button and then locate and selecting the file (“BkFRAM_ChinookTemplate…xls”) with the desired values.</p>
+<div class="figure">
+<img src="images/fvs_back_target.png" alt="Post-season target escapements" width="100%" />
+<p class="caption">
+Post-season target escapements
+</p>
+</div>
+<p>Once the input values are updated, select “OK - Done” to return to the Backwards FRAM Run Menu to “Start Iterations”.</p>
+<p>The following table represents which Chinook FRAM fisheries (by FisheryID numeric values and generic titles) and time steps (horizontal) are included in the run size definition of each stock (by StockID numeric values and StockName) (vertical). A “yes” denotes that the landed catch of ages 3-5 Chinook in fishery and time steps are added to the age 3-5 run to the river (escapement + freshwater catch). T1 equals October-April time step, T2 equals May-June time step, and T3 equals July-September time step</p>
+</div>
+<div id="target-escapements-for-coho" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Target escapements for Coho</h1>
+<p>Enter target escapements by stock and mark status and flag as “1” in the correspondingly labeled cells. Coho escapement values should exclude jacks (age 2), as coho are assumed to be age 3 in the FRAM model framework. If the mark rate is unknown, enter the combined (marked plus unmarked) escapement in either the marked or unmarked stock row and flag as “2” (will use mark rates from “seed run”). If you do not wish to overwrite exisiting cohort sizes for a stock, flag relevant row(s) (Marked, Unmarked) as “0”.</p>
+<p>Escapement values can also be loaded from a MS Excel template file designed for model inputs (“CohoFRAMInputTemplate….xls”) by selecting the “Import Escapements” button and then locating and selecting the file with the desired values. The template file workbook needs to contain a worksheet tab called “FRAMEscapeV2”, and the user may need to unhide it within the template. The escapement values within the worksheet are organized as rows by stock and mark status and columns per year. A column exists for every year desired for updating model inputs. The program will request a single ‘Year’ to load from the Excel worksheet.</p>
+<p>Escapement values can be also be exported by selecting the “Export to Spreadsheet” button on the Target Escapements for Backwards FRAM menu using the same workbook template file needed for importing. The program will also request the ‘Year’ of data to export.</p>
+<p>Once the input values are updated, select “OK - Done” to return to the Backwards FRAM Run Menu to “Start Iterations”.</p>
+</div>
+<div id="start-iterations" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Start iterations</h1>
+<p>With target escapements entered, the number of desired iterations can be selected and then “Start Iterations” clicked. The default number of iterations is 99. This number will rarely be reached, as iterations automatically terminate when the convergence criteria is met (run size within 1 fish of target).</p>
+<p>For Coho, selecting the “Run without MSF Bias Correction (if checked)” button will process the backwards run without the MSF Bias Correction factor applied. By default, the MSF Bias Correction is applied during preseason forward Coho FRAM modeling and thus it is also by default applied during backward FRAM. Thus, this box is most commonly left unchecked.</p>
+<p>For Chinook, selecting the “Age 2 from 3” box will cause the program to process using fishing year (FY) age 2 from 3 abundances (e.g., the recruit scaler for age 3s will be used for age 2s). This corresponds to the preseason mode of operation. After selecting “Start Iterations”, a prompt requires the user to select whether or not to use TAMI catches for the run. Choosing “yes” is appropriate if the correct TAMI fishery catches (e.g., 7BCD net) are not yet loaded into FRAM. Conversely, “no” will skip this step when the FRAM run already has the correct TAMI catches stored (i.e, because FRAM has already been run forward with the correct TAMM and TAMI catches are automatically saved into the FRAM database).</p>
+</div>
+<div id="view-and-save-bkfram-results" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> View and save BkFRAM results</h1>
+<p>After iterations are complete, the program returns a result screen (with slightly different layouts for Chinook and Coho) which lists target escapements, resulting BkFRAM escapements, and new stock recruit scalers side by side in order to assess whether values have sufficiently converged.</p>
+<div class="figure">
+<img src="images/fvs_back_results.png" alt="Convergence is displayed per-stock and age" width="100%" />
+<p class="caption">
+Convergence is displayed per-stock and age
+</p>
+</div>
+<p>Finally, after exiting the table display, a new option to “Save BkFRAM targets and new Recruit Scalars[sic]” is available.</p>
+<p>If no further changes to escapement or flagging are needed, this will write values to the database before returning to the main menu.</p>
+<p>The “Save BkFRAM…” button brings up the following message box: “This action saves BkFRAMTargets as well as Recruit Scalars. To save, please follow instructions of next menu.” Then the ‘Save-Menu’ pops-up, where the user can select to replace the existing run, save as a new run, or cancel save. Note that if the user selects the “Save BkFRAM Targets and New Recruit Scalars” button after the targets are entered or imported, but before iterations are run, the save action will only save the new targets.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Recall that FRAM is not spatiotemporally explicit. Rather, all fishery impacts and maturation adjustments are handled simultaneously across the vector of stocks (and ages for Chinook) within a given timestep and preterminal/terminal substep. Thus, all fisheries occurring in the same time step operate on the same abundance, and any <em>spatial</em> precedence is a function of the annual fishery sequence through time. For example, spring catches in Alaska do not directly influence spring catches in BC and WA. However, these geographic precursors do affect summer catches in Puget Sound and elsewhere due to time step/timing.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+<footer style="color: #ff4000; font-weight: bold; text-align:center">
+    <p> !! THIS SITE UNDER DEVELOPMENT !! </p>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+
+</body>
+</html>

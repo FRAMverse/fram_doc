@@ -1,0 +1,22 @@
+---
+title: "Save Model Run Inputs"
+editor_options: 
+  chunk_output_type: console
+---
+
+Model input parameters are saved in memory within the FRAM interface when values are entered or updated from any “Edit Model Run” submenu.
+
+Once the user has modified stock or fishery inputs from the main input menu and clicked the “Exit” button to return to the FRAM Main Menu, the “Save Model Run Inputs” button should be selected.  This step writes the working set of input parameters to each of the appropriate project database tables for the model run.
+
+If you select the button, a message “No input values have changed. No action taken.” may appear if there have been no changes made. 
+
+However, if changes have been made but are only currently in memory, then several options will appear: “Replace Current Model Run” or “Save NEW Model Run”, and a “Cancel Save” button to return to the Main Menu.  
+
+If the “Replace Current Model Run” is selected, then any changes will overwrite the values in the project database for the model run shown at the bottom of the application window. Upon completion, the program will return to the Main Menu with the same model run name.
+
+If the “Save NEW Model Run” button is selected, then the program will display the [Copy model run] screen to allow entry of a new run name, run title, run year, comments on changes, etc.  This process will generate a separate model run in the project database that includes the model input changes. By default, FRAM will name a new model run “COPY OF ……” the currently selected model run name. After clicking “OK – Done”, the program will complete the database write and return to the Main Menu with the new model run selected.
+
+```{r, echo = FALSE, out.width='100%', fig.cap='Save model run screen'}
+knitr::include_graphics("images/fvs_save_run.png")
+```
+
