@@ -13,7 +13,7 @@
 
 <title>Output/Results</title>
 
-<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -332,23 +332,35 @@ div.tocify {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Concepts
+    Chinook
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="concept_background.html">Background &amp; History</a>
+      <a href="chin_data.html">Data</a>
     </li>
     <li>
-      <a href="concept_assumptions.html">Key Assumptions</a>
+      <a href="chin_calcs.html">Calculations</a>
     </li>
     <li>
-      <a href="concept_frambuilder.html">FRAMBuilder</a>
+      <a href="chin_frambuilder.html">FRAMBuilder</a>
     </li>
-    <li class="dropdown-header">Fishery Mortality</li>
-    <li class="dropdown-header">otherthing1</li>
-    <li class="dropdown-header">otherthing2</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Coho
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="coho_data.html">Data</a>
+    </li>
+    <li>
+      <a href="coho_calcs.html">Calculations</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -358,9 +370,6 @@ div.tocify {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="user_intro.html">Intro</a>
-    </li>
     <li>
       <a href="user_prereq.html">Prerequisites</a>
     </li>
@@ -481,7 +490,7 @@ div.tocify {
 </div>
 
 <footer style="color: #ff4000; font-weight: bold; text-align:center">
-    <p> !! THIS SITE UNDER DEVELOPMENT !! </p>
+    <p> !! THIS SITE IS STILL UNDER DEVELOPMENT !! </p>
 </footer>
 
 
@@ -521,6 +530,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
