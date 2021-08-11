@@ -8,21 +8,22 @@ navbar:
   left:
     - text: "Overview"
       href: index.html
-    - text: "Concepts"
+    - text: "Chinook"
       menu: 
-        - text: "Background & History"
-          href: concept_background.html
-        - text: "Key Assumptions"
-          href: concept_assumptions.html
+        - text: "Data"
+          href: chin_data.html
+        - text: "Calculations"
+          href: chin_calcs.html
         - text: "FRAMBuilder"
-          href: concept_frambuilder.html
-        - text: "Fishery Mortality"
-        - text: "otherthing1"
-        - text: "otherthing2"
+          href: chin_frambuilder.html
+    - text: "Coho"
+      menu: 
+        - text: "Data"
+          href: coho_data.html
+        - text: "Calculations"
+          href: coho_calcs.html
     - text: "How to Use"
       menu:
-        - text: "Intro"
-          href: user_intro.html
         - text: "Prerequisites"
           href: user_prereq.html
         - text: "A basic run"

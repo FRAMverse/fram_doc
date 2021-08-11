@@ -1,0 +1,19 @@
+---
+title: "Coho Data"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE, results = 'hide', warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
+```
+
+# Stocks
+
+# Fisheries
+
+# Time steps
+
+# Base period
+
+# Annual inputs

@@ -1,5 +1,5 @@
 ---
-title: "Background & History"
+title: "Coho Calculations"
 editor_options: 
   chunk_output_type: console
 ---
@@ -7,3 +7,11 @@ editor_options:
 ```{r, include=FALSE, results = 'hide', warning = FALSE, message = FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
+
+# Overview
+
+# Cohort
+
+# Natural Mortality
+
+# etc.
