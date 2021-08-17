@@ -1,5 +1,5 @@
 ---
-title: "Coho Data"
+title: "Chinook FRAM Applications"
 editor_options: 
   chunk_output_type: console
 ---
@@ -8,12 +8,8 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-# Stocks
+# Preseason
 
-# Fisheries
+# Postseason
 
-# Time steps
-
-# Base period
-
-# Annual inputs
+# Other

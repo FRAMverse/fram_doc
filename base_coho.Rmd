@@ -1,5 +1,5 @@
 ---
-title: "Chinook Data"
+title: "Coho Base Period"
 editor_options: 
   chunk_output_type: console
 ---
@@ -8,12 +8,6 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-# Stocks
+# MSM
 
-# Fisheries
-
-# Time steps
-
-# Base period
-
-# Annual inputs
+# Other stuff

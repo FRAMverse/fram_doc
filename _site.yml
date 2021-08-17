@@ -8,20 +8,24 @@ navbar:
   left:
     - text: "Overview"
       href: index.html
-    - text: "Chinook"
+    - text: "Base Period"
+      menu:
+        - text: "Chinook FRAM Builder"
+          href: base_chin_frambuilder.html
+        - text: "Coho"
+          href: base_coho.html
+    - text: "Data&\nCalculations"
       menu: 
-        - text: "Data"
-          href: chin_data.html
-        - text: "Calculations"
-          href: chin_calcs.html
-        - text: "FRAMBuilder"
-          href: chin_frambuilder.html
-    - text: "Coho"
+        - text: "Chinook"
+          href: calcs_data_chin.html
+        - text: "Coho"
+          href: calcs_data_coho.html
+    - text: "Applications"
       menu: 
-        - text: "Data"
-          href: coho_data.html
-        - text: "Calculations"
-          href: coho_calcs.html
+        - text: "Chinook"
+          href: apps_chin.html
+        - text: "Coho"
+          href: apps_coho.html
     - text: "How to Use"
       menu:
         - text: "Prerequisites"
@@ -45,14 +49,6 @@ navbar:
         - text: "Utilities"
           href: user_utilities.html
         
-
-  right:
-    - text: "PFMC"
-      href: https://www.pcouncil.org/salmon/
-    - text: "WDFW"
-      href: https://wdfw.wa.gov/
-    - text: "NWIFC"
-      href: https://nwifc.org/
 
 output:
   rmarkdown::html_document:

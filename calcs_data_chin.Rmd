@@ -8,7 +8,15 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-# Overview
+# Structure
+
+## Stocks
+
+## Fisheries
+
+## Time steps
+
+# Annual inputs
 
 # Cohort
 
