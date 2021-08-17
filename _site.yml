@@ -14,7 +14,7 @@ navbar:
           href: base_chin_frambuilder.html
         - text: "Coho"
           href: base_coho.html
-    - text: "Data&\nCalculations"
+    - text: "Data & Calculations"
       menu: 
         - text: "Chinook"
           href: calcs_data_chin.html
