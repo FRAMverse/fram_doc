@@ -1,0 +1,14 @@
+---
+title: "Chinook Base Period Update"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE, results = 'hide', warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
+```
+
+An update to the FRAM base period (BP) for Chinook salmon was used in the pre-season planning process in 2017. Ongoing QAQC has subsequently addressed various data revisions and errors. 
+
+Prior to this work by the Puget Sound comanagers, the Chinook BP drew on data from the 1974-79 brood years, observed in fishing calendar years 1979-84. The revised BP utilizes data from 2005-2008 brood years in fishing calendar years 2007-2013. The update was undertaken to provide a more recent representation of the distribution of stocks and structure of fisheries.
+

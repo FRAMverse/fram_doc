@@ -10,6 +10,8 @@ navbar:
       href: index.html
     - text: "Base Period"
       menu:
+        - text: "Chinook update"
+          href: base_chin_bpupdate.html
         - text: "Chinook FRAM Builder"
           href: base_chin_frambuilder.html
         - text: "Coho"

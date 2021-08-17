@@ -338,6 +338,9 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="base_chin_bpupdate.html">Chinook update</a>
+    </li>
+    <li>
       <a href="base_chin_frambuilder.html">Chinook FRAM Builder</a>
     </li>
     <li>
@@ -437,35 +440,925 @@ div.tocify {
 <h1 number="1"><span class="header-section-number">1</span> Structure</h1>
 <div id="stocks" class="section level2" number="1.1">
 <h2 number="1.1"><span class="header-section-number">1.1</span> Stocks</h2>
+<p>Currently, 39 stock groups are represented in Chinook FRAM. Each of these stock groups have both marked (adipose fin clipped) and unmarked components to permit assessment of mark-selective fishery regulations; therefore, the current version of FRAM has a total of 78 stock units. Each stock unit includes four age classes: 2s, 3s, 4s, and 5+.</p>
+<p>Model stocks may represent an individual salmon stock or an aggregate of stocks from the same region. Stock units represented in FRAM were chosen based on the level of management interest, their contribution to PFMC fisheries, and the availability of representative CWT recoveries in the Regional Mark Information System (RMIS).</p>
+<p>Chinook FRAM includes most stock groups originating from the California Central Valley (Sacramento River), Oregon coast, Columbia River, Washington coast, Puget Sound, and Southern British Columbia. However, not all stocks along the West Coast of North America are represented. Some of the stocks that are not represented in Chinook FRAM include all those originating from California with the exception of Sacramento River fall Chinook, Oregon stocks originating south of Elk River, Mid and Upper Columbia River spring Chinook, Snake River spring and summer Chinook, and Canadian stocks originating north of Georgia Strait.</p>
 </div>
 <div id="fisheries" class="section level2" number="1.2">
 <h2 number="1.2"><span class="header-section-number">1.2</span> Fisheries</h2>
+<p>FRAM includes fisheries from southeast Alaska, Canada, Puget Sound, and off the coasts of Washington, Oregon, and California. The 73 fisheries in Chinook FRAM are designed to account for most of the fishing-related impacts to modeled Chinook stocks. A unique fishery identification number and fishery name for each of the FRAM fisheries are listed in Appendix 4 for Chinook. Terminal fisheries in Chinook FRAM are aggregations of gear and management areas. FRAM can model non-selective fisheries, mark-selective fisheries, and non-retention fisheries, and also calculates fisheries-related incidental and sublegal mortalities.</p>
 </div>
 <div id="time-steps" class="section level2" number="1.3">
 <h2 number="1.3"><span class="header-section-number">1.3</span> Time steps</h2>
+<p>Chinook FRAM consists of four time periods (Table 1). Because the fishery management cycle year (May 1 to April 30) for Chinook is out of sync with the time at which most Chinook in the model age up (October 1), Chinook FRAM both begins and ends with an October to April time step.</p>
+<div id="ppbrlghync" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ppbrlghync .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ppbrlghync .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ppbrlghync .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ppbrlghync .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ppbrlghync .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ppbrlghync .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ppbrlghync .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ppbrlghync .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ppbrlghync .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ppbrlghync .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ppbrlghync .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ppbrlghync .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ppbrlghync .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ppbrlghync .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ppbrlghync .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ppbrlghync .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ppbrlghync .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#ppbrlghync .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ppbrlghync .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#ppbrlghync .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ppbrlghync .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ppbrlghync .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ppbrlghync .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ppbrlghync .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ppbrlghync .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ppbrlghync .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ppbrlghync .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ppbrlghync .gt_left {
+  text-align: left;
+}
+
+#ppbrlghync .gt_center {
+  text-align: center;
+}
+
+#ppbrlghync .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ppbrlghync .gt_font_normal {
+  font-weight: normal;
+}
+
+#ppbrlghync .gt_font_bold {
+  font-weight: bold;
+}
+
+#ppbrlghync .gt_font_italic {
+  font-style: italic;
+}
+
+#ppbrlghync .gt_super {
+  font-size: 65%;
+}
+
+#ppbrlghync .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Time Step</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Months</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">1</td>
+<td class="gt_row gt_left">Preceding Oct. - April</td></tr>
+    <tr><td class="gt_row gt_right">2</td>
+<td class="gt_row gt_left">May - June</td></tr>
+    <tr><td class="gt_row gt_right">3</td>
+<td class="gt_row gt_left">July - September</td></tr>
+    <tr><td class="gt_row gt_right">4</td>
+<td class="gt_row gt_left">Oct. - April</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>The time step structure used in FRAM represents a level of resolution that balances data availability, fishery management structure, and species-specific migration and maturation schedules. The amount of available CWT recovery data (used to estimate model parameters such as exploitation rates and maturation rates) limits the time-step resolution of the model, as these data are stratified by stock unit, age class, and fishery.</p>
+<p>Reducing the duration of time steps decreases the number of CWT recoveries, and thereby increase the variance of the estimated parameters in those strata. Accordingly, time steps were defined at a minimum resolution needed for fishery management purposes. During each time step, a cohort undergoes natural mortality, and can be subjected to pre-terminal fisheries, maturation, and terminal fisheries.</p>
+</div>
+<div id="key-assumptions-and-limitations" class="section level2" number="1.4">
+<h2 number="1.4"><span class="header-section-number">1.4</span> Key assumptions and limitations</h2>
+<p>The model has several major assumptions and limitations.</p>
+<p><strong>CWT fish accurately represent the modeled stock.</strong> The model parameterization depends on CWT recoveries, overwhelmingly from hatchery origin production. The model therefore assumes that the distribution and exploitation of the tagged fish in each stock unit are the same as that of untagged fish.</p>
+<p><strong>Stock distribution and migration is constant from year to year and is represented by the average distribution of CWT recoveries during the reference base period.</strong> Annual variability in the distribution and migration patterns of Chinook and coho salmon stocks remains an active area of research.</p>
+<p><strong>Each stock unit and age class is exploited as a single pool.</strong> All pre-terminal fisheries operate on the entire cohort simultaneously in each time step and all terminal fisheries operate on the mature run. Thus base period exploitation rate parameter differences may implicitly account for some within-timestep spatiotemporal patterns, but dynamics such as the sequence of interceptions in fisheries that occur in different months or at different positions along a returning migratory path are not explicitly modeled.</p>
+<p><strong>Length at age is stock specific and is constant from year to year.</strong> The proportion of an age class that is of legal size in size-limit fisheries is determined using the von Bertalanffy growth function. It is assumed that growth in the current model year is similar to that in the years used to estimate the growth parameters (McHugh et al. 2015).</p>
+<p><strong>Age-specific maturation rates vary by stock but are constant from year to year.</strong> Maturation rates are calculated on a stock, age, and time step-specific basis from cohort reconstructions during the base period calibration. This assumes maturation rates during the base period years adequately characterize those in any given model run year.</p>
+<p><strong>Natural mortality is constant from year to year.</strong> Rates for Chinook are age and time period specific and yield the same total annual natural mortality rate used in the Pacific Salmon Commission (PSC) Exploitation Rate Analysis (PSC xxxx).</p>
+<p><strong>Fish in a specific time/area/fishery stratum do not experience multiple gear encounters.</strong> The catch equations used in the model are discrete and not instantaneous, so that fish are assumed to be vulnerable to the gear only once within each time/area/fishery stratum. Potential bias in the estimates may increase with large mark-selective fisheries or longer time intervals, both of which increase the likelihood that fish will encounter a gear more than once.</p>
 </div>
 </div>
-<div id="annual-inputs" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Annual inputs</h1>
+<div id="parameterization" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Parameterization</h1>
+<p>The numeric inputs needed to run FRAM are stored as tables in a MSAccess database, along with tables containing resulting model outputs.</p>
+<p>These input tables consist of - static, base period parameter values derived through the process of calibration (e.g., base period exploitation rates, natural mortality rates, growth rates) and - annual stock and fishery values including forecast or observed run sizes, catch quotas, size limits, etc.</p>
+<p>The main FRAM outputs are estimates of mortalities (landed, mark-selective, sub-legal, non-retention, drop-off) and abundances (starting cohorts at each time step; abundances after natural mortalities, pre-terminal, and terminal fisheries).</p>
+<div id="eswkoytykh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#eswkoytykh .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#eswkoytykh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#eswkoytykh .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#eswkoytykh .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#eswkoytykh .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eswkoytykh .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#eswkoytykh .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#eswkoytykh .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#eswkoytykh .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#eswkoytykh .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#eswkoytykh .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#eswkoytykh .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#eswkoytykh .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#eswkoytykh .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#eswkoytykh .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#eswkoytykh .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#eswkoytykh .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#eswkoytykh .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eswkoytykh .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#eswkoytykh .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eswkoytykh .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#eswkoytykh .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#eswkoytykh .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eswkoytykh .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#eswkoytykh .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#eswkoytykh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#eswkoytykh .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#eswkoytykh .gt_left {
+  text-align: left;
+}
+
+#eswkoytykh .gt_center {
+  text-align: center;
+}
+
+#eswkoytykh .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#eswkoytykh .gt_font_normal {
+  font-weight: normal;
+}
+
+#eswkoytykh .gt_font_bold {
+  font-weight: bold;
+}
+
+#eswkoytykh .gt_font_italic {
+  font-style: italic;
+}
+
+#eswkoytykh .gt_super {
+  font-size: 65%;
+}
+
+#eswkoytykh .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Table</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Calc_Fields</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Description</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Comment</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Parameter calibrated to base period</td>
+    </tr>
+    <tr><td class="gt_row gt_left">AEQ</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Adult Equivalent mortality rates (0:1) by Stock, Age, Time Step</td>
+<td class="gt_row gt_left">Values translate impacts to non-adults into comparable units, assuming future mortality</td></tr>
+    <tr><td class="gt_row gt_left">BaseCohort</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Estimated number of fish by Stock and Age</td>
+<td class="gt_row gt_left">The basic representation of relative abundances, acted on by StockRecruit</td></tr>
+    <tr><td class="gt_row gt_left">BaseExploitationRate</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Catch divided by catch and escapement as rate (0:1) by Stock, Age, Fishery, and Time Step</td>
+<td class="gt_row gt_left">A fundamental driver of FRAM output</td></tr>
+    <tr><td class="gt_row gt_left">ChinookBaseSizeLimit</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Legal lengths (mm) by Fishery and Time Step</td>
+<td class="gt_row gt_left"></td></tr>
+    <tr><td class="gt_row gt_left">FisheryModelStock Proportion</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Estimated proportion of catch in a fishery from the stocks included in FRAM</td>
+<td class="gt_row gt_left">Table is required but can be left blank for Coho</td></tr>
+    <tr><td class="gt_row gt_left">Growth</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Von Bertalanffy distribution attributes by Stock</td>
+<td class="gt_row gt_left"></td></tr>
+    <tr><td class="gt_row gt_left">IncidentalRate</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Drop-off and drop-out rates (0:1) by Fishery and Time Step</td>
+<td class="gt_row gt_left"></td></tr>
+    <tr><td class="gt_row gt_left">MaturationRate</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Rates (0:1) by Stock, Age, and Time Step</td>
+<td class="gt_row gt_left">Table is required but can be left blank for Coho</td></tr>
+    <tr><td class="gt_row gt_left">NaturalMortality</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Rates (0:1) by Age and Time Step</td>
+<td class="gt_row gt_left"></td></tr>
+    <tr><td class="gt_row gt_left">ShakerMortRate</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Sublegal encounter rates by Stock, Age, Fishery, Time Step</td>
+<td class="gt_row gt_left">Table is required but can be left blank for Coho</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Input per run</td>
+    </tr>
+    <tr><td class="gt_row gt_left">BackwardsFRAM</td>
+<td class="gt_row gt_left">BkTarget_s,a</td>
+<td class="gt_row gt_left">Target escapements or terminal run sizes (units of fish) by Stock and Age</td>
+<td class="gt_row gt_left"></td></tr>
+    <tr><td class="gt_row gt_left">EncounterRateAdjustment</td>
+<td class="gt_row gt_left">EncRateAdjust_f,a,t</td>
+<td class="gt_row gt_left">Further adjustments by Age, Fishery, and Time Step</td>
+<td class="gt_row gt_left">Values must be 1 for Chin; sublegal encounters are adjusted through input in the SLRatio table</td></tr>
+    <tr><td class="gt_row gt_left">FisheryScalers</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Non-selective and mark-selective control switches, scalers and quota values by Fishery, Time Step</td>
+<td class="gt_row gt_left">Scalers act as coefficients to increase or decrease BPERs</td></tr>
+    <tr><td class="gt_row gt_left">NonRetention</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Flexible system of values controlling non-retention mortality by Fishery and Time Step</td>
+<td class="gt_row gt_left">Mostly modeled as encounters for Chinook and mortalities for Coho</td></tr>
+    <tr><td class="gt_row gt_left">SizeLimit</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Legal fish sizes (mm) for the current run by Fishery and Time Step</td>
+<td class="gt_row gt_left">Table is required but can be left blank for Coho</td></tr>
+    <tr><td class="gt_row gt_left">SLRatio</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Target Sublegal/Legal Ratios by Fishery, Age, and Time Step</td>
+<td class="gt_row gt_left">When running S/L ratio updates in FRAM, column 'RunEncounterRateAdjustment' is updated with the values needed to achieve these ratios</td></tr>
+    <tr><td class="gt_row gt_left">StockFisheryRateScaler</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Further adjusments to BPER by Stock, Fishery, and Time Step</td>
+<td class="gt_row gt_left">Allows targeted corrections to specific relationships</td></tr>
+    <tr><td class="gt_row gt_left">StockRecruit</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Values applied to BaseCohort to reconstruct a starting cohort size per Stock and Age</td>
+<td class="gt_row gt_left"></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Lookup NA</td>
+    </tr>
+    <tr><td class="gt_row gt_left">BaseID</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Metadata per base period ID by Species</td>
+<td class="gt_row gt_left">Allows database to contain runs from different base periods</td></tr>
+    <tr><td class="gt_row gt_left">Fishery</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">The fisheries included for each species by index and name</td>
+<td class="gt_row gt_left">Not all index values are currently active fisheries</td></tr>
+    <tr><td class="gt_row gt_left">ReportDriver</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Customizes output reports</td>
+<td class="gt_row gt_left">Driver files can be created in FRAM/Ouput/Report Driver File/Create Report Driver</td></tr>
+    <tr><td class="gt_row gt_left">RunID</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Metadata on individual runs</td>
+<td class="gt_row gt_left">Used to track runs and link to correct base period</td></tr>
+    <tr><td class="gt_row gt_left">TerminalFisheryFlag</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Logic control switches to define a fishery as Terminal by Fishery and Time Step</td>
+<td class="gt_row gt_left">Set to 1 for Coho</td></tr>
+    <tr><td class="gt_row gt_left">TimeStep</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">The months included in each time step per species</td>
+<td class="gt_row gt_left"></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Output per run</td>
+    </tr>
+    <tr><td class="gt_row gt_left">Cohort</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Number of fish by Stock, Age, and Time Step</td>
+<td class="gt_row gt_left"></td></tr>
+    <tr><td class="gt_row gt_left">Escapement</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Ocean escapements by Stock, Age, and Time Step</td>
+<td class="gt_row gt_left">Does not necessarily correspond to spawning ground escapement as commonly understood</td></tr>
+    <tr><td class="gt_row gt_left">FisheryMortality</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Landed and non-landed mortalities by Fishery, Time Step</td>
+<td class="gt_row gt_left"></td></tr>
+    <tr><td class="gt_row gt_left">Mortality</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">Landed and non-landed impacts in units of fish by Stock, Age, Fishery, Time Step</td>
+<td class="gt_row gt_left">A principal source of important results, especially in conjunction with AEQ translation</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Lookup set in base period</td>
+    </tr>
+    <tr><td class="gt_row gt_left">Stock</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">The stocks included for each species by index and name</td>
+<td class="gt_row gt_left"></td></tr>
+  </tbody>
+  
+  
+</table>
 </div>
-<div id="cohort" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Cohort</h1>
+<p><em>REVISE FROM HERE</em></p>
+<ol start="4" style="list-style-type: decimal">
+<li><ol style="list-style-type: decimal">
+<li>FRAM Input Data FRAM input data consist of two main input types: base period reference data and annual data. Base period data remain constant until a new base period replaces the existing one. The principal base period inputs are stock-fishery specific exploitation rates. Other base period parameters include maturation rates, adult equivalency (AEQ) values, cohort sizes, and model stock proportions (MSP). The second input type consists of annual data that can vary with each model run, such as stock specific abundance estimates, fishery catches, size limits, etc.</li>
+</ol></li>
+</ol>
+<p>4.1.1. Base Period Data CWT recoveries are used to estimate model parameters such as age-specific time/area/fishery exploitation rates and maturation rates for modeled stocks. The years from which CWT recoveries are used to estimate these parameters are referred to as the “base period.” These parameter estimates are derived through species-specific cohort analyses. Each cohort analysis is a series of procedures that use CWT recoveries along with base period catch and escapement data to “back-calculate,” or reconstruct, a pre-fishing cohort size for each stock and age group using assumed natural mortality and incidental mortality rates. See (Model Evaluation Workgroup, 2008) for a more detailed description of the cohort analysis procedures.</p>
+<p>The model base period data for Chinook FRAM are derived from a single run reconstruction and cohort analysis based on aggregated CWT data from several consecutive brood years. Currently, the Chinook FRAM base period is calibrated using escapement, catch, and CWT recovery data (fishing calendar years 2007-2013) from brood year 2005-2008 (2007-2009 for Central Valley) CWT releases. Not all stocks represented in the Chinook FRAM have CWT recovery data available from base period brood years (e.g., White River Spring Chinook); these stocks are categorized as “out-of-base” (OOB) stocks. Available CWT data for the OOB stocks are translated to equivalent base period recovery and escapement data using known fishing effort and harvest relationships between recovery years.</p>
+<p>4.1.2. Annual Data Chinook FRAM uses six general types of input. Four of these input types (a, b, c, e) are submitted annually to reflect projected stock abundances and proposed fishery regulations for the current model year. The remaining two types of input (d, f) are specifications for fishery-related mortalities that can change as more information becomes available through additional data collection or studies, but typically do not change annually.</p>
+<p>Cohort Abundance: For each stock unit, an annual abundance is obtained from a source that is independent of the model, typically in the form of a terminal run size (TRS). In a pre-season context these abundances come from annual forecast predictions, whereas in a post-season context the abundances are estimates of actual observed returns. For Chinook, initial stock abundance estimates are needed by age class (ages 2 through 5) and mark status.</p>
+<p>Size Limits: For Chinook, minimum size limits are specified by fishery and time step where appropriate.</p>
+<p>Fishery Landed Catch: The model provides three options for setting the catch in a fishery: a quota, a fishery scaler, and a harvest rate (for Puget Sound terminal fisheries only). Quota: Catch in the fishery is set equal to a numeric value input by the user. Fishery Scaler: The fishery is scaled relative to the effort during the reference base period using a scaler value input by the user.<br />
+Harvest rate: Using the Puget Sound TAMM, a terminal area harvest rate can be applied to terminal area fisheries.</p>
+<p>FRAM inputs for quota and fishery scaler can be identified as either a conventional retention fishery or a mark-selective fishery and modeled accordingly. Modeling as a mark-selective fishery initiates additional calculations to estimate catches, encounters, and mortalities differently for marked and unmarked groups.</p>
+<p>Release Mortality Rates: This is the mortality associated with the release of landed fish from hook-and-line and other gear types. Release mortality rates are designated by species, geographic area, fishery type, fishery size (legal vs. sublegal) and gear type (Appendix 7). Release mortality is assessed when Chinook are not retained (“non-retention” or CNR fisheries), when size limits apply, and in mark-selective fisheries. A number of studies have estimated release mortality for hook-and-line fisheries, and release mortality rates for both troll and recreational fisheries in the ocean have been formally adopted by the PFMC. For Chinook, release mortality rates differ between legal-sized fish (adult release mortality) and sublegal-sized fish (shaker release mortality). Release mortality in net fisheries with non-retention is estimated externally to FRAM and provided as an input to the model.</p>
+<p>Mark-selective fisheries have two additional sources of mortality that are described as either the inappropriate retention of an unmarked fish or the release of a marked fish that consequently experiences release mortality. The failure to release an unmarked fish is a user input to the model called “Unmarked Retention Error” (or Retention Error Rate) and is the proportion of the unmarked fish encountered that are retained. The release of marked fish is a user input to the model called “Marked Recognition Error” and it is the proportion of the marked fish encountered that are released; these released marked fish are then subject to release mortality. These rates are updated annually based on fishery monitoring data.</p>
+<p>Other Non-landed Mortality Rates: This includes fishing-induced mortality not associated with directly handling fish. Drop-off mortality occurs when fish in sport and troll hook-and-line fisheries drop off the hook before they are brought to the vessel yet die from hook injuries. Drop-out mortality occurs when fish in commercial net fisheries are not brought on board but die from injury as a result of being netted. For simplicity, both types are referred to as drop-off mortality in FRAM. Net drop-out mortality rates vary depending on species, net type, or timing (pre-terminal or terminal) of the fishery. In general, a 5% drop-off mortality rate is applied to the landed catch (or legal-sized encounters in fisheries modeled as mark-selective) to account for “other non-landed mortalities” in hook-and-line fisheries (see Appendix 7).</p>
 </div>
-<div id="natural-mortality" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Natural Mortality</h1>
+<div id="calculations" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Calculations</h1>
+<div id="cohort" class="section level2" number="3.1">
+<h2 number="3.1"><span class="header-section-number">3.1</span> Cohort</h2>
 </div>
-<div id="etc." class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> etc.</h1>
+<div id="natural-mortality" class="section level2" number="3.2">
+<h2 number="3.2"><span class="header-section-number">3.2</span> Natural mortality</h2>
+</div>
+<div id="pre-terminal-fisheries" class="section level2" number="3.3">
+<h2 number="3.3"><span class="header-section-number">3.3</span> Pre-terminal fisheries</h2>
+</div>
+<div id="maturation" class="section level2" number="3.4">
+<h2 number="3.4"><span class="header-section-number">3.4</span> Maturation</h2>
+</div>
+<div id="terminal-fisheries" class="section level2" number="3.5">
+<h2 number="3.5"><span class="header-section-number">3.5</span> Terminal fisheries</h2>
+</div>
 </div>
 
-<footer style="color: #ff4000; font-weight: bold; text-align:center">
-    <p> !! THIS SITE IS STILL UNDER DEVELOPMENT !! </p>
-    <p>
+<footer>
+    <p style="color: #326020; font-weight: bold; text-align:center">
       <a href="https://www.pcouncil.org/managed_fishery/salmon/" target="_blank">PFMC</a>
       <a href="https://wdfw.wa.gov/fishing" target="_blank">WDFW</a>  
       <a href="https://nwifc.org/" target="_blank">NWIFC</a>
     </p>
-
 </footer>
 
 
