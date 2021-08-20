@@ -19,7 +19,7 @@ knitr::include_graphics(c("images/fvs_welcome.png"))
 knitr::include_graphics(c("images/logos_all.png"))
 ```
 
-The Fishery Regulation Assessment Model (FRAM) is an accounting tool for estimating the impacts of proposed fisheries on [Chinook](https://en.wikipedia.org/wiki/Chinook_salmon) and [Coho](https://en.wikipedia.org/wiki/Coho_salmon) salmon stocks during a fishing season. FRAM is a computer program developed and used by:
+The Fishery Regulation Assessment Model (FRAM) is an accounting tool for estimating the impacts of proposed fisheries on <a href = "https://en.wikipedia.org/wiki/Chinook_salmon" target="_blank">Chinook</a> and <a href = "https://en.wikipedia.org/wiki/Coho_salmon" target="_blank">Coho</a> salmon stocks during a fishing season. FRAM is a computer program developed and used by:
 
  - the Pacific Fishery Management Council <a href="https://www.pcouncil.org/salmon/background/" target="_blank">(PFMC)</a>
  - the Washington Department of Fish and Wildlife <a href="https://wdfw.wa.gov/fishing" target="_blank">(WDFW)</a>
