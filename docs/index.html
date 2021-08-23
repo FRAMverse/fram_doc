@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2021-08-20" />
+<meta name="date" content="2021-08-23" />
 
 <title>FRAM Overview</title>
 
@@ -434,7 +434,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">FRAM Overview</h1>
 <h4 class="author"></h4>
-<h4 class="date">2021-08-20</h4>
+<h4 class="date">2021-08-23</h4>
 
 </div>
 
@@ -466,18 +466,27 @@ div.tocify {
 <p>The increased complexity of proposed fishery regulation regimes, along with the need for increased time and spatial resolution for impact projections, soon surpassed the capability of the spreadsheet models. In the mid-1990s, CAM was programmed in QUICK BASIC and renamed <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. The recognition that common algorithms underlie both the Coho and Chinook spreadsheet models led to the effort to develop the QUICK BASIC version of <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> for both species. The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> code could be used to evaluate proposed fishery regulation regimes for either Chinook or Coho by using different input file configurations. In 1998, <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> was converted to VISUAL BASIC to take advantage of the improved user interface available through the MS-WINDOWS operating system. A multi-agency Model Evaluation Subgroup periodically reviewed model performance and parameter estimation methods and coordinated revisions to the model during this period (1998-2000).</p>
 <p>A new version of <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> was introduced in 2012. It was coded by James Packer (WDFW) in VISUAL STUDIO.NET and uses an MS Access database rather than binary text files for data storage and retrieval. In 2017, additional software changes were implemented when an updated Chinook base period was adopted using brood year 2005-2008 <span title="CWT: Coded Wire Tag">CWTs</span>. Substantial changes were made to the calibration programs, modeling of sublegal encounters, growth estimation, imputing <span title="CWT: Coded Wire Tag">CWT</span> recoveries for stocks and fisheries with few or no <span title="CWT: Coded Wire Tag">CWTs</span>, handling mark-selective fisheries, and developing model stock proportions.</p>
 <p>Although some program subroutines are shared, Chinook and Coho are processed separately, with distinct time step divisions, stocks, and fisheries. The Chinook version evaluates impacts on most stock groups originating from the California Central Valley (Sacramento River), north-central Oregon coast, Columbia River, Washington coast, Puget Sound, and Southern British Columbia. However, not all stocks along the West Coast of North America are represented in Chinook <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. Some of the stocks that are not represented in Chinook <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> include any stock in California except Sacramento Falls, Oregon stocks originating south of Elk River, Mid and Upriver Columbia River Springs, Snake River Springs, and Canadian stocks originating north of Georgia Strait. The Coho version evaluates impacts on a comprehensive set of stocks originating from Central California to Southeast Alaska and is considered to represent total West Coast production.</p>
-<p>In addition to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>, the modeling of fishery impacts for Puget Sound Chinook stock units requires a <span title="TAMM: Terminal Area Management Module">TAMM</span>. The Chinook <span title="TAMM: Terminal Area Management Module">TAMM</span> passes stock and fishery inputs to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. Subsequently, <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> modeling returns output to the <span title="TAMM: Terminal Area Management Module">TAMM</span>, which then performs additional calculations before generating reports. The Coho <span title="TAMM: Terminal Area Management Module">TAMM</span> functions to pass Puget Sound fishery inputs to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>, to perform additional calculations for Washington coastal and Columbia River fisheries/stocks, and to generate reports from <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> output. Thus, the use of both <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> and <span title="TAMM: Terminal Area Management Module">TAMM</span> is generally necessary for both Chinook and Coho modeling.</p>
-<p><br />
-</p>
 </div>
-<div id="coho-vs-chinook-differences" class="section level1 unnumbered">
-<h1 class="unnumbered">Coho vs Chinook differences</h1>
-<div id="xaugibsovu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="additional-models" class="section level1 unnumbered">
+<h1 class="unnumbered">Additional models</h1>
+<div id="tamm" class="section level2 unnumbered">
+<h2 class="unnumbered">TAMM</h2>
+<p>In addition to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>, the modeling of fishery impacts for Puget Sound Chinook stock units requires a <span title="TAMM: Terminal Area Management Module">TAMM</span>. When <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> is run without <span title="TAMM: Terminal Area Management Module">TAMM</span>, it will be missing <em>accurate</em> estimates for terminal and freshwater fisheries. The Chinook <span title="TAMM: Terminal Area Management Module">TAMM</span> passes stock and fishery inputs to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. Subsequently, <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> modeling returns output to the <span title="TAMM: Terminal Area Management Module">TAMM</span>, which then performs additional calculations before generating reports. The Coho <span title="TAMM: Terminal Area Management Module">TAMM</span> functions to pass Puget Sound fishery inputs to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>, to perform additional calculations for Washington coastal and Columbia River fisheries/stocks, and to generate reports from <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> output. Thus, the use of both <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> and <span title="TAMM: Terminal Area Management Module">TAMM</span> is generally necessary for both Chinook and Coho modeling.</p>
+</div>
+<div id="fram-base-period" class="section level2 unnumbered">
+<h2 class="unnumbered">FRAM Base Period</h2>
+<p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> base period is developed by summarizing coded-wire-tag information from RMIS from a continuous time period with a sufficient number of <span title="CWT: Coded Wire Tag">CWT</span> releases and recoveries. The current base period uses brood year releases from 2005-2008 for Chinook and 1982-1989 for coho. A calibration program written in VisualBasic.net maps the <span title="CWT: Coded Wire Tag">CWTs</span> to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries, stocks, and time steps and conducts a cohort reconstruction to estimate exploitation rates and other parameters, such as base period cohort sizes. These estimates form the basis of a <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> run and remain static between model runs. Using these base period parameters allows <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> to predict the stock composition, exploitation rates, and escapements of future fisheries when provided with forecasts of abundance and fishery mortalities.</p>
+</div>
+<div id="coho-vs-chinook-differences" class="section level2 unnumbered">
+<h2 class="unnumbered">Coho vs Chinook differences</h2>
+<p>While there is only one <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> program that handles both Chinook and Coho model runs and many of the core processes and algorithms are identical, this document presents the model and computational structures independently for each species. This decision was made in an effort to improve readability and clarity, as there are a variety of unique features specific to each species that can be difficult to differentiate when they are presented together.</p>
+<p>Table 1. Feature Components of Chinook and Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span></p>
+<div id="aswtuunasb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xaugibsovu .gt_table {
+#aswtuunasb .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -502,7 +511,7 @@ div.tocify {
   border-left-color: #D3D3D3;
 }
 
-#xaugibsovu .gt_heading {
+#aswtuunasb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -514,7 +523,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#xaugibsovu .gt_title {
+#aswtuunasb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -524,7 +533,7 @@ div.tocify {
   border-bottom-width: 0;
 }
 
-#xaugibsovu .gt_subtitle {
+#aswtuunasb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -534,13 +543,13 @@ div.tocify {
   border-top-width: 0;
 }
 
-#xaugibsovu .gt_bottom_border {
+#aswtuunasb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xaugibsovu .gt_col_headings {
+#aswtuunasb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -555,7 +564,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#xaugibsovu .gt_col_heading {
+#aswtuunasb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -575,7 +584,7 @@ div.tocify {
   overflow-x: hidden;
 }
 
-#xaugibsovu .gt_column_spanner_outer {
+#aswtuunasb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -587,15 +596,15 @@ div.tocify {
   padding-right: 4px;
 }
 
-#xaugibsovu .gt_column_spanner_outer:first-child {
+#aswtuunasb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xaugibsovu .gt_column_spanner_outer:last-child {
+#aswtuunasb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xaugibsovu .gt_column_spanner {
+#aswtuunasb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -607,7 +616,7 @@ div.tocify {
   width: 100%;
 }
 
-#xaugibsovu .gt_group_heading {
+#aswtuunasb .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -629,7 +638,7 @@ div.tocify {
   vertical-align: middle;
 }
 
-#xaugibsovu .gt_empty_group_heading {
+#aswtuunasb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -644,15 +653,15 @@ div.tocify {
   vertical-align: middle;
 }
 
-#xaugibsovu .gt_from_md > :first-child {
+#aswtuunasb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xaugibsovu .gt_from_md > :last-child {
+#aswtuunasb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xaugibsovu .gt_row {
+#aswtuunasb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -671,7 +680,7 @@ div.tocify {
   overflow-x: hidden;
 }
 
-#xaugibsovu .gt_stub {
+#aswtuunasb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -683,7 +692,7 @@ div.tocify {
   padding-left: 12px;
 }
 
-#xaugibsovu .gt_summary_row {
+#aswtuunasb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -693,7 +702,7 @@ div.tocify {
   padding-right: 5px;
 }
 
-#xaugibsovu .gt_first_summary_row {
+#aswtuunasb .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -703,7 +712,7 @@ div.tocify {
   border-top-color: #D3D3D3;
 }
 
-#xaugibsovu .gt_grand_summary_row {
+#aswtuunasb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -713,7 +722,7 @@ div.tocify {
   padding-right: 5px;
 }
 
-#xaugibsovu .gt_first_grand_summary_row {
+#aswtuunasb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -723,11 +732,11 @@ div.tocify {
   border-top-color: #D3D3D3;
 }
 
-#xaugibsovu .gt_striped {
+#aswtuunasb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xaugibsovu .gt_table_body {
+#aswtuunasb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -736,7 +745,7 @@ div.tocify {
   border-bottom-color: #D3D3D3;
 }
 
-#xaugibsovu .gt_footnotes {
+#aswtuunasb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -750,13 +759,13 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#xaugibsovu .gt_footnote {
+#aswtuunasb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#xaugibsovu .gt_sourcenotes {
+#aswtuunasb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -770,41 +779,41 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#xaugibsovu .gt_sourcenote {
+#aswtuunasb .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#xaugibsovu .gt_left {
+#aswtuunasb .gt_left {
   text-align: left;
 }
 
-#xaugibsovu .gt_center {
+#aswtuunasb .gt_center {
   text-align: center;
 }
 
-#xaugibsovu .gt_right {
+#aswtuunasb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xaugibsovu .gt_font_normal {
+#aswtuunasb .gt_font_normal {
   font-weight: normal;
 }
 
-#xaugibsovu .gt_font_bold {
+#aswtuunasb .gt_font_bold {
   font-weight: bold;
 }
 
-#xaugibsovu .gt_font_italic {
+#aswtuunasb .gt_font_italic {
   font-style: italic;
 }
 
-#xaugibsovu .gt_super {
+#aswtuunasb .gt_super {
   font-size: 65%;
 }
 
-#xaugibsovu .gt_footnote_marks {
+#aswtuunasb .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -883,8 +892,10 @@ div.tocify {
 </table>
 </div>
 </div>
+</div>
 
 <footer>
+      <br>
       <p style="color: #326020; font-weight: bold; text-align:right">
         Contributing partners:
         <a href="https://www.pcouncil.org/managed_fishery/salmon/" target="_blank">PFMC</a>
