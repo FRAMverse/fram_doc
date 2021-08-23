@@ -108,19 +108,21 @@ Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> us
 
 # Model Calculations
 
-FRAM processes information through a time step loop, beginning with time step 1 and ending with time step 4  for Chinook.  Within each time step, a series of five computational processes occur for each stock and age, as depicted in Figure 2: (1) determine starting cohort size, (2) removal of natural mortality, (3) removal of pre-terminal fishery mortalities, (4) maturation, and (5) removal of terminal fishery mortalities.
+FRAM processes information through a time step loop, beginning with time step 1 and ending with time step 4  for Chinook.  Within each time step, a series of five computational processes occur for each stock and age, as depicted in Figure 1: (1) determine starting cohort size, (2) removal of natural mortality, (3) removal of pre-terminal fishery mortalities, (4) maturation, and (5) removal of terminal fishery mortalities.
 
-####### ADD FLOW CHART FIGURE
+```{r chinook flow chart image, echo=FALSE}
+knitr::include_graphics(c("images/Chinook_FRAM_flowchart.PNG"))
+```
 
-This section briefly describes the flow chart for Chinook FRAM (Figure 1).  
+Figure 1. Conceptual flow chart for the Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model.
 
 ## Cohort abundance
 <u>Process 1:  Cohort abundance at the start of the time step</u> <br>
 
 The starting cohort size in time step 1 is a product of two parameters: (*1*) the base period cohort abundance for stock *s* at age *a* ($BPCohorts_a$) and (*2*) a stock and age-specific recruit scaler ($StockScalers_a$).  The recruit scaler is an annual model input.
 
-<p>**(1)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age a during time step 1">$Cohort_{s,a,t=1}$</span> $=$ <span title = "Base period abundance of stock s at age a">$BPCohort_{s,a}$</span> $\times$ <span title = "Stock recruit scaler of stock s at age a">$StockScaler_{s,a}$</span> </div> </p>
-where <span title = "Cohort abundance of stock s at age a during time step 1">$Cohort_{s,a,t=1}$</span> is the initial cohort size for stock *s*, age *a*, during time step *t = 1*.
+<p>**(1)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age a during time step 1">$Cohort_{s,a,t\!=\!1}$</span> $=$ <span title = "Base period abundance of stock s at age a">$BPCohort_{s,a}$</span> $\times$ <span title = "Stock recruit scaler of stock s at age a">$StockScaler_{s,a}$</span> </div> </p>
+where <span title = "Cohort abundance of stock s at age a during time step 1">$Cohort_{s,a,t\!=\!1}$</span> is the initial cohort size for stock *s*, age *a*, during time step *t*=1.
 
 The starting cohort abundance in all subsequent time steps is determined based on the remaining immature cohort from the previous time step (see process 4 below).  Chinook age between time step 3 and 4, so that, for example, age 2 fish in time step 3 become age 3 fish in time step 4.  Since there are no age 1 fish in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>, the age 2 cohort in time step 4 is the same as the age 2 cohort in time step 1. 
 
