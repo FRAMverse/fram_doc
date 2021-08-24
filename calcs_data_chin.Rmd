@@ -134,9 +134,9 @@ The starting cohort abundance in all subsequent time steps is determined based o
 
 During each time step, the stock-age cohort size at the start of the time step is decreased to account for natural mortality:
 
-<p>**(2)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age a during time step t">$Cohort_{s,a,t}$</span> $=$ <span title = "Cohort abundance of stock s at age a during time step t">$Cohort_{s,a,t}$</span> $\times$ <span title = "Natural mortality rate at age a and time step t">$(1-M_{a,t})$</span> </div> </p>
+<p>**(2)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age a during time step t">$Cohort_{s,a,t}$</span> $=$ <span title = "Cohort abundance of stock s at age a during time step t">$Cohort_{s,a,t}$</span> $\times$ <span title = "Discrete natural mortality rate at age a and time step t">$(1-M_{a,t})$</span> </div> </p>
 
-where <span title = "Natural mortality rate at age a and time step t">$M_{a,t}$</span> is the discrete natural mortality rate for age *a* fish during time step *t* (Appendix 8).
+where <span title = "Discrete natural mortality rate at age a and time step t">$M_{a,t}$</span> is the discrete natural mortality rate for age *a* fish during time step *t* (Appendix 8).
 
 ## Pre-terminal fisheries
 <u>Process 3: Pre-terminal fishery mortality</u> <br>
@@ -223,7 +223,7 @@ Fishery mortality in pre-terminal Chinook fisheries in <span title = "FRAM: Fish
 
 <span title = "AEQ: Adult equivalent mortalities">AEQ</span> = 1 for Chinook terminal fisheries, regardless of age.
 
-<p>**(12)**<div style = "text-align:center"> </div> </p>
+<p>**(12)**<div style = "text-align:center"><span title = "Adult equivalent total mortalities for stock s at age a during time step t">$AEQTotMort_{s,a,t}$</span> $=$ $\displaystyle\sum_f$ <span title = "Landed catch of stock s at age a in fishery f during time step t">$((Catch_{s,a,f,t}$</span> $+$ <span title = "Drop-off mortality of stock s at age a in fishery f at time step t">$Dropoff_{s,a,f,t}$</span> $+$ <span title = "Sublegal encounters of stock s at age a in fishery f during time step t">$Shakers_{s,a,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age a in fishery f during time step t">$AdultRelMort_{s,a,f,t}$</span> $+$ <span title = "Non-retention mortality of stock s at age a in fishery f during time step t">$CNR_{s,a,f,t})$</span> $\times$ <span title = "Adult equivalent mortalities for stock s at age a during time step t">$AEQ_{s,a,t})$</span> </div> </p>
 
 ## Maturation
 
