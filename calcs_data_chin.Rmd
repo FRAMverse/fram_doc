@@ -39,7 +39,7 @@ Reducing the duration of time steps decreases the number of <span title = "CWT: 
 
 ## Key assumptions and limitations
 
-The model has several major assumptions and limitations.
+*The model has several major assumptions and limitations.*
 
 **<span title = "CWT: Coded Wire Tag">CWT</span> fish accurately represent the modeled stock.** The model parameterization depends on <span title = "CWT: Coded Wire Tag">CWT</span> recoveries, overwhelmingly from hatchery origin production. The model therefore assumes that the distribution and exploitation of the tagged fish in each stock unit are the same as that of untagged fish.
 
@@ -162,7 +162,7 @@ The <span title = "Fishery scaler of fishery f at time step t">$FisheryScaler_{f
 
 <u>3c. Sublegal mortalities</u> (<span title = "Sublegal mortalities of stock s at age a in fishery f during time step t">$Shakers_{s,a,f,t}$</span>) are calculated for the portion of the cohort that is caught but cannot be retained due to size limit restrictions:
 
-<p>**(5)**<div style = "text-align:center"><span title = "Sublegal mortalities of stock s at age a in fishery f during time step t">$Shakers_{s,a,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age a during time step t">$Cohort_{s,a,t}$</span> $\times (1 \ -$ <span title = "Portion vulnerable of stock s at age a in fishery f during time step t">$PV_{s,a,f,t})$</span> $\times$ <span title = "Sublegal encounter rate of stock s at age a in fishery f during time step t">$SLER_{s,a,f,t}$</span> $\times$ <span title = "">$FisheryScaler_{f,t}$</span> $\times$ <span title = "Release mortaility rate for sublegal fish in fishery f during time step t">$ShakerReleaseMortalityRate_{f,t}$</span> </div> </p> <br>
+<p>**(5)**<div style = "text-align:center"><span title = "Sublegal mortalities of stock s at age a in fishery f during time step t">$Shakers_{s,a,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age a during time step t">$Cohort_{s,a,t}$</span> $\times (1 \ -$ <span title = "Portion vulnerable of stock s at age a in fishery f during time step t">$PV_{s,a,f,t})$</span> $\times$ <span title = "Sublegal encounter rate of stock s at age a in fishery f during time step t">$SLER_{s,a,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t">$FisheryScaler_{f,t}$</span> $\times$ <span title = "Release mortaility rate for sublegal fish in fishery f during time step t">$ShakerReleaseMortalityRate_{f,t}$</span> </div> </p> <br>
 
 where, <br>
 
@@ -179,6 +179,30 @@ where, <br>
 
 - <span title = "Sublegal encounters in fishery f of age a during time step t">$Shakers_{f,a,t}$</span> is the sublegal encounters summed over stocks in fishery *f* at age *a* during time step *t*.
 - <span title = "Legal catch in fishery f at age a during time step t">$Catch_{f,a,t}$</span> is the legal catch summed over stocks in fishery *f* at age *a* during time step *t*.
+
+<u> 3d. Chinook non-retention (CNR) mortalities are estimated </u> for time periods when fishing is allowed, but the retention of Chinook is prohibited.
+
+Chinook non-retention mortalities are typically calculated using shaker and adult release mortality rates (Appendix 7) and external estimates of either total adult encounters or legal and sublegal encounters. Several other methods exist in the modeling framework for Chinook (relative to the level of open versus non-retention effort within a time step) but are rarely used.
+
+<u>3e. Mark-selective fisheries</u> (MSF) require additional computations to calculate both the landed catch and the mortalities due to the release of fish.
+
+To simplify calculations, the <span title = "PV: Proportion vulnerable">PV</span> and the <span title = "SHRS: Stock fishery rate scaler">SHRS</span> are excluded from the below calculations:
+
+For **marked stock** units, the landed catch is calculated using an additional term to account for marked-recognition error (the release of a marked fish) and is fishery and time step specific <span title = "Marked-recognition error in fishery f during time step t">$(mre_{f,t})$</span>:
+
+<p>**(8a)**<div style = "text-align:center"><span title = "Mark-selective fishery catch of stock s at age a in fishery f during time step t">$MSFCatch_{s,a,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age a during time step t">$Cohort_{s,a,t}$</span> $\times$ <span title = "Base period exploitation rate of stock s at age a in fishery f during time step t">$BPER_{s,a,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t">$FisheryScaler_{f,t}$</span> $\times (1 \ -$ <span title = "Marked-recognition error in fishery f during time step t">$mre_{f,t})$</span> </div> </p> <br>
+
+For **unmarked stock** units, the landed catch is calculated using an additional term to account for unmarked retention error (the retention of an unmarked fish) and is fishery and time step specific <span title = "Unmarked retention error for fishery f during time step t">$(ure_{f,t})$</span>:
+
+<p>**(8b)**<div style = "text-align:center"><span title = "Mark-selective fishery catch of stock s at age a in fishery f during time step t">$MSFCatch_{s,a,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age a during time step t">$Cohort_{s,a,t}$</span> $\times$ <span title = "Base period exploitation rate of stock s at age a in fishery f during time step t">$BPER_{s,a,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t">$FisheryScaler_{f,t}$</span> $\times$ <span title = "Unmarked-retention error for fishery f during time step t">$ure_{f,t}$</span> </div> </p> <br>
+
+Equations used to calculate adult release mortalities <span title = "Adult release mortalities">$(AdultRelMort)$</span> in mark-selective fisheries must account for marked recognition <span title = "Marked-recognition error">$(mre)$</span> and unmarked retention error <span title = "Unmarked retention error">$(ure)$</span> for marked and unmarked stock units and utilize fishery and time step-specific release mortality rates <span title = "Specific fishery mortality rate of fishery f during time step t">$(sfm_{f,t})$</span> (Appendix 7).
+
+<p>**(9a) Marked:**<div style = "text-align:center"><span title = "Adult release mortalities of stock s at age a in fishery f during time step t">$AdultRelMort_{s,a,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age a during time step t">$(Cohort_{s,a,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t">$FisheryScaler_{f,t})$</span> $\times$ <span title = "Marked recognition error in fishery f">$mre_f$</span> $\times$ <span title = "Specific fishery mortality rate of fishery f during time step t">$sfm_{f,t}$</span> </div> </p> <br>
+
+<p>**(9b) UnMarked:**<div style = "text-align:center"><span title = "Adult release mortalities of stock s at age a in fishery f during time step t">$AdultRelMort_{s,a,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age a during time step t">$(Cohort_{s,a,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t">$FisheryScaler_{f,t})$</span> $\times (1 \ -$ <span title = "Unmarked retention error in fishery f">$ure_f)$</span> $\times$ <span title = "Specific fishery mortality rate of fishery f during time step t">$sfm_{f,t}$</span> </div> </p> <br>
+
+Computations for Chinook mark-selective fisheries must also account for sublegal mortality, which does not differ between marked and unmarked components (due to increased complexity, those equations are not presented here).  Drop-off mortalities in mark-selective fisheries are calculated by multiplying the drop-off mortality rate with the number of legal encounters, as described in process 3b above.
 
 ## Maturation
 
