@@ -204,6 +204,10 @@ Equations used to calculate adult release mortalities <span title = "Adult relea
 
 Computations for Chinook mark-selective fisheries must also account for sublegal mortality, which does not differ between marked and unmarked components (due to increased complexity, those equations are not presented here).  Drop-off mortalities in mark-selective fisheries are calculated by multiplying the drop-off mortality rate with the number of legal encounters, as described in process 3b above.
 
+<u> 3f. All pre-terminal fishery mortalities </u> in time step *t* for stock *s* by age *a* are totaled <span title = "TotMort: Total pre-terminal fishery mortalities">$(TotMort)$</span> and the size of the cohort is reduced accordingly.
+
+<p>**(10)**<div style = "text-align:center"></div></p>
+
 ## Maturation
 
 ## Terminal fisheries
