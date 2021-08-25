@@ -47,7 +47,7 @@ Reducing the duration of time steps decreases the number of <span title = "CWT: 
 
 **Each stock unit and age class is exploited as a single pool.**  All pre-terminal fisheries operate on the entire cohort simultaneously in each time step and all terminal fisheries operate on the mature run. Thus base period exploitation rate parameter differences may implicitly account for some within-timestep spatiotemporal patterns, but dynamics such as the sequence of interceptions in fisheries that occur in different months or at different positions along a returning migratory path are not explicitly modeled. 
 
-**Length at age is stock specific and is constant from year to year.**  The proportion of an age class that is of legal size in size-limit fisheries is determined using the von Bertalanffy growth function. It is assumed that growth in the current model year is similar to that in the years used to estimate the growth parameters (McHugh et al. 2015). 
+**Length at age is stock specific and is constant from year to year.**  The proportion of an age class that is of legal size in size-limit fisheries is determined using the <a title = "VBGF" href = "https://en.wikipedia.org/wiki/Von_Bertalanffy_function" target="_blank">von Bertalanffy growth function</a>. It is assumed that growth in the current model year is similar to that in the years used to estimate the growth parameters (McHugh et al. 2015). 
 
 **Age-specific maturation rates vary by stock but are constant from year to year.**  Maturation rates are calculated on a stock, age, and time step-specific basis from cohort reconstructions during the base period calibration. This assumes maturation rates during the base period years adequately characterize those in any given model run year.
 
@@ -262,10 +262,25 @@ To facilitate understanding of the sequencing in <span title = "FRAM: Fishery Re
 The starting cohort in time step 1 is first reduced by natural mortality. The remaining cohort is vulnerable to preterminal fisheries. After preterminal fishing, part or all of the cohort can mature. This typically occurs in time step 3, but for some early or late stocks can also occur in time steps 1 or 2. The mature cohort is then susceptible to terminal fisheries. The mature cohort not caught in terminal fisheries will go to escapement. The portion of the cohort that does not mature (number immature) becomes the starting cohort of the next time step. This cycle repeats until time step 4, when Chinook age up; i.e., age-3 fish become age-4 fish, etc. Immature Chinook of age a from time step 3 become the starting cohort of time step 4 age *a*+1. For age-2 fish, the time step 4 starting cohort is the same as the time step 1 cohort, because the model does not contain age-1 fish that could age-up.
 
 Table 2. Example values of Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> processing steps for a stock at age 3 and age 4.
-ADD TABLE PHOTO
+```{r chinook process schematic image, echo=FALSE}
+knitr::include_graphics(c("images/Chinook_FRAM_process_schematic.PNG"))
+```
 
 # Exploitation Rate Calculation
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> calculates stock specific mortalities and escapements that can ultimately be used to compute exploitation rates (ER). Exploitation rate calculations are not part of the main <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> algorithms and are not calculated by <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>. Since Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> does not account for freshwater fisheries, <span title = "ER: Exploitation rate">ERs</span> calculated using <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> output represent only exploitation that occurs in marine fisheries (i.e., calculation of a total <span title = "ER: Exploitation rate">ER</span>, summed over all fisheries, is not possible). Thus, total <span title = "ER: Exploitation rate">ERs</span> are calculated for Puget Sound Chinook stocks in the <span title = "TAMM: Terminal Area Management Module">TAMM</span> file after processing additional freshwater fisheries and further delineating aggregated <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks to finer scale populations.
 
 Exploitation rates are computed as the sum of all <span title = "AEQ: Adult equivalent mortality">AEQ</span> fishery mortalities divided by <span title = "AEQ: Adult equivalent mortality">AEQ</span> fishery mortalities plus escapement.
+
+**(17)**
+$$ER_s = \frac{\displaystyle\sum\limits_a \displaystyle\sum\limits_{t \! = \! 2}^4 AEQTotMort_{s,a,t}}{\displaystyle\sum\limits_a \displaystyle\sum\limits_{t \! = \! 2}^4 AEQTotMort_{s,a,t} + \displaystyle\sum\limits_{a \! = \! 3}^5 \displaystyle\sum\limits_t Escapement_{s,a,t}}$$
+
+# Size limit evaluations
+
+<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses a <a title = "VBGF" href = "https://en.wikipedia.org/wiki/Von_Bertalanffy_function" target="_blank">von Bertalanffy growth function</a> to estimate the proportion of a stock-at-age that is greater than the minimum size limit in a fishery and time step. As stated above, this proportion is also referred to as the <span title = "PV: Proportion vulnerable">PV</span>. Chinook greater than the minimum size limit are considered to be of “legal size” and thus vulnerable to be caught in a fishery. Conversely, Chinook smaller than the minimum size limit are of “sublegal size” and ineligible to be retained. 
+
+<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses different rates to model encounters of legal and sublegal fish. These rates are computed during the calibration process and are based on landed catch and encounter information during reference base period years. As such, they reflect the size limit conditions during the base period. If the size limit is changed, a portion of the population (with sizes between the old and the new size limit) that previously received a sublegal encounter rate will receive a legal encounter rate or vice versa. This leads to the total number of computed encounters varying with size limits, if effort remains constant.
+
+To correct for this outcome, algorithms were introduced to hold total fishery encounters constant when size limits are changed.
+
+When the new size limit is less than the reference base period size limit, the difference in sublegal encounters becomes landed catch and is added to the calculated landed catch that results under the base period size limit. The calculation of sublegal mortalities remains unchanged (see section 4.2 step 3c).   
