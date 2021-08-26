@@ -8,17 +8,17 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-# Model Structure
+# - Model Structure
 
-## Stocks
+## - Stocks
 
 Currently, 123 stock groups are represented in Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>. Each of these stock groups have both marked (adipose fin clipped) and unmarked components to permit assessment of mark-selective fishery regulations; therefore, the current version of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> has a total of 246 stock units (**Appendix 1**).  Model stocks may represent an individual salmon stock or an aggregate of stocks from the same region.  Stock units represented in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> were chosen based on the level of management interest, their contribution to <span title = "PFMC: Pacific Fishery Management Council">PFMC</span> fisheries, and the availability of representative coded wire tag (CWT) recoveries in the Regional Mark Information System (<a title = "RMIS" href = "https://www.rmpc.org/" target = "_blank">RMIS</a>).  Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> includes a comprehensive set of stocks originating from Central California to Southeast Alaska and is considered to represent total West Coast production. For coho, only age three fish are included in the model.
 
-## Fisheries
+## - Fisheries
 
 The <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> includes pre-terminal and terminal fisheries in southeast Alaska, Canada, Puget Sound, and off the coasts of Washington, Oregon, and California.  There are 198 fisheries in Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> A unique fishery identification number and fishery name for each of the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries are listed in **Appendix 3**. Terminal fisheries in Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> include individual freshwater fisheries. <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> can model directed fisheries, mark-selective fisheries, and non-retention fisheries, and also calculates fisheries-related incidental mortalities. 
 
-## Time steps
+## - Time Steps
 
 The time step structure used in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> represents a level of resolution that corresponds to data availability, fishery management structure, and species-specific migration and maturation schedules. Recoveries of <span title = "CWT: Coded wire tag">CWTs</span> for each stock unit during years with widespread tagging and fisheries (the reference base period, explained further in **Section 3**) are used to estimate model parameters such as exploitation rates. The amount of recovery data available by stock unit and fishery in the historical <span title = "CWT: Coded wire tag">CWT</span> database limit the time-step resolution of the model.  Decreasing the number of <span title = "CWT: Coded wire tag">CWT</span> recoveries in a time step by making the time step shorter can increase the variance of the estimated parameters in those strata.  In recognition of these data limitations, efforts were made to restrict the level of time step resolution to that necessary for fishery management purposes.
 
@@ -36,7 +36,7 @@ dplyr::tibble(
 
 <br>
 
-## Assumptions and limitations
+## - Assumptions and Limitations
 
 *Major assumptions and limitations of the model are briefly described below.*
 
@@ -48,21 +48,21 @@ dplyr::tibble(
 
 **Stock distribution and migration is constant from year to year and is represented by the average distribution of <span title = "CWT: Coded wire tag">CWT</span> recoveries during the reference base period.**  We currently lack data on the annual variability in distribution and migration patterns of Chinook and coho salmon stocks.  In the absence of such estimates, fishery-specific exploitation rates are computed relative to the entire cohort.
 
-# Model Parameterization
+# - Model Parameterization
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> data are stored as tables in an ACCESS database. All the information needed for a “simple model run” (link to chapter in user manual) is stored in these tables, containing input as well as output data. Input data can be grouped into two main categories: static base period data and annual run data (see **section 3.1**). Main <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> outputs are mortalities (landed, mark-selective, sublegal, non-retention, drop-off) and abundances (starting cohorts at each time step; abundances after natural mortalities, pre-terminal, and terminal fisheries).
 
-## <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Input Data
+## - <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Input Data
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> input data consist of two main input types: base period reference data and annual data.  Base period data remain constant until a new base period replaces the existing one.  The principal base period inputs are stock-fishery specific exploitation rates.  Other base period parameters include base period catches and cohort sizes.  The second input type consists of annual data that can vary with each model run, such as stock specific abundance estimates, fishery catches, size limits, etc.  
 
-## Base Period Data
+## - Base Period Data
 
 <span title = "CWT: Coded wire tag">CWT</span> recoveries are used to estimate model parameters such as time/area/fishery exploitation rates and maturation rates for modeled stocks.  The years from which <span title = "CWT: Coded wire tag">CWT</span> recoveries are used to estimate these parameters are referred to as the reference "base period."  These parameter estimates are derived through species-specific cohort analyses.  Each cohort analysis is a series of procedures that use <span title = "CWT: Coded wire tag">CWT</span> recoveries and base period catch and escapement data to “back-calculate,” or reconstruct, a pre-fishing cohort size for each stock using assumed natural mortality and incidental mortality rates.  See (Model Evaluation Workgroup, 2008) for a more detailed description of the cohort analysis procedures.
 
 Model base period data for the Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> is derived from fishery and escapement recoveries of <span title = "CWT: Coded wire tag">CWTs</span> and terminal area run size estimates for the return years 1986-1992 (Packer et al. 2007).  In 2006, the previously used base period data from 1986-1991 were re-analyzed, changes were made to the algorithm, and 1992-1997 catch year data were compiled.  A decision was made to only incorporate the 1992 catch year with the previous base period data, and thus the coho base period for return years 1986-1992 was generated.
 
-## Annual Data
+## - Annual Data
 
 Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses five general types of input.  Three of these input types (<span title = "a. Cohort abundance; b. Fishery landed catch; d. Mark-selective fisheries">a, b, d</span>) are submitted annually to reflect projected stock abundances and proposed fishery regulations for the current model year.  The remaining two types of input (<span title = "c. Release-mortality rates; e. Other non-landed mortality rates">c, e</span>) are specifications for fishery-related mortalities that can change as more information becomes available through additional data collection or studies, but typically do not change annually.
 
@@ -82,7 +82,7 @@ Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses 
 
 **e.** *Other Non-landed Mortality Rates*:  This includes fishing-induced mortality not associated with directly handling fish.  Drop-off mortality occurs when fish in sport and troll hook-and-line fisheries drop off the hook before they are brought to the vessel yet die from hook injuries.   Drop-out mortality occurs when fish in commercial net fisheries are not brought on board but die from injury as a result of being netted.  For simplicity, both types are referred to as drop-off mortality in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>.  Net drop-out mortality rates vary depending on species, net type, or timing (pre-terminal or terminal) of the fishery.  In general, a 5% drop-off mortality rate is applied to the landed catch to account for “other non-landed mortalities” in hook-and-line fisheries (see **Appendix 6**).
 
-# Model Calculations
+# - Model Calculations
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>  processes information through a time step loop, beginning with time step 1 and ending with time step 5 for coho.  Within each time step, a series of four computational processes occur for each stock as depicted in Figure 1: (**1**) determine starting cohort size, (**2**) removal of natural mortality, (**3**) removal of pre-terminal mortalities, (**4**) removal of terminal fishery mortalities (time 5 only).
 
@@ -92,7 +92,7 @@ knitr::include_graphics(c("images/Coho_FRAM_flowchart.PNG"))
 
 Figure 1.  Conceptual flow chart for the Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model.
 
-## Cohort abundance
+## - Cohort Abundance
 
 <u>Process 1:  Cohort Abundance at the Start of the Time Step</u>
 
