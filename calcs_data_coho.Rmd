@@ -91,3 +91,16 @@ knitr::include_graphics(c("images/Coho_FRAM_flowchart.PNG"))
 ```
 
 Figure 1.  Conceptual flow chart for the Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model.
+
+## Cohort abundance
+
+<u>Process 1:  Cohort Abundance at the Start of the Time Step</u>
+
+The starting cohort size in time step 1 is a product of two parameters: (*1*) the base period cohort size for stock *s* at age 3 in the first time period (<span title = "Base period cohort abundance estimate of stock s at age 3">$BPCohorts_{s,a \! = \! 3}$</span>) and (*2*) a stock and age-specific scaler (<span title = "Stock recruit scaler of stock s at age 3">$StockScalers_{s,a \! = \! 3}$</span>).  The scaler is an annual model input. 
+
+<p>**(1)**<div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 during time step 1">$Cohort_{s,a \! = \! 3,t\!=\!1}$</span> $=$ <span title = "Base period abundance of stock s at age 3">$BPCohort_{s,a \! = \! 3}$</span> $\times$ <span title = "Stock recruit scaler of stock s at age 3">$StockScaler_{s,a \! = \! 3}$</span> </div> </p>
+where <span title = "Cohort abundance of stock s at age 3 during time step 1">$Cohort_{s,a \! = \! 3,t\!=\!1}$</span> is the initial cohort size for stock *s*, age 3, during time step *t*=1.
+
+Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> only models age-3 fish (*a*=3). The starting cohort size is the projected number of age-3 fish in January of the fishing year for each stock.  All coho escape in the final time step (*t*=5) and thus are not aged in the model.
+
+## Natural mortality
