@@ -300,9 +300,53 @@ where,<br>
 
 See (Hagen-Breaux et al. 2013) for a detailed description of the equations.
 
-# Model-stock proportion (MSP)
+# Model-stock proportion
 
-While the stocks included in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> account for the majority of the Chinook caught in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries, there are some stocks that are not represented in the model (see section 2.1). To account for these stocks, fisheries with non-model-stock impacts are supplied with an externally computed model-stock proportion. The <span title = "MSP: Model-stock proportion">MSP</span> is a constant that is either calculated independently or produced during base period development. It represents the percentage of a fishery’s total catch that is accounted for by model stocks. 
+While the stocks included in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> account for the majority of the Chinook caught in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries, there are some stocks that are not represented in the model (see section 2.1). To account for these stocks, fisheries with non-model-stock impacts are supplied with an externally computed model-stock proportion. The Model-stock proportion <span title = "MSP: Model-stock proportion">(MSP)</span> is a constant that is either calculated independently or produced during base period development. It represents the percentage of a fishery’s total catch that is accounted for by model stocks. 
 
 **(20)**
 $$MSP_f = \frac{\displaystyle\sum\limits_{s,a,t} Catch_{s,a,f,t}}{TotalCatch_f}$$
+
+# Terminal Area Management Module
+
+The <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> program interacts with the Terminal Area Management Module (TAMM), a species-specific Microsoft Excel file, which allows users to specify alternative terminal fishery inputs and to calculate impacts on a finer level of resolution than <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>. <span title = "TAMM: Terminal Area Management Module">TAMM</span> has separate sections for each of the six Puget Sound terminal regions (PSSMP) (Table 4) that are defined in the Puget Sound Salmon Management Plan (1985) for the State of Washington and the Treaty Tribes of Puget Sound. <span title = "TAMM: Terminal Area Management Module">TAMM</span> is best understood in its historic context. It is a terminal-area-centric fisheries model. Prior to <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> development, information of stock-specific fishery impacts was not readily available. Management was based on terminal run reconstructions that assigned 100% of terminal catches to the local stock and computed terminal harvest rates as catch in the terminal area divided by terminal run size. To this day, <span title = "TAMM: Terminal Area Management Module">TAMM</span> inputs for terminal marine fisheries still include non-local stock impacts. <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> takes these inputs from <span title = "TAMM: Terminal Area Management Module">TAMM</span> and accounts for non-local stock impacts before reporting stock specific impacts back to <span title = "TAMM: Terminal Area Management Module">TAMM</span>. Additional <span title = "TAMM: Terminal Area Management Module">TAMM</span> functionality also supports development of unique regional management goals and allows managers the flexibility to analyze and report <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model output according to their needs.
+
+Table 4. Puget Sound Terminal Management Regions
+```{r terminal management regions table, echo = FALSE}
+dplyr::tibble(
+  `Management Regions` = c(
+    "Nooksack-Samish", "Skagit", "Stillaguamish-Snohomish", 
+    "South Sound", "Hood Canal", "Strait of Juan de Fuca")
+) |> gt::gt()
+```
+<br>
+Common <span title = "TAMM: Terminal Area Management Module">TAMM</span> features:
+
+- Receive inputs for <span title = "TAMM: Terminal Area Management Module">TAMM</span> terminal fisheries 
+- Receive inputs for <span title = "TAMM: Terminal Area Management Module">TAMM</span> stock abundances 
+- Receive input for <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title = "TAMM: Terminal Area Management Module">TAMM</span> stock management criteria (updated annually)
+- Provide fishery inputs to <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> during <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title = "TAMM: Terminal Area Management Module">TAMM</span> iterations
+- Receive <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> output of fishery impacts on Puget Sound stocks (time steps 2-4)
+- Use <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> output to complete <span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery impact modeling upon Puget Sound stocks
+- Allocate marked and unmarked impacts to hatchery and natural units.
+- Generate TAMM reports of combined <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> and <span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery impacts upon <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> (and Chinook <span title = "TAMM: Terminal Area Management Module">TAMM</span>) stock units. 
+
+Chinook <span title = "TAMM: Terminal Area Management Module">TAMM</span> is a critical element of pre-season modeling for Puget Sound stocks, where management units tend to be smaller components of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stock units.  To achieve adequate stock representation in ocean fisheries, the current Chinook base period data aggregates <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks at a coarser level than is needed by management.  The Chinook <span title = "TAMM: Terminal Area Management Module">TAMM</span> provides the ability to model individual marine and freshwater net fisheries in Puget Sound by the smaller time intervals associated with fisheries directed at Chinook, pink, coho, chum, or steelhead.  In addition, test fisheries and fisheries in sub-areas can be specified.  Similarly, the Chinook <span title = "TAMM: Terminal Area Management Module">TAMM</span> allows individual freshwater sport fisheries in Puget Sound to be modeled (see Figure 3).
+
+To carry out fishery-specific impact analyses on all populations of interest, Chinook <span title = "TAMM: Terminal Area Management Module">TAMM</span> requires additional input of hatchery and natural abundances of Puget Sound Chinook populations and harvest impacts from additional Puget Sound fisheries.  <span title = "TAMM: Terminal Area Management Module">TAMM</span> then sums the fine-scale fisheries impacts into <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>-level impacts for subsequent input back into <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>.
+
+<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> iteratively finds the fishery scalers that produce the same catches <span title = "Catch calculated in FRAM">$(Catch_{FRAM})$</span> as those supplied by <span title = "TAMM: Terminal Area Management Module">TAMM</span> <span title = "Catch calculated in TAMM">$(Catch_{TAMM})$</span> in Puget Sound fisheries (Figure 3).  <span title = "TAMM: Terminal Area Management Module">TAMM</span> catches are either directly input into <span title = "TAMM: Terminal Area Management Module">TAMM</span> as catch values or calculated by <span title = "TAMM: Terminal Area Management Module">TAMM</span> with user input harvest rates (HR) multiplied by terminal run size (TRS).  The <span title = "TRS: Terminal run size">TRS</span> for a <span title = "TAMM: Terminal Area Management Module">TAMM</span> region/stock represents ‘run-to-the-river’ of a stock plus catches of all stocks in the terminal fisheries designated for that region.
+
+FRAM calculations for each terminal area:
+
+- Sum escapements over appropriate time steps
+- Add terminal catches <span title = "Catch calculated in FRAM">$(Catch_{FRAM})$</span> to calculate <span title = "TRS: Terminal run size">TRS</span> (includes non-local stocks)
+- Calculate the FRAM fishery scaler that produces the <span title = "Catch calculated in TAMM">$Catch_{TAMM}$</span>:
+<div style = "text-align:center"><span title = "Fishery scaler for a given area at a given time step">$FisheryScaler(area, time step)$</span> = <span title = "Catch calculated in TAMM for a given area at a given time step">$Catch_{TAMM}(area, time step)$</span> $\div$ <span title = "Catch calculated in FRAM for a given area at a given time step">$Catch_{FRAM}(area, time step)$</span> </div>
+- Rerun FRAM and repeat these steps until <span title = "Catch calculated in TAMM">$Catch_{TAMM}$</span> is within 0.1% (or fewer than 4 fish) of <span title = "Catch calculated in FRAM">$Catch_{FRAM}$</span>.
+
+```{r chinook FRAM TAMM flow chart image, echo=FALSE}
+knitr::include_graphics(c("images/FRAM_TAMM_flowchart.PNG"))
+```
+
+Figure 3.  Conceptual flow chart for <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title = "TAMM: Terminal Area Management Module">TAMM</span> calculations.
