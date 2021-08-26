@@ -111,7 +111,7 @@ Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> us
 
 # Model Calculations
 
-FRAM processes information through a time step loop, beginning with time step 1 and ending with time step 4  for Chinook.  Within each time step, a series of five computational processes occur for each stock and age, as depicted in Figure 1: (1) determine starting cohort size, (2) removal of natural mortality, (3) removal of pre-terminal fishery mortalities, (4) maturation, and (5) removal of terminal fishery mortalities.
+FRAM processes information through a time step loop, beginning with time step 1 and ending with time step 4  for Chinook.  Within each time step, a series of five computational processes occur for each stock and age, as depicted in Figure 1: (**1**) determine starting cohort size, (**2**) removal of natural mortality, (**3**) removal of pre-terminal fishery mortalities, (**4**) maturation, and (**5**) removal of terminal fishery mortalities.
 
 ```{r chinook flow chart image, echo=FALSE}
 knitr::include_graphics(c("images/Chinook_FRAM_flowchart.PNG"))
