@@ -436,16 +436,393 @@ div.tocify {
 </div>
 
 
-<div id="structure" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Structure</h1>
+<div id="model-structure" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Model Structure</h1>
 <div id="stocks" class="section level2" number="1.1">
 <h2 number="1.1"><span class="header-section-number">1.1</span> Stocks</h2>
+<p>Currently, 123 stock groups are represented in Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. Each of these stock groups have both marked (adipose fin clipped) and unmarked components to permit assessment of mark-selective fishery regulations; therefore, the current version of <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> has a total of 246 stock units (<strong>Appendix 1</strong>). Model stocks may represent an individual salmon stock or an aggregate of stocks from the same region. Stock units represented in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> were chosen based on the level of management interest, their contribution to PFMC fisheries, and the availability of representative coded wire tag (CWT) recoveries in the Regional Mark Information System (<a title = "RMIS" href = "https://www.rmpc.org/" target = "_blank">RMIS</a>). Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> includes a comprehensive set of stocks originating from Central California to Southeast Alaska and is considered to represent total West Coast production. For coho, only age three fish are included in the model.</p>
 </div>
 <div id="fisheries" class="section level2" number="1.2">
 <h2 number="1.2"><span class="header-section-number">1.2</span> Fisheries</h2>
+<p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> includes pre-terminal and terminal fisheries in southeast Alaska, Canada, Puget Sound, and off the coasts of Washington, Oregon, and California. There are 198 fisheries in Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> A unique fishery identification number and fishery name for each of the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries are listed in <strong>Appendix 3</strong>. Terminal fisheries in Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> include individual freshwater fisheries. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> can model directed fisheries, mark-selective fisheries, and non-retention fisheries, and also calculates fisheries-related incidental mortalities.</p>
 </div>
 <div id="time-steps" class="section level2" number="1.3">
 <h2 number="1.3"><span class="header-section-number">1.3</span> Time steps</h2>
+<p>The time step structure used in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> represents a level of resolution that corresponds to data availability, fishery management structure, and species-specific migration and maturation schedules. Recoveries of <span title="CWT: Coded wire tag">CWTs</span> for each stock unit during years with widespread tagging and fisheries (the reference base period, explained further in <strong>Section 3</strong>) are used to estimate model parameters such as exploitation rates. The amount of recovery data available by stock unit and fishery in the historical <span title="CWT: Coded wire tag">CWT</span> database limit the time-step resolution of the model. Decreasing the number of <span title="CWT: Coded wire tag">CWT</span> recoveries in a time step by making the time step shorter can increase the variance of the estimated parameters in those strata. In recognition of these data limitations, efforts were made to restrict the level of time step resolution to that necessary for fishery management purposes.</p>
+<p>At each time step, a stock experiences natural mortality, and can be subjected to pre-terminal fisheries, and terminal fisheries.</p>
+<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> contains five time periods for coho, covering a single calendar year (<strong>Appendix Table 5</strong>).</p>
+<p>Table 1. Time step structure used in Coho FRAM.</p>
+<div id="dnruughxug" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#dnruughxug .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dnruughxug .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dnruughxug .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dnruughxug .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dnruughxug .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dnruughxug .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dnruughxug .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dnruughxug .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dnruughxug .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dnruughxug .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dnruughxug .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dnruughxug .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dnruughxug .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dnruughxug .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dnruughxug .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dnruughxug .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dnruughxug .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#dnruughxug .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dnruughxug .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#dnruughxug .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dnruughxug .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dnruughxug .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dnruughxug .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dnruughxug .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dnruughxug .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#dnruughxug .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dnruughxug .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#dnruughxug .gt_left {
+  text-align: left;
+}
+
+#dnruughxug .gt_center {
+  text-align: center;
+}
+
+#dnruughxug .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dnruughxug .gt_font_normal {
+  font-weight: normal;
+}
+
+#dnruughxug .gt_font_bold {
+  font-weight: bold;
+}
+
+#dnruughxug .gt_font_italic {
+  font-style: italic;
+}
+
+#dnruughxug .gt_super {
+  font-size: 65%;
+}
+
+#dnruughxug .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Time Step</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Months</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">1</td>
+<td class="gt_row gt_left">January - June</td></tr>
+    <tr><td class="gt_row gt_right">2</td>
+<td class="gt_row gt_left">July</td></tr>
+    <tr><td class="gt_row gt_right">3</td>
+<td class="gt_row gt_left">August</td></tr>
+    <tr><td class="gt_row gt_right">4</td>
+<td class="gt_row gt_left">September</td></tr>
+    <tr><td class="gt_row gt_right">5</td>
+<td class="gt_row gt_left">October - December</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p><br></p>
+</div>
+<div id="assumptions-and-limitations" class="section level2" number="1.4">
+<h2 number="1.4"><span class="header-section-number">1.4</span> Assumptions and limitations</h2>
+<p><em>Major assumptions and limitations of the model are briefly described below.</em></p>
+<p><strong><span title="CWT: Coded wire tag">CWT</span> fish accurately represent the modeled stock.</strong> Many <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks are aggregates of stocks that are represented by CWTs from only one production type, usually hatchery origin. For example, in nearly all cases wild/natural stocks are aggregated with hatchery stocks and both are represented by the hatchery stock’s <span title="CWT: Coded wire tag">CWT</span> data. Therefore, for each modeled stock aggregate, it is assumed that the tagged and untagged fish are distributed and exploited at the same rates.</p>
+<p><strong>Each stock unit and age class is exploited as a single pool.</strong> All pre-terminal fisheries operate on the entire cohort simultaneously in each time step, and all terminal fisheries operate on the mature run.</p>
+<p><strong>Natural mortality is constant from year to year.</strong> Natural mortality is assumed to be constant across months for all stocks.</p>
+<p><strong>Stock distribution and migration is constant from year to year and is represented by the average distribution of <span title="CWT: Coded wire tag">CWT</span> recoveries during the reference base period.</strong> We currently lack data on the annual variability in distribution and migration patterns of Chinook and coho salmon stocks. In the absence of such estimates, fishery-specific exploitation rates are computed relative to the entire cohort.</p>
 </div>
 </div>
 <div id="annual-inputs" class="section level1" number="2">

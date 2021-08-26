@@ -8,13 +8,45 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-# Structure
+# Model Structure
 
 ## Stocks
 
+Currently, 123 stock groups are represented in Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>. Each of these stock groups have both marked (adipose fin clipped) and unmarked components to permit assessment of mark-selective fishery regulations; therefore, the current version of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> has a total of 246 stock units (**Appendix 1**).  Model stocks may represent an individual salmon stock or an aggregate of stocks from the same region.  Stock units represented in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> were chosen based on the level of management interest, their contribution to PFMC fisheries, and the availability of representative coded wire tag (CWT) recoveries in the Regional Mark Information System (<a title = "RMIS" href = "https://www.rmpc.org/" target = "_blank">RMIS</a>).  Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> includes a comprehensive set of stocks originating from Central California to Southeast Alaska and is considered to represent total West Coast production. For coho, only age three fish are included in the model.
+
 ## Fisheries
 
+The <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> includes pre-terminal and terminal fisheries in southeast Alaska, Canada, Puget Sound, and off the coasts of Washington, Oregon, and California.  There are 198 fisheries in Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> A unique fishery identification number and fishery name for each of the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries are listed in **Appendix 3**. Terminal fisheries in Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> include individual freshwater fisheries. <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> can model directed fisheries, mark-selective fisheries, and non-retention fisheries, and also calculates fisheries-related incidental mortalities. 
+
 ## Time steps
+
+The time step structure used in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> represents a level of resolution that corresponds to data availability, fishery management structure, and species-specific migration and maturation schedules. Recoveries of <span title = "CWT: Coded wire tag">CWTs</span> for each stock unit during years with widespread tagging and fisheries (the reference base period, explained further in **Section 3**) are used to estimate model parameters such as exploitation rates. The amount of recovery data available by stock unit and fishery in the historical <span title = "CWT: Coded wire tag">CWT</span> database limit the time-step resolution of the model.  Decreasing the number of <span title = "CWT: Coded wire tag">CWT</span> recoveries in a time step by making the time step shorter can increase the variance of the estimated parameters in those strata.  In recognition of these data limitations, efforts were made to restrict the level of time step resolution to that necessary for fishery management purposes.
+
+At each time step, a stock experiences natural mortality, and can be subjected to pre-terminal fisheries, and terminal fisheries. 
+
+<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> contains five time periods for coho, covering a single calendar year (**Appendix Table 5**).  
+
+Table 1. Time step structure used in Coho FRAM.
+```{r calcs_data_coho_t1_timesteps, echo=FALSE}
+dplyr::tibble(
+  `Time Step` = c(1:5),
+  Months = c("January - June", "July", "August", "September", "October - December")
+  ) |> gt::gt()
+```
+
+<br>
+
+## Assumptions and limitations
+
+*Major assumptions and limitations of the model are briefly described below.*
+
+**<span title = "CWT: Coded wire tag">CWT</span> fish accurately represent the modeled stock.**  Many <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks are aggregates of stocks that are represented by CWTs from only one production type, usually hatchery origin.  For example, in nearly all cases wild/natural stocks are aggregated with hatchery stocks and both are represented by the hatchery stock’s <span title = "CWT: Coded wire tag">CWT</span> data.  Therefore, for each modeled stock aggregate, it is assumed that the tagged and untagged fish are distributed and exploited at the same rates.
+
+**Each stock unit and age class is exploited as a single pool.** All pre-terminal fisheries operate on the entire cohort simultaneously in each time step, and all terminal fisheries operate on the mature run.
+
+**Natural mortality is constant from year to year.** Natural mortality is assumed to be constant across months for all stocks.  
+
+**Stock distribution and migration is constant from year to year and is represented by the average distribution of <span title = "CWT: Coded wire tag">CWT</span> recoveries during the reference base period.**  We currently lack data on the annual variability in distribution and migration patterns of Chinook and coho salmon stocks.  In the absence of such estimates, fishery-specific exploitation rates are computed relative to the entire cohort.
 
 # Annual inputs
 
