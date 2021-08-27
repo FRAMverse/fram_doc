@@ -191,3 +191,14 @@ Escapement is defined as the number of fish that remain in the mature cohort aft
 If the last time step has been completed, <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> receives terminal fishery impacts (Figure 3) from the Terminal Area Management Module (TAMM) (**Chapter 5**).  <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> then estimates the terminal fishery impacts using the numbers from <span title = "TAMM: Terminal Area Management Module">TAMM</span> and compares that to the original <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> results.  If these numbers are equal (less than 0.1% or fewer than 4 fish difference), the model is done.  If these numbers are not equal, an iterative process is initiated during which <span title = "TAMM: Terminal Area Management Module">TAMM</span> terminal fishery impacts are used to adjust <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> terminal fishery impacts until there is convergence.  
 
 Finally, <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> sends terminal marine and freshwater run sizes and fishing mortality to the <span title = "TAMM: Terminal Area Management Module">TAMM</span> file for use in additional calculations and final reporting.
+
+# 4. Processing Schematic
+
+To facilitate the understanding of the sequencing of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> processing steps, Table 3 provides an example of how a stock’s cohort is processed through time step from starting cohort to escapement.
+
+The starting cohort in time step 1 is first reduced by natural mortality. The remaining cohort is vulnerable to pre-terminal fisheries. Coho not caught become the starting cohort of the next time step. This cycle repeats until time step 5, when 100% of coho mature after pre-terminal fishing.  The mature cohort is susceptible to terminal fisheries. Coho not caught after pre-terminal and terminal fisheries in time step 5, go to escapement.
+
+Table 3. Example values of Coho FRAM processing steps for a stock.
+```{r coho process schematic image, echo=FALSE}
+knitr::include_graphics(c("images/Coho_FRAM_process_schematic.PNG"))
+```
