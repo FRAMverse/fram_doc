@@ -275,7 +275,7 @@ Exploitation rates are computed as the sum of all <span title = "AEQ: Adult equi
 **(17)**
 $$ER_s = \frac{\displaystyle\sum\limits_a \displaystyle\sum\limits_{t \! = \! 2}^4 AEQTotMort_{s,a,t}}{\displaystyle\sum\limits_a \displaystyle\sum\limits_{t \! = \! 2}^4 AEQTotMort_{s,a,t} + \displaystyle\sum\limits_{a \! = \! 3}^5 \displaystyle\sum\limits_t Escapement_{s,a,t}}$$
 
-# 6. Size limit evaluations
+# 6. Size Limit Evaluations
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses a <a title = "VBGF" href = "https://en.wikipedia.org/wiki/Von_Bertalanffy_function" target="_blank">von Bertalanffy growth function</a> to estimate the proportion of a stock-at-age that is greater than the minimum size limit in a fishery and time step. As stated above, this proportion is also referred to as the <span title = "PV: Proportion vulnerable">PV</span>. Chinook greater than the minimum size limit are considered to be of “legal size” and thus vulnerable to be caught in a fishery. Conversely, Chinook smaller than the minimum size limit are of “sublegal size” and ineligible to be retained. 
 
