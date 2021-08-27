@@ -175,3 +175,19 @@ The remaining cohort is then calculated as:
 
 Fisheries during time steps 1 through 4 are considered to be on immature fish and, by default, all coho fisheries in time step 5 are on mature fish.  Thus, 
 <div style = "text-align:center"><span title = "Mature cohort abundance of stock s at age 3 during time step 5">$MatureCohort_{s,a \! = \! 3,t \! = \! 5}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step 5">$Cohort_{s,a \! = \! 3,t \! = \! 5}$</span>. </div>
+
+<u>Process 4: Terminal Fishery Mortality</u>
+
+Terminal fishery mortality is calculated for the mature cohort only, using the same equations as for pre-terminal fishery mortality.  Fishery mortalities are summed, and the remainder of the mature cohort constitutes the escapement from <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries. Since only age-3 adult coho are modeled and the mature time step is always 5, age and time step parameters can be eliminated from the equations.
+
+<p>**(10)**<div style = "text-align:center"><span title = "<span title = "Total terminal fishery mortality for stock s at age 3 during time step t">$TotTermMort_{s,a \! = \! 3,t \! = \! 5}$</span> $=$ $\displaystyle\sum_{f \in terminal}$ <span title = "Landed catch of stock s at age 3 in fishery f during time step 5">$(Catch_{s,a \! = \! 3,f,t \! = \! 5}$</span> $+$ <span title = "Drop-off mortality of stock s at age a in fishery f at time step t">$Dropoff_{s,a,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age a in fishery f during time step t">$AdultRelMort_{s,a,f,t}$</span> $+$ <span title = "Non-retention mortality of stock s at age a in fishery f during time step t">$CNR_{s,a,f,t})$</span> </div> </p>
+
+<p>**(11)**<div style = "text-align:center"><span title = "Escapement of stock s at age a during time step t">$Escapement_{s,a,t}$</span> $=$ <span title = "Mature cohort abundance of stock s at age a during time step t">$MatureCohort_{s,a,t}$</span> $-$ <span title = "Total terminal fishery mortality for stock s at age a during time step t">$TotTermMort_{s,a,t}$</span></div> </p>
+
+Escapement is defined as the number of fish that remain in the mature cohort after removal of all terminal-area fishery related mortality. For coho modeling, which includes freshwater fisheries, escapement represents the adult spawning abundance if mortality during “pre-spawning” holding time is negligible.
+
+<u> Process 5: <span title = "TAMM: Terminal Area Management Module">TAMM</span> Iterations</u>
+
+If the last time step has been completed, <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> receives terminal fishery impacts (Figure 3) from the Terminal Area Management Module (TAMM) (**Chapter 5**).  <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> then estimates the terminal fishery impacts using the numbers from <span title = "TAMM: Terminal Area Management Module">TAMM</span> and compares that to the original <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> results.  If these numbers are equal (less than 0.1% or fewer than 4 fish difference), the model is done.  If these numbers are not equal, an iterative process is initiated during which <span title = "TAMM: Terminal Area Management Module">TAMM</span> terminal fishery impacts are used to adjust <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> terminal fishery impacts until there is convergence.  
+
+Finally, <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> sends terminal marine and freshwater run sizes and fishing mortality to the <span title = "TAMM: Terminal Area Management Module">TAMM</span> file for use in additional calculations and final reporting.
