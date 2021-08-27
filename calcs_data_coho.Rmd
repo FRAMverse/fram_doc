@@ -109,7 +109,7 @@ Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> only 
 
 During each time step, the stock-age cohort size at the start of the time step is decreased to account for natural mortality:
 
-<p>**(2)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Discrete natural mortality rate at age a and time step t">$(1-M_{a,t})$</span> </div> </p>
+<p>**(2)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Discrete natural mortality rate at age 3 and time step t">$(1-M_{a \! = \! 3,t})$</span> </div> </p>
 
 where <span title = "Discrete natural mortality rate at age 3 and time step t">$M_{a \! = \! 3,t}$</span> is the discrete natural mortality rate for age 3 fish during time step *t* (Appendix 8).
 
