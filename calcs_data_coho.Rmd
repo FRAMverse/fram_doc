@@ -202,3 +202,32 @@ Table 3. Example values of Coho FRAM processing steps for a stock.
 ```{r coho process schematic image, echo=FALSE}
 knitr::include_graphics(c("images/Coho_FRAM_process_schematic.PNG"))
 ```
+
+# 5. Exploitation Rate Calculation
+
+<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> calculates stock-specific mortalities and escapements that are ultimately used to compute exploitation rates (ER). Exploitation rate calculations are not part of the main <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> algorithms and are not calculated by <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>  Exploitation rates are computed from <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> or <span title = "TAMM: Terminal Area Management Module">TAMM</span> output as the sum of all fishery mortalities divided by fishery mortalities plus escapement.
+
+**(12)**
+$$ER_s = \frac{\displaystyle\sum\limits_{t} TotMort_{s,a \! = \! 3,t}}{\displaystyle\sum\limits_{t} TotMort_{s,a \! = \! 3,t} + Escapement_{s}}$$
+
+# 6. Bias Corrected Mark-Selective Fishery Equations for Coho
+
+The total number of unmarked mortalities in <span title = "MSF: Mark-selective fishery">MSF<span> is underestimated by models relying on the linear relationship between exploitation rate and release-mortality rate.  The actual mortality rate of unmarked fish is an increasing function of the time step-specific exploitation rate.  When <span title = "MSF: Mark-selective fishery">MSFs</span> operate during a modeled time step, unmarked mortalities are underestimated because released fish may encounter the fishing gear more than once during the modeled time step and the unmarked-to-marked fish ratio for all fish in the pool increases during the time step as a result of the selective removal of marked fish in a mark-selective fishery.  See (Conrad, Hagen-Breaux, & Yuen, 2013) for a detailed description of the equations.
+
+Bias adjusted exploitation rates for marked and unmarked stock units are calculated as:
+
+**(13)**
+$$ER_{s,t} = 1 - (1 - \sum_f(ER_{s,f,t}^M)^{\delta_{s,t}^W})$$
+
+**(14)**
+
+$$\delta_{s,t}^w = \sum_f \frac{ER_{s,f,t}^M}{\displaystyle\sum_f ER_{s,f,t}^M} \times \delta_f$$
+
+where:
+
+- <span title = "Marked exploitation rate for stock s in fishery f during time step t">$ER^M_{s,f,t}$</span> is the marked exploitation rate of stock *s* in fishery *f* during time step *t*
+- <span title = "Release mortality rate in (MSF) fishery f">$\delta_f$</span> is the release mortality rate in <span title = "MSF: Mark selective fishery">(MSF)</span> fishery *f*
+- <span title = "Weighted release mortality rate of stock s during time step t">$\delta^W_{s,t}$</span> is the weighted release mortality rate for stock *s* during time step *t*
+- <span title = "Marked exploitation rates summed over all fisheries for stock s during time step t">$\sum_f ER^M_{s,t}$</span> is the marked exploitation rates summed over fisheries for stock *s* at time step *t*
+
+These exponential equations were implemented to estimate exploitation rates in Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> for stocks experiencing release in mark-selective fisheries during a given time step.
