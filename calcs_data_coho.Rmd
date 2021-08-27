@@ -143,7 +143,7 @@ The <span title = "Fishery scaler for fishery f during time step t">$FisheryScal
 
 Non-retention mortalities are calculated external to the model, often derived using historical observations, and are model inputs in units of dead age-3 fish <span title = "Estimated coho non-retention mortalities in fishery f during time step t">$(EstCNRMorts_{f,t})$</span>. Non-retention mortalities by stock are then calculated in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> by multiplying the total non-retention mortality by the stock proportion <span title = "Proportion of stock present">$(PropCatch)$</span>.
 
-<p>**(5)**<div style = "text-align:center"><span title = "Coho non-retention mortalities of stock s in fishery f during time step t">$CNR_{s,f,t}$</span> $=$ <span title = "Estimated coho non-retention mortalities in fishery f during time step t">$(EstCNRMorts_{f,t})$</span> $\times$ <span title = "Proportion present of stock stock s in fishery f during time step t">$PropCatch_{s,f,t}$</span> </div> </p>
+<p>**(5)**<div style = "text-align:center"><span title = "Coho non-retention mortalities of stock s in fishery f during time step t">$CNR_{s,f,t}$</span> $=$ <span title = "Estimated coho non-retention mortalities in fishery f during time step t">$EstCNRMorts_{f,t}$</span> $\times$ <span title = "Proportion present of stock stock s in fishery f during time step t">$PropCatch_{s,f,t}$</span> </div> </p>
 
 <u>**3d.** Mark-selective fisheries</u> (MSF) require additional computations to calculate both the landed catch and the mortalities due to the release of fish.
 
@@ -164,3 +164,14 @@ Equations used to calculate adult release mortalities <span title = "Adult relea
 <p>**(7b) UnMarked:**<div style = "text-align:center"><span title = "Adult release mortalities of stock s at age 3 in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t">$BPER_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t">$FisheryScaler_{f,t}$</span> $\times (1 \ -$ <span title = "Unmarked retention error in fishery f">$ure_f)$</span> $\times$ <span title = "Specific release mortality rate of fishery f during time step t">$sfm_{f,t}$</span> </div> </p>
 
 Drop-off mortalities in mark-selective fisheries are calculated by multiplying the drop-off mortality rate with the number of legal encounters, as described in process 3b above.
+
+<u>**3e.** All pre-terminal fishery mortalities</u> in time step *t* for stock *s* at age 3 are totaled <span title = "TotMort: Total pre-terminal fishery mortalities">$(TotMort)$</span> and the size of the cohort is reduced accordingly. Since the coho model contains only age-3 mature fish, the summing of fishery mortalities occurs only once in each time step.
+
+<p>**(8)**<div style = "text-align:center"><span title = "Total pre-terminal fishery mortalities for stock s at age 3 during time step t">$TotMort_{s,a \! = \! 3,t}$</span> $=$ $\displaystyle\sum_f$ <span title = "Landed catch of stock s at age 3 in fishery f during time step t">$(Catch_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Drop-off mortality of stock s at age 3 in fishery f at time step t">$Dropoff_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age 3 in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Non-retention mortality of stock s at age 3 in fishery f during time step t">$CNR_{s,a \! = \! 3,f,t})$</span></div></p>
+
+The remaining cohort is then calculated as:
+
+<p>**(9)**<div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $-$ <span title = "Total pre-terminal fishery mortalities for stock s at age 3 during time step t">$TotMort_{s,a \! = \! 3,t}$</span> </div> </p>
+
+Fisheries during time steps 1 through 4 are considered to be on immature fish and, by default, all coho fisheries in time step 5 are on mature fish.  Thus, 
+<div style = "text-align:center"><span title = "Mature cohort abundance of stock s at age 3 during time step 5">$MatureCohort_{s,a \! = \! 3,t \! = \! 5}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step 5">$Cohort_{s,a \! = \! 3,t \! = \! 5}$</span>. </div>
