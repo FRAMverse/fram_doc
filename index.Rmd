@@ -57,7 +57,13 @@ A new version of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM<
 
 Although some program subroutines are shared, Chinook and Coho are processed separately, with distinct time step divisions, stocks, and fisheries. The Chinook version evaluates impacts on most stock groups originating from the California Central Valley (Sacramento River), north-central Oregon coast, Columbia River, Washington coast, Puget Sound, and Southern British Columbia. However, not all stocks along the West Coast of North America are represented in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>. Some of the stocks that are not represented in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> include any stock in California except Sacramento Falls, Oregon stocks originating south of Elk River, Mid and Upriver Columbia River Springs, Snake River Springs, and Canadian stocks originating north of Georgia Strait. The Coho version evaluates impacts on a comprehensive set of stocks originating from Central California to Southeast Alaska and is considered to represent total West Coast production.
 
-# Additional Models {-}
+# <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Interactions with Other Models {-}
+
+```{r FRAM models interaction flow chart image, echo=FALSE}
+knitr::include_graphics(c("images/FRAM_model_interactions.PNG"))
+```
+
+Figure 1. Simplified interactions between the Base Period, <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>, and <span title = "TAMM: Terminal Area Management Module">TAMM</span> (TRS: Terminal Run Size, BPER: Base Period Exploitation Rates)
 
 ## <span title = "TAMM: Terminal Area Management Module">TAMM</span> {-}
 
