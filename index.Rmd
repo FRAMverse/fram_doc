@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Introduction
+# 1. Introduction
 
 ```{r buildnojekyll, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, results='hide'}
 file.create("O:/code/fram_doc/docs/.nojekyll") #relative path not working...
@@ -33,7 +33,7 @@ Various <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> ou
 
 This site includes technical background information and a user guide focused on running the FRAM application, modifying model inputs, and obtaining and interpreting model outputs.
 
-# Background {-}
+# 2. Background {-}
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> is a deterministic, discrete, time-age structured model designed to aid planning of Chinook and Coho salmon fisheries. It is designed to address the effects of multiple mixed-stock fisheries on individual stocks, each further stratified by age and mark status (and possibly hatchery origin). The model calculates fishery related mortality, including catches and non-landed impacts, imposed on the abundance of each stock unit.
 
@@ -41,7 +41,7 @@ In a given yearly run, over the course of several time steps, <span title = "FRA
 
 A fundamental element of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> calculations are the stock-age-fishery-timestep specific exploitation rates (defined as the total mortality divided by abundance, itself the sum of mortality and escapement). This expression of catch as a proportion of the available abundance is based primarily on coded wire tag release and recovery data from the Regional Mark Information System. <a href="https://www.rmis.org//rmis_login.php?action=Login&system=cwt" target="_blank">(RMIS)</a> The Chinook base period was recently updated with <span title = "CWT: Coded Wire Tag">CWTs</span> from catch years 2007 – 2013 (brood years 2005 – 2008), and has continued to see revision with ongoing data quality improvements. The Coho base period is comprised of <span title = "CWT: Coded Wire Tag">CWTs</span> from catch years 1986 – 1992.
 
-# History {-}
+# 3. History {-}
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> is an empirically fit tool that uses the past to inform a representation of the future. Over time, algorithms have been added or adapted to capture changing management options, and the development platform of the application has evolved, but the basic structure remains much the same as when it was conceived in the late 1970’s. 
 
@@ -57,7 +57,7 @@ A new version of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM<
 
 Although some program subroutines are shared, Chinook and Coho are processed separately, with distinct time step divisions, stocks, and fisheries. The Chinook version evaluates impacts on most stock groups originating from the California Central Valley (Sacramento River), north-central Oregon coast, Columbia River, Washington coast, Puget Sound, and Southern British Columbia. However, not all stocks along the West Coast of North America are represented in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>. Some of the stocks that are not represented in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> include any stock in California except Sacramento Falls, Oregon stocks originating south of Elk River, Mid and Upriver Columbia River Springs, Snake River Springs, and Canadian stocks originating north of Georgia Strait. The Coho version evaluates impacts on a comprehensive set of stocks originating from Central California to Southeast Alaska and is considered to represent total West Coast production.
 
-# <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Interactions with Other Models {-}
+# 4. <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Interactions with Other Models {-}
 
 ```{r FRAM models interaction flow chart image, echo=FALSE}
 knitr::include_graphics(c("images/FRAM_model_interactions.PNG"))
@@ -65,15 +65,15 @@ knitr::include_graphics(c("images/FRAM_model_interactions.PNG"))
 
 Figure 1. Simplified interactions between the Base Period, <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>, and <span title = "TAMM: Terminal Area Management Module">TAMM</span> (TRS: Terminal Run Size, BPER: Base Period Exploitation Rates)
 
-## <span title = "TAMM: Terminal Area Management Module">TAMM</span> {-}
+## 4.1. <span title = "TAMM: Terminal Area Management Module">TAMM</span> {-}
 
 In addition to <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>, the modeling of fishery impacts for Puget Sound Chinook stock units requires a <span title = "TAMM: Terminal Area Management Module">TAMM</span>. When <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> is run without <span title = "TAMM: Terminal Area Management Module">TAMM</span>, it will be missing *accurate* estimates for terminal and freshwater fisheries. The Chinook <span title = "TAMM: Terminal Area Management Module">TAMM</span> passes stock and fishery inputs to <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>. Subsequently, <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> modeling returns output to the <span title = "TAMM: Terminal Area Management Module">TAMM</span>, which then performs additional calculations before generating reports. The Coho <span title = "TAMM: Terminal Area Management Module">TAMM</span> functions to pass Puget Sound fishery inputs to <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>, to perform additional calculations for Washington coastal and Columbia River fisheries/stocks, and to generate reports from <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> output. Thus, the use of both <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> and <span title = "TAMM: Terminal Area Management Module">TAMM</span> is generally necessary for both Chinook and Coho modeling.
 
-## <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Base Period {-}
+## 4.2. <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Base Peiod {-}
 
 The <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> base period is developed by summarizing coded-wire-tag information from RMIS from a continuous time period with a sufficient number of <span title = "CWT: Coded Wire Tag">CWT</span> releases and recoveries. The current base period uses brood year releases from 2005-2008 for Chinook and 1982-1989 for coho. A calibration program written in VisualBasic.net maps the <span title = "CWT: Coded Wire Tag">CWTs</span> to <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries, stocks, and time steps and conducts a cohort reconstruction to estimate exploitation rates and other parameters, such as base period cohort sizes. These estimates form the basis of a <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> run and remain static between model runs. Using these base period parameters allows <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> to predict the stock composition, exploitation rates, and escapements of future fisheries when provided with forecasts of abundance and fishery mortalities.
 
-## Coho vs Chinook Differences {-}
+# 5. Coho vs Chinook Differences {-}
 
 While there is only one <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> program that handles both Chinook and Coho model runs and many of the core processes and algorithms are identical, this document presents the model and computational structures independently for each species.  This decision was made in an effort to improve readability and clarity, as there are a variety of unique features specific to each species that can be difficult to differentiate when they are presented together.
 
