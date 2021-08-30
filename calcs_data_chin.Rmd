@@ -293,10 +293,10 @@ When the new size limit is greater than the base period size limit, the differen
 
 where,<br>
 
-- <span title = "Original calculation of landed catch">$OriginalLandedCatch$</span> = Landed catch under base period size limit regulations
-- <span title = "New calculation of landed catch">$NewLandedCatch$</span> = Landed catch under new size limit regulations
-- <span title = "Original calculation of sublegal encounters">$OriginalSublegalEncounters$</span> = Sublegal encounters under base period size limit regulations
-- <span title = "New calculation of sublegal encounters">$NewSublegalEncounters$</span> = Sublegal encounters under new size limit regulations
+- <span title = "Original calculation of landed catch">$OriginalLandedCatch$</span> is the landed catch under base period size limit regulations
+- <span title = "New calculation of landed catch">$NewLandedCatch$</span> is the landed catch under new size limit regulations
+- <span title = "Original calculation of sublegal encounters">$OriginalSublegalEncounters$</span> is the sublegal encounters under base period size limit regulations
+- <span title = "New calculation of sublegal encounters">$NewSublegalEncounters$</span> is the sublegal encounters under new size limit regulations
 
 See (Hagen-Breaux et al. 2013) for a detailed description of the equations.
 
@@ -311,8 +311,8 @@ $$MSP_f = \frac{\displaystyle\sum\limits_{s,a,t} Catch_{s,a,f,t}}{TotalCatch_f}$
 
 The <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> program interacts with the Terminal Area Management Module (TAMM), a species-specific Microsoft Excel file, which allows users to specify alternative terminal fishery inputs and to calculate impacts on a finer level of resolution than <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>. <span title = "TAMM: Terminal Area Management Module">TAMM</span> has separate sections for each of the six Puget Sound terminal regions (PSSMP) (Table 4) that are defined in the Puget Sound Salmon Management Plan (1985) for the State of Washington and the Treaty Tribes of Puget Sound. <span title = "TAMM: Terminal Area Management Module">TAMM</span> is best understood in its historic context. It is a terminal-area-centric fisheries model. Prior to <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> development, information of stock-specific fishery impacts was not readily available. Management was based on terminal run reconstructions that assigned 100% of terminal catches to the local stock and computed terminal harvest rates as catch in the terminal area divided by terminal run size. To this day, <span title = "TAMM: Terminal Area Management Module">TAMM</span> inputs for terminal marine fisheries still include non-local stock impacts. <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> takes these inputs from <span title = "TAMM: Terminal Area Management Module">TAMM</span> and accounts for non-local stock impacts before reporting stock specific impacts back to <span title = "TAMM: Terminal Area Management Module">TAMM</span>. Additional <span title = "TAMM: Terminal Area Management Module">TAMM</span> functionality also supports development of unique regional management goals and allows managers the flexibility to analyze and report <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model output according to their needs.
 
-Table 4. Puget Sound Terminal Management Regions
-```{r terminal management regions table, echo = FALSE}
+Table 4. Puget Sound Terminal Management Regions.
+```{r chin terminal management regions table, echo = FALSE}
 dplyr::tibble(
   `Management Regions` = c(
     "Nooksack-Samish", "Skagit", "Stillaguamish-Snohomish", 
@@ -365,9 +365,9 @@ To back-calculate starting cohorts given a known terminal run size, the catch su
 
 where:
 
-- <span title = "Backwards FRAM escapement or (extreme) terminal run size target">$BkTarget$</span> = Backwards <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> run size target; escapement or (extreme) terminal run size
-- <span title = "Base period starting abundance of a cohort">$BPCohort$</span> = Base period starting cohort
-- <span title = "Stock recruit scaler">$StockScaler$</span> = Stock recruit scaler (abundance)
+- <span title = "Backwards FRAM escapement or (extreme) terminal run size target">$BkTarget$</span> is the backwards <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> run size target; escapement or (extreme) terminal run size
+- <span title = "Base period starting abundance of a cohort">$BPCohort$</span> is the base period starting cohort abundance
+- <span title = "Stock recruit scaler">$StockScaler$</span> is the stock recruit scaler (abundance)
 
 The program iterates until the resulting <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> escapement or terminal run size is within one fish of the target escapement or terminal run size and then terminates the iteration process.  
 
@@ -375,7 +375,7 @@ The program iterates until the resulting <span title = "FRAM: Fishery Regulation
 
 where:
 
-- <span title = "(Extreme) terminal run size estimate from a forward FRAM calculation">$FRAMescapement$</span> = (Extreme) terminal run size resulting from a forward <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> run
+- <span title = "(Extreme) terminal run size estimate from a forward FRAM calculation">$FRAMescapement$</span> is the (extreme) terminal run size resulting from a forward <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> run.
 
 # 10. Output Reports
 
