@@ -14,6 +14,8 @@ navbar:
           href: calcs_data_chin.html
         - text: "Coho"
           href: calcs_data_coho.html
+        - text: "Glossary"
+          href: calcs_glossary.hmtl
     - text: "Pre and Post Season FRAM"
       menu: 
         - text: "Chinook"

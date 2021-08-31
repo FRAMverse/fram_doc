@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Glossary</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="rmarkdown.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">FRAM Documentation</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Overview</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Model Detail
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="calcs_data_chin.html">Chinook</a>
+    </li>
+    <li>
+      <a href="calcs_data_coho.html">Coho</a>
+    </li>
+    <li>
+      <a href="calcs_glossary.hmtl">Glossary</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Pre and Post Season FRAM
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apps_chin.html">Chinook</a>
+    </li>
+    <li>
+      <a href="apps_coho.html">Coho</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Base Period
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="base_chin_bpupdate.html">Chinook update</a>
+    </li>
+    <li>
+      <a href="base_chin_frambuilder.html">Chinook FRAM Builder</a>
+    </li>
+    <li>
+      <a href="base_coho.html">Coho</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    User Manual
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="user_prereq.html">Prerequisites</a>
+    </li>
+    <li>
+      <a href="user_basic_forward_run.html">A basic run</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Main menu options</li>
+    <li>
+      <a href="user_main_menu.html">Main menu</a>
+    </li>
+    <li>
+      <a href="user_edit_model_run.html">Edit model run</a>
+    </li>
+    <li>
+      <a href="user_save_model_inputs.html">Save model inputs</a>
+    </li>
+    <li>
+      <a href="user_run_model.html">Run model</a>
+    </li>
+    <li>
+      <a href="user_backwards_fram.html">Backwards FRAM</a>
+    </li>
+    <li>
+      <a href="user_outputs.html">Output/Results</a>
+    </li>
+    <li>
+      <a href="user_utilities.html">Utilities</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<footer style="color: #ff4000; font-weight: bold; text-align:center">
+    <p> !! THIS SITE UNDER DEVELOPMENT !! </p>
+</footer>
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Glossary</h1>
+
+</div>
+
+
+<p><em>Terms are defined in the context of the FRAM model.</em></p>
+<div id="abundance-forecast" class="section level1">
+<h1>Abundance Forecast</h1>
+<p>Annually developed, stock-specific predictions of returning Chinook and coho salmon.</p>
+</div>
+<div id="adult-equivalent-aeq" class="section level1">
+<h1>Adult Equivalent (AEQ)</h1>
+<p>The potential for a Chinook of a given age to contribute to the mature run (spawning escapement) in the absence of fishing. Because of natural mortality and unaccounted losses, not all unharvested fish contribute to spawning escapement.</p>
+</div>
+<div id="backwards-fram-bkfram" class="section level1">
+<h1>Backwards FRAM (BkFRAM)</h1>
+<p>A utility within the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model that calculates starting abundances when provided with estimates of catches and escapements.</p>
+</div>
+<div id="base-period" class="section level1">
+<h1>Base Period</h1>
+<p>A range of (brood-)years from which CWT data are used to estimate exploitation rates and other parameters through a process of cohort reconstruction. Resulting base period parameters are used to populate the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model to predict annual stock/fishery specific impacts.</p>
+</div>
+<div id="calibration" class="section level1">
+<h1>Calibration</h1>
+<p>Process creating base period exploitation rates by first selecting <span title="CWT: Coded wire tag">CWT</span> groups to represent <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks and then reconstructing the cohort. Once cohort sizes are established, stock/age/fishery/time step specific exploitation rates are computed.</p>
+</div>
+<div id="cape-falcon" class="section level1">
+<h1>Cape Falcon</h1>
+<p>Cape in Northern Oregon defining an important <span title="PFMC: Pacific Fishery Management Council">PFMC</span> fishery management boundary.</p>
+</div>
+<div id="chinookcoho-non-retention-cnr-fisheries" class="section level1">
+<h1>Chinook/Coho Non-retention (CNR) Fisheries</h1>
+<p>Fisheries where salmon fishing is allowed, but the retention of Chinook or coho salmon is prohibited.</p>
+</div>
+<div id="coded-wire-tag-cwt" class="section level1">
+<h1>Coded-Wire Tag (CWT)</h1>
+<p>Coded micro-wire implanted in juvenile salmon prior to release. When recovered, the binary code on the tag identifies the tag group, and thus provides information such as location and timing of release, special hatchery treatments, etc.</p>
+</div>
+<div id="cohort-analysis" class="section level1">
+<h1>Cohort Analysis</h1>
+<p>A sequential population analysis technique, also called Virtual Population Analysis, that is used during model calibration to reconstruct cohort size at age using life history parameters and exploitation of a population.</p>
+</div>
+<div id="cohort-size" class="section level1">
+<h1>Cohort Size</h1>
+<p>The total number of fish of a given age and stock.</p>
+</div>
+<div id="co-managers" class="section level1">
+<h1>Co-managers</h1>
+<p>Washington treaty tribes and Washington Department of Fish and Wildlife officials jointly managing the salmon resource.</p>
+</div>
+<div id="deterministic-model" class="section level1">
+<h1>Deterministic Model</h1>
+<p>A model predicting the outcome without estimates of variance.</p>
+</div>
+<div id="directed-fishery" class="section level1">
+<h1>Directed Fishery</h1>
+<p>A fishery which directly targets a species or subgroup, i.e., hatchery or natural, as opposed to an incidental fishery that impacts a species/sub-group as a by-product of having a different target (bycatch).</p>
+</div>
+<div id="discrete-model" class="section level1">
+<h1>Discrete Model</h1>
+<p>A model dealing with objects that can assume only distinct, separated values. Whereas discrete objects can often be characterized by integers, continuous objects require real numbers.</p>
+</div>
+<div id="drop-off-mortality" class="section level1">
+<h1>Drop-off Mortality</h1>
+<p>Mortality of salmon that are lost from sport or troll hook-and-line type fishing gear before they are landed and die from their injuries prior to harvest or spawning. Also, the general term refers to both drop-off and drop-out mortality in this <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> documentation.</p>
+</div>
+<div id="drop-out-mortality" class="section level1">
+<h1>Drop-out Mortality</h1>
+<p>Mortality of salmon that die in a fishing net prior to harvest or salmon that disentangle from a net while it is in the water and die from their injuries prior to harvest or spawning. Referred to in this <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> documentation under the umbrella term of drop-off mortality.</p>
+</div>
+<div id="encounter" class="section level1">
+<h1>Encounter</h1>
+<p>An incident where a salmon makes contact with fishing gear resulting either in retention or release.</p>
+</div>
+<div id="encounter-rate-adjustment" class="section level1">
+<h1>Encounter Rate Adjustment</h1>
+<p>A variable used to adjust the number of sublegal Chinook encountered in a fishery and time step.</p>
+</div>
+<div id="endangered-species-act-esa" class="section level1">
+<h1>Endangered Species Act (ESA)</h1>
+<p>Regulations used for the conservation of threatened and endangered plants and animals and the habitats in which they are found.</p>
+</div>
+<div id="escapement" class="section level1">
+<h1>Escapement</h1>
+<p>The number of mature salmon that are not caught in fisheries and return to the spawning grounds or hatcheries.</p>
+</div>
+<div id="exploitation-rate-er" class="section level1">
+<h1>Exploitation Rate (ER)</h1>
+<p>When used to refer to model output, the total fishing mortality rate, expressed as the sum of all fishery-related mortalities divided by that sum plus escapement.</p>
+</div>
+<div id="extreme-terminal-run-size-etrs" class="section level1">
+<h1>Extreme Terminal Run Size (ETRS)</h1>
+<p>Run size including escapement, freshwater fishery mortalities, and fishery mortalities in marine areas that are assumed to be 100% local stock due to river mouth proximity.</p>
+</div>
+<div id="fishery-regulation-assessment-model-fram" class="section level1">
+<h1>Fishery Regulation Assessment Model (FRAM)</h1>
+<p>The Fishery Regulation Assessment Model is a simulation model developed for fishery management and used to estimate the impacts of proposed Pacific Coast salmon fisheries on Chinook and coho stocks of interest to fishery managers.</p>
+</div>
+<div id="fishery-scaler" class="section level1">
+<h1>Fishery Scaler</h1>
+<p>A multiplier, typically based on expected fishery effort or catch relative to base period effort or catch, used to estimate fishery impacts by adjusting the base period exploitation rates.</p>
+</div>
+<div id="harvest-rate-hr" class="section level1">
+<h1>Harvest Rate (HR)</h1>
+<p>Catch or total fishing mortality in a fishery expressed as a proportion of the total fish abundance available in a given fishing area at the start of a time period.</p>
+</div>
+<div id="hatchery" class="section level1">
+<h1>Hatchery</h1>
+<p>A facility where salmon are artificially reared.</p>
+</div>
+<div id="immature" class="section level1">
+<h1>Immature</h1>
+<p>Salmon that are too young to spawn in a given time step.</p>
+</div>
+<div id="impute" class="section level1">
+<h1>Impute</h1>
+<p>The process of replacing missing data with substitute values.</p>
+</div>
+<div id="incidental-mortality" class="section level1">
+<h1>Incidental Mortality</h1>
+<p>Mortality of a species or subgroup that died while targeting another species or subgroup; i.e., Chinook mortality during a fishery targeting coho and requiring Chinook release.</p>
+</div>
+<div id="instantaneous-equations" class="section level1">
+<h1>Instantaneous Equations</h1>
+<p>Equations predicting a continuous quantity at a particular moment.</p>
+</div>
+<div id="january-age-3-abundance-ja3" class="section level1">
+<h1>January Age-3 Abundance (JA3)</h1>
+<p>Starting age-3 abundance in the coho model. Abundance prior to fishing and natural mortality.</p>
+</div>
+<div id="landed-catch" class="section level1">
+<h1>Landed Catch</h1>
+<p>Catch that is retained.</p>
+</div>
+<div id="law-of-the-sea-convention" class="section level1">
+<h1>Law of the Sea Convention</h1>
+<p>A United Nations convention producing a comprehensive regime of law and order in the world’s oceans and seas, establishing rules governing all uses of the oceans and their resources.</p>
+</div>
+<div id="legal-sized" class="section level1">
+<h1>Legal-sized</h1>
+<p>A Chinook salmon exceeding the minimum size limit.</p>
+</div>
+<div id="magnuson-stevens-fishery-conservation-and-management-act" class="section level1">
+<h1>Magnuson-Stevens Fishery Conservation and Management Act</h1>
+<p>The Magnuson-Stevens Act is the primary law governing marine fisheries management in U.S. federal waters.</p>
+</div>
+<div id="mark-selective-fishing-bias" class="section level1">
+<h1>Mark Selective Fishing Bias</h1>
+<p>Exploitation rate bias caused when using linear equations with parameters derived from retention fisheries to estimate mortalities in fisheries where all or part of the encounters are released. When <span title="MSF: Mark-selective fishery">MSFs</span> operate during a modeled time step, mortalities are underestimated because released fish may encounter the fishing gear more than once during the modeled time step.</p>
+</div>
+<div id="marked-recognition-error-rate" class="section level1">
+<h1>Marked Recognition Error Rate</h1>
+<p>The probability that a marked fish will be inadvertently released in a mark-selective fishery.</p>
+</div>
+<div id="marked" class="section level1">
+<h1>Marked</h1>
+<p>A Chinook or coho that had its adipose fin removed; a visual identifier of a hatchery fish that can be retained in a mark-selective fishery.</p>
+</div>
+<div id="mark-selective-fishery-msf" class="section level1">
+<h1>Mark-selective Fishery (MSF)</h1>
+<p>A fishery in which only marked (adipose fin-clipped) fish above the size limit may be retained. Maturation: Process of sexual development, signaling the return of a salmon to freshwater in order to spawn.</p>
+</div>
+<div id="model-stock-proportion-msp" class="section level1">
+<h1>Model-Stock Proportion (MSP)</h1>
+<p>Percentage of a fishery’s total catch that is accounted for by model stocks.</p>
+</div>
+<div id="multiple-encounter" class="section level1">
+<h1>Multiple Encounter</h1>
+<p>The event of encountering a fish more than one time due to previous release or drop-off.</p>
+</div>
+<div id="natural-mortality" class="section level1">
+<h1>Natural Mortality</h1>
+<p>All mortality not resulting from fisheries, including death resulting from predation, illness, malnutrition, lethal environmental conditions, etc.</p>
+</div>
+<div id="natural" class="section level1">
+<h1>Natural</h1>
+<p>A fish that was either reared in nature (as opposed to hatchery) or returned to a natural environment to spawn.</p>
+</div>
+<div id="non-landednon-retention-mortality" class="section level1">
+<h1>Non-landed/Non-retention Mortality</h1>
+<p>A category of fishery-related mortality where fish are not retained and die as a result of fishing-induced injury. Non-landed mortality includes hook-and-line drop-off, net gear drop-out, and release mortality.</p>
+</div>
+<div id="north-of-falcon-nof" class="section level1">
+<h1>North of Falcon (NOF)</h1>
+<p>Co-manager, annual, pre-season Puget Sound salmon fishery planning process.</p>
+</div>
+<div id="ocean-age-3-abundance-oa3" class="section level1">
+<h1>Ocean Age-3 Abundance (OA3)</h1>
+<p>Abundance of 3 year old coho returning to spawn post natural mortality.</p>
+</div>
+<div id="out-of-base-oob" class="section level1">
+<h1>Out-of-Base (OOB)</h1>
+<p>A time period outside of the established base period used to estimate base period parameters. This is usually necessary for stocks with insufficient <span title="CWT: Coded wire tag">CWT</span> recoveries during the base period.</p>
+</div>
+<div id="pacific-fishery-management-council-pfmc" class="section level1">
+<h1>Pacific Fishery Management Council (PFMC)</h1>
+<p>Governing body for approximately 119 species of salmon, groundfish, coastal pelagic species, and highly migratory species on the West Coast of the United States established by Congress in 1976.</p>
+</div>
+<div id="pacific-salmon-commission-psc" class="section level1">
+<h1>Pacific Salmon Commission (PSC)</h1>
+<p>The body formed by the governments of Canada and the United States in 1985 to implement the Pacific Salmon Treaty.</p>
+</div>
+<div id="parameter" class="section level1">
+<h1>Parameter</h1>
+<p>A variable whose measure is indicative of a quantity or function that cannot itself be precisely determined by direct methods; for example, exploitation rates and fishery scalers are parameters used to predict catch.</p>
+</div>
+<div id="post-season" class="section level1">
+<h1>Post-season</h1>
+<p>After a fishing season has concluded. Post-season estimates are usually observed, sampled, or reported values.</p>
+</div>
+<div id="pre-season" class="section level1">
+<h1>Pre-season</h1>
+<p>Before a fishing season has started. Pre-season estimates use a variety of forecasts, catch estimates and other parameters to predict expected mortalities.</p>
+</div>
+<div id="pre-terminal-fishery" class="section level1">
+<h1>Pre-terminal Fishery</h1>
+<p>In <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>, a fishery that operates on mixed maturity fish and/or in geographic areas distant to a natal origin river/stream.</p>
+</div>
+<div id="proportion-vulnerable-pv" class="section level1">
+<h1>Proportion Vulnerable (PV)</h1>
+<p>Portion of a stock that is of legal size in a fishery and can be retained.</p>
+</div>
+<div id="quota" class="section level1">
+<h1>Quota</h1>
+<p>A fishery catch expressed in numbers of fish.</p>
+</div>
+<div id="recreational-fisheries" class="section level1">
+<h1>Recreational Fisheries</h1>
+<p>Also called sport fishing, is fishing for pleasure, competition, or non-commercial consumption. It can be contrasted with commercial fishing, which is professional fishing for profit.The most common form of recreational fishing is done with a rod, reel, line, hooks and any one of a wide range of baits.</p>
+</div>
+<div id="regional-mark-information-system-rmis" class="section level1">
+<h1>Regional Mark Information System (RMIS)</h1>
+<p>Data system providing services to international, state, federal, and tribal organizations involved in marking anadromous salmonids throughout the Pacific region. These services include regional coordination of tagging and fin marking programs, maintenance of databases for Coded Wire Tag Releases, Recoveries, and Locations, as well as the dissemination of reports. Release Mortality: Fish that are released due to size limit restrictions, mark status, or other reasons and die due to injury from gear or handling.</p>
+</div>
+<div id="reportdriver" class="section level1">
+<h1>ReportDriver</h1>
+<p>Instructions to the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> program used to produce customizable output reports.</p>
+</div>
+<div id="river-run-size" class="section level1">
+<h1>River Run Size</h1>
+<p>Abundance of a stock entering a river.</p>
+</div>
+<div id="seed-run" class="section level1">
+<h1>Seed Run</h1>
+<p>A run containing values used to initialize a new model run; i.e., last year’s final run is often used to initialize the first model run.</p>
+</div>
+<div id="shaker-mortality" class="section level1">
+<h1>Shaker Mortality</h1>
+<p>Chinook that are released from recreational and troll hook-and-line fisheries because they are below the size limit and die due to injuries from gear or handling.</p>
+</div>
+<div id="shaker" class="section level1">
+<h1>Shaker</h1>
+<p>A small Chinook below the size limit.</p>
+</div>
+<div id="single-pool-model" class="section level1">
+<h1>Single Pool Model</h1>
+<p>Model where all fisheries operate on the entire cohort simultaneously in each time step.</p>
+</div>
+<div id="size-limit" class="section level1">
+<h1>Size Limit</h1>
+<p>A fish length defining the minimum size for legal retention.</p>
+</div>
+<div id="snake-river-fall-chinook-index-srfi" class="section level1">
+<h1>Snake River Fall Chinook Index (SRFI)</h1>
+<p>A ratio that is calculated as Snake River Fall Chinook ocean exploitation rate in the current model run divided by the exploitation rate during the reference period (1988-1993).</p>
+</div>
+<div id="starting-cohort" class="section level1">
+<h1>Starting Cohort</h1>
+<p>Abundance of salmon of the same stock and age prior to fishing and natural mortality.</p>
+</div>
+<div id="stock-fishery-rate-scaler-shrf" class="section level1">
+<h1>Stock Fishery Rate Scaler (SHRF)</h1>
+<p>A scaler used to adjust impacts for individual stocks in a fishery and time step; i.e., if <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> output for an individual stock significantly deviates from expectations, then the user can make adjustments by providing a <span title="SHRF: Stock Fishery Rate Scaler">SHRF</span> scaler.</p>
+</div>
+<div id="stock-recruit-scaler" class="section level1">
+<h1>Stock Recruit Scaler</h1>
+<p>A scaler that relates the abundance of a stock and age to the abundance in the base period.</p>
+</div>
+<div id="stock" class="section level1">
+<h1>Stock</h1>
+<p>A group of fish of the same species. There is no distinct stock definition in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. Stocks are functional units that originate in the same geographic region and are sufficiently similar to receive identical base period parameters (if of the same age). Some salmon are grouped into a stock if they belong to the same ESA population. Other stock definitions are limited by the availability of coded-wire tag recoveries.</p>
+</div>
+<div id="sublegal" class="section level1">
+<h1>Sublegal</h1>
+<p>A salmon smaller than the minimum size limit that can not be retained.</p>
+</div>
+<div id="taaetrslist" class="section level1">
+<h1>TAAETRSList</h1>
+<p>A table containing terminal run size definitions specifying the coho stocks and fisheries included in the terminal abundance.</p>
+</div>
+<div id="tagged" class="section level1">
+<h1>Tagged</h1>
+<p>Containing a coded-wire-tag.</p>
+</div>
+<div id="tamm-iterations" class="section level1">
+<h1><span title="TAMM: Terminal Area Management Module">TAMM</span> Iterations</h1>
+<p>Repetitive mathematical process used to find solutions for circular processes. Iterations terminate when <span title="TAMM: Terminal Area Management Module">TAMM</span> and <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> catches converge.</p>
+</div>
+<div id="terminal-area-management-module-tamm" class="section level1">
+<h1>Terminal Area Management Module (TAMM)</h1>
+<p>A Microsoft Excel file external to but integrated with <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> that is used to: (1) provide input for <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> simulations regarding terminal area fisheries or stock-specific impacts; (2) process and summarize <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> outputs of mortalities and abundances.</p>
+</div>
+<div id="terminal-fishery" class="section level1">
+<h1>Terminal Fishery</h1>
+<p>In <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>, a fishery that operates only on mature fish. These fisheries harvest returning adult fish and are usually located near to the natal stream of a single stock unit.</p>
+</div>
+<div id="terminal-run-size" class="section level1">
+<h1>Terminal Run Size</h1>
+<p>This run size includes escapement, freshwater fishery mortalities, and fishery mortalities in terminal fisheries.</p>
+</div>
+<div id="time-step" class="section level1">
+<h1>Time Step</h1>
+<p>A continuous time period in the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model operating on the same abundance and using identical stock/fishery/age-specific parameters.</p>
+</div>
+<div id="treaty-fisheries" class="section level1">
+<h1>Treaty Fisheries</h1>
+<p>Fisheries conducted by members of the twenty-four Belloni and Boldt Case Area Tribes.</p>
+</div>
+<div id="treaty-tribes" class="section level1">
+<h1>Treaty Tribes</h1>
+<p>Tribes belonging to the twenty-four Belloni and Boldt Case Area Tribes with fishing rights in Washington State.</p>
+</div>
+<div id="troll-fishery" class="section level1">
+<h1>Troll Fishery</h1>
+<p>A commercial fishing method where one or more fishing lines, baited with lures or bait fish, are drawn through the water.</p>
+</div>
+<div id="u.s.-national-bureau-of-standards" class="section level1">
+<h1>U.S. National Bureau of Standards</h1>
+<p>Institute promoting U.S. innovation and industrial competitiveness by advancing measurement science, standards, and technology.</p>
+</div>
+<div id="unmarked-retention-error-rate" class="section level1">
+<h1>Unmarked Retention Error Rate</h1>
+<p>The probability that an unmarked fish will be retained inappropriately in a selective fishery (e.g., the fisher fails to identify the mark (clipped adipose fin) or the fisher fails to comply with a release requirement).</p>
+</div>
+<div id="unmarked" class="section level1">
+<h1>Unmarked</h1>
+<p>A salmon that has an intact adipose fin. In the context of mark-selective fisheries, a salmon that due to the lack of an adipose mark, has to be released.</p>
+</div>
+<div id="untagged" class="section level1">
+<h1>Untagged</h1>
+<p>Not containing a coded-wire-tag.</p>
+</div>
+<div id="validation-runs" class="section level1">
+<h1>Validation Runs</h1>
+<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model runs using best, post-season estimates of abundances, landed and non-landed mortalities, and other updated parameters to estimate realized exploitation rates.</p>
+</div>
+<div id="variance" class="section level1">
+<h1>Variance</h1>
+<p>Measure of dispersion, describing the size of the distribution of values expected for a particular variable.</p>
+</div>
+<div id="von-bertalanffy-growth-function" class="section level1">
+<h1>Von Bertalanffy Growth Function</h1>
+<p>Type of growth curve for a time series. It is a special case of the generalised logistic function. The <a title = "VBGF" href = "https://en.wikipedia.org/wiki/Von_Bertalanffy_function" target="_blank">growth curve</a> is used to model mean length at age. The function is commonly applied in ecology to model fish growth.</p>
+</div>
+
+<footer>
+      <br>
+      <p style="color: #326020; font-weight: bold; text-align:right">
+        Contributing partners:
+        <a href="https://www.pcouncil.org/managed_fishery/salmon/" target="_blank">PFMC</a>
+        <a href="https://wdfw.wa.gov/fishing" target="_blank">WDFW</a>  
+        <a href="https://nwifc.org/" target="_blank">NWIFC</a>
+      </p>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+
+</body>
+</html>
