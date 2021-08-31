@@ -343,6 +343,12 @@ div.tocify {
     <li>
       <a href="calcs_data_coho.html">Coho</a>
     </li>
+    <li>
+      <a href="calcs_glossary.html">Glossary</a>
+    </li>
+    <li>
+      <a href="calcs_appendices.html">Appendices</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -452,55 +458,55 @@ div.tocify {
 <li><a href="#automate-pass-1-pass-2-chin">Automate pass 1 pass 2 (Chin)</a> automates computation of non-retention impacts in Puget Sound marine Chinook sport fisheries</li>
 <li><a href="#update-coweeman-sheets">Update Coweeman sheets</a> revises Columbia River Chinook MS Excel file (PFMC process)</li>
 </ul>
-<div id="edit-model-run-info" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Edit model run info</h1>
+<div id="edit-model-run-info" class="section level1">
+<h1>Edit model run info</h1>
 <p>Selecting this option provides an interface to alter some of the metadata associated with an existing run, particularly the name, title, year and comments (stored in <code>RunID</code> table in the database [Lookups]). Best practices encourage entering careful, comprehensive notes for future reference.</p>
 <p>When changes are cumulative across numerous runs, such as in a preseason or “forward” context, comments may often refer to prior runs for ease of reading (i.e., “started with run N, changed X, Y, and Z”). Preseason model runs often start with the beginning model run notes and add sequentially above those as the preseason progresses, so that the newest changes describing the run are at the top for easy viewing. The Comments field cannot be deleted and left blank or FRAM will throw an error message. If this happens, click “Quit” and re-try.</p>
 <p><img src="images/fvs_utils_edit_info.png" width="100%" /></p>
 </div>
-<div id="copy-model-run" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Copy model run</h1>
+<div id="copy-model-run" class="section level1">
+<h1>Copy model run</h1>
 <p>As shown in the [Make a run copy] section of [A basic forward run], this option conveniently provides the starting point for further work to examine scenarios for the FRAM management units. Recall that a given “run” is spread across numerous tables in a project database and involves many rows within some tables. Consequently, this utility helps save time and avoid error by ensuring that all necessary steps to create a new model run are completed. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>It is common practice to copy an existing run, re-name it something new, make input changes, and generate updated model results from the new run.</p>
 <p>Having reached the “NEW Copied Recordset Information” screen, specify an informative <code>RunName</code> and <code>RunTitle</code> in the respective fields. In addition, the free-text “Comments” field is an important place to document the planned changes, the original run it is based on, the date a change was made and by whom, etc. This is also easily updated later with any further changes (see <a href="#edit-model-run-info">Edit model run info</a>). After entering a good description of what will change, click “Ok - done” to complete the process and return to the FRAM utilities menu, with the newly copied run loaded into memory. <em>Note that this step involves writing to disk and may take a few seconds - no need to panic if FRAM hangs momentarily.</em></p>
 <p><img src="images/fvs_utils_copy_run.png" width="100%" /></p>
 </div>
-<div id="delete-model-run" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Delete model run</h1>
+<div id="delete-model-run" class="section level1">
+<h1>Delete model run</h1>
 <p><strong>Note that this process cannot be reversed. If it is necessary to remove a run from a database while preserving it for later use, then creating a model run transfer is likely a good option.</strong></p>
 <p>This option provides a convenient means to comprehensively remove one or several runs from a database. Selecting the “Delete Model Run” button prompts a screen listing available runs. After selecting a single model run name in the list, a confirmation prompt again displays what will be removed. If you are certain you wish to delete the model run, click “Yes” - or - click “No” to return to the FRAM Utilities menu. The currently active model run cannot be deleted with this utility, and attempting to do so will produce an error prompt. Simply return to the main menu, select a different run, and re-try the deletion. (Note it is also possible to delete runs directly from the main model selection window.)</p>
 <p><img src="images/fvs_utils_del_error.png" width="100%" /></p>
 <p>To remove and delete more than one model run from a project database, select the “Delete Model Run” button and then the “Delete multiple runs” button found at the lower right (not the list of runs in the interface). This will then prompt the user with a separate window for Delete Multiple Model Runs, with another list of model runs in the project database. In this separate window, the user checks the boxes next to individual model run names and once multiple runs (or even a single run) have been checked, click the “Delete Selection Done” button. There will be no additional confirmation prompt displayed, rather the model runs will be deleted.</p>
 <p><img src="images/fvs_utils_del_mult.png" width="100%" /></p>
 </div>
-<div id="transfer-model-runs" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Transfer model runs</h1>
+<div id="transfer-model-runs" class="section level1">
+<h1>Transfer model runs</h1>
 <p>Model run transfer files, which are typically indicated as such by name, contain only portions of a subset of [Project database tables]. They enable sharing the relevant values for a single run without transmitting an entire [Project database].</p>
 <p>Clicking the “Transfer Model Runs” button in FRAM Utilities will prompt a message box “Please select the Transfer Database” and the user clicks “OK”. At that point, a file selection dialogue appears for a “template” model run transfer .mdb file into which the transferred values will be written. Be sure to utilize a “blank” template model run transfer file, or any model runs will be added to those that are already stored in the file. The current version of this template is generally provided on the <a href="https://fisheriesservices.nwifc.org/fram-model-runs/pre-season-fram-model-files/annual-pre-season-model-files/">Fisheries Services</a> site.</p>
 <p>After an appropriate template is chosen, a “Model Run TRANSFER Selections” window appears with the list of available model runs in the project database. When the desired run or multiple runs (Cntl+click) are highlighted in the interface list and the “Transfer Selection Done” button is clicked, the application will prompt for a new file name. After entering an informative name, the new values are written into the template and the user returns to the FRAM Utilities submenu.</p>
 <p><em>Note that the actual file creation may take a few seconds during writes to disk.</em></p>
 <p><img src="images/fvs_utils_make_transfer.png" width="100%" /></p>
 </div>
-<div id="get-model-run-transfers" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> Get model run transfers</h1>
+<div id="get-model-run-transfers" class="section level1">
+<h1>Get model run transfers</h1>
 <p>Complementing a transfer write out, this option reads in one or several runs from an existing model run transfer file. The straightforward process simply involves clicking the “Get Model Run Transfers” button, selecting the desired model run transfer file, clicking “Open”, and waiting for the application to complete the read and subsequent write of values into the project database. Then exit out of the FRAM utilities menu, and click the “Select Model Run” button on the main menu to load a newly transferred run, which should be found at the end of the available list.</p>
 <p>Note that inadvertently reading in a duplicative run should not generally cause great harm, as the “new” run will be assigned whatever <code>RunID</code> is incrementally next and will not overwrite existing elements of the project database.</p>
 </div>
-<div id="read-old-base-period" class="section level1" number="6">
-<h1 number="6"><span class="header-section-number">6</span> Read old base period</h1>
+<div id="read-old-base-period" class="section level1">
+<h1>Read old base period</h1>
 <p>Prior to 2011, base period data were stored in a text file with a <code>.out</code> extension, commonly referred to as outfiles. These historic outfiles are associated with <code>*.cmd</code> “command files”. The outfile information is equivalent to data stored in FRAM [Project database tables] containing a ‘BaseID’ field; i.e base period exploitation rates, maturation rates, growth functions, etc.</p>
 <p>The “Read Old Base Period” utility reads the outfile and places the information in the relevant model run Access database tables; i.e. base period exploitation rates are stored in the “BaseExploitationRate” table.</p>
 <p>However, importing an old model run (command file) and associated outfile into a modern FRAM database can be problematic, as some of the existing tables need to be compatible with the old data. The existing “Stock” table in the database has to include the stock version of the old outfile; i.e. version 1 for the old 76 stock structure of Chinook. Ideally, the “ChinookBaseSizeLimit” table should contain size limits from the old base period. Since the FRAM Access database currently only accommodates size limits from one base period, it is not advisable to load runs from more than one base period.</p>
 <p>Generally, the chance of run errors increases significantly with older model runs (command file) and the associated base period (outfile). Nevertheless, being able to quickly produce output summaries through Access queries is a huge advantage over the old method of retrieving output through driver files. It is highly advisable to compare TAMX output from the original run with output produced using the current version of FRAM before taking advantage of this functionality.</p>
 <p>To import an old base period into a FRAM database, select “Utilities”, “Read Old Base Period”, pick the desired outfile and then press “Yes” when prompted to confirm that the base period is for Chinook.</p>
 </div>
-<div id="deletetransferget-base-period" class="section level1" number="7">
-<h1 number="7"><span class="header-section-number">7</span> Delete/Transfer/Get base period</h1>
+<div id="deletetransferget-base-period" class="section level1">
+<h1>Delete/Transfer/Get base period</h1>
 <p>Much as the above delete, transfer and get model run functions manipulate multiple tables throughout the project database, these options provide a similar means to handle entire base periods. Not all project databases will have more than one set of base period parameters, but these functions are important when this is the case.</p>
 <p><strong>Until additional features are implemented for Chinook, a single base period should be utilized in a project database. This is due to some tables in the project database containing values unique to an individual base period, but the table is not tied to a unique BaseID. Once they are tied to a unique BaseID, then more than one base period can be utilized in a Chinook project database. Please consult with a lead FRAM modeler if you need assistance.</strong></p>
 </div>
-<div id="compute-2s-from-3s-chin" class="section level1" number="8">
-<h1 number="8"><span class="header-section-number">8</span> Compute 2s from 3s (Chin)</h1>
+<div id="compute-2s-from-3s-chin" class="section level1">
+<h1>Compute 2s from 3s (Chin)</h1>
 <p>The abundances of 2 year olds are often not forecasted. Selecting this button will result in FRAM calculating the starting cohort of age 2s as a function of the 3s; i.e. produce a recruit scaler of 2 year olds that roughly produces the age 3 starting cohort. This is desirable for two reasons:</p>
 <ul>
 <li><p>On average (over time), age 2 scalers should be of a magnitude that is related to age three abundance, because age 2 fish will mature to become age 3 fish.</p></li>
@@ -511,22 +517,22 @@ div.tocify {
 <p><img src="images/fvs_utils_age2s3s.png" width="70%" /></p>
 <p>After selecting “Yes” the “Save Model Run Input” screen will open, allowing selection of either “Replace Current Model Run” or “Save New Model Run”. These steps return the user to the “FRAM Utilities” menu. Age 2 recruit scalers have been updated and saved. If desired, this can be verified by opening the “Input Menu”, selecting [Stock recruits] and examining the new age 2 scalers.</p>
 </div>
-<div id="read-old-cmd-file" class="section level1" number="9">
-<h1 number="9"><span class="header-section-number">9</span> Read old CMD file</h1>
+<div id="read-old-cmd-file" class="section level1">
+<h1>Read old CMD file</h1>
 <p>Prior to 2011, annual FRAM inputs were stored in a text file with a <code>.cmd</code> extension, commonly referred to as command files. This information is equivalent to data stored in all FRAM Access database tables containing a ‘RunID’ field; i.e annual model run information. These text files were opened, modified, and run in FRAM version “FRAM555” or earlier. These versions of FRAM were coded in Visual Basic and preceded the currently in use FRAM Visual Studio.net versions with ADO.net database programming. The “Read Old CMD File” utility reads the command file and places the information in the relevant model run Access database tables; i.e. forecast information is stored in the “Cohort” table, retention fisheries inputs are placed in the “FisheryScalers” table. These historic command files are usually linked to old base periods which were stored in text files as well, with a *.out extension, commonly referred to as outfiles. Please refer to the Read Old Base Period paragraph for instructions on how to import an outfile into a FRAM Access database and [Linking a model run to a base period] for instructions.</p>
 <p>To read an old model run into FRAM, first make sure the base period associated with the command file is loaded in the ACCESS database. The base period name can be found on the fifth line of the command file. Then, after clicking the “Read Old CMD File” button, navigate to and select the desired command file. Finally, select “yes” from the following pop up window.</p>
 <p><img src="images/fvs_utils_read_old_cmd.png" width="70%" /></p>
 </div>
-<div id="read-taaetrs-file" class="section level1" number="10">
-<h1 number="10"><span class="header-section-number">10</span> Read TAA/ETRS file</h1>
+<div id="read-taaetrs-file" class="section level1">
+<h1>Read TAA/ETRS file</h1>
 <p>The “Read TAA/ETRS File” button in the FRAM Utilities is a seldom-used option to import old format CMD files (TAAETRSnum.txt) of the TAAETRSList table into the current project database structure.</p>
 <p>The TAAETRSList table contains definitions (by unique TaaNum) for terminal run parameters, including stocks, fisheries, and time steps (only 4=Sept, 5=Oct-Dec). These terminal definitions are used in the TAMM (sheet Tami) and FRAM program code for certain algorithms. The TAAETRSList table is not tied to a specific model run (by unique RunID), and thus changes to this table over time will influence model run results from prior years if model runs are in the same project database, but had different terminal run parameter definitions each individual year. In addition, the TAAETRSList table is not included in a model run transfer file and thus definitions are not updated for each model run loaded into a project database.</p>
 <p>Thus, the modeling strategy is to create new definitions within this table whenever a modification is necessary, rather than modifying current definitions. Thus, an older definition which matches an older TAMM will remain in the table for model run use (i.e #5). A newer definition will match a newer TAMM (i.e. #40). Both the older and newer values will remain in the same database table and thus multiple years of model runs can be utilized.</p>
 <p>Starting in the preseason 2018 Coho project database, the TAAETRSList table has been updated to incorporate TaaNum definitions back through 2013, when the MS Access database structure was first implemented. Any TaaNum definition updates were also made in the starting TAMM files provided at that time.</p>
 <p>Any necessary updates to the TAAETRSList table should be made at the beginning of the preseason salmon management process and incorporated in the starting MS Access project database file for coho FRAM. If updates are made to this table during the preseason negotiations, the NOF lead modeler will be responsible for notifying co-managers and ensuring the update is distributed.</p>
 </div>
-<div id="automate-pass-1-pass-2-chin" class="section level1" number="11">
-<h1 number="11"><span class="header-section-number">11</span> Automate pass 1 pass 2 (Chin)</h1>
+<div id="automate-pass-1-pass-2-chin" class="section level1">
+<h1>Automate pass 1 pass 2 (Chin)</h1>
 <p>This functionality was added in 2019 to automate a time consuming process to compute non-retention impacts in Puget Sound marine Chinook sport fisheries. In a first step (Pass 1), the non-retention fishery is modeled as “open” to Chinook retention. Output of sublegal and legal encounters from the ‘Pass-1-Run’ are subsequently modeled in the non-retention section of FRAM during the ‘Pass-2-Run’. Most Puget Sound marine Chinook sport fisheries are modeled in the [RunSheet (Chinook)], an Excel workbook that translates periods open to Chinook fishing into fishery effort scalers for FRAM.</p>
 <p>Non-retention inputs should be updated when changes in abundances are significant enough to result in changes to encounters and/or when non-retention regulations are updated.</p>
 <p>The utility requires an updated [RunSheet (Chinook)], with the naming convention “RunNNNN.xlsm” corresponding to the associated FRAM run number.</p>
@@ -541,8 +547,8 @@ div.tocify {
 <p><img src="images/fvs_utils_pass1pass2prompt.png" width="70%" /></p>
 <p>After selecting “OK”, FRAM will open the [Run Model] menu. Once the run begins, the user interface disappears for a few minutes. FRAM then reappears when the run is finished.</p>
 </div>
-<div id="update-coweeman-sheets" class="section level1" number="12">
-<h1 number="12"><span class="header-section-number">12</span> Update Coweeman sheets</h1>
+<div id="update-coweeman-sheets" class="section level1">
+<h1>Update Coweeman sheets</h1>
 <p>The Coweeman spreadsheet is an Excel workbook with abundance and exploitation rate summaries for Columbia River Chinook stocks. Columbia River salmon managers use it as a starting point for in-river models. The workbook also provides exploitation rate information for Lower Columbia River natural Chinook (LCN). This stock is represented by Coweeman hatchery tag codes in FRAM (hence the name of the spreadsheet). LCNs are ESA listed and can be a critical constraining stock for ocean salmon fisheries during the PFMC fishing season setting process. PFMC usually crafts three ocean fishery options bracketing possible ocean fisheries, with option 1 representing the “high” ocean option, 2 the “middle”, and 3 the “low”. Initially, all three options are modeled, but a single option is eventually selected.</p>
 <p>All three options or just the final option can be loaded into the “Coweeman Spreadsheet”, an Excel workbook following the naming convention “CoweemanNNNN.xlsm”, where NNNN represents the associated FRAM run number. <strong>Note that the in-river LCN harvest rate in cell ‘PFMC-Option-1’!M8 needs to be updated.</strong></p>
 <p>When selecting the “Update COWEEMAN Sheets” button, FRAM will:</p>

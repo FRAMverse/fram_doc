@@ -343,6 +343,12 @@ div.tocify {
     <li>
       <a href="calcs_data_coho.html">Coho</a>
     </li>
+    <li>
+      <a href="calcs_glossary.html">Glossary</a>
+    </li>
+    <li>
+      <a href="calcs_appendices.html">Appendices</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -436,8 +442,8 @@ div.tocify {
 </div>
 
 
-<div id="basic-concepts-and-applications" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Basic concepts and applications</h1>
+<div id="basic-concepts-and-applications" class="section level1">
+<h1>Basic concepts and applications</h1>
 <p>FRAM is a deterministic, discrete-time, age-structured model designed to aid planning of Chinook and coho salmon fisheries. It is designed to address the effects of multiple mixed-stock fisheries on individual stocks, each further stratified by age and mark status (and possibly hatchery origin). The model calculates fishery related mortality, including catches and non-landed impacts, imposed on the forecast abundance of each stock unit. Over time, algorithms have been added or adapted to capture changing management options, and the development platform of the application has evolved (currently implemented in Visual Basic.NET), but the basic structure of the program remains much the same as when it was conceived in the late 1970’s. FRAM remains an empirically fit tool, grounded in an approach that uses the past to inform the future.</p>
 <p>In a given run, over the course of several time steps within a year, FRAM allocates a mixed stock cohort to catches, non-retention mortality and escapement (for coho) or escapement to the terminal area (for Chinook). This occurs by combining forecasted or observed stock run sizes and fishery practices with parameters calibrated from observations made during a fixed “base period” set of baseline years. The base period integrates fishery catches, stock age and mark composition information, and coded wire tag (CWT) recovery data to produce a calibrated reference pattern of stock distributions and stock-specific harvest rates by time-step and fishery.</p>
 <p>A fundamental element of FRAM calculations are the stock-age-fishery-timestep specific exploitation rates (defined as the total mortality divided by abundance, itself the sum of mortality and escapement). This expression of catch as a proportion of the available abundance is based primarily on coded wire tag release and recovery data from the Regional Mark Information System <a href="https://www.rmis.org//rmis_login.php?action=Login&amp;system=cwt">(RMIS)</a>. The Chinook base period was recently updated with CWTs from catch years 2007 – 2013 (brood years 2005 – 2008), and has continued to see revision with ongoing data quality improvements. The Coho base period is comprised of CWTs from catch years 1986 – 1992.</p>
@@ -445,8 +451,8 @@ div.tocify {
 <p>In addition to FRAM, the modeling of fishery impacts for Puget Sound Chinook stock units requires a Terminal Area Management Module spreadsheet (TAMM). The Chinook TAMM passes stock and fishery inputs to FRAM. Subsequently, FRAM modeling returns output to the TAMM, which then performs additional calculations before generating reports. The Coho TAMM functions to pass Puget Sound fishery inputs to FRAM, to perform additional calculations for Washington coastal and Columbia River fisheries/stocks, and to generate reports from FRAM output. Thus, the use of both FRAM and TAMM is generally necessary for both Chinook and Coho modeling. See the [TAMM] chapter for additional details.</p>
 <p><br />
 </p>
-<div id="general-framework" class="section level2" number="1.1">
-<h2 number="1.1"><span class="header-section-number">1.1</span> General Framework</h2>
+<div id="general-framework" class="section level2">
+<h2>General Framework</h2>
 <p><strong>Coho FRAM</strong> see [Coho stocks and fisheries]</p>
 <ul>
 <li>Stock groups = 246 with assignment of marked/unmarked components</li>

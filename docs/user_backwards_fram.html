@@ -343,6 +343,12 @@ div.tocify {
     <li>
       <a href="calcs_data_coho.html">Coho</a>
     </li>
+    <li>
+      <a href="calcs_glossary.html">Glossary</a>
+    </li>
+    <li>
+      <a href="calcs_appendices.html">Appendices</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -448,8 +454,8 @@ div.tocify {
 <li><p>Mode 1 (flag 1): This mode uses an algorithm to iteratively adjust stock recruit scalars until the target abundance is achieved. Target abundances are adipose mark specific. This method is used when the mark rate of a stock is known.</p></li>
 <li><p>Mode 2 (flag 2): This mode is selected when target mark rates are unavailable. Algorithms from mode 1 are used to find the starting stock recruit scalars that result in the combined target abundance (marked and unmarked components). The program will then apply mark rates derived from the existing “StockRecruit” table to split starting cohorts into marked and unmarked components.</p></li>
 </ul>
-<div id="running-bkfram" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Running BkFRAM</h1>
+<div id="running-bkfram" class="section level1">
+<h1>Running BkFRAM</h1>
 <p>After selecting “Post Season run” from the FRAM main menu, the Backwards FRAM submenu is presented. The Coho and Chinook versions are slightly different.</p>
 <div class="figure">
 <img src="images/fvs_back_menu.png" alt="The post-season or backwards FRAM submenu for Chinook" width="100%" />
@@ -465,8 +471,8 @@ The post-season or backwards FRAM submenu for Coho
 </div>
 <p>Next, target abundance values must be set if they are not already. Selecting the ‘Target Escapements” button brings up the Target Escapements for Backwards FRAM menu, which has a slightly different layout for Chinook and Coho.</p>
 </div>
-<div id="target-escapements-for-chinook" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Target escapements for Chinook</h1>
+<div id="target-escapements-for-chinook" class="section level1">
+<h1>Target escapements for Chinook</h1>
 <p>The values for the FRAM calculations to target must be provided by stock, mark status, and age, in conjunction with a control flag. The effects of flag values are displayed on screen, with <code>0</code> meaning the value is not used, <code>1</code> it is used, and <code>2</code> that it is intended to be automatically split into marked and unmarked components. A flag value of <code>3</code> is deprecated but allowed for legacy compatibility.</p>
 <p>When terminal run size is known for a stock by age and mark status, these can be entered with a flag of “1” in the correspondingly labeled cells. If the mark rate is unknown, enter the combined (marked plus unmarked) abundance in the “TOTAL” row and flag as “2” (i.e. will use mark rates from “seed run”). If you do not wish to overwrite existing cohort sizes for a stock, flag relevant row(s) (Total, Marked, Unmarked) as “0”.</p>
 <p>While the FRAM interface enables editing individual values, the “Import Escapements” option allows an “all-at-once” update via the selection of an MS Excel template file containing model inputs compiled outside of FRAM. Select the “Import Escapements” button and then locate and selecting the file (“BkFRAM_ChinookTemplate…xls”) with the desired values.</p>
@@ -479,21 +485,21 @@ Post-season target escapements
 <p>Once the input values are updated, select “OK - Done” to return to the Backwards FRAM Run Menu to “Start Iterations”.</p>
 <p>The following table represents which Chinook FRAM fisheries (by FisheryID numeric values and generic titles) and time steps (horizontal) are included in the run size definition of each stock (by StockID numeric values and StockName) (vertical). A “yes” denotes that the landed catch of ages 3-5 Chinook in fishery and time steps are added to the age 3-5 run to the river (escapement + freshwater catch). T1 equals October-April time step, T2 equals May-June time step, and T3 equals July-September time step</p>
 </div>
-<div id="target-escapements-for-coho" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Target escapements for Coho</h1>
+<div id="target-escapements-for-coho" class="section level1">
+<h1>Target escapements for Coho</h1>
 <p>Enter target escapements by stock and mark status and flag as “1” in the correspondingly labeled cells. Coho escapement values should exclude jacks (age 2), as coho are assumed to be age 3 in the FRAM model framework. If the mark rate is unknown, enter the combined (marked plus unmarked) escapement in either the marked or unmarked stock row and flag as “2” (will use mark rates from “seed run”). If you do not wish to overwrite exisiting cohort sizes for a stock, flag relevant row(s) (Marked, Unmarked) as “0”.</p>
 <p>Escapement values can also be loaded from a MS Excel template file designed for model inputs (“CohoFRAMInputTemplate….xls”) by selecting the “Import Escapements” button and then locating and selecting the file with the desired values. The template file workbook needs to contain a worksheet tab called “FRAMEscapeV2”, and the user may need to unhide it within the template. The escapement values within the worksheet are organized as rows by stock and mark status and columns per year. A column exists for every year desired for updating model inputs. The program will request a single ‘Year’ to load from the Excel worksheet.</p>
 <p>Escapement values can be also be exported by selecting the “Export to Spreadsheet” button on the Target Escapements for Backwards FRAM menu using the same workbook template file needed for importing. The program will also request the ‘Year’ of data to export.</p>
 <p>Once the input values are updated, select “OK - Done” to return to the Backwards FRAM Run Menu to “Start Iterations”.</p>
 </div>
-<div id="start-iterations" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Start iterations</h1>
+<div id="start-iterations" class="section level1">
+<h1>Start iterations</h1>
 <p>With target escapements entered, the number of desired iterations can be selected and then “Start Iterations” clicked. The default number of iterations is 99. This number will rarely be reached, as iterations automatically terminate when the convergence criteria is met (run size within 1 fish of target).</p>
 <p>For Coho, selecting the “Run without MSF Bias Correction (if checked)” button will process the backwards run without the MSF Bias Correction factor applied. By default, the MSF Bias Correction is applied during preseason forward Coho FRAM modeling and thus it is also by default applied during backward FRAM. Thus, this box is most commonly left unchecked.</p>
 <p>For Chinook, selecting the “Age 2 from 3” box will cause the program to process using fishing year (FY) age 2 from 3 abundances (e.g., the recruit scaler for age 3s will be used for age 2s). This corresponds to the preseason mode of operation. After selecting “Start Iterations”, a prompt requires the user to select whether or not to use TAMI catches for the run. Choosing “yes” is appropriate if the correct TAMI fishery catches (e.g., 7BCD net) are not yet loaded into FRAM. Conversely, “no” will skip this step when the FRAM run already has the correct TAMI catches stored (i.e, because FRAM has already been run forward with the correct TAMM and TAMI catches are automatically saved into the FRAM database).</p>
 </div>
-<div id="view-and-save-bkfram-results" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> View and save BkFRAM results</h1>
+<div id="view-and-save-bkfram-results" class="section level1">
+<h1>View and save BkFRAM results</h1>
 <p>After iterations are complete, the program returns a result screen (with slightly different layouts for Chinook and Coho) which lists target escapements, resulting BkFRAM escapements, and new stock recruit scalers side by side in order to assess whether values have sufficiently converged.</p>
 <div class="figure">
 <img src="images/fvs_back_results.png" alt="Convergence is displayed per-stock and age" width="100%" />

@@ -1,0 +1,49 @@
+---
+title: "Appendices"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE, results = 'hide', warning = FALSE, message = FALSE, echo=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
+```
+
+# **Appendix 1.** 
+Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks
+
+# **Appendix 2.** 
+Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks
+
+# **Appendix 3.** 
+Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
+
+# **Appendix 4.** 
+Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
+
+# **Appendix 5.** 
+Time step structure used in coho and Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> modeling.
+
+```{r appendix 5 table image, echo=FALSE}
+knitr::include_graphics(c("images/Appendix_table_5.PNG"))
+```
+
+# **Appendix 6.**
+<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>/<span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery-related mortality rates for ***coho*** salmon (version used in 2021 pre-season planning models).
+
+```{r appendix 6 table image, echo=FALSE}
+knitr::include_graphics(c("images/Appendix_table_6.PNG"))
+```
+
+# **Appendix 7.**
+<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>/<span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery-related mortality rates for ***Chinook*** salmon (version used in 2021 pre-season planning).
+
+```{r appendix 7 table image, echo=FALSE}
+knitr::include_graphics(c("images/Appendix_table_7.PNG"))
+```
+
+# **Appendix 8.**
+Time period and age-specific rates used by <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> to simulate coho and Chinook natural mortality.
+
+```{r appendix 8 table image, echo=FALSE}
+knitr::include_graphics(c("images/Appendix_table_8.PNG"))
+```
