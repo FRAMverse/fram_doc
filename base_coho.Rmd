@@ -8,6 +8,4 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-# MSM
-
-# Other stuff
+# 1. Mixed Stock Model (MSM)
