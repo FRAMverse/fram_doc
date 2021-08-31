@@ -52,6 +52,11 @@ dplyr::tibble(
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> data are stored as tables in an ACCESS database. All the information needed for a “simple model run” (link to chapter in user manual) is stored in these tables, containing input as well as output data. Input data can be grouped into two main categories: static base period data and annual run data (see **section 3.1**). Main <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> outputs are mortalities (landed, mark-selective, sublegal, non-retention, drop-off) and abundances (starting cohorts at each time step; abundances after natural mortalities, pre-terminal, and terminal fisheries).
 
+Table 2. Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> MS Accesss Database Tables.
+```{r coho database tables, echo=FALSE}
+knitr::include_graphics(c("images/Coho_FRAM_database_tables.PNG"))
+```
+
 ## 3.1. <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Input Data
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> input data consist of two main input types: base period reference data and annual data.  Base period data remain constant until a new base period replaces the existing one.  The principal base period inputs are stock-fishery specific exploitation rates.  Other base period parameters include base period catches and cohort sizes.  The second input type consists of annual data that can vary with each model run, such as stock specific abundance estimates, fishery catches, size limits, etc.  

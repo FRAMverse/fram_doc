@@ -66,6 +66,7 @@ These input tables consist of
  
 The main <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> outputs are estimates of mortalities (landed, mark-selective, sub-legal, non-retention, drop-off) and abundances (starting cohorts at each time step; abundances after natural mortalities, pre-terminal, and terminal fisheries).
 
+Table 2. Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> MS Accesss Database Tables.
 ```{r calcs_data_chin_t2_mdb, echo=FALSE}
 #could fuss with subscript formatting in Calc_Fields...
 #readxl::read_excel("O:/fram/fram_documents/fram_mdb_tables.xlsx") |> 
@@ -75,6 +76,7 @@ The main <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> o
 #  dplyr::mutate(dplyr::across(dplyr::everything(), ~tidyr::replace_na(., ""))) |> 
 #  gt::gt(groupname_col = "Values")
 
+knitr::include_graphics(c("images/Chinook_FRAM_database_tables.PNG"))
 ```
 
 ## 3.1. <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Input Data
@@ -268,7 +270,7 @@ To facilitate understanding of the sequencing in <span title = "FRAM: Fishery Re
 
 The starting cohort in time step 1 is first reduced by natural mortality. The remaining cohort is vulnerable to preterminal fisheries. After preterminal fishing, part or all of the cohort can mature. This typically occurs in time step 3, but for some early or late stocks can also occur in time steps 1 or 2. The mature cohort is then susceptible to terminal fisheries. The mature cohort not caught in terminal fisheries will go to escapement. The portion of the cohort that does not mature (number immature) becomes the starting cohort of the next time step. This cycle repeats until time step 4, when Chinook age up; i.e., age-3 fish become age-4 fish, etc. Immature Chinook of age a from time step 3 become the starting cohort of time step 4 age *a*+1. For age-2 fish, the time step 4 starting cohort is the same as the time step 1 cohort, because the model does not contain age-1 fish that could age-up.
 
-Table 2. Example values of Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> processing steps for a stock at age 3 and age 4.
+Table 3. Example values of Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> processing steps for a stock at age 3 and age 4.
 ```{r chinook process schematic image, echo=FALSE}
 knitr::include_graphics(c("images/Chinook_FRAM_process_schematic.PNG"))
 ```
