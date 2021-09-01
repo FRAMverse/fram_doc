@@ -20,7 +20,7 @@ The potential for a Chinook of a given age to contribute to the mature run (spaw
 A utility within the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model that calculates starting abundances when provided with estimates of catches and escapements.
 
 # **Base Period**
-A range of (brood-)years from which CWT data are used to estimate exploitation rates and other parameters through a process of cohort reconstruction. Resulting base period parameters are used to populate the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model to predict annual stock/fishery specific impacts.
+A range of (brood-)years from which <span title = "CWT: Coded wire tag">CWT</span> data are used to estimate exploitation rates and other parameters through a process of cohort reconstruction. Resulting base period parameters are used to populate the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model to predict annual stock/fishery specific impacts.
 
 # **Calibration**
 Process creating base period exploitation rates by first selecting <span title = "CWT: Coded wire tag">CWT</span> groups to represent <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks and then reconstructing the cohort. Once cohort sizes are established, stock/age/fishery/time step specific exploitation rates are computed.
