@@ -69,11 +69,11 @@ Model base period data for the Coho <span title = "FRAM: Fishery Regulation Asse
 
 ### 3.1.2. Annual Data
 
-Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses five general types of input.  Three of these input types (<span title = "a. Cohort abundance; b. Fishery <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Landed_Catch" target = "_blank" title = "Landed catch">landed catch</a>; d. Mark-selective fisheries">a, b, d</span>) are submitted annually to reflect projected stock abundances and proposed fishery regulations for the current model year.  The remaining two types of input (<span title = "c. Release-mortality rates; e. Other non-landed mortality rates">c, e</span>) are specifications for fishery-related mortalities that can change as more information becomes available through additional data collection or studies, but typically do not change annually.
+Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses five general types of input.  Three of these input types (<span title = "a. Cohort abundance; b. Fishery landed catch; d. Mark-selective fisheries">a, b, d</span>) are submitted annually to reflect projected stock abundances and proposed fishery regulations for the current model year.  The remaining two types of input (<span title = "c. Release-mortality rates; e. Other non-landed mortality rates">c, e</span>) are specifications for fishery-related mortalities that can change as more information becomes available through additional data collection or studies, but typically do not change annually.
 
 **a.** *Cohort Abundance*:  For each stock unit, an annual abundance is obtained from a source that is independent of the model, typically in the form of an ocean age-3 run size (pre-fishing age-3 abundance in the ocean after natural mortality has been subtracted).  In a pre-season context these abundances come from annual forecasts, whereas in a post-season context the abundances are derived from estimates of actual returns. For coho, an initial stock abundance is needed for adult fish (age-3) by mark status.  
 
-**b.** *Fishery Landed Catch*:  The model provides three options for setting the catch in a fishery: a quota, a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Fishery_Scaler" target = "_blank" title = "Fishery scaler">fishery scaler</a>, and a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Harvest_Rate_(HR)" target = "_blank" title = "HR: Harvest rate">harvest rate</a> (for Puget Sound and Washington coastal terminal fisheries). 
+**b.** *Fishery Landed Catch*:  The model provides three options for setting the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Landed_Catch" target = "_blank" title = "Landed catch">catch</a> in a fishery: a quota, a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Fishery_Scaler" target = "_blank" title = "Fishery scaler">fishery scaler</a>, and a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Harvest_Rate_(HR)" target = "_blank" title = "HR: Harvest rate">harvest rate</a> (for Puget Sound and Washington coastal terminal fisheries). 
 
 <u>Quota</u>:  Catch in the fishery is set equal to a numeric value input by the user.<br>
 <u>Fishery Scaler</u>:  The fishery is scaled relative to the effort during the reference base period using a scaler value input by the user.  
@@ -300,7 +300,7 @@ where:
 
 The program iterates until the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> escapement is within one fish of the target stock escapement and then terminates the iteration process. 
 
-<p>**(17)**<div style = "text-align:center"><span title = "Escapement estimate from a forward FRAM calculation for stock s at age 3">$| \ FRAMescapement_{s,a \! = \! 3}$<span> $-$ <span title = "Backwards FRAM escapement or (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Extreme_Terminal_Run_Size_(ETRS)" target = "_blank" title = "Extreme terminal run size">extreme</a>) terminal run size target of stock s at age 3">$BkTarget_{s,a \! = \! 3} \ |$</span> $\le 1$ </div> </p>
+<p>**(17)**<div style = "text-align:center"><span title = "Escapement estimate from a forward FRAM calculation for stock s at age 3">$| \ FRAMescapement_{s,a \! = \! 3}$</span> $-$ <span title = "Backwards FRAM escapement or (extreme) terminal run size target of stock s at age 3">$BkTarget_{s,a \! = \! 3} \ |$</span> $\le 1$ </div> </p>
 
 where:
 

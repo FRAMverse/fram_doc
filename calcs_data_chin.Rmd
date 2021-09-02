@@ -131,7 +131,7 @@ Figure 1. Conceptual flow chart for the Chinook <span title = "FRAM: Fishery Reg
 
 The starting cohort size in time step 1 is a product of two parameters: (*1*) the base period cohort abundance for stock *s* at age *a* (<span title = "Base period cohort abundance estimate of stock s at age a">$BPCohorts_{s,a}$</span>) and (*2*) a stock and age-specific recruit scaler (<span title = "Stock recruit scaler of stock s at age a">$StockScalers_{s,a}$</span>).  The recruit scaler is an annual model input.
 
-<p>**(1)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age a during time step 1">$Cohort_{s,a,t\!=\!1}$</span> $=$ <span title = "Base period abundance of stock s at age a">$BPCohort_{s,a}$</span> $\times$ <span title = "Stock recruit scaler of stock s at age a">$StockScaler_{s,a}$</span> </div> </p>
+<p>**(1)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age a during time step 1">$Cohort_{s,a,t\!=\!1}$</span> $=$ <span title = "Base period cohort abundance of stock s at age a">$BPCohort_{s,a}$</span> $\times$ <span title = "Stock recruit scaler of stock s at age a">$StockScaler_{s,a}$</span> </div> </p>
 where <span title = "Cohort abundance of stock s at age a during time step 1">$Cohort_{s,a,t\!=\!1}$</span> is the initial cohort size for stock *s*, age *a*, during time step *t*=1.
 
 The starting cohort abundance in all subsequent time steps is determined based on the remaining <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Immature" target = "_blank" title = "Immature">immature</a> cohort from the previous time step (see process 4 below).  Chinook age between time step 3 and 4, so that, for example, age 2 fish in time step 3 become age 3 fish in time step 4.  Since there are no age 1 fish in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>, the age 2 cohort in time step 4 is the same as the age 2 cohort in time step 1. 
@@ -380,7 +380,7 @@ where:
 
 The program iterates until the resulting <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> escapement or terminal run size is within one fish of the target escapement or terminal run size and then terminates the iteration process.  
 
-<p>**(22)**<div style = "text-align:center"><span title = "(Extreme) terminal run size estimate from a forward FRAM calculation for stock s at age a">$| \ FRAMescapement_{s,a}$<span> $-$ <span title = "Backwards FRAM escapement or (extreme) terminal run size target of stock s at age a">$BkTarget_{s,a} \ |$</span> $\le 1$ </div> </p>
+<p>**(22)**<div style = "text-align:center"><span title = "(Extreme) terminal run size estimate from a forward FRAM calculation for stock s at age a">$| \ FRAMescapement_{s,a}$</span> $-$ <span title = "Backwards FRAM escapement or (extreme) terminal run size target of stock s at age a">$BkTarget_{s,a} \ |$</span> $\le 1$ </div> </p>
 
 where:
 
