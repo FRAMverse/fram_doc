@@ -33,7 +33,7 @@ knitr::include_graphics(c("images/logos_all.png"))
 
 Various <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> outputs inform the compliance of proposed fisheries with conservation and management objectives.
 
-This site includes technical background information and a user guide focused on running the FRAM application, modifying model inputs, and obtaining and interpreting model outputs.
+This site includes technical background information and a user guide focused on running the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> application, modifying model inputs, and obtaining and interpreting model outputs.
 
 # 2. Background {-}
 
