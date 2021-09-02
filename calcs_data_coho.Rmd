@@ -130,7 +130,7 @@ The remaining cohort is then subjected to removals by pre-terminal fisheries; bo
 
 <u>**3a.** In regular retention fisheries (non-selective), landed catch is estimated by:</u>
 
-<p>**(3)**<div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 in fishery f during time step t">$Catch_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t">$BPER_{s,a \! = \! 3,f,t}$</span> $/times$ <span title = "Fishery scaler for fishery f during time step t">$FisheryScaler_{f,t}$</span> $\times$ <span title = "Portion vulnerable of stock s at age 3 in fishery f during time step t">$PV_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Stock fishery rate scaler for stock s in fishery f during time step t">$SHRF_{s,f,t}$</span> </div> </p>
+<p>**(3)**<div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 in fishery f during time step t">$Catch_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t">$BPER_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler for fishery f during time step t">$FisheryScaler_{f,t}$</span> $\times$ <span title = "Portion vulnerable of stock s at age 3 in fishery f during time step t">$PV_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Stock fishery rate scaler for stock s in fishery f during time step t">$SHRF_{s,f,t}$</span> </div> </p>
 
 where:
 
