@@ -11,14 +11,70 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=
 # **Appendix 1.** 
 Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks
 
+```{r appendix 1 table image, echo=FALSE}
+
+```
+
 # **Appendix 2.** 
 Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks
+
+```{r appendix_2_table, echo=FALSE}
+# dplyr::tibble(
+#   Stock = c(
+#     "Nooksack/Samish Fall",
+#     "Nooksack Spring Hatchery",
+#     "Nooksack Spring Natural",
+#     "Skagit Summer/Fall Fingerling",
+#     "Skagit Summer/Fall Yearling",
+#     "Skagit Spring Yearling",
+#     "Snohomish Fall Fingerling",
+#     "Snohomish Fall Yearling",
+#     "Stillaguamish Fall Fingerling",
+#     "Tulalip Fall Fingerling",
+#     "Mid Puget Sound Fall Fingerling",
+#     "UW Accelerated",
+#     "South Puget Sound Fall Fingerling",
+#     "South Puget Sound Fall Yearling",
+#     "White River Spring Fingerling",
+#     "Hood Canal Fall Fingerling",
+#     "Hood Canal Fall Yearling",
+#     "Strait of Juan de Fuca Tributaries Fall",
+#     "Columbia River Oregon Hatchery Tule",
+#     "Columbia River Washington Hatchery Tule",
+#     "Lower Columbia River Wild",
+#     "Columbia River Bonneville Pool Hatchery",
+#     "Columbia River Upriver Summer",
+#     "Columbia River Upriver Bright",
+#     "Cowlitz River Spring",
+#     "Willamette River Spring",
+#     "Snake River Fall",
+#     "Oregon North Coast Fall",
+#     "West Coast Vancouver Island Total Fall",
+#     "Fraser River Late",
+#     "Fraser River Early",
+#     "Lower Georgia Strait",
+#     "White River Spring Yearling",
+#     "Lower Columbia River Naturals",
+#     "Central Valley Fall",
+#     "Washington North Coast Fall",
+#     "Willapa Bay",
+#     "Hoko River",
+#     "Mid Oregon Coast Fall"
+#   ),
+# ) |> gt::gt()
+
+knitr::include_graphics(c("images/Appendix_table_2.PNG"))
+```
 
 # **Appendix 3.** 
 Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
 
 # **Appendix 4.** 
 Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
+
+```{r appendix 4 table image, echo=FALSE}
+knitr::include_graphics(c("images/Appendix_table_4.PNG"))
+```
 
 # **Appendix 5.** 
 Time step structure used in coho and Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> modeling.
