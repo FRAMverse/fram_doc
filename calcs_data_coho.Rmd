@@ -89,6 +89,20 @@ Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses 
 
 # 4. Model Calculations 
 
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
 ## 4.1. Overview
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>  processes information through a time step loop, beginning with time step 1 and ending with time step 5 for coho.  Within each time step, a series of four computational processes occur for each stock as depicted in Figure 1: (**1**) determine starting cohort size, (**2**) removal of natural mortality, (**3**) removal of pre-terminal mortalities, (**4**) removal of terminal fishery mortalities (time 5 only).
@@ -226,7 +240,7 @@ The total number of unmarked mortalities in <span title = "MSF: Mark-selective f
 Bias adjusted exploitation rates for marked and unmarked stock units are calculated as:
 
 **(13)**
-$$ER_{s,t} = 1 - (1 - \sum_f(ER_{s,f,t}^M)^{\delta_{s,t}^W})$$
+$$ER_{s,t} = 1 - (1 - \displaystyle\sum_f(ER_{s,f,t}^M)^{\delta_{s,t}^W})$$
 
 **(14)**
 
@@ -234,7 +248,7 @@ $$\delta_{s,t}^w = \sum_f \frac{ER_{s,f,t}^M}{\displaystyle\sum_f ER_{s,f,t}^M} 
 
 where:
 
-- <span title = "Marked exploitation rate for stock s in fishery f during time step t">$ER^M_{s,f,t}$</span> is the marked exploitation rate of stock *s* in fishery *f* during time step *t*
+- <span class = "math" title = "Marked exploitation rate for stock s in fishery f during time step t">$ER^M_{s,f,t}$</span> is the marked exploitation rate of stock *s* in fishery *f* during time step *t*
 - <span title = "Release mortality rate in (MSF) fishery f">$\delta_f$</span> is the release mortality rate in <span title = "MSF: Mark selective fishery">(MSF)</span> fishery *f*
 - <span title = "Weighted release mortality rate of stock s during time step t">$\delta^W_{s,t}$</span> is the weighted release mortality rate for stock *s* during time step *t*
 - <span title = "Marked exploitation rates summed over all fisheries for stock s during time step t">$\sum_f ER^M_{s,t}$</span> is the marked exploitation rates summed over fisheries for stock *s* at time step *t*

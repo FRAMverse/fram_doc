@@ -113,6 +113,20 @@ Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> us
 
 # 4. Model Calculations
 
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
 ## 4.1. Overview
 
 FRAM processes information through a time step loop, beginning with time step 1 and ending with time step 4  for Chinook.  Within each time step, a series of five computational processes occur for each stock and age, as depicted in Figure 1: (**1**) determine starting cohort size, (**2**) removal of natural mortality, (**3**) removal of pre-terminal fishery mortalities, (**4**) maturation, and (**5**) removal of terminal fishery mortalities.
@@ -218,7 +232,7 @@ Computations for Chinook mark-selective fisheries must also account for sublegal
 
 <u>**3f.** All pre-terminal fishery mortalities </u> in time step *t* for stock *s* by age *a* are totaled <span title = "TotMort: Total pre-terminal fishery mortalities">$(TotMort)$</span> and the size of the cohort is reduced accordingly.
 
-<p>**(10)**<div style = "text-align:center"><span title = "Total pre-terminal fishery mortalities for stock s at age a during time step t">$TotMort_{s,a,t}$</span> $=$ $\displaystyle\sum_f$ <span title = "Landed catch of stock s at age a in fishery f during time step t">$(Catch_{s,a,f,t}$</span> $+$ <span title = "Drop-off mortality of stock s at age a in fishery f at time step t">$Dropoff_{s,a,f,t}$</span> $+$ <span title = "Sublegal encounters of stock s at age a in fishery f during time step t">$Shakers_{s,a,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age a in fishery f during time step t">$AdultRelMort_{s,a,f,t}$</span> $+$ <span title = "Non-retention mortality of stock s at age a in fishery f during time step t">$CNR_{s,a,f,t})$</span></div></p>
+<p>**(10)**<div style = "text-align:center"><span title = "Total pre-terminal fishery mortalities for stock s at age a during time step t">$TotMort_{s,a,t}$</span> $=$ <span class = "math">$\displaystyle\sum_f$</span> <span title = "Landed catch of stock s at age a in fishery f during time step t">$(Catch_{s,a,f,t}$</span> $+$ <span title = "Drop-off mortality of stock s at age a in fishery f at time step t">$Dropoff_{s,a,f,t}$</span> $+$ <span title = "Sublegal encounters of stock s at age a in fishery f during time step t">$Shakers_{s,a,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age a in fishery f during time step t">$AdultRelMort_{s,a,f,t}$</span> $+$ <span title = "Non-retention mortality of stock s at age a in fishery f during time step t">$CNR_{s,a,f,t})$</span></div></p>
 
 The remaining cohort is then calculated as:
 
@@ -314,7 +328,7 @@ See (Hagen-Breaux et al. 2013) for a detailed description of the equations.
 While the stocks included in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> account for the majority of the Chinook caught in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries, there are some stocks that are not represented in the model (see section 2.1). To account for these stocks, fisheries with non-model-stock impacts are supplied with an externally computed model-stock proportion. The Model-stock proportion <span title = "MSP: Model-stock proportion">(MSP)</span> is a constant that is either calculated independently or produced during base period development. It represents the percentage of a fishery’s total catch that is accounted for by model stocks. 
 
 **(20)**
-$$MSP_f = \frac{\displaystyle\sum\limits_{s,a,t} Catch_{s,a,f,t}}{TotalCatch_f}$$
+<span class = "math">$$MSP_f = \frac{\displaystyle\sum\limits_{s,a,t} Catch_{s,a,f,t}}{TotalCatch_f}$$</span>
 
 # 5. Terminal Area Management Module
 
