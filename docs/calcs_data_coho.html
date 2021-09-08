@@ -446,24 +446,24 @@ div.tocify {
 <h1>1. Model Structure</h1>
 <div id="stocks" class="section level2">
 <h2>1.1. Stocks</h2>
-<p>Currently, 123 stock groups are represented in Coho <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Fishery_Regulation_Assessment_Model_(FRAM)" target = "_blank" title = "FRAM: Fishery Regulation Assessment Model">FRAM</a>. Each of these stock groups have both <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Marked" target = "_blank" title = "marked">marked</a> (adipose fin clipped) and unmarked components to permit assessment of mark-selective fishery regulations; therefore, the current version of <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> has a total of 246 stock units (<strong>Appendix 1</strong>). Model stocks may represent an individual salmon stock or an aggregate of stocks from the same region. Stock units represented in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> were chosen based on the level of management interest, their contribution to <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Pacific_Fishery_Management_Council_(PFMC)" target = "_blank" title = "PFMC: Pacific Fishery Management Council">PFMC</a> fisheries, and the availability of representative coded-wire tag (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" target = "_blank" title = "CWT: Coded-wire tag">CWT</a>) recoveries in the Regional Mark Information System (<a title = "RMIS" href = "https://www.rmpc.org/" target = "_blank">RMIS</a>). Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> includes a comprehensive set of stocks originating from Central California to Southeast Alaska and is considered to represent total West Coast production. For coho, only age three fish are included in the model.</p>
+<p>Currently, 123 <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Stock" target = "_blank" title = "Stock">stock</a> groups are represented in Coho <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Fishery_Regulation_Assessment_Model_(FRAM)" target = "_blank" title = "FRAM: Fishery Regulation Assessment Model">FRAM</a>. Each of these stock groups have both <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Marked" target = "_blank" title = "marked">marked</a> (adipose fin clipped) and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Unmarked" target = "_blank" title = "Unmarked">unmarked</a> components to permit assessment of mark-selective fishery regulations; therefore, the current version of <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> has a total of 246 stock units (<strong>Appendix 1</strong>). Model stocks may represent an individual salmon stock or an aggregate of stocks from the same region. Stock units represented in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> were chosen based on the level of management interest, their contribution to <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Pacific_Fishery_Management_Council_(PFMC)" target = "_blank" title = "PFMC: Pacific Fishery Management Council">PFMC</a> fisheries, and the availability of representative coded-wire tag (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" target = "_blank" title = "CWT: Coded-wire tag">CWT</a>) recoveries in the Regional Mark Information System (<a title = "RMIS: Regional Mark Information System" href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Regional_Mark_Information_System_(RMIS)" target = "_blank">RMIS</a>). Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> includes a comprehensive set of stocks originating from Central California to Southeast Alaska and is considered to represent total West Coast production. For coho, only age three fish are included in the model.</p>
 </div>
 <div id="fisheries" class="section level2">
 <h2>1.2. Fisheries</h2>
-<p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> includes pre-terminal and terminal fisheries in southeast Alaska, Canada, Puget Sound, and off the coasts of Washington, Oregon, and California. There are 198 fisheries in Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> A unique fishery identification number and fishery name for each of the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries are listed in <strong>Appendix 3</strong>. Terminal fisheries in Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> include individual freshwater fisheries. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> can model <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Directed_Fishery" target = "_blank" title = "Directed fishery">directed fisheries</a>, mark-selective fisheries, and non-retention fisheries, and also calculates fisheries-related <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Incidental_Mortality" target = "_blank" title = "Incidental mortality">incidental mortalities</a>.</p>
+<p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> includes <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Pre-terminal_Fishery" target = "_blank" title = "Pre-terminal fishery">pre-terminal</a> and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Fishery" target = "_blank" title = "Terminal fishery">terminal fisheries</a> in southeast Alaska, Canada, Puget Sound, and off the coasts of Washington, Oregon, and California. There are 198 fisheries in Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> A unique fishery identification number and fishery name for each of the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries are listed in <strong>Appendix 3</strong>. Terminal fisheries in Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> include individual freshwater fisheries. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> can model <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Directed_Fishery" target = "_blank" title = "Directed fishery">directed fisheries</a>, mark-selective fisheries, and non-retention fisheries, and also calculates fisheries-related <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Incidental_Mortality" target = "_blank" title = "Incidental mortality">incidental mortalities</a>.</p>
 </div>
 <div id="time-steps" class="section level2">
 <h2>1.3. Time Steps</h2>
-<p>The time step structure used in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> represents a level of resolution that corresponds to data availability, fishery management structure, and species-specific migration and maturation schedules. Recoveries of <span title="CWT: Coded wire tag">CWTs</span> for each stock unit during years with widespread tagging and fisheries (the reference <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Base_Period" target = "_blank" title = "Base period">base period</a>, explained further in <strong>Section 3</strong>) are used to estimate model parameters such as exploitation rates. The amount of recovery data available by stock unit and fishery in the historical <span title="CWT: Coded wire tag">CWT</span> database limit the time-step resolution of the model. Decreasing the number of <span title="CWT: Coded wire tag">CWT</span> recoveries in a time step by making the time step shorter can increase the variance of the estimated parameters in those strata. In recognition of these data limitations, efforts were made to restrict the level of time step resolution to that necessary for fishery management purposes.</p>
+<p>The <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Time_Step" target = "_blank" title = "Time step">time step</a> structure used in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> represents a level of resolution that corresponds to data availability, fishery management structure, and species-specific migration and maturation schedules. Recoveries of <span title="CWT: Coded wire tag">CWTs</span> for each stock unit during years with widespread tagging and fisheries (the reference <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Base_Period" target = "_blank" title = "Base period">base period</a>, explained further in <strong>Section 3</strong>) are used to estimate model <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Parameter" target = "_blank" title = "Parameter">parameters</a> such as exploitation rates. The amount of recovery data available by stock unit and fishery in the historical <span title="CWT: Coded wire tag">CWT</span> database limit the time-step resolution of the model. Decreasing the number of <span title="CWT: Coded wire tag">CWT</span> recoveries in a time step by making the time step shorter can increase the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Variance" target = "_blank" title = "Variance">variance</a> of the estimated parameters in those strata. In recognition of these data limitations, efforts were made to restrict the level of time step resolution to that necessary for fishery management purposes.</p>
 <p>At each time step, a stock experiences <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Natural_Mortality" target = "_blank" title = "Natural mortality">natural mortality</a>, and can be subjected to pre-terminal fisheries, and terminal fisheries.</p>
 <p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> contains five time periods for coho, covering a single calendar year (<strong>Appendix Table 5</strong>).</p>
 <p>Table 1. Time step structure used in Coho FRAM.</p>
-<div id="nvvjpimsqh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="qsryhyagyu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#nvvjpimsqh .gt_table {
+#qsryhyagyu .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -488,7 +488,7 @@ div.tocify {
   border-left-color: #D3D3D3;
 }
 
-#nvvjpimsqh .gt_heading {
+#qsryhyagyu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -500,7 +500,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#nvvjpimsqh .gt_title {
+#qsryhyagyu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -510,7 +510,7 @@ div.tocify {
   border-bottom-width: 0;
 }
 
-#nvvjpimsqh .gt_subtitle {
+#qsryhyagyu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -520,13 +520,13 @@ div.tocify {
   border-top-width: 0;
 }
 
-#nvvjpimsqh .gt_bottom_border {
+#qsryhyagyu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nvvjpimsqh .gt_col_headings {
+#qsryhyagyu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -541,7 +541,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#nvvjpimsqh .gt_col_heading {
+#qsryhyagyu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -561,7 +561,7 @@ div.tocify {
   overflow-x: hidden;
 }
 
-#nvvjpimsqh .gt_column_spanner_outer {
+#qsryhyagyu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -573,15 +573,15 @@ div.tocify {
   padding-right: 4px;
 }
 
-#nvvjpimsqh .gt_column_spanner_outer:first-child {
+#qsryhyagyu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nvvjpimsqh .gt_column_spanner_outer:last-child {
+#qsryhyagyu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nvvjpimsqh .gt_column_spanner {
+#qsryhyagyu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -593,7 +593,7 @@ div.tocify {
   width: 100%;
 }
 
-#nvvjpimsqh .gt_group_heading {
+#qsryhyagyu .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -615,7 +615,7 @@ div.tocify {
   vertical-align: middle;
 }
 
-#nvvjpimsqh .gt_empty_group_heading {
+#qsryhyagyu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -630,15 +630,15 @@ div.tocify {
   vertical-align: middle;
 }
 
-#nvvjpimsqh .gt_from_md > :first-child {
+#qsryhyagyu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nvvjpimsqh .gt_from_md > :last-child {
+#qsryhyagyu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nvvjpimsqh .gt_row {
+#qsryhyagyu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -657,7 +657,7 @@ div.tocify {
   overflow-x: hidden;
 }
 
-#nvvjpimsqh .gt_stub {
+#qsryhyagyu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -669,7 +669,7 @@ div.tocify {
   padding-left: 12px;
 }
 
-#nvvjpimsqh .gt_summary_row {
+#qsryhyagyu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -679,7 +679,7 @@ div.tocify {
   padding-right: 5px;
 }
 
-#nvvjpimsqh .gt_first_summary_row {
+#qsryhyagyu .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -689,7 +689,7 @@ div.tocify {
   border-top-color: #D3D3D3;
 }
 
-#nvvjpimsqh .gt_grand_summary_row {
+#qsryhyagyu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -699,7 +699,7 @@ div.tocify {
   padding-right: 5px;
 }
 
-#nvvjpimsqh .gt_first_grand_summary_row {
+#qsryhyagyu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -709,11 +709,11 @@ div.tocify {
   border-top-color: #D3D3D3;
 }
 
-#nvvjpimsqh .gt_striped {
+#qsryhyagyu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nvvjpimsqh .gt_table_body {
+#qsryhyagyu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -722,7 +722,7 @@ div.tocify {
   border-bottom-color: #D3D3D3;
 }
 
-#nvvjpimsqh .gt_footnotes {
+#qsryhyagyu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -736,13 +736,13 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#nvvjpimsqh .gt_footnote {
+#qsryhyagyu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#nvvjpimsqh .gt_sourcenotes {
+#qsryhyagyu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -756,41 +756,41 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#nvvjpimsqh .gt_sourcenote {
+#qsryhyagyu .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#nvvjpimsqh .gt_left {
+#qsryhyagyu .gt_left {
   text-align: left;
 }
 
-#nvvjpimsqh .gt_center {
+#qsryhyagyu .gt_center {
   text-align: center;
 }
 
-#nvvjpimsqh .gt_right {
+#qsryhyagyu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nvvjpimsqh .gt_font_normal {
+#qsryhyagyu .gt_font_normal {
   font-weight: normal;
 }
 
-#nvvjpimsqh .gt_font_bold {
+#qsryhyagyu .gt_font_bold {
   font-weight: bold;
 }
 
-#nvvjpimsqh .gt_font_italic {
+#qsryhyagyu .gt_font_italic {
   font-style: italic;
 }
 
-#nvvjpimsqh .gt_super {
+#qsryhyagyu .gt_super {
   font-size: 65%;
 }
 
-#nvvjpimsqh .gt_footnote_marks {
+#qsryhyagyu .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -826,18 +826,18 @@ div.tocify {
 <div id="assumptions-and-limitations" class="section level1">
 <h1>2. Assumptions and Limitations</h1>
 <p><em>Major assumptions and limitations of the model are briefly described below.</em></p>
-<p><strong><span title="CWT: Coded wire tag">CWT</span> fish accurately represent the modeled stock.</strong> Many <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks are aggregates of stocks that are represented by <span title="CWT: Coded wire tag">CWTs</span> from only one production type, usually hatchery origin. For example, in nearly all cases wild/<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Natural" target = "_blank" title = "Natural">natural</a> stocks are aggregated with <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Hatchery" target = "_blank" title = "Hatchery">hatchery</a> stocks and both are represented by the hatchery stock’s <span title="CWT: Coded wire tag">CWT</span> data. Therefore, for each modeled stock aggregate, it is assumed that the tagged and untagged fish are distributed and exploited at the same rates.</p>
-<p><strong>Each stock unit and age class is exploited as a single pool.</strong> All pre-terminal fisheries operate on the entire cohort simultaneously in each time step, and all terminal fisheries operate on the mature run.</p>
+<p><strong><span title="CWT: Coded wire tag">CWT</span> fish accurately represent the modeled stock.</strong> Many <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks are aggregates of stocks that are represented by <span title="CWT: Coded wire tag">CWTs</span> from only one production type, usually hatchery origin. For example, in nearly all cases wild/<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Natural" target = "_blank" title = "Natural">natural</a> stocks are aggregated with <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Hatchery" target = "_blank" title = "Hatchery">hatchery</a> stocks and both are represented by the hatchery stock’s <span title="CWT: Coded wire tag">CWT</span> data. Therefore, for each modeled stock aggregate, it is assumed that the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Tagged" target = "_blank" title = "Tagged">tagged</a> and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Untagged" target = "_blank" title = "Untagged">untagged</a> fish are distributed and exploited at the same rates.</p>
+<p>**Each stock unit and age class is exploited as a &lt;a href = “<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Single_Pool_Model" class="uri">https://framverse.github.io/fram_doc/calcs_glossary.html#Single_Pool_Model</a> target =”_blank" title = “Single pool model”&gt;single pool</a>.** All pre-terminal fisheries operate on the entire cohort simultaneously in each time step, and all terminal fisheries operate on the mature run.</p>
 <p><strong>Natural mortality is constant from year to year.</strong> Natural mortality is assumed to be constant across months for all stocks.</p>
 <p><strong>Stock distribution and migration is constant from year to year and is represented by the average distribution of <span title="CWT: Coded wire tag">CWT</span> recoveries during the reference base period.</strong> We currently lack data on the annual variability in distribution and migration patterns of Chinook and coho salmon stocks. In the absence of such estimates, fishery-specific exploitation rates are computed relative to the entire cohort.</p>
 </div>
 <div id="model-parameterization" class="section level1">
 <h1>3. Model Parameterization</h1>
-<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> data are stored as tables in an ACCESS database. All the information needed for a “simple model run” (link to chapter in user manual) is stored in these tables, containing input as well as output data. Input data can be grouped into two main categories: static base period data and annual run data (see <strong>section 3.1</strong>). Main <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> outputs are mortalities (landed, mark-selective, sublegal, non-retention, drop-off) and abundances (starting cohorts at each time step; abundances after natural mortalities, pre-terminal, and terminal fisheries).</p>
+<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> data are stored as tables in an ACCESS database. All the information needed for a “simple model run” (link to chapter in user manual) is stored in these tables, containing input as well as output data. Input data can be grouped into two main categories: static base period data and annual run data (see <strong>section 3.1</strong>). Main <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> outputs are mortalities (landed, mark-selective, <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target = "_blank" title = "Sublegal">sublegal</a>, non-retention, drop-off) and abundances (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Starting_Cohort" target = "_blank" title = "Starting cohort">starting cohorts</a> at each time step; abundances after natural mortalities, pre-terminal, and terminal fisheries).</p>
 <p>Table 2. Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> MS Accesss Database Tables. <img src="images/Coho_FRAM_database_tables.PNG" /><!-- --></p>
 <div id="fram-input-data" class="section level2">
 <h2>3.1. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> Input Data</h2>
-<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> input data consist of two main input types: base period reference data and annual data. Base period data remain constant until a new base period replaces the existing one. The principal base period inputs are stock-fishery specific exploitation rates. Other base period parameters include base period catches and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Size" target = "_blank" title = "Cohort size">cohort sizes</a>. The second input type consists of annual data that can vary with each model run, such as stock specific abundance estimates, fishery catches, size limits, etc.</p>
+<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> input data consist of two main input types: base period reference data and annual data. Base period data remain constant until a new base period replaces the existing one. The principal base period inputs are stock-fishery specific exploitation rates. Other base period parameters include base period catches and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Size" target = "_blank" title = "Cohort size">cohort sizes</a>. The second input type consists of annual data that can vary with each model run, such as stock specific abundance estimates, fishery catches, <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Size_Limit" target = "_blank" title = "Size limit">size limits</a>, etc.</p>
 <div id="base-period-data" class="section level3">
 <h3>3.1.1. Base Period Data</h3>
 <p><span title="CWT: Coded wire tag">CWT</span> recoveries are used to estimate model parameters such as time/area/fishery exploitation rates and maturation rates for modeled stocks. The years from which <span title="CWT: Coded wire tag">CWT</span> recoveries are used to estimate these parameters are referred to as the reference “base period.” These parameter estimates are derived through species-specific <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Analysis" target = "_blank" title = "Cohort analyses">cohort analyses</a>. Each cohort analysis is a series of procedures that use <span title="CWT: Coded wire tag">CWT</span> recoveries and base period catch and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target = "_blank" title = "Escapement">escapement</a> data to “back-calculate,” or reconstruct, a pre-fishing cohort size for each stock using assumed natural mortality and incidental mortality rates. See (Model Evaluation Workgroup, 2008) for a more detailed description of the cohort analysis procedures.</p>
@@ -846,13 +846,13 @@ div.tocify {
 <div id="annual-data" class="section level3">
 <h3>3.1.2. Annual Data</h3>
 <p>Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> uses five general types of input. Three of these input types (<span title="a. Cohort abundance; b. Fishery landed catch; d. Mark-selective fisheries">a, b, d</span>) are submitted annually to reflect projected stock abundances and proposed fishery regulations for the current model year. The remaining two types of input (<span title="c. Release-mortality rates; e. Other non-landed mortality rates">c, e</span>) are specifications for fishery-related mortalities that can change as more information becomes available through additional data collection or studies, but typically do not change annually.</p>
-<p><strong>a.</strong> <em>Cohort Abundance</em>: For each stock unit, an annual abundance is obtained from a source that is independent of the model, typically in the form of an ocean age-3 run size (pre-fishing age-3 abundance in the ocean after natural mortality has been subtracted). In a pre-season context these abundances come from annual forecasts, whereas in a post-season context the abundances are derived from estimates of actual returns. For coho, an initial stock abundance is needed for adult fish (age-3) by mark status.</p>
-<p><strong>b.</strong> <em>Fishery Landed Catch</em>: The model provides three options for setting the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Landed_Catch" target = "_blank" title = "Landed catch">catch</a> in a fishery: a quota, a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Fishery_Scaler" target = "_blank" title = "Fishery scaler">fishery scaler</a>, and a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Harvest_Rate_(HR)" target = "_blank" title = "HR: Harvest rate">harvest rate</a> (for Puget Sound and Washington coastal terminal fisheries).</p>
+<p><strong>a.</strong> <em>Cohort Abundance</em>: For each stock unit, an annual abundance is obtained from a source that is independent of the model, typically in the form of an ocean age-3 run size (pre-fishing age-3 abundance in the ocean after natural mortality has been subtracted). In a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Pre-season" target = "_blank" title = "Pre-season">pre-season</a> context these abundances come from annual forecasts, whereas in a <a href = https://framverse.github.io/fram_doc/calcs_glossary.html#Post-season" target = "_blank" title = "Post-season">post-season</a> context the abundances are derived from estimates of actual returns. For coho, an initial stock abundance is needed for adult fish (age-3) by mark status.</p>
+<p><strong>b.</strong> <em>Fishery Landed Catch</em>: The model provides three options for setting the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Landed_Catch" target = "_blank" title = "Landed catch">catch</a> in a fishery: a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Quota" target = "_blank" title = "Quota">quota</a>, a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Fishery_Scaler" target = "_blank" title = "Fishery scaler">fishery scaler</a>, and a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Harvest_Rate_(HR)" target = "_blank" title = "HR: Harvest rate">harvest rate</a> (for Puget Sound and Washington coastal terminal fisheries).</p>
 <p><u>Quota</u>: Catch in the fishery is set equal to a numeric value input by the user.<br> <u>Fishery Scaler</u>: The fishery is scaled relative to the effort during the reference base period using a scaler value input by the user.<br />
-<u>Harvest rate</u>: Using the Puget Sound <span title="TAMM: Terminal Area Management Module">TAMM</span>, a terminal area harvest rate can be applied to terminal area fisheries.</p>
+<u>Harvest rate</u>: Using the Puget Sound <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Area_Management_Module_(TAMM)" target = "_blank" title = "TAMM: Terminal Area Management Module">TAMM</a>, a terminal area harvest rate can be applied to terminal area fisheries.</p>
 <p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> inputs for quota and fishery scaler can be identified as either a conventional retention fishery or a mark-selective fishery and modeled accordingly. Modeling as a mark-selective fishery initiates additional calculations to estimate catches, <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Encounter" target = "_blank" title = "Encounter">encounters</a>, and mortalities differently for marked and unmarked groups.</p>
-<p><strong>c.</strong> <em>Release Mortality Rates</em>: This is the mortality associated with the release of landed fish from hook-and-line and other gear types. Release mortality rates are designated by species, geographic area, fishery type and gear type (Appendix 6). Release mortality is assessed when coho are not retained (“non-retention” or <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#ChinookCoho_Non-retention_(CNR)_Fisheries" target = "_blank" title = "CNR: Coho non-retention">CNR fisheries</a>) as well as in mark-selective fisheries. A number of studies have estimated release mortality for hook-and-line fisheries, and release mortality rates for troll and recreational fisheries in the ocean have been formally adopted by the <span title="PFMC: Pacific Fishery Management Council">PFMC</span>. Release mortality in net fisheries with non-retention is estimated externally to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> and provided as an input to the model.</p>
-<p><strong>d.</strong> <em>Mark-selective fisheries</em> have two additional variations of “release” mortality that are described as either the inappropriate retention of an unmarked fish or the release of a marked fish that consequently experiences release mortality. The failure to release an unmarked fish is a user input to the model called “<u>Unmarked Retention Error</u>” (or Retention Error Rate) and is the proportion of the unmarked fish encountered that are retained. The release of marked fish is a user input to the model called “<u><a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Marked_Recognition_Error_Rate" target = "_blank" title = "Marked recognition error rate">Marked Recognition Error</a></u>” and it is the proportion of the marked fish encountered that are released; these released marked fish are then subject to release mortality. These rates are updated annually based on fishery monitoring data.</p>
+<p><strong>c.</strong> <em>Release Mortality Rates</em>: This is the mortality associated with the release of landed fish from hook-and-line and other gear types. Release mortality rates are designated by species, geographic area, fishery type and gear type (Appendix 6). Release mortality is assessed when coho are not retained (“non-retention” or <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#ChinookCoho_Non-retention_(CNR)_Fisheries" target = "_blank" title = "CNR: Coho non-retention">CNR fisheries</a>) as well as in mark-selective fisheries. A number of studies have estimated release mortality for hook-and-line fisheries, and release mortality rates for <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Troll_Fishery" target = "_blank" title = "Troll fishery">troll</a> and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Recreational_Fisheries" target = "_blank" title = "Recreational fisheries">recreational fisheries</a> in the ocean have been formally adopted by the <span title="PFMC: Pacific Fishery Management Council">PFMC</span>. Release mortality in net fisheries with non-retention is estimated externally to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> and provided as an input to the model.</p>
+<p><strong>d.</strong> <em>Mark-selective fisheries</em> have two additional variations of “release” mortality that are described as either the inappropriate retention of an unmarked fish or the release of a marked fish that consequently experiences release mortality. The failure to release an unmarked fish is a user input to the model called “<u>Unmarked Retention Error</u>” (or <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Unmarked_Retention_Error_Rate" target = "_blank" title = "Unmarked retention error rate">Retention Error Rate</a>) and is the proportion of the unmarked fish encountered that are retained. The release of marked fish is a user input to the model called “<u><a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Marked_Recognition_Error_Rate" target = "_blank" title = "Marked recognition error rate">Marked Recognition Error</a></u>” and it is the proportion of the marked fish encountered that are released; these released marked fish are then subject to release mortality. These rates are updated annually based on fishery monitoring data.</p>
 <p><strong>e.</strong> <em>Other Non-landed Mortality Rates</em>: This includes fishing-induced mortality not associated with directly handling fish. <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Drop-off_Mortality" target = "_blank" title = "Drop-off mortality">Drop-off mortality</a> occurs when fish in sport and troll hook-and-line fisheries drop off the hook before they are brought to the vessel yet die from hook injuries. <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Drop-out_Mortality" target = "_blank" title = "Drop-out mortality">Drop-out mortality</a> occurs when fish in commercial net fisheries are not brought on board but die from injury as a result of being netted. For simplicity, both types are referred to as drop-off mortality in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. Net drop-out mortality rates vary depending on species, net type, or timing (pre-terminal or terminal) of the fishery. In general, a 5% drop-off mortality rate is applied to the landed catch to account for “other <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Non-landedNon-retention_Mortality" target = "_blakn" title = "Non-landed mortality">non-landed mortalities</a>” in hook-and-line fisheries (see <strong>Appendix 6</strong>).</p>
 </div>
 </div>
@@ -869,7 +869,7 @@ div.tocify {
 <h2>4.2. Computational Processes</h2>
 <p><strong>Cohort Abundance</strong></p>
 <p><u>Process 1: Cohort Abundance at the Start of the Time Step</u></p>
-<p>The starting cohort size in time step 1 is a product of two parameters: (<em>1</em>) the base period cohort size for stock <em>s</em> at age 3 in the first time period (<span title="Base period cohort abundance estimate of stock s at age 3"><span class="math inline"><em>B</em><em>P</em><em>C</em><em>o</em><em>h</em><em>o</em><em>r</em><em>t</em><em>s</em><sub><em>s</em>, <em>a</em> = 3</sub></span></span>) and (<em>2</em>) a stock and age-specific scaler (<span title="Stock recruit scaler of stock s at age 3"><span class="math inline"><em>S</em><em>t</em><em>o</em><em>c</em><em>k</em><em>S</em><em>c</em><em>a</em><em>l</em><em>e</em><em>r</em><em>s</em><sub><em>s</em>, <em>a</em> = 3</sub></span></span>). The scaler is an annual model input.</p>
+<p>The starting cohort size in time step 1 is a product of two parameters: (<em>1</em>) the base period cohort size for stock <em>s</em> at age 3 in the first time period (<span title="Base period cohort abundance estimate of stock s at age 3"><span class="math inline"><em>B</em><em>P</em><em>C</em><em>o</em><em>h</em><em>o</em><em>r</em><em>t</em><em>s</em><sub><em>s</em>, <em>a</em> = 3</sub></span></span>) and (<em>2</em>) a stock and age-specific scaler (<span title="Stock recruit scaler of stock s at age 3"><span class="math inline"><em>S</em><em>t</em><em>o</em><em>c</em><em>k</em><em>S</em><em>c</em><em>a</em><em>l</em><em>e</em><em>r</em><em>s</em><sub><em>s</em>, <em>a</em> = 3</sub></span></span>). The <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Stock_Recruit_Scaler" target = "_blank" title = "Stock recruit scaler">stock recruit scaler</a> is an annual model input.</p>
 <p>
 <strong>(1)</strong>
 <div style="text-align:center">
@@ -902,8 +902,8 @@ div.tocify {
 <ul>
 <li><span title="Base period exploitation rate for stock s at age 3 in fishery f during time step t"><span class="math inline"><em>B</em><em>P</em><em>E</em><em>R</em><sub><em>s</em>, <em>a</em> = 3, <em>f</em>, <em>t</em></sub></span></span> is the base period exploitation rate for stock <em>s</em>, at age 3, in fishery <em>f</em>, during time step <em>t</em>.</li>
 <li><span title="Fishery scaler for fishery f during time step t"><span class="math inline"><em>F</em><em>i</em><em>s</em><em>h</em><em>e</em><em>r</em><em>y</em><em>S</em><em>c</em><em>a</em><em>l</em><em>e</em><em>r</em><sub><em>f</em>, <em>t</em></sub></span></span> is an annual model input that relates expected catch (or effort) in the model year back to average catch (or effort) druing the base period.</li>
-<li><span title="Portion vulnerable of stock s at age 3 in fishery f during time step t"><span class="math inline"><em>P</em><em>V</em><sub><em>s</em>, <em>a</em> = 3, <em>f</em>, <em>t</em></sub></span></span> is the portion of the stock cohort <em>s</em>, at age 3, during time step <em>t</em> that is of legal size in fishery <em>f</em> (i.e. portion vulnerable; PV). For coho, <span title="PV: Portion vulnerable">PV</span> is always 1 and can be eliminated from the equation.</li>
-<li><span title="Stock fishery rate scaler for stock s in fishery f during time step t"><span class="math inline"><em>S</em><em>H</em><em>R</em><em>F</em><sub><em>s</em>, <em>f</em>, <em>t</em></sub></span></span> is the stock fishery rate scaler for stock <em>s</em> in fishery <em>f</em> during time step <em>t</em>. The <span title="Stock fishery rate scaler"><span class="math inline"><em>S</em><em>H</em><em>R</em><em>F</em></span></span> is optional and can be used to adjust impacts for individual stocks in a fishery and time step; i.e., if <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> output for an individual stock significantly deviates from expectations, then the user can make adjustments by providing a <span title="Stock fishery rate scaler"><span class="math inline"><em>S</em><em>H</em><em>R</em><em>F</em></span></span> scaler.</li>
+<li><span title="Portion vulnerable of stock s at age 3 in fishery f during time step t"><span class="math inline"><em>P</em><em>V</em><sub><em>s</em>, <em>a</em> = 3, <em>f</em>, <em>t</em></sub></span></span> is the portion of the stock cohort <em>s</em>, at age 3, during time step <em>t</em> that is of legal size in fishery <em>f</em> (i.e. portion vulnerable; <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Proportion_Vulnerable_(PV)" target = "_blank" title = "PV: Proportion vulnerable">PV</a>). For coho, <span title="PV: Portion vulnerable">PV</span> is always 1 and can be eliminated from the equation.</li>
+<li><span title="Stock fishery rate scaler for stock s in fishery f during time step t"><span class="math inline"><em>S</em><em>H</em><em>R</em><em>F</em><sub><em>s</em>, <em>f</em>, <em>t</em></sub></span></span> is the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Stock_Fishery_Rate_Scaler_(SHRF)" target = "_blank" title = "SHRF: Stock Fishery Rate Scaler">stock fishery rate scaler</a> for stock <em>s</em> in fishery <em>f</em> during time step <em>t</em>. The <span title="Stock fishery rate scaler"><span class="math inline"><em>S</em><em>H</em><em>R</em><em>F</em></span></span> is optional and can be used to adjust impacts for individual stocks in a fishery and time step; i.e., if <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> output for an individual stock significantly deviates from expectations, then the user can make adjustments by providing a <span title="Stock fishery rate scaler"><span class="math inline"><em>S</em><em>H</em><em>R</em><em>F</em></span></span> scaler.</li>
 </ul>
 <p>The <span title="Fishery scaler for fishery f during time step t"><span class="math inline"><em>F</em><em>i</em><em>s</em><em>h</em><em>e</em><em>r</em><em>y</em><em>S</em><em>c</em><em>a</em><em>l</em><em>e</em><em>r</em><sub><em>f</em>, <em>t</em></sub></span></span> is the foundation for the fishery simulation algorithms. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> can evaluate two general types of fisheries: effort-based or catch-based. For effort-based fisheries, the <span title="Fishery scaler for fishery f during time step t"><span class="math inline"><em>F</em><em>i</em><em>s</em><em>h</em><em>e</em><em>r</em><em>y</em><em>S</em><em>c</em><em>a</em><em>l</em><em>e</em><em>r</em><sub><em>f</em>, <em>t</em></sub></span></span> is specified by the user to reflect expected effort during the model year relative to the average effort observed during the base period. For catch-based fisheries, the <span title="Fishery scaler for fishery f during time step t"><span class="math inline"><em>F</em><em>i</em><em>s</em><em>h</em><em>e</em><em>r</em><em>y</em><em>S</em><em>c</em><em>a</em><em>l</em><em>e</em><em>r</em><sub><em>f</em>, <em>t</em></sub></span></span> is computed by <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> to obtain a user-specified catch level (i.e. a quota).</p>
 <p><u><strong>3b.</strong> Drop-off mortalities are estimated</u> by multiplying either <strong>a</strong>) landed catch in a non-selective retention fishery, or <strong>b</strong>) total encounters in a mark-selective fishery, by a user-specified drop-off mortality rate (<span title="Drop-off mortality rate of fishery f"><span class="math inline"><em>D</em><em>r</em><em>o</em><em>p</em><em>R</em><em>a</em><em>t</em><em>e</em><sub><em>f</em></sub></span></span> see Appendix 7)</p>
@@ -993,7 +993,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
 </p>
 <p>Escapement is defined as the number of fish that remain in the mature cohort after removal of all terminal-area fishery related mortality. For coho modeling, which includes freshwater fisheries, escapement represents the adult spawning abundance if mortality during “pre-spawning” holding time is negligible.</p>
 <p><u> Process 5: <span title="TAMM: Terminal Area Management Module">TAMM</span> Iterations</u></p>
-<p>If the last time step has been completed, <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> receives terminal fishery impacts (Figure 3) from the Terminal Area Management Module (TAMM) (<strong>Chapter 5</strong>). <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> then estimates the terminal fishery impacts using the numbers from <span title="TAMM: Terminal Area Management Module">TAMM</span> and compares that to the original <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> results. If these numbers are equal (less than 0.1% or fewer than 4 fish difference), the model is done. If these numbers are not equal, an iterative process is initiated during which <span title="TAMM: Terminal Area Management Module">TAMM</span> terminal fishery impacts are used to adjust <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> terminal fishery impacts until there is convergence.</p>
+<p>If the last time step has been completed, <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> receives terminal fishery impacts (Figure 3) from the Terminal Area Management Module (TAMM) (<strong>Chapter 5</strong>). <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> then estimates the terminal fishery impacts using the numbers from <span title="TAMM: Terminal Area Management Module">TAMM</span> and compares that to the original <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> results. If these numbers are equal (less than 0.1% or fewer than 4 fish difference), the model is done. If these numbers are not equal, an <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#TAMM_Iterations" target = "_blank" title = "TAMM iterations">iterative</a> process is initiated during which <span title="TAMM: Terminal Area Management Module">TAMM</span> terminal fishery impacts are used to adjust <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> terminal fishery impacts until there is convergence.</p>
 <p>Finally, <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> sends terminal marine and freshwater run sizes and fishing mortality to the <span title="TAMM: Terminal Area Management Module">TAMM</span> file for use in additional calculations and final reporting.</p>
 </div>
 <div id="processing-schematic" class="section level2">
@@ -1026,14 +1026,14 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
 </div>
 <div id="terminal-area-management-module" class="section level1">
 <h1>5. Terminal Area Management Module</h1>
-<p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> program interacts with the <span title="TAMM: Terminal Area Management Module">TAMM</span>, a species-specific Microsoft Excel file, which allows users to specify alternative terminal fishery inputs and to calculate impacts on a finer level of resolution than <span title="FRAM: Fishery Regulation Assessment Model">FRAM.</span> <span title="TAMM: Terminal Area Management Module">TAMM</span> has separate sections for each of the six Puget Sound terminal regions defined in the Puget Sound Salmon Management Plan (PSSP 1985, Table 3) for the State of Washington and the Treaty Tribes of Puget Sound. <span title="TAMM: Terminal Area Management Module">TAMM</span> is best understood in its historic context. It is a terminal-area-centric fisheries model. Prior to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> development, information of stock-specific fishery impacts was not readily available. Management was based on terminal run reconstructions that assigned 100% of terminal catches to the local stock and computed terminal harvest rates as catch in the terminal area divided by terminal run size. To this day, most <span title="TAMM: Terminal Area Management Module">TAMM</span> inputs for terminal marine fisheries are still derived by including non-local stock impacts. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> takes these inputs from <span title="TAMM: Terminal Area Management Module">TAMM</span> and accounts for non-local stock impacts before reporting stock specific impacts back to <span title="TAMM: Terminal Area Management Module">TAMM.</span> <span title="TAMM: Terminal Area Management Module">TAMM</span> also develops alternative terminal inputs and modeling for the Washington coast, as well as generating inputs for Columbia River models. Additional <span title="TAMM: Terminal Area Management Module">TAMM</span> functionality also supports development of unique regional management goals and allows managers the flexibility to analyze and report <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model output according to their needs.</p>
+<p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> program interacts with the <span title="TAMM: Terminal Area Management Module">TAMM</span>, a species-specific Microsoft Excel file, which allows users to specify alternative terminal fishery inputs and to calculate impacts on a finer level of resolution than <span title="FRAM: Fishery Regulation Assessment Model">FRAM.</span> <span title="TAMM: Terminal Area Management Module">TAMM</span> has separate sections for each of the six Puget Sound terminal regions defined in the Puget Sound Salmon Management Plan (PSSP 1985, Table 3) for the State of Washington and the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Treaty_Tribes" target = "_blank" title = "Treaty Tribes">Treaty Tribes</a> of Puget Sound. <span title="TAMM: Terminal Area Management Module">TAMM</span> is best understood in its historic context. It is a terminal-area-centric fisheries model. Prior to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> development, information of stock-specific fishery impacts was not readily available. Management was based on terminal run reconstructions that assigned 100% of terminal catches to the local stock and computed terminal harvest rates as catch in the terminal area divided by terminal run size. To this day, most <span title="TAMM: Terminal Area Management Module">TAMM</span> inputs for terminal marine fisheries are still derived by including non-local stock impacts. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> takes these inputs from <span title="TAMM: Terminal Area Management Module">TAMM</span> and accounts for non-local stock impacts before reporting stock specific impacts back to <span title="TAMM: Terminal Area Management Module">TAMM.</span> <span title="TAMM: Terminal Area Management Module">TAMM</span> also develops alternative terminal inputs and modeling for the Washington coast, as well as generating inputs for Columbia River models. Additional <span title="TAMM: Terminal Area Management Module">TAMM</span> functionality also supports development of unique regional management goals and allows managers the flexibility to analyze and report <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model output according to their needs.</p>
 <p>Table 4. Puget Sound Terminal Management Regions.</p>
-<div id="ybfpozqqvp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="mebllxvwao" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ybfpozqqvp .gt_table {
+#mebllxvwao .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1058,7 +1058,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-left-color: #D3D3D3;
 }
 
-#ybfpozqqvp .gt_heading {
+#mebllxvwao .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1070,7 +1070,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-right-color: #D3D3D3;
 }
 
-#ybfpozqqvp .gt_title {
+#mebllxvwao .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1080,7 +1080,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-bottom-width: 0;
 }
 
-#ybfpozqqvp .gt_subtitle {
+#mebllxvwao .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1090,13 +1090,13 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-top-width: 0;
 }
 
-#ybfpozqqvp .gt_bottom_border {
+#mebllxvwao .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ybfpozqqvp .gt_col_headings {
+#mebllxvwao .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1111,7 +1111,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-right-color: #D3D3D3;
 }
 
-#ybfpozqqvp .gt_col_heading {
+#mebllxvwao .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1131,7 +1131,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   overflow-x: hidden;
 }
 
-#ybfpozqqvp .gt_column_spanner_outer {
+#mebllxvwao .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1143,15 +1143,15 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   padding-right: 4px;
 }
 
-#ybfpozqqvp .gt_column_spanner_outer:first-child {
+#mebllxvwao .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ybfpozqqvp .gt_column_spanner_outer:last-child {
+#mebllxvwao .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ybfpozqqvp .gt_column_spanner {
+#mebllxvwao .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1163,7 +1163,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   width: 100%;
 }
 
-#ybfpozqqvp .gt_group_heading {
+#mebllxvwao .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1185,7 +1185,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   vertical-align: middle;
 }
 
-#ybfpozqqvp .gt_empty_group_heading {
+#mebllxvwao .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1200,15 +1200,15 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   vertical-align: middle;
 }
 
-#ybfpozqqvp .gt_from_md > :first-child {
+#mebllxvwao .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ybfpozqqvp .gt_from_md > :last-child {
+#mebllxvwao .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ybfpozqqvp .gt_row {
+#mebllxvwao .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1227,7 +1227,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   overflow-x: hidden;
 }
 
-#ybfpozqqvp .gt_stub {
+#mebllxvwao .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1239,7 +1239,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   padding-left: 12px;
 }
 
-#ybfpozqqvp .gt_summary_row {
+#mebllxvwao .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1249,7 +1249,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   padding-right: 5px;
 }
 
-#ybfpozqqvp .gt_first_summary_row {
+#mebllxvwao .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1259,7 +1259,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-top-color: #D3D3D3;
 }
 
-#ybfpozqqvp .gt_grand_summary_row {
+#mebllxvwao .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1269,7 +1269,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   padding-right: 5px;
 }
 
-#ybfpozqqvp .gt_first_grand_summary_row {
+#mebllxvwao .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1279,11 +1279,11 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-top-color: #D3D3D3;
 }
 
-#ybfpozqqvp .gt_striped {
+#mebllxvwao .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ybfpozqqvp .gt_table_body {
+#mebllxvwao .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1292,7 +1292,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-bottom-color: #D3D3D3;
 }
 
-#ybfpozqqvp .gt_footnotes {
+#mebllxvwao .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1306,13 +1306,13 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-right-color: #D3D3D3;
 }
 
-#ybfpozqqvp .gt_footnote {
+#mebllxvwao .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#ybfpozqqvp .gt_sourcenotes {
+#mebllxvwao .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1326,41 +1326,41 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-right-color: #D3D3D3;
 }
 
-#ybfpozqqvp .gt_sourcenote {
+#mebllxvwao .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#ybfpozqqvp .gt_left {
+#mebllxvwao .gt_left {
   text-align: left;
 }
 
-#ybfpozqqvp .gt_center {
+#mebllxvwao .gt_center {
   text-align: center;
 }
 
-#ybfpozqqvp .gt_right {
+#mebllxvwao .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ybfpozqqvp .gt_font_normal {
+#mebllxvwao .gt_font_normal {
   font-weight: normal;
 }
 
-#ybfpozqqvp .gt_font_bold {
+#mebllxvwao .gt_font_bold {
   font-weight: bold;
 }
 
-#ybfpozqqvp .gt_font_italic {
+#mebllxvwao .gt_font_italic {
   font-style: italic;
 }
 
-#ybfpozqqvp .gt_super {
+#mebllxvwao .gt_super {
   font-size: 65%;
 }
 
-#ybfpozqqvp .gt_footnote_marks {
+#mebllxvwao .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -1394,7 +1394,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
 <li>Use <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> output to complete <span title="TAMM: Terminal Area Management Module">TAMM</span> fishery impact modeling for Puget Sound and the Washington Coast</li>
 <li>Generate <span title="TAMM: Terminal Area Management Module">TAMM</span> reports of combined <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> and <span title="TAMM: Terminal Area Management Module">TAMM</span> fishery impacts</li>
 </ul>
-<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> iteratively finds the fishery scalers that produce the same catches <span title="Catch calculated within FRAM"><span class="math inline">(<em>C</em><em>a</em><em>t</em><em>c</em><em>h</em><sub><em>F</em><em>R</em><em>A</em><em>M</em></sub>)</span></span> as those supplied by <span title="TAMM: Terminal Area Management Module">TAMM</span> <span title="Catch calculated within TAMM"><span class="math inline">(<em>C</em><em>a</em><em>t</em><em>c</em><em>h</em><sub><em>T</em><em>A</em><em>M</em><em>M</em></sub>)</span></span> in Puget Sound and Washington coastal fisheries (Figure 3). <span title="TAMM: Terminal Area Management Module">TAMM</span> catches are either directly input into <span title="TAMM: Terminal Area Management Module">TAMM</span> as catch values or calculated by <span title="TAMM: Terminal Area Management Module">TAMM</span> with user input harvest rates (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Harvest_Rate_(HR)" target = "_blank" title = "HR: Harvest rate">HR</a>) multiplied by a unique terminal run size definition (TRS). The <span title="TRS: Terminal run size">TRS</span> for a <span title="TAMM: Terminal Area Management Module">TAMM</span> region/stock represents ‘run-to-the-river’ of a stock plus catches of all stocks in the terminal fisheries designated for that region. In coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title="TAMM: Terminal Area Management Module">TAMM</span>, terminal run size definitions can be customized (using the TAAETRSList table in the MS Access database) and must be aligned with calculations used for each model input.</p>
+<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> iteratively finds the fishery scalers that produce the same catches <span title="Catch calculated within FRAM"><span class="math inline">(<em>C</em><em>a</em><em>t</em><em>c</em><em>h</em><sub><em>F</em><em>R</em><em>A</em><em>M</em></sub>)</span></span> as those supplied by <span title="TAMM: Terminal Area Management Module">TAMM</span> <span title="Catch calculated within TAMM"><span class="math inline">(<em>C</em><em>a</em><em>t</em><em>c</em><em>h</em><sub><em>T</em><em>A</em><em>M</em><em>M</em></sub>)</span></span> in Puget Sound and Washington coastal fisheries (Figure 3). <span title="TAMM: Terminal Area Management Module">TAMM</span> catches are either directly input into <span title="TAMM: Terminal Area Management Module">TAMM</span> as catch values or calculated by <span title="TAMM: Terminal Area Management Module">TAMM</span> with user input harvest rates (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Harvest_Rate_(HR)" target = "_blank" title = "HR: Harvest rate">HR</a>) multiplied by a unique terminal run size definition (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Run_Size" target = "_blank" title = "TRS: Terminal run size">TRS</a>). The <span title="TRS: Terminal run size">TRS</span> for a <span title="TAMM: Terminal Area Management Module">TAMM</span> region/stock represents ‘run-to-the-river’ of a stock plus catches of all stocks in the terminal fisheries designated for that region. In coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title="TAMM: Terminal Area Management Module">TAMM</span>, terminal run size definitions can be customized (using the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#TAAETRSList" target = "_blank" title = "TAAETRSList">TAAETRSList</a> table in the MS Access database) and must be aligned with calculations used for each model input.</p>
 <p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> calculations for each terminal area:</p>
 <ul>
 <li>Sum escapements over appropriate time steps</li>
@@ -1413,7 +1413,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
 <p>Backwards <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Backwards_FRAM_(BkFRAM)" target = "_blank" title = "Backwards FRAM">(bkFRAM)</a> is a utility that determines <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> starting cohorts when estimates of escapements and fishery catches (landed and non-retention) are provided. The program iteratively adjusts stock recruit scalers (a surrogate for starting cohorts, see equation below) and runs <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> forward until the resulting escapements match the target escapements. Starting cohorts are in units of January-age-3 adult fish.</p>
 <p>Post-season <span title="bkFRAM: backwards FRAM">bkFRAM</span> runs are generally conducted to create the starting cohorts that result in observed escapements given known fishery impacts. These cohorts are needed to calculate exploitation rates.</p>
 <p>The calculation is based on adding time step fishery mortalities of a stock to the escapement target, expanding for natural mortality occurring in each time step, and working backwards from time step 5 to time step 1. The mortalities are calculated by summing landed, drop-off, and non-retention mortalities over all fisheries for a stock and time step.</p>
-<p><a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark_Selective_Fishing_Bias" target = "_blank" title = "Mark-selective fishing bias">Mark-selective fishery bias</a> correction calculations used for coho produce an error when the exploitation rate exceeds 100%. This frequently occurs during early iterations, because the abundances from the seed run (usually the pre-season run) are not related to the post-season fishery catches (e.g., low pre-season forecasts but high post-season terminal catches). To avoid errors, the first iteration initiates starting cohorts scaled 1000 times greater than the base period abundance. Additionally, the first 7 iterations are run without bias correction to get sufficiently close to the target escapement, before adding mark-selective fishing bias calculations for all remaining iterations.</p>
+<p><a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark_Selective_Fishing_Bias" target = "_blank" title = "Mark-selective fishing bias">Mark-selective fishery bias</a> correction calculations used for coho produce an error when the exploitation rate exceeds 100%. This frequently occurs during early iterations, because the abundances from the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Seed_Run" target = "_blank" title = "Seed run">seed run</a> (usually the pre-season run) are not related to the post-season fishery catches (e.g., low pre-season forecasts but high post-season terminal catches). To avoid errors, the first iteration initiates starting cohorts scaled 1000 times greater than the base period abundance. Additionally, the first 7 iterations are run without bias correction to get sufficiently close to the target escapement, before adding mark-selective fishing bias calculations for all remaining iterations.</p>
 <p>
 <strong>(16)</strong>
 <div style="text-align:center">
