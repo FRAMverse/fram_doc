@@ -1,0 +1,31 @@
+---
+title: "Supporting Documents"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE, results = 'hide', warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
+```
+
+# Literature cited
+
+Conrad, R., Hagen-Breaux, A., & Yuen, H. (2013). Unbiased Methods for Calculating Mortality in Mark-Selctive Fisheries Models for Ocean Salmon. *North American Journal of Fisheries Management*.
+
+
+Hagen-Breaux, Angelika F., et al. *Correction to FRAM Algorithms for Modeling Size Limit Changes*. Portland, PFMC, 2013.
+
+Model Evaluation Workgroup (MEW).  2008.  *Chinook Fishery Regulation Assessment Model (FRAM)
+    Base Data Development v. 3.0 (Auxiliary Report to FRAM Technical Documentation)*. (Document prepared for the Council and its advisory entities.) Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384.
+
+Morishima, G. S., and Henry, K. A.  2000.  The History and Status of Pacific Northwest Chinook and Coho Salmon Ocean Fisheries and Prospects for Sustainability.  Pages 219-235 *in* E. E. Knudsen, C. R. Stewart, D. D. MacDonald, J. E. Williams, and D. W. Reiser, editors.  Sustainable Fisheries Management, Pacific Salmon.  Lewis Publishers, New York.
+
+Pacific Salmon Commission 2014 - Chinook CTC Model? - ADD Citation
+
+Packer, J. F., Haymes, J. D., and C. Cook-Tabor.  2007.  *Coho FRAM Base Period Development (Auxiliary Report to FRAM Technical Documentation)*.  Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384.
+
+Puget Sound Salmon Management Plan.  1985.  U.S. v. Washington No. 9213 Phase I (sub no. 85-2).
+
+Salmon Technical Team (STT).  2000.  STT Recommendations for hooking mortality rates in 2000 recreational ocean chinook and coho fisheries.  STT Report B.2 to the March 2000 meeting of the Pacific Fishery Management Council.  Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384. 
+
+Washington Dept of Fisheries, Puget Sound Treaty Indian Tribes, and Northwest Indian Fisheries Commission.  1993.  A review of recent studies of hooking mortality for chinook and coho salmon with recommendations for fishery management and future research.  Northwest Indian Fisheries Commission.  Olympia, Washington.

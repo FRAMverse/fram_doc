@@ -18,6 +18,8 @@ navbar:
           href: calcs_glossary.html
         - text: "Appendices"
           href: calcs_appendices.html
+        - text: "Supporting Documents"
+          href: calcs_citations.html
     - text: "Pre and Post Season FRAM"
       menu: 
         - text: "Chinook"

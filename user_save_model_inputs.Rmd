@@ -1,8 +1,10 @@
 ---
-title: "Save Model Run Inputs"
+title: "FRAM User Manual"
 editor_options: 
   chunk_output_type: console
 ---
+
+# Save Model Run Inputs
 
 Model input parameters are saved in memory within the FRAM interface when values are entered or updated from any “Edit Model Run” submenu.
 
