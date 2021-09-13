@@ -42,7 +42,7 @@ dplyr::tibble(
 
 **<span title = "CWT: Coded wire tag">CWT</span> fish accurately represent the modeled stock.**  Many <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks are aggregates of stocks that are represented by <span title = "CWT: Coded wire tag">CWTs</span> from only one production type, usually hatchery origin.  For example, in nearly all cases wild/<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Natural" target = "_blank" title = "Natural">natural</a> stocks are aggregated with <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Hatchery" target = "_blank" title = "Hatchery">hatchery</a> stocks and both are represented by the hatchery stock’s <span title = "CWT: Coded wire tag">CWT</span> data.  Therefore, for each modeled stock aggregate, it is assumed that the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Tagged" target = "_blank" title = "Tagged">tagged</a> and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Untagged" target = "_blank" title = "Untagged">untagged</a> fish are distributed and exploited at the same rates.
 
-**Each stock unit and age class is exploited as a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Single_Pool_Model target = "_blank" title = "Single pool model">single pool</a>.** All pre-terminal fisheries operate on the entire cohort simultaneously in each time step, and all terminal fisheries operate on the mature run.
+**Each stock unit and age class is exploited as a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Single_Pool_Model" target = "_blank" title = "Single pool model">single pool</a>.** All pre-terminal fisheries operate on the entire cohort simultaneously in each time step, and all terminal fisheries operate on the mature run.
 
 **Natural mortality is constant from year to year.** Natural mortality is assumed to be constant across months for all stocks.  
 
@@ -190,7 +190,7 @@ Drop-off mortalities in mark-selective fisheries are calculated by multiplying t
 
 <u>**3e.** All pre-terminal fishery mortalities</u> in time step *t* for stock *s* at age 3 are totaled <span title = "TotMort: Total pre-terminal fishery mortalities">$(TotMort)$</span> and the size of the cohort is reduced accordingly. Since the coho model contains only age-3 mature fish, the summing of fishery mortalities occurs only once in each time step.
 
-<p>**(8)**<div style = "text-align:center"><span title = "Total pre-terminal fishery mortalities for stock s at age 3 during time step t">$TotMort_{s,a \! = \! 3,t}$</span> $=$ $\displaystyle\sum_f$ <span title = "Landed catch of stock s at age 3 in fishery f during time step t">$(Catch_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Drop-off mortality of stock s at age 3 in fishery f at time step t">$Dropoff_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age 3 in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Non-retention mortality of stock s at age 3 in fishery f during time step t">$CNR_{s,a \! = \! 3,f,t})$</span></div></p>
+<p>**(8)**<div style = "text-align:center"><span title = "Total pre-terminal fishery mortalities for stock s at age 3 during time step t">$TotMort_{s,a \! = \! 3,t}$</span> $=$ <span title = "Summed over fishery f">$\displaystyle\sum_f$</span> <span title = "Landed catch of stock s at age 3 in fishery f during time step t">$(Catch_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Drop-off mortality of stock s at age 3 in fishery f at time step t">$Dropoff_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age 3 in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Non-retention mortality of stock s at age 3 in fishery f during time step t">$CNR_{s,a \! = \! 3,f,t})$</span></div></p>
 
 The remaining cohort is then calculated as:
 
@@ -203,7 +203,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
 
 Terminal fishery mortality is calculated for the mature cohort only, using the same equations as for pre-terminal fishery mortality.  Fishery mortalities are summed, and the remainder of the mature cohort constitutes the escapement from <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries. Since only age-3 adult coho are modeled and the mature time step is always 5, age and time step parameters can be eliminated from the equations.
 
-<p>**(10)**<div style = "text-align:center"><span title = "<span title = "Total terminal fishery mortality for stock s at age 3 during time step t">$TotTermMort_{s,a \! = \! 3,t \! = \! 5}$</span> $=$ $\displaystyle\sum_{f \in terminal}$ <span title = "Landed catch of stock s at age 3 in fishery f during time step 5">$(Catch_{s,a \! = \! 3,f,t \! = \! 5}$</span> $+$ <span title = "Drop-off mortality of stock s at age a in fishery f at time step t">$Dropoff_{s,a,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age a in fishery f during time step t">$AdultRelMort_{s,a,f,t}$</span> $+$ <span title = "Non-retention mortality of stock s at age a in fishery f during time step t">$CNR_{s,a,f,t})$</span> </div> </p>
+<p>**(10)**<div style = "text-align:center"><span title = "Total terminal fishery mortality for stock s at age 3 during time step t">$TotTermMort_{s,a \! = \! 3,t \! = \! 5}$</span> $=$ <span class = "math" title = "Sum over terminal fishery f">$\displaystyle\sum_{f \in terminal}$</span> <span title = "Landed catch of stock s at age 3 in fishery f during time step 5">$(Catch_{s,a \! = \! 3,f,t \! = \! 5}$</span> $+$ <span title = "Drop-off mortality of stock s at age a in fishery f at time step t">$Dropoff_{s,a,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age a in fishery f during time step t">$AdultRelMort_{s,a,f,t}$</span> $+$ <span title = "Non-retention mortality of stock s at age a in fishery f during time step t">$CNR_{s,a,f,t})$</span> </div> </p>
 
 <p>**(11)**<div style = "text-align:center"><span title = "Escapement of stock s at age a during time step t">$Escapement_{s,a,t}$</span> $=$ <span title = "Mature cohort abundance of stock s at age a during time step t">$MatureCohort_{s,a,t}$</span> $-$ <span title = "Total terminal fishery mortality for stock s at age a during time step t">$TotTermMort_{s,a,t}$</span></div> </p>
 
@@ -231,7 +231,7 @@ knitr::include_graphics(c("images/Coho_FRAM_process_schematic.PNG"))
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> calculates stock-specific mortalities and escapements that are ultimately used to compute exploitation rates (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Exploitation_Rate_(ER)" target = "_blank" title = "ER: Exploitation rate">ER</a>). Exploitation rate calculations are not part of the main <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> algorithms and are not calculated by <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>  Exploitation rates are computed from <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> or <span title = "TAMM: Terminal Area Management Module">TAMM</span> output as the sum of all fishery mortalities divided by fishery mortalities plus escapement.
 
 **(12)**
-$$ER_s = \frac{\displaystyle\sum\limits_{t} TotMort_{s,a \! = \! 3,t}}{\displaystyle\sum\limits_{t} TotMort_{s,a \! = \! 3,t} + Escapement_{s}}$$
+<span title = "Exploitation rate of stock s equals the total mortality of stock s at age 3 summed over time steps over the sum of the total mortality of stock s at age 3 summed over time steps plus the escapement of stock s">$$ER_s = \frac{\displaystyle\sum\limits_{t} TotMort_{s,a \! = \! 3,t}}{\displaystyle\sum\limits_{t} TotMort_{s,a \! = \! 3,t} + Escapement_{s}}$$</span>
 
 ## 4.5. Bias Corrected Mark-Selective Fishery Equations for Coho
 
@@ -240,11 +240,11 @@ The total number of unmarked mortalities in <span title = "MSF: Mark-selective f
 Bias adjusted exploitation rates for marked and unmarked stock units are calculated as:
 
 **(13)**
-$$ER_{s,t} = 1 - (1 - \displaystyle\sum_f(ER_{s,f,t}^M)^{\delta_{s,t}^W})$$
+<p>**(10)**<div style = "text-align:center"><span title = "Exploitation rate of stock s at time step t">$ER_{s,t}$</span> $= 1 - (1 -$ <span title = "Summed over fishery f">$\displaystyle\sum_f$</span><span title = "Marked exploitation rate of stock s in fishery f during time step t">$(ER_{s,f,t}^M$</span><span title = "Weighted release mortality rate of stock s during time step t">$)^{\delta_{s,t}^W})$</span></div></p>
 
 **(14)**
-
-$$\delta_{s,t}^w = \sum_f \frac{ER_{s,f,t}^M}{\displaystyle\sum_f ER_{s,f,t}^M} \times \delta_f$$
+<span title = "Weighted release mortality rate w for stock s at time step t is equal to f's marked exploitation rate of stock s at time step t over the sum of fishery f's marked exploitation rate of stock s at time step t multiplied by the release mortality rate of fishery f, summed over fishery f">
+$$\delta_{s,t}^w = \sum_f \frac{ER_{s,f,t}^M}{\displaystyle\sum_f ER_{s,f,t}^M} \times \delta_f$$ </span>
 
 where:
 

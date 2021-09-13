@@ -8,8 +8,7 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-# **Appendix 1.** 
-Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks
+# **Appendix 1.** Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks
 
 ```{r appendix 1 coho stock table image, echo=FALSE}
 knitr::include_graphics(c("images/CohoStock1.PNG"))
@@ -19,8 +18,7 @@ knitr::include_graphics(c("images/CohoStock4.PNG"))
 knitr::include_graphics(c("images/CohoStock5.PNG"))
 ```
 
-# **Appendix 2.** 
-Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks
+# **Appendix 2.** Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks
 
 ```{r appendix_2_table, echo=FALSE}
 # dplyr::tibble(
@@ -70,8 +68,7 @@ Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> st
 knitr::include_graphics(c("images/Appendix_table_2.PNG"))
 ```
 
-# **Appendix 3.** 
-Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
+# **Appendix 3.** Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
 
 ```{r appendix 3 coho fisheries table image, echo=FALSE}
 knitr::include_graphics(c("images/CohoFisheries1.PNG"))
@@ -80,36 +77,31 @@ knitr::include_graphics(c("images/CohoFisheries3.PNG"))
 knitr::include_graphics(c("images/CohoFisheries4.PNG"))
 ```
 
-# **Appendix 4.** 
-Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
+# **Appendix 4.** Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
 
 ```{r appendix 4 table image, echo=FALSE}
 knitr::include_graphics(c("images/Appendix_table_4.PNG"))
 ```
 
-# **Appendix 5.** 
-Time step structure used in coho and Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> modeling.
+# **Appendix 5.** Time step structure used in coho and Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> modeling
 
 ```{r appendix 5 table image, echo=FALSE}
 knitr::include_graphics(c("images/Appendix_table_5.PNG"))
 ```
 
-# **Appendix 6.**
-<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>/<span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery-related mortality rates for ***coho*** salmon (version used in 2021 pre-season planning models).
+# **Appendix 6.** <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>/<span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery-related mortality rates for *coho* salmon (version used in 2021 pre-season planning models)
 
 ```{r appendix 6 table image, echo=FALSE}
 knitr::include_graphics(c("images/Appendix_table_6.PNG"))
 ```
 
-# **Appendix 7.**
-<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>/<span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery-related mortality rates for ***Chinook*** salmon (version used in 2021 pre-season planning).
+# **Appendix 7.** <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>/<span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery-related mortality rates for *Chinook* salmon (version used in 2021 pre-season planning)
 
 ```{r appendix 7 table image, echo=FALSE}
 knitr::include_graphics(c("images/Appendix_table_7.PNG"))
 ```
 
-# **Appendix 8.**
-Time period and age-specific rates used by <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> to simulate coho and Chinook natural mortality.
+# **Appendix 8.** Time period and age-specific rates used by <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> to simulate coho and Chinook natural mortality
 
 ```{r appendix 8 table image, echo=FALSE}
 knitr::include_graphics(c("images/Appendix_table_8.PNG"))
