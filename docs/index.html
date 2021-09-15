@@ -488,19 +488,19 @@ div.tocify {
 </div>
 <div id="fram-base-peiod" class="section level2 unnumbered">
 <h2 class="unnumbered">4.2. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> Base Peiod</h2>
-<p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> base period is developed by summarizing coded-wire-tag information from <a title = "RMIS: Regional Mark Information System" href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Regional_Mark_Information_System_(RMIS)" target = "_blank">RMIS</a> from a continuous time period with a sufficient number of <span title="CWT: Coded Wire Tag">CWT</span> releases and recoveries. The current base period uses brood year releases from 2005-2008 for Chinook and 1982-1989 for coho. A calibration program written in VisualBasic.net maps the <span title="CWT: Coded Wire Tag">CWTs</span> to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries, stocks, and time steps and conducts a cohort reconstruction to estimate exploitation rates and other parameters, such as base period <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Size" target = "_blank" title = "Cohort size">cohort sizes</a>. These estimates form the basis of a <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> run and remain static between model runs. Using these base period parameters allows <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> to predict the stock composition, exploitation rates, and escapements of future fisheries when provided with forecasts of abundance and fishery mortalities.</p>
+<p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> base period is developed by summarizing coded-wire-tag information from <a title = "RMIS: Regional Mark Information System" href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Regional_Mark_Information_System_(RMIS)" target = "_blank">RMIS</a> from a continuous time period with a sufficient number of <span title="CWT: Coded Wire Tag">CWT</span> releases and recoveries. The current base period uses brood year releases from 2005-2008 for Chinook and 1986-1992 for coho. A calibration program written in VisualBasic.net maps the <span title="CWT: Coded Wire Tag">CWTs</span> to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries, stocks, and time steps and conducts a cohort reconstruction to estimate exploitation rates and other parameters, such as base period <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Size" target = "_blank" title = "Cohort size">cohort sizes</a>. These estimates form the basis of a <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> run and remain static between model runs. Using these base period parameters allows <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> to predict the stock composition, exploitation rates, and escapements of future fisheries when provided with forecasts of abundance and fishery mortalities.</p>
 </div>
 </div>
 <div id="coho-vs-chinook-differences" class="section level1 unnumbered">
 <h1 class="unnumbered">5. Coho vs Chinook Differences</h1>
 <p>While there is only one <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> program that handles both Chinook and Coho model runs and many of the core processes and algorithms are identical, this document presents the model and computational structures independently for each species. This decision was made in an effort to improve readability and clarity, as there are a variety of unique features specific to each species that can be difficult to differentiate when they are presented together.</p>
 <p>Table 1. Feature Components of Chinook and Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span></p>
-<div id="rpysoprgjh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="yeqxuyndbo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rpysoprgjh .gt_table {
+#yeqxuyndbo .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -525,7 +525,7 @@ div.tocify {
   border-left-color: #D3D3D3;
 }
 
-#rpysoprgjh .gt_heading {
+#yeqxuyndbo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -537,7 +537,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#rpysoprgjh .gt_title {
+#yeqxuyndbo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -547,7 +547,7 @@ div.tocify {
   border-bottom-width: 0;
 }
 
-#rpysoprgjh .gt_subtitle {
+#yeqxuyndbo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -557,13 +557,13 @@ div.tocify {
   border-top-width: 0;
 }
 
-#rpysoprgjh .gt_bottom_border {
+#yeqxuyndbo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rpysoprgjh .gt_col_headings {
+#yeqxuyndbo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -578,7 +578,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#rpysoprgjh .gt_col_heading {
+#yeqxuyndbo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -598,7 +598,7 @@ div.tocify {
   overflow-x: hidden;
 }
 
-#rpysoprgjh .gt_column_spanner_outer {
+#yeqxuyndbo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -610,15 +610,15 @@ div.tocify {
   padding-right: 4px;
 }
 
-#rpysoprgjh .gt_column_spanner_outer:first-child {
+#yeqxuyndbo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rpysoprgjh .gt_column_spanner_outer:last-child {
+#yeqxuyndbo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rpysoprgjh .gt_column_spanner {
+#yeqxuyndbo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -630,7 +630,7 @@ div.tocify {
   width: 100%;
 }
 
-#rpysoprgjh .gt_group_heading {
+#yeqxuyndbo .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -652,7 +652,7 @@ div.tocify {
   vertical-align: middle;
 }
 
-#rpysoprgjh .gt_empty_group_heading {
+#yeqxuyndbo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -667,15 +667,15 @@ div.tocify {
   vertical-align: middle;
 }
 
-#rpysoprgjh .gt_from_md > :first-child {
+#yeqxuyndbo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rpysoprgjh .gt_from_md > :last-child {
+#yeqxuyndbo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rpysoprgjh .gt_row {
+#yeqxuyndbo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -694,7 +694,7 @@ div.tocify {
   overflow-x: hidden;
 }
 
-#rpysoprgjh .gt_stub {
+#yeqxuyndbo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -706,7 +706,7 @@ div.tocify {
   padding-left: 12px;
 }
 
-#rpysoprgjh .gt_summary_row {
+#yeqxuyndbo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -716,7 +716,7 @@ div.tocify {
   padding-right: 5px;
 }
 
-#rpysoprgjh .gt_first_summary_row {
+#yeqxuyndbo .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -726,7 +726,7 @@ div.tocify {
   border-top-color: #D3D3D3;
 }
 
-#rpysoprgjh .gt_grand_summary_row {
+#yeqxuyndbo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -736,7 +736,7 @@ div.tocify {
   padding-right: 5px;
 }
 
-#rpysoprgjh .gt_first_grand_summary_row {
+#yeqxuyndbo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -746,11 +746,11 @@ div.tocify {
   border-top-color: #D3D3D3;
 }
 
-#rpysoprgjh .gt_striped {
+#yeqxuyndbo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rpysoprgjh .gt_table_body {
+#yeqxuyndbo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -759,7 +759,7 @@ div.tocify {
   border-bottom-color: #D3D3D3;
 }
 
-#rpysoprgjh .gt_footnotes {
+#yeqxuyndbo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -773,13 +773,13 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#rpysoprgjh .gt_footnote {
+#yeqxuyndbo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#rpysoprgjh .gt_sourcenotes {
+#yeqxuyndbo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -793,41 +793,41 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#rpysoprgjh .gt_sourcenote {
+#yeqxuyndbo .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#rpysoprgjh .gt_left {
+#yeqxuyndbo .gt_left {
   text-align: left;
 }
 
-#rpysoprgjh .gt_center {
+#yeqxuyndbo .gt_center {
   text-align: center;
 }
 
-#rpysoprgjh .gt_right {
+#yeqxuyndbo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rpysoprgjh .gt_font_normal {
+#yeqxuyndbo .gt_font_normal {
   font-weight: normal;
 }
 
-#rpysoprgjh .gt_font_bold {
+#yeqxuyndbo .gt_font_bold {
   font-weight: bold;
 }
 
-#rpysoprgjh .gt_font_italic {
+#yeqxuyndbo .gt_font_italic {
   font-style: italic;
 }
 
-#rpysoprgjh .gt_super {
+#yeqxuyndbo .gt_super {
   font-size: 65%;
 }
 
-#rpysoprgjh .gt_footnote_marks {
+#yeqxuyndbo .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
