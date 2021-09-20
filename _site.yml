@@ -40,22 +40,8 @@ navbar:
           href: user_prereq.html
         - text: "A basic run"
           href: user_basic_forward_run.html
-        - text: "------------------------"
         - text: "Main menu options"
-        - text: "Main menu"
-          href: user_main_menu.html
-        - text: "Edit model run"
-          href: user_edit_model_run.html
-        - text: "Save model inputs"
-          href: user_save_model_inputs.html
-        - text: "Run model"
-          href: user_run_model.html
-        - text: "Backwards FRAM"
-          href: user_backwards_fram.html
-        - text: "Output/Results"
-          href: user_outputs.html
-        - text: "Utilities"
-          href: user_utilities.html
+          href: user_main_menu_full.html
         
 
 output:
