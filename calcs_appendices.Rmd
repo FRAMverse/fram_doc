@@ -10,13 +10,16 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=
 
 # **Appendix 1.** Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks
 
-```{r appendix 1 coho stock table image, echo=FALSE}
-knitr::include_graphics(c("images/CohoStock1.PNG"))
-knitr::include_graphics(c("images/CohoStock2.PNG"))
-knitr::include_graphics(c("images/CohoStock3.PNG"))
-knitr::include_graphics(c("images/CohoStock4.PNG"))
-knitr::include_graphics(c("images/CohoStock5.PNG"))
+```{r appendix 1 coho stock table image, echo=FALSE, results="asis"}
+#knitr::include_graphics(c("images/CohoStock1.PNG"))
+#knitr::include_graphics(c("images/CohoStock2.PNG"))
+#knitr::include_graphics(c("images/CohoStock3.PNG"))
+#knitr::include_graphics(c("images/CohoStock4.PNG"))
+#knitr::include_graphics(c("images/CohoStock5.PNG"))
+
+readRDS("objects/framvs_doc_lu_stock_coho.rds") # %>% knitr::kable(caption = "Coho stocks")
 ```
+<br>
 
 # **Appendix 2.** Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks
 
@@ -65,23 +68,31 @@ knitr::include_graphics(c("images/CohoStock5.PNG"))
 #   ),
 # ) |> gt::gt()
 
-knitr::include_graphics(c("images/Appendix_table_2.PNG"))
+#knitr::include_graphics(c("images/Appendix_table_2.PNG"))
+readRDS("objects/framvs_doc_lu_stock_chin.rds") # %>% knitr::kable(caption = "Chinook stocks")
 ```
+<br>
 
 # **Appendix 3.** Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
 
 ```{r appendix 3 coho fisheries table image, echo=FALSE}
-knitr::include_graphics(c("images/CohoFisheries1.PNG"))
-knitr::include_graphics(c("images/CohoFisheries2.PNG"))
-knitr::include_graphics(c("images/CohoFisheries3.PNG"))
-knitr::include_graphics(c("images/CohoFisheries4.PNG"))
+#knitr::include_graphics(c("images/CohoFisheries1.PNG"))
+#knitr::include_graphics(c("images/CohoFisheries2.PNG"))
+#knitr::include_graphics(c("images/CohoFisheries3.PNG"))
+#knitr::include_graphics(c("images/CohoFisheries4.PNG"))
+
+readRDS("objects/framvs_doc_lu_fishery_coho.rds") # %>% knitr::kable(caption = "Coho fisheries")
 ```
+<br>
 
 # **Appendix 4.** Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
 
 ```{r appendix 4 table image, echo=FALSE}
-knitr::include_graphics(c("images/Appendix_table_4.PNG"))
+#knitr::include_graphics(c("images/Appendix_table_4.PNG"))
+
+readRDS("objects/framvs_doc_lu_fishery_chin.rds") # %>% knitr::kable(caption = "Chinook fisheries")
 ```
+<br>
 
 # **Appendix 5.** Time step structure used in coho and Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> modeling
 
