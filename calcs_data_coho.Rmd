@@ -8,7 +8,7 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-# 1. Model Structure
+# 1. Coho Model Structure
 
 ## 1.1. Stocks
 

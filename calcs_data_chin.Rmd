@@ -8,7 +8,7 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-# 1. Model Structure
+# 1. Chinook Model Structure
 
 ## 1.1. Stocks
 
@@ -38,7 +38,7 @@ The time step structure used in <span title = "FRAM: Fishery Regulation Assessme
 
 Reducing the duration of time steps decreases the number of <span title = "CWT: Coded Wire Tag">CWT</span> recoveries, and thereby increase the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Variance" target = "_blank" title = "Variance">variance</a> of the estimated parameters in those strata. Accordingly, time steps were defined at a minimum resolution needed for fishery management purposes. During each time step, a cohort undergoes <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Natural_Mortality" target = "_blank" title = "Natural mortality">natural mortality</a>, and can be subjected to <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Pre-terminal_Fishery" target = "_blank" title = "Pre-terminal fishery">pre-terminal fisheries</a>, maturation, and terminal fisheries. 
 
-# 2. Key Assumptions and Limitations
+# 2. Assumptions and Limitations
 
 *The model has several major assumptions and limitations.*
 
