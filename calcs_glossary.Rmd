@@ -126,7 +126,9 @@ A Chinook or coho that had its adipose fin removed; a visual identifier of a hat
 
 # **Mark-selective Fishery (MSF)**
 A fishery in which only marked (adipose fin-clipped) fish above the size limit may be retained.
-Maturation: Process of sexual development, signaling the return of a salmon to freshwater in order to spawn.
+
+# **Maturation**
+Process of sexual development, signaling the return of a salmon to freshwater in order to spawn.
 
 # **Model-Stock Proportion (MSP)**
 Percentage of a fishery’s total catch that is accounted for by model stocks.
@@ -177,11 +179,13 @@ Portion of a stock that is of legal size in a fishery and can be retained.
 A fishery catch expressed in numbers of fish. 
 
 # **Recreational Fisheries**
-Also called sport fishing, is fishing for pleasure, competition, or non-commercial consumption. It can be contrasted with commercial fishing, which is professional fishing for profit.The most common form of recreational fishing is done with a rod, reel, line, hooks and any one of a wide range of baits.
+Also called sport fishing, is fishing for pleasure, competition, or non-commercial consumption. It can be contrasted with commercial fishing, which is professional fishing for profit. The most common form of recreational fishing is done with a rod, reel, line, hooks and any one of a wide range of baits.
 
 # **Regional Mark Information System (RMIS)**
 Data system providing services to international, state, federal, and tribal organizations involved in marking anadromous salmonids throughout the Pacific region. These services include regional coordination of tagging and fin marking programs, maintenance of databases for Coded Wire Tag Releases, Recoveries, and Locations, as well as the dissemination of reports. 
-Release Mortality:  Fish that are released due to size limit restrictions, mark status, or other reasons and die due to injury from gear or handling. 
+
+# **Release Mortality**
+Fish that are released due to size limit restrictions, mark status, or other reasons and die due to injury from gear or handling. 
 
 # **ReportDriver**
 Instructions to the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> program used to produce customizable output reports.
