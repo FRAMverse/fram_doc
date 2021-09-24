@@ -42,6 +42,9 @@ navbar:
           href: user_basic_forward_run.html
         - text: "Main menu options"
           href: user_main_menu_full.html
+  right:
+    - icon: fa-github
+      href: https://github.com/FRAMverse/fram_doc
         
 
 output:
