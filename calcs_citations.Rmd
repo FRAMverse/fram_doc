@@ -26,6 +26,6 @@ Packer, J. F., Haymes, J. D., and C. Cook-Tabor.  2007.  *Coho FRAM Base Period 
 
 Puget Sound Salmon Management Plan.  1985.  U.S. v. Washington No. 9213 Phase I (sub no. 85-2).
 
-Salmon Technical Team (STT).  2000.  STT Recommendations for hooking mortality rates in 2000 recreational ocean chinook and coho fisheries.  STT Report B.2 to the March 2000 meeting of the Pacific Fishery Management Council.  Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384. 
+Salmon Technical Team (STT).  2000.  STT Recommendations for hooking mortality rates in 2000 recreational ocean chinook and coho fisheries.  STT Report B.2 to the March 2000 meeting of the Pacific Fishery Management Council.  Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/STT-Hooking-Mortality-2000.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
 Washington Dept of Fisheries, Puget Sound Treaty Indian Tribes, and Northwest Indian Fisheries Commission.  1993.  A review of recent studies of hooking mortality for chinook and coho salmon with recommendations for fishery management and future research.  Northwest Indian Fisheries Commission.  Olympia, Washington. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/PSSalmonComanagers1993_ReviewHookingMortalityStudies.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]

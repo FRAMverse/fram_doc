@@ -284,12 +284,6 @@ div.tocify {
   border-radius: 0px;
 }
 
-.tocify-subheader {
-  display: inline;
-}
-.tocify-subheader .tocify-item {
-  font-size: 0.95em;
-}
 
 </style>
 
@@ -434,7 +428,7 @@ div.tocify {
 <p>Pacific Salmon Commission 2014 - Chinook CTC Model? - ADD Citation</p>
 <p>Packer, J. F., Haymes, J. D., and C. Cook-Tabor. 2007. <em>Coho FRAM Base Period Development (Auxiliary Report to FRAM Technical Documentation)</em>. Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384.</p>
 <p>Puget Sound Salmon Management Plan. 1985. U.S. v. Washington No. 9213 Phase I (sub no. 85-2).</p>
-<p>Salmon Technical Team (STT). 2000. STT Recommendations for hooking mortality rates in 2000 recreational ocean chinook and coho fisheries. STT Report B.2 to the March 2000 meeting of the Pacific Fishery Management Council. Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384.</p>
+<p>Salmon Technical Team (STT). 2000. STT Recommendations for hooking mortality rates in 2000 recreational ocean chinook and coho fisheries. STT Report B.2 to the March 2000 meeting of the Pacific Fishery Management Council. Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/STT-Hooking-Mortality-2000.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]</p>
 <p>Washington Dept of Fisheries, Puget Sound Treaty Indian Tribes, and Northwest Indian Fisheries Commission. 1993. A review of recent studies of hooking mortality for chinook and coho salmon with recommendations for fishery management and future research. Northwest Indian Fisheries Commission. Olympia, Washington. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/PSSalmonComanagers1993_ReviewHookingMortalityStudies.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]</p>
 </div>
 
@@ -505,7 +499,7 @@ $(document).ready(function ()  {
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
     };
-    options.showAndHide = false;
+    options.showAndHide = true;
     options.smoothScroll = true;
 
     // tocify

@@ -51,7 +51,7 @@ output:
     toc: true
     toc_depth: 3
     toc_float:
-      collapsed: false
+      collapsed: true
     css: rmarkdown.css
     highlight: textmate
     mathjax: null
