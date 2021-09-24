@@ -5,7 +5,7 @@ editor_options:
 ---
 
 ```{r, include=FALSE, results = 'hide', warning = FALSE, message = FALSE, echo=FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
+#knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
 # 1. Chinook Model Structure
@@ -68,7 +68,7 @@ These input tables consist of
 The main <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> outputs are estimates of mortalities (landed, mark-selective, sub-legal, non-retention, drop-off) and abundances (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Starting_Cohort" target = "_blank" title = "Starting cohort">starting cohorts</a> at each time step; abundances after natural mortalities, pre-terminal, and terminal fisheries).
 
 Table 2. Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> MS Accesss Database Tables.
-```{r calcs_data_chin_t2_mdb, echo=FALSE}
+```{r calcs_data_chin_t2_mdb, echo=FALSE, out.width='100%'}
 #could fuss with subscript formatting in Calc_Fields...
 #readxl::read_excel("O:/fram/fram_documents/fram_mdb_tables.xlsx") |> 
 #  dplyr::filter(Class != "unused", Species != "Coho") |>
@@ -132,7 +132,7 @@ MathJax = {
 
 FRAM processes information through a time step loop, beginning with time step 1 and ending with time step 4  for Chinook.  Within each time step, a series of five computational processes occur for each stock and age, as depicted in Figure 1: (**1**) determine starting cohort size, (**2**) removal of natural mortality, (**3**) removal of pre-terminal fishery mortalities, (**4**) maturation, and (**5**) removal of terminal fishery mortalities.
 
-```{r chinook flow chart image, echo=FALSE}
+```{r chinook flow chart image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/Chinook_FRAM_flowchart.PNG"))
 ```
 
@@ -286,7 +286,7 @@ To facilitate understanding of the sequencing in <span title = "FRAM: Fishery Re
 The starting cohort in time step 1 is first reduced by natural mortality. The remaining cohort is vulnerable to preterminal fisheries. After preterminal fishing, part or all of the cohort can mature. This typically occurs in time step 3, but for some early or late stocks can also occur in time steps 1 or 2. The mature cohort is then susceptible to terminal fisheries. The mature cohort not caught in terminal fisheries will go to escapement. The portion of the cohort that does not mature (number immature) becomes the starting cohort of the next time step. This cycle repeats until time step 4, when Chinook age up; i.e., age-3 fish become age-4 fish, etc. Immature Chinook of age a from time step 3 become the starting cohort of time step 4 age *a*+1. For age-2 fish, the time step 4 starting cohort is the same as the time step 1 cohort, because the model does not contain age-1 fish that could age-up.
 
 Table 3. Example values of Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> processing steps for a stock at age 3 and age 4.
-```{r chinook process schematic image, echo=FALSE}
+```{r chinook process schematic image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/Chinook_FRAM_process_schematic.PNG"))
 ```
 
@@ -369,7 +369,7 @@ To carry out fishery-specific impact analyses on all populations of interest, Ch
 <div style = "text-align:center"><span title = "Fishery scaler for a given area at a given time step">$FisheryScaler(area, time step)$</span> = <span title = "Catch calculated in TAMM for a given area at a given time step">$Catch_{TAMM}(area, time step)$</span> $\div$ <span title = "Catch calculated in FRAM for a given area at a given time step">$Catch_{FRAM}(area, time step)$</span> </div>
 - Rerun <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> and repeat these steps until <span title = "Catch calculated in TAMM">$Catch_{TAMM}$</span> is within 0.1% (or fewer than 4 fish) of <span title = "Catch calculated in FRAM">$Catch_{FRAM}$</span>.
 
-```{r chinook FRAM TAMM flow chart image, echo=FALSE}
+```{r chinook FRAM TAMM flow chart image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/FRAM_TAMM_flowchart.PNG"))
 ```
 

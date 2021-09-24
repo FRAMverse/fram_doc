@@ -37,6 +37,8 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -401,7 +403,12 @@ div.tocify {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/FRAMverse/fram_doc">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -557,7 +564,7 @@ Save model run screen
 <p>If you select “Yes” and save your model inputs by replacing the current model run or creating a new model run, then when you click “Run Model” from the Main Menu, it will present the Model Run Specifications menu.</p>
 <p>If you select the “No”, a message will warn you “Please be aware that the OUTPUT for this model run cannot be duplicated without saving your INPUT values.” If you click “OK”, then it will present the Model Run Specifications menu.</p>
 <p>The forwards FRAM Model Run Specifications menu screens include several optional checkboxes which differ by species. The sections below describe these in more detail.</p>
-<p>The “Select TAMM” button is used to navigate to and select an associated [TAMM] file (see also [Running FRAM with TAMM]). Note that when a model run with a TAMM begins, the prompt “Do you want to save TAMM Transfer Values into TAMM spreadsheet?” will apear. Choosing “Yes” will ensure [TAMX] values are updated. After run completion, the TAMM file used will include updated values and be open, though possibly in the background. <strong>Make sure to navigate to the open TAMM file and save it to retain the modeled values.</strong></p>
+<p>The “Select TAMM” button is used to navigate to and select an associated <a href="#tamm">TAMM</a> file (see also <a href="#running-fram-with-tamm">Running FRAM with TAMM</a>). Note that when a model run with a TAMM begins, the prompt “Do you want to save TAMM Transfer Values into TAMM spreadsheet?” will apear. Choosing “Yes” will ensure <a href="#tamx">TAMX</a> values are updated. After run completion, the TAMM file used will include updated values and be open, though possibly in the background. <strong>Make sure to navigate to the open TAMM file and save it to retain the modeled values.</strong></p>
 <p>Once the model run is complete, the model run name may have been updated with a prefix in the list of model runs within a database (Main Menu – Select Model Run to see list). For coho, the prefix “bc-“ is added when the default calculations for MSF bias correction have been used in a model run. For Chinook, the prefix “SLC-“ is added when the default calculations for size limit fix have been used in a model run.</p>
 <div id="coho" class="section level2">
 <h2>Coho</h2>
@@ -662,6 +669,1255 @@ Chinook T4 pre 2012 processing differences
 </div>
 </div>
 </div>
+<div id="outputresults" class="section level1">
+<h1>Output/Results</h1>
+<p>A FRAM model run produces [Output values] that are stored in several [Project database tables].</p>
+<p>These results can be accessed and analyzed with external applications such as R or Microsoft Excel, and this is often preferable when addressing multiple model runs. For example, when examining a particular stock or fishery across multiple model runs within a single project database, the key tables can be joined and filtered to reach a focal subset for further manipulation and visualization.</p>
+<p>However, the FRAM application also provides functionality to interactively view results for a single run by selecting the main menu button <code>Output/Results</code>.</p>
+<div id="screen-reports" class="section level2">
+<h2>Screen reports</h2>
+<p>The “Output Type Selection” submenu offers <code>Screen Reports</code>. Note that if all values are zero within these reports, then the model must be run in the project database to generate actual results.</p>
+<p><img src="images/fvs_output.png" width="100%" /></p>
+<p>Selecting this then displays several further options.</p>
+<p><img src="images/fvs_output_screenrpt.png" width="100%" /></p>
+<p>Select a screen report by clicking in the appropriate checkbox. Once in view, note that many of these reports include a “clipboard copy” option in the upper left corner. This allows the user to paste the data into other external programs (e.g., Microsoft Word or Excel).</p>
+<div id="fishery-mortality-reports" class="section level3">
+<h3>Fishery mortality reports</h3>
+<p>This view aggregates across stocks within a fishery, summarizing different types of mortality. For Chinook, these values can be displayed summed or broken out by age per fishery (i.e., all age 3 catch within fishery N). Results may also be displayed as a zero value for strata in which base period data are unavailable. In other screen reports, these strata are often denoted with “****”.</p>
+<ul>
+<li><code>Landed Catch</code> designates fish that are caught and retained</li>
+<li><code>NonRetention</code> includes incidental mortalities from mark-selective fisheries and/or other fisheries not targeting Chinook or coho (e.g., pink or chum salmon, test fishing, etc.)</li>
+<li><code>Shakers</code> accounts for non-landed mortalities from sub-legal encounters</li>
+<li><code>Dropoff</code> (also net drop out) represents mortality from encounters in which the fish is never observed (i.e., “the one that got away”)</li>
+<li><code>TotalMortality</code> is the sum of these components</li>
+<li>For Chinook, <code>AEQ-Total Mort</code> designates the “adult equivalent” translation of the total mortality, reflecting an age-based estimate of the fish that could have actually survived to return to spawn given subsequent years of fishing and non-fishing related impacts (e.g., younger fish that are killed due to fishing in year Y would not necessarily have survived to return in a later year Y+t, even in the absence of year Y’s fishing)</li>
+</ul>
+<p><img src="images/fvs_output_screenrpt_fishmort.png" width="100%" /></p>
+</div>
+<div id="stock-mortality-reports" class="section level3">
+<h3>Stock mortality reports</h3>
+<p>The mortality types described above can also be viewed by fishery and time step for an individual stock or a selected sub-set of stocks. After selecting this report, a menu allows selection of a single stock or multiple stocks using Control+Click. After the desired stocks are highlighted, click “OK – Done” to view the report. The fishery mortality data types will be summarized for all stocks selected.</p>
+<p><img src="images/fvs_output_screenrpt_stockmort.png" width="100%" /></p>
+</div>
+<div id="population-statistics" class="section level3">
+<h3>Population statistics</h3>
+<p>The “popstat” report is regularly used for Chinook, as it clearly illustrates changes through the major FRAM processing steps that take a stock from starting cohort to escapement. It presents the cohort trajectory through time steps for each stock, broken out by age for Chinook. The columns describe the progression through time of the starting cohort through natural mortality, pre-terminal fisheries, maturation, and terminal fisheries to escapement. For Chinook, note that FRAM currently calculates “marine escapement” while “spawning escapement” is handled within <a href="#tamm">TAMM</a>.</p>
+<p>For Chinook the report data represent by time step: starting cohort by age (T#-StartCoh), cohort after natural mortality (T#-postNM), cohort after pre-terminal fisheries (T#-postPT), mature cohort resulting from stock-specific maturity age parameters as provided by the base period (T#-Mat), escapement of the mature cohort remaining after FRAM’s set of terminal fisheries (T#-Esc).</p>
+<p><img src="images/fvs_output_screenrpt_popstatchin.png" width="100%" /></p>
+<p>For Coho the report data represent by time step: starting cohort (T#-Coht), cohort after natural mortality and pre-terminal fisheries (T#-Rem), mature cohort in time step 5 (Oct-Dec) only (Mature), and escapement of the mature cohort remaining after terminal and freshwater fisheries (Escape; i.e. spawner escapement).</p>
+<p><img src="images/fvs_output_screenrpt_popstatcoho.png" width="100%" /></p>
+</div>
+<div id="mark-selective-fishery-reports" class="section level3">
+<h3>Mark-Selective Fishery Reports</h3>
+<p>This option generates detailed accounting of stock-specific mortality for a selected mark-selective fishery and time step. All fisheries/time-steps flagged as mark-selective in a particular model run will be available in the drop-down menu on the upper left. Once a selection is made, the values for each stock impacted in that fishery/time-step are presented. Values for unmarked and marked components include: handled fish, catch mortality, non-retention mortality, drop-off mortality, and for Chinook only will include sub-legal mortality.</p>
+<p>Additionally, the red “WDFW MSF Report” button transfers Chinook information related to landings, encounters, and mortalities aggregated across all stocks to an external Excel spreadsheet. The button is not available for Coho modeling.</p>
+<p><img src="images/fvs_output_screenrpt_msfrpt.png" width="100%" /></p>
+</div>
+<div id="fishery-stock-composition-report" class="section level3">
+<h3>Fishery stock composition report</h3>
+<p>After selection of a single fishery from the drop-down menu, this report displays the percentage of each stock within the total mortality for each time step. Only those stocks impacted by the fishery will be displayed (i.e. a different set of stocks can be displayed for each fishery). Note: for Chinook fisheries without a 100% model stock proportion, percentages within this report only represent the modeled portion of the catch.</p>
+<p><img src="images/fvs_output_screenrpt_stockcomp.png" width="100%" /></p>
+</div>
+<div id="stock-impacts-per-1000" class="section level3">
+<h3>Stock impacts per 1000</h3>
+<p>This normalized view of stock-specific total mortality impacts for each fishery and time step offers another perspective on relative differences. This report demonstrates the stock contribution (in numbers of non-AEQ fish) to a hypothetical total mortality of 1,000 fish in each fishery/time step. Only a single stock component can be selected (i.e. only the Skookum Creek Hatchery Marked stock can be viewed and a separate selection would be necessary to see the results for the Skookum Creek Hatchery Unmarked stock).</p>
+<p><img src="images/fvs_output_screenrpt_stock1000.png" width="100%" /></p>
+</div>
+</div>
+<div id="report-drivers" class="section level2">
+<h2>Report Drivers</h2>
+<p>Report drivers generate 14 pre-formatted output report types using unique instructions found in the report driver. Many of these reports are also available as screen reports or found in FRAM output to TAMM files. A report driver is species-specific, tied to a unique base period for parameters, and contains a header with metadata. The output reports are given a .PRN file extension and can be opened with a text editor such as Microsoft Notepad. The actual report drivers, with instructions on what to include, are stored in the MS Access project database table ReportDriver.</p>
+<p>From the main menu, select “Output/Results”, “Report Driver File”, to get to the report driver file options. The most straightforward step is to “Select Driver” from the available report drivers already in the project database table ReportDriver. Click the checkbox next to one from the list and you will be re-directed back to the driver file options menu. Next, click the “Run Reports” button to name and save the output PRN file. Once you click save from the prompt, the output PRN file is generated and ready to view. The “Edit Report Driver” option is no longer functional in updated versions of FRAM and thus a new report driver must be created to make changes from an old one. Changes to a report driver need to be made in the project database table ReportDriver.</p>
+<p>Many FRAM databases include various previously created custom report drivers. To create a new report driver, select “Output/Results”, “Report Driver File”, “Create Report Driver”. Select the desired report from the 14 available options and specify parameters for customization from the selection boxes. A good example of a unique, customizable report is the “Terminal Run Summary”. This report allows the user to specify fisheries and time steps for inclusion in the terminal run definition of selected stocks. When prompted, save the driver. The new driver will then appear in the “Select Driver” report selection box. To produce output, select the new driver and click “Run Report”.</p>
+</div>
+</div>
+<div id="tamm" class="section level1">
+<h1>TAMM</h1>
+<p>The current Terminal Area Management Module is a Microsoft Excel spreadsheet that interfaces with the FRAM application, providing additional input parameter values and receiving outputs following a run.</p>
+<p>The TAMMs for Chinook and coho differ in most details, but both share a general conceptual division into sheets related to FRAM inputs, those compiling FRAM outputs, and then those that draw from these first two classes to perform numerous additional calculations and manipulations associated with particular tabular report breakouts. Regional areas in Puget Sound are also represented within individual sheets to customize output for regional management perspectives. In addition, a Documentation sheet notes modifications and/or revisions made to the TAMM file or structure overall (e.g. a formula error was fixed or a new section was added), and a RunLog sheet notates model input changes between model runs during an annual preseason planning process.</p>
+<p>For preseason runs, the typical naming convention follows a pattern of “specNNYY”, with “Chin” or “Coho” followed by an “comanager agreed” run number and the 2-digit year. For example, the final 2019 Chinnok model run was “Chin2719” while the coho file was “Coho1925”.</p>
+<p>Note that the TAMM files contain historical information, including outdated tables or sheets. Over the years, perspectives and technical approaches have changed and yet the older pages or sections remain. Preserving these historical approaches in case they are needed again, while adding new or updating content can create confusion about which content is maintained and relevant. Some completely obsolete sheets are hidden using Excel and an attempt is made to hide columns or sections of sheets that are no longer used.</p>
+<div id="running-fram-with-tamm" class="section level2">
+<h2>Running FRAM with TAMM</h2>
+<p><strong>Note: An “official” FRAM run should always be run with a TAMM!</strong></p>
+<p>TAMM is rooted in the management history of Puget Sound Chinook and Coho salmon. Prior to the existence of FRAM, spreadsheet models calculated terminal fisheries’ impacts with ‘simple harvest rates’. A harvest rate is computed as terminal catch divided by terminal abundance. Abundance accounting occurred in run reconstruction spreadsheets that calculated terminal abundance as escapement + freshwater landed catch + terminal landed catch. FRAM introduced the ability to calculate stock specific impacts in mixed stock pre-terminal areas using exploitation rates. Exploitation rates are computed as catch of a stock divided by the abundance of the stock. Whereas harvest rates are area-specific, exploitation rates are stock-specific. Using harvest rates in terminal areas with typically very low proportions of non-local stocks introduced an acceptable amounts of error, while providing the convenience of simple calculations.</p>
+<p>The practice of computing harvest rates in terminal and extreme terminal fisheries continues to this day. Unfortunately, it is incompatible with FRAM exploitation rate calculations. TAMM reports terminal harvest rates to FRAM. FRAM translates these harvest rates into exploitation rates through an iterative process. FRAM uses instructions about the stock/fishery make-up of the terminal area in order to reconstruct the denominator of the original harvest rate calculation. Given these denominators, the model calculates landed catches and associated fishery scalers. FRAM also computes non-local stock impacts in terminal areas. Landed catches and fishery scalers are saved to the model run database.</p>
+<p>Upon selecting to “Run Model” a submenu presents the user with the option to “Select TAMM”. If this option is chosen, a file selection dialogue box appears. Select the desired TAMM and click “Open”. After FRAM completes iterations, the following message box pops up, and selecting “Yes” results in FRAM importing output into the <a href="#tamx">TAMX</a> for Chinook or <a href="#prn-sheets">PRN Sheets</a> for Coho. Note that although values are imported, they are not yet saved and require standard Excel saving procedures.</p>
+<div class="figure">
+<img src="images/fvs_run_tamm_save_vals.png" alt="TAMM save values prompt" width="100%" />
+<p class="caption">
+TAMM save values prompt
+</p>
+</div>
+<p>There are two primary reasons to run a FRAM model <strong>with</strong> a TAMM file. Although these reasons often apply, it is acceptable to run FRAM without TAMM if they do not. This can speed up the time it takes to perform a Chinook model run. However <em>there can be interactions between input into FRAM (from TAMI) and outputs from FRAM into TAMM so that it may take more than one iteration of cycling FRAM output back into TAMM, before TAMI values stabilize. This is especially noteworthy for runs with significant abundance and /or fishery changes.</em></p>
+<ol style="list-style-type: decimal">
+<li>TAMM input is needed</li>
+</ol>
+<ul>
+<li><p>FRAM has not been run with a TAMM file before or sheet TAMI and/or FRAM inputs have changed since the model was last run with a TAMM file. Once FRAM runs with a TAMM file, static input values for TAMM fisheries are stored in the FRAM project database. For Chinook, when the model is run a second time, a TAMM may not be needed to reproduce the model run results from the first run with a TAMM file.</p></li>
+<li><p>However, there are some TAMI fishery inputs in the coho TAMM, which are dependent on model results of terminal run size to subsequently update the input value when other fishery inputs are modified. This type of iteration is not built into the software for Puget Sound fisheries and thus the TAMM file is dynamic in terms of updating terminal fishery inputs. The coho TAMM is also used for WA coastal terminal fisheries, which utilize a selected button to run built-in software iterations which update input values that are dependent on model results of terminal run size.</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>TAMM output is needed</li>
+</ol>
+<ul>
+<li><p>Chinook: FRAM contains pre-terminal and terminal fisheries, but does not account for freshwater fisheries or escapements; both of which are only contained within the TAMM file structure. FRAM also does not provide exploitation rates or the breakdown of stock components to align with conservation management objectives. Thus, running a model with the TAMM file is necessary to generate the full suite of fishery impacts and stock breakdown to calculate and assess management.</p></li>
+<li><p>Coho: FRAM contains pre-terminal, terminal, and freshwater fisheries as well as escapement. However, FRAM does not provide exploitation rates or the aggregation of stock components to align with conservation management objectives. Thus, running a model with the TAMM file can provide calculation of exploitation rates and values aligned with conservation management objectives. Coho TAMM outputs are also needed by other external models that in turn relay revised inputs back to the FRAM/TAMM modeling framework (i.e. TAMM output values are used as input values in WA coast terminal area regional models and in Columbia River models).</p></li>
+</ul>
+</div>
+<div id="coho-tamm" class="section level2">
+<h2>Coho TAMM</h2>
+<p>This tool is used to:</p>
+<ul>
+<li>provide fishery inputs to FRAM from Puget Sound and Washington coastal terminal areas,</li>
+<li>calculate exploitation rates (ERs), and</li>
+<li>summarize model output to evaluate achievement of management objectives.</li>
+</ul>
+<p>Many sheets in the Coho TAMM workbook involve post-processing calculations and formatted reporting. The sections below focus on a subset of sheets likely to be the focus of the majority of user interactions.</p>
+<p>Coho TAMM sends to FRAM: - Tami sheet – contains FRAM inputs; a precursor sheet with more details about Tami values is Input_Harvestnew - WACoastTerminal – contains FRAM inputs when using “Run Coastal Iterations”</p>
+<p>Coho FRAM sends back to TAMM: - FishSumAllPRN, Table2PRN, StockSumPRN, TRunsPRN – FRAM output in terms of all stocks/fisheries.</p>
+<div id="input_harvestnew" class="section level3">
+<h3>Input_Harvestnew</h3>
+<p>For a subset of FRAM fisheries and a subset of time steps, fishery proposals can be represented as fishery inputs and entered into the Input_Harvestnew sheet. Only September (time step 4) and October-December (time step 5) time steps can be modeled as TAMM fishery inputs. These fishery inputs can be in terms of: catch, fishery effort scalars, Terminal Area Abundance (TAA) harvest rates, or Extreme Terminal Run Size (ETRS) harvest rates. Harvest rate fishery inputs are only possible as TAMM inputs and have a separate methodology for iterations between FRAM and TAMM. Values are then compiled from Input_Harvestnew into the TAMI sheet and passed from TAMM to FRAM.</p>
+</div>
+<div id="tami" class="section level3">
+<h3>Tami</h3>
+<p>The Tami sheet compiles values from the Input_Harvestnew sheet and passes them to FRAM. A separate flagging system is used in the Coho Tami sheet to depict each type of fishery input: flag 1 = catch, flag 2 = effort scalar, 3 = TAA harvest rate, 4 = ETRS harvest rate. A flag value of -99 tells FRAM to ignore TAMM inputs and to use the inputs provided within the FRAM interface/database.</p>
+<p>The Tami sheet also contains information needed for harvest rate iteration calculations. Fishery harvest rate inputs are provided with a specific definition of how that rate was calculated, so that FRAM can apply it correctly. A numeric system is used to represent these definitions and are stored in the Coho FRAM project database table “TAAETRSList”. The numeric value for which harvest rate definition is associated with the fishery input is provided on the Tami sheet under Abundance Definitions. In general, the TAA rates are calculated with total catch while the ETRS rates only include catch of local stocks.</p>
+</div>
+<div id="wacoastterminal" class="section level3">
+<h3>WACoastTerminal</h3>
+<p>The WACoastTerminal sheet is used ensure that FRAM’s catch composition of local stocks in Washington coastal terminal fisheries (per base period and time step) are consistent with the stock catch composition derived with regional harvest management planning models. Stock-specific harvest rates from regional harvest management models are input into the WACoastTerminal sheet. These rates are applied against the stock’s terminal run size from FRAM output. The FRAM ratio of local to non-local stocks is used to then calculate a total catch for each terminal fishery, which is apportioned to time step based on regional models. These catch inputs are then summarized into a formatted table in the lower section of the sheet and read back into FRAM using the FRAM model run specification button “Run Coastal Iterations”.</p>
+<p>Within this sheet, a fishery flag value of -99 tells FRAM to ignore TAMM inputs using the local stock-specific harvest rates and base subsequent calculations for evaluating management on the FRAM catch composition only (per base period and time step). For preseason planning, a fishery flag of -88 is used in the sheet so that subsequent calculations for evaluating management utilize the resulting stock catch composition consistent with the regional harvest management planning models.</p>
+</div>
+<div id="prn-sheets" class="section level3">
+<h3>PRN Sheets</h3>
+<p>There are four “PRN” sheets in the Coho TAMM file, which are created by driver files (.DRV) as defined in the coho FRAM project database table “ReportDriver”. These provide direct output of model results from each FRAM model run. Hyperlinks to individual sections within the sheet are found in the upper right section, and the key strokes Control+Home can be used to return to the top of the sheet. The four “PRN” sheets are as follows:</p>
+<ul>
+<li>FishSumAllPRN – Generated by FisherySummaryAllMortalities.DRV definitions. Summarizes impacts for all Coho stocks in each fishery and time step. These include sections for a.) landed catch, b.) shaker mortality (drop-off and drop-out mortalities), c.) non-retention mortality (CNR inputs and mark-selective release mortalities), d.) landed catch plus non-retention mortality, e.) total mortality.</li>
+<li>StockSumAllPRN – Generated by CohoStockSummary.DRV definitions. Reports total mortality by stock (marked and unmarked) summed over all fisheries and time steps.</li>
+<li>Table2PRN – Generated by PSCTable2.DRV definitions. Reports total mortality for a specified stock or stock aggregate by time step. There is also a configured section for verifying stock-specific fishery rate scalars for the non-treaty and treaty Area 8D net fisheries impacts on marked stocks.</li>
+<li>TRunsPRN – Generated by PSCTRuns.DRV definitions. For aggregates of various fisheries or stocks, reports values for a.) terminal run size, b.) escapement, and c.) terminal run size with all mortality for stock aggregates.</li>
+</ul>
+</div>
+<div id="sheet-2" class="section level3">
+<h3>Sheet “2”</h3>
+<p>This sheet contains multiple tables for Coho fishery impact summary highlights. Total fishery related mortality is presented for aggregated fisheries and stocks. Various statistics are calculated and compared to management guidelines. These are dependent upon stock and regional management approaches. Table format differs for Puget Sound, Washington coast, and hatchery stocks summaries.</p>
+</div>
+<div id="sheet-4" class="section level3">
+<h3>Sheet “4”</h3>
+<p>This sheet contains a summary table of Coho exploitation rates by fishery aggregate for key Puget Sound and Washington natural stocks. Rates are calculated for ocean exploitation, Puget Sound exploitation, total exploitation, and southern US exploitation. In addition, treaty and non-treaty rates are presented as sub-categories.</p>
+</div>
+<div id="overview-of-coho-tamm-workbook-sheets" class="section level3">
+<h3>Overview of Coho TAMM workbook sheets</h3>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="88%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Table</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">Table 1: Description of fishery regulations &amp; summary of Coho catch quotas/targets (**Comments/Descriptions should be updated each year)</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">Table 2A,2B,2C,2D,2E: Coho fishery impact summary highlights (**Management Objectives may be updated each year)</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="left">Table 4: Summary of Coho exploitation rates by fishery aggregate</td>
+</tr>
+<tr class="even">
+<td align="left">7</td>
+<td align="left">Table 7: Coho run sizes for Pacific Fishery Management Council (PFMC) Salmon Technical Team (STT) reference</td>
+</tr>
+<tr class="odd">
+<td align="left">Sk</td>
+<td align="left">Skagit region impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">StSn</td>
+<td align="left">Stillaguamish-Snohomish region impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">HdC</td>
+<td align="left">Hood Canal region impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">SPS</td>
+<td align="left">South &amp; Mid Puget Sound impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">NS</td>
+<td align="left">Nooksack-Samish region impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">JDF</td>
+<td align="left">Juan de Fuca region impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">PFMCTable7</td>
+<td align="left">Pacific Fishery Management Council (PFMC) Table 7 (Supplemental STT Reports/Preseason Report II and III); tracking LCN, OCN, RK</td>
+</tr>
+<tr class="even">
+<td align="left">WACoastTerminal</td>
+<td align="left">Tables related to WA coastal terminal fisheries/areas, including generation of FRAM fishery inputs</td>
+</tr>
+<tr class="odd">
+<td align="left">Thompson</td>
+<td align="left">Table T: Thompson and Upper Fraser Coho fishery impact summary</td>
+</tr>
+<tr class="even">
+<td align="left">Input_Harvestnew</td>
+<td align="left">Location where Fishery inputs are entered for TAMM terminal and extreme terminal net &amp; sport fisheries</td>
+</tr>
+<tr class="odd">
+<td align="left">Tami</td>
+<td align="left">TAMM user Inputs transferred from TAMM to FRAM</td>
+</tr>
+<tr class="even">
+<td align="left">FishSumAllPRN</td>
+<td align="left">FRAM outputs transferred from FRAM to TAMM: Fishery Summary</td>
+</tr>
+<tr class="odd">
+<td align="left">Table2PRN</td>
+<td align="left">FRAM outputs transferred from FRAM to TAMM: Stock Catch Summary (uses PSCTable2.drv)</td>
+</tr>
+<tr class="even">
+<td align="left">StockSumPRN</td>
+<td align="left">FRAM outputs transferred from FRAM to TAMM: Stock Summary</td>
+</tr>
+<tr class="odd">
+<td align="left">TRunsPRN</td>
+<td align="left">FRAM outputs transferred from FRAM to TAMM: Terminal Run Report (uses PSCTRuns.drv)</td>
+</tr>
+<tr class="even">
+<td align="left">LandedCNRTMbyTP</td>
+<td align="left">Pacific Fishery Management Council (PFMC), Salmon Technical Team use for reporting and table values (Annual Review of Fisheries, Preseason Reports)</td>
+</tr>
+<tr class="odd">
+<td align="left">FisheryConvTemplate</td>
+<td align="left">Original template based on older version of FRAM, for PFMC STT reporting and table values (see LandedCNRTMbyTP in use now)</td>
+</tr>
+<tr class="even">
+<td align="left">NT-Tsummary</td>
+<td align="left">Treaty and non-treaty allocation summary by Puget Sound management unit aggregates</td>
+</tr>
+<tr class="odd">
+<td align="left">PS_HatcheryEsc.</td>
+<td align="left">Table H. Hatchery escapement to Puget Sound broodstock collection facilities (**Should be updated each year)</td>
+</tr>
+<tr class="even">
+<td align="left">Documentation</td>
+<td align="left">Modifications and/or revisions made to the TAMM structure or file overall (See RunLog for specific model input changes)</td>
+</tr>
+<tr class="odd">
+<td align="left">fram_unm_mrkprn</td>
+<td align="left">Intermediate calculation page for Columbia River FRAM outputs, used by PFMC STT</td>
+</tr>
+<tr class="even">
+<td align="left">FramScalarsOPIstyle</td>
+<td align="left">Source: OPITT, (provided in February for preseason planning)</td>
+</tr>
+<tr class="odd">
+<td align="left">ColR&amp;OCN&amp;RogKlam</td>
+<td align="left">Source: OPITT, (provided in February for preseason planning)</td>
+</tr>
+<tr class="even">
+<td align="left">ColRPercent</td>
+<td align="left">Source: OPITT, related to Columbia River, used by PFMC STT</td>
+</tr>
+<tr class="odd">
+<td align="left">ColRHarvestInput</td>
+<td align="left">Source: OPITT, related to Columbia River, used by PFMC STT</td>
+</tr>
+<tr class="even">
+<td align="left">AttachC</td>
+<td align="left">Source: OPITT, related to Columbia River, used by PFMC STT</td>
+</tr>
+<tr class="odd">
+<td align="left">AttachCStkInput</td>
+<td align="left">Source: OPITT, related to Columbia River, used by PFMC STT</td>
+</tr>
+<tr class="even">
+<td align="left">SportMatrix</td>
+<td align="left">Regulation summary for Puget Sound marine sport by fishery and model time periods (Source: WDFW; **Should be updated each year or with changes between model runs)</td>
+</tr>
+<tr class="odd">
+<td align="left">RunLog</td>
+<td align="left">Notation of model input changes between model runs (See Documentation for file/format revisions)</td>
+</tr>
+<tr class="even">
+<td align="left">Preseason_Tracking</td>
+<td align="left">Tracking of model runs as preseason planning progresses, with relevant file and model run descriptions</td>
+</tr>
+<tr class="odd">
+<td align="left">CohoStock_Reference</td>
+<td align="left">For Reference. Source: 2018PFMC_NOF_CohoFRAMdatabase_Draft.mdb; Table: Stock (Species=COHO)</td>
+</tr>
+<tr class="even">
+<td align="left">CohoFishery_Reference</td>
+<td align="left">For Reference. Source: 2018PFMC_NOF_CohoFRAMdatabase_Draft.mdb; Table: Fishery (Species=COHO)</td>
+</tr>
+<tr class="odd">
+<td align="left">TAAETRSList_Reference</td>
+<td align="left">For reference. Source: CohoPugetSound2019TAMMInputTemplate_MB012819.xlsx (MB)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="chinook-tamm" class="section level2">
+<h2>Chinook TAMM</h2>
+<p>This tool is used to:</p>
+<ul>
+<li>split stocks that are aggregated in FRAM into finer sub-components</li>
+<li>account for fisheries that are not in FRAM</li>
+<li>calculate exploitation rates (ERs) and escapements over several levels of stock detail</li>
+</ul>
+<p>Many sheets in the Chinook workbook involve post-processing calculations and reporting, with similar (but not identical) layout and related content. The sections below focus on the smaller group of sheets likely to be the focus of the majority of user interactions.</p>
+<p>Chinook TAMM passes values in the sheet <a href="#tami-1">TAMI</a> to FRAM, and subsequently receives FRAM output compiled in the sheet <a href="#tamx">TAMX</a>.</p>
+<div id="fram-tamm-stock-lookup" class="section level3">
+<h3>FRAM-TAMM stock lookup</h3>
+<p>Several FRAM stock aggregates are broken out in TAMM.</p>
+<table>
+<caption>
+Stock units in FRAM and TAMM
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;">
+Region
+</th>
+<th style="text-align:left;font-weight: bold;">
+FRAM
+</th>
+<th style="text-align:left;font-weight: bold;">
+TAMM
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #EFF3FF !important;">
+HOOD CANAL
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Hood Canal Fingerling
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Area 12B tribs natural
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #EFF3FF !important;">
+HOOD CANAL
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Hood Canal Fingerling
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Hoodsport Fi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #EFF3FF !important;">
+HOOD CANAL
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Hood Canal Fingerling
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Skokomish R. nat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #EFF3FF !important;">
+HOOD CANAL
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Hood Canal Fingerling
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Skokomish R. hatchery
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #EFF3FF !important;">
+HOOD CANAL
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Hood Canal Fingerling
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Area 12C-D tribs natural
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #EFF3FF !important;">
+HOOD CANAL
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Hood Canal Yearling
+</td>
+<td style="text-align:left;background-color: #EFF3FF !important;">
+Hoodsport Yr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #C6DBEF !important;">
+JDF
+</td>
+<td style="text-align:left;background-color: #C6DBEF !important;">
+Elwha/Dungness
+</td>
+<td style="text-align:left;background-color: #C6DBEF !important;">
+Dungeness
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #C6DBEF !important;">
+JDF
+</td>
+<td style="text-align:left;background-color: #C6DBEF !important;">
+Elwha/Dungness
+</td>
+<td style="text-align:left;background-color: #C6DBEF !important;">
+Elwha
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #C6DBEF !important;">
+JDF
+</td>
+<td style="text-align:left;background-color: #C6DBEF !important;">
+Hoko
+</td>
+<td style="text-align:left;background-color: #C6DBEF !important;">
+Hoko
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #9ECAE1 !important;">
+NOOKSACK/SAMISH
+</td>
+<td style="text-align:left;background-color: #9ECAE1 !important;">
+Nooksack/Samish S/F
+</td>
+<td style="text-align:left;background-color: #9ECAE1 !important;">
+7E Glenwood Springs hatchery
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #9ECAE1 !important;">
+NOOKSACK/SAMISH
+</td>
+<td style="text-align:left;background-color: #9ECAE1 !important;">
+Nooksack/Samish S/F
+</td>
+<td style="text-align:left;background-color: #9ECAE1 !important;">
+Lummi Bay hatchery
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #9ECAE1 !important;">
+NOOKSACK/SAMISH
+</td>
+<td style="text-align:left;background-color: #9ECAE1 !important;">
+Nooksack/Samish S/F
+</td>
+<td style="text-align:left;background-color: #9ECAE1 !important;">
+Samish R. hatchery
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #9ECAE1 !important;">
+NOOKSACK/SAMISH
+</td>
+<td style="text-align:left;background-color: #9ECAE1 !important;">
+Nooksack/Samish S/F
+</td>
+<td style="text-align:left;background-color: #9ECAE1 !important;">
+Samish R. natural
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #9ECAE1 !important;">
+NOOKSACK/SAMISH
+</td>
+<td style="text-align:left;background-color: #9ECAE1 !important;">
+North Fork &amp; South Fork Nook Spring (2)
+</td>
+<td style="text-align:left;background-color: #9ECAE1 !important;">
+Nooksack Early
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #F2F0F7 !important;">
+SKAGIT
+</td>
+<td style="text-align:left;background-color: #F2F0F7 !important;">
+Skag S/F Fi
+</td>
+<td style="text-align:left;background-color: #F2F0F7 !important;">
+Skag S/F Fi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #F2F0F7 !important;">
+SKAGIT
+</td>
+<td style="text-align:left;background-color: #F2F0F7 !important;">
+Skagit S/F Yr
+</td>
+<td style="text-align:left;background-color: #F2F0F7 !important;">
+Skagit S/F Yr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #F2F0F7 !important;">
+SKAGIT
+</td>
+<td style="text-align:left;background-color: #F2F0F7 !important;">
+Skagit Spr
+</td>
+<td style="text-align:left;background-color: #F2F0F7 !important;">
+Skagit Spr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Deep SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Carr Inlet/Minter Hatchery
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Deep SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Carr Inlet/Minter Nat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Deep SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Chambers Creek Hatchery Fing
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Deep SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Nisqually River Hatchery
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Deep SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Nisqually River Nat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Deep SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+McAllister Creek Hatchery
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Deep SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+McAllister Creek Nat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Deep SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Deschutes/Cap. Lake Hatchery
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+SPS Yearlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Duwamish-Green Yearlings
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+SPS Yearlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Carr Inlet Minter Yearlings
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+SPS Yearlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Chambers Creek Yearlings
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+SPS Yearlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Deschutes Cap. Yearlings
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Upper SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Grovers Ck. Hat. - 10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Upper SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Lk. Washington Hatchery
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Upper SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Lk WashingtonNatural
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Upper SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Duwamish-Green Hatchery
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Upper SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Duwamish-Green Nat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Upper SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Gorst Creek Hat. - 10E
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Upper SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Gorst Creek Yearlings
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Upper SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Puyallup River Hatchery
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Upper SPS Fingerlings
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+Puyallup River Nat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #DADAEB !important;">
+SOUTH SOUND
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+UW Accelerated
+</td>
+<td style="text-align:left;background-color: #DADAEB !important;">
+UWAcc
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #BCBDDC !important;">
+STILLAGUAMISH/SNOHOMISH
+</td>
+<td style="text-align:left;background-color: #BCBDDC !important;">
+Sno S/F Fi
+</td>
+<td style="text-align:left;background-color: #BCBDDC !important;">
+Sno S/F Fi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #BCBDDC !important;">
+STILLAGUAMISH/SNOHOMISH
+</td>
+<td style="text-align:left;background-color: #BCBDDC !important;">
+Sno S/F Yr
+</td>
+<td style="text-align:left;background-color: #BCBDDC !important;">
+Sno S/F Yr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #BCBDDC !important;">
+STILLAGUAMISH/SNOHOMISH
+</td>
+<td style="text-align:left;background-color: #BCBDDC !important;">
+Stilly S/F
+</td>
+<td style="text-align:left;background-color: #BCBDDC !important;">
+Stilly S/F
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;border-right:1px solid;background-color: #BCBDDC !important;">
+STILLAGUAMISH/SNOHOMISH
+</td>
+<td style="text-align:left;background-color: #BCBDDC !important;">
+Tulalip Hatchery
+</td>
+<td style="text-align:left;background-color: #BCBDDC !important;">
+Tulalip Hatchery
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tami-1" class="section level3">
+<h3>TAMI</h3>
+<p>The TAMI sheet passes in values for several fisheries. A flag value of -88 tells FRAM to ignore TAMM inputs and to use the inputs provided within the FRAM database.</p>
+<div class="figure">
+<img src="images/tamm_tami.PNG" alt="Example TAMI sheet" width="100%" />
+<p class="caption">
+Example TAMI sheet
+</p>
+</div>
+<p>Additional flags determine whether the parameter values are interpreted as a rate or count (i.e., number of fish), with the values themselves derived from <a href="#input-page">Input Page</a> entries and additional calculations on area-specific sheets.</p>
+<p>For example, in the screenshot shown above, the Bellingham Bay values that are sent to FRAMM first pass through the “NS” Nooksack-Samish sheet from the block of input page cells denoted <em>“Rate” is %TAA Nooksack-Samish Aggregate Summer/Fall chinook.</em></p>
+<ul>
+<li>7BCD NT
+<ul>
+<li>C8 May-Jun: “0.0000” =IF(+NS!Y17=“na”,0,NS!Y17) &lt;- NS!Y17 hard entered</li>
+<li>D8 Jul-Sep: “0.1571” =NS!Z17 &lt;- NS!P20 &lt;- Input Page!B221 &lt;- derived from B’ham Bay purse seine and gillnet mortality data</li>
+<li>E8 Oct-Apr: “19” =NS!AA17 &lt;- NS!P22 &lt;- Input Page!B223 &lt;- as for summer timestep</li>
+<li>J8 EQADJ: “0” =NS!AC23 &lt;- NS!P38 &lt;- Input Page!B226 &lt;- currently unused</li>
+</ul></li>
+<li>7BCD Treaty
+<ul>
+<li>C9 May-Jun: “0” =NS!Y18 &lt;- NS!P19 &lt;- Input Page!B220 &lt;- based on planned treaty harvest</li>
+<li>D9 Jul-Sep: “0.2892” =NS!Z18 &lt;- NS!P21 &lt;- Input Page!B222 &lt;- as for spring timestep</li>
+<li>E9 Oct-Apr: “0.001” =NS!AA18 &lt;- NS!P23 &lt;- Input Page!B224 &lt;- as for spring timestep</li>
+</ul></li>
+</ul>
+<p>As general good practice, after making any changes to TAMM fishery parameters, particularly those that are passed to and processed within FRAM, it may be worthwhile to ensure that the intended behavior occurred by checking relevant screen reports and/or TAMM output sheets.</p>
+</div>
+<div id="input-page" class="section level3">
+<h3>Input Page</h3>
+<p>This sheet is divided (row-wise) into sections for stock forecasts, net fisheries, and sport fisheries, with each of these primary sections further subdivided by river basins. Note that in addition to the text descriptions, hover/tooltip Excel comments are associated with several cells and can provide greater context.</p>
+<p>During the pre-season process, values are agreed-to stock forecasts and anticipated fisheries from regional co-managers.</p>
+<p>When performing post-season runs, the values are agreed-to abundance estimates from regional co-managers and observed fishery catches from co-manager technical staff.</p>
+<p>In general, across areas, the counts of hatchery marked, hatchery unmarked, natural marked and natural unmarked returns are provided for the different stock components.</p>
+<div id="skagit" class="section level4">
+<h4>Skagit</h4>
+<ul>
+<li>HM/HUM/NM/NUM are provided for spring, S/F fingerling &amp; S/F yearling (<strong>these values are used to derive proportions for recruit scalers?</strong>)</li>
+<li>The summer/fall run is further divided into Upper Skagit Summer, Lower Sauk Summer, and Lower Skagit Fall</li>
+<li>The spring run is divided into Upper Sauk Spring, Suiattle Spring, and Upper Cascade Spring</li>
+</ul>
+<p><img alt="tamm_in_skagit_forecast" src="images/tamm_in_skagit_forecast.png"></p>
+<ul>
+<li>Treaty impacts are entered for:
+<ul>
+<li>marine Chinook, sockeye, pink, coho, chum, steelhead and test fisheries</li>
+<li>freshwater Chinook, C&amp;S, sockeye, pink, coho, chum, steelhead and test fisheries</li>
+</ul></li>
+<li>Non-treaty (incidental) impacts are entered for pink and chum fisheries</li>
+</ul>
+<p><img alt="tamm_in_skagit_net.png" src="images/tamm_in_skagit_net.png"></p>
+<ul>
+<li>Incidental impacts are entered for the sport coho and sockeye fisheries</li>
+<li>Mark-selective (MSF) parameters are entered for the impacts on Springs</li>
+</ul>
+<p><img alt="tamm_in_skagit_sport.png" src="images/tamm_in_skagit_sport.png"></p>
+</div>
+<div id="stillaguamish-snohomish" class="section level4">
+<h4>Stillaguamish &amp; Snohomish</h4>
+<ul>
+<li>HM/HUM/NM/NUM are provided for Snohomish S/F fingerlings and yearlings, Stillaguamish S/F, and Tulalip hatchery fish</li>
+<li>The Skykomish portion of the Snohomish naturals is entered</li>
+</ul>
+<p><img alt="tamm_in_stilly_forecast" src="images/tamm_in_stilly_forecast.png"></p>
+<ul>
+<li>Treaty impacts are entered for
+<ul>
+<li>Area 8A C&amp;S, coho, chum, steelhead and test fisheries</li>
+<li>Stillaguamish C&amp;S, pink, coho and chum fisheries</li>
+<li>Snohomish River commercial</li>
+<li>Area 8D coho</li>
+</ul></li>
+<li>Non-treaty (incidental) impacts are entered for Area 8D and Area 8A pink, coho and chum fisheries</li>
+</ul>
+<p><img alt="tamm_in_stilly_net.png" src="images/tamm_in_stilly_net.png"></p>
+<ul>
+<li>Catches are entered for Stillaguamish and Snohomish Rivers</li>
+<li>Mark-selective (MSF) parameters are entered for the Skykomish River</li>
+</ul>
+<p><img alt="tamm_in_stilly_sport.png" src="images/tamm_in_stilly_sport.png"></p>
+</div>
+<div id="hood-canal" class="section level4">
+<h4>Hood Canal</h4>
+<ul>
+<li>HM/HUM/NM/NUM are provided for Area 12B tribs natural, Hoodsport hatchery fingerlings and yearlings, Skokomish natural and hatchery, and Area 12C-D tribs natural fish</li>
+</ul>
+<p><img alt="tamm_in_hood_forecast" src="images/tamm_in_hood_forecast.png"></p>
+<ul>
+<li>Treaty impacts from marine coho and chum and in-river Chinook are entered by season (May-Jun, Jul-Sep, Oct-Apr)</li>
+<li>Non-treaty impacts from coho and chum fisheries are entered by season along with the Hoodsport hatchery beach seine catch</li>
+</ul>
+<p><img alt="tamm_in_hood_net.png" src="images/tamm_in_hood_net.png"></p>
+<ul>
+<li>Catches are entered for the Quilcene and miscellaneous 12 B/C/D fisheries</li>
+<li>Mark-selective (MSF) parameters are entered for the Skokomish River</li>
+</ul>
+<p><img alt="tamm_in_hood_sport.png" src="images/tamm_in_hood_sport.png"></p>
+</div>
+<div id="south-puget-sound" class="section level4">
+<h4>South Puget Sound</h4>
+<ul>
+<li>HM/HUM/NM/NUM are provided for Grovers Creek hatchery, Lake Washington hatchery and natural, Sammamish natural, Duwamish-Green hatchery and natural, Gorst Creek hatchery, Puyallup River hatchery and natural, Carr Inlet/Minter hatchery and natural, Chambers Creek hatchery, Nisqually River hatchery and natural, McAllister Creek hatchery and natural, Deschutes River hatchery, miscellaneous 13D-K/Coulter Creek hatchery, and White River natural and hatchery</li>
+<li>The marked/unmarked yearlings are listed for the Duwamish and White River components</li>
+<li>Proportions are entered for several hatchery stocks that spawn in river and the proportion of “natural” returning to the hatchery</li>
+</ul>
+<p><img alt="tamm_in_sps_forecast" src="images/tamm_in_sps_forecast.png"></p>
+<ul>
+<li>Harvest rates are entered for the 11A, Puyallup River and White River C&amp;S impacts on the White River spring run</li>
+<li>Terminal/near-terminal marine catches by season (May-Jun, Jul-Sep, Oct-Apr) are entered for
+<ul>
+<li>Area 10/11 treaty and non-treaty commercial (incidental in chum fishery)</li>
+<li>test fisheries</li>
+<li>Area 10A treaty, C&amp;S, and non-treaty</li>
+<li>Area 10E treaty and non-treaty</li>
+<li>Area 13/13D-K/13A treaty and non-treaty</li>
+</ul></li>
+<li>Freshwater treaty net and C&amp;S impacts are entered for Lake Washington, Lake Sammamish, the Duwamish-Green River, the Puyallup River, the Nisqually River, and McAllister, Minter and Chambers Creeks
+<ul>
+<li>Mark-selective parameters are also entered for the Nisqually tangle net fishery</li>
+</ul></li>
+</ul>
+<p><img alt="tamm_in_sps_net.png" src="images/tamm_in_sps_net.png"></p>
+<ul>
+<li>Catches are entered for Lake Washington, Lake Sammamish, the Duwamish-Green River, McAllister Creek, Minter Creek, Chambers Creek, Deschutes/Capital Lake and Kennedy/misc 13B</li>
+<li>Mark-selective (MSF) parameters are entered for fisheries in Puyallup, Carbon and Nisqually Rivers</li>
+</ul>
+<p><img alt="tamm_in_sps_sport.png" src="images/tamm_in_sps_sport.png"></p>
+</div>
+<div id="nooksack-samish" class="section level4">
+<h4>Nooksack &amp; Samish</h4>
+<ul>
+<li>HM/HUM/NM/NUM are provided for Nooksack Early (Spring) hatchery and natural, Glenwood hatchery, Lummi Bay hatchery, and Samish River hatchery and natural</li>
+<li>The proportion of North Fork natural origin fish in the total natural origin fish is entered</li>
+</ul>
+<p><img alt="tamm_in_nook_forecast" src="images/tamm_in_nook_forecast.png"></p>
+<ul>
+<li>Nooksack spring/early impacts are entered for C&amp;S fisheries as catches or harvest rates
+<ul>
+<li>Mark-selective parameters are also entered for the Lummi tangle net fishery</li>
+</ul></li>
+<li>Nooksack summer/fall impacts for treaty and non-treaty fisheries are entered by season (May-Jun, Jul-Sep, Oct-Apr)</li>
+</ul>
+<p><img alt="tamm_in_nook_net.png" src="images/tamm_in_nook_net.png"></p>
+<ul>
+<li>Catches for the Samish/Whatcom sport fishery and Nooksack River MSF can be entered
+<ul>
+<li>the MSF includes marked-release and unmarked retention parameter values</li>
+</ul></li>
+</ul>
+<p><img alt="tamm_in_nook_sport.png" src="images/tamm_in_nook_sport.png"></p>
+</div>
+<div id="strait-of-juan-de-fuca" class="section level4">
+<h4>Strait of Juan de Fuca</h4>
+<ul>
+<li>HM/HUM/NM/NUM are provided for Dungeness, Elwha, and Hoko runs</li>
+<li>pre-spawn mortality is entered for Dungeness and Elwha</li>
+</ul>
+<p><img alt="tamm_in_jdf_forecast" src="images/tamm_in_jdf_forecast.png"></p>
+<ul>
+<li>Catches can be entered for Dungeness Bay treaty and non-treaty net fisheries, for Elwha C&amp;S and test/commercial, and for Hoko terminal and extreme terminal fisheries</li>
+</ul>
+<p><img alt="tamm_in_jdf_net.png" src="images/tamm_in_jdf_net.png"></p>
+<ul>
+<li>Sport fishery catches can be entered for Dungeness, Elwha, and Hoko</li>
+</ul>
+<p><img alt="tamm_in_jdf_sport.png" src="images/tamm_in_jdf_sport.png"></p>
+</div>
+</div>
+<div id="tamx" class="section level3">
+<h3>TAMX</h3>
+<p>During a run with a Chinook TAMM selected, FRAM passes output values to the TAMX sheet. Generally, these are organized into row-wise blocks of fisheries by stock after a header block of all stocks summed across fisheries.</p>
+<div class="figure">
+<img src="images/tamm_tamx_zoomout.png" alt="A full view of the information in a TAMX sheet; each block of rows corresponds to fishery-specific impacts for a stock" width="450px" height="1400px" />
+<p class="caption">
+A full view of the information in a TAMX sheet; each block of rows corresponds to fishery-specific impacts for a stock
+</p>
+</div>
+</div>
+<div id="er_esc_overview_new" class="section level3">
+<h3>ER_ESC_Overview_New</h3>
+<p>The exploitation rate and escapement overview approximates a primary “dashboard” of ESA compliance for the Washington comanagers, displaying estimated exploitation rates and escapements relative to the critical thresholds defined in stock-specific management unit plans (which are also listed in the RMP_Mgmt_Criteria sheet).</p>
+<p>Conditional formatting indicates stocks with exploitation rates exceeding management targets. In pre-season runs, this indicates that fishery adjustments will be necessary to meet management objectives. In post-season runs, this indicates that the stock failed management objectives, given fisheries and abundances that actually occurred.</p>
+<div class="figure">
+<img src="images/tamm_eresc.png" alt="The Chinook TAMM ER_ESC_Overview sheet is frequently reviewed to assess planned fishery packages" width="100%" />
+<p class="caption">
+The Chinook TAMM ER_ESC_Overview sheet is frequently reviewed to assess planned fishery packages
+</p>
+</div>
+</div>
+<div id="limitingstock" class="section level3">
+<h3>LimitingStock</h3>
+<p>This sheet offers similar information to that found in the overview, but with greater detail on the particular breakdown of impacts to stocks within specific fisheries. It consists of blocks of values for:</p>
+<ul>
+<li>“Original” key natural stocks</li>
+<li>Hatchery (M+UM)</li>
+<li>Unmarked hatchery</li>
+<li>Unmarked natural</li>
+<li>Marked hatchery</li>
+<li>Marked natural</li>
+</ul>
+<p>The LimitingStock table is a great source of information for technical staff interested in better understanding which fishery-time steps have the greatest estimated impact on a stock within a given year.</p>
+<div class="figure">
+<img src="images/tamm_limitstk_topbloc.png" alt="A detailed view of a portion of the upper block of the Limiting Stk Complete Mod sheet" width="100%" />
+<p class="caption">
+A detailed view of a portion of the upper block of the Limiting Stk Complete Mod sheet
+</p>
+</div>
+<div class="figure">
+<img src="images/tamm_limitstkzoom.png" alt="A full view of the Limiting Stk Complete Mod sheet" width="450px" height="1000px" />
+<p class="caption">
+A full view of the Limiting Stk Complete Mod sheet
+</p>
+</div>
+</div>
+<div id="overview-of-chinook-tamm-workbook-sheets" class="section level3">
+<h3>Overview of Chinook TAMM workbook sheets</h3>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="88%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Table</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">Table 1: Description of fishery regulations &amp; summary of Chinook catch quotas/targets</td>
+</tr>
+<tr class="even">
+<td align="left">ER_ESC_Overview(ifanyMSF)</td>
+<td align="left">Impact summary for ESA-listed stocks (total, SUS, and SUS PT ERs; natural escapements); aka “Table 2”</td>
+</tr>
+<tr class="odd">
+<td align="left">LimitingStkComplete mod</td>
+<td align="left">Detailed (fishery-by-fishery) impact distribution for constraining stocks</td>
+</tr>
+<tr class="even">
+<td align="left">SPS Abundance Iterations</td>
+<td align="left">Complete this worksheet to properly adjust SPS abundances based on stock-specific catches in the SPS terminal net fisheries</td>
+</tr>
+<tr class="odd">
+<td align="left">Input Page</td>
+<td align="left">Location where (1) Stock, (2) Net Fishery, and (3) Sport Fishery are entered for TAMM stocks</td>
+</tr>
+<tr class="even">
+<td align="left">TAMI</td>
+<td align="left">TAMM user Inputs transferred from TAMM to FRAM</td>
+</tr>
+<tr class="odd">
+<td align="left">TAMX</td>
+<td align="left">FRAM outputs transferred from FRAM to TAMM</td>
+</tr>
+<tr class="even">
+<td align="left">2A_CU&amp;M</td>
+<td align="left">Disaggregated stock impacts (FRAM stock split into TAMM stocks) by FRAM fishery and TAMM freshwater fishery for MARKED &amp; UNMARKED fish; built off of 2D_Fmrkd, 2D_Funmrkd and stock worksheets</td>
+</tr>
+<tr class="odd">
+<td align="left">2A_Cmrkd</td>
+<td align="left">Similar to 2A_CU&amp;M but for MARKED only</td>
+</tr>
+<tr class="even">
+<td align="left">2A_CUnmrkd</td>
+<td align="left">Similar to 2A_CU&amp;M but for UNMARKED only</td>
+</tr>
+<tr class="odd">
+<td align="left">2A_CU&amp;M_H+N</td>
+<td align="left">Similar to 2A_CU&amp;M, but now includes missing hatchery components for Skagit and Stilly/Sno</td>
+</tr>
+<tr class="even">
+<td align="left">2A_CU&amp;M_Hatchery</td>
+<td align="left">Similar to 2A_CU&amp;M, but only includes hatchery components for TAMM stocks</td>
+</tr>
+<tr class="odd">
+<td align="left">2A_CU&amp;M_N</td>
+<td align="left">Similar to 2A_CU&amp;M, but only includes natural components for TAMM stocks; generally computed as difference between 2A_CU&amp;M H+N and 2A_CU&amp;M Hatchery</td>
+</tr>
+<tr class="even">
+<td align="left">2D_F</td>
+<td align="left">Total AEQ Mortalities and Landed Catch for MARKED and UnMARKED stocks by fishery, less freshwater fishery impacts</td>
+</tr>
+<tr class="odd">
+<td align="left">2D_Fmrkd</td>
+<td align="left">Total AEQ Mortalities and Landed Catch for MARKED stocks by fishery, less freshwater fishery impacts</td>
+</tr>
+<tr class="even">
+<td align="left">2D_FUnmrkd</td>
+<td align="left">Total AEQ Mortalities and Landed Catch for UNMARKED stocks by fishery, less freshwater fishery impacts</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">Table 3: Approximate allocation accounting</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="left">Table 5: Summary of exploitation rates by fishery aggregate</td>
+</tr>
+<tr class="odd">
+<td align="left">5_U&amp;M</td>
+<td align="left">Table 5: Summary of exploitation rates by fishery aggregate</td>
+</tr>
+<tr class="even">
+<td align="left">5Unmrkd</td>
+<td align="left">Table 5: Summary of exploitation rates by fishery aggregate, UNMARKED Only</td>
+</tr>
+<tr class="odd">
+<td align="left">6</td>
+<td align="left">Table 6: Chinook ERs and mortality distribution by fishery aggregate (MARKED + UNMARKED, HATCH. + NAT.)</td>
+</tr>
+<tr class="even">
+<td align="left">6_U&amp;M</td>
+<td align="left">Table 6: Chinook ERs and mortality distribution by fishery aggregate</td>
+</tr>
+<tr class="odd">
+<td align="left">6_Nats</td>
+<td align="left">Table 6: Chinook ERs and mortality distribution by fishery aggregate, NATURAL ONLY</td>
+</tr>
+<tr class="even">
+<td align="left">6Unmrkd</td>
+<td align="left">Table 6: Chinook ERs and mortality distribution by fishery aggregate</td>
+</tr>
+<tr class="odd">
+<td align="left">Sk</td>
+<td align="left">Skagit sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">Skmrkd</td>
+<td align="left">Skagit-MARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">SkUnmrkd</td>
+<td align="left">Skagit-UNMARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">StSn</td>
+<td align="left">Stillaguamish-Snohomish impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">StSnmrkd</td>
+<td align="left">Stillaguamish-Snohomish-MARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">StSnUnmrkd</td>
+<td align="left">Stillaguamish-Snohomish-UNMARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">HdC</td>
+<td align="left">Hood Canal impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">HdCmrkd</td>
+<td align="left">Hood Canal-MARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">HdCUnmrkd</td>
+<td align="left">Hood Canal -UNMARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">SPS</td>
+<td align="left">South &amp; Mid Puget Sound impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">SPSmrkd</td>
+<td align="left">South &amp; Mid Puget Sound-MARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">SPSUnmrkd</td>
+<td align="left">South &amp; Mid Puget Sound -UNMARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">NS</td>
+<td align="left">Nooksack-Samish sp, fa impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">NSmrkd</td>
+<td align="left">Nooksack-Samish sp, fa-MARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">NSUnmrkd</td>
+<td align="left">Nooksack-Samish sp, fa -UNMARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">JDF</td>
+<td align="left">Juan de Fuca tribs impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">JDFmrkd</td>
+<td align="left">Juan de Fuca tribs-MARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="even">
+<td align="left">JDFUnmrkd</td>
+<td align="left">Juan de Fuca tribs -UNMARKED sp, su/fa impact calculations/summaries</td>
+</tr>
+<tr class="odd">
+<td align="left">Cat&amp;Esc</td>
+<td align="left">All-stocks summary of escapement projections relative to goals, plus miscellaenous fishery catch summaries</td>
+</tr>
+<tr class="even">
+<td align="left">nt&amp;t</td>
+<td align="left">Treaty and non-treaty allocation summary by Puget Sound management unit aggregates</td>
+</tr>
+<tr class="odd">
+<td align="left">WildDist</td>
+<td align="left">Fishery-aggregate impact distribution and sharing summary for hatchery+natural and natural-only stocks</td>
+</tr>
+<tr class="even">
+<td align="left">ERcalc</td>
+<td align="left">Approximate flow of information/calculations from FRAM output and TAMM stock/fishery inputs to bottom-line ER projections</td>
+</tr>
+<tr class="odd">
+<td align="left">scratch</td>
+<td align="left">Empty worksheet for random calculations</td>
+</tr>
+<tr class="even">
+<td align="left">Guts</td>
+<td align="left">The Guts sheet, which contains run details that are referenced elsewhere in the TAMM</td>
+</tr>
+<tr class="odd">
+<td align="left">SportMatrix</td>
+<td align="left">Regulation summary for Puget Sound marine sport by fishery and model time periods</td>
+</tr>
+<tr class="even">
+<td align="left">Documentation</td>
+<td align="left">This tab documents functionality changes/updates to the TAMM</td>
+</tr>
+<tr class="odd">
+<td align="left">RunLog</td>
+<td align="left">This tab documents run specific (input related) changes to specific model runs</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <div id="backwards-fram" class="section level1">
 <h1>Backwards FRAM</h1>
 <p>“Forward” FRAM model runs begin from a forecasted “pre-fishing” cohort and then apportion fishery impacts to the model stocks through the species-specific time steps. This conceptually parallels the observed seasonal progression of salmon returning to spawning grounds and release areas.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
@@ -732,68 +1988,6 @@ Convergence is displayed per-stock and age
 <p>Finally, after exiting the table display, a new option to “Save BkFRAM targets and new Recruit Scalars[sic]” is available.</p>
 <p>If no further changes to escapement or flagging are needed, this will write values to the database before returning to the main menu.</p>
 <p>The “Save BkFRAM…” button brings up the following message box: “This action saves BkFRAMTargets as well as Recruit Scalars. To save, please follow instructions of next menu.” Then the ‘Save-Menu’ pops-up, where the user can select to replace the existing run, save as a new run, or cancel save. Note that if the user selects the “Save BkFRAM Targets and New Recruit Scalars” button after the targets are entered or imported, but before iterations are run, the save action will only save the new targets.</p>
-</div>
-</div>
-<div id="outputresults" class="section level1">
-<h1>Output/Results</h1>
-<p>A FRAM model run produces [Output values] that are stored in several [Project database tables].</p>
-<p>These results can be accessed and analyzed with external applications such as R or Microsoft Excel, and this is often preferable when addressing multiple model runs. For example, when examining a particular stock or fishery across multiple model runs within a single project database, the key tables can be joined and filtered to reach a focal subset for further manipulation and visualization.</p>
-<p>However, the FRAM application also provides functionality to interactively view results for a single run by selecting the main menu button <code>Output/Results</code>.</p>
-<div id="screen-reports" class="section level2">
-<h2>Screen reports</h2>
-<p>The “Output Type Selection” submenu offers <code>Screen Reports</code>. Note that if all values are zero within these reports, then the model must be run in the project database to generate actual results.</p>
-<p><img src="images/fvs_output.png" width="100%" /></p>
-<p>Selecting this then displays several further options.</p>
-<p><img src="images/fvs_output_screenrpt.png" width="100%" /></p>
-<p>Select a screen report by clicking in the appropriate checkbox. Once in view, note that many of these reports include a “clipboard copy” option in the upper left corner. This allows the user to paste the data into other external programs (e.g., Microsoft Word or Excel).</p>
-<div id="fishery-mortality-reports" class="section level3">
-<h3>Fishery mortality reports</h3>
-<p>This view aggregates across stocks within a fishery, summarizing different types of mortality. For Chinook, these values can be displayed summed or broken out by age per fishery (i.e., all age 3 catch within fishery N). Results may also be displayed as a zero value for strata in which base period data are unavailable. In other screen reports, these strata are often denoted with “****”.</p>
-<ul>
-<li><code>Landed Catch</code> designates fish that are caught and retained</li>
-<li><code>NonRetention</code> includes incidental mortalities from mark-selective fisheries and/or other fisheries not targeting Chinook or coho (e.g., pink or chum salmon, test fishing, etc.)</li>
-<li><code>Shakers</code> accounts for non-landed mortalities from sub-legal encounters</li>
-<li><code>Dropoff</code> (also net drop out) represents mortality from encounters in which the fish is never observed (i.e., “the one that got away”)</li>
-<li><code>TotalMortality</code> is the sum of these components</li>
-<li>For Chinook, <code>AEQ-Total Mort</code> designates the “adult equivalent” translation of the total mortality, reflecting an age-based estimate of the fish that could have actually survived to return to spawn given subsequent years of fishing and non-fishing related impacts (e.g., younger fish that are killed due to fishing in year Y would not necessarily have survived to return in a later year Y+t, even in the absence of year Y’s fishing)</li>
-</ul>
-<p><img src="images/fvs_output_screenrpt_fishmort.png" width="100%" /></p>
-</div>
-<div id="stock-mortality-reports" class="section level3">
-<h3>Stock mortality reports</h3>
-<p>The mortality types described above can also be viewed by fishery and time step for an individual stock or a selected sub-set of stocks. After selecting this report, a menu allows selection of a single stock or multiple stocks using Control+Click. After the desired stocks are highlighted, click “OK – Done” to view the report. The fishery mortality data types will be summarized for all stocks selected.</p>
-<p><img src="images/fvs_output_screenrpt_stockmort.png" width="100%" /></p>
-</div>
-<div id="population-statistics" class="section level3">
-<h3>Population statistics</h3>
-<p>The “popstat” report is regularly used for Chinook, as it clearly illustrates changes through the major FRAM processing steps that take a stock from starting cohort to escapement. It presents the cohort trajectory through time steps for each stock, broken out by age for Chinook. The columns describe the progression through time of the starting cohort through natural mortality, pre-terminal fisheries, maturation, and terminal fisheries to escapement. For Chinook, note that FRAM currently calculates “marine escapement” while “spawning escapement” is handled within [TAMM].</p>
-<p>For Chinook the report data represent by time step: starting cohort by age (T#-StartCoh), cohort after natural mortality (T#-postNM), cohort after pre-terminal fisheries (T#-postPT), mature cohort resulting from stock-specific maturity age parameters as provided by the base period (T#-Mat), escapement of the mature cohort remaining after FRAM’s set of terminal fisheries (T#-Esc).</p>
-<p><img src="images/fvs_output_screenrpt_popstatchin.png" width="100%" /></p>
-<p>For Coho the report data represent by time step: starting cohort (T#-Coht), cohort after natural mortality and pre-terminal fisheries (T#-Rem), mature cohort in time step 5 (Oct-Dec) only (Mature), and escapement of the mature cohort remaining after terminal and freshwater fisheries (Escape; i.e. spawner escapement).</p>
-<p><img src="images/fvs_output_screenrpt_popstatcoho.png" width="100%" /></p>
-</div>
-<div id="mark-selective-fishery-reports" class="section level3">
-<h3>Mark-Selective Fishery Reports</h3>
-<p>This option generates detailed accounting of stock-specific mortality for a selected mark-selective fishery and time step. All fisheries/time-steps flagged as mark-selective in a particular model run will be available in the drop-down menu on the upper left. Once a selection is made, the values for each stock impacted in that fishery/time-step are presented. Values for unmarked and marked components include: handled fish, catch mortality, non-retention mortality, drop-off mortality, and for Chinook only will include sub-legal mortality.</p>
-<p>Additionally, the red “WDFW MSF Report” button transfers Chinook information related to landings, encounters, and mortalities aggregated across all stocks to an external Excel spreadsheet. The button is not available for Coho modeling.</p>
-<p><img src="images/fvs_output_screenrpt_msfrpt.png" width="100%" /></p>
-</div>
-<div id="fishery-stock-composition-report" class="section level3">
-<h3>Fishery stock composition report</h3>
-<p>After selection of a single fishery from the drop-down menu, this report displays the percentage of each stock within the total mortality for each time step. Only those stocks impacted by the fishery will be displayed (i.e. a different set of stocks can be displayed for each fishery). Note: for Chinook fisheries without a 100% model stock proportion, percentages within this report only represent the modeled portion of the catch.</p>
-<p><img src="images/fvs_output_screenrpt_stockcomp.png" width="100%" /></p>
-</div>
-<div id="stock-impacts-per-1000" class="section level3">
-<h3>Stock impacts per 1000</h3>
-<p>This normalized view of stock-specific total mortality impacts for each fishery and time step offers another perspective on relative differences. This report demonstrates the stock contribution (in numbers of non-AEQ fish) to a hypothetical total mortality of 1,000 fish in each fishery/time step. Only a single stock component can be selected (i.e. only the Skookum Creek Hatchery Marked stock can be viewed and a separate selection would be necessary to see the results for the Skookum Creek Hatchery Unmarked stock).</p>
-<p><img src="images/fvs_output_screenrpt_stock1000.png" width="100%" /></p>
-</div>
-</div>
-<div id="report-drivers" class="section level2">
-<h2>Report Drivers</h2>
-<p>Report drivers generate 14 pre-formatted output report types using unique instructions found in the report driver. Many of these reports are also available as screen reports or found in FRAM output to TAMM files. A report driver is species-specific, tied to a unique base period for parameters, and contains a header with metadata. The output reports are given a .PRN file extension and can be opened with a text editor such as Microsoft Notepad. The actual report drivers, with instructions on what to include, are stored in the MS Access project database table ReportDriver.</p>
-<p>From the main menu, select “Output/Results”, “Report Driver File”, to get to the report driver file options. The most straightforward step is to “Select Driver” from the available report drivers already in the project database table ReportDriver. Click the checkbox next to one from the list and you will be re-directed back to the driver file options menu. Next, click the “Run Reports” button to name and save the output PRN file. Once you click save from the prompt, the output PRN file is generated and ready to view. The “Edit Report Driver” option is no longer functional in updated versions of FRAM and thus a new report driver must be created to make changes from an old one. Changes to a report driver need to be made in the project database table ReportDriver.</p>
-<p>Many FRAM databases include various previously created custom report drivers. To create a new report driver, select “Output/Results”, “Report Driver File”, “Create Report Driver”. Select the desired report from the 14 available options and specify parameters for customization from the selection boxes. A good example of a unique, customizable report is the “Terminal Run Summary”. This report allows the user to specify fisheries and time steps for inclusion in the terminal run definition of selected stocks. When prompted, save the driver. The new driver will then appear in the “Select Driver” report selection box. To produce output, select the new driver and click “Run Report”.</p>
 </div>
 </div>
 <div id="utilities" class="section level1">
@@ -875,7 +2069,7 @@ Convergence is displayed per-stock and age
 </div>
 <div id="read-old-cmd-file" class="section level2">
 <h2>Read old CMD file</h2>
-<p>Prior to 2011, annual FRAM inputs were stored in a text file with a <code>.cmd</code> extension, commonly referred to as command files. This information is equivalent to data stored in all FRAM Access database tables containing a ‘RunID’ field; i.e annual model run information. These text files were opened, modified, and run in FRAM version “FRAM555” or earlier. These versions of FRAM were coded in Visual Basic and preceded the currently in use FRAM Visual Studio.net versions with ADO.net database programming. The “Read Old CMD File” utility reads the command file and places the information in the relevant model run Access database tables; i.e. forecast information is stored in the “Cohort” table, retention fisheries inputs are placed in the “FisheryScalers” table. These historic command files are usually linked to old base periods which were stored in text files as well, with a *.out extension, commonly referred to as outfiles. Please refer to the Read Old Base Period paragraph for instructions on how to import an outfile into a FRAM Access database and [Linking a model run to a base period] for instructions.</p>
+<p>Prior to 2011, annual FRAM inputs were stored in a text file with a <code>.cmd</code> extension, commonly referred to as command files. This information is equivalent to data stored in all FRAM Access database tables containing a ‘RunID’ field; i.e annual model run information. These text files were opened, modified, and run in FRAM version “FRAM555” or earlier. These versions of FRAM were coded in Visual Basic and preceded the currently in use FRAM Visual Studio.net versions with ADO.net database programming. The “Read Old CMD File” utility reads the command file and places the information in the relevant model run Access database tables; i.e. forecast information is stored in the “Cohort” table, retention fisheries inputs are placed in the “FisheryScalers” table. These historic command files are usually linked to old base periods which were stored in text files as well, with a *.out extension, commonly referred to as outfiles. Please refer to the Read Old Base Period paragraph for instructions on how to import an outfile into a FRAM Access database and <a href="#linking-a-model-run-to-a-base-period">Linking a model run to a base period</a> for instructions.</p>
 <p>To read an old model run into FRAM, first make sure the base period associated with the command file is loaded in the ACCESS database. The base period name can be found on the fifth line of the command file. Then, after clicking the “Read Old CMD File” button, navigate to and select the desired command file. Finally, select “yes” from the following pop up window.</p>
 <p><img src="images/fvs_utils_read_old_cmd.png" width="70%" /></p>
 </div>
@@ -913,6 +2107,246 @@ Convergence is displayed per-stock and age
 <li><p>Paste terminal run size and AEQ mortalities for marked, unmarked, and total Columbia River stocks into the tab corresponding to the fishing option selected.</p></li>
 </ol>
 <p>After selecting “Update Coweeman sheets”, select the ocean option associated with the model run and then select the “Coweeman” spreadsheet and press open. After FRAM completes processing, the “Utilities” menu reappears. The updated Coweeman spreadsheet will be open in Excel with FRAM output loaded into the selected option. Save the workbook before closing.</p>
+</div>
+</div>
+<div id="advanced-use" class="section level1">
+<h1>Advanced Use</h1>
+<div id="linking-a-model-run-to-a-base-period" class="section level2">
+<h2>Linking a model run to a base period</h2>
+<p>In most cases, model runs will already be linked to the correct base period. Please be aware that altering this relationships may produce confusing results, and consider consulting with a lead FRAM modeler if this seems necessary for your situation.</p>
+<p>As noted in [Project database], a FRAM run is comprised of two major types of information: annually varying input data, and historic and mostly static base period parameter values (e.g., exploitation rates, growth rates, maturation rates, natural mortality rates, etc. derived during the calibration process)</p>
+<p>The [Base period parameters] are in several tables which usually have a ‘BasePeriodID’ field in the first or second column. A FRAM database can contain multiple base periods, although, until further notice, it is not advisable to have base periods from different calibrations in the same database.</p>
+<p>The column <code>BasePeriodID</code> of the <code>RunID</code> table contains the unique base period index to which the run is linked, and simply changing this value will link the run to the desired base period. (This might be informative, for example, in an analysis adjusting growth or maturation rates while fixing stock recruitment and fishery intensity.)</p>
+<p><strong>Caution</strong> Base period IDs are unique to a FRAM database. They are automatically incremented when a user imports a new base period and consequently different databases can have different base period IDs for the same base period.</p>
+<p>To link a base period to a model run during import (i.e., <a href="#get-model-run-transfers">Get model run transfers</a>), FRAM will first look for the <code>BasePeriodID</code> specified in the <code>RunID</code> table of the transfer database. It will then determine the <code>BasePeriodName</code> associated with that <code>BasePeriodID</code> in the <code>BaseID</code> table, and search for this base period name in the recipient database. However, base period names are not always unique. The same “BaseID” table can have several different base periods with the same name.</p>
+<p>There are three possible outcomes of this process, but the second and third are uncommon, because the user will rarely be confronted with a database that either contains multiple base periods with the same name or a need to associate a run with a base period that is not already present in the main database.</p>
+<ol style="list-style-type: decimal">
+<li><p>FRAM finds the specified base period name in the ‘BaseID’ table of the existing database and retrieves the associated base period ID. It updates the ‘BasePeriodID’ field of the ‘RunID’ table of the new run to the ‘BasePeriodID’ associated with the base period name in the recipient database.</p></li>
+<li><p>FRAM cannot find the base period name in the ‘BaseID’ table of the existing database. FRAM will still import the data, but alert the user of the need to import the matching base period. The ‘BasePeriodID’ field of the ‘RunID’ table of the newly imported run will be “0”</p></li>
+</ol>
+<div class="figure">
+<img src="images/fvs_adv_linkbp_bpnotfound.png" alt="BasePeriod not found on run import" width="100%" />
+<p class="caption">
+BasePeriod not found on run import
+</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li><ol start="3" style="list-style-type: decimal">
+<li>FRAM finds multiple base periods in the recipient database with the same base period name as the one specified in the ‘BaseID’ table of the run to be imported. FRAM will alert the user of the conflict and requests the ‘BaseID’ they wish to associate with the model run. The ‘BasePeriodID’ field of the ‘RunID’ table of the newly imported run will be the ID the user specifies.</li>
+</ol></li>
+</ol>
+<div class="figure">
+<img src="images/fvs_adv_linkbp_multbp.png" alt="Multiple BasePeriods found" width="100%" />
+<p class="caption">
+Multiple BasePeriods found
+</p>
+</div>
+</div>
+<div id="post-processing" class="section level2">
+<h2>Post-processing</h2>
+<div id="coho-1" class="section level3">
+<h3>Coho</h3>
+<div id="columbia-river-mainstem-model" class="section level4">
+<h4>Columbia River Mainstem Model</h4>
+<p>For Coho, the Pacific Fishery Management Council’s (PFMC) Salmon Technical Team (STT) and other regional parties utilize separate harvest models for fisheries in the Columbia River region. The Coho TAMM contains several sheets related to summarizing model results for the Columbia River and stocks of interest to the STT. It also contains a sheet ColRHarvestInput that provides an interface between FRAM-TAMM and regional models. Thus, this is one post-processing instance where external models utilize FRAM-TAMM output and also feed back into the TAMM calculations as well. See the coho TAMM table of contents for those sheets with values generated by the Oregon Production Index Technical Team (OPITT) and used by the PFMC STT.</p>
+</div>
+</div>
+<div id="chinook-1" class="section level3">
+<h3>Chinook</h3>
+<div id="hood-canal-ayock-point-splits" class="section level4">
+<h4>Hood Canal Ayock Point splits</h4>
+<p>For Chinook, the summer Area 12 sport fishery regulations differ relative to Ayock Point, with non-retention fisheries to the north and mark-selective practices to the south. These areas are not distinguished within the FRAM fishery ‘A 12 Sport’ (<code>FisheryID</code> 64), so that non-retention and MSF impacts must be apportioned after runs are completed.</p>
+<p>In order to allocate impacts to each of these sub-areas during preseason model runs, the FRAM <em>Mortality</em> output table is exported into the sheet <code>Data</code> of the file <code>FRAMMortalitiesNewBPAEQ_TEMPLATE_Round_6.2.xlsx</code>. The lookup tables in other sheets allow calculation of the AEQ mortalities from the FRAM <em>Mortality</em> output table: <code>aeq</code> (providing AEQ factor values), <code>RelMort</code> (providing sublegal mortality rates) and <code>TermFlags</code> (indicating if a fishery is terminal). The sheets <code>fish</code> and <code>stk</code> provide the names of FRAM fisheries and stocks based on the <code>FisheryID</code> and <code>StockID</code> fields.</p>
+<p>Consequently, the marked and unmarked AEQ mortalities of the “Hood Canal Fall Fingerlings” (<code>StockID</code> 31 and 32) in the fishery ‘A 12 Sport’ (<code>FisheryID</code> 64) in the time steps 3 (July-September) and 4 (October-April) are calculated. Then, all non-retention AEQ mortalities (‘NR AEQ’) are summarized for the time steps 3 and 4 and for the marked and unmarked components of ‘Hood Canal Fall Fingerlings’ and assigned to North of Ayock. Similarly, all mark-selective AEQ mortalities (‘AEQ MSF Landed’ + ‘AEQ MSF DO’ + ‘AEQ MSF Shaker’) are summarized and assigned to South of Ayock. These AEQ mortality values are then copied into the cells O46 &amp; O47 (time step 3) and O50 &amp; O51 (time step 4) of the sheets HdCmrkd (marked ‘Hood Canal Fall Fingerlings’) and HdCUnmrkd (unmarked ‘Hood Canal Fall Fingerlings’).</p>
+</div>
+<div id="south-puget-sound-processing" class="section level4">
+<h4>South Puget Sound processing</h4>
+<p>Abundance inputs provided by regional biologists for pre- and post-season runs for South Puget Sound TAMM stocks (Minter, Chambers, Nisqually, McAllister, Deschutes, and stocks in Areas 13D–K) assume that 100% of the Chinook caught in marine area 13A belong to the Minter stock and 100% of the Chinook caught in marine area 13+ belong to the Deschutes stock. In reality, stock compositions of the South Sound catch differ from this assumption and are determined according to the harvest rate indices provided by regional biologists (see cells BX!20:BY!28 of the SPSmrkd and SPSUnmrkd tabs of the Chinook <a href="#tamm">TAMM</a>). TAMM reapportions catches in marine area 13+ and 13A according to these harvest rate indices and the abundances of each TAMM stock relative to the aggregate (cells CB20:CC28 of the SPSmrkd and SPSUnmrkd tabs of the TAMM).</p>
+<p>As stock-specific catch in 13A and 13+ changes, the abundance inputs for each South Puget Sound stock must be updated. However, updates to abundance inputs alter the proportion of each stock’s contribution to the South Puget Sound aggregate. As stock contribution proportions are updated, catch estimates by TAMM stock are updated. This necessitates an iterative process to get the correct stock abundance inputs and catch estimates by TAMM stock.</p>
+<p>There are two ways that the user could perform South Puget Sound iterations. There is a manual method built into the TAMMs within the “SPS Abundance Iterations” tab. Instructions on how to complete South Puget Sound Iterations using the TAMM are available in rows 11 to 16 of this tab. Alternatively, an R script is available to perform South Puget Sound iterations; contact a lead FRAM modeler for the latest version and additional information on dependencies. The current version requires updating the directory of the TAMM(s) in line 13 and the list of TAMM file name(s) in line 17. The user must also ensure that the “Original Values” section of the “SPS Abundance Iterations” tab (cells B21:E29) is correct. The R code can then process multiple TAMMs in a single execution.</p>
+</div>
+<div id="srfi---snake-river-fall-index" class="section level4">
+<h4>SRFI - Snake River Fall Index</h4>
+<p>Snake River Fall Chinook are managed such that marked ocean exploitation rates of age 3 and 4 fish do not exceed 70% of the average marked ocean exploitation rate of age 3 and 4 fish from 1988 to 1993. Ocean exploitation rate information from 1988 to 1993 is derived from FRAM validation runs, using a report driver file. To access the necessary report driver file via the FRAM interface, the user should navigate from the Main Menu to Report Driver File Options page (Output/Results button -&gt; Report Driver button). Next, the user should select the “SnakeU&amp;MER” driver using the salmon colored “Select Driver” button. Once the driver is selected, the user can run the report via the green “RUN Reports” button. Reports must be run for 1988 to 1993 as well as the run year being evaluated for compliance with the SRFI.</p>
+<p>Results from the SRFI reports can be loaded into a SRFI template Excel file (available on request from FRAM lead modelers). SRFI compliance can then be evaluated on the “SRFIsummary” tab after the template has been fully loaded with updated information.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="troubleshooting" class="section level1">
+<h1>Troubleshooting</h1>
+<div id="installation-issues" class="section level2">
+<h2>Installation issues</h2>
+<p>If <code>FRAM.EXE</code> produces the error Message</p>
+<blockquote>
+<p>Unhandled exception has occured in your application. If you click Continue, the application will ignore this error and attempt to continue. If you click Quit, the appllication will close immediately. Could not load file or assembly ‘Microsoft.Office.Interop.Excel, Version=11.0.0.0. Culture=neutral. PublicKey Token=71e9bce111e9429c’ or one of its dependencies. The system cannot find the file specified.</p>
+</blockquote>
+<p>Then it may be resolved by ensuring the following files are available in the same folder as the FRAM.EXE</p>
+<ul>
+<li><a href="https://github.com/Angelikahagen/MainFRAM_VS-Repo/blob/master/bin/Debug/Microsoft.Office.Interop.Excel.dll">Microsoft.Office.Interop.Excel.dll</a></li>
+<li><a href="https://github.com/Angelikahagen/MainFRAM_VS-Repo/blob/master/bin/Debug/Microsoft.Vbe.Interop.dll">Microsoft.Vbe.Interop.dll</a></li>
+<li><a href="https://github.com/Angelikahagen/MainFRAM_VS-Repo/blob/master/bin/Debug/office.dll">office.dll</a></li>
+</ul>
+<p>Alternatively, if FRAM SETUP.EXE produces the error Message</p>
+<blockquote>
+<p>The following feature couldn’t be installed: .NET framework 3.5’. Error code 0x800F0954.</p>
+</blockquote>
+<p>Then temporarily bypassing WSUS server with the following registry edit may resolve the issue (requires administrator privileges):</p>
+<ul>
+<li>Right-click Start, and click Run</li>
+<li>Type regedit.exe and click OK</li>
+<li>Go to the following registry key: HKEY_LOCAL_MACHINE</li>
+<li>In the right-pane, if the value named UseWUServer exists, set its data to 0</li>
+<li>Exit the Registry Editor</li>
+<li>Restart Windows.</li>
+</ul>
+</div>
+<div id="error-messages" class="section level2">
+<h2>Error messages</h2>
+<p>Many error messages are easy to resolve, but some can be particularly vexing. For the latter category, please consult with a lead FRAM modeler, ideally with a screenshot of your issue and details of your operating system.</p>
+<p>Generally speaking, errors typically involve either invalid parameter value(s) within database tables or file structure problems.</p>
+<p>In the sections below, the letters X, Y, Z in error message are placeholders for stock, age, fishery, or time step numbers. The parameter represented by the placeholder is determined by the order of the parameter in the error message; i.e. if stock is the first parameter listed then stock number becomes X.</p>
+<p><br />
+</p>
+<div id="bad-flag-value-input-fish-x-time-y.-please-change-and-re-save-form.-use-0127817182728-for-flag" class="section level3">
+<h3>“Bad Flag-Value Input !!! Fish= X Time= Y. Please change and re-save form. Use 0,1,2,7,8,17,18,27,28 for Flag!”</h3>
+<p>Check for flags in FisheryScalers table or user interface that are &lt;&gt; to 1, 2, 7, 8, 17, 18, 27, 28.</p>
+</div>
+<div id="cant-find-backfram-catch-worksheet-in-your-workbook-selection.-please-choose-appropriate-file-with-backwards-fram-catch" class="section level3">
+<h3>“Can’t Find BackFRAM Catch WorkSheet in your Workbook Selection. Please Choose appropriate File with Backwards FRAM Catch!”</h3>
+<p>The ‘Load Back-FRAM Catch’ button is working for Coho in bkFRAM, although catches are usually loaded into the model run through the forward FRAM Main Menu, Edit Model Run, Input Menu-Fishery, Quota/Scalers or Non-Retention sections from a template file. The necessary file for using the ‘Load Back-FRAM Catch’ button will likely be titled “BackFRAM_Catch…xls”, with each individual year on a separate worksheet titled “Year”FRAM (i.e. 2017FRAM). This message occurs when the EXCEL file is missing worksheets with the naming convention “XXXXFRAM” (XXXX is four digit run year) or an incorrect file has been selected.</p>
+</div>
+<div id="cant-find-framescapev2-worksheet-in-your-spreadsheet-selection.-please-choose-appropriate-spreadsheet-with-backwards-fram-escapement" class="section level3">
+<h3>“Can’t Find ‘FRAMEscapeV2’ WorkSheet in your Spreadsheet Selection. Please Choose appropriate Spreadsheet with Backwards FRAM Escapement!”</h3>
+<p>Backwards FRAM escapements can be loaded from a MS Excel template file (“Coho Escape….xls”) by selecting the ‘Import Escapements’ button and then locating and selecting the file with the desired values. The template file workbook needs to contain a worksheet tab called “FRAMEscape2”. This error message is triggered when this worksheet is missing or an incorrect file has been selected.</p>
+</div>
+<div id="cant-find-matching-baseperiodname-transbaseidname-in-framvs-database.-please-read-corresponding-base-file-for-this-model-run-transfer" class="section level3">
+<h3>“Can’t find Matching BasePeriodName ‘TransBaseIDName’ in FramVS Database. Please Read Corresponding Base file for this Model Run Transfer”</h3>
+<p>Open the Transferdatabase and find the BasePeriodName in the BaseID table. Import this base period into the recipient database follwing instructions from Delete/Transfer/Get Base Period.</p>
+</div>
+<div id="cant-find-pfmc-option--worksheet-in-your-selection.-please-choose-appropriate-spreadsheet-with-coweeman-worksheets" class="section level3">
+<h3>“Can’t Find ‘PFMC-Option-?’ WorkSheet in your Selection. Please Choose appropriate SpreadSheet with Coweeman WorkSheets!”</h3>
+<p>The “Coweeman” workbook selected is missing worksheets titled “PFMC-Option-“. Make sure you selected the correct file.</p>
+</div>
+<div id="cant-find-the-base-period-id-for-this-model-run-do-you-want-to-choose-another-base-period" class="section level3">
+<h3>“Can’t find the Base Period ID for this Model Run! Do you want to Choose another Base Period ???”</h3>
+<p>The model cannot find the base period ID associated with the model run. If the user answeres “No”, FRAM will terminate. Answering “Yes” brings up available base periods. The user can then select the base period to associate with the run.</p>
+</div>
+<div id="cant-find-the-base-period-file-for-this-cmd-file-in-database-add-base-period-file-or-change-cmd-file-out-name-to-existing-name" class="section level3">
+<h3>“Can’t Find the BASE PERIOD FILE for this CMD File in Database Add BASE PERIOD FILE or Change CMD File OUT Name to Existing Name”</h3>
+<p>Open the *.cmd file. Find the BasePeriodName on line 5. If the recipient database already contains an appropriate base period for this command file, change the name on line 5 to this name, otherwise import the correct base period follwing steps in Read Old Base Period.</p>
+</div>
+<div id="chinook-tamm-did-not-convergetamm-transfer-files-not-created" class="section level3">
+<h3>“Chinook TAMM Did Not Converge!TAMM Transfer Files not Created”</h3>
+<p>Most likely source of this error can be found in TAMI. Look for fishery input that are too large to be supported by the abundances of TAMM stocks. Check TAMI for unusal values. Also look at FramCheck.Txt. This file is automatically created when running FRAM with TAMM (in TAMM folder). Look for negative values or large discrepancies between TammEstimate and TammCatch.</p>
+</div>
+<div id="cnr-method-1-or-2-cannot-be-used-in-fishery-with-no-catch-fisheryx-tstepy-must-fix-this-error-before-continuing." class="section level3">
+<h3>“CNR Method 1 or 2 cannot be used in fishery with no catch Fishery=X TStep=Y Must Fix this Error before Continuing.”</h3>
+<p>Method 1 or 2 compute non-landed encounters as a function of landed catch. If there is no landed catch, model non-retention with flags 3 or 4.</p>
+</div>
+<div id="coho-tamm-procedure-requires-taaetrslist-in-database-table.-please-read-text-file-taaetrsnum.txt-and-re-run" class="section level3">
+<h3>“Coho TAMM Procedure Requires ‘TaaETRSList’ in DataBase Table. Please Read Text File (TaaETRSNum.Txt) and Re-Run”</h3>
+<p>“TAAETRSList” table of Access database is blank. This table should contain terminal run size definitions for Coho; i.e. stock and fishery numbers for run size defintions. Please import a valid “TAAETRSList” into the database.</p>
+</div>
+<div id="error-backwards-stock-flag-2-points-to-stock-scalers-zero-stock-name-x" class="section level3">
+<h3>“Error-Backwards Stock FLAG = 2 points to Stock Scalers = ZERO Stock Name =X”</h3>
+<p>A backwards flag of 2 instructs the program to calculate mark rates from exisiting marked and unmarked stock recruit scalers. The error message is triggered when the marked and unmarked recruit scaler are zero. Enter a seed value for the stock in question in the StockRecruit table or model marked and unmarked components of the stock with flag 1 in bkFRAM.</p>
+</div>
+<div id="error-in-base-exploitation-rate-table" class="section level3">
+<h3>“ERROR in Base Exploitation Rate Table”</h3>
+<p>Check BaseExploitationRate table for ages, stock numbers, or fishery numbers greater than maximum base period values; i.e. Chinook age &gt; 5.</p>
+</div>
+<div id="error-in-base-cohort-table" class="section level3">
+<h3>“ERROR in Base Cohort Table”</h3>
+<p>Check BaseCohort table for ages, stock numbers, or fishery numbers greater than maximum base period values; i.e. Chinook age &gt; 5.</p>
+</div>
+<div id="error-in-runid-table-of-database-duplicate-record" class="section level3">
+<h3>“ERROR in RunID Table of Database … Duplicate Record”</h3>
+<p>Check the RunID table for duplicate RunID numbers. Since many database tables contain a RunID field, the duplicate runs should be deleted and re-loaded (transferred) into the database.</p>
+</div>
+<div id="error-in-xx-table-read" class="section level3">
+<h3>“Error in XX Table Read”</h3>
+<p>XX stands for database table name that produces a read error, i.e. “Cohort”, “Escapement” table. Check table for ages, stock numbers, time step or fishery numbers greater than maximum base period values; i.e. Chinook time step &gt; 4.</p>
+</div>
+<div id="error-in-xx-table-transfer-..-no-records" class="section level3">
+<h3>“Error in XX Table Transfer .. No Records”</h3>
+<p>Main FRAM database does not contain records in the table specified in the error message. ACCESS database is corrupted. Start with a new database.</p>
+</div>
+<div id="error---nonretention-catch-for-zero-base-period-catch-timefish-xy" class="section level3">
+<h3>“ERROR - NonRetention Catch for Zero Base Period Catch TIME,FISH = X,Y”</h3>
+<p>This error message can occur if non-retention is modeled in a fishery and time step without base period exploitation rates. The model is unable to compute non-retention impacts. If possible, model impacts in a suitable surrogate fishery/time step.</p>
+</div>
+<div id="error---you-have-an-old-format-newmodelruntransfer.mdb-database.you-need-to-get-the-new-format-database-to-do-model-run-transfers" class="section level3">
+<h3>“ERROR - You have an Old Format NewModelRunTransfer.Mdb Database.You need to get the New Format Database to do Model Run Transfers”</h3>
+<p>The transfer database selected is missing column MSFFisheryScaleFactor in FisheryScalers table. Please use the latest version of the transfer database.</p>
+</div>
+<div id="error-was-detected-in-the-tami-controls.-please-re-check-after-run" class="section level3">
+<h3>“Error was detected in the TAMI Controls. Please Re-Check after run”</h3>
+<p>Go to TAMM’s “TAMI” worksheet and look for missing values or incorrect flagging, such as blanks in column 5.</p>
+</div>
+<div id="flag-2---error-for-backwards-fram-target-esc-stock-x-name-y---conflicting-flags" class="section level3">
+<h3>“FLAG = 2 - Error for Backwards FRAM Target Esc Stock# = X Name = Y - Conflicting Flags”</h3>
+<p>A backwards flag of 2 instructs the program to calculate mark rates from exisiting marked and unmarked stock recruit scalers. The user provided a flag of 2 for the marked and unmarked component of a stock. To resolve this issue, sum both components, place the value in the maked section of the stock, flag as 2. Place a value of zero in the unmarked component of the stock and flag as zero.</p>
+</div>
+<div id="invalid-cohort-size-for-stk-x-pterm-y-time-step-z." class="section level3">
+<h3>“Invalid Cohort Size for Stk X, PTerm Y, Time Step Z.”</h3>
+<p>The FRAM computed cohort for stock X, pterm Y, and time step Z results in “NaN” (not a number, i.e. a divide by zero calculation). Pterm refers to either a preterminal (0) or terminal (1) cohort. These errors can be difficult to fix, please consult with a lead FRAM modeler.</p>
+</div>
+<div id="invalid-msf-landed-catch-for-stk-x-fishery-y-time-step-z." class="section level3">
+<h3>“Invalid (MSF) Landed Catch for Stk X, Fishery Y, Time Step Z.”</h3>
+<p>FRAM computed landed catch for stock X, fishery Y, and time step Z results in “NaN” (not a number, i.e. a divide by zero error). These errors can be difficult to fix, please consult with a lead FRAM modeler.</p>
+</div>
+<div id="negative-cohort-size-for-stock-age-xy" class="section level3">
+<h3>“Negative Cohort Size for STOCK, AGE = X,Y”</h3>
+<p>A cohort can become negative when the combined fishing impacts in a time step exceed the abundance. This ususally occurs when terminal fisheries are too large. Check inputs for fisheries in the terminal area of the listed stock.</p>
+</div>
+<div id="please-provide-a-run-year-in-the-runid-table-of-the-accessdb-for-runid-x.-you-can-also-enter-the-run-year-under-framutilitieseditmodelruninfo." class="section level3">
+<h3>“Please provide a run year in the RunID table of the AccessDB for RunID X. You can also enter the run year under FRAMUtilities/EditModelRunInfo.”</h3>
+<p>This message occurs when the “RunYear” field in the “RunID” table is left blank. It can be corrected by either entering a run year directly in the Access database or by adding the year programatically be navigating to “FRAMUtilities/EditModelRunInfo”. This error is also triggered when a run year exists, but the “RunYear” field in the Access database has the wrong DataType. Set the DataType of this field to “Short Text” in the RunID table’s “Design View”. Note: The program will execute properly, even if this error message is ignored.</p>
+</div>
+<div id="please-read-selected-base-period-file-before-reading-cmd-file" class="section level3">
+<h3>“Please Read Selected Base Period File before Reading CMD File”</h3>
+<p>This message occurs when reading in an “old-style” command file without first importing the matching base period file (<em>.out file). The base period name can be found on line 6 of the old command (</em>.cmd) file.</p>
+</div>
+<div id="please-select-transferfile-version-5-or-higher" class="section level3">
+<h3>“Please select TransferFile version 5 or higher”</h3>
+<p>An old version of a Tranferdatabase was selected. Find and select file “NewModelRunTransferX.mdb”. X stands for number 5 or higher.</p>
+</div>
+<div id="tamm-error-tamm-fishery-number-zero.-cannot-use-this-control-on-this-terminal-fishery" class="section level3">
+<h3>“TAMM Error Tamm Fishery Number = Zero. Cannot Use this Control on this Terminal Fishery!”</h3>
+<p>Go to TAMM’s “TAMI” worksheet and look for fishing inputs of zero with a flag &gt;2.</p>
+</div>
+<div id="the-base-period-file-selected-has-format-problems-in-the-xx-section---timestep-x" class="section level3">
+<h3>“The BASE-PERIOD FILE Selected has Format Problems in the XX section - TimeStep= X”</h3>
+<p>Open the *.out file. Find the time step listed in the error message. Find the data section specified (i.e. exploitation rate, incidental rate, etc.) below the time step. Look for and correct formating irregularities.</p>
+</div>
+<div id="the-command-file-file-selected-has-format-problems-recnumx" class="section level3">
+<h3>“The COMMAND FILE file Selected has Format Problems RecNum=X”</h3>
+<p>Open the *.cmd file. Find the record number listed in error message. Correct formating issues.</p>
+</div>
+</div>
+<div id="other-faq" class="section level2">
+<h2>Other FAQ</h2>
+<div id="why-does-fram-keep-crashing-when-i-try-to-load-an-.mdb" class="section level3">
+<h3>Why does FRAM keep crashing when I try to load an .mdb?</h3>
+<p>Do you have a database with the full set of tables? You may be trying to load a model run “transfer” database which is missing several important structural tables that FRAM needs.</p>
+</div>
+<div id="why-does-fram-keep-telling-me-to-enter-a-model-run-year-when-i-can-see-a-year-value-for-my-run" class="section level3">
+<h3>Why does FRAM keep telling me to enter a model run year when I can see a year value for my run?</h3>
+<p>In the <code>RunID</code> table, FRAM expects the <code>RunYear</code> field to be a “Short Text” class. You are probably using a project database with a numeric or other data type. Open the design view of the RunID table in Access and update the data type.</p>
+</div>
+<div id="can-i-interact-with-excel-when-fram-is-running" class="section level3">
+<h3>Can I interact with Excel when FRAM is running?</h3>
+<p>Probably not. This will usually produce a system fault and require you to restart FRAM.</p>
+</div>
+<div id="can-i-change-values-in-a-project-database-when-it-has-been-selected-in-an-open-fram-session" class="section level3">
+<h3>Can I change values in a project database when it has been selected in an open FRAM session?</h3>
+<p>Yes, FRAM does not create a lock file (i.e., <code>database_name.ldb</code>) like Access. But note that any (saved) changes will not propagate into the FRAM application memory until the run is reselected with the “Select Model Run” button of the main menu.</p>
+</div>
+<div id="can-i-run-multiple-instances-of-fram-simultaneously" class="section level3">
+<h3>Can I run multiple instances of FRAM simultaneously?</h3>
+<p>Yes, and modifications to the same project database will appear across open instances. But this is probably not a great idea for an analysis examining “directional” parameter changes (e.g., 20%, 40%, 60% and 80% changes within a given year), particularly as the same TAMM file cannot be used with multiple instances of FRAM. However, this may be a plausibe approach given a “ready to go” project database and set of TAMM files corresponding to different model runs.</p>
+</div>
 </div>
 </div>
 <div class="footnotes">

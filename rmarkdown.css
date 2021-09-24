@@ -886,6 +886,12 @@ iframe.scale65 {
   padding-bottom: 5px;
 }
 
+/* Indent headers */
+.tocify-header > .tocify-item {
+  text-indent: initial;
+  padding-left: 1em;
+}
+
 /* Indent subheaders */
 .tocify-subheader > .tocify-item {
   text-indent: initial;

@@ -5,7 +5,7 @@ editor_options:
 ---
 
 ```{r, include=FALSE, results = 'hide', warning = FALSE, message = FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
+#knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=12, fig.width=12)
 ```
 
 # 1. Coho Model Structure
@@ -27,6 +27,7 @@ At each time step, a stock experiences <a href = "https://framverse.github.io/fr
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> contains five time periods for coho, covering a single calendar year (<a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_5_Time_step_structure_used_in_coho_and_Chinook_FRAM_modeling" target = "_blank" title = "Appendix 5">Appendix 5</a>).  
 
 Table 1. Time step structure used in Coho FRAM.
+
 ```{r calcs_data_coho_t1_timesteps, echo=FALSE}
 dplyr::tibble(
   `Time Step` = c(1:5),
@@ -53,7 +54,8 @@ dplyr::tibble(
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> data are stored as tables in an ACCESS database. All the information needed for a “simple model run” (<a href = "https://framverse.github.io/fram_doc/user_basic_forward_run.html" target = "_blank" title = "User Manual">User Manual</a>) is stored in these tables, containing input as well as output data. Input data can be grouped into two main categories: static base period data and annual run data. Main <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> outputs are mortalities (landed, mark-selective, <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target = "_blank" title = "Sublegal">sublegal</a>, non-retention, drop-off) and abundances (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Starting_Cohort" target = "_blank" title = "Starting cohort">starting cohorts</a> at each time step; abundances after natural mortalities, pre-terminal, and terminal fisheries).
 
 Table 2. Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> MS Accesss Database Tables.
-```{r coho database tables, echo=FALSE}
+
+```{r coho database tables, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/Coho_FRAM_database_tables.PNG"))
 ```
 
@@ -107,7 +109,7 @@ MathJax = {
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>  processes information through a time step loop, beginning with time step 1 and ending with time step 5 for coho.  Within each time step, a series of four computational processes occur for each stock as depicted in Figure 1: (**1**) determine starting cohort size, (**2**) removal of natural mortality, (**3**) removal of pre-terminal mortalities, (**4**) removal of terminal fishery mortalities (time 5 only).
 
-```{r coho flow chart image, echo=FALSE, fig.width = 12, fig.height = 10}
+```{r coho flow chart image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/Coho_FRAM_flowchart.PNG"))
 ```
 
@@ -222,7 +224,7 @@ To facilitate the understanding of the sequencing of <span title = "FRAM: Fisher
 The starting cohort in time step 1 is first reduced by natural mortality. The remaining cohort is vulnerable to pre-terminal fisheries. Coho not caught become the starting cohort of the next time step. This cycle repeats until time step 5, when 100% of coho mature after pre-terminal fishing.  The mature cohort is susceptible to terminal fisheries. Coho not caught after pre-terminal and terminal fisheries in time step 5, go to escapement.
 
 Table 3. Example values of Coho FRAM processing steps for a stock.
-```{r coho process schematic image, echo=FALSE}
+```{r coho process schematic image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/Coho_FRAM_process_schematic.PNG"))
 ```
 
@@ -288,7 +290,7 @@ Common <span title = "TAMM: Terminal Area Management Module">TAMM</span> feature
 <div style = "text-align:center"><span title = "Fishery scaler for a given area at a given time step">$FisheryScaler(area, time step)$</span> = <span title = "Catch calculated in TAMM for a given area at a given time step">$Catch_{TAMM}(area, time step)$</span> $\div$ <span title = "Catch calculated in FRAM for a given area at a given time step">$Catch_{FRAM}(area, time step)$</span> </div>
 - Rerun <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> and repeat these steps until <span title = "Catch calculated within TAMM">$Catch_{TAMM}$</span> is within 0.1% (or fewer than 4 fish) of <span title = "Catch calculated within FRAM">$Catch_{FRAM}$</span>.
 
-```{r coho FRAM TAMM flow chart image, echo=FALSE}
+```{r coho FRAM TAMM flow chart image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/FRAM_TAMM_flowchart.PNG"))
 ```
 
