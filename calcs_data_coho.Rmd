@@ -107,7 +107,7 @@ MathJax = {
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>  processes information through a time step loop, beginning with time step 1 and ending with time step 5 for coho.  Within each time step, a series of four computational processes occur for each stock as depicted in Figure 1: (**1**) determine starting cohort size, (**2**) removal of natural mortality, (**3**) removal of pre-terminal mortalities, (**4**) removal of terminal fishery mortalities (time 5 only).
 
-```{r coho flow chart image, echo=FALSE}
+```{r coho flow chart image, echo=FALSE, fig.width = 12, fig.height = 10}
 knitr::include_graphics(c("images/Coho_FRAM_flowchart.PNG"))
 ```
 
