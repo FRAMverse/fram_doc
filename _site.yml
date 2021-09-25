@@ -1,6 +1,6 @@
 name: 'fram_doc'
 output_dir: 'docs'
-exclude: ["R", "scripts", "data", "workbooks"]
+exclude: ["pfmc_review", "objects", "R", "scripts", "data", "workbooks"]
 
 navbar:
   title: 'FRAM Documentation'
