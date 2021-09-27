@@ -28,10 +28,8 @@ navbar:
           href: apps_coho.html
     - text: "Base Period"
       menu:
-        - text: "Chinook update"
-          href: base_chin_bpupdate.html
-        - text: "Chinook FRAM Builder"
-          href: base_chin_frambuilder.html
+        - text: "Chinook"
+          href: base_chin.html
         - text: "Coho"
           href: base_coho.html
     - text: "User Manual"

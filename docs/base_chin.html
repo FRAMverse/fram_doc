@@ -11,7 +11,7 @@
 
 
 
-<title>FRAMBuilder</title>
+<title>Chinook Base Period</title>
 
 <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -418,20 +418,21 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">FRAMBuilder</h1>
+<h1 class="title toc-ignore">Chinook Base Period</h1>
 
 </div>
 
 
-<p><strong>The following information describes the current framework for Chinook only.</strong></p>
-<div id="background-and-purpose" class="section level1">
-<h1>Background and purpose</h1>
+<div id="chinook-frambuilder" class="section level1">
+<h1>1. Chinook FRAMBuilder</h1>
+<div id="background-and-purpose" class="section level2">
+<h2>1.1. Background and purpose</h2>
 <p>Considerable processing is required to translate coded-wire tag (CWT) data from the Regional Mark Processing Center’s (RMPC) Regional Mark Information System (RMIS) database into meaningful units within a FRAM base period (BP) calibration context. Individual tag groups must be associated with a specific FRAM model stock, and tag recoveries at a particular time, location (indicated by RMIS location code), gear type must be mapped to one of FRAM’s fisheries and time steps. The FRAMBuilder program and workflow described here was developed to fulfill these needs, among others.</p>
 <p>Early in the development of FRAMBuilder and the overall CWT mapping workflow, the base period workgroup (BPW) identified distinct advantages/benefits to leveraging the Pacific Salmon Commission’s Chinook Technical Committee’s (CTC) CWT analysis tools: the Cohort Analysis System (CAS) mapping program and companion database. The BPW ultimately decided to tie FRAMBuilder to the CTC world because this connection: (1) allows for the seamless integration of CTC ‘Auxiliary’ CWT files, agency-supplied/prepared files that supplement or correct known errors/gaps in RMIS’s CWT recovery information; (2) facilitates the efficient inclusion of screened/vetted CWT release groups (i.e., selected by CTC members with regional expertise) into the calibration database; and (3) increases the overlap in information driving models supporting the management decisions of the PSC, the Pacific Fishery Management Council (PFMC), and state–tribal co-managers. Additionally, given partial overlap in the fishery assessment units used by the CTC and in FRAM, the integration of CAS into the FRAM calibration workflow offered efficiency in the form of an initial stage of RMIS-to-FRAM mapping.</p>
 <p>The following provides - a roadmap of the process from raw RMIS CWT release/recovery data to something useable in a FRAM calibration - basic documentation on the structure/function of the FRAMBuilder program, its companion FRAM-CAS database, and the ruleset it follows to get CWT recoveries from the initial CAS stage of mapping to a final FRAM fishery/time step state. As for the tools ‘borrowed’ from the CTC (i.e., CAS.exe), we provide only a brief sketch here and refer the reader to CTC resources for further documentation.</p>
 </div>
-<div id="overview" class="section level1">
-<h1>Overview</h1>
+<div id="overview" class="section level2">
+<h2>1.2. Overview</h2>
 <p>The procedures to map an individual CWT recovery to a FRAM stock and fishery are conceptually straightforward: in screening candidate codes, make a determination regarding which tags are suitable representatives for model stocks, and then, given recovery details such as RMIS location codes, gear codes, dates, etc., make a determination regarding the model fishery/time step to which the recovery belongs.</p>
 <p>In practice, however, this task is made difficult by the thousands of tag codes representing unique hatchery release groups that are available for consideration. This means that the hundreds of thousands of individual tag recoveries from these groups must all be mapped from the thousands of unique time-location-gear code combinations to one of FRAM’s fisheries. The FRAMBuilder workflow addresses this challenge via to the following steps:</p>
 <ol style="list-style-type: decimal">
@@ -445,8 +446,8 @@ div.tocify {
 <p><img src="images/fb_overview.png" width="100%" /></p>
 <p>In addition to these steps, a handful of other functions can be invoked during step 5, depending on a user’s needs. These are also described further below. The remainder of this document is organized around each of these steps, where each subsection offers both ‘how to’ details and documentation on processing decisions, algorithms, etc. where necessary.</p>
 </div>
-<div id="required-programs-and-data-files" class="section level1">
-<h1>Required programs and data files</h1>
+<div id="required-programs-and-data-files" class="section level2">
+<h2>1.3. Required programs and data files</h2>
 <p><strong>Data files</strong></p>
 <ul>
 <li>A list of tag codes: A list of tag codes is needed for the purposes of querying RMIS (release/recovery), as well as for populating the CTC Filter database’s ‘STKCDS’ table.</li>
@@ -467,10 +468,10 @@ div.tocify {
 <li>Others: Although they aren’t tied explicitly to the mapping procedures outlined here, there are both R and OpenBUGS programs that estimate parameters for growth functions from CWT length observations (i.e., mapped to FRAM fishery and size limit regulation) summarized by FRAMBuilder. Jon Carey also has an R program (and input template/files) that estimates missing recoveries for freshwater sport (Puget Sound, Willapa Bay tribs) and estuary sport (Willapa Bay).</li>
 </ul>
 </div>
-<div id="main-workflow" class="section level1">
-<h1>Main workflow</h1>
-<div id="select-tag-groups" class="section level2">
-<h2>Select tag groups</h2>
+<div id="main-workflow" class="section level2">
+<h2>1.4. Main workflow</h2>
+<div id="select-tag-groups" class="section level3">
+<h3>1.4.1. Select tag groups</h3>
 <p>The full rationale surrounding the final decisions to include/exclude tag codes is beyond the scope of this document, but the basic selection guidelines are as follows.</p>
 <p>Preference was given to CWT codes associated with CTC ER indicator stocks, as these have already been screened by CTC members with regional expertise and deemed to best represent natural and hatchery Chinook stocks within their jurisdiction.</p>
 <p>For stocks/regions beyond the CTC’s scope, selection was guided by the following criteria/considerations:</p>
@@ -491,8 +492,8 @@ div.tocify {
 </ul>
 <p>For further detail on codes selected for particular stocks, please refer to the Chinook FRAM stock profile spreadsheet, available for download at: <a href="https://github.com/jon-carey/FRAMBuilder" class="uri">https://github.com/jon-carey/FRAMBuilder</a>.</p>
 </div>
-<div id="query-rmis-for-releaserecovery-data" class="section level2">
-<h2>Query RMIS for release/recovery data</h2>
+<div id="query-rmis-for-releaserecovery-data" class="section level3">
+<h3>1.4.2. Query RMIS for release/recovery data</h3>
 <p>Given a set of codes, the next task is to query RMIS for the necessary release and recovery information. The online system requires a user account and can be accessed by visiting <a href="https://www.rmpc.org" class="uri">https://www.rmpc.org</a> and selecting ‘RMIS Standard Reporting.’ Release data are acquired via the ‘Releases: Tagged Releases’ query form, which requires your tag list. When pasting in your list of tag codes, it is important to ensure that any leading zeros are maintained, otherwise the system will not recognize the tag codes. After entering the list of tags and clicking ‘Retrieve’, you’ll have to choose the type of report (CSV via email is preferred) and specify the fields returned in the query results. Loading the Filter Database requires a specific User List of fields (copy/paste the list from here):</p>
 <p>tag_code_or_release_id species run brood_year release_location_code first_release_date last_release_date cwt_1st_mark cwt_1st_mark_count cwt_2nd_mark cwt_2nd_mark_count non_cwt_1st_mark non_cwt_1st_mark_count non_cwt_2nd_mark non_cwt_2nd_mark_count hatchery_location_code stock_location_name related_group_type related_group_id</p>
 <p>Upon validating the user list and clicking the ‘Run’ button, results will be returned to your screen/email.</p>
@@ -519,8 +520,8 @@ Sub-form for setting a User List of fields to be included in query results
 <p>recovery_id recovery_date period_type period species sex length length_code tag_code tag_status estimation_level recovery_location_code fishery estimated_number sample_type run_year recorded_mark catch_sample_id detection_method sampled_maturity reporting_agency adclip_selective_fishery</p>
 <p>Query results can now be saved as a CSV imported into the Filter Database. <em>Be careful when opening/viewing these query results before importing into Filter Database; CSVs open readily in Excel and can be unintentionally reformatted upon opening (e.g., text to numeric will drop leading zeros on some codes).</em></p>
 </div>
-<div id="filter-rmis-data-for-importing-to-cas" class="section level2">
-<h2>Filter RMIS data for importing to CAS</h2>
+<div id="filter-rmis-data-for-importing-to-cas" class="section level3">
+<h3>1.4.3. Filter RMIS data for importing to CAS</h3>
 <p>The release and recovery CSV files constructed in Step 2 can now be imported directly into the Filter Database. This is achieved via the Microsoft Access functions under External Data &gt; Import &amp; Link &gt; Text File. This allows you to specify the appropriate Releases.CSV or Recoveries.CSV file in the ‘File Name field’ (browse and point to accordingly) and append records to the appropriate database table (RELEASES or RECOVERIES). To minimize potential error, it is generally advisable to start with a clean Filter Database for these steps.</p>
 <p>After loading RMIS query results, the Filter Database’s ‘STKCDS’ table (Figure 6.1) must be populated with the tag codes contained in the release and recovery datasets. The three letter abbreviations in the STOCK field must follow existing conventions (i.e., be in the CAS ‘SpeciesStock’ table), otherwise records will be rejected [Note: although all FRAM stocks are already covered, new stocks can be added via steps contained in CTC CAS help files].</p>
 <div class="figure">
@@ -533,8 +534,8 @@ The Filter Database’s ‘STKCDS’ table, which requires tag code, jurisdictio
 3. some recoveries that are dealt with as auxiliaries (e.g., Canadian escapements), 4. the handful of recoveries in Alaska that occur outside of Southeast (i.e., location codes for all recoveries from Alaska should begin with ‘1M1…’)</p>
 <p>See Appendix A for SQL query details. The ‘ERARELEASES’ filter query, in contrast to recoveries, does minimal joining (STKCDS to Releases) and reformats the release data in prep for CAS import. Step 3 should yield two text files: ERARELEASES.TXT and ERARECOVERIES.TXT</p>
 </div>
-<div id="load-filtered-cwt-data-into-cas" class="section level2">
-<h2>Load filtered CWT data into CAS</h2>
+<div id="load-filtered-cwt-data-into-cas" class="section level3">
+<h3>1.4.4. Load filtered CWT data into CAS</h3>
 <p>Using the CAS_1.9.exe program (CAS program or CAS.EXE hereafter), the ERARELEASE.TXT and ERARECOVERIES.TXT files can now be imported into the FRAM-CAS database.</p>
 <p>Depending on the application, you may want to first clear out the entire FRAM-CAS database, using the CAS program (Figure 7.1). First, however, you must connect your CAS program to the FRAM-CAS database with which you’re working (you will be prompted to do so upon opening the program). Once connected, you can clear things out as needed (Figure 7.1) and then you’re ready to import filter database output releases (Figure 7.2), recoveries, and/or any auxiliary files (discussed further below).</p>
 <div class="figure">
@@ -550,8 +551,8 @@ The CAS program’s Settings menu, the location in which loaded data can be dele
 The CAS program’s Releases loading menu
 </p>
 </div>
-<div id="troubleshooting-rejected-releases-and-recoveries" class="section level3">
-<h3>Troubleshooting rejected releases and recoveries</h3>
+<div id="troubleshooting-rejected-releases-and-recoveries" class="section level4">
+<h4>1.4.4.1. Troubleshooting rejected releases and recoveries</h4>
 <p>Typically a handful, and sometimes many, records will be rejected during the FRAM-CAS database loading process. This can feel like the most cumbersome step of the FRAM-CAS database loading process, but with some patience and insight is relatively easy to work through. The good news is that, generally speaking, once a solution to a parsing problem or release rejection problem is resolved in the FRAM-CAS database, it will address all future instances subject to the same circumstances (and/or future reloads).</p>
 <p>Common problems and solutions include (solution in italics):</p>
 <ol style="list-style-type: decimal">
@@ -570,17 +571,17 @@ The parsing rules from RMIS Location Code to field values are: Char(1) = StatePr
 <li>A portion of the auxiliary data you’re supplying isn’t part of the tag set of interest. For example, a CTC member from Canada may supply escapements for all of their stocks for all years in a single file, whereas you’re only interested in 2005-2008 broods. - <em>If this is the basis for rejection, there’s nothing more that you need to do.</em></li>
 </ol>
 </div>
-<div id="what-are-auxiliaries" class="section level3">
-<h3>What are auxiliaries?</h3>
+<div id="what-are-auxiliaries" class="section level4">
+<h4>1.4.4.2. What are auxiliaries?</h4>
 <p>As noted above, so-called auxiliary CWT recovery files are also loaded into the FRAM-CAS database during this stage of the overall process, and are denoted as such in the ‘CWDBRecovery’ table (‘Auxiliary’ = T/F field). These files, which are supplied by regional experts who steward CWT recovery data for particular stocks or fisheries, are meant to either augment or correct the data acquired via RMIS for the tag groups in question. While the deficiencies/errors in RMIS content and/or the basis for auxiliary file creation are beyond the scope of this manual, these files are necessary to ensure that all observations of tagged model stock cohorts are correctly captured in the FRAM BP dataset. Because these datasets are routinely updated, it is important to acquire the latest versions from the appropriate CTC point(s) of contact prior to completing a full FRAM-CAS loading process. Finally, similar input files may need to be created for any non-CTC stocks necessitating similar supplementary or revisionary data (e.g., for unsampled freshwater sport fisheries in Puget Sound and Willapa Bay). Because the CTC’s fine-scale fishery change routinely, if not updating to the current version of the CAS database, it may be necessary to modify auxiliaries to revert to the 2019 convention before using.</p>
 <p>For further documentation on the CAS program and database, see the design specs document prepared by Wostman and Associates, Inc. for ADFG and the CTC, as well as the CAS help files located here: <a href="https://github.com/jon-carey/FRAMBuilder/tree/master/CTC%20CAS%20Documentation" class="uri">https://github.com/jon-carey/FRAMBuilder/tree/master/CTC%20CAS%20Documentation</a>. For more information on the FRAM-CAS database, and more specifically how it has been modified to integrate FRAM functionality, see Appendix B.</p>
 </div>
 </div>
-<div id="run-frambuilder" class="section level2">
-<h2>Run FRAMBuilder</h2>
+<div id="run-frambuilder" class="section level3">
+<h3>1.4.5. Run FRAMBuilder</h3>
 <p>When the FRAM-CAS database has been successfully loaded with the CWT data needed for running the BP calibration, we have just a few additional (albeit very important) steps to (1) complete the RMIS to FRAM fishery mapping work, (2) process the selected tags/broods for the selected stocks so they correspond to a single ‘super code’, and (3) format and write calibration input files to the FRAM-CAS database. This section covers the rationale and sequence of steps underlying this process.</p>
-<div id="mappingadjustment-rules" class="section level3">
-<h3>Mapping/adjustment rules</h3>
+<div id="mappingadjustment-rules" class="section level4">
+<h4>1.4.5.1. Mapping/adjustment rules</h4>
 <p>Before diving into the ‘how to’ details, here we summarize the main rules/processing tasks that FRAMBuilder executes to map CWT recoveries from CAS fishery purgatory to their final FRAM fishery/time step/age stratum (within code, see the subroutine ‘BGworker_output_DoWork’ in ‘OutputOptions.vb’ for further detail). Note that the following special mapping rules were revised in 2019 in accordance with updating from the 2013 CAS database and fishery structure to the 2019 CAS database and fishery structure. Whenever specific criteria invoke special processing rules, FRAMBuilder does the following:</p>
 <ol style="list-style-type: decimal">
 <li>Split CAS Puget Sound Areas 10/11/13 Net (Fishery = 2315) and Terminal Net (Fishery = 2316) into FRAM 10A, 10E, 10/11, 13A, and SPS Net fisheries; this is done using the RMIS recovery location code. Also assign 13C (Chambers) to freshwater net, consistent with TAMM treatment of the fishery.</li>
@@ -601,14 +602,14 @@ The parsing rules from RMIS Location Code to field values are: Char(1) = StatePr
 </ol>
 <p><em>Note, whenever any of these special processing rules is invoked for a particular recovery, a record detailing related adjustments is added to the FRAM-CAS database’s ‘FRAM_ProcessLog’ table</em></p>
 </div>
-<div id="merging-weighting" class="section level3">
-<h3>Merging &amp; weighting</h3>
+<div id="merging-weighting" class="section level4">
+<h4>1.4.5.2. Merging &amp; weighting</h4>
 <p>Beyond applying mapping/adjustment rules, a secondary function of FRAMBuilder is to merge CWT data for a given stock within selected BP broods and ultimately across broods to create a synthetic all-broods ‘super code’. The program is flexible and can accommodate a few different merging approaches. Within brood years, merging can be done either (1) on an unweighted basis (default) or (2) using user-specified weights which are generated on a stock/code/BY basis and added to the ‘FRAM_Weights’ table. The first option treats all CWT release groups within a stock/BY as though they’re equivalent and simply lumps them together accordingly. Thus, if several hatcheries/groups make up a single FRAM stock, they’re essentially self-weighting within BYs as a function of the number of fish released and early marine survival. The latter option allows users to specify weights that up/down weight particular CWT codes/groups according to any rationale. For example, the Skagit spring yearling model stock is actually a composite fingerling/yearling stock for which user-supplied weights have been developed to achieve a 50:50 representation of the two life history variants in the pool of recovered CWTs.</p>
 <p>Once codes are merged within BYs for a given stock, FRAMBuilder merges the within-BY-merged CWT recovery data across BYs using one of three approaches: (1) unweighted merging, (2) recoveries-weighted merging [the default], or (3) user-specified weighting (Note that user-specified between BY merging hasn’t been fully tested/vetted). The first option is equivalent to the default within-year method in that BYs are pooled as-is and thus self-weighting; this essentially means that BYs with better survival and/or abundance will have greater influence in the calibration dataset. The second and default option (‘recoveries weighted’) is designed to rescale recoveries (i.e., R’FAT-b = Wb*RFAT-b) within each brood year so that all BYs have equal influence on the calibration dataset, i.e., for brood year b the weighting/scaling factor (Wb) is computed as Wb = max(all Rb) / Rb, where Rb = RFAT-b and Rb and RFAT-b are the estimated recoveries total for brood year b and the fishery-age-time step-specific recoveries total within brood year b. As above, the last option permits the user to specify (again, within the ‘FRAM_Weights’ database table) any weighting scheme that’s desired. This latter option might apply, for example, when there’s an anomalous year in the data series for a stock, exploitation or survival/abundance wise, that contains some useful information but needs to be down-weighted to avoid giving it undue influence on the final calibration dataset.</p>
 <p><em>Note, the default weighting scheme emulates what’s historically been assumed/done for Washington’s Puget Sound stocks within the PSC Chinook Model calibration procedure</em></p>
 </div>
-<div id="output-file-creation-and-database-population" class="section level3">
-<h3>Output file creation and database population</h3>
+<div id="output-file-creation-and-database-population" class="section level4">
+<h4>1.4.5.3. Output file creation and database population</h4>
 <p>Once data processing is complete, FRAMBuilder writes several results to the FRAM-CAS database, with specific RunID attribution (a unique date-time based stamp). The main outputs of interest are:</p>
 <ol style="list-style-type: decimal">
 <li>The ‘FRAM-OUT_CWTAll’ table; this contains the results for the processing run in a format (merged, etc.) that can be fed directly into the main calibration program. Note that some post-processing is currently needed to create the full 39/78 stock structure dataset (see Apendix C), which occurs in an excel file called ‘Calibration_CWT_Inputs; MM.DD.YY.xlsx’ and requires output from the ‘FRAM_star_CWT’ table.</li>
@@ -619,8 +620,8 @@ The parsing rules from RMIS Location Code to field values are: Char(1) = StatePr
 <li>If ‘old school’ outputs are needed (e.g., *.CWT files, text based process logs, etc.), the checkbox allowing for this feature will need to be reactivated so that these text-based calibration inputs are created.</li>
 </ol>
 </div>
-<div id="running-the-full-processing-sequence" class="section level3">
-<h3>Running the full processing sequence</h3>
+<div id="running-the-full-processing-sequence" class="section level4">
+<h4>1.4.5.4. Running the full processing sequence</h4>
 <p>Now, with a clear understanding of what’s needed to get data from RMIS to FRAM-CAS in a state that’s ready for processing, it’s time to actually run the program. First, open the FRAMBuilder program by running it in debugging mode once you’ve opened the VB.NET solution, and then connect it to your FRAM-CAS database by clicking ‘Select CWT Database’ when you reach the Welcome Screen.</p>
 <div class="figure">
 <img src="images/fb_sln_welcome.png" alt="FRAMBuilder welcome screen. After selecting a database (uppermost button), move sequentially down the buttons" width="100%" />
@@ -688,18 +689,18 @@ The ‘Be Patient I’m Working’ processing screen (top panel) and what you’
 </div>
 </div>
 </div>
-<div id="export-data" class="section level2">
-<h2>Export data</h2>
+<div id="export-data" class="section level3">
+<h3>1.4.6. Export data</h3>
 <p>Aside from generating old-format (.CWT) text files and populating the FRAM-CAS database, FRAMBuilder does not produce any files extending beyond these stages. Thus, the end user must work directly within the FRAM-CAS database in order to acquire/use processing results in subsequent calibration procedures. The ‘FRAM-Out_CWTAll’ and ‘FRAM_star_CWT’ tables contain the primary data of interest to the Main Calibration Program. To extract results for further use, first filter data on the FRAMBuilder run of interest (filter on ‘ID’ field) and simply copy-paste it into an Excel spreadsheet (or export in any format as desired). The current template for this is called ‘Calibration_CWT_Inputs; MM.DD.YY.xlsx’ and includes a few notes about the post-processing steps needed (see Appendix C for details) to generate a final dataset for input into the Main Calibration Program’s database. Otherwise, further review of processing results can be achieved by looking at the raw recovery level (‘CWDBRecovery’ table) or by viewing mapped code-, merged-within-BY-, or merged-across-broods-specific results in the ‘FRAM_star_CWT’, which correspond to the pieces that have been rolled up into the final composite ‘FRAM-Out-CWTAll’ table. Beyond these components, the length-at-age prep (‘FRAM_GrowthData’) file can be exported for further processing/review in Excel, R, etc.</p>
 </div>
 </div>
-<div id="frambuilders-growth-function-input-file-preparation-feature" class="section level1">
-<h1>FRAMBuilder’s growth function input file preparation feature</h1>
+<div id="frambuilders-growth-function-input-file-preparation-feature" class="section level2">
+<h2>1.5. FRAMBuilder’s growth function input file preparation feature</h2>
 <p>In addition to creating input files for the Main Calibration Program, FRAMBuilder also has the ability to prepare files for use in estimating the model’s stock-specific von Bertalanffy growth functions (VBGFs). The approach used to estimate VBGF parameters requires (1) that fish lengths are standardized to a particular format (i.e., fork length), (2) an estimate of a fish’s age in months (not FRAM age) at the time of recovery, and (3) knowledge of size limit regulations for fishery-dependent recoveries, for each individual CWT recovery for which length has been measured. The first two requirements are fulfilled through a series of calculations/processing rules in code, whereas the latter is achieved through the help of an addition database table (FRAM_SizeLimits) that is populated with the historic series of size limits for each time/area/run year fishery stratum. Because item #3 also has a mapping dependency (i.e., length limit in fishery), these processing steps are also implemented within the ‘BGworker_output_DoWork’ subroutine in ‘OutputOptions.vb’.</p>
 <p>For further detail on the analysis methods, etc., refer to the PFMC analysis review document at <a href="http://www.pcouncil.org/wp-content/uploads/2015/10/D2_Att2_FRAM_Growth_Meth_Nov2015BB.pdf" class="uri">http://www.pcouncil.org/wp-content/uploads/2015/10/D2_Att2_FRAM_Growth_Meth_Nov2015BB.pdf</a>.</p>
 </div>
-<div id="limitations-to-frambuilder-and-opportunities-for-enhancement" class="section level1">
-<h1>Limitations to FRAMBuilder and opportunities for enhancement</h1>
+<div id="limitations-to-frambuilder-and-opportunities-for-enhancement" class="section level2">
+<h2>1.6. Limitations to FRAMBuilder and opportunities for enhancement</h2>
 <p>Like any program that’s been designed to automate and streamline an unwieldy and complex data processing task that necessarily requires some expert oversight and occasional ad hoc revisions, FRAMBuilder is far from a distributable, production-grade program. Rather, it’s a tool for streamlining one of the more cumbersome tasks that the BP calibration team has to complete in order to create a new base period dataset. Accordingly, there are (and will always be) opportunities for enhancing the program, both in basic ways that pertain to its current structure/algorithms and through the addition of new/different processing features. A few low-hanging fruits that may be worth considering are:</p>
 <ul>
 <li>Offer a means to do some of the post-processing required to replicate ‘FRAM-OUT_CWTAll’ content for some stocks as required for surrogate or other purposes (e.g., NF Nooksack for both SF and NF; also in surrogate cases; see Appendix C for more on these).</li>
@@ -709,8 +710,10 @@ The ‘Be Patient I’m Working’ processing screen (top panel) and what you’
 <p>Beyond these minor enhancements, IF calibration becomes a routine/updateable process, some bigger-picture enhancements worthy of consideration are:</p>
 <p>-(<strong>higher priority</strong>) Update the FRAM to CAS linkage so that FRAMBuilder is not stuck in static ‘old CTC’ [currently 2019] fishery mappings; this could be achieved in a number of ways, ranging from relatively simple (e.g., update crosswalk table) to more complicated (e.g., integrating CAS.exe’s parsing/mapping code directly into FRAMBuilder to ‘cut out the middle man’); the former probably makes the most sense so that annually developed auxiliaries are readily usable in the FRAMBuilder workflow. In 2019, work was completed to update the FRAM-CAS database and FRAMBuilder 2.0 application code for compatibility with the 2019 version of the CTC’s CAS database and fishery strata (See Appendix D for details). Versions of FRAM-CAS database, application code, and output data created prior to 2019 were based on the 2013 version of the CTC’s CAS database and fishery strata (see also Appendix D notes on this subject). - (low priority, given how infrequently calibrations occur) Marry FRAMBuilder directly to the Main Calibration Program and the FRAM-CAS content to the Calibration Database’s architecture (or the reverse). This would streamline things on the implementation front, which may not be a huge priority since calibrations occur infrequently. - (low priority, given how infrequently calibrations occur) Identify ways (MS Access query structure, program architecture, or otherwise) to speed the program up. As noted previously, this isn’t worth losing much sleep since it’s not THAT slow in the grand scheme and calibrations occur intermittently at best. But something to ponder anyway.</p>
 </div>
-<div id="appendix-a-ctc-filter-database-recoveries-query-detailsnotes" class="section level1">
-<h1>Appendix A: CTC Filter Database Recoveries Query Details/notes</h1>
+<div id="frambuilder-appendix" class="section level2">
+<h2>1.7. FRAMBuilder Appendix</h2>
+<div id="appendix-a-ctc-filter-database-recoveries-query-detailsnotes" class="section level3">
+<h3>1.7.1. Appendix A: CTC Filter Database Recoveries Query Details/notes</h3>
 <p>SELECT RECOVERIES.recovery_id, RECOVERIES.recovery_date, RECOVERIES.period_type, RECOVERIES.period, RECOVERIES.species, RECOVERIES.sex, RECOVERIES.length, RECOVERIES.length_code, RECOVERIES.tag_code, RECOVERIES.tag_status, RECOVERIES.estimation_level, RECOVERIES.recovery_location_code, RECOVERIES.fishery, RECOVERIES.estimated_number, RECOVERIES.sample_type, RECOVERIES.run_year, RECOVERIES.recorded_mark, RECOVERIES.catch_sample_id, RECOVERIES.detection_method, RECOVERIES.reporting_agency FROM RECOVERIES INNER JOIN STKCDS ON RECOVERIES.tag_code = STKCDS.CODE</p>
 <p>#across all subsets, the ‘not like 1M1DF*’ and ‘not like 1M2*’ statements filter out AK recoveries outside of Southeast # #across all subsets, sample_type &lt;&gt; 5 excludes voluntary recoveries with no awareness #</p>
 <p>#no high seas recoveries included for WA/ColR/OR/CA {164,878 recoveries}#</p>
@@ -728,8 +731,8 @@ The ‘Be Patient I’m Working’ processing screen (top panel) and what you’
 <p>#recoveries of SUS stocks in SUS test fisheres {68 recoveries}#</p>
 <p>OR (((RECOVERIES.recovery_location_code) Not Like ‘1M1DF*’ And (RECOVERIES.recovery_location_code) Not Like ‘1M2*’) AND ((RECOVERIES.fishery)&gt;=“60” And (RECOVERIES.fishery)&lt;“70”) AND ((RECOVERIES.sample_type)&lt;&gt;“5”) AND ((RECOVERIES.reporting_agency) Not In (“ADFG”,“NMFS”,“CDFO”)) AND ((STKCDS.REGION) In (“WASH”,“COLUMBIA”,“OREGON”,“CALIFORNIA”)));</p>
 </div>
-<div id="appendix-b-overview-of-the-fram-modified-cas-database" class="section level1">
-<h1>Appendix B: Overview of the FRAM-modified CAS database</h1>
+<div id="appendix-b-overview-of-the-fram-modified-cas-database" class="section level3">
+<h3>1.7.2. Appendix B: Overview of the FRAM-modified CAS database</h3>
 <p>The FRAM-CAS database (and filter database) is an adaptation of the PSC Chinook Technical Committee’s 2019 final preseason CAS database (available through the CTC sharepoint site [Analytical Work Group -&gt; Exploitation Rate Analysis -&gt; 2019], however, this requires a username and password – feel free to contact your friendly neighborhood CTC member for help). Thus, it’s rooted in the CTC’s fishery mappings in effect at that time (e.g., maybe escapement code = 4008 is a memory jogger for those who follow details of CTC fishery mappings). Beyond what that base CAS contained, several tables were added to fill FRAMBuilder’s mapping needs. All of these have a naming convention of ‘FRAM_…’ so that they can be easily distinguished from the base CAS content (Figure B1). While the details associated with these additions and modifications are summarized here, the user is referred to the CTC’s CAS documentation for detail on the other database content/schema, etc., which is available at: <a href="https://github.com/jon-carey/FRAMBuilder/tree/master/CTC%20CAS%20Documentation" class="uri">https://github.com/jon-carey/FRAMBuilder/tree/master/CTC%20CAS%20Documentation</a></p>
 <p>The main database tables that help FRAMBuilder in either the CAS-to-FRAM fishery or stock crosswalk/mapping process are:</p>
 <ol style="list-style-type: decimal">
@@ -745,8 +748,8 @@ FRAM-related tables that have been added to the CAS database to support FRAMBuil
 </p>
 </div>
 </div>
-<div id="appendix-c-dont-forget-external-data-pre-processing-steps" class="section level1">
-<h1>Appendix C: “Don’t Forget” external data pre-processing steps</h1>
+<div id="appendix-c-dont-forget-external-data-pre-processing-steps" class="section level3">
+<h3>1.7.3. Appendix C: “Don’t Forget” external data pre-processing steps</h3>
 <p>In no particular order, this is a list of a few processing/data modification steps that need to be taken before data can be fully ground through the FRAMBuilder mill.</p>
 <ol style="list-style-type: decimal">
 <li>There are a number of ‘post-FRAMBuilder’ processing steps that need to occur after the successful completion of a FRAMBuilder run but before the CWTAll and CWT_OOB outputs get loaded into the Calibration support database. These steps are detailed in the accompanying spreadsheet titled ‘Calibration_CWT_Inputs; MM.DD.YY.xlsx’, available at <a href="https://github.com/jon-carey/FRAMBuilder" class="uri">https://github.com/jon-carey/FRAMBuilder</a>. These steps include, but are not necessarily limited to: a. Duplicated stock data (NFNK Sp for SFNK Sp, SkagFF for Skag FYr, SPS FYr for UWAcc) b. JDF Surrogate CWT data (modified from STIL) c. Imputed Age 5 escapement d. Tulalip Net recoveries from TS2 pushed into TS3 e. Modified 10E Net recoveries (to achieve 97% MPS contribution) f. Modified CWT recoveries to address unrealistic Age 5 BPERs g. Imputed WA North Coast recoveries in Grays Harbor Net h. White River OOB escapement tags apportioned into TS2 and TS3 i. Modification to White R recovery in 8-1 sport with unrealistic expansion</li>
@@ -756,8 +759,8 @@ FRAM-related tables that have been added to the CAS database to support FRAMBuil
 <li>Perhaps the most clunky (annoying?) external data preparation step, you will need to populate a field within ‘CWDBRecovery’ for all Areas 7BCD Net fishery recoveries so that Treaty/Non-treaty recoveries can be distinguished during processing [note, aside from Treaty Troll and 7BCD, no attempt is made to parse Treaty/NonTreaty within FRAMBuilder ]. Unfortunately, this cannot be automated within FRAMBuilder because CAS does not get loaded with sufficient information to make the distinction, where such a distinction is possible, and a non-trivial percentage of 7BCD recoveries cannot be assigned even if CAS had all of the RMIS data on earth (~30% of recoveries receive a non-descript net fishery recovery code, one that’s not attributable to a fisher type); thus, within the external preparation spreadsheet, the original 7BCD data loaded into FRAM-CAS are removed, parsed out (by additional details, either supplementary RMIS data or catch fractions), and placed back into CWDB with a newly populated ‘Tr_NT’ field. Note that recoveries that cannot be distinguished are split fractionally based on run year catch fractions (i.e., treaty % of landed, non-treaty % of landed) which necessarily means that those records have to be duplicated and have their associated recovery total split accordingly; this is all completed and illustrated in the companion spreadsheet file ‘BellinghamBayEvaluation_2019.xlsx’ which can be downloaded at <a href="https://github.com/jon-carey/FRAMBuilder" class="uri">https://github.com/jon-carey/FRAMBuilder</a>.</li>
 </ol>
 </div>
-<div id="appendix-d.-updates-for-compatibility-with-2019-cas-fishery-strata" class="section level1">
-<h1>Appendix D. Updates for compatibility with 2019 CAS fishery strata</h1>
+<div id="appendix-d.-updates-for-compatibility-with-2019-cas-fishery-strata" class="section level3">
+<h3>1.7.4. Appendix D. Updates for compatibility with 2019 CAS fishery strata</h3>
 <p>In 2019 work was completed to update both the FRAM-CAS database and the FRAMBuilder 2.0 application code for compatibility with the 2019 version of the CTC’s CAS database and fishery structure. The impetus for this update stemmed from the desire to re-query recovery data from RMIS in 2019, as there were numerous known (and likely numerous unknown) updates that had occurred since the data were previously queried in ~2014 (i.e., updates to Columbia River Summer Chinook escapement expansions, GMR updates to Stillaguamish escapement expansions, etc.). Additionally, it had been a number of years since the CTC’s auxiliary data had been updated. With that, the decision was made to start from scratch, building off of the CTC’s final preseason 2019 CAS database. The steps were as follows: [Note: these steps are also detailed in the file ‘FRAMBuilder DB Updates_2019.xlsx,’ which, in addition to the other files referenced below, can be downloaded at <a href="https://github.com/jon-carey/FRAMBuilder" class="uri">https://github.com/jon-carey/FRAMBuilder</a>]</p>
 <ol style="list-style-type: decimal">
 <li>Obtain the complete list of base period tag codes from the most recently used version of FRAM-CAS database (in this case, ‘2016 FRAMBuilder_Rnd6.mdb’).</li>
@@ -791,6 +794,11 @@ FRAM-related tables that have been added to the CAS database to support FRAMBuil
 <li>Create a ‘dummy stock’ for LCN that is a combination of the WA and OR tule stocks (LRH, LCW, KAL, CWF, and WAS). See the ‘LCN_WireTagCode’ and ‘LCN_CWDBRecovery’ tabs in ‘‘FRAMBuilder DB Updates_2019.xlsx’.</li>
 <li>Assign Bellingham Bay net recoveries to treaty or non-treaty (see item 5 in Appendix C and ‘BellinghamBayEvaluation_2019.xlsx’).</li>
 </ol>
+</div>
+</div>
+</div>
+<div id="stock-profiles" class="section level1">
+<h1>2. Stock Profiles</h1>
 </div>
 
 <footer>
