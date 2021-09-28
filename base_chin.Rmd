@@ -470,4 +470,3 @@ knitr::include_graphics("images/fb_appD_step9.png")
 
 # 2. Stock Profiles
 
-<iframe src = "./images/2016ChinFRAMBP_StockProfiles_9.12.16.mht" width = "1000" height = "1000"></iframe>
