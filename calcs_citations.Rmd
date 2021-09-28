@@ -22,7 +22,7 @@ Morishima, G. S., and Henry, K. A.  2000.  The History and Status of Pacific Nor
 
 Pacific Salmon Commission 2014 - Chinook CTC Model? - ADD Citation
 
-Packer, J. F., Haymes, J. D., and C. Cook-Tabor.  2007.  *Coho FRAM Base Period Development (Auxiliary Report to FRAM Technical Documentation)*.  Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384.
+Packer, J. F., Haymes, J. D., and C. Cook-Tabor.  2007.  *Coho FRAM Base Period Development (Auxiliary Report to FRAM Technical Documentation)*.  Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/COHO_FRAM_Base_Data_Packer_0707.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
 Puget Sound Salmon Management Plan.  1985.  U.S. v. Washington No. 9213 Phase I (sub no. 85-2). [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/ps-salmon-management-plan-1985.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
