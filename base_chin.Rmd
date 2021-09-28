@@ -469,3 +469,5 @@ knitr::include_graphics("images/fb_appD_step9.png")
   20.	Assign Bellingham Bay net recoveries to treaty or non-treaty (see item 5 in Appendix C and ‘BellinghamBayEvaluation_2019.xlsx’).
 
 # 2. Stock Profiles
+
+<iframe src = "./images/2016ChinFRAMBP_StockProfiles_9.12.16.mht" width = "1000" height = "1000"></iframe>
