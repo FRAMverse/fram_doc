@@ -114,13 +114,13 @@ dplyr::tibble(
 
 # **Appendix 6.** <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>/<span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery-related mortality rates for *coho* salmon (version used in 2021 pre-season planning models)
 
-```{r appendix 6 table image, echo=FALSE}
+```{r appendix 6 table image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/Appendix_table_6.PNG"))
 ```
 
 # **Appendix 7.** <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>/<span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery-related mortality rates for *Chinook* salmon (version used in 2021 pre-season planning)
 
-```{r appendix 7 table image, echo=FALSE}
+```{r appendix 7 table image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/Appendix_table_7.PNG"))
 ```
 
