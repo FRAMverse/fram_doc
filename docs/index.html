@@ -441,8 +441,8 @@ div.tocify {
 </div>
 <div id="background" class="section level1 unnumbered">
 <h1 class="unnumbered">2. Background</h1>
-<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> is a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Deterministic_Model" target = "_blank" title = "Deterministic model">deterministic</a>, <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Discrete_Model" target = "_blank" title = "Discrete model">discrete</a>, time-age structured model designed to aid planning of Chinook and Coho salmon fisheries. It is designed to address the effects of multiple mixed-stock fisheries on individual stocks, each further stratified by age and mark status (and possibly <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Hatchery" target = "_blank" title = "Hatchery">hatchery</a> origin). Individual stock-age groups are exploited as a single pool, that is, in each time step all pre-terminal fisheries operate on the entire cohort simultaneously. The model calculates fishery related mortality, including catches and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Non-landedNon-retention_Mortality" target = "_blank" title = "Non-landed mortality">non-landed</a> impacts, imposed on the abundance of each stock unit.</p>
-<p>In a given yearly model run, over the course of several <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Time_Step" target = "_blank" title = "Time step">time steps</a>, <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> allocates a mixed stock cohort to catches, non-retention mortality and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target = "_blank" title = "Escapement">escapement</a> (for Coho) or escapement to the terminal area (for Chinook). This occurs by combining forecasted or observed stock run sizes and fishery practices with <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Parameter" target = "_blank" title = "Parameter">parameters</a> <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Calibration" target = "_blank" target = "Calibration">calibrated</a> from observations made during a fixed “<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Base_Period" target = "_blank" title = "Base period">base period</a>” set of baseline years. The base period integrates fishery catches, stock age and mark composition information, and coded wire tag (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" target = "_blank" title = "CWT: Coded-wire tag">CWT</a>) recovery data to produce a calibrated reference pattern of stock distributions and stock-specific <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Harvest_Rate_(HR)" target = "_blank" title = "HR: Harvest rate">harvest rates</a> by time-step and fishery.</p>
+<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> is a <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Deterministic_Model" target = "_blank" title = "Deterministic model">deterministic</a>, <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Discrete_Model" target = "_blank" title = "Discrete model">discrete</a>, time-age structured model designed that aids in the planning of Chinook and Coho salmon fisheries. It is designed to address the effects of multiple mixed-stock fisheries on individual stocks, each further stratified by age and mark status (and possibly <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Hatchery" target = "_blank" title = "Hatchery">hatchery</a> origin). Individual stock-age groups are exploited as a single pool, that is, in each time step all pre-terminal fisheries operate on the entire cohort simultaneously. The model calculates fishery related mortality, including catches and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Non-landedNon-retention_Mortality" target = "_blank" title = "Non-landed mortality">non-landed</a> impacts, imposed on the abundance of each stock unit.</p>
+<p>In a given yearly model run, over the course of several <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Time_Step" target = "_blank" title = "Time step">time steps</a>, <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> allocates a mixed stock cohort to catches, non-retention mortality and <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target = "_blank" title = "Escapement">escapement</a>. This occurs by combining stock-specific run sizes and fishery inputs with <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Parameter" target = "_blank" title = "Parameter">parameters</a> <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Calibration" target = "_blank" target = "Calibration">calibrated</a> from observations made during a fixed “<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Base_Period" target = "_blank" title = "Base period">base period</a>” (set of baseline years). The base period integrates fishery catches, stock age and mark composition information, and coded wire tag (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" target = "_blank" title = "CWT: Coded-wire tag">CWT</a>) recovery data to produce a calibrated reference pattern of stock distributions and stock-specific <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Harvest_Rate_(HR)" target = "_blank" title = "HR: Harvest rate">harvest rates</a> by time-step and fishery.</p>
 <p>A fundamental element of <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> calculations are the stock-age-fishery-timestep specific exploitation rates (defined as the total mortality divided by abundance). This expression of catch as a proportion of the available abundance is based primarily on coded wire tag release and recovery data from the Regional Mark Information System (<a href="https://www.rmis.org//rmis_login.php?action=Login&system=cwt" target="_blank">RMIS</a>).</p>
 </div>
 <div id="history" class="section level1 unnumbered">
@@ -465,19 +465,19 @@ div.tocify {
 </div>
 <div id="fram-base-peiod" class="section level2 unnumbered">
 <h2 class="unnumbered">4.2. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> Base Peiod</h2>
-<p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> base period is developed by summarizing coded-wire-tag information from a continuous time period with a sufficient number of <span title="CWT: Coded Wire Tag">CWT</span> releases and recoveries. The current Chinook base period uses <span title="CWT: Coded Wire Tag">CWT</span> releases from 2005-2008. The Coho base period is comprised of <span title="CWT: Coded Wire Tag">CWT</span> recoveries from catch years 1986-1992. A calibration program maps the <span title="CWT: Coded Wire Tag">CWTs</span> to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries, stocks, and time steps and conducts a cohort reconstruction to estimate base period exploitation rates and other parameters, such as base period <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Size" target = "_blank" title = "Cohort size">cohort sizes</a>. These estimates form the basis of a <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> run and remain static between model runs. Using these base period parameters allows <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> to predict the stock composition, exploitation rates, and escapements of future fisheries when provided with forecasts of abundance and fishery mortalities.</p>
+<p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> base period is developed by summarizing coded-wire-tag information from a continuous time period that needs to contain a sufficient number of <span title="CWT: Coded Wire Tag">CWT</span> releases and recoveries. The current Chinook base period uses <span title="CWT: Coded Wire Tag">CWT</span> releases from 2005-2008. The Coho base period is comprised of <span title="CWT: Coded Wire Tag">CWT</span> recoveries from catch years 1986-1992. A calibration program maps the <span title="CWT: Coded Wire Tag">CWTs</span> to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries, stocks, and time steps and conducts a cohort reconstruction to estimate base period exploitation rates and other parameters, such as base period <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Size" target = "_blank" title = "Cohort size">cohort sizes</a>. These estimates form the basis of a <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> run and remain static between model runs. Using these base period parameters allows <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> to predict the stock composition, exploitation rates, and escapements of future fisheries when provided with forecasts of abundance and fishery mortalities.</p>
 </div>
 </div>
 <div id="coho-vs-chinook-differences" class="section level1 unnumbered">
 <h1 class="unnumbered">5. Coho vs Chinook Differences</h1>
 <p>While there is only one <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> program that handles both Chinook and Coho model runs and many of the core processes and algorithms are identical, this document presents the model and computational structures independently for each species. This decision was made in an effort to improve readability and clarity, as there are a variety of unique features specific to each species that can be difficult to differentiate when they are presented together.</p>
-<p>Table 1. Feature Components of Chinook and Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span></p>
-<div id="ahowqwdjxf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<p>Table 1. Differences between Chinook and Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span></p>
+<div id="spifhyqavz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ahowqwdjxf .gt_table {
+#spifhyqavz .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -502,7 +502,7 @@ div.tocify {
   border-left-color: #D3D3D3;
 }
 
-#ahowqwdjxf .gt_heading {
+#spifhyqavz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -514,7 +514,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#ahowqwdjxf .gt_title {
+#spifhyqavz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -524,7 +524,7 @@ div.tocify {
   border-bottom-width: 0;
 }
 
-#ahowqwdjxf .gt_subtitle {
+#spifhyqavz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -534,13 +534,13 @@ div.tocify {
   border-top-width: 0;
 }
 
-#ahowqwdjxf .gt_bottom_border {
+#spifhyqavz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ahowqwdjxf .gt_col_headings {
+#spifhyqavz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -555,7 +555,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#ahowqwdjxf .gt_col_heading {
+#spifhyqavz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -575,7 +575,7 @@ div.tocify {
   overflow-x: hidden;
 }
 
-#ahowqwdjxf .gt_column_spanner_outer {
+#spifhyqavz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -587,15 +587,15 @@ div.tocify {
   padding-right: 4px;
 }
 
-#ahowqwdjxf .gt_column_spanner_outer:first-child {
+#spifhyqavz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ahowqwdjxf .gt_column_spanner_outer:last-child {
+#spifhyqavz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ahowqwdjxf .gt_column_spanner {
+#spifhyqavz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -607,7 +607,7 @@ div.tocify {
   width: 100%;
 }
 
-#ahowqwdjxf .gt_group_heading {
+#spifhyqavz .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -629,7 +629,7 @@ div.tocify {
   vertical-align: middle;
 }
 
-#ahowqwdjxf .gt_empty_group_heading {
+#spifhyqavz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -644,15 +644,15 @@ div.tocify {
   vertical-align: middle;
 }
 
-#ahowqwdjxf .gt_from_md > :first-child {
+#spifhyqavz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ahowqwdjxf .gt_from_md > :last-child {
+#spifhyqavz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ahowqwdjxf .gt_row {
+#spifhyqavz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -671,7 +671,7 @@ div.tocify {
   overflow-x: hidden;
 }
 
-#ahowqwdjxf .gt_stub {
+#spifhyqavz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -683,7 +683,7 @@ div.tocify {
   padding-left: 12px;
 }
 
-#ahowqwdjxf .gt_summary_row {
+#spifhyqavz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -693,7 +693,7 @@ div.tocify {
   padding-right: 5px;
 }
 
-#ahowqwdjxf .gt_first_summary_row {
+#spifhyqavz .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -703,7 +703,7 @@ div.tocify {
   border-top-color: #D3D3D3;
 }
 
-#ahowqwdjxf .gt_grand_summary_row {
+#spifhyqavz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -713,7 +713,7 @@ div.tocify {
   padding-right: 5px;
 }
 
-#ahowqwdjxf .gt_first_grand_summary_row {
+#spifhyqavz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -723,11 +723,11 @@ div.tocify {
   border-top-color: #D3D3D3;
 }
 
-#ahowqwdjxf .gt_striped {
+#spifhyqavz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ahowqwdjxf .gt_table_body {
+#spifhyqavz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -736,7 +736,7 @@ div.tocify {
   border-bottom-color: #D3D3D3;
 }
 
-#ahowqwdjxf .gt_footnotes {
+#spifhyqavz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -750,13 +750,13 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#ahowqwdjxf .gt_footnote {
+#spifhyqavz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#ahowqwdjxf .gt_sourcenotes {
+#spifhyqavz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -770,41 +770,41 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#ahowqwdjxf .gt_sourcenote {
+#spifhyqavz .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#ahowqwdjxf .gt_left {
+#spifhyqavz .gt_left {
   text-align: left;
 }
 
-#ahowqwdjxf .gt_center {
+#spifhyqavz .gt_center {
   text-align: center;
 }
 
-#ahowqwdjxf .gt_right {
+#spifhyqavz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ahowqwdjxf .gt_font_normal {
+#spifhyqavz .gt_font_normal {
   font-weight: normal;
 }
 
-#ahowqwdjxf .gt_font_bold {
+#spifhyqavz .gt_font_bold {
   font-weight: bold;
 }
 
-#ahowqwdjxf .gt_font_italic {
+#spifhyqavz .gt_font_italic {
   font-style: italic;
 }
 
-#ahowqwdjxf .gt_super {
+#spifhyqavz .gt_super {
   font-size: 65%;
 }
 
-#ahowqwdjxf .gt_footnote_marks {
+#spifhyqavz .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
