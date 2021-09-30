@@ -20,7 +20,7 @@ Model Evaluation Workgroup (MEW).  2008.  *Chinook Fishery Regulation Assessment
 
 Morishima, G. S., and Henry, K. A.  2000.  The History and Status of Pacific Northwest Chinook and Coho Salmon Ocean Fisheries and Prospects for Sustainability.  Pages 219-235 *in* E. E. Knudsen, C. R. Stewart, D. D. MacDonald, J. E. Williams, and D. W. Reiser, editors.  Sustainable Fisheries Management, Pacific Salmon.  Lewis Publishers, New York. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/Morishima%20Henry%20scan.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
-Pacific Salmon Commission 2014 - Chinook CTC Model? - ADD Citation
+Pacific Salmon Commission (PSC). 2021. 2020 Exploitation Rate Analysis. Joint Chinook Technical Committee report. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/TCCHINOOK-21-05.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
 Packer, J. F., Haymes, J. D., and C. Cook-Tabor.  2007.  *Coho FRAM Base Period Development (Auxiliary Report to FRAM Technical Documentation)*.  Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/COHO_FRAM_Base_Data_Packer_0707.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
