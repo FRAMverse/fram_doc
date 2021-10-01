@@ -58,5 +58,4 @@ output:
     mathjax: null
     df_print: paged
     includes:
-      before_body: [header.html]
       after_body: [footer.html]
