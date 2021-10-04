@@ -168,7 +168,7 @@ During each time step, the stock-age cohort size at the start of the time step i
 
 <p>**(2)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age a during time step t">$Cohort_{s,a,t}$</span> $=$ <span title = "Cohort abundance of stock s at age a during time step t">$Cohort_{s,a,t}$</span> $\times$ <span title = "Discrete natural mortality rate at age a and time step t">$(1-M_{a,t})$</span> </div> </p>
 
-where <span title = "Discrete natural mortality rate at age a and time step t">$M_{a,t}$</span> is the discrete natural mortality rate for age *a* fish during time step *t* (<a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_8_Time_period_and_age-specific_rates_used_by_FRAM_to_simulate_coho_and_Chinook_natural_mortality" target = "_blank" title = "Appendix 8">Appendix 8</a>).
+where <span title = "Discrete natural mortality rate at age a and time step t">$M_{a,t}$</span> is the discrete natural mortality rate for age *a* fish during time step *t* (<a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_8_Time_period_and_age-specific_rates_used_by_FRAM_to_simulate_Coho_and_Chinook_natural_mortality" target = "_blank" title = "Appendix 8">Appendix 8</a>).
 
 **Pre-terminal fisheries**
 
@@ -220,7 +220,7 @@ where,
 
 Chinook non-retention mortalities are typically calculated using <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Shaker" target = "_blank" title = "Shaker">shaker</a> and adult release mortality rates (<a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_7_FRAMTAMM_fishery-related_mortality_rates_for_Chinook_salmon_(version_used_in_2021_pre-season_planning)" target = "_blank" title = "Appendix 7">Appendix 7</a>) and external estimates of either total adult encounters or legal and sublegal encounters. Several other methods exist in the modeling framework for Chinook (relative to the level of open versus non-retention effort within a time step) but are rarely used.
 
-<u>**3e.** Mark-selective fisheries</u> (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-selective_Fishery_(MSF)" target = "_blank" title = "MSF: Mark-selective fishery">MSF</a>) require additional computations to calculate both the landed catch and the mortalities due to the release of fish.
+<u>**3e.** Mark-selective fisheries</u> (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "MSF: Mark-selective fishery">MSF</a>) require additional computations to calculate both the landed catch and the mortalities due to the release of fish.
 
 To simplify calculations, the <span title = "PV: Proportion vulnerable">PV</span> and the <span title = "SHRS: Stock fishery rate scaler">SHRS</span> are excluded from calculations below:
 
