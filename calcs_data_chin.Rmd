@@ -265,7 +265,7 @@ Once all pre-terminal fisheries have been processed and the associated mortaliti
 
 <p>**(13)**<div style = "text-align:center"><span title = "Mature cohort abundance of stock s at age a during time step t">$MatureCohort_{s,a,t}$</span> $=$ <span title = "Cohort abundance of stock s at age a during time step t">$Cohort_{s,a,t}$</span> $\times$ <span title = "Maturation rate of stock s at age a during time step t">$MatRate_{s,a,t}$</span> </div> </p>
 
-In the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model, the majority of Chinook stocks mature in time step 3 (July - September). A few, mostly Spring Chinook stocks mature during time step 2 (May- June) and 3. Cowlitz and Willamette Spring Chinook mature in time step 1. For a table of maturation rates see APPENDIX TO BE ADDED.
+In the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model, the majority of Chinook stocks mature in time step 3 (July - September). A few, mostly Spring Chinook stocks mature during time step 2 (May- June) and 3. Cowlitz and Willamette Spring Chinook mature in time step 1. For a table of maturation rates see <a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_9_Time_period_and_age-specific_rates_used_by_FRAM_to_simulate_Chinook_maturation" target = "_blank" title = "Appendix 9">Appendix 9</a>.
 
 After maturation has occurred, the remaining immature portion of the cohort becomes the initial starting cohort size at the beginning of the subsequent time step, where:
 
