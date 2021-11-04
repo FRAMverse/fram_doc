@@ -30,6 +30,8 @@ navbar:
       menu:
         - text: "Chinook"
           href: base_chin.html
+        - text: "Coho"
+          href: base_coho.html
     - text: "User Manual"
       menu:
         - text: "Prerequisites"

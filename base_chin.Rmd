@@ -480,3 +480,8 @@ stock_profiles |>
 
 ```
 
+<br>
+
+#### Previous Documentation
+
+<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_Chinook_Base_Data_Final_1008.pdf" target = "_blank" title = "Chinook FRAM Base Data Development 2008">Chinook FRAM Base Data Development 2008</a>

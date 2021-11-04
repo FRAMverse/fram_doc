@@ -105,3 +105,8 @@ dplyr::tibble(
 
 ```
 
+<br>
+
+#### Previous Documentation
+
+<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_Overview_Final_1008.pdf" target = "_blank" title = "FRAM Overview 2008">FRAM Overview 2008</a>

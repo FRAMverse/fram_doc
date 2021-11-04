@@ -1250,3 +1250,7 @@ Yes, <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> does 
 ### Can I run multiple instances of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> simultaneously?
 
 Yes, and modifications to the same project database will appear across open instances. But this is probably not a great idea for an analysis examining "directional" parameter changes (e.g., 20%, 40%, 60% and 80% changes within a given year), particularly as the same <span title = "TAMM: Terminal Area Management Module">TAMM</span> file cannot be used with multiple instances of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>. However, this may be a plausibe approach given a "ready to go" project database and set of <span title = "TAMM: Terminal Area Management Module">TAMM</span> files corresponding to different model runs.
+
+#### Previous Documentation
+
+<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_User_Manual_Final_0907.pdf" target = "_blank" title = "FRAM User Manual 2007">FRAM User Manual 2007</a>

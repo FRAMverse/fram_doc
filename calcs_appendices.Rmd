@@ -161,3 +161,11 @@ readRDS("objects/fram_doc__chin_mat_rates.rds")
 ```{r appendix 10 table image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/Chinook_FRAM_ap10.PNG"))
 ```
+
+<br>
+
+#### Previous Documentation
+
+<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_Technical_Detail_Final_1008.pdf" target = "_blank" title = "FRAM Technical Documentation 2008">FRAM Technical Documentation 2008</a>
+
+<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_Programmers_Guide_Final_0707.pdf" target = "_blank" title = "FRAM Programmers Guide 2007">FRAM Programmer's Guide 2007</a>
