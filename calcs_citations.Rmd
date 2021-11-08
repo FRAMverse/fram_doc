@@ -29,3 +29,17 @@ Puget Sound Salmon Management Plan.  1985.  U.S. v. Washington No. 9213 Phase I 
 Salmon Technical Team (STT).  2000.  STT Recommendations for hooking mortality rates in 2000 recreational ocean chinook and coho fisheries.  STT Report B.2 to the March 2000 meeting of the Pacific Fishery Management Council.  Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/STT-Hooking-Mortality-2000.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
 Washington Dept of Fisheries, Puget Sound Treaty Indian Tribes, and Northwest Indian Fisheries Commission.  1993.  A review of recent studies of hooking mortality for chinook and coho salmon with recommendations for fishery management and future research.  Northwest Indian Fisheries Commission.  Olympia, Washington. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/PSSalmonComanagers1993_ReviewHookingMortalityStudies.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
+
+# Previous Documentation
+
+<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_User_Manual_Final_0907.pdf" target = "_blank" title = "FRAM User Manual 2007">FRAM User Manual 2007</a>
+
+<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_Programmers_Guide_Final_0707.pdf" target = "_blank" title = "FRAM Programmers Guide 2007">FRAM Programmer's Guide 2007</a>
+
+<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_COHO_Base_Data_DRAFT_0707.pdf" target = "_blank" title = "Coho FRAM Base Period Development 2007">Coho FRAM Base Period Development 2007</a>
+
+<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_Overview_Final_1008.pdf" target = "_blank" title = "FRAM Overview 2008">FRAM Overview 2008</a>
+
+<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_Technical_Detail_Final_1008.pdf" target = "_blank" title = "FRAM Technical Documentation 2008">FRAM Technical Documentation 2008</a>
+
+<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_Chinook_Base_Data_Final_1008.pdf" target = "_blank" title = "Chinook FRAM Base Data Development 2008">Chinook FRAM Base Data Development 2008</a>
