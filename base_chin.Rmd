@@ -8,6 +8,10 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
+<p style="color: red; font-size: 25px; font-weight: bold">
+Base period documentation is currently incomplete.
+</p>
+
 # 1. Chinook FRAMBuilder
 
 ## 1.1. Background and purpose 

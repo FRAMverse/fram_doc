@@ -8,6 +8,10 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
+<p style="color: red; font-size: 25px; font-weight: bold">
+Base period documentation is currently incomplete.
+</p>
+
 # Previous Documentation
 
 <a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_COHO_Base_Data_DRAFT_0707.pdf" target = "_blank" title = "Coho FRAM Base Period Development 2007">Coho FRAM Base Period Development 2007</a>
