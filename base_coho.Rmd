@@ -1,5 +1,9 @@
+```{r include=FALSE}
+page_title <- "Coho Base Period"
+```
+
 ---
-title: "Coho Base Period"
+title: `r page_title`
 editor_options: 
   chunk_output_type: console
 ---
@@ -7,6 +11,8 @@ editor_options:
 ```{r, include=FALSE, results = 'hide', warning = FALSE, message = FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
+
+To cite this page: `r paste("FRAM workgroup", page_title, "FRAM Documentation", paste("built", format(Sys.Date(), "%B %d, %Y")), sep = "; ")`
 
 <p style="color: red; font-size: 25px; font-weight: bold">
 Base period documentation is currently incomplete.
