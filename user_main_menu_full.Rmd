@@ -206,7 +206,7 @@ The checkbox “Run w/o <span title = "MSF: Mark-selective fishery">MSF</span> B
 ## Chinook
 
 ```{r, echo = FALSE, out.width='100%', fig.cap='Model run options for Chinook'}
-knitr::include_graphics("images/fvs_run_model_chin.png")
+knitr::include_graphics("images/fvs_run_model_chin_update.png")
 ```
 
 ### Old Chinook <span title = "TAMM: Terminal Area Management Module">TAMM</span> Format (10 + 11 Sport Combined)
@@ -276,6 +276,9 @@ This button exists for backwards compatibility reasons. Prior to 2012, <span tit
 knitr::include_graphics("images/fvs_run_model_chin_T4pre2012.png")
 ```
 
+**Don't reuse T1 when A5 = 0**
+
+The “Don’t reuse T1 when A5=0” button was added for backwards compatibility of runs constructed between 2012 and 2021. When the corrections in the previous paragraph were implemented, the modelers added a provision to prevent re-use of time 1 abundances in time 4, when age 5 abundance was zero. The extra condition was added to prevent recycling ages that are actually the end of days for a particular stock or single brood production case. It is however much more common for stocks to miss an age 5 abundance than to be discontinued. Therefore, this provision was eliminated. Checking the button re-instates the age 5 condition in order to reproduce runs conducted between 2012 and 2021. 
 
 ### S:L ratio update
 
