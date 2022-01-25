@@ -425,5 +425,5 @@ Model results are available in <span title = "FRAM: Fishery Regulation Assessmen
 
 <br>
 
-To cite this page: <br>
+**To cite this page:** <br>
 `r paste("Salmon modeling and analysis workgroup.", format(Sys.Date(), "%Y."), page_title, "*in* FRAM Documentation. https://framverse.github.io/fram_doc/ ", paste("built", format(Sys.Date(), "%B %d, %Y.")))`
