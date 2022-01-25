@@ -1,5 +1,9 @@
+```{r include=FALSE}
+page_title <- "Coho Model Detail"
+```
+
 ---
-title: "Coho Calculations"
+title: `r page_title`
 editor_options: 
   chunk_output_type: console
 ---
@@ -338,3 +342,8 @@ where:
 # 7. Output Reports
 
 Model results are available in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> screen reports viewed within the software, <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> reports, <span title = "TAMM: Terminal Area Management Module">TAMM</span> Microsoft Excel files, or can be extracted from the species-specific Microsoft Access database associated with the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> run.  <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> reports include summaries of projected catch and mortalities by fishery, stock, and age. The <span title = "TAMM: Terminal Area Management Module">TAMM</span> files provide comprehensive summaries of fishery mortalities, exploitation rates, run sizes, and escapements for key stocks in the <span title = "PFMC: Pacific Fishery Management Council">PFMC</span> and North of Falcon (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#North_of_Falcon_(NOF)" target = "_blank" title = "NOF: North of Falcon">NOF</a>) annual pre-season planning process, as well as Canadian Coho stocks relevant to the Pacific Salmon Treaty (<span title = "PST: Pacific Salmon Treaty">PST</span>). For a full scope of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> report generating functions, refer to the online <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> <a href = "https://framverse.github.io/fram_doc/user_prereq.html" target = "_blank" title = "FRAM User Manual">User Manual</a>.
+
+<br>
+
+To cite this page: <br>
+`r paste("Salmon modeling and analysis workgroup.", format(Sys.Date(), "%Y."), page_title, "*in* FRAM Documentation. https://framverse.github.io/fram_doc/ ", paste("built", format(Sys.Date(), "%B %d, %Y.")))`

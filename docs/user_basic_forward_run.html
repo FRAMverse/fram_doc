@@ -11,10 +11,10 @@
 
 
 
-<title>A basic forward run</title>
+<title>User Manual Basic Forward Run</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -286,12 +286,6 @@ div.tocify {
   border-radius: 0px;
 }
 
-.tocify-subheader {
-  display: inline;
-}
-.tocify-subheader .tocify-item {
-  font-size: 0.95em;
-}
 
 </style>
 
@@ -421,7 +415,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">A basic forward run</h1>
+<h1 class="title toc-ignore">User Manual Basic Forward Run</h1>
 
 </div>
 
@@ -434,8 +428,8 @@ This example assumes the current FRAM executable and a suitable database are ava
 <p><br />
 </p>
 <p>A forward <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model run simulates how a given set of fishing regulations will interact with the annual abundance levels of modeled stocks.</p>
-<div id="perform-a-new-run" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Perform a new run</h1>
+<div id="perform-a-new-run" class="section level1">
+<h1>Perform a new run</h1>
 <p>Begin by launching <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> and continuing to the main menu.</p>
 <p>Now, select a [Project database] by clicking “Open database”. After navigating to and selecting a project database .mdb file, click “open”. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> will then prompt for a second selection from among the model runs included in the database. The selected <code>RunID</code> index tells the application which values to read into memory from across the various tables, thereby setting up any further work for that specific model run. Note that the project database name (Database) and model run (RecordSet) are now listed in the lower section of the main menu view.</p>
 <p><em>Attempting to select a [Model run transfer file] or [Base period transfer file] is a common pitfall and will prompt a warning. Transfer files, which are typically indicated as such by name, contain only portions of a subset of the tables needed to run <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>.</em></p>
@@ -443,8 +437,8 @@ This example assumes the current FRAM executable and a suitable database are ava
 <p><br />
 </p>
 </div>
-<div id="make-a-run-copy" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Make a run copy</h1>
+<div id="make-a-run-copy" class="section level1">
+<h1>Make a run copy</h1>
 <p>Initializing a new, copied run preserves the old values while exploring new ones.</p>
 <p>If you change inputs to an existing model run and re-run it, <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> will overwrite the prior results. Thus, it is common practice to copy an existing run, re-name it, change input parameter values, and generate updated model results from the new run.</p>
 <p>Click “<span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> utilities” from the main menu, and then “Copy model run” to reach the copied recordset screen.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
@@ -453,12 +447,12 @@ This example assumes the current FRAM executable and a suitable database are ava
 <p>When an analysis will include exploring many changes, it may make sense to create multiple new runs that include different subsets of these adjustments, making it easier to isolate the effects of particular new values. However, this choice is also influenced by whether the runs will be shared (by [Model run transfer file]) or informally examined. This is ultimately a matter of balancing the relative ease of sharing a single run with the potential for greater clarity of separate runs that involve only a few adjustments.</p>
 <p><img alt="copy_run_info" src="images/getstarted_copy_run_info.gif"></p>
 </div>
-<div id="make-a-tamm-copy" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Make a <span title="TAMM: Terminal Area Management Module">TAMM</span> copy</h1>
+<div id="make-a-tamm-copy" class="section level1">
+<h1>Make a <span title="TAMM: Terminal Area Management Module">TAMM</span> copy</h1>
 <p>In many cases, it will be necessary or useful to associate the newly copied <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> run with a new copy of the <span title="TAMM: Terminal Area Management Module">TAMM</span> file linked to the prior run. Outside of <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>, navigate to the appropriate <span title="TAMM: Terminal Area Management Module">TAMM</span> file and save a copy with a filename clearly related to the new run name. This file can then be used when running the modified inputs without over-writing the prior run values.</p>
 </div>
-<div id="edit-input-parameter-values" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Edit input parameter values</h1>
+<div id="edit-input-parameter-values" class="section level1">
+<h1>Edit input parameter values</h1>
 <p>Now that a fresh run exists, clicking the “[Edit model run]” button opens a submenu further divided into “Stock” and “Fishery” buttons. For this example, click the “Quota/Scalers” button in the Fishery section to reach the screen displaying values for each fishery in each time step.</p>
 <p><img alt="edit_run" src="images/getstarted_edit_run_3.gif"></p>
 <p>Fishery impacts in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> are controlled by “quotas” and/or “scalers”, and these are in turn controlled by the value of a per-timestep <code>fishery flag</code> (note the meaning of the control flag values are displayed in the lower left of the interface).</p>
@@ -485,8 +479,8 @@ This example assumes the current FRAM executable and a suitable database are ava
 <p>During this sequence, the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> application acts as a convenient interface to the project database. For some analyses, it can also make sense to edit values within the appropriate table(s) via another non-<span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> application such as Microsoft Access (e.g., scripting or copying over numerous consistent changes such as “zeroing out” a set of fisheries).</p>
 <p><img alt="edit_run_info" src="images/getstarted_edit_run_info.gif"></p>
 </div>
-<div id="run-the-model" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Run the model</h1>
+<div id="run-the-model" class="section level1">
+<h1>Run the model</h1>
 <p>At this point, the new fishery input parameter values are in memory but have not been written to the project database tables, and the output values associated with the run are still those of the original from which it was copied. Accordingly, the next step is to “Save Model Run Inputs” from the main menu, which will prompt to either “Replace Current Model Run” or “Save New Model Run”. Because this example is already using a copied model run, it is appropriate to replace the current model run.</p>
 <p>Note that the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> application monitors when a user exits the “Edit model” screens via an “Ok done” button, and will prompt to save changes (not shown below). <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Editing and then saving as a new run at this stage provides an alternative to the copy-first-then-edit approach shown here, but this requires care to avoid accidentally overwriting the old one. It is also worth keeping in mind that changes saved to the underlying database from another external application <em>after</em> the run has been selected will not be in-memory until the run is re-selected.</p>
 <p>Now, the next step is to actually run the model and recalculate model outputs by selecting “Run Model” from the main menu.</p>
@@ -497,12 +491,15 @@ This example assumes the current FRAM executable and a suitable database are ava
 <p>When the model is starting to run, it will ask “Do you want to SAVE <span title="TAMM: Terminal Area Management Module">TAMM</span> Transfer Values into <span title="TAMM: Terminal Area Management Module">TAMM</span> spreadsheet?”. Selecting “Yes” will be appropriate in most cases (and is needed to overwrite [TAMX] and <span title="TAMM: Terminal Area Management Module">TAMM</span> results based on the new run). <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> will open the <span title="MS: Microsoft">MS</span> Excel <span title="TAMM: Terminal Area Management Module">TAMM</span> file, even if the program was not open before. Once the model run is complete, the <span title="TAMM: Terminal Area Management Module">TAMM</span> file used will be open on your computer and will have completed values for the model run. <strong>Be sure to navigate to the open <span title="TAMM: Terminal Area Management Module">TAMM</span> file and save it to retain the modeled values. Another common pitfall is to complete a model run successfully and overwrite the <span title="TAMM: Terminal Area Management Module">TAMM</span> values but then forget to save these updates.</strong></p>
 <p><img alt="run_notamm" src="images/getstarted_run_notamm.gif"></p>
 </div>
-<div id="view-the-results" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> View the results</h1>
+<div id="view-the-results" class="section level1">
+<h1>View the results</h1>
 <p>The two most common places for viewing results are the “Mortality” table in the [Project database tables] and the [<span title="TAMM: Terminal Area Management Module">TAMM</span>]. The “Mortality” table consists of mortalities by type (non-selective and mark-selective landed catch, drop-off, non-retention, and shaker) at the finest possible scale (stock, age, fishery, and time step). <span title="TAMM: Terminal Area Management Module">TAMM</span> includes many tabulations of impacts, particularly for Puget Sound fisheries and stocks.</p>
 <p>Output can also be viewed or created on the “Output/Results” menu. Checking mortality per fishery can offer a first look at the effects of adjusting a quota. From the main menu, selecting “Output/Results” leads to a submenu with a “Screen Reports” option, which in turn offers a set of possible reports. Selecting the “Fishery Mortality” checkbox will produce an output window that initially displays landed catch by age, summed across all stocks for each fishery and time step. For Chinook, the “Sum Age Only” button filters the view accordingly. The upper left drop-down menu provides options to view separate components of mortality, including <span title="AEQ: Adult equivalent">AEQ</span> or “adult-equivalent” values for Chinook.</p>
 <p><img alt="view_fishmort" src="images/getstarted_view_fishmort.gif"></p>
 <p>In this example, note that the July to September time step 3 Southeast Alaska troll and Area 10E Sport landed catch mortality values now match the previously adjusted fishery quota - the changes were correctly incorporated into the run! A typical modeling exercise will include checking several different results, and the [Outputs] section describes the various reports available within the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> interface.</p>
+<p><br></p>
+<p>To cite this page: <br> Salmon modeling and analysis workgroup. 2022. User Manual Basic Forward Run <em>in</em> FRAM Documentation. <a href="https://framverse.github.io/fram_doc/" class="uri">https://framverse.github.io/fram_doc/</a> built January 25, 2022.</p>
+<p><br></p>
 </div>
 <div class="footnotes">
 <hr />
@@ -580,7 +577,7 @@ $(document).ready(function ()  {
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
     };
-    options.showAndHide = false;
+    options.showAndHide = true;
     options.smoothScroll = true;
 
     // tocify

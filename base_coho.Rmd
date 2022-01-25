@@ -12,11 +12,16 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-To cite this page: `r paste("FRAM workgroup", page_title, "FRAM Documentation", paste("built", format(Sys.Date(), "%B %d, %Y")), sep = "; ")`
-
-<p style="color: red; font-size: 25px; font-weight: bold">
+<p style="color: black; font-size: 25px; font-weight: bold">
 Base period documentation is currently incomplete.
 </p>
+
+<br>
+
+To cite this page: <br>
+`r paste("Salmon modeling and analysis workgroup.", format(Sys.Date(), "%Y."), page_title, "*in* FRAM Documentation. https://framverse.github.io/fram_doc/ ", paste("built", format(Sys.Date(), "%B %d, %Y.")))`
+
+<br>
 
 # Previous Documentation
 

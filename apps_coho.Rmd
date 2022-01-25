@@ -1,5 +1,9 @@
+```{r include=FALSE}
+page_title <- "Coho FRAM Applications"
+```
+
 ---
-title: "Coho FRAM Applications"
+title: `r page_title`
 editor_options: 
   chunk_output_type: console
 ---
@@ -37,3 +41,8 @@ Fisheries outside of <span title = "PFMC: Pacific Fishery Management Council">PF
 Although Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> is primarily used for pre-season fishery impact assessment, it can also be used in a post-season context.  These post-season model runs are primarily conducted for two purposes: as a tool to evaluate the model's performance by comparing model estimates to independently derived estimates, and to evaluate the performance of the fishery management system towards meeting conservation objectives for key stocks. Post-season model runs are occasionally used as a "one-stop-shop" to get a historic time series of Coho escapements or pre-fishing abundances of hatchery and natural stock units for the purpose of conducting population studies or evaluating forecasts.
 
 This context uses the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model to estimate what occurred in a previous year based on observed input values and the associated estimated abundances. Post-season <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model runs use the “backwards” <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Backwards_FRAM_(BkFRAM)" target = "_blank" title = "BkFRAM: Backwards FRAM">BkFRAM</a> utility that finds <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> starting abundances using inputs of observed estimates of escapements and fishery catches (landed and non-retention). Post-season model runs are conducted by the Pacific Salmon Commission (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Pacific_Salmon_Commission_(PSC)" target = "_blank" title = "PSC: Pacific Salmon Commission">PSC</a>) CoTC every year during the <span title = "PSC: Pacific Salmon Commission">PSC</span> annual meeting (February) and used to evaluate management obligations under the <span title = "PST: Pacific Salmon Treaty">PST</span>. Post-season model runs are often lagged by several years due to data availability issues (e.g., in 2021 for fishery year 2019).  
+
+<br>
+
+To cite this page: <br>
+`r paste("Salmon modeling and analysis workgroup.", format(Sys.Date(), "%Y."), page_title, "*in* FRAM Documentation. https://framverse.github.io/fram_doc/ ", paste("built", format(Sys.Date(), "%B %d, %Y.")))`

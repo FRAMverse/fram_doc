@@ -1,5 +1,9 @@
+```{r include=FALSE}
+page_title <- "Chinook Base Period"
+```
+
 ---
-title: "Chinook Base Period"
+title: `r page_title`
 editor_options: 
   chunk_output_type: console
 ---
@@ -8,7 +12,7 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-<p style="color: red; font-size: 25px; font-weight: bold">
+<p style="color: black; font-size: 25px; font-weight: bold">
 Base period documentation is currently incomplete.
 </p>
 
@@ -483,6 +487,11 @@ stock_profiles |>
   kableExtra::scroll_box(width = "900px", height = "1000px") 
 
 ```
+
+<br>
+
+To cite this page: <br>
+`r paste("Salmon modeling and analysis workgroup.", format(Sys.Date(), "%Y."), page_title, "*in* FRAM Documentation. https://framverse.github.io/fram_doc/ ", paste("built", format(Sys.Date(), "%B %d, %Y.")))`
 
 <br>
 

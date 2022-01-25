@@ -1,5 +1,9 @@
+```{r include=FALSE}
+page_title <- "User Manual Basic Forward Run"
+```
+
 ---
-title: "A basic forward run"
+title: `r page_title`
 output:
   rmarkdown::html_document:
     theme: yeti
@@ -122,3 +126,10 @@ Output can also be viewed or created on the “Output/Results” menu. Checking 
 <img alt="view_fishmort" src="images/getstarted_view_fishmort.gif">
 
 In this example, note that the July to September time step 3 Southeast Alaska troll and Area 10E Sport landed catch mortality values now match the previously adjusted fishery quota - the changes were correctly incorporated into the run! A typical modeling exercise will include checking several different results, and the [Outputs] section describes the various reports available within the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> interface.
+
+<br>
+
+To cite this page: <br>
+`r paste("Salmon modeling and analysis workgroup.", format(Sys.Date(), "%Y."), page_title, "*in* FRAM Documentation. https://framverse.github.io/fram_doc/ ", paste("built", format(Sys.Date(), "%B %d, %Y.")))`
+
+<br>

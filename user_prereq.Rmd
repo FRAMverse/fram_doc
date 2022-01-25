@@ -1,5 +1,9 @@
+```{r include=FALSE}
+page_title <- "User Manual Prerequisites"
+```
+
 ---
-title: "Prerequisites"
+title: `r page_title`
 editor_options: 
   chunk_output_type: console
 ---
@@ -73,3 +77,9 @@ An Excel workbook file used to calculate exploitation rate values related to Col
 
 An Excel workbook file is used to evaluate if planned fisheries are within the maximum allowed impacts for the Snake River Fall Chinook stock under the U.S. Endangered Species Act (<span title = "ESA: Endangered Species Act">ESA</span>) guidance.  The typical naming convention used for this file is “SRFI_ChinNNYY.xlsx”, with the Chinook sequential run number (NN) and the 2-digit year (YY).  These files are mainly used within the <span title = "PFMC: Pacific Fishery Management Council">PFMC</span> process and only summarize model results.
 
+<br>
+
+To cite this page: <br>
+`r paste("Salmon modeling and analysis workgroup.", format(Sys.Date(), "%Y."), page_title, "*in* FRAM Documentation. https://framverse.github.io/fram_doc/ ", paste("built", format(Sys.Date(), "%B %d, %Y.")))`
+
+<br>

@@ -1,5 +1,9 @@
+```{r include=FALSE}
+page_title <- "User Manual Main Menu"
+```
+
 ---
-title: "Main Menu"
+title: `r page_title`
 editor_options: 
   chunk_output_type: console
 ---
@@ -1253,6 +1257,13 @@ Yes, <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> does 
 ### Can I run multiple instances of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> simultaneously?
 
 Yes, and modifications to the same project database will appear across open instances. But this is probably not a great idea for an analysis examining "directional" parameter changes (e.g., 20%, 40%, 60% and 80% changes within a given year), particularly as the same <span title = "TAMM: Terminal Area Management Module">TAMM</span> file cannot be used with multiple instances of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>. However, this may be a plausibe approach given a "ready to go" project database and set of <span title = "TAMM: Terminal Area Management Module">TAMM</span> files corresponding to different model runs.
+
+<br>
+
+To cite this page: <br>
+`r paste("Salmon modeling and analysis workgroup.", format(Sys.Date(), "%Y."), page_title, "*in* FRAM Documentation. https://framverse.github.io/fram_doc/ ", paste("built", format(Sys.Date(), "%B %d, %Y.")))`
+
+<br>
 
 #### Previous Documentation
 
