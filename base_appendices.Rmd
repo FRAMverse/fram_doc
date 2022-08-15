@@ -1,0 +1,527 @@
+```{r include=FALSE}
+page_title <- "Base Period Appendices"
+```
+
+---
+title: `r page_title`
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE, results = 'hide', warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
+```
+
+# **Appendix 1.** <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Base Period Update Log
+
+## **Round 1**
+
+**Produced:** September 12, 2016 (Post-Season Runs); September 8, 2016 (Calibration)
+
+**Years Used Pre-Season:** N/A
+
+**Notes:** Post-season years = 1992 to 2014. Experimental during base period development and not used pre-season.
+
+**Updates:** N/A (original version of the new base period)
+
+---
+
+## **Round 2**
+
+**Produced:** September 29, 2016 (Post-Season Runs and Calibration)
+
+**Years Used Pre-Season:** N/A
+
+**Notes:** Post-season years = 1992 to 2014. Experimental during base period development and not used pre-season.
+
+**Updates:**
+
+- <span title = "ER: Exploitation Rate">ERs</span> greater than 100% for some stocks (i.e. Chambers) were addressed through adjustments to properly apportion 13A and 13+ net catches amongst the abundance of <span title = "SPS: South Puget Sound">SPS</span> stocks (South Puget Sound Iterations).
+- 10E net stock distribution was only partially addressed in round 2, as a lack of Gorst tags resulted in underestimating Mid-<span title = "PS: Puget Sound">PS</span> stock contributions and overestimating <span title = "SPS: South Puget Sound">SPS</span> and Hood Canal stocks in 10E net.  The proportion of catch not accounted for by model stocks was assigned to Mid-<span title = "PS: Puget Sound">PS</span>.
+- Tulalip time step 2 and 3 net catches were split into their respective time steps (rather than lumping all catch in time step 3).  This is because updates in the new base period allowed for a maturation rate and base period exploitation rate in time step 2. 
+- Willapa net catches were corrected to include some historical salmon catch reporting areas.
+- White River exploitation rates in northern fisheries continue to be an outstanding issue, but some adjustments were made to exclude tag recoveries for months with very poor sampling (correspondence with Dawn Lewis, <span title = "CDFO: Canada Department of Fisheries and Oceans">CDFO</span>).  High <span title = "ER: Exploitation Rate">ERs</span> occur when the <span title = "ER: Exploitation Rate">ER</span> is adjusted by fishery scalars during the Out-of-Base (<span title = "OOB: Out of base">OOB</span>) calculations.  The scalars are meant to relate effort during <span title = "OOB: Out of base">OOB</span> years to effort in the new base period years.  Exploration of possible bias was recommended for later rounds.
+
+---
+
+## **Round 3**
+
+**Produced:** November 23, 2016 (Post-Season Runs); November 21, 2016 (Calibration)
+
+**Years Used Pre-Season:** N/A
+
+**Notes:** Post-season years = 1992 to 2014. Experimental during base period development and not used pre-season. It was originally produced as “Round 3” on November 15, 2016, but updates were made as a few corrections were identified in the original run prompting a “Round 3.1” to be produced on November 23, 2016.  These corrections included 1.) adding the <span title = "ISBM: Individual Stock Based Management">ISBM</span> component of the <span title = "WCVI: West Coast Vancouver Island">WCVI</span> sport fishery to the model, 2.) updating the A3:4 treaty troll model stock proportion.
+
+**Updates:**
+
+- 4B treaty troll catch was allocated to fishery 17 (3:4:4B) in all time steps. In previous rounds, timestep 1 and 4 (October to April) 4B catch was allocated to fishery 41 (<span title = "JDF: Juan de Fuca">JDF</span> <span title = "TR: Treaty">TR</span> troll).
+- Grays Harbor net catches in previous rounds were derived from Fish Tickets and were different to those used in the run reconstructions by Quinault. Catch values were updated in round 3 to match those provided by Quinault.
+- <span title = "WCVI: West Coast Vancouver Island">WCVI</span> sport is divided into two separate fisheries – the Aggregate Abundance Based Management (<span title = "AABM: Aggregate Abundance Based Management">AABM</span>) and Individual Stock Based Management (<span title = "ISBM: Individual Stock Based Management">ISBM</span>) fisheries. The <span title = "AABM: Aggregate Abundance Based Management">AABM</span> fishery is considered a mixed stock fishery for which management is based upon multiple stocks – this occurs in the outside waters off <span title = "WCVI: West Coast Vancouver Island">WCVI</span> (Canadian areas 121-127) and in the inside areas (Canadian areas 21, 23, 24 from Oct 16- July 31st; Canadian areas 25-27 from Oct 16 – June 30th) during certain times of the year.  The <span title = "ISBM: Individual Stock Based Management">ISBM</span> fishery is managed according to a single, “local” stock and only occurs in inside areas during non-<span title = "AABM: Aggregate Abundance Based Management">AABM</span> periods. Further investigation revealed that several US modeled stocks are caught during <span title = "ISBM: Individual Stock Based Management">ISBM</span> times.  In previous rounds, <span title = "WCVI: West Coast Vancouver Island">WCVI</span> sport catch estimates only included <span title = "AABM: Aggregate Abundance Based Management">AABM</span> catch. However, in round 3, <span title = "WCVI: West Coast Vancouver Island">WCVI</span> sport catch estimates were updated to include <span title = "AABM: Aggregate Abundance Based Management">AABM</span> catch + <span title = "ISBM: Individual Stock Based Management">ISBM</span> catch. <span title = "CWT: Coded Wire Tag">CWT</span> recoveries in the <span title = "ISBM: Individual Stock Based Management">ISBM</span> fishery are included in the FRAMBuilder database and the <span title = "WCVI: West Coast Vancouver Island">WCVI</span> sport fishery fully represents a combined “<span title = "ISBM: Individual Stock Based Management">ISBM</span>” and “<span title = "AABM: Aggregate Abundance Based Management">AABM</span>” fishery.
+- Previous round catch estimates for Georgia Strait sport fisheries in 2014 were derived from <span title = "CTC: Chinook Technical Committee">CTC</span> tables, using “Johnstone St” as N <span title = "GS: Georgia Strait">GS</span> Sport and “Georgia St.” as S <span title = "GS: Georgia Strait">GS</span> Sport.  However, this underestimated catch in N <span title = "GS: Georgia Strait">GS</span> Sport and overestimated catch in S <span title = "GS: Georgia Strait">GS</span> Sport.  This is because <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fishery definitions for N <span title = "GS: Georgia Strait">GS</span> Sport include a portion of the Georgia St. fishery (Canadian statistical areas 13-16). Catch was reapportioned in round 3 to account for this.
+- A combination of Creel data and Catch Record Card data was used to update Skykomish in-river sport <span title = "MSF: Mark-Selective Fishery">MSF</span> catch estimates in round 3.
+- In round 2, catch in 8D was allocated to timestep 2 and timestep 3. Catch in 8D was problematic in timestep 2 as 8D net is considered a terminal fishery.  Timestep 2 catch was causing maturation of Stillaguamish fish in timestep 2 to occur in the model.  All catch is now assigned to timestep 3, as it was in the old <span title = "BP: Base period">BP</span>.
+- Treaty 7BCD Net and in-river Nooksack net (both fall and spring) catch estimates were updated in Round 3 to reflect values provided by Lummi Nation rather than <span title = "LIFT: Liscense and Fish Ticket Database">LIFT</span> (predecessor to <span title = "WAFT: Washington Fish Tickets">WAFT</span>).
+- Timestep splits for <span title = "WCVI: West Coast Vancouver Island">WCVI</span> Net, <span title = "WCVI: West Coast Vancouver Island">WCVI</span> Troll, and Johnstone St. Net were updated using <span title = "RMIS: Regional Mark Information System">RMIS</span> data.
+- The Skagit River System Cooperative updated catch estimates to include release mortalities in the treaty species-selective fisheries.
+- Base period exploitation rates (<span title = "BPER: Base Period Exploitation Rate">BPERs</span>) greater than 10% in pre-terminal fisheries and with fewer than 20 stock-age escapement recoveries were examined.  There were 12 age 5 data points (stock-age-fishery-timestep) that satisfied these criteria. A regression analysis was used to estimate new age 5 <span title = "BPER: Base Period Exploitation Rate">BPERs</span> from age 4 <span title = "BPER: Base Period Exploitation Rate">BPERs</span> for these stock-fishery-timesteps.
+- Gorst Creek hatchery fish were not tagged in 2005, 2006, and 2007. Area 10E net’s fishery stock composition was readjusted in round 3 to properly account for catch of Gorst Creek hatchery fish.
+- Due to poor escapement sampling, Chehalis and Humptulips catch (part of the Washington North Coast stock aggregate) are modeled using Queets <span title = "CWT: Coded Wire Tag">CWTs</span>. In general, Chehalis, Humptulips, and Queets fish have similar distributions and fishery exploitation patterns.  However, using Queets tags only to represent catch of the Washington North Coast stock aggregate is problematic in Grays Harbor Net, as no Queets fish were caught in this fishery.  A similar strategy to 10E net was used, where we imputed recoveries of local stock (<span title = "WA: Washington">WA</span> North Coast) equal to the difference between total catch in the fishery and the catch assigned to non-local stocks.
+- Area 3-4 sport had an unrealistically low model stock proportion.  This value was updated in Round 3 to match the model stock proportion of area 3-4 treaty troll.  Treaty troll was chosen rather than non-treaty troll as the size limit is the same (24”) and the spatial distribution more closely matches area 3-4 sport than non-treaty troll (no mushroom closure).
+- Round 3 corrected size limits in <span title = "TR: Treaty">TR</span> 3:4 Troll, <span title = "TS: Time step">TS</span>1 and <span title = "TS: Time step">TS</span>4, to 520 mm (from 570 mm).
+- Grays Harbor <span title = "TRS: Terminal Run Size">TRS</span> estimates were updated by regional biologists in round 3 to include <span title = "GH: Grays Harbor">GH</span> marine sport fisheries.  
+- Recovery years 1993-2001 (overlap with White River out-of-base years) had poor sampling/catch reporting in some Canadian sport fisheries.  This resulted in <span title = "CWT: Coded Wire Tag">CWTs</span> being recovered in times in which no Canadian catch was reported.  White River tags recovered in periods of no catch were excluded from round 3 model runs.
+- There was a rare exception that got triggered in the calibration code where an <span title = "ER: Exploitation Rate">ER</span> adjustment factor (<span title = "ER: Exploitation Rate">ER</span> exceeding 100%) was necessary for White River fingerlings caught in fishery 54 <span title = "TS: Time step">TS</span>1, but was never set.  There was a second error where the catch wasn’t being calculated correctly and was overwriting the correct calculations for the catch. This resulted in an estimated catch of 40 age 5 fish, with a cohort size of 9 age 5 fish.  Ultimately, this was estimating that fishery 54, <span title = "TS: Time step">TS</span>1 had a <span title = "BPER: Base Period Exploitation Rate">BPER</span> of 48% on A 5 White River Fingerlings. Coding changes have been made to rectify this error by adding an if statement to handle the rare exception that allows for the designation of an <span title = "ER: Exploitation Rate">ER</span> adjustment factor and by removing the incorrect catch calculation lines.
+
+---
+
+## **Round 4**
+
+**Produced:** January 24, 2017 (Post-Season Runs); January 17, 2017 (Calibration)
+
+**Years Used Pre-Season:** 2017 (Round 4.1)
+
+**Notes:** Post-season years = 1992 to 2014. It was originally produced as “Round 4” on January 5, 2017, but updates were made to Nooksack Spring escapement estimates prompting a “Round 4.1” to be produced on January 24, 2017. This was the first version of the new base period used in the pre-season (2016 and prior used <span title = "CWT: Coded Wire Tag">CWTs</span> that represented 1979 to 1982).  Round 4.1 was used to begin exploration of management objectives for some stocks for the 2017 submission of the <a href = "https://wdfw.wa.gov/publications/01947" target = "_blank" title = "Puget Sound Chinook Harvest Management Plan">Puget Sound Chinook Harvest Management Plan</a>, but was not the round used for submission (Round 5).
+
+**Updates:**
+
+- White River Fingerling and Yearling <span title = "TRS: Terminal Run Size">TRS</span> estimates were updated.
+- In Round 3, <span title = "WA: Washington">WA</span> North Coast recoveries were imputed to <span title = "TR: Treaty">TR</span> and <span title = "NT: Non-Treaty">NT</span> Grays Harbor net.  Grays Harbor net catches were removed from the Grays Harbor <span title = "TRS: Terminal Run Size">TRS</span> estimates in Round 4.  
+- Willamette and Cowlitz Spring <span title = "TRS: Terminal Run Size">TRS</span> inputs were updated to correct age differences between the new and old <span title = "BP: Base period">BP</span> for Columbia Spring stocks (new <span title = "BP: Base period">BP</span> = age – 1).
+- There were errors identified in sampling expansions for January, February, and March 2009 Area 9 sport <span title = "CWT: Coded Wire Tag">CWT</span> recoveries.  Actual catch was input as angler trips rather than catch.  This error resulted in an unrealistically large contribution (30% of the <span title = "TS: Time step">TS</span>1 catch) of BPH fish and has been rectified in round 4.
+- In previous rounds, <span title = "BC: British Columbia">BC</span> <span title = "JDF: Juan de Fuca">JDF</span> sport, N Geo sport, and S Geo sport were considered “outside” fisheries, and <span title = "JDF: Juan de Fuca">JDF</span> stock contribution to these fisheries was based upon Stillaguamish tags.  Given that these fisheries are relatively close to Puget Sound, in Round 4 onward these were modeled as “inside” fisheries for the <span title = "SJDF: Southern Juan de Fuca">SJDF</span> stock.  
+- Nooksack <span title = "CWT: Coded Wire Tag">CWT</span> escapement estimates and recoveries were updated.
+- In previous rounds, the old <span title = "BP: Base period">BP</span> was used as a surrogate for Stillaguamish net. The old <span title = "BP: Base period">BP</span> did not seem to produce a reasonable stock composition (over 40% of the catch was <span title = "SPS: South Puget Sound">SPS</span> fish, only about 10% Snohomish, no Stillaguamish stock catch).  There were only 8 <span title = "CWT: Coded Wire Tag">CWT</span> recoveries in 2007-2013 for Stillaguamish net, however, the stock composition produced by those 8 tags seemed plausible.  As such, new <span title = "BP: Base period">BP</span> Stillaguamish net stock composition was updated in Round 4 to reflect 2007-2013 recoveries.
+- White River tags in Area 8 sport were producing an unrealistically large expansion and were manually adjusted.
+- For Northern fisheries that had model stock proportions designated by the <span title = "CTC: Chinook Technical Committee">CTC</span> model, there was an error in lookup tables used to produce <span title = "MSP: Model Stock Proportion">MSP</span> estimates in Round 3. <span title = "MSP: Model Stock Proportion">MSPs</span> were updated for round 4.
+- There was an error in the calibration code that only manifested when doing an <span title = "OOB: Out of base">OOB</span> run combined with an all stocks run.  In the <span title = "OOB: Out of base">OOB</span> run, Target Encounter Rates (S/L ratios) for each fishery time step get set to 1.  In the all stocks run actual Sublegal/Legal ratios are used to estimate sublegal encounters for a fishery and time step (see TargetEncounterRates table in the calibration support database).  If doing an <span title = "OOB: Out of base">OOB</span> followed by an all stocks run, the program would overwrite the sublegal target encounter rate as 1 for all fisheries time steps.  In some cases (such as Area 6 sport <span title = "TS: Time step">TS</span>1), this overestimated sublegal encounters (<span title = "SL: Sublegal-Legal ratio">SL</span> target encounter rate was meant to be .614).  In other cases (such as Area 10 sport <span title = "TS: Time step">TS</span>1), this underestimated sublegal encounters (<span title = "SL: Sublegal-Legal ratio">SL</span> target encounter rate was meant to be 6.56). The program is now working as intended and will produce accurate results in round 4.
+- The new sublegal algorithms use <span title = "BPER: Base Period Exploitation Rate">BPERs</span> as the basis for computing sublegal encounter rates. Occasionally, when the proportion legal is very small, this results in large rates and a very large number of sublegal encounters. Variances associated with growth functions have a large effect when estimating a small quantity (i.e. a proportion legal of 4% produces half the exploitation rate as a proportion legal of 2%).  We added a rule to the calibration code that prevents the use of base period exploitation rates when the proportion legal is smaller than 2 percent.  In the calibration code, if interested in reviewing this change, see (approximately) Line 216 in the “CompShakersMod.vb” module (Ctrl+F “TwoPctRule”).
+
+---
+
+## **Round 5**
+
+**Produced:** August 18, 2017 (Post-Season Runs); August 15, 2017 (Calibration)
+
+**Years Used Pre-Season:** 2018
+
+**Notes:** Post-season years = 1992 to 2014.  Round 5 was used for the submission of the 2017 Puget Sound Chinook Harvest Management Plan.
+
+**Updates:**
+
+- 12B Natural age compositions were updated to use George Adams age compositions rather than Hoodsport age compositions.  
+- 2010–14 Green River terminal run sizes were updated.
+- Stillaguamish escapement estimates were updated in round 5 to reflect newly agreed-to <span title = "GMR: Genetic Mark-Recapture">GMR</span>-based escapement estimates.  These updates also affected <span title = "CWT: Coded Wire Tag">CWT</span> expansions for spawning ground recoveries in <span title = "RMIS: Regional Mark Information System">RMIS</span> and were updated in the base period data set.
+- Surrogate stock changes to Stillaguamish outlined above necessitated changes to the <span title = "JDF: Juan de Fuca">JDF</span> imputed recovery values.
+- In previous validation rounds external estimates of sublegal releases were used in several non-selective Canadian sport fisheries, including <span title = "BC: British Columbia">BC</span> Outside Sport, <span title = "WCVI: West Coast Vancouver Island">WCVI</span> Sport, North Georgia St. Sport, South Georgia St. Sport, and <span title = "BC: British Columbia">BC</span> <span title = "JDF: Juan de Fuca">JDF</span> Sport.  By providing both a sublegal encounter rate and an estimate of sublegal releases, sublegal mortalities were double counted in these fisheries.  In round 5, we corrected inputs to ensure that double counting does not occur.
+- In previous validation rounds, the 2014 <span title = "NCBC: North Central British Columbia">NCBC</span> Troll input was incorrectly set to 0.  2014 catches in this fishery were updated to reflect the value reported by the Chinook Technical Committee. All other years in this fishery were double checked and have been input correctly.
+- In previous validation rounds, the catch input for <span title = "BC: British Columbia">BC</span> Outside Sport was modeled as the <span title = "AABM: Aggregate Abundance Based Management">AABM</span> catch only, under the assumption that the <span title = "ISBM: Individual Stock Based Management">ISBM</span> portion of the fishery did not frequently encounter stocks modeled within <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>.  However, <span title = "CWT: Coded Wire Tag">CWT</span> analysis revealed that the base period contains tag recoveries from <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks within the <span title = "BC: British Columbia">BC</span> Outside Sport <span title = "ISBM: Individual Stock Based Management">ISBM</span> fishery.  In round 5, <span title = "ISBM: Individual Stock Based Management">ISBM</span> catch was added to <span title = "AABM: Aggregate Abundance Based Management">AABM</span> catch to represent the <span title = "BC: British Columbia">BC</span> Outside Sport fishery.
+- <span title = "ISBM: Individual Stock Based Management">ISBM</span> catch was added to <span title = "WCVI: West Coast Vancouver Island">WCVI</span> Sport catch estimates in round 4.  However, the model stock proportion was not updated.  There are no available external estimates of model stock proportion for <span title = "ISBM: Individual Stock Based Management">ISBM</span> catch in <span title = "WCVI: West Coast Vancouver Island">WCVI</span> Sport.  Accordingly, we used the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>-designated <span title = "MSP: Model Stock Proportion">MSP</span> for this fishery.  
+- There is a rule within the calibration program that compares fishery size limits to stock-age specific growth functions to determine whether a stock-age should be assigned a sublegal encounter rate.  In general, this algorithm works well.  However, in Canadian sport fisheries with small size limits (450 mm) and in Area 6 Winter Sport, the rule results in a reduction to already limited sample sizes, causing many stocks to be excluded from receiving sublegal assignments.  To increase sample sizes, size limits in several Canadian sport fisheries were set to 570 mm and <span title = "BC: British Columbia">BC</span> <span title = "JDF: Juan de Fuca">JDF</span> Winter Sport recoveries were pooled with Area 6 Winter Sport recoveries.  These rules were only applied during the portion of the calibration process that assigns sublegal encounter rates.  Note that because Area 6 Winter Sport is used as a surrogate fishery for Area 5 Winter Sport, changes to Area 6 Winter Sport sublegal stock composition also apply to Area 5 Winter Sport sublegal stock composition.
+- In previous validation rounds, errors were caused by sublegal tags in the new base period that were being used to designate legal exploitation rates.  For round 5, code was implemented into FRAMBuilder that removes sublegal tags from the base period. Stock-fishery scalars used as a temporary fix during 2017 pre-season will be removed from Area 7 Sport for Nooksack Springs in future pre-season runs.
+- In Round 4 calibration, some fisheries, such as 10A sport, 10E sport, 8D sport, Area 8 summer sport, and <span title = "JDF: Juan de Fuca">JDF</span> troll, were not receiving sublegal encounter rates.  We ensured that sublegal encounter rates are now available for all fisheries that encounter sublegal fish.
+- There was an error identified in the Round 4 calibration where <span title = "TR: Treaty">TR</span> 6B:9 net was receiving a size limit of 520 mm. There is no size limit for 6B:9 net, and was been corrected in the Round 5 calibration run.
+- The 8D sport fishery occurs in time steps 2 and 3.  The fishery is flagged as terminal in time step 3 but is not flagged as terminal in time step 2.  It is most appropriate for time step 2 to be considered a terminal fishery, so that <span title = "AEQ: Adult Equivalent Mortality">AEQ</span> values of 1 are assigned to the catch.  However, changing the terminal flag in time step 2 would be problematic because it would cause other stocks caught in the fishery to have modeled maturation in time step 2.  Because time steps 2 and 3 have identical stock compositions, time step 2 catch in round 5 has been transferred to time step 3.  This will produce results that are identical to changing time step 2 to be a terminal fishery, without causing maturation in time step 2.
+- The algorithm used for computing Chinook starting cohorts using <span title = "BkFRAM: Backwards FRAM">BkFRAM</span> has been updated, allowing for faster convergence within the program.  Additionally, <span title = "BkFRAM: Backwards FRAM">BkFRAM</span> now automatically stops once convergence has been met (run size within 1 fish of target), rather than completing a set number of iterations.  Previously, a <span title = "BkFRAM: Backwards FRAM">BkFRAM</span> flag of 1 or 3 was specified in the database.  However, now the algorithm performs the same functions and replaces flag 1 and 3 methods (all flags have been set to 1).  This change is purely a coding change and should not influence any values/results within <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>.
+- The previous base period used a <span title = "TAMM: Terminal Area Management Module">TAMM</span> scalar to adjust Bellingham bay net impacts on Nooksack Springs. This scalar is no longer necessary as the new base period provides a better representation of Nooksack Spring impacts than the old base period (this change was not in calibration round 4, but has already been implemented during 2017 pre-season modeling).
+- The original calculation for <span title = "AEQ: Adult Equivalent Mortality">AEQ</span> calculations in the calibration program had the brackets misplaced. The correction resulted in an increase to <span title = "AEQ: Adult Equivalent Mortality">AEQ</span> values.
+
+---
+
+## **Round 6**
+
+**Produced:** October 29, 2018 (Post-Season Runs); October 11, 2018 (Calibration)
+
+**Years Used Pre-Season:** 2019, 2020, 2021
+
+**Notes:** Post-season years = 1992 to 2016.  Round 6 was originally produced on 9.6.2018, but errors and corrections were identified that necessitated an update to “Round 6.1” on October 11, 2018 and an update to “Round 6.2” on October 29, 2018.  These corrections included 1.) a correction to Elwha <span title = "TAMM: Terminal Area Management Module">TAMM</span> calculations, 2.) Nisqually in-river sport <span title = "MSF: Mark-Selective Fishery">MSF</span> estimates, and 3.) switching to a fishing year rather than brood year age 2s from 3s methodology for the post-season runs.  Because the update to R6.2 did not include any changes to the base period data, the official calibration used in Round 6.2 was compiled in Round 6.1.  Round 6.2 was used to develop the Pacific Fisheries Management Council South Resident Killer Whale Risk Assessment and management framework.
+
+**Updates:** 
+
+- 2015 and 2016 fishery inputs were added for all <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> and <span title = "TAMM: Terminal Area Management Module">TAMM</span> fisheries.
+- Catch estimates (1992 to 2016) were revised for all PFMC fisheries to represent the most up-to-date values. 
+- Treaty 10E net catches (1992 to 2016) were updated with data provided by Jon Oleyar. Previously values came from <span title = "WAFT: Washington Fish Tickets">WAFT</span> and differed slightly from values in <span title = "TOCAS: Tribal Online Catch Accounting System">TOCAS</span>.
+- The in-river Skagit Spring <span title = "MSF: Mark-Selective Fishery">MSF</span> parameter (marked encounters, unmarked encounters, unmarked retention, mark release) values and Skagit River NS catches were updated for 2005 to 2016.  Recalculation of total catches using these old values did not match catch values within creel/<span title = "CRC: Catch Record Card">CRC</span>.  Updated values produced results consistent with what was observed in creel/<span title = "CRC: Catch Record Card">CRC</span>.
+- The in-river Skokomish <span title = "MSF: Mark-Selective Fishery">MSF</span> parameter values were updated for 2010 to 2016.  There were deviations in these parameters between Mark Downen’s most up-to-date estimates and those that were calculated in 2016 for the original set of new base period validation runs.  Mark’s estimates were used in regional management and to derive historic Skokomish <span title = "TRS: Terminal Run Size">TRS</span> estimates.  Therefore, Mark’s values are the correct ones and will be used in subsequent rounds of validation.
+- 2014 No/Cent Net values were updated to reflect time step splits in <span title = "RMIS: Regional Mark Information System">RMIS</span> catch and sample reports rather than a 5 year average time step split (likely to be more accurate).
+- 2014 <span title = "BC: British Columbia">BC</span> <span title = "JDF: Juan de Fuca">JDF</span> sport values were updated to reflect time step splits in <span title = "RMIS: Regional Mark Information System">RMIS</span> catch and sample reports rather than a 5 year average time step split (likely to be more accurate).
+- There was a disconnect between yearly size limits and the base period size limits for Central Oregon Troll and So. California Sport. In the winter, size limits of 670 mm and 570 mm were used for Central Oregon Winter Troll and So. California Winter Sport, respectively.  However, the most accurate values to use for these two fisheries are 620 mm and 480 mm.  Therefore, size limits were updated within the Calibration program Size Limits table and within the validation run “ChinookBaseSizeLimit” table.
+- It was identified that catches in cell B238 of the Input Page of <span title = "TAMM: Terminal Area Management Module">TAMM</span> (Elwha Treaty Terminal Catch) were being applied to calculate escapement but not harvest.  Elwha catches were double checked for accuracy and redistributed on the input page between cells B239 and B240.
+- Nisqually <span title = "MSF: Mark-Selective Fishery">MSF</span> sport estimates were updated to be consistent with the regional model.
+- 2015 and 2016 stock inputs were provided by regional tribal and <span title = "WDFW: Washington Department of Fish and Wildlife">WDFW</span> staff (Puget Sound and <span title = "WA: Washington">WA</span> Coastal), <span title = "CTC: Chinook Technical Committee">CTC</span> Staff (Northern), and <span title = "STT: Salmon Technical Team">STT</span> Staff (<span title = "SOF: South of Falcon">SOF</span>).
+- There were additional updates to the <span title = "TRS: Terminal Run Size">TRS</span> of several stocks from 1988 to 2014, such as for Stillaguamish, Nooksack-Samish Falls, Skagit Springs, Skagit Falls, Elwha/Dungeness, Hood Canal Fall Fingerlings, Puyallup, White (Fingerling and Yearling), Green (Fingerling and Yearling), Lake Washington, Quinault, Grays Harbor, and Queets.
+- There were updates to the Nooksack Spring stock formatting to be consistent with 2018 pre-season.  The stock formatting following Round 6.2 reflects “Hatchery Marked”, “Hatchery Unmarked”, “Natural Marked”, and “Natural Unmarked” rather than “<span title = "NF: North Fork">NF</span> Marked”, “<span title = "NF: North Fork">NF</span> Unmarked”, “<span title = "SF: South Fork">SF</span> Marked”, and “<span title = "SF: South Fork">SF</span> Unmarked.”
+- FRAMBuilder (<span title = "CWT: Coded Wire Tag">CWT</span> processing program) was rerun with <span title = "CWT: Coded Wire Tag">CWTs</span> that have been updated to reflect new Stillaguamish <span title = "GMR: Genetic Mark-Recapture">GMR</span> escapement estimates.
+- We used the 2018 pre-season <span title = "TAMM: Terminal Area Management Module">TAMMs</span> as a starting template for the post-season <span title = "TAMM: Terminal Area Management Module">TAMMs</span>.  Therefore, we included the new management objectives table, along with any changes from the pre-season (e.g., management to Stillaguamish as a total unit rather than <span title = "NF: North Fork">NF</span> and <span title = "SF: South Fork">SF</span>).
+- An error was identified in line 204 of the “CompShakers” routine of the Calibration program.  The error caused the sublegal stock composition of Area 6 winter sport to be slightly more weighted to that of <span title = "BC: British Columbia">BC</span> <span title = "JDF: Juan de Fuca">JDF</span> Sport than to Area 6 (the split was meant to be a 50:50 contribution to the sublegal stock composition).  This error was corrected.
+- In some cases, use of the 2018 <span title = "TAMM: Terminal Area Management Module">TAMM</span> produced divide by 0 errors (e.g., marked Snohomish and Skagit abundances within the input page in early years with no marked abundances for these stocks).  IFERROR statements were used where necessary to change these from errors to 0s.
+- We are used the new <span title = "ER: Exploitation Rate">ER</span> Overview page format that was used in the 2018 pre-season run.  Additional changes were made to the overview page to more accurately reflect <span title = "RMP: Resource Management Plan">RMP</span> submissions, which were circulated to the relevant regional co-managers (Skagit co-managers and mid-sound co-managers).
+- South Puget Sound <span title = "HRI: Harvest Rate Index">HRI</span> indices were updated consistent with the 2017 and 2018 pre-season runs.
+- We switched from using a brood year-based age 2s from 3s methodology to derive age 2 abundances to a fishing year-based age 2s from 3s methodology.  
+
+---
+
+## **Round 7**
+
+**Produced:** September 8, 2021 (Post-Season Runs); June 3, 2021 (Calibration)
+
+**Years Used Pre-Season:** 2022 (Round 7.1.1)
+
+**Notes:** Post-season years = 1992 to 2018.  Round 7 had a longer development and evaluation cycle relative to earlier base period rounds.  Round 7 was originally produced on 11.24.2020 but caused substantial changes to exploitation rate outputs for many modeled stocks.  This necessitated policy discussions regarding stock-specific management objectives and the timeline for adoption of the base period.  Co-managers chose not to use Round 7 in pre-season 2021 and chose to work through reviewing management objectives using Round 7 in the summer of 2021.  During the summer of 2021, co-managers identified an error in the base period, where <span title = "WCVI: West Coast Vancouver Island">WCVI</span> stock tags were not reflective of Round 7 and the base period was run with corrected <span title = "WCVI: West Coast Vancouver Island">WCVI</span> tags to produce “Round 7.1” on June 3, 2021.  Subsequently an error was identified and corrected by regional biologists related to Skagit Spring escapement estimates, resulting in “Round 7.1.1” on September 8, 2021.  The error corrected in Round 7.1.1 did not require rerunning the calibration (Skagit escapement estimates in base period years were the same), so the date of the official calibration for Round 7.1.1 is June 3, 2021.  Round 7.1.1 was used for the submission of the 2022 Puget Sound Chinook Harvest Management Plan.
+
+**Updates:**
+
+- In 2017, an error in the catch numbers reported in Canadian sport fisheries was identified.  There were periods where catch sampling did not occur, but the fishery was confirmed as open and voluntary <span title = "CWT: Coded Wire Tag">CWT</span> recoveries were returned.  In the absence of sampling, <span title = "DFO: Department of Fisheries and Oceans">DFO</span> reported no catch in these periods.  Using the new iREC system (http://dfo-mpo.gc.ca/videos/survey-recreation-sondage-eng.html), <span title = "DFO: Department of Fisheries and Oceans">DFO</span> updated catch estimates for 2012 catch years onward. For Round 7, the base period team worked with <span title = "DFO: Department of Fisheries and Oceans">DFO</span> to develop “unofficial” catch estimates to be used in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> for 1992-2011.   
+- Marked catch estimates were updated by <span title = "ODFW: Oregon Department of Fish and Wildlife">ODFW</span> for Central Oregon Troll. 
+- A10E Sport was flagged as ‘-88’ on the <span title = "TAMM: Terminal Area Management Module">TAMM</span> input page in Round 7 to allow for proper processing in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>.
+- Cell references in the 2014 runsheet (Area 12 Ayock adj. tab) were incorrect and were updated in Round 7.  This error affects North of Ayock/South of Ayock impact splitting for 2014.  
+- <span title = "NBC: Northern British Columbia">NBC</span> Troll catch estimates for 2014 for time 2 and time step 3 were updated with corrected numbers (<span title = "TS: Time step">TS</span>2 97,840 -> 60,428; <span title = "TS: Time step">TS</span>3 74,161 -> 111,573).
+- We updated the Area 3:4 treaty troll model stock proportion to match the Area 3:4 non-treaty troll model stock proportion (92.2% -> 98.5%). Because the Area 3:4 sport model stock proportion is derived based on the treaty troll model stock proportion, this fishery was also updated by this change.
+- The <span title = "SMAWG: Salmon modeling and Analytical Workgroup">SMAWG</span> identified that a portion of the Central Valley stock in <span title = "GSI: Genetic Stock Identification">GSI</span> studies used to derive <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model stock proportions contained San Joaquin Chinook.  San Joaquin Chinook are not considered model stocks in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> and model stock proportions were updated to reflect this in Round 7.  
+- We ensured that all <span title = "WA: Washington">WA</span> marine sport fisheries in the model include Chinook retained during periods of where the main marine area was closed.
+- We identified that Monterey catches were not previously being included in the modeled Southern California fisheries and updated the model to include that catch.  
+- In Round 7 we identified that sublegal non-retention encounters were not being accounted for in fisheries 2 and 12 (<span title = "SEAK: Southeast Alaska">SEAK</span> net and Geo. St. Troll).  For both fisheries, we flipped the flags to model non-retention as total encounters rather than legal + sublegal.  The issue was caused by there not being a sublegal ratio for Geo. St. Troll (the fishery has not had any significant catch since the 90s) and <span title = "SEAK: Southeast Alaska">SEAK</span> Net having no size limit.
+- As Nooksack Springs changed their stock formatting in 2017 (<span title = "NF: North Fork">NF</span>/<span title = "SF: South Fork">SF</span> versus Hat/Wild), we updated the names within <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> to better reflect the stock.  This change had no numerical effect on results and was purely cosmetic.
+- There was disagreement between the terminal run size inputs used in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> and <span title = "TAMM: Terminal Area Management Module">TAMM</span> for Stillaguamish.  The numbers used in the <span title = "TAMM: Terminal Area Management Module">TAMM</span> were incorrect, but were only used for hatchery/natural ratio information.  This should have a negligible numeric effect on results but has been corrected.
+- There is evidence that Elwha/Dungeness exploitation rates in Round 6.2 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> were biased low. A temporary solution to this issue was proposed by the base period work group and included using a static age composition derived from the Stillaguamish stock.  A permanent solution will be pursued when there are several marked brood years of tag data available.  
+- Snake river <span title = "TRS: Terminal Run Size">TRS</span> estimation methodology was updated in Round 7.  
+- We updated <span title = "RMIS: Regional Mark Information System">RMIS</span> escapement expansions for Mid Sound stocks.
+- In round 7 of the base period, we re-queried <span title = "RMIS: Regional Mark Information System">RMIS</span> for all base period tag code release and recovery data and updated all auxiliary records that are generated by the <span title = "CTC: Chinook Technical Committee">CTC</span>.  Prior to Round 7, it had been 4-5 years since the base period <span title = "CWT: Coded Wire Tag">CWT</span> data were downloaded from <span title = "RMIS: Regional Mark Information System">RMIS</span> and auxiliary records were updated.  In the re-query, there were numerous updates to the data, some of which we were aware of, some of which we were not.  The update was particularly relevant for the Stillaguamish stock, as there were several <span title = "GMR: Genetic Mark-Recapture">GMR</span> updates to Stillaguamish escapement estimates since the original tag code query.  Because Stillaguamish tags are used to develop <span title = "JDF: Juan de Fuca">JDF</span> base period exploitation rates, there are likely implications for that stock as well.  Auxiliary records are typically produced for escapement or freshwater fishery recoveries where sampling was lacking.  As escapement recoveries affect the overall exploitation of a stock across all fisheries, ensuring that these are up to date is critical to providing the most accurate stock representation possible within the model.  
+- Within their modeling processes, the <span title = "CTC: Chinook Technical Committee">CTC</span> accounts for inter-dam loss for four stocks: Upriver Brights, Snake River, Summers, and Spring Creek.  This involves expanding escapement recoveries based on an estimated number of fish that go unaccounted for after passing Bonneville dam. In Round 7, we included auxiliary records in the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> base period <span title = "CWT: Coded Wire Tag">CWT</span> dataset that are generated using methods similar to those employed by the <span title = "CTC: Chinook Technical Committee">CTC</span>.
+- Implemented a correction to the calibration code that allows fishery expansions to be calculated by time step rather than annually.
+- In addition to the items above, catches and abundance estimates were updated to include 2017 and 2018, as well as between 1992-2016, where regional biologists provided updates.
+
+
+---
+
+# **Appendix 2.** Chinook <span title = "AEQ: Adult Equivalent Mortality">AEQ</span> Mortalities by stock, age, and time step
+
+```{r appendix 2 AEQ, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinaeq.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 3.** Chinook base period cohort abundances by stock and age
+
+```{r appendix 3 BaseCohort, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinbasecohort.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 4.** Chinook base period exploitation rate by stock, age, fishery, and time step
+
+```{r appendix 4 BaseExploitationRate, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinbaseexploitationrate.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 5.** Chinook base period marked catch
+
+```{r appendix 5 BasePeriodCatch, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinbaseperiodcatch.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 6.** Chinook base period total catch
+
+```{r appendix 6 BasePeriodCatch_Tot, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinbaseperiodcatch_tot.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 7.** Chinook base period escapement
+
+```{r appendix 7 BPEscapements, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinbpescapements.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 8.** Chinook base period size limits by fishery and time step
+
+```{r appendix 8 BPSizeLimits, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinbpsizelimits.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 9.** Chinook fisheries
+
+```{r appendix 9 Fishery, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinfishery.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 10.** Chinook fishery flags
+
+```{r appendix 10 FisheryFlag, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinfisheryflag.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 11.** Chinook model stock proportion by fishery
+
+```{r appendix 11 FisheryModelStockproportion, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinfisherymodelstockproportion.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 12.** Chinook non-selective and mark-selective fishery scaler and quotas by fishery and time step
+
+```{r appendix 12 FishScalar, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinfishscalar.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 13.** Chinook von Bertalanffy growth function parameters by stock
+
+```{r appendix 13 Growth, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchingrowth.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 14.** Chinook surrogate fishery and time steps for imputed recoveries
+
+```{r appendix 14 ImputeRecoveries, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinimputerecoveries.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 15.** Chinook drop-off and drop-out mortality rates by fishery and time step
+
+```{r appendix 15 IncidentalRate, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinincidentalrate.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 16.** Chinook maturation rates by stock, age, and time step
+
+```{r appendix 16 MaturationRate, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinmaturationrate.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 17.** Chinook natural mortality rates by age and time step
+
+```{r appendix 17 NaturalMortality, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinnaturalmortality.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 18.** Chinook marked non-retention inputs by fishery and time step
+
+```{r appendix 18 NonRetention, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinnonretention.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 19.** Chinook total non-retention inputs by fishery and time step
+
+```{r appendix 19 NonRetention_Tot, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinnonretentiontot.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 20.** Chinook proportion treaty net by fishery and time step
+
+```{r appendix 20 ProportionTreatyNet, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinproportiontreatynet.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 21.** Chinook shaker inclusion by stock and fishery
+
+```{r appendix 21 ShakerInclusion, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinshakerinclusion.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 22.** Chinook shaker mortality rate by fishery and time step
+
+```{r appendix 22 ShakerMortRate, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinshakermortrate.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 23.** Chinook size limits by fishery and time step
+
+```{r appendix 23 SizeLimits, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinsizelimits.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 24.** Chinook calibration stocks
+
+```{r appendix 24 Stock, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinstocks.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 25.** Chinook calibration summary information
+
+```{r appendix 25 SummaryInfo, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinsummaryinfo.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 26.** Chinook surrogate fishery base period exploitation rates by time step
+
+```{r appendix 26 SurrogateFishBPER, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinsurrogatefishbper.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 27.** Chinook target encounter rates by fishery and time step
+
+```{r appendix 27 TargetEncounterRates, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchintargetencounterrates.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 28.** Chinook terminal fishery flags
+
+```{r appendix 28 TerminalFisheryFlag, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinterminalfisheryflag.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 29.** Chinook time steps
+
+```{r appendix 29 TimeStep, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchintimestep.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 30.** Chinook White River stock weighting
+
+```{r appendix 30 Weighting, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinweighting.rds")
+```
+<br>
+
+---
+
+<br>
+
+# **Appendix 31.** Chinook White River stock maturation rates by age and time step
+
+```{r appendix 31 WhiteMatRate, echo=FALSE, results="asis"}
+readRDS("objects/framdoc_calibchinwhitematrate.rds")
+```
+
+
+<br>
+
+**To cite this page:** <br>
+`r paste("Salmon modeling and analysis workgroup.", format(Sys.Date(), "%Y."), page_title, "*in* FRAM Documentation. https://framverse.github.io/fram_doc/ ", paste("built", format(Sys.Date(), "%B %d, %Y.")))`
+
+<br>

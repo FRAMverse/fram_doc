@@ -32,6 +32,8 @@ navbar:
           href: base_chin.html
         - text: "Coho"
           href: base_coho.html
+        - text: "Appendices"
+          href: base_appendices.html
     - text: "User Manual"
       menu:
         - text: "Prerequisites"

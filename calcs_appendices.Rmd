@@ -1,5 +1,9 @@
+```{r include=FALSE}
+page_title <- "Model Detail Appendices"
+```
+
 ---
-title: "Appendices"
+title: "Model Detail Appendices"
 editor_options: 
   chunk_output_type: console
 ---
@@ -19,6 +23,10 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=
 
 readRDS("objects/framvs_doc_lu_stock_coho.rds") # |> knitr::kable(caption = "Coho stocks")
 ```
+<br>
+
+---
+
 <br>
 
 # **Appendix 2.** Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks
@@ -73,6 +81,10 @@ readRDS("objects/framvs_doc_lu_stock_chin.rds") # %>% knitr::kable(caption = "Ch
 ```
 <br>
 
+---
+
+<br>
+
 # **Appendix 3.** Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
 
 ```{r appendix 3 coho fisheries table image, echo=FALSE, results="asis"}
@@ -85,6 +97,10 @@ readRDS("objects/framvs_doc_lu_fishery_coho.rds") # %>% knitr::kable(caption = "
 ```
 <br>
 
+---
+
+<br>
+
 # **Appendix 4.** Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries
 
 ```{r appendix 4 table image, echo=FALSE, results="asis"}
@@ -92,6 +108,10 @@ readRDS("objects/framvs_doc_lu_fishery_coho.rds") # %>% knitr::kable(caption = "
 
 readRDS("objects/framvs_doc_lu_fishery_chin2.rds") # %>% knitr::kable(caption = "Chinook fisheries")
 ```
+<br>
+
+---
+
 <br>
 
 # **Appendix 5.** Time step structure used in Coho and Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> modeling
@@ -112,17 +132,31 @@ dplyr::tibble(
 ```
 <br>
 
+---
+
+<br>
+
 # **Appendix 6.** <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>/<span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery-related mortality rates for *Coho* salmon (version used in 2021 pre-season planning models)
 
 ```{r appendix 6 table image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/Appendix_table_6.PNG"))
 ```
+<br>
+
+---
+
+<br>
 
 # **Appendix 7.** <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>/<span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery-related mortality rates for *Chinook* salmon (version used in 2021 pre-season planning)
 
 ```{r appendix 7 table image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/Appendix_table_7.PNG"))
 ```
+<br>
+
+---
+
+<br>
 
 # **Appendix 8.** Time period and age-specific rates used by <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> to simulate Coho and Chinook natural mortality
 
@@ -148,6 +182,11 @@ dplyr::tibble(
   `Time Step 4: October - April` = c(0.2577, 0.1878, 0.1221, 0.0596)
   ) |> knitr::kable(caption = "Chinook")
 ```
+<br>
+
+---
+
+<br>
 
 # **Appendix 9.** Time period and age-specific rates used by <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> to simulate Chinook maturation
 
@@ -156,11 +195,20 @@ readRDS("objects/fram_doc__chin_mat_rates.rds")
 ```
 <br>
 
+---
+
+<br>
+
 # **Appendix 10.** Alphabetical list of variables, their description, and source used in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> calculations
 
 ```{r appendix 10 table image, echo=FALSE, out.width='100%'}
 knitr::include_graphics(c("images/Chinook_FRAM_ap10.PNG"))
 ```
+
+<br>
+
+**To cite this page:** <br>
+`r paste("Salmon modeling and analysis workgroup.", format(Sys.Date(), "%Y."), page_title, "*in* FRAM Documentation. https://framverse.github.io/fram_doc/ ", paste("built", format(Sys.Date(), "%B %d, %Y.")))`
 
 <br>
 
