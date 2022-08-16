@@ -12,7 +12,7 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=9)
 ```
 
-# **Appendix 1.** <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Base Period Update Log
+# **Appendix 1.** <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> Chinook Base Period Update Log
 
 ## **Round 1**
 
