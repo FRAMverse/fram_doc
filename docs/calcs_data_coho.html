@@ -13,7 +13,7 @@
 
 <title>Coho Model Detail</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -150,11 +150,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -443,12 +447,12 @@ div.tocify {
 <p>At each time step, a stock experiences <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Natural_Mortality" target = "_blank" title = "Natural mortality">natural mortality</a>, and can be subjected to pre-terminal fisheries, and terminal fisheries.</p>
 <p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> contains five time periods for Coho, covering a single calendar year (<a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_5_Time_step_structure_used_in_Coho_and_Chinook_FRAM_modeling" target = "_blank" title = "Appendix 5">Appendix 5</a>).</p>
 <p>Table 1. Time step structure used in Coho FRAM.</p>
-<div id="tmysjphclb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="dpnwfrxaen" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#tmysjphclb .gt_table {
+#dpnwfrxaen .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -473,7 +477,7 @@ div.tocify {
   border-left-color: #D3D3D3;
 }
 
-#tmysjphclb .gt_heading {
+#dpnwfrxaen .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -485,7 +489,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#tmysjphclb .gt_title {
+#dpnwfrxaen .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -497,7 +501,7 @@ div.tocify {
   border-bottom-width: 0;
 }
 
-#tmysjphclb .gt_subtitle {
+#dpnwfrxaen .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -509,13 +513,13 @@ div.tocify {
   border-top-width: 0;
 }
 
-#tmysjphclb .gt_bottom_border {
+#dpnwfrxaen .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tmysjphclb .gt_col_headings {
+#dpnwfrxaen .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -530,7 +534,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#tmysjphclb .gt_col_heading {
+#dpnwfrxaen .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -550,7 +554,7 @@ div.tocify {
   overflow-x: hidden;
 }
 
-#tmysjphclb .gt_column_spanner_outer {
+#dpnwfrxaen .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -562,15 +566,15 @@ div.tocify {
   padding-right: 4px;
 }
 
-#tmysjphclb .gt_column_spanner_outer:first-child {
+#dpnwfrxaen .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tmysjphclb .gt_column_spanner_outer:last-child {
+#dpnwfrxaen .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tmysjphclb .gt_column_spanner {
+#dpnwfrxaen .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -582,7 +586,7 @@ div.tocify {
   width: 100%;
 }
 
-#tmysjphclb .gt_group_heading {
+#dpnwfrxaen .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -607,7 +611,7 @@ div.tocify {
   vertical-align: middle;
 }
 
-#tmysjphclb .gt_empty_group_heading {
+#dpnwfrxaen .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -622,15 +626,15 @@ div.tocify {
   vertical-align: middle;
 }
 
-#tmysjphclb .gt_from_md > :first-child {
+#dpnwfrxaen .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tmysjphclb .gt_from_md > :last-child {
+#dpnwfrxaen .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tmysjphclb .gt_row {
+#dpnwfrxaen .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -649,7 +653,7 @@ div.tocify {
   overflow-x: hidden;
 }
 
-#tmysjphclb .gt_stub {
+#dpnwfrxaen .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -662,7 +666,7 @@ div.tocify {
   padding-right: 5px;
 }
 
-#tmysjphclb .gt_stub_row_group {
+#dpnwfrxaen .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -676,11 +680,11 @@ div.tocify {
   vertical-align: top;
 }
 
-#tmysjphclb .gt_row_group_first td {
+#dpnwfrxaen .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tmysjphclb .gt_summary_row {
+#dpnwfrxaen .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -690,16 +694,16 @@ div.tocify {
   padding-right: 5px;
 }
 
-#tmysjphclb .gt_first_summary_row {
+#dpnwfrxaen .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tmysjphclb .gt_first_summary_row.thick {
+#dpnwfrxaen .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tmysjphclb .gt_last_summary_row {
+#dpnwfrxaen .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -709,7 +713,7 @@ div.tocify {
   border-bottom-color: #D3D3D3;
 }
 
-#tmysjphclb .gt_grand_summary_row {
+#dpnwfrxaen .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -719,7 +723,7 @@ div.tocify {
   padding-right: 5px;
 }
 
-#tmysjphclb .gt_first_grand_summary_row {
+#dpnwfrxaen .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -729,11 +733,11 @@ div.tocify {
   border-top-color: #D3D3D3;
 }
 
-#tmysjphclb .gt_striped {
+#dpnwfrxaen .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tmysjphclb .gt_table_body {
+#dpnwfrxaen .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -742,7 +746,7 @@ div.tocify {
   border-bottom-color: #D3D3D3;
 }
 
-#tmysjphclb .gt_footnotes {
+#dpnwfrxaen .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -756,7 +760,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#tmysjphclb .gt_footnote {
+#dpnwfrxaen .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -765,7 +769,7 @@ div.tocify {
   padding-right: 5px;
 }
 
-#tmysjphclb .gt_sourcenotes {
+#dpnwfrxaen .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -779,7 +783,7 @@ div.tocify {
   border-right-color: #D3D3D3;
 }
 
-#tmysjphclb .gt_sourcenote {
+#dpnwfrxaen .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -787,71 +791,73 @@ div.tocify {
   padding-right: 5px;
 }
 
-#tmysjphclb .gt_left {
+#dpnwfrxaen .gt_left {
   text-align: left;
 }
 
-#tmysjphclb .gt_center {
+#dpnwfrxaen .gt_center {
   text-align: center;
 }
 
-#tmysjphclb .gt_right {
+#dpnwfrxaen .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tmysjphclb .gt_font_normal {
+#dpnwfrxaen .gt_font_normal {
   font-weight: normal;
 }
 
-#tmysjphclb .gt_font_bold {
+#dpnwfrxaen .gt_font_bold {
   font-weight: bold;
 }
 
-#tmysjphclb .gt_font_italic {
+#dpnwfrxaen .gt_font_italic {
   font-style: italic;
 }
 
-#tmysjphclb .gt_super {
+#dpnwfrxaen .gt_super {
   font-size: 65%;
 }
 
-#tmysjphclb .gt_footnote_marks {
+#dpnwfrxaen .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#tmysjphclb .gt_asterisk {
+#dpnwfrxaen .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tmysjphclb .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#dpnwfrxaen .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#tmysjphclb .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#dpnwfrxaen .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#tmysjphclb .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#dpnwfrxaen .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#dpnwfrxaen .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#dpnwfrxaen .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Time Step</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Months</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Time Step</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Months</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -1102,12 +1108,12 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
 <p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> program interacts with the <span title="TAMM: Terminal Area Management Module">TAMM</span>, a species-specific Microsoft Excel file, which allows users to specify alternative terminal fishery inputs and to calculate impacts on a finer level of resolution than <span title="FRAM: Fishery Regulation Assessment Model">FRAM.</span> The <span title="TAMM: Terminal Area Management Module">TAMM</span> has separate sections for each of the six Puget Sound terminal regions defined in the Puget Sound Salmon Management Plan (PSSP 1985, Table 3) for the State of Washington and the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Treaty_Tribes" target = "_blank" title = "Treaty Tribes">Washington Treaty Indian Tribes of Puget Sound</a>, as well as Washington coastal terminal regions. This structure has supported development of unique regional management goals and allows managers the flexibility to analyze and report <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model output according to their needs.</p>
 <p><span title="TAMM: Terminal Area Management Module">TAMM</span> is best understood in its historic context as a terminal-area-centric fisheries model. Prior to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> development, information of stock-specific fishery impacts was not readily available. At that time, management was based on terminal run reconstructions that assigned 100% of terminal catches to only local terminal stocks. However, in the current model framework, <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> takes <span title="TAMM: Terminal Area Management Module">TAMM</span> fishery inputs and accounts for non-local and local stock impacts before reporting stock-specific impacts back to <span title="TAMM: Terminal Area Management Module">TAMM</span>. Additionally, the <span title="TAMM: Terminal Area Management Module">TAMM</span> also conducts alternative modeling for Washington coastal Coho stocks in terminal area fisheries, as well as generating inputs for Columbia River models.</p>
 <p>Table 4. Puget Sound Terminal Management Regions.</p>
-<div id="btcjkpcexh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="zxmxdknzlj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#btcjkpcexh .gt_table {
+#zxmxdknzlj .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1132,7 +1138,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-left-color: #D3D3D3;
 }
 
-#btcjkpcexh .gt_heading {
+#zxmxdknzlj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1144,7 +1150,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-right-color: #D3D3D3;
 }
 
-#btcjkpcexh .gt_title {
+#zxmxdknzlj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1156,7 +1162,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-bottom-width: 0;
 }
 
-#btcjkpcexh .gt_subtitle {
+#zxmxdknzlj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1168,13 +1174,13 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-top-width: 0;
 }
 
-#btcjkpcexh .gt_bottom_border {
+#zxmxdknzlj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#btcjkpcexh .gt_col_headings {
+#zxmxdknzlj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1189,7 +1195,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-right-color: #D3D3D3;
 }
 
-#btcjkpcexh .gt_col_heading {
+#zxmxdknzlj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1209,7 +1215,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   overflow-x: hidden;
 }
 
-#btcjkpcexh .gt_column_spanner_outer {
+#zxmxdknzlj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1221,15 +1227,15 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   padding-right: 4px;
 }
 
-#btcjkpcexh .gt_column_spanner_outer:first-child {
+#zxmxdknzlj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#btcjkpcexh .gt_column_spanner_outer:last-child {
+#zxmxdknzlj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#btcjkpcexh .gt_column_spanner {
+#zxmxdknzlj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1241,7 +1247,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   width: 100%;
 }
 
-#btcjkpcexh .gt_group_heading {
+#zxmxdknzlj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1266,7 +1272,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   vertical-align: middle;
 }
 
-#btcjkpcexh .gt_empty_group_heading {
+#zxmxdknzlj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1281,15 +1287,15 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   vertical-align: middle;
 }
 
-#btcjkpcexh .gt_from_md > :first-child {
+#zxmxdknzlj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#btcjkpcexh .gt_from_md > :last-child {
+#zxmxdknzlj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#btcjkpcexh .gt_row {
+#zxmxdknzlj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1308,7 +1314,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   overflow-x: hidden;
 }
 
-#btcjkpcexh .gt_stub {
+#zxmxdknzlj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1321,7 +1327,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   padding-right: 5px;
 }
 
-#btcjkpcexh .gt_stub_row_group {
+#zxmxdknzlj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1335,11 +1341,11 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   vertical-align: top;
 }
 
-#btcjkpcexh .gt_row_group_first td {
+#zxmxdknzlj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#btcjkpcexh .gt_summary_row {
+#zxmxdknzlj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1349,16 +1355,16 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   padding-right: 5px;
 }
 
-#btcjkpcexh .gt_first_summary_row {
+#zxmxdknzlj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#btcjkpcexh .gt_first_summary_row.thick {
+#zxmxdknzlj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#btcjkpcexh .gt_last_summary_row {
+#zxmxdknzlj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1368,7 +1374,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-bottom-color: #D3D3D3;
 }
 
-#btcjkpcexh .gt_grand_summary_row {
+#zxmxdknzlj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1378,7 +1384,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   padding-right: 5px;
 }
 
-#btcjkpcexh .gt_first_grand_summary_row {
+#zxmxdknzlj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1388,11 +1394,11 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-top-color: #D3D3D3;
 }
 
-#btcjkpcexh .gt_striped {
+#zxmxdknzlj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#btcjkpcexh .gt_table_body {
+#zxmxdknzlj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1401,7 +1407,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-bottom-color: #D3D3D3;
 }
 
-#btcjkpcexh .gt_footnotes {
+#zxmxdknzlj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1415,7 +1421,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-right-color: #D3D3D3;
 }
 
-#btcjkpcexh .gt_footnote {
+#zxmxdknzlj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1424,7 +1430,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   padding-right: 5px;
 }
 
-#btcjkpcexh .gt_sourcenotes {
+#zxmxdknzlj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1438,7 +1444,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   border-right-color: #D3D3D3;
 }
 
-#btcjkpcexh .gt_sourcenote {
+#zxmxdknzlj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1446,70 +1452,72 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
   padding-right: 5px;
 }
 
-#btcjkpcexh .gt_left {
+#zxmxdknzlj .gt_left {
   text-align: left;
 }
 
-#btcjkpcexh .gt_center {
+#zxmxdknzlj .gt_center {
   text-align: center;
 }
 
-#btcjkpcexh .gt_right {
+#zxmxdknzlj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#btcjkpcexh .gt_font_normal {
+#zxmxdknzlj .gt_font_normal {
   font-weight: normal;
 }
 
-#btcjkpcexh .gt_font_bold {
+#zxmxdknzlj .gt_font_bold {
   font-weight: bold;
 }
 
-#btcjkpcexh .gt_font_italic {
+#zxmxdknzlj .gt_font_italic {
   font-style: italic;
 }
 
-#btcjkpcexh .gt_super {
+#zxmxdknzlj .gt_super {
   font-size: 65%;
 }
 
-#btcjkpcexh .gt_footnote_marks {
+#zxmxdknzlj .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#btcjkpcexh .gt_asterisk {
+#zxmxdknzlj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#btcjkpcexh .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#zxmxdknzlj .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#btcjkpcexh .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#zxmxdknzlj .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#btcjkpcexh .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#zxmxdknzlj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zxmxdknzlj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zxmxdknzlj .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Management Regions</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Management Regions</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -1582,7 +1590,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
 <h1>7. Output Reports</h1>
 <p>Model results are available in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> screen reports viewed within the software, <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> reports, <span title="TAMM: Terminal Area Management Module">TAMM</span> Microsoft Excel files, or can be extracted from the species-specific Microsoft Access database associated with the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> run. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> reports include summaries of projected catch and mortalities by fishery, stock, and age. The <span title="TAMM: Terminal Area Management Module">TAMM</span> files provide comprehensive summaries of fishery mortalities, exploitation rates, run sizes, and escapements for key stocks in the <span title="PFMC: Pacific Fishery Management Council">PFMC</span> and North of Falcon (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#North_of_Falcon_(NOF)" target = "_blank" title = "NOF: North of Falcon">NOF</a>) annual pre-season planning process, as well as Canadian Coho stocks relevant to the Pacific Salmon Treaty (<span title="PST: Pacific Salmon Treaty">PST</span>). For a full scope of <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> report generating functions, refer to the online <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> <a href = "https://framverse.github.io/fram_doc/user_prereq.html" target = "_blank" title = "FRAM User Manual">User Manual</a>.</p>
 <p><br></p>
-<p><strong>To cite this page:</strong> <br> Salmon modeling and analysis workgroup. 2022. Coho Model Detail <em>in</em> FRAM Documentation. <a href="https://framverse.github.io/fram_doc/" class="uri">https://framverse.github.io/fram_doc/</a> built August 16, 2022.</p>
+<p><strong>To cite this page:</strong> <br> Salmon modeling and analysis workgroup. 2022. Coho Model Detail <em>in</em> FRAM Documentation. <a href="https://framverse.github.io/fram_doc/" class="uri">https://framverse.github.io/fram_doc/</a> built September 22, 2022.</p>
 </div>
 
 <footer>
