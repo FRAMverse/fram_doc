@@ -296,34 +296,34 @@ This method computes non-retention mortalities as a function of the retention in
 
 This method requires a flag of "2" in the FRAM user interface as well as four inputs.
 
-- Field value 1: Number of days the non-retention fishery is open within a fishery and time step <u>$CNRDays$</u>$_{f,t}$
-- Field value 2: Number of days the retention fishery is open within a fishery and time step <u>$RetentionDays$</u>$_{f,t}$
-- Field value 3: Legal selectivity rate <u>$LegalSelRate$</u>$_{f,t}$
-- Field value 4: Sublegal selectivity rate <u>$SublegSelRate$</u>$_{f,t}$
+- Field value 1: Number of days the non-retention fishery is open within a fishery and time step <b>$CNRDays$</b>$_{f,t}$
+- Field value 2: Number of days the retention fishery is open within a fishery and time step <b>$RetentionDays$</b>$_{f,t}$
+- Field value 3: Legal selectivity rate <b>$LegalSelRate$</b>$_{f,t}$
+- Field value 4: Sublegal selectivity rate <b>$SublegSelRate$</b>$_{f,t}$
 
 *The legal and sublegal selectivity rates provide the modeler with the ability to adjust model output that is based on landed catch; i.e., if the modeler believes that encounters in a retention fishery are twice as high as in a non-retention fishery, the selectivity rate would be 0.5.*
 
-<p>**(11a)** <div style = "text-align:center"> $CNRLegal_{s,a,f,t} = Catch_{s,a,f,t} \times$ $\frac{\underline{CNRDays}_{f,t}}{\underline{RetentionDays}_{f,t}}$ $\times$ <u>$LegalSelRate$</u>$_{f,t} \times$ <u>$LegalReleaseMortalityRate$</u>$_{f,t}$ </div> </p>
+<p>**(11a)** <div style = "text-align:center"> $CNRLegal_{s,a,f,t} = Catch_{s,a,f,t} \times$ $\frac{\underline{CNRDays}_{f,t}}{\underline{RetentionDays}_{f,t}}$ $\times$ <b>$LegalSelRate$</b>$_{f,t} \times$ <b>$LegalReleaseMortalityRate$</b>$_{f,t}$ </div> </p>
 
-<p>**(11b)** <div style = "text-align:center"> $CNRSub_{s,a,f,t} = Shakers_{s,a,f,t} \times$ $\frac{\underline{CNRDays}_{f,t}}{\underline{RetentionDays}_{f,t}}$ $\times$ <u>$SublegSelRate$</u>$_{f,t}$ </div> </p>
+<p>**(11b)** <div style = "text-align:center"> $CNRSub_{s,a,f,t} = Shakers_{s,a,f,t} \times$ $\frac{\underline{CNRDays}_{f,t}}{\underline{RetentionDays}_{f,t}}$ $\times$ <b>$SublegSelRate$</b>$_{f,t}$ </div> </p>
 
 <u> CNR Method 3</u> - Computed from external estimate of legal and sub-legal sized encounters
 For this method the modeler provides external estimates of legal ($LegalEnc_{f,t}$) and sublegal ($SublegEnc_{f,t}$) fishery encounters. FRAM split encounters into stocks and ages and applies a release mortality.
 
-<p>**(12a)** <div style = "text-align:center"> $CNRLegal_{s,a,f,t} =$ <u>$LegalEnc$</u>$_{f,t} \times LegalPropTempCatch_{s,a,f,t} \times$ <u>$LegalReleaseMortalityRate$</u>$_{f,t} \times$ <span title = "Model-stock proportion of fishery f
+<p>**(12a)** <div style = "text-align:center"> $CNRLegal_{s,a,f,t} =$ <b>$LegalEnc$</b>$_{f,t} \times LegalPropTempCatch_{s,a,f,t} \times$ <b>$LegalReleaseMortalityRate$</b>$_{f,t} \times$ <span title = "Model-stock proportion of fishery f
 Base period calculation"><u>$MSP$</u>$_{f}$ </div> </p>
 
-<p>**(12b)** <div style = "text-align:center"> $CNRSub_{s,a,f,t} =$ <u>$SublegEnc$</u>$_{f,t} \times SublegPropTempCatch_{s,a,f,t} \times$ <u>$ShakerReleaseMortalityRate$</u>$_{f,t} \times$ <span title = "Model-stock proportion of fishery f
+<p>**(12b)** <div style = "text-align:center"> $CNRSub_{s,a,f,t} =$ <b>$SublegEnc$</b>$_{f,t} \times SublegPropTempCatch_{s,a,f,t} \times$ <b>$ShakerReleaseMortalityRate$</b>$_{f,t} \times$ <span title = "Model-stock proportion of fishery f
 Base period calculation"><u>$MSP$</u>$_{f}$ </div> </p>
 
 <u> CNR Method 4</u> - Computed from external estimates of total encounters
 For this method the modeler provides external estimates of total fishery encounters ($TotalEstEnc_{f,t}$). FRAM first computes legal and sublegal encounters using a fishery scaler of 1 (see LegalTempCatch and SublegTempCatch equations above). Next, FRAM calculates a CNRScaler to produce total encounters that match the target encounters (TotalEstEnc). After multiplying legal and sublegal encounters with the CNRScaler a release mortality is applied to convert encounters into mortalities.
 
-<p>**(13a)** <div style = "text-align:center"> $CNRScaler_{f,t} = $$\frac{\underline{TotalEstEnc}_{f,t} \times \underline{MSP}_{f}}{\sum_{s} \sum_{a} LegalTempCatch_{s,a,f,t} + \sum_{s} \sum_{a}SublegTempCatch_{s,a,f,t}}$ </div> </p>
+<p>**(13a)** <div style = "text-align:center"> $CNRScaler_{f,t} =$ $\frac{\textbf{TotalEstEnc}_{f,t} \times \underline{MSP}_{f}}{\sum_{s} \sum_{a} LegalTempCatch_{s,a,f,t} + \sum_{s} \sum_{a}SublegTempCatch_{s,a,f,t}}$ </div> </p>
 
-<p>**(13b)** <div style = "text-align:center"> $CNRLegal_{s,a,f,t} = LegalTempCatch_{s,a,f,t} \times CNRScaler_{f,t} \times$ <u>$LegalReleaseMortalityRate$</u>$_{f,t}$ </div> </p>
+<p>**(13b)** <div style = "text-align:center"> $CNRLegal_{s,a,f,t} = LegalTempCatch_{s,a,f,t} \times CNRScaler_{f,t} \times$ <b>$LegalReleaseMortalityRate$</b>$_{f,t}$ </div> </p>
 
-<p>**(13c)** <div style = "text-align:center"> $CNRSub_{s,a,f,t} = SublegTempCatch_{s,a,f,t} \times CNRScaler_{f,t} \times$ <u>$ShakerReleaseMortalityRate$</u>$_{f,t}$ </div> </p>
+<p>**(13c)** <div style = "text-align:center"> $CNRSub_{s,a,f,t} = SublegTempCatch_{s,a,f,t} \times CNRScaler_{f,t} \times$ <b>$ShakerReleaseMortalityRate$</b>$_{f,t}$ </div> </p>
 
 where, 
 
@@ -332,10 +332,10 @@ where,
 - $CNRSub_{s,a,f,t}$ is the non-retention mortality of sublegal Chinook
 - $LegalReleaseMortalityRate_{f,t}$ is the mortality rate of legal encounters
 - $LegalTempCatch_{s,a,f,t}$ is the legal catch using FisheryScaler = 1
-- $LegalPropTempCatch_{s,a,f,t}$ is the proportion of legal catch of stock s, age a, in fishery f, at time step t using FisheryScalar = 1.0 
+- $LegalPropTempCatch_{s,a,f,t}$ is the proportion of legal catch of stock s, age a, in fishery f, at time step t using FisheryScaler = 1.0 
 - $MSP_{f}$ is the fishery model stock proportion as described in chapter 4.6
 - $ShakerReleaseMortalityRate_{f,t}$ is the mortality rate of sublegal encounters
-- $SublegPropTempCatch_{s,a,f,t}$ is the proportion of sublegal encounters of stock s, age a, in fishery f, at time step t using FishScalar = 1.0
+- $SublegPropTempCatch_{s,a,f,t}$ is the proportion of sublegal encounters of stock s, age a, in fishery f, at time step t using FisheryScaler = 1.0
 - $SublegTempCatch_{s,a,f,t}$ are the sublegal encounters using FisheryScaler = 1
 - $TotalLegalTempCatch_{f,t}$ is the total catch in fishery f at time step t summed over all stocks and ages using FisheryScaler = 1
 - $TotalSublegTempCatch_{f,t}$ are the total encounters in fishery f at time step t summed over all stocks and ages using FisheryScaler = 1
