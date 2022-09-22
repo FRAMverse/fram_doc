@@ -127,6 +127,13 @@ Figure 1.  Conceptual flow chart for the Coho <span title = "FRAM: Fishery Regul
 
 ## 4.2. Computational Processes
 
+In the following equations, variables are presented with origin specific formatting: 
+
+- Variables estimated in FRAM are shown in regular $italics$.
+- Variables that are input by a user, including externally estimated values, are shown as <b>bold</b>. 
+- Variables that are estimated during the base period are shown with an <u>underline</u>.
+- Variables that are estimated using a BkFRAM run are shown as <span style = "color: blue;">blue</span>.
+
 **Cohort Abundance**
 
 <u>Process 1:  Cohort Abundance at the Start of the Time Step</u>
@@ -137,7 +144,9 @@ Pre-season, the starting cohort is generally calculated from forecasts of ocean 
 
 Post-season, the starting cohort is generally calculated by expanding escapement estimates for fisheries mortalities and natural mortalities during <span title = "BkFRAM: Backwards FRAM">BkFRAM</span> (see <a href = "https://framverse.github.io/fram_doc/calcs_data_coho.html#6_Backwards_FRAM" target = "_blank" title = "Chapter 6: Backwards FRAM">Backwards FRAM</a> chapter).
 
-<p>**(1)**<div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 during time step 1">$Cohort_{s,a \! = \! 3,t\!=\!1}$</span> $=$ <span title = "Base period abundance of stock s at age 3">$BPCohort_{s,a \! = \! 3}$</span> $\times$ <span title = "Stock recruit scaler of stock s at age 3">$StockScaler_{s,a \! = \! 3}$</span> </div> </p>
+<p>**(1)**<div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 during time step 1">$Cohort_{s,a \! = \! 3,t\!=\!1}$</span> $=$ <span title = "Base period abundance of stock s at age 3.
+Base period calculation"><u>$BPCohort$</u>$_{s,a \! = \! 3}$</span> $\times$ <span title = "Stock recruit scaler of stock s at age 3.
+BkFRAM calculation" style = "color: blue;">$StockScaler$</span>$_{s,a \! = \! 3}$ </div> </p>
 where <span title = "Cohort abundance of stock s at age 3 during time step 1">$Cohort_{s,a \! = \! 3,t\!=\!1}$</span> is the initial cohort size for stock *s*, age 3, during time step *t*=1.
 
 Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> only models age-3 fish (*a*=3). The starting cohort size is the projected number of age-3 fish in January (<span title = "JA3: January age-3 fish">JA3</span>) of the fishing year for each stock.  All Coho escape in the final time step (*t*=5) and thus are not aged in the model.
@@ -148,7 +157,8 @@ Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> only 
 
 During each time step, the stock-age cohort size at the start of the time step is decreased to account for natural mortality:
 
-<p>**(2)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Discrete natural mortality rate at age 3 and time step t">$(1-M_{a \! = \! 3,t})$</span> </div> </p>
+<p>**(2)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Discrete natural mortality rate at age 3 and time step t.
+Input by user">$(1-$<b>$M$</b>$_{a \! = \! 3,t})$</span> </div> </p>
 
 where <span title = "Discrete natural mortality rate at age 3 and time step t">$M_{a \! = \! 3,t}$</span> is the discrete natural mortality rate for age 3 fish during time step *t* (<a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_8_Time_period_and_age-specific_rates_used_by_FRAM_to_simulate_Coho_and_Chinook_natural_mortality" target = "_blank" title = "Appendix 8">Appendix 8</a>).
 
@@ -160,7 +170,10 @@ The remaining cohort is then subjected to removals by pre-terminal fisheries; bo
 
 <u>**3a.** In regular retention fisheries (non-selective), landed catch is estimated by:</u>
 
-<p>**(3)**<div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 in fishery f during time step t">$Catch_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t">$BPER_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler for fishery f during time step t">$FisheryScaler_{f,t}$</span> $\times$ <span title = "Portion vulnerable of stock s at age 3 in fishery f during time step t">$PV_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Stock fishery rate scaler for stock s in fishery f during time step t">$SHRF_{s,f,t}$</span> </div> </p>
+<p>**(3)**<div style = "text-align:center"><span title = "Cohort abundance of stock s at age 3 in fishery f during time step t">$Catch_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t.
+Base period calculation"><u>$BPER$</u>$_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler for fishery f during time step t.
+Input by user"><b>$FisheryScaler$</b>$_{f,t}$</span> $\times$ <span title = "Portion vulnerable of stock s at age 3 in fishery f during time step t">$PV_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Stock fishery rate scaler for stock s in fishery f during time step t.
+Input by user"><b>$SHRF$</b>$_{s,f,t}$</span> </div> </p>
 
 where:
 
@@ -174,15 +187,19 @@ The <span title = "Fishery scaler for fishery f during time step t">$FisheryScal
 <u>**3b.** Drop-off mortalities are estimated</u> by multiplying either **a**) landed catch in a non-selective retention fishery, or **b**) total encounters in a mark-selective fishery, by a user-specified drop-off mortality rate (<span title = "Drop-off mortality rate of fishery f">$DropRate_f$</span> see <a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_6_FRAMTAMM_fishery-related_mortality_rates_for_Coho_salmon_(version_used_in_2021_pre-season_planning_models)" target = "_blank" title = "Appendix 6">Appendix 6</a>)
 
 **a)** Non-selective retention fishery *f*:
-<p>**(4a)**<div style = "text-align:center"><span title = "Drop-off mortality of stock s at age 3 in fishery f at time step t">$Dropoff_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Landed catch of stock s at age 3 in fishery f during time step t">$Catch_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Drop-off mortality rate of fishery f">$DropRate_f$</span> </div> </p>
+<p>**(4a)**<div style = "text-align:center"><span title = "Drop-off mortality of stock s at age 3 in fishery f at time step t">$Dropoff_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Landed catch of stock s at age 3 in fishery f during time step t">$Catch_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Drop-off mortality rate of fishery f.
+Input by user"><b>$DropRate$</b>$_f$</span> </div> </p>
 **b)** Mark-selective fishery *f*:
-<p>**(4b)**<div style = "text-align:center"><span title = "Drop-off mortality of stock s at age 3 in fishery f at time step t">$Dropoff_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Number of encounters of stock s at age 3 in fishery f during time step t">$Encounters_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Drop-off mortality rate of fishery f">$DropRate_f$</span></div></p>
+<p>**(4b)**<div style = "text-align:center"><span title = "Drop-off mortality of stock s at age 3 in fishery f at time step t">$Dropoff_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Number of encounters of stock s at age 3 in fishery f during time step t">$Encounters_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Drop-off mortality rate of fishery f.
+Input by user"><b>$DropRate$</b>$_f$</span></div></p>
 
 <u>**3c.** Coho non-retention (CNR) mortalities are estimated</u> for time periods when fishing is allowed, but the retention of Coho is prohibited.
 
 Non-retention mortalities are calculated external to the model, often derived using historical observations, and are model inputs in units of dead age-3 fish <span title = "Estimated coho non-retention mortalities in fishery f during time step t">$(EstCNRMorts_{f,t})$</span>. Non-retention mortalities by stock are then calculated in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> by multiplying the total non-retention mortality by the stock proportion <span title = "Proportion of stock present">$(PropCatch)$</span>.
 
-<p>**(5)**<div style = "text-align:center"><span title = "Coho non-retention mortalities of stock s in fishery f during time step t">$CNR_{s,f,t}$</span> $=$ <span title = "Estimated coho non-retention mortalities in fishery f during time step t">$EstCNRMorts_{f,t}$</span> $\times$ <span title = "Proportion present of stock stock s in fishery f during time step t">$PropCatch_{s,f,t}$</span> </div> </p>
+<p>**(5)**<div style = "text-align:center"><span title = "Coho non-retention mortalities of stock s in fishery f during time step t">$CNR_{s,f,t}$</span> $=$ <span title = "Estimated coho non-retention mortalities in fishery f during time step t.
+Input by user"><b>$EstCNRMorts$</b>$_{f,t}$</span> $\times$ <span title = "Proportion present of stock stock s in fishery f during time step t.
+Base period calculation"><u>$PropCatch$</u>$_{s,f,t}$</span> </div> </p>
 
 <u>**3d.** Mark-selective fisheries</u> (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "MSF: Mark-selective fishery">MSF</a>) require additional computations to calculate both the landed catch and the mortalities due to the release of fish.
 
@@ -190,23 +207,38 @@ To simplify calculations, the <span title = "SHRS: Stock fishery rate scaler">SH
 
 For **marked stock** units, the landed catch is calculated using an additional term to account for marked-recognition error (the release of a marked fish) and is fishery and time step specific <span title = "Marked-recognition error in fishery f during time step t">$(mre_{f,t})$</span>:
 
-<p>**(6a)**<div style = "text-align:center"><span title = "Mark-selective fishery catch of stock s at age 3 in fishery f during time step t">$MSFCatch_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate of stock s at age 3 in fishery f during time step t">$BPER_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t">$FisheryScaler_{f,t}$</span> $\times (1 \ -$ <span title = "Marked-recognition error in fishery f during time step t">$mre_{f,t})$</span> </div> </p>
+<p>**(6a)**<div style = "text-align:center"><span title = "Mark-selective fishery catch of stock s at age 3 in fishery f during time step t">$MSFCatch_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate of stock s at age 3 in fishery f during time step t.
+Base period calculation"><u>$BPER$</u>$_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t.
+Input by user"><b>$FisheryScaler$</b>$_{f,t}$</span> $\times (1 \ -$ <span title = "Marked-recognition error in fishery f during time step t.
+Input by user"><b>$mre$</b>$_{f,t})$</span> </div> </p>
 
 For **unmarked stock** units, the landed catch is calculated using an additional term to account for unmarked retention error (retaining an unmarked fish in a mark-selective fishery) and is fishery and time step specific <span title = "Unmarked retention error for fishery f during time step t">$(ure_{f,t})$</span>:
 
-<p>**(6b)**<div style = "text-align:center"><span title = "Mark-selective fishery catch of stock s at age 3 in fishery f during time step t">$MSFCatch_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate of stock s at age 3 in fishery f during time step t">$BPER_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t">$FisheryScaler_{f,t}$</span> $\times$ <span title = "Unmarked-retention error for fishery f during time step t">$ure_{f,t}$</span> </div> </p>
+<p>**(6b)**<div style = "text-align:center"><span title = "Mark-selective fishery catch of stock s at age 3 in fishery f during time step t">$MSFCatch_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate of stock s at age 3 in fishery f during time step t.
+Base period calculation"><u>$BPER$</u>$_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t.
+Input by user"><b>$FisheryScaler$</b>$_{f,t}$</span> $\times$ <span title = "Unmarked-retention error for fishery f during time step t.
+Input by user"><b>$ure$</b>$_{f,t}$</span> </div> </p>
 
 Equations used to calculate adult release mortalities <span title = "Adult release mortalities">$(AdultRelMort)$</span> in mark-selective fisheries must account for marked recognition <span title = "Marked-recognition error">$(mre)$</span> and unmarked retention error <span title = "Unmarked retention error">$(ure)$</span> for marked and unmarked stock units and utilize fishery and time step-specific release mortality rates <span title = "Specific fishery mortality rate of fishery f during time step t">$(sfm_{f,t})$</span> (<a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_6_FRAMTAMM_fishery-related_mortality_rates_for_Coho_salmon_(version_used_in_2021_pre-season_planning_models)" target = "_blank" title = "Appendix 6">Appendix 6</a>).
 
-<p>**(7a) Marked:**<div style = "text-align:center"><span title = "Adult release mortalities of stock s at age 3 in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t">$BPER_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t">$FisheryScaler_{f,t}$</span> $\times$ <span title = "Marked recognition error in fishery f">$mre_f$</span> $\times$ <span title = "Specific release mortality rate of fishery f during time step t">$sfm_{f,t}$</span> </div> </p>
+<p>**(7a) Marked:**<div style = "text-align:center"><span title = "Adult release mortalities of stock s at age 3 in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t.
+Base period calculation"><u>$BPER$</u>$_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t.
+Input by user"><b>$FisheryScaler$</b>$_{f,t}$</span> $\times$ <span title = "Marked recognition error in fishery f.
+Input by user"><b>$mre_f$</b></span> $\times$ <span title = "Specific release mortality rate of fishery f during time step t.
+Input by user"><b>$sfm$</b>$_{f,t}$</span> </div> </p>
 
-<p>**(7b) UnMarked:**<div style = "text-align:center"><span title = "Adult release mortalities of stock s at age 3 in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t">$BPER_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t">$FisheryScaler_{f,t}$</span> $\times (1 \ -$ <span title = "Unmarked retention error in fishery f">$ure_f)$</span> $\times$ <span title = "Specific release mortality rate of fishery f during time step t">$sfm_{f,t}$</span> </div> </p>
+<p>**(7b) UnMarked:**<div style = "text-align:center"><span title = "Adult release mortalities of stock s at age 3 in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Cohort abundance of stock s at age 3 during time step t">$Cohort_{s,a \! = \! 3,t}$</span> $\times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t.
+Base period calculation"><u>$BPER$</u>$_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Fishery scaler of fishery f at time step t.
+Input by user"><b>$FisheryScaler$</b>$_{f,t}$</span> $\times (1 \ -$ <span title = "Unmarked retention error in fishery f.
+Input by user"><b>$ure$</b>$_f)$</span> $\times$ <span title = "Specific release mortality rate of fishery f during time step t.
+Input by user"><b>$sfm$</b>$_{f,t}$</span> </div> </p>
 
 Drop-off mortalities in mark-selective fisheries are calculated by multiplying the drop-off mortality rate with the number of total encounters, as described in process 3b above.
 
 <u>**3e.** All pre-terminal fishery mortalities</u> in time step *t* for stock *s* at age 3 are totaled <span title = "TotMort: Total pre-terminal fishery mortalities">$(TotMort)$</span> and the size of the cohort is reduced accordingly. Since the Coho model contains only age-3 mature fish, the summing of fishery mortalities occurs only once in each time step.
 
-<p>**(8)**<div style = "text-align:center"><span title = "Total pre-terminal fishery mortalities for stock s at age 3 during time step t">$TotMort_{s,a \! = \! 3,t}$</span> $=$ <span title = "Summed over fishery f">$\displaystyle\sum_f$</span> <span title = "Landed catch of stock s at age 3 in fishery f during time step t">$(Catch_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Drop-off mortality of stock s at age 3 in fishery f at time step t">$Dropoff_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age 3 in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Non-retention mortality of stock s at age 3 in fishery f during time step t">$CNR_{s,a \! = \! 3,f,t})$</span></div></p>
+<p>**(8)**<div style = "text-align:center"><span title = "Total pre-terminal fishery mortalities for stock s at age 3 during time step t">$TotMort_{s,a \! = \! 3,t}$</span> $=$ <span title = "Summed over fishery f">$\displaystyle\sum_f$</span> <span title = "Landed catch of stock s at age 3 in fishery f during time step t">$(Catch_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Drop-off mortality of stock s at age 3 in fishery f at time step t">$Dropoff_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age 3 in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t}$</span> $+$ <span title = "Non-retention mortality of stock s at age 3 in fishery f during time step t.
+Input by user"><b>$CNR$</b>$_{s,a \! = \! 3,f,t})$</span></div></p>
 
 The remaining cohort is then calculated as:
 
@@ -219,7 +251,7 @@ Fisheries during time steps 1 through 4 are considered to be on <a href = "https
 
 Terminal fishery mortality is calculated for the mature cohort only, using the same equations as for pre-terminal fishery mortality.  Fishery mortalities are summed, and the remainder of the mature cohort constitutes the escapement from <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries. Since only age-3 adult Coho are modeled and the mature time step is always 5, age and time step parameters can be eliminated from the equations.
 
-<p>**(10)**<div style = "text-align:center"><span title = "Total terminal fishery mortality for stock s at age 3 during time step t">$TotTermMort_{s,a \! = \! 3,t \! = \! 5}$</span> $=$ <span class = "math" title = "Sum over terminal fishery f">$\displaystyle\sum_{f \in terminal}$</span> <span title = "Landed catch of stock s at age 3 in fishery f during time step 5">$(Catch_{s,a \! = \! 3,f,t \! = \! 5}$</span> $+$ <span title = "Drop-off mortality of stock s at age a in fishery f at time step t">$Dropoff_{s,a,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age a in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t \! = \! 5}$</span> $+$ <span title = "Non-retention mortality of stock s at age a in fishery f during time step t">$CNR_{s,a \! = \! 3,f,t \! = \! 5})$</span> </div> </p>
+<p>**(10)**<div style = "text-align:center"><span title = "Total terminal fishery mortality for stock s at age 3 during time step t">$TotTermMort_{s,a \! = \! 3,t \! = \! 5}$</span> $=$ <span class = "math" title = "Sum over terminal fishery f">$\displaystyle\sum_{f \in terminal}$</span> <span title = "Landed catch of stock s at age 3 in fishery f during time step 5">$(Catch_{s,a \! = \! 3,f,t \! = \! 5}$</span> $+$ <span title = "Drop-off mortality of stock s at age a in fishery f at time step t">$Dropoff_{s,a,f,t}$</span> $+$ <span title = "Adult release mortalities of stock s at age a in fishery f during time step t">$AdultRelMort_{s,a \! = \! 3,f,t \! = \! 5}$</span> $+$ <span title = "Non-retention mortality of stock s at age a in fishery f during time step t"><b>$CNR$</b>$_{s,a \! = \! 3,f,t \! = \! 5})$</span> </div> </p>
 
 <p>**(11)**<div style = "text-align:center"><span title = "Escapement of stock s at age a during time step t">$Escapement_{s,a,t}$</span> $=$ <span title = "Mature cohort abundance of stock s at age a during time step t">$MatureCohort_{s,a,t}$</span> $-$ <span title = "Total terminal fishery mortality for stock s at age a during time step t">$TotTermMort_{s,a,t}$</span></div> </p>
 
@@ -255,11 +287,11 @@ The total number of unmarked mortalities in <span title = "MSF: Mark-selective f
 
 Bias adjusted exploitation rates for marked and unmarked stock units are calculated as:
 
-<p>**(13)**<div style = "text-align:center"><span title = "Exploitation rate of stock s at time step t">$ER_{s,t}$</span> $= 1 - (1 -$ <span title = "Summed over fishery f">$\displaystyle\sum_f$</span><span title = "Marked exploitation rate of stock s in fishery f during time step t">$(ER_{s,f,t}^M$</span><span title = "Weighted release mortality rate of stock s during time step t">$)^{\delta_{s,t}^W})$</span></div></p>
+<p>**(13)**<div style = "text-align:center"><span title = "Exploitation rate of stock s at time step t">$ER_{s,t}$</span> $= 1 - (1 -$ <span title = "Summed over fishery f">$\displaystyle\sum_f$</span><span title = "Marked exploitation rate of stock s in fishery f during time step t">$(ER_{s,f,t}^M$</span><span title = "Weighted release mortality rate of stock s during time step t">$)^{\boldsymbol \delta_{s,t}^W})$</span></div></p>
 
 **(14)**
-<span title = "Weighted release mortality rate w for stock s at time step t is equal to f's marked exploitation rate of stock s at time step t over the sum of fishery f's marked exploitation rate of stock s at time step t multiplied by the release mortality rate of fishery f, summed over fishery f">
-$$\delta_{s,t}^w = \sum_f \frac{ER_{s,f,t}^M}{\displaystyle\sum_f ER_{s,f,t}^M} \times sfm_f$$ </span>
+<div style = "text-align:center"><span title = "Weighted release mortality rate w for stock s at time step t is equal to f's marked exploitation rate of stock s at time step t over the sum of fishery f's marked exploitation rate of stock s at time step t multiplied by the release mortality rate of fishery f, summed over fishery f">
+$\delta_{s,t}^w =$ $\sum_f \frac{ER_{s,f,t}^M}{\displaystyle\sum_f ER_{s,f,t}^M}$ $\times$ <u>$sfm$</u>$_f$ </span> </div>
 
 where:
 
@@ -323,7 +355,14 @@ Working backwards from time step 5 to time step 1, for each time step, fishery a
  
 <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark_Selective_Fishing_Bias" target = "_blank" title = "Mark-selective fishing bias">Mark-selective fishery bias</a> correction calculations used for Coho produce an error when the exploitation rate exceeds 100%.  This frequently occurs during early iterations, because the abundances from the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Seed_Run" target = "_blank" title = "Seed run">seed run</a> (usually the pre-season run) are not related to the post-season fishery catches (e.g., low pre-season forecasts but high post-season terminal catches).  To avoid errors, the first iteration initiates starting cohorts scaled 1000 times greater than the base period abundance.  Additionally, the first 7 iterations are run without bias correction to get sufficiently close to the target escapement, before adding mark-selective fishing bias calculations for all remaining iterations. 
 
-<p>**(16)**<div style = "text-align:center"><span title = "Stock scaler of stock s at age 3">$StockScaler_{s,a \! = \! 3}$</span> $=$ <span title = "Backward FRAM target for stock s">$((((((BkTarget_s$</span> $+$ <span title = "Total mortality of stock s at age 3 during time step 5">$(TotMort_{s,a \! = \! 3,t \! = \! 5}$</span> $+$ <span title = "Total terminal mortality for stock s at age 3 during time step 5">$TotTermMort_{s,a \! = \! 3,t \! = \! 5})$</span> $\div (1 -$ <span title = "Discrete natural mortality at age 3 during time step 5">$M_{a \! = \! 3,t \! = \! 5})$</span> $+$ <span title = "Total mortality of stock s at age 3 during time step 4">$TotMort_{s,a \! = \! 3,t \! = \! 4})$</span> $\div (1 -$ <span title = "Discrete natural mortality at age 3 during time step 4">$M_{a \! = \! 3,t \! = \! 4})$</span> $+$ <span title = "Total mortality of stock s at age 3 during time step 3">$TotMort_{s, a \! = \! 3,t \! = \! 3})$</span> $\div (1 -$ <span title = "Discrete natural mortality at age 3 during time step 3">$M_{a \! = \! 3,t \! = \! 3})$</span> $+$ <span title = "Total mortality of stock s at age 3 during time step 2">$TotMort_{s,a \! = \! 3,t \! = \! 2})$</span> $\div (1 -$ <span title = "Discrete natural mortality at age 3 during time step 2">$M_{a \! = \! 3,t \! = \! 2})$</span> $+$ <span title = "Total mortality of stock s at age 3 during time step 1">$TotMort_{s,a \! = \! 3,t \! = \! 1})$</span> $\div (1 -$ <span title = "Discrete natural mortality at age 3 during time step 1">$M_{a \! = \! 3,t \! = \! 1}))$</span> $\div$ <span title = "Base period starting cohort abundance of stock s at age 3">$BPCohort_{s,a \! = \! 3}$</span> </div> </p>
+<p>**(16)**<div style = "text-align:center"><span title = "Stock scaler of stock s at age 3">$StockScaler_{s,a \! = \! 3}$</span> $=$ <span title = "Backward FRAM target for stock s.
+Input by user">$(((((($<b>$BkTarget_s$</b></span> $+$ <span title = "Total mortality of stock s at age 3 during time step 5">$(TotMort_{s,a \! = \! 3,t \! = \! 5}$</span> $+$ <span title = "Total terminal mortality for stock s at age 3 during time step 5">$TotTermMort_{s,a \! = \! 3,t \! = \! 5})$</span> $\div (1 -$ <span title = "Discrete natural mortality at age 3 during time step 5.
+Input by user"><b>$M$</b>$_{a \! = \! 3,t \! = \! 5})$</span> $+$ <span title = "Total mortality of stock s at age 3 during time step 4">$TotMort_{s,a \! = \! 3,t \! = \! 4})$</span> $\div (1 -$ <span title = "Discrete natural mortality at age 3 during time step 4.
+Input by user"><b>$M$</b>$_{a \! = \! 3,t \! = \! 4})$</span> $+$ <span title = "Total mortality of stock s at age 3 during time step 3">$TotMort_{s, a \! = \! 3,t \! = \! 3})$</span> $\div (1 -$ <span title = "Discrete natural mortality at age 3 during time step 3.
+Input by user"><b>$M$</b>$_{a \! = \! 3,t \! = \! 3})$</span> $+$ <span title = "Total mortality of stock s at age 3 during time step 2">$TotMort_{s,a \! = \! 3,t \! = \! 2})$</span> $\div (1 -$ <span title = "Discrete natural mortality at age 3 during time step 2.
+Input by user"><b>$M$</b>$_{a \! = \! 3,t \! = \! 2})$</span> $+$ <span title = "Total mortality of stock s at age 3 during time step 1">$TotMort_{s,a \! = \! 3,t \! = \! 1})$</span> $\div (1 -$ <span title = "Discrete natural mortality at age 3 during time step 1.
+Input by user"><b>$M$</b>$_{a \! = \! 3,t \! = \! 1}))$</span> $\div$ <span title = "Base period starting cohort abundance of stock s at age 3.
+Base period calculation"><u>$BPCohort$</u>$_{s,a \! = \! 3}$</span> </div> </p>
 
 where:
 
