@@ -199,7 +199,7 @@ Non-retention mortalities are calculated external to the model, often derived us
 
 The stock-specific CNR mortality in a fishery and time step is computed in four steps.
 
-*Step 1*: Calculate the stock specific catch in a retention fishery ($TempCatch_{s,f,t}$) with a fishery scaler of 1 (i.e., at base period effort).
+*Step 1*: Calculate the stock specific catch in a retention fishery ($TempCatch_{s,f,t}$) with a $FisheryScaler$ of 1 (i.e., at base period effort).
 
 <p> (**5**) <div style = "text-align:center"> $TempCatch_{s,a \! = \! 3,f,t} = Cohort_{s,a \! = \! 3,t} \times$ <u>$BPER$</u>$_{s,a \! = \! 3,f,t} \times$ <b>$FisheryScaler$</b>$_{f,t} \times$ <b>$SHRF$</b>$_{s,f,t}$ </div> </p>
 
@@ -224,7 +224,7 @@ where:
 
 <u>**3d.** Mark-selective fisheries</u> (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "MSF: Mark-selective fishery">MSF</a>) require additional computations to calculate both the landed catch and the mortalities due to the release of fish.
 
-To simplify calculations, the <span title = "SHRS: Stock fishery rate scaler">SHRS</span> is excluded from the below calculations:
+To simplify calculations, the <span title = "SHRS: Stock fishery rate scaler">$SHRS$</span> is excluded from the below calculations:
 
 For **marked stock** units, the landed catch is calculated using an additional term to account for marked-recognition error (the release of a marked fish) and is fishery and time step specific <span title = "Marked-recognition error in fishery f during time step t">$(mre_{f,t})$</span>:
 
