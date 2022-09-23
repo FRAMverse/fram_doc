@@ -193,9 +193,9 @@ Input by user"><b>$DropRate$</b>$_f$</span> </div> </p>
 <p>**(4b)**<div style = "text-align:center"><span title = "Drop-off mortality of stock s at age 3 in fishery f at time step t">$Dropoff_{s,a \! = \! 3,f,t}$</span> $=$ <span title = "Number of encounters of stock s at age 3 in fishery f during time step t">$Encounters_{s,a \! = \! 3,f,t}$</span> $\times$ <span title = "Drop-off mortality rate of fishery f.
 Input by user"><b>$DropRate$</b>$_f$</span></div></p>
 
-<u>**3c.** Coho non-retention (CNR) mortalities are estimated</u> for time periods when fishing is allowed, but the retention of Coho is prohibited.
+<u>**3c.** Coho non-retention (CNR) mortalities are estimated</u> when fishing is allowed, but the retention of Coho is prohibited.
 
-Non-retention mortalities are calculated external to the model, often derived using historical observations, and are model inputs in units of dead age-3 fish <span title = "Estimated coho non-retention mortalities in fishery f during time step t">$(EstCNRMorts_{f,t})$</span>. Non-retention mortalities by stock are then calculated in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> by multiplying the total non-retention mortality by the stock proportion <span title = "Proportion of stock present">$(PropCatch)$</span>.
+Non-retention mortalities are calculated external to the model, often derived using historical observations, and are model fishery by time step inputs in units of dead age-3 fish <span title = "Estimated coho non-retention mortalities in fishery f during time step t">$(EstCNRMorts_{f,t})$</span>. Non-retention mortalities by stock are then calculated in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> by multiplying the total non-retention mortality by the stock proportion within each fishery and time step <span title = "Proportion of stock present">$(PropTempCatch_{s,a=3,f,t})$</span>.
 
 <p>**(5)**<div style = "text-align:center"><span title = "Coho non-retention mortalities of stock s in fishery f during time step t">$CNR_{s,f,t}$</span> $=$ <span title = "Estimated coho non-retention mortalities in fishery f during time step t.
 Input by user"><b>$EstCNRMorts$</b>$_{f,t}$</span> $\times$ <span title = "Proportion present of stock stock s in fishery f during time step t.
@@ -283,24 +283,132 @@ knitr::include_graphics(c("images/Coho_FRAM_process_schematic.PNG"))
 
 ## 4.5. Bias Corrected Mark-Selective Fishery Equations for Coho
 
-The total number of unmarked mortalities in <span title = "MSF: Mark-selective fishery">MSF<span> is underestimated by models relying on the linear relationship between exploitation rate and release-mortality rate.  The actual mortality rate of unmarked fish is an increasing function of the time step-specific exploitation rate.  When <span title = "MSF: Mark-selective fishery">MSFs</span> operate during a modeled time step, unmarked mortalities are underestimated because released fish may encounter the fishing gear more than once during the modeled time step and the unmarked-to-marked fish ratio for all fish in the pool increases during the time step as a result of the selective removal of marked fish in a mark-selective fishery.  See (Conrad, Hagen-Breaux, & Yuen, 2013) for a detailed description of the equations.
+Mark-selective fisheries (MSF) allow anglers to keep legal-size, adipose-fin clipped hatchery fish (hereafter, "marked") and require the release of any fish with an adipose fin (hereafter, "unmarked"). Originally, both Chinook and Coho FRAM used estimates of release mortality ($\delta$) and time-period specific exploitation rates (ER) from non-selective fisheries as a surrogate for encounter rates of unmarked stocks to estimate the mortality of unmarked fish.
 
-Bias adjusted exploitation rates for marked and unmarked stock units are calculated as:
+<p> (**13**) <div style = "text-align:center"> $EncounterRate_{Unmarked} = ER \times$ <b>$\delta$</b> </div> </p>
 
-<p>**(13)**<div style = "text-align:center"><span title = "Exploitation rate of stock s at time step t">$ER_{s,t}$</span> $= 1 - (1 -$ <span title = "Summed over fishery f">$\displaystyle\sum_f$</span><span title = "Marked exploitation rate of stock s in fishery f during time step t">$(ER_{s,f,t}^M$</span><span title = "Weighted release mortality rate of stock s during time step t">$)^{\boldsymbol \delta_{s,t}^W})$</span></div></p>
+Chinook FRAM continues to rely on this method. However, the release of salmon causes bias in these linear exploitation rate calculations. The true mortality for unmarked fish is underestimated because it is an increasing function of time-period specific encounter rates. The unmarked-to-marked ratio of all fish in the pool increases over time as the result of selective removal of marked fish in MSFs and released unmarked fish that survive may encounter the fishing gear more than once during the time period (Figure 2). The original linear functions do not capture this process. Additionally, because all fisheries during a modeled time period are assumed to operate simultaneously on a single pool of fish, this bias also occurs in any modeled non-selective fisheries (NSF) that take place during the same model time period as the MSF.
 
-**(14)**
-<div style = "text-align:center"><span title = "Weighted release mortality rate w for stock s at time step t is equal to f's marked exploitation rate of stock s at time step t over the sum of fishery f's marked exploitation rate of stock s at time step t multiplied by the release mortality rate of fishery f, summed over fishery f">
-$\delta_{s,t}^w =$ $\sum_f \frac{ER_{s,f,t}^M}{\displaystyle\sum_f ER_{s,f,t}^M}$ $\times$ <u>$sfm$</u>$_f$ </span> </div>
+```{r msfbiasimage1, echo=FALSE, out.width='100%'}
+knitr::include_graphics(c("images/MSFbiasFig1.PNG"))
+```
 
-where:
+**Figure 2**: During MSF, the selective removal of marked fish (black) may increase the unmarked-to-marked ratio. In this example, the mark rate is 50% at the start of the time-period and 25% at the end. Additionally, released unmarked fish that survive encountering the fishing gear (light blue) may encounter the fishing gear again. In this example, two fish (dark blue), encountered gear again and were thus subjected to release mortality more than once, plus two additional unmarked fish encounters (light blue) occurred.
 
-- <span class = "math" title = "Marked exploitation rate for stock s in fishery f during time step t">$ER^M_{s,f,t}$</span> is the marked exploitation rate of stock *s* in fishery *f* during time step *t*
-- <span title = "Release mortality rate in (MSF) fishery f">$sfm_f$</span> is the release mortality rate in <span title = "MSF: Mark selective fishery">(MSF)</span> fishery *f*
-- <span title = "Weighted release mortality rate of stock s during time step t">$\delta^W_{s,t}$</span> is the weighted release mortality rate for stock *s* during time step *t*
-- <span title = "Marked exploitation rates summed over all fisheries for stock s during time step t">$\sum_f ER^M_{s,t}$</span> is the marked exploitation rates summed over fisheries for stock *s* at time step *t*
+***Bias Corrected Mark-Selective Fishery Calculations for Coho***
 
-These exponential equations were implemented to estimate exploitation rates in Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> for stocks experiencing release in mark-selective fisheries during a given time step.
+The *biased* exploitation rate for a stock in a mark-selective fishery, shown in red, is simply the time-period-specific average exploitation rate from the base period multiplied by a scalar that relates the expected current year effort to the base period effort and a release mortality rate for the fishery.
+
+<p> (**14**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Marked} =$ <b>$FisheryScaler$</b> $\times$ $\overline{ER}$$_{Base} \times 1$ </div> </p>
+
+<p> (**15**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Unmarked} =$ <b>$FisheryScaler$</b> $\times$ $\overline{ER}$$_{Base} \times$ <b>$\delta$</b>  </div> </p>
+
+In the original biased equations, the exploitation rates of non-selective fisheries were the same as the marked exploitation rate ($ER_{Marked}$) in mark-selective fisheries. Subsequent unbiased equations were developed with a marked frame of reference. In the following equations, $ER_{Marked}$ is synonymous with the original non-selective exploitation rates.
+
+The equations above are biased as they approximate a nonlinear Baranov equation with a linear model. Conrad, Hagen-Breaux, and Yuen (2013) developed unbiased calculations for the number of unmarked mortalities when there are multiple MSF and NSF acting on a stock in a time period. This paper is summarized briefly here, see the publication for more detailed documentation. The MSF bias correction in FRAM was a result of demonstrating that unmarked mortalities were underestimated due to multiple encounter bias from mark-selective fisheries (Conrad 2010) and the desire to incorporate bias-corrected equations into FRAM (Conrad 2011), (Hagen-Breaux 2012).
+
+When the only fishery acting on a stock in a time period is a MSF, the unbiased method for calculating the total unmarked exploitation rate is:
+
+<p> (**16**) <div style = "text-align:center"> $\widehat{ER}$$_{Unmarked} =$ $1 - (1 - ER_{Marked})$ <b>$^ \delta$</b>, </div> </p>
+
+and $\delta$ is the release mortality rate of the fishery.
+
+This becomes more complicated when there are multiple fisheries acting on an unmarked cohort during the same time period. Even when assuming a constant release mortality across all fisheries, because of nonlinearity it is not correct to perform bias corrections separately on each fishery and then sum over all fisheries. This incorrect method results in the underestimation of the true exploitation rate on the unmarked cohort. When there are multiple fisheries acting on a stock in a single pool model, and the release mortality is constant across all fisheries, the total bias-corrected exploitation rate on the unmarked cohort across all fisheries is calculated as:
+
+<p> (**17**) <div style = "text-align:center"> $\widehat{ER}$$_{Unmarked, F} =$ $1 - (1 -$ $\sum_f^F$${ER_{Marked,f}})$ <b>$^ \delta$</b>, </div> </p>
+
+where $f$ is an individual fishery and $F$ is the set of all fisheries.
+
+In reality, in any given time period many stocks are subject to a mixture of NSF and MSF with varying release mortality rates, and mark-recognition is not perfect. Recognition errors for marked fish ($mre$, marked fish are identified as unmarked and released or release of marked fish is intentional) reduce the exploitation rate on the marked cohort and introduce bias in the exploitation rate calculation for the marked portion of the stock. Conversely, recognition errors for unmarked fish in MSF ($ure$, unmarked fish are kept) increase the exploitation rate on an unmarked cohort.
+
+An overall release mortality rate in fishery $f$ that accounts for mark-recognition error for a marked cohort ($\delta_{Marked,f}$) is defined by:
+
+<p> (**18**) <div style = "text-align:center"> $\delta_{Marked,f} =$ <b>$mre$</b>$_f + (1 -$ <b>$mre$</b>$_f)$  $\times$ <b>$\delta$</b>$_f$ </div> </p>
+
+Similarly, for the unmarked cohort:
+
+<p> (**19**) <div style = "text-align:center"> $\delta_{Unmarked,f} = (1 -$ <b>$ure$</b>$_f) + ($<b>$ure$</b>$_f$  $\times$ <b>$\delta$</b>$_f)$ </div> </p>
+
+Because of mark recognition error, weighted release mortality rates ($\delta^W$) across all fisheries in the modeled time period are calculated for marked and unmarked cohorts. These weighted release mortality rates are the ratio of the sum of the biased exploitation rate calculations, which account for release mortalities and the sum of the marked exploitation rates.
+
+Weighted release mortalities for marked and unmarked are calculated as:
+
+(**20**)
+$$\delta^{W}_{Marked} = \sum^{F}_{f}(\frac{ER_{Marked,f} \times \delta_{Marked,f}}{\sum^{F}_{f} ER_{Marked, f}}) = \sum^{F}_{f}(\frac{ER_{Marked,f} \times \{ \boldsymbol{mre}_f + ((1 - \boldsymbol{mre}_f) \times \boldsymbol{\delta}_f) \}}{\sum^{F}_{f} ER_{Marked,f}})$$
+
+(**21**)
+$$\delta^{W}_{Unmarked} = 
+\sum^{F}_{f}(\frac{ER_{Marked,f} \times \delta_{Unmarked,f}}{\sum^{F}_{f} ER_{Marked, f}}) =
+\sum^{F}_{f}(\frac{ER_{Marked,f} \times \{ (1 - \boldsymbol{ure}_f) + (\boldsymbol{ure}_f \times \boldsymbol{\delta}_f) \}}{\sum^{F}_{f} ER_{Marked,f}})$$
+
+If there is no mark recognition error, bias-adjusted exploitation rates for marked and unmarked stock units are calculated as:
+
+<p> (**22**) <div style = "text-align:center"> $\widehat{ER}_{Marked, F} = \sum_{f}^{F} ER_{Marked,f}$ </div> </p>
+
+<p> (**23**) <div style = "text-align:center"> $\widehat{ER}_{Unmarked,F} = 1 - (1 - \sum_{f}^{F} ER_{Marked,f})^{\delta^{W}_{Unmarked}}$ </div> </p>
+
+If there is mark recognition error, bias-adjusted exploitation rates for marked and unmarked stock units are calculated as:
+
+<p> (**24**) <div style = "text-align:center"> $\widehat{ER}_{Marked,F} = 1 - (1 - \sum_{f}^{F} ER_{Marked,f})^{\delta^{W}_{Marked}}$ </div> </p>
+
+<p> (**25**) <div style = "text-align:center"> $\widehat{ER}_{Unmarked,F} = 1 - (1 - \widehat{ER}_{Marked,F})^{\delta^{W}_{Marked} / \delta^{W}_{Unmarked}}$ </div> </p>
+
+Once unbiased exploitation rate calculations are completed, the total number of unmarked and marked mortalities that are projected to occur in all fisheries are allocated to each fishery in each time period. The unbiased total mortalities ($\widehat D$) are allocated proportional to the simple, biased exploitation rate of each fishery. This total is calculated as:
+
+<p> (**26**) <div style = "text-align:center"> $\widehat{D}_{Unmarked,f} = N_{Unmarked} \times \widehat{ER}_{Unmarked,F} \times P_f$ </div> </p>
+
+Here, $N_{Unmarked}$ is the initial number of unmarked fish after natural mortality and $P_f$ is the proportion of total unmarked fish mortalities in all fisheries that occurred in fishery $f$.
+
+<p> (**27**) <div style = "text-align:center"> $P_f = \frac{ER_{Marked} \times \delta_{Unmarked,f}}{\sum_{f}^{F} ER_{Marked} \times \delta_{Unmarked,f}}$ </div> </p>
+
+A similar process can be used to allocate marked mortalities to fisheries.
+
+After total mortalities for a fishery have been calculated, they are assigned as catch ($L$) and non-landed mortalities ($N$) using recognition rates and release mortalities.
+
+For an unmarked cohort, landed catch for fishery $i$ ($\widehat D_{L, Unmarked, f}$) is calculated:
+
+<p> (**28**) <div style = "text-align:center"> $\widehat{D}_{L, Unmarked, f} = \widehat D_{Unmarked,f} \times \frac{1 - \boldsymbol{ure}_f}{(1-\boldsymbol{ure}_f) + (\boldsymbol{ure}_f \times \boldsymbol{\delta}_f)}$ </div> </p>
+
+and non-landed mortality ($\widehat D_{N, Unmarked, f}$) is calculated as:
+
+<p> (**29**) <div style = "text-align:center"> $\widehat{D}_{N, Unmarked, f} = \widehat D_{Unmarked,f} \times \frac{\boldsymbol{ure}_f \times \boldsymbol{\delta}_f}{(1-\boldsymbol{ure}_f) + (\boldsymbol{ure}_f \times \boldsymbol{\delta}_f)}$ </div> </p>
+
+Similarly, for a marked cohort:
+
+<p> (**30**) <div style = "text-align:center"> $\widehat D_{L, Marked, f} = \widehat D_{Marked,f} \times \frac{\boldsymbol{mre}_f}{\boldsymbol{mre}_f + (1 - \boldsymbol{mre}_f) \times \boldsymbol{\delta}_f}$ </div> </p>
+
+and non-landed mortality ($\widehat D_{N,Marked,f}$) is calculated as:
+
+<p> (**31**) <div style = "text-align:center"> $\widehat D_{N,Marked,f} = \widehat D_{Marked,f} \times \frac{(1 - \boldsymbol{mre}_f) \times \boldsymbol{\delta}_f}{\boldsymbol{mre}_f + (1 - \boldsymbol{mre}_f) \times \boldsymbol{\delta}_f}$ </div> </p>
+
+***Applying MSF Bias Calculations to FRAM***
+
+If MSF are modeled as rates in FRAM, the equations presented above work well. These equations are rate based and incorporate fishery effort scalers to model the magnitude of fisheries. However, many fisheries are modeled as quotas with a catch input; in essence supplying the results, expected mortalities, of the unbiased equations. The model has to find the fishery effort scaler that produces these results utilizing the unbiased equations. This problem cannot be corrected at a stock level, since the catch of a fishery is made up of many stocks. The unbiased exploitation rates can be found using an empirical, iterative solution. First, the unbiased exploitation rates are calculated using base period exploitation rates ($FisheryScaler$ = 1), then the landed catch of marked and unmarked fish is calculated ($Catch$). This landed catch is compared to the target catch. A new fishery effort scaler is computed as $FisheryScaler = TargetCatch/Catch$. Iterations continue until the calculated FRAM landed catch matches the quota.
+
+```{r msfbiasimage2, echo=FALSE, out.width='100%'}
+knitr::include_graphics(c("images/MSFbiasFig2.PNG"))
+```
+**Figure 3**: Flowchart illustrates the iterative process of calculating unbiased exploitation rates when a MSF is modeled as a quota.
+
+If you would like to see the exact steps completed in FRAM (as shown in Figure 3), read on. Otherwise, stop here. All steps are completed for each stock. 
+
+Step 1: Calculate unbiased marked ($\widehat{ER}_{Marked,s,f,t}$) and unmarked ($\widehat{ER}_{Marked,s,f,t}$) exploitation rate for stock $s$ in time period $t$ using equations 24 and 25. During the first iteration, $ER_{Marked,s,f,t} = \overline{ER}_{s,f,t}^{Base}$.
+
+Step 2: Calculate total landed catch of marked ($D_{Marked,L,s,f,t}$) and unmarked ($D_{Unmarked,L,s,f,t}$) cohorts of stock $s$ using equations 28 and 30.
+
+Step 3: Calculate total landed catch across all stocks encountered in a fishery.
+
+$$Catch_f = \sum_s{D_{Marked,L,s,f,t}} + \sum_s{D_{Unmarked,L,s,f,t}}$$
+
+Step 4: Calculate fishery scaler.
+
+$$FisheryScaler_f = \frac{Catch_f}{Baseperiodcatch_f}$$
+
+Step 5: Scale base period exploitation rate.
+
+$$ER_{Marked,s,f} = FisheryScaler_f \times \overline{ER}_{s,f}^{Base}$$
+
+These steps are repeated until $Catch_f$ is equal to the target quota.
 
 # 5. Terminal Area Management Module (<span title = "TAMM: Terminal Area Management Module">TAMM</span>)
 
@@ -327,7 +435,7 @@ Common <span title = "TAMM: Terminal Area Management Module">TAMM</span> feature
 - Generate <span title = "TAMM: Terminal Area Management Module">TAMM</span> reports of combined <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> and <span title = "TAMM: Terminal Area Management Module">TAMM</span> fishery impacts 
 
 
-<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> iteratively finds the fishery scalers that produce the same catches <span title = "Catch calculated within FRAM">$(Catch_{FRAM})$</span> as those supplied by <span title = "TAMM: Terminal Area Management Module">TAMM</span> <span title = "Catch calculated within TAMM">$(Catch_{TAMM})$</span> in Puget Sound and Washington coastal fisheries (Figure 3).  <span title = "TAMM: Terminal Area Management Module">TAMM</span> catches are either input into the <span title = "TAMM: Terminal Area Management Module">TAMM</span> as catch values or <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Harvest_Rate_(HR)" target = "_blank" title = "HR: Harvest rate">harvest rates</a>. Harvest rates are multiplied by a unique terminal run size definition (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Run_Size" target = "_blank" title = "TRS: Terminal run size">TRS</a>).  The <span title = "TRS: Terminal run size">TRS</span> for a <span title = "TAMM: Terminal Area Management Module">TAMM</span> region/stock represents ‘run-to-the-river’ of a stock plus catches of all stocks in the terminal fisheries designated for that region. In Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title = "TAMM: Terminal Area Management Module">TAMM</span>, terminal run size definitions can be customized (using the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#TAAETRSList" target = "_blank" title = "TAAETRSList">TAAETRSList</a> table in the Microsoft Access database) and must be aligned with calculations used for each model input.
+<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> iteratively finds the fishery scalers that produce the same catches <span title = "Catch calculated within FRAM">$(Catch_{FRAM})$</span> as those supplied by <span title = "TAMM: Terminal Area Management Module">TAMM</span> <span title = "Catch calculated within TAMM">$(Catch_{TAMM})$</span> in Puget Sound and Washington coastal fisheries (Figure 4).  <span title = "TAMM: Terminal Area Management Module">TAMM</span> catches are either input into the <span title = "TAMM: Terminal Area Management Module">TAMM</span> as catch values or <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Harvest_Rate_(HR)" target = "_blank" title = "HR: Harvest rate">harvest rates</a>. Harvest rates are multiplied by a unique terminal run size definition (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Run_Size" target = "_blank" title = "TRS: Terminal run size">TRS</a>).  The <span title = "TRS: Terminal run size">TRS</span> for a <span title = "TAMM: Terminal Area Management Module">TAMM</span> region/stock represents ‘run-to-the-river’ of a stock plus catches of all stocks in the terminal fisheries designated for that region. In Coho <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title = "TAMM: Terminal Area Management Module">TAMM</span>, terminal run size definitions can be customized (using the <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#TAAETRSList" target = "_blank" title = "TAAETRSList">TAAETRSList</a> table in the Microsoft Access database) and must be aligned with calculations used for each model input.
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> calculations for each terminal area:
 
@@ -343,7 +451,7 @@ During a first pass, <span title = "FRAM: Fishery Regulation Assessment Model">F
 knitr::include_graphics(c("images/FRAM_TAMM_flowchart.PNG"))
 ```
 
-Figure 3.  Conceptual flow chart for <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title = "TAMM: Terminal Area Management Module">TAMM</span> calculations.
+Figure 4.  Conceptual flow chart for <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title = "TAMM: Terminal Area Management Module">TAMM</span> calculations.
 
 # 6. Backwards <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>
 
