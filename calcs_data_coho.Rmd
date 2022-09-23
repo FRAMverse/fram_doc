@@ -320,9 +320,9 @@ knitr::include_graphics(c("images/MSFbiasFig1.PNG"))
 
 The *biased* exploitation rate for a stock in a mark-selective fishery, shown in red, is simply the time-period-specific average exploitation rate from the base period multiplied by a scalar that relates the expected current year effort to the base period effort and a release mortality rate for the fishery.
 
-<p> (**17**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Marked} =$ <b>$FisheryScaler$</b> $\times$ $\overline{ER}$$_{Base} \times 1$ </div> </p>
+<p> (**17**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Marked} =$ <b>$FisheryScaler$</b> $\times$ <u>$BPER$</u> $\times 1$ </div> </p>
 
-<p> (**18**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Unmarked} =$ <b>$FisheryScaler$</b> $\times$ $\overline{ER}$$_{Base} \times$ <b>$\delta$</b>  </div> </p>
+<p> (**18**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Unmarked} =$ <b>$FisheryScaler$</b> $\times$ <u>$BPER$</u> $\times$ <b>$\delta$</b>  </div> </p>
 
 In the original biased equations, the exploitation rates of non-selective fisheries were the same as the marked exploitation rate ($ER_{Marked}$) in mark-selective fisheries. Subsequent unbiased equations were developed with a marked frame of reference. In the following equations, $ER_{Marked}$ is synonymous with the original non-selective exploitation rates.
 
