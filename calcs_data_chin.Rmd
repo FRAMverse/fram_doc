@@ -540,30 +540,227 @@ Where all components are defined previously and $(1-PV_{s,a,f,t})$ is the propor
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses different rates to model encounters of legal and sublegal fish. These rates are computed during the calibration process and are based on landed catch and encounter information during reference base period years. As such, they reflect the size limit conditions during the base period. If the size limit is changed, a portion of the population (with sizes between the old and the new size limit) that previously received a sublegal encounter rate will receive a legal encounter rate or vice versa. This leads to the total number of computed encounters varying with size limits, if effort remains constant.
 
-To correct for this outcome, algorithms were introduced to hold total fishery encounters constant when size limits are changed.
+When size limits are modeled in FRAM, each fish smaller than the size limit is treated as a sub-legal fish. Sub-legal encounter rates are used to compute releases and release mortalities. Conversely, each fish larger than the size limit is deemed legal and legal encounter rates are used to estimate catch as well as releases and release mortalities in mark selective fisheries. 
 
-When the new size limit is less than the reference base period size limit, the difference in sublegal encounters becomes landed catch and is added to the calculated landed catch that results under the base period size limit. The calculation of sublegal mortalities remains unchanged (see section 4.2 step 3c).   
+FRAM uses different rates to model encounters of legal and sub-legal fish. These rates are computed during the calibration process and are based on landed catch and encounter information during the base period years (2008-2013). As such, they reflect the size limit conditions as they existed at the time.
 
-<p>**(37)**<div style = "text-align:center"><span title = "New landed catch calculation of stock s at age a in fishery f during time step t">$NewLandedCatch_{s,a,f,t}$</span> $=$ <span title = "Original landed catch calculation of stock s at age a in fishery f during time step t">$OriginalLandedCatch_{s,a,f,t}$</span> $+$ <span title = "Original calculation of sublegal encounters of stock s at age a in fishery f during time step t">$(OriginalSublegalEncounters_{s,a,f,t}$</span> $-$ <span title = "New calculation of sublegal encounters of stock s at age a in fishery f during time step t">$NewSublegalEncounters_{s,a,f,t})$</span> </div> </p>
+Having differing rates for legal and sub-legal encounters results in an uneven distribution of legal and sub-legal fish for a stock and age. Therefore, modeling a size limit change using traditional equations (see descriptions at the beginning of this section) generally results in a change of total fishery encounters. This is a questionable outcome since the size limit is evaluated after a fish is encountered. Therefore, equations were incorporated into FRAM to hold encounters in a fishery constant, regardless of the size limit.
 
-When the new size limit is greater than the base period size limit, the difference in landed catch becomes sublegal encounters, which are added to the calculated sublegal encounters that result under the base period size limit. These sublegal encounters are converted to sublegal mortality by multiplying by the sublegal release mortality rate.  The calculation of landed catch remains unchanged (see section 4.2 step 3a). 
+The simplest approach for evaluating a size limit change from the base period is to calculate the legal and sub-legal encounters for both the base period and new minimum size limit and then adjust the differences so that total encounters remain constant. Encounter differences occur in the region between the base period size limit and the new minimum size limit (Figures 1-3).
 
-<p>**(38)**<div style = "text-align:center"><span title = "New sublegal encounter calculation of stock s at age a in fishery f during time step t">$NewSublegalEncounters_{s,a,f,t}$</span> $=$ <span title = "Original sublegal encounter calculation of stock s at age a in fishery f during time step t">$OriginalSublegalEncounters_{s,a,f,t}$</span> $+$ <span title = "Original landed catch calculation of stock s at age a in fishery f during time step t">$(OriginalLandedCatch_{s,a,f,t}$</span> $-$ <span title = "New landed catch calculation for stock s at age a in fishery f during time step t">$NewLandedCatch_{s,a,f,t})$</span> </div> </p>
+```{r legal sublegal fig1, echo = FALSE, fig.height = 6, fig.width = 8}
+tibble::tibble(
+    `Cohort Size` = c(5, 13, 25, 49, 76, 91, 98, 100, 100, 98, 91, 76, 49, 25, 13, 5),
+    `BP Encounters` = c(4, 11, 21, 38, 57, 74, 79, 80, 40, 39, 36, 29, 20, 11, 7, 3),
+    `Length (mm)` = c(200, 245, 290, 340, 380, 400, 425, 450, 450, 475, 500, 520, 560, 610, 645, 690)
+  ) |> 
+  tidyr::pivot_longer(-`Length (mm)`, names_to = "Encounter Type", values_to = "Encounters") |> 
+  ggplot2::ggplot() +
+    ggplot2::geom_point(ggplot2::aes(x = `Length (mm)`, 
+                                     y = Encounters, 
+                                     color = `Encounter Type`, 
+                                     shape = `Encounter Type`,
+                                     size = `Encounter Type`), 
+                        size = 1.5) +
+    ggplot2::geom_line(ggplot2::aes(x = `Length (mm)`, 
+                                    y = Encounters, 
+                                    color = `Encounter Type`,
+                                    size = `Encounter Type`)) +
+    ggplot2::scale_y_continuous("Number of Fish", 
+                                limits = c(0, 100.5), 
+                                expand = ggplot2::expansion(mult = c(0,0))) +
+    ggplot2::scale_x_continuous(limits = c(199,701), 
+                                expand = ggplot2::expansion(mult = c(0,0))) +
+    ggplot2::scale_shape_manual("", values = c(17, 16)) +
+    ggplot2::scale_size_manual("", values = c(1.5, 1)) +
+    ggplot2::scale_color_manual("", values = c("black", "red")) +
+    ggplot2::geom_segment(x = 450, 
+                          xend = 450, 
+                          y = 0, 
+                          yend = 100, 
+                          size = 1.5) +
+    ggplot2::annotate("text", 
+                      x = 475, 
+                      y = 5, 
+                      label = "BPSL") +
+    ggplot2::theme_bw() +
+    ggplot2::ggtitle("Treatment of Legals and Sublegals when Base Period Size Limits Exist in Current FRAM Run") +
+    ggplot2::theme(legend.position = "bottom")
+```
 
-where:<br>
+**Figure 1.** Encounters as a function of cohort abundance and size limit dependent encounter rates. BPSL is the base period size limit.
 
-- <span title = "Original calculation of landed catch">$OriginalLandedCatch$</span> is the landed catch under base period size limit regulations
-- <span title = "New calculation of landed catch">$NewLandedCatch$</span> is the landed catch under new size limit regulations
-- <span title = "Original calculation of sublegal encounters">$OriginalSublegalEncounters$</span> is the sublegal encounters under base period size limit regulations
-- <span title = "New calculation of sublegal encounters">$NewSublegalEncounters$</span> is the sublegal encounters under new size limit regulations
+```{r legal sublegal fig2, echo = FALSE, fig.height = 6, fig.width = 8}
+tibble::tibble(
+    `Cohort Size` = c(5, 13, 25, 49, 76, 91, 98, 100, 100, 98, 91, 76, 49, 25, 13, 5),
+    `BP Encounters` = c(4, 11, 21, 38, 57, 74, 79, 80, 40, 39, 36, 29, 20, 11, 7, 3),
+    `Length (mm)` = c(200, 245, 290, 340, 380, 400, 425, 450, 450, 475, 500, 520, 560, 610, 645, 690)
+  ) |> 
+  tidyr::pivot_longer(-`Length (mm)`, names_to = "Encounter Type", values_to = "Encounters") |> 
+  dplyr::bind_rows(tibble::tibble(
+    `Length (mm)` = c(200, 245, 290, 340, 340, 380, 400, 425, 450, 450, 475, 500, 520, 560, 610, 645, 690),
+    `Encounter Type` = rep("FRAM Encounters", 17),
+    Encounters = c(4, 11, 21, 38, 20, 29, 36, 39, 40, 40, 39, 36, 29, 20, 11, 7, 3)
+  )) |> 
+  ggplot2::ggplot() +
+    ggplot2::geom_point(ggplot2::aes(x = `Length (mm)`, 
+                                     y = Encounters, 
+                                     color = `Encounter Type`, 
+                                     shape = `Encounter Type`, 
+                                     size = `Encounter Type`), 
+                        size = 1.5) +
+    ggplot2::geom_line(ggplot2::aes(x = `Length (mm)`, 
+                                    y = Encounters, 
+                                    color = `Encounter Type`,
+                                    size = `Encounter Type`)) +
+    ggplot2::scale_y_continuous("Number of Fish", 
+                                limits = c(0, 100.5), 
+                                expand = ggplot2::expansion(mult = c(0,0))) +
+    ggplot2::scale_x_continuous(limits = c(199,701), 
+                                expand = ggplot2::expansion(mult = c(0,0))) +
+    ggplot2::scale_shape_manual("", values = c(17, 16, 18)) +
+    ggplot2::scale_size_manual("", values = c(1.5, 1, 0.75)) +
+    ggplot2::scale_color_manual("", values = c("black", "red", "green")) +
+    ggplot2::geom_segment(x = 450, 
+                          xend = 450, 
+                          y = 0, 
+                          yend = 100, 
+                          size = 1.5) +
+    ggplot2::geom_segment(x = 340, 
+                          xend = 340, 
+                          y = 0, 
+                          yend = 62.5, 
+                          size = 1.5,
+                          color = "blue") +
+    ggplot2::annotate("text", 
+                      x = 475, 
+                      y = 5, 
+                      label = "BPSL") +
+    ggplot2::annotate("text", 
+                      x = 305, 
+                      y = 55, 
+                      label = "FRAM SL",
+                      color = "blue") +
+    ggplot2::geom_ribbon(
+      data = tibble::tibble(x = c(340, 380, 400, 425, 450),
+                            ymin = c(20, 29, 36, 39, 40),
+                            ymax = c(38, 57, 74, 79, 80)),
+      ggplot2::aes(x = x, ymin = ymin, ymax = ymax),
+      fill = "lightblue",
+      alpha = 0.5
+    ) +
+    ggplot2::theme_bw() +
+    ggplot2::theme(legend.position = "bottom")
+```
 
-See (Hagen-Breaux et al. 2013) for a detailed description of the equations.
+
+**Figure 2.** Treatment of Legals and Sub-legals when the New Size Limit (FRAM SL) is smaller than the Base Period size limit. The shaded area designates the catch that FRAM is underestimating when the size limit is lowered.
+
+```{r legal sublegal fig3, echo = FALSE, fig.height = 6, fig.width = 8}
+tibble::tibble(
+    `Cohort Size` = c(5, 13, 25, 49, 76, 91, 98, 100, 100, 98, 91, 76, 49, 25, 13, 5),
+    `BP Encounters` = c(4, 11, 21, 38, 57, 74, 79, 80, 40, 39, 36, 29, 20, 11, 7, 3),
+    `Length (mm)` = c(200, 245, 290, 340, 380, 400, 425, 450, 450, 475, 500, 520, 560, 610, 645, 690)
+  ) |> 
+  tidyr::pivot_longer(-`Length (mm)`, names_to = "Encounter Type", values_to = "Encounters") |> 
+  dplyr::bind_rows(tibble::tibble(
+    `Length (mm)` = c(200, 245, 290, 340, 380, 400, 425, 450, 475, 500, 520, 560, 610, 610, 645, 690),
+    `Encounter Type` = rep("FRAM Encounters", 16),
+    Encounters = c(4, 11, 21, 38, 57, 74, 79, 80, 79, 74, 57, 38, 21, 11, 7, 3)
+  )) |> 
+  ggplot2::ggplot() +
+    ggplot2::geom_point(ggplot2::aes(x = `Length (mm)`, 
+                                     y = Encounters, 
+                                     color = `Encounter Type`, 
+                                     shape = `Encounter Type`, 
+                                     size = `Encounter Type`), 
+                        size = 1.5) +
+    ggplot2::geom_line(ggplot2::aes(x = `Length (mm)`, 
+                                    y = Encounters, 
+                                    color = `Encounter Type`,
+                                    size = `Encounter Type`)) +
+    ggplot2::scale_y_continuous("Number of Fish", 
+                                limits = c(0, 100.5), 
+                                expand = ggplot2::expansion(mult = c(0,0))) +
+    ggplot2::scale_x_continuous(limits = c(199,701), 
+                                expand = ggplot2::expansion(mult = c(0,0))) +
+    ggplot2::scale_shape_manual("", values = c(17, 16, 18)) +
+    ggplot2::scale_size_manual("", values = c(1.5, 1, 0.75)) +
+    ggplot2::scale_color_manual("", values = c("black", "red", "green")) +
+    ggplot2::geom_segment(x = 450, 
+                          xend = 450, 
+                          y = 0, 
+                          yend = 100, 
+                          size = 1.5) +
+    ggplot2::geom_segment(x = 610, 
+                          xend = 610, 
+                          y = 0, 
+                          yend = 40, 
+                          size = 1.5,
+                          color = "blue") +
+    ggplot2::annotate("text", 
+                      x = 475, 
+                      y = 5, 
+                      label = "BPSL") +
+    ggplot2::annotate("text", 
+                      x = 645, 
+                      y = 38, 
+                      label = "FRAM SL",
+                      color = "blue") +
+    ggplot2::geom_ribbon(
+      data = tibble::tibble(x = c(450, 475, 500, 520, 560, 610),
+                            ymin = c(40, 39, 36, 29, 20, 11),
+                            ymax = c(80, 79, 74, 57, 38, 21)),
+      ggplot2::aes(x = x, ymin = ymin, ymax = ymax),
+      fill = "lightblue",
+      alpha = 0.5
+    ) +
+    ggplot2::theme_bw() +
+    ggplot2::theme(legend.position = "bottom")
+```
+
+
+**Figure 3.** Treatment of Legals and Sub-legals when the New Size Limit (FRAM SL) is larger than the Base Period size limit. The shaded area designates the catch that FRAM is overestimating when the size limit is increased.
+
+When the new size limit is less than the base-period size limit, the difference in sub-legal encounters between the base length-limit and the new length-limit becomes legal encounter that is added to the legal encounters evaluated at the base-period size limit. The difference in encounters is used in this case because it incorporates the base-period sub-legal encounter rates, which are always different than the base period exploitation rates. It also allows for legal encounter estimates for stock and age combinations that do not have base-period exploitation rates because of the base-period minimum size limit restriction. This adds an important element of realism because there are stock-age combinations that would not have appeared in legal encounters under base period conditions, but may under the new limit. 
+
+When the new size limit is less than the base-period size limit, the correction can be calculated as:
+
+<p>**(39)**<div style = "text-align:center">
+$BaseSizeLimitSublegalMortality_{s,a,f,t} = SLER_{s,a,f,t} \times BaseSublegalPop_{s,a,t} \times ShakerReleaseMortalityRate_{f,t} \times FisheryScaler_{f,t}$ </div> </p>
+
+<p>**(40)**<div style = "text-align:center">$NewSizeLimitSublegalMortality_{s,a,f,t} = SLER_{s,a,f,t} \times NewSublegalPop_{s,a,t} \times ShakerReleaseMortalityRate_{f,t} * FisheryScalar_{f,t}$ </div> </p>
+
+<p>**(41)**<div style = "text-align:center">$BaseSizeLimitSublegalEncounters_{s,a,f,t} =$ $\frac{BaseSizeLimitSublegalMortality_{s,a,f,t}}{ShakerReleaseMortalityRate_{f,t}}$ </div> </p>
+
+<p>**(42)**<div style = "text-align:center">$NewSizeLimitSublegalEncounters_{s,a,f,t} =$ $\frac{NewLengthLimitSublegalMortality_{s,a,f,t}}{ShakerReleaseMortalityRate_{f,t}}$ </div> </p>
+
+<p>**(43)**<div style = "text-align:center">$SublegalEncounterDiff_{s,a,f,t} = BaseSizeLimitSubEncounters_{s,a,f,t} - NewSizeLimitSubEncounters_{s,a,f,t}$ </div> </p>
+
+<p>**(44)**<div style = "text-align:center">$BaseSizeLimitLegalEncounters_{s,a,f,t} = Cohort_{s,a,t} \times BPER_{s,a,f,t} \times FisheryScaler_{f,t} \times BasePV_{s,a,t} \times SHRF_{s,f,t}$ </div> </p>
+
+<p>**(45)**<div style = "text-align:center">$NewLegalEncounters_{s,a,f,t} = BaseSizeLimitLegalEncounters_{s,a,f,t} + SublegalEncounterDiff_{s,a,f,t}$ </div> </p>
+
+When the new size limit is greater than the base-period size limit, the difference in legal encounters between the new size limit and the base-period size limit becomes sub-legal encounters. This encounter difference is added to the calculated sub-legal encounters from the base-period size limit to get total sub-legal encounters. The difference in legal encounters is used in this case because base-period CWT recoveries can be used to estimate an actual observed difference. The correction for when the new size limit is greater than the base-period size limit can be calculated as:
+
+<p>**(46)**<div style = "text-align:center">$NewSizeLimitLegalEncounters_{s,a,f,t} = Cohort_{s,a,t} * BPER_{s,a,f,t} * FisheryScalar_{f,t} * NewPV_{s,a,t} * SHRF_{s,f,t}$ </div> </p>
+<p>**(47)**<div style = "text-align:center">$LegalEncounterDiff_{s,a,f,t} = BaseSizeLimitLegalEncounters_{s,a,f,t} - NewSizeLimitSublegalEncounters_{s,a,f,t}$ </div> </p>
+
+<p>**(48)**<div style = "text-align:center">$NewSublegalEncounters_{s,a,f,t} = BaseSizeLimitSublegalEncounters_{s,a,f,t} + LegalEncounterDiff_{s,a,f,t}$ </div> </p>
+
+Where:
+
+- $BaseSublegalPop_{s,a,t}$ = Sub-legal Population at Base Period size limit for Stock $s$ at Age $a$ during Time Step $t$
+- $NewSublegalPop_{s,a,t}$ = Sub-legal Population at New size limit for Stock $s$ at Age $a$ during Time Step $t$
+- $BasePV_{s,a,t}$ = Base Period Proportion Vulnerable for Stock $s$ at Age $a$ during Time Step $t$
+- $NewPV_{s,a,t}$ = Proportion Vulnerable for Stock $s$ at Age $a$ during Time Step $t$ under new size limit regulation
+- $SHRF_{s,f,t}$ = Stock Specific Exploitation Rate Scalar for Stock $s$ in Fishery $f$ during Time Step $t$ (default = 1)
 
 ## 4.6. Model-Stock Proportion
 
 While the stocks included in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> account for the majority of the Chinook caught in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries, there are some stocks that are not represented in the model (see <a href = "https://framverse.github.io/fram_doc/calcs_data_chin.html#11_Stocks" target = "_blank" title = "Section 1.1: Stocks">section 1.1</a>). To account for these stocks, fisheries with non-model-stock impacts are supplied with an externally computed model-stock proportion (see <a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_4_Chinook_FRAM_fisheries" target = "_blank" title = "Appendix 4: Chinook FRAM fisheries">Appendix 4</a>). The Model-stock proportion <span title = "MSP: Model-stock proportion">(MSP)</span> is a constant that is either calculated independently or produced during base period development. It represents the percentage of a fishery’s total catch that is accounted for by model stocks. 
 
-**(39)**
+**(49)**
 <div style = "text-align:center"> <span title = "Model-stock proportion of fishery f
 Base period calculation"><u>$MSP$</u>$_f$ $=$</span> <span  class = "math" title = "Catch of stock s at age a in fishery f during time step t divided by the total catch in fishery f">$\frac{\displaystyle\sum\limits_{s} \displaystyle\sum\limits_{a} \displaystyle\sum\limits_{t} Catch_{s,a,f,t}}{TotalCatch_f}$</span> </div>
 
@@ -621,7 +818,7 @@ Post-season <span title = "BkFRAM: backwards FRAM">BkFRAM</span> runs are genera
 
 The Chinook algorithm uses forward (regular) <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> calculations to solve for the stock recruit scaler needed to obtain a target terminal run size, given known time step fishery catches, natural mortality rates, and maturation rates.  The only parameter changing between iterations are stock-specific catches, resulting in updated recruit scalers, resulting in new stock catches, etc.  
 
-<p>**(40)**<div style = "text-align:center"><span title = "Stock scaler for stock s at age a during time step 1">$StockScaler_{s,a,t \! = \! 1}$</span> $=$ <span title = "Backwards FRAM target size for stock s at age a.
+<p>**(50)**<div style = "text-align:center"><span title = "Stock scaler for stock s at age a during time step 1">$StockScaler_{s,a,t \! = \! 1}$</span> $=$ <span title = "Backwards FRAM target size for stock s at age a.
 Input by user">$(($<b>$BkTarget$</b>$_{s,a}$</span> $+$ <span title = "Total mortalities of stock s at age a during time step 1">$(TotMort_{s,a,t \! = \! 1}$</span> $\times$ <span title = "Maturation Rate of stock s at age a during time step 1.
 Base period calculation"><u>$MatRate$</u>$_{s,a,t \! = \! 1}$</span> $+$ <span title = "Total mortality of stock s at age a during time step 1">$(TotMort_{s,a,t \! = \! 1}$</span> $\times (1 \ -$ <span title = "Maturation Rate for stock s at age a during time step 1.
 Base period calculation"><u>$MatRate$</u>$_{s,a,t \! = \! 1})$</span> $\times (1 \ -$ <span title = "Discrete natural mortality rate at age a during time step 2.
@@ -654,7 +851,7 @@ where:
 
 The program iterates until the resulting <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> escapement or terminal run size is within one fish of the target escapement or terminal run size and then terminates the iteration process.  
 
-<p>**(41)**<div style = "text-align:center"><span title = "(Extreme) terminal run size estimate from a forward FRAM calculation for stock s at age a">$| \ FRAMescapement_{s,a}$</span> $-$ <span title = "Backwards FRAM escapement or (extreme) terminal run size target of stock s at age a.
+<p>**(51)**<div style = "text-align:center"><span title = "(Extreme) terminal run size estimate from a forward FRAM calculation for stock s at age a">$| \ FRAMescapement_{s,a}$</span> $-$ <span title = "Backwards FRAM escapement or (extreme) terminal run size target of stock s at age a.
 Input by user"><b>$BkTarget$</b>$_{s,a} \ |$</span> $\le 1$ </div> </p>
 
 where:
