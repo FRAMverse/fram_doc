@@ -483,7 +483,57 @@ It is noteworthy that mortality is calculated as the sum of time step 2 to 4 (Ma
 
 ## 4.5. Size Limit Evaluations
 
-<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses a <a title = "VBGF: von Bertalanffy growth function" href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Von_Bertalanffy_Growth_Function" target="_blank">von Bertalanffy growth function</a> to estimate the proportion of a stock-at-age that is greater than the minimum size limit in a fishery and time step. As stated above, this proportion is also referred to as the <span title = "PV: Proportion vulnerable">PV</span>. Chinook greater than the minimum size limit are considered to be of “legal size” and thus vulnerable to be caught in a fishery. Conversely, Chinook smaller than the minimum size limit are of “sublegal size” and ineligible to be retained. 
+FRAM models legal and sub-legal Chinook encounters through the use of the von Bertalanffy growth function (VBGF) for stocks that contribute to each fishery. The mean length of each stock at age at the midpoint of the time step is evaluated against the stock-specific VBGF to estimate the proportion vulnerable by stock, age, and time step. 
+<!--add reference to Pete's growth function write-up and to the growth parameters listed in appendix here-->
+The algorithms from the PFMC (2008) (pgs. 18-19) FRAM documentation are as follows:
+
+<p>**(26)** <div style = "text-align:center">
+$KTime_{s,a,t} = (Age_s – 1) * 12 + MidTimeStep(t)$ </div> </p>
+<!-- #MidTimeStep are four constants that are hard coded in FRAM and represent the mid-month of a time step; i.e. for time step 3 that covers July-Sep the mid point is 8 -->
+
+<p>**(27)** <div style = "text-align:center"> $MeanLength_{s,a,t} = L_s \times (1-e^{(-K_s \times(KTime_{s,a,t} – T0_s)})$ </div> </p>
+
+<p>**(28)** <div style = "text-align:center"> $StdDev_{s,a,t} = CV_{s,a}\times MeanLength_{s,a,t}$ </div> </p>
+
+Chinook lengths at age for a particular time is assumed to be normally distributed with a variance that was calculated using observed lengths from CWT recovery data. 
+
+The following equations compute the proportion of the population that is larger than the modeler specified minimum size limit ($MinLength_{f,t}$).
+
+<p>**(29)** <div style = "text-align:center"> $z_{s,a,f,t} = \frac{(MinLength_{f,t} - MeanLength_{s,a,t})}{StdDev_{s,a,t}}$ </div> </p>
+<!-- MinLenght is an input, the rest is FRAM calculated -->
+The z-score ($z$) <!-- A capitalized Z has a defined meaning in fisheries science -> instantaneous total mortality. A z-score is lowercased. --> is usually interpreted using a standard normal table. This table provides the area between the mean and the z-score and allows the calculation of the probability that a value falls below a given point on the normal distribution.
+Below calculations incorporate an approximation of the equations resulting in the standard normal table's probabilities.
+
+<p>**(30)** <div style = "text-align:center"> $A1_{s,a,f,t} = Absz_{s,a,f,t} \times ((5.383 \times 10^{-6})$ $\times$ $Absz_{s,a,f,t} + (4.88906 \times 10^{-5})) + (3.80036 \times 10^{-5})$ </div> </p>
+
+<p>**(31)** <div style = "text-align:center"> $A2_{s,a,f,t} = Absz_{s,a,f,t} \times (Absz_{s,a,f,t}$ $\times$ $A1_{s,a,f,t}$ $+$ $(3.2776263 \times 10^{-3})) + (2.11410061 \times 10^{-2})$ </div> </p>
+
+<p>**(32)** <div style = "text-align:center"> $A3_{s,a,f,t} = \frac{1}{1 + Absz_{s,a,f,t} \times (Absz_{s,a,f,t} \times A2_{s,a,f,t} + (4.9867347 \times 10^{-2}))}$ </div> </p>
+
+<p>**(33)** <div style = "text-align:center"> $A4_{s,a,f,t} = 1-(0.5 \times A3_{s,a,f,t}^{16})$ </div> </p>
+
+<p>**(34)**<div style = "text-align:center"> $PV_{s,a,f,t} = 1-A4_{s,a,f,t}$ </div> </p>
+
+Where:
+
+- $KTime_{s,a}$ = Time for estimate of VBGF for stock $s$, age $a$<br>
+- $PV_{s,a,f,t}$ = Proportion vulnerable for stock $s$, age $a$, fishery $f$ at time step $t$<br>
+- $L_s$ = von Bertalanffy $L_{\infty}$ growth parameter for stock $s$ (Asymptotic mean length)<br>
+- $K_s$ = von Bertalanffy Brody growth rate coefficient for stock $s$ (Exponential rate of approach to $L_{\infty}$)<br>
+- $T0_s$ = von Bertalanffy $T_0$ growth parameter for stock $s$ (Age when the average length was zero)<br>
+- $CV_{s,a}$ = Coefficient of variation of length distribution at $KTime_{s,a}$ for stock $s$, age $a$<br>
+- $MinLength_{f,t}$ = Minimum size limit for fishery $f$, time step $t$<br>
+- $MeanLength_{s,a,t}$ = Mean total length of a fish of stock $s$ at age $a$ at time step $t$<br>
+- $z_{s,a,f,t}$ = The length z-score. It specifies the number of standard deviations the $MinLength$ is as away from the $MeanLength$<br>
+- $Absz$ = Absolute value of the z-score <br>
+
+For Chinook, the sub-legal and legal size encounters are stock- and age- specific and calculated using the VBGF described above. The calculations for sub-legal sized Chinook are shown below:
+
+<p>**(35)** <div style = "text-align:center"> $SubLegProp_{s,a,f,t} = 1 - PV_{s,a,f,t}$ </div> </p>
+
+<p>**(36)** <div style = "text-align:center"> $SubLegPop_{s,a,f,t} = Cohort_{s,a,t} \times SubLegProp_{s,a,f,t}$ </div> </p>
+
+Where all components are defined previously and $(1-PV_{s,a,f,t})$ is the proportion of the cohort for stock $s$, age $a$, not vulnerable to the gear at time step $t$.
 
 <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses different rates to model encounters of legal and sublegal fish. These rates are computed during the calibration process and are based on landed catch and encounter information during reference base period years. As such, they reflect the size limit conditions during the base period. If the size limit is changed, a portion of the population (with sizes between the old and the new size limit) that previously received a sublegal encounter rate will receive a legal encounter rate or vice versa. This leads to the total number of computed encounters varying with size limits, if effort remains constant.
 
@@ -491,13 +541,13 @@ To correct for this outcome, algorithms were introduced to hold total fishery en
 
 When the new size limit is less than the reference base period size limit, the difference in sublegal encounters becomes landed catch and is added to the calculated landed catch that results under the base period size limit. The calculation of sublegal mortalities remains unchanged (see section 4.2 step 3c).   
 
-<p>**(26)**<div style = "text-align:center"><span title = "New landed catch calculation of stock s at age a in fishery f during time step t">$NewLandedCatch_{s,a,f,t}$</span> $=$ <span title = "Original landed catch calculation of stock s at age a in fishery f during time step t">$OriginalLandedCatch_{s,a,f,t}$</span> $+$ <span title = "Original calculation of sublegal encounters of stock s at age a in fishery f during time step t">$(OriginalSublegalEncounters_{s,a,f,t}$</span> $-$ <span title = "New calculation of sublegal encounters of stock s at age a in fishery f during time step t">$NewSublegalEncounters_{s,a,f,t})$</span> </div> </p>
+<p>**(37)**<div style = "text-align:center"><span title = "New landed catch calculation of stock s at age a in fishery f during time step t">$NewLandedCatch_{s,a,f,t}$</span> $=$ <span title = "Original landed catch calculation of stock s at age a in fishery f during time step t">$OriginalLandedCatch_{s,a,f,t}$</span> $+$ <span title = "Original calculation of sublegal encounters of stock s at age a in fishery f during time step t">$(OriginalSublegalEncounters_{s,a,f,t}$</span> $-$ <span title = "New calculation of sublegal encounters of stock s at age a in fishery f during time step t">$NewSublegalEncounters_{s,a,f,t})$</span> </div> </p>
 
 When the new size limit is greater than the base period size limit, the difference in landed catch becomes sublegal encounters, which are added to the calculated sublegal encounters that result under the base period size limit. These sublegal encounters are converted to sublegal mortality by multiplying by the sublegal release mortality rate.  The calculation of landed catch remains unchanged (see section 4.2 step 3a). 
 
-<p>**(27)**<div style = "text-align:center"><span title = "New sublegal encounter calculation of stock s at age a in fishery f during time step t">$NewSublegalEncounters_{s,a,f,t}$</span> $=$ <span title = "Original sublegal encounter calculation of stock s at age a in fishery f during time step t">$OriginalSublegalEncounters_{s,a,f,t}$</span> $+$ <span title = "Original landed catch calculation of stock s at age a in fishery f during time step t">$(OriginalLandedCatch_{s,a,f,t}$</span> $-$ <span title = "New landed catch calculation for stock s at age a in fishery f during time step t">$NewLandedCatch_{s,a,f,t})$</span> </div> </p>
+<p>**(38)**<div style = "text-align:center"><span title = "New sublegal encounter calculation of stock s at age a in fishery f during time step t">$NewSublegalEncounters_{s,a,f,t}$</span> $=$ <span title = "Original sublegal encounter calculation of stock s at age a in fishery f during time step t">$OriginalSublegalEncounters_{s,a,f,t}$</span> $+$ <span title = "Original landed catch calculation of stock s at age a in fishery f during time step t">$(OriginalLandedCatch_{s,a,f,t}$</span> $-$ <span title = "New landed catch calculation for stock s at age a in fishery f during time step t">$NewLandedCatch_{s,a,f,t})$</span> </div> </p>
 
-where,<br>
+where:<br>
 
 - <span title = "Original calculation of landed catch">$OriginalLandedCatch$</span> is the landed catch under base period size limit regulations
 - <span title = "New calculation of landed catch">$NewLandedCatch$</span> is the landed catch under new size limit regulations
@@ -510,7 +560,7 @@ See (Hagen-Breaux et al. 2013) for a detailed description of the equations.
 
 While the stocks included in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> account for the majority of the Chinook caught in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> fisheries, there are some stocks that are not represented in the model (see <a href = "https://framverse.github.io/fram_doc/calcs_data_chin.html#11_Stocks" target = "_blank" title = "Section 1.1: Stocks">section 1.1</a>). To account for these stocks, fisheries with non-model-stock impacts are supplied with an externally computed model-stock proportion (see <a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_4_Chinook_FRAM_fisheries" target = "_blank" title = "Appendix 4: Chinook FRAM fisheries">Appendix 4</a>). The Model-stock proportion <span title = "MSP: Model-stock proportion">(MSP)</span> is a constant that is either calculated independently or produced during base period development. It represents the percentage of a fishery’s total catch that is accounted for by model stocks. 
 
-**(28)**
+**(39)**
 <div style = "text-align:center"> <span title = "Model-stock proportion of fishery f
 Base period calculation"><u>$MSP$</u>$_f$ $=$</span> <span  class = "math" title = "Catch of stock s at age a in fishery f during time step t divided by the total catch in fishery f">$\frac{\displaystyle\sum\limits_{s,a,t} Catch_{s,a,f,t}}{TotalCatch_f}$</span> </div>
 
@@ -568,7 +618,7 @@ Post-season <span title = "BkFRAM: backwards FRAM">BkFRAM</span> runs are genera
 
 The Chinook algorithm uses forward (regular) <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> calculations to solve for the stock recruit scaler needed to obtain a target terminal run size, given known time step fishery catches, natural mortality rates, and maturation rates.  The only parameter changing between iterations are stock-specific catches, resulting in updated recruit scalers, resulting in new stock catches, etc.  
 
-<p>**(29)**<div style = "text-align:center"><span title = "Stock scaler for stock s at age a during time step 1">$StockScaler_{s,a,t \! = \! 1}$</span> $=$ <span title = "Backwards FRAM target size for stock s at age a.
+<p>**(40)**<div style = "text-align:center"><span title = "Stock scaler for stock s at age a during time step 1">$StockScaler_{s,a,t \! = \! 1}$</span> $=$ <span title = "Backwards FRAM target size for stock s at age a.
 Input by user">$(($<b>$BkTarget$</b>$_{s,a}$</span> $+$ <span title = "Total mortalities of stock s at age a during time step 1">$(TotMort_{s,a,t \! = \! 1}$</span> $\times$ <span title = "Maturation Rate of stock s at age a during time step 1.
 Base period calculation"><u>$MatRate$</u>$_{s,a,t \! = \! 1}$</span> $+$ <span title = "Total mortality of stock s at age a during time step 1">$(TotMort_{s,a,t \! = \! 1}$</span> $\times (1 \ -$ <span title = "Maturation Rate for stock s at age a during time step 1.
 Base period calculation"><u>$MatRate$</u>$_{s,a,t \! = \! 1})$</span> $\times (1 \ -$ <span title = "Discrete natural mortality rate at age a during time step 2.
@@ -601,7 +651,7 @@ where:
 
 The program iterates until the resulting <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> escapement or terminal run size is within one fish of the target escapement or terminal run size and then terminates the iteration process.  
 
-<p>**(30)**<div style = "text-align:center"><span title = "(Extreme) terminal run size estimate from a forward FRAM calculation for stock s at age a">$| \ FRAMescapement_{s,a}$</span> $-$ <span title = "Backwards FRAM escapement or (extreme) terminal run size target of stock s at age a.
+<p>**(41)**<div style = "text-align:center"><span title = "(Extreme) terminal run size estimate from a forward FRAM calculation for stock s at age a">$| \ FRAMescapement_{s,a}$</span> $-$ <span title = "Backwards FRAM escapement or (extreme) terminal run size target of stock s at age a.
 Input by user"><b>$BkTarget$</b>$_{s,a} \ |$</span> $\le 1$ </div> </p>
 
 where:
