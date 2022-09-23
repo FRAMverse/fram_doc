@@ -260,7 +260,7 @@ Base period calculation"><u>$SLER$</u>$_{s,a,f,t}\times (1-PV_{s,a,f,t}) \times$
 Input by user"><b>$SHRF$</b>$_{s,f,t}\times$ <span title = "Model-stock proportion of fishery f
 Base period calculation"><u>$MSP$</u>$_{f}$ </div> </p>
 
-*Step 2*: Compute the total fishery and time step catch by summing over stocks and age.
+*Step 2*: Compute the total fishery and time step catch by summing over stocks and ages.
 
 <p>**(9a)** <div style = "text-align:center"> $TotalLegalTempCatch_{f,t} = \sum_{s} \sum_{a}LegalTempCatch_{s,a,f,t}$ </div> </p>
 
@@ -315,9 +315,9 @@ This method requires a flag of "2" in the FRAM non-retention input user interfac
 
 The legal and sublegal selectivity rates provide the modeler with the ability to adjust model output that is based on landed catch; i.e., if encounters in a retention fishery are twice as high as in a non-retention fishery, the sublegal selectivity rate would be 0.5.
 
-<p>**(11a)** <div style = "text-align:center"> $CNRLegal_{s,a,f,t} = Catch_{s,a,f,t} \times$ $\frac{\underline{CNRDays}_{f,t}}{\underline{RetentionDays}_{f,t}}$ $\times$ <b>$LegalSelRate$</b>$_{f,t} \times$ <b>$LegalReleaseMortalityRate$</b>$_{f,t}$ </div> </p>
+<p>**(11a)** <div style = "text-align:center"> $CNRLegal_{s,a,f,t} = Catch_{s,a,f,t} \times$ $\frac{\boldsymbol{CNRDays}_{f,t}}{\boldsymbol{RetentionDays}_{f,t}}$ $\times$ <b>$LegalSelRate$</b>$_{f,t} \times$ <b>$LegalReleaseMortalityRate$</b>$_{f,t}$ </div> </p>
 
-<p>**(11b)** <div style = "text-align:center"> $CNRSub_{s,a,f,t} = Shakers_{s,a,f,t} \times$ $\frac{\underline{CNRDays}_{f,t}}{\underline{RetentionDays}_{f,t}}$ $\times$ <b>$SublegSelRate$</b>$_{f,t}$ </div> </p>
+<p>**(11b)** <div style = "text-align:center"> $CNRSub_{s,a,f,t} = Shakers_{s,a,f,t} \times$ $\frac{\boldsymbol{CNRDays}_{f,t}}{\boldsymbol{RetentionDays}_{f,t}}$ $\times$ <b>$SublegSelRate$</b>$_{f,t}$ </div> </p>
 
 where:
 
@@ -328,6 +328,7 @@ where:
 
 
 <u> CNR Method 3</u> - Computed from external estimate of legal and sub-legal sized encounters
+
 For this method the modeler provides external estimates of legal ($LegalEnc_{f,t}$) and sublegal ($SublegEnc_{f,t}$) fishery encounters. FRAM split encounters into stocks and ages and applies separate a release mortality to legal and sublegal fish.
 
 This method requires a flag of "3" in the FRAM non-retention input user interface as well as two fishery inputs by time step.
@@ -344,7 +345,7 @@ Base period calculation"><u>$MSP$</u>$_{f}$ </div> </p>
 <u> CNR Method 4</u> - Computed from external estimates of total encounters
 For this method the modeler provides an external estimate of total fishery encounters ($TotalEstEnc_{f,t}$) in Field Value 1 with a flag of "4" in the FRAM non-retention input user interface. FRAM first computes legal and sublegal encounters using a fishery scaler of 1 (equations **10a** and **10b** above). Next, FRAM calculates a $CNRScaler$ to produce total encounters that match the target encounters ($TotalEstEnc$). After multiplying legal and sublegal encounters with the $CNRScaler$, a release mortality is applied to convert encounters into mortalities.
 
-<p>**(13a)** <div style = "text-align:center"> $CNRScaler_{f,t} =$ $\frac{\boldsymbol{TotalEstEnc}_{f,t} \times \underline{MSP}_{f}}{\sum_{s} \sum_{a} LegalTempCatch_{s,a,f,t} + \sum_{s} \sum_{a}SublegTempCatch_{s,a,f,t}}$ </div> </p>
+<p>**(13a)** <div style = "text-align:center"> $CNRScaler_{f,t} =$ $\frac{\boldsymbol{TotalEstEnc}_{f,t} \times \underline{MSP}_{f}}{\sum_{s} \sum_{a} (LegalTempCatch_{s,a,f,t} + SublegTempCatch_{s,a,f,t})}$ </div> </p>
 
 <p>**(13b)** <div style = "text-align:center"> $CNRLegal_{s,a,f,t} = LegalTempCatch_{s,a,f,t} \times CNRScaler_{f,t} \times$ <b>$LegalReleaseMortalityRate$</b>$_{f,t}$ </div> </p>
 
@@ -359,7 +360,7 @@ where:
 
 $CNR_{f,t}$ is computed by summing non-retention mortalities over stocks and ages for legal and sub-legal Chinook and then summing legal and sublegal fishery, time-step CNR mortalities.
 
-<p>(**14**) <div style = "text-align:center"> $CNR_{f,t} =$ $\sum_s \sum_a CNRLegal_{s,a,f,t} + \sum_s \sum_a CNRSub_{s,a,f,t}$</div> </p>
+<p>(**14**) <div style = "text-align:center"> $CNR_{f,t} =$ $\sum_s \sum_a (CNRLegal_{s,a,f,t} + CNRSub_{s,a,f,t})$</div> </p>
 
 <u>**3e.** Mark-selective fisheries</u> (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "MSF: Mark-selective fishery">MSF</a>) require additional computations to calculate both the landed catch and the mortalities due to the release of fish.
 
@@ -562,7 +563,7 @@ While the stocks included in Chinook <span title = "FRAM: Fishery Regulation Ass
 
 **(39)**
 <div style = "text-align:center"> <span title = "Model-stock proportion of fishery f
-Base period calculation"><u>$MSP$</u>$_f$ $=$</span> <span  class = "math" title = "Catch of stock s at age a in fishery f during time step t divided by the total catch in fishery f">$\frac{\displaystyle\sum\limits_{s,a,t} Catch_{s,a,f,t}}{TotalCatch_f}$</span> </div>
+Base period calculation"><u>$MSP$</u>$_f$ $=$</span> <span  class = "math" title = "Catch of stock s at age a in fishery f during time step t divided by the total catch in fishery f">$\frac{\displaystyle\sum\limits_{s} \displaystyle\sum\limits_{a} \displaystyle\sum\limits_{t} Catch_{s,a,f,t}}{TotalCatch_f}$</span> </div>
 
 # 5. Terminal Area Management Module
 
