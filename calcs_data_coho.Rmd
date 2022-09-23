@@ -219,7 +219,7 @@ where:
 
 - stock $s$, age $a = 3$, fishery $f$, time step $t$
 - $CNR_{s,a \! = \! 3,f,t}$ is the Coho age = 3 non-retention mortality
-- $SPropTempCatch_{s,a \! = \! 3,f,t}$ is the proportion of encounters of stock $s$, age $a = 3$, in fishery $f$, at time step $t$ using $FishScaler$ = 1.0
+- $PropTempCatch_{s,a \! = \! 3,f,t}$ is the proportion of encounters of stock $s$, age $a = 3$, in fishery $f$, at time step $t$ using $FishScaler$ = 1.0
 - $TotalTempCatch_{f,t}$ is the total catch in fishery $f$ at time step $t$ summed over all stocks $s$ using FisheryScaler = 1
 
 <u>**3d.** Mark-selective fisheries</u> (<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "MSF: Mark-selective fishery">MSF</a>) require additional computations to calculate both the landed catch and the mortalities due to the release of fish.
