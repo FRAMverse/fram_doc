@@ -201,7 +201,8 @@ The stock-specific CNR mortality in a fishery and time step is computed in four 
 
 *Step 1*: Calculate the stock specific catch in a retention fishery ($TempCatch_{s,f,t}$) with a $FisheryScaler$ of 1 (i.e., at base period effort).
 
-<p> (**5**) <div style = "text-align:center"> $TempCatch_{s,a \! = \! 3,f,t} = Cohort_{s,a \! = \! 3,t} \times$ <u>$BPER$</u>$_{s,a \! = \! 3,f,t} \times$ <b>$FisheryScaler$</b>$_{f,t} \times$ <b>$SHRF$</b>$_{s,f,t}$ </div> </p>
+<p> (**5**) <div style = "text-align:center"> $TempCatch_{s,a \! = \! 3,f,t} = Cohort_{s,a \! = \! 3,t} \times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t.
+Base period calculation"><u>$BPER$</u>$_{s,a \! = \! 3,f,t}</span> \times$ <b>$FisheryScaler$</b>$_{f,t} \times$ <b>$SHRF$</b>$_{s,f,t}$ </div> </p>
 
 *Step 2*: Sum over stocks for a fishery and time step to get the total catch.
 
@@ -322,13 +323,15 @@ The *biased* exploitation rate for a stock in a mark-selective fishery, shown in
 
 To simplify calculations, the $SHRF$, $mre$, and $ure$ were excluded from the calculations below:
 
-<p> (**17**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Marked} =$ <b>$FisheryScaler$</b> $\times$ <u>$BPER$</u> $\times 1$ </div> </p>
+<p> (**17**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Marked} =$ <b>$FisheryScaler$</b> $\times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t.
+Base period calculation"><u>$BPER$</u></span> $\times 1$ </div> </p>
 
-<p> (**18**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Unmarked} =$ <b>$FisheryScaler$</b> $\times$ <u>$BPER$</u> $\times$ <b>$\delta$</b>  </div> </p>
+<p> (**18**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Unmarked} =$ <b>$FisheryScaler$</b> $\times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t.
+Base period calculation"><u>$BPER$</u></span> $\times$ <b>$\delta$</b>  </div> </p>
 
 In the original biased equations, the exploitation rates of non-selective fisheries were the same as the marked exploitation rate ($ER_{Marked}$) in mark-selective fisheries. Subsequent unbiased equations were developed with a marked frame of reference. In the following equations, $ER_{Marked}$ is synonymous with the original non-selective exploitation rates.
 
-The equations above are biased as they approximate a nonlinear Baranov equation with a linear model. Conrad, Hagen-Breaux, and Yuen (2013) developed unbiased calculations for the number of unmarked mortalities when there are multiple MSF and NSF acting on a stock in a time period. This paper is summarized briefly here, see the publication for more detailed documentation. 
+The equations above are biased as they approximate a nonlinear Baranov equation with a linear model. Conrad, Hagen-Breaux, and Yuen (<a href = "https://framverse.github.io/fram_doc/calcs_citations.html" title = "Conrad et. al 2013">2013</a>) developed unbiased calculations for the number of unmarked mortalities when there are multiple MSF and NSF acting on a stock in a time period. This paper is summarized briefly here, see the publication for more detailed documentation. 
 
 When the only fishery acting on a stock in a time period is a MSF, the unbiased method for calculating the total unmarked exploitation rate is:
 
@@ -415,7 +418,8 @@ knitr::include_graphics(c("images/MSFbiasFig2.PNG"))
 
 If you would like to see the exact steps completed in FRAM (as shown in Figure 3), read on. Otherwise, stop here. All steps are completed for each stock. 
 
-Step 1: Calculate unbiased marked ($\widehat{ER}_{Marked,s,f,t}$) and unmarked ($\widehat{ER}_{Marked,s,f,t}$) exploitation rate for stock $s$ in time period $t$ using equations **27** and **28** ($FisheryScaler = 1$). During the first iteration, $ER_{Marked,s,f,t}$ $=$ <u>$BPER$</u>$_{s,f,t}$.
+Step 1: Calculate unbiased marked ($\widehat{ER}_{Marked,s,f,t}$) and unmarked ($\widehat{ER}_{Marked,s,f,t}$) exploitation rate for stock $s$ in time period $t$ using equations **27** and **28** ($FisheryScaler = 1$). During the first iteration, $ER_{Marked,s,f,t}$ $=$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f during time step t.
+Base period calculation"><u>$BPER$</u>$_{s,f,t}$</span>.
 
 Step 2: Calculate total landed catch of marked ($D_{Marked,L,s,f,t}$) and unmarked ($D_{Unmarked,L,s,f,t}$) cohorts of stock $s$ using equations **31** and **33**.
 
@@ -430,7 +434,8 @@ $$FisheryScaler_f = \frac{TargetCatch_f}{catch_f}$$
 Step 5: Scale base period exploitation rate.
 
 <div style = "text-align:center"> 
-$ER_{Marked,s,f} = FisheryScaler_f \times$ <u>$BPER$</u>$_{s,f}$
+$ER_{Marked,s,f} = FisheryScaler_f \times$ <span title = "Base period exploitation rate for stock s at age 3 in fishery f.
+Base period calculation"><u>$BPER$</u>$_{s,f}$</span>
 </div>
 
 These steps are repeated until $Catch_f$ is equal to the target quota.
