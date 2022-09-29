@@ -489,18 +489,18 @@ FRAM models legal and sub-legal Chinook encounters through the use of the von Be
 The algorithms from the PFMC (2008) (pgs. 18-19) FRAM documentation are as follows:
 
 <p>**(26)** <div style = "text-align:center">
-$KTime_{s,a,t} = (Age_s – 1) * 12 + MidTimeStep(t)$ </div> </p>
+$KTime_{s,a,t} = ($<b>$Age$</b>$_s – 1) * 12 + MidTimeStep(t)$ </div> </p>
 <!-- #MidTimeStep are four constants that are hard coded in FRAM and represent the mid-month of a time step; i.e. for time step 3 that covers July-Sep the mid point is 8 -->
 
-<p>**(27)** <div style = "text-align:center"> $MeanLength_{s,a,t} = L_s \times (1-e^{(-K_s \times(KTime_{s,a,t} – T0_s)})$ </div> </p>
+<p>**(27)** <div style = "text-align:center"> $MeanLength_{s,a,t}$ $=$ <b>$L$</b>$_s \times (1-e^{(-}$<b>$^K$</b>$^{_s \times(KTime_{s,a,t} –}$ <b>$^{T0}$</b>$^{_s)})$ </div> </p>
 
 <p>**(28)** <div style = "text-align:center"> $StdDev_{s,a,t} = CV_{s,a}\times MeanLength_{s,a,t}$ </div> </p>
 
 Chinook lengths at age for a particular time is assumed to be normally distributed with a variance that was calculated using observed lengths from CWT recovery data. 
 
-The following equations compute the proportion of the population that is larger than the modeler specified minimum size limit ($MinLength_{f,t}$).
+The following equations compute the proportion of the population ($PV$) that is larger than the modeler specified minimum size limit ($MinLength_{f,t}$).
 
-<p>**(29)** <div style = "text-align:center"> $z_{s,a,f,t} = \frac{(MinLength_{f,t} - MeanLength_{s,a,t})}{StdDev_{s,a,t}}$ </div> </p>
+<p>**(29)** <div style = "text-align:center"> $z_{s,a,f,t}$ $=$ $\frac{(\boldsymbol{MinLength}_{f,t} - MeanLength_{s,a,t})}{StdDev_{s,a,t}}$ </div> </p>
 <!-- MinLenght is an input, the rest is FRAM calculated -->
 The z-score ($z$) <!-- A capitalized Z has a defined meaning in fisheries science -> instantaneous total mortality. A z-score is lowercased. --> is usually interpreted using a standard normal table. This table provides the area between the mean and the z-score and allows the calculation of the probability that a value falls below a given point on the normal distribution.
 Below calculations incorporate an approximation of the equations resulting in the standard normal table's probabilities.
@@ -509,7 +509,7 @@ Below calculations incorporate an approximation of the equations resulting in th
 
 <p>**(31)** <div style = "text-align:center"> $A2_{s,a,f,t} = Absz_{s,a,f,t} \times (Absz_{s,a,f,t}$ $\times$ $A1_{s,a,f,t}$ $+$ $(3.2776263 \times 10^{-3})) + (2.11410061 \times 10^{-2})$ </div> </p>
 
-<p>**(32)** <div style = "text-align:center"> $A3_{s,a,f,t} = \frac{1}{1 + Absz_{s,a,f,t} \times (Absz_{s,a,f,t} \times A2_{s,a,f,t} + (4.9867347 \times 10^{-2}))}$ </div> </p>
+<p>**(32)** <div style = "text-align:center"> $A3_{s,a,f,t}$ $=$ $\frac{1}{1 + Absz_{s,a,f,t} \times (Absz_{s,a,f,t} \times A2_{s,a,f,t} + (4.9867347 \times 10^{-2}))}$ </div> </p>
 
 <p>**(33)** <div style = "text-align:center"> $A4_{s,a,f,t} = 1-(0.5 \times A3_{s,a,f,t}^{16})$ </div> </p>
 
@@ -517,7 +517,7 @@ Below calculations incorporate an approximation of the equations resulting in th
 
 Where:
 
-- $KTime_{s,a}$ = Time for estimate of VBGF for stock $s$, age $a$<br>
+- $KTime_{s,a}$ = Substitute for salmon age $a$ in months by time step $t$ for stock $s$<br>
 - $PV_{s,a,f,t}$ = Proportion vulnerable for stock $s$, age $a$, fishery $f$ at time step $t$<br>
 - $L_s$ = The VBGF $L_{\infty}$ parameter for stock $s$ (Asymptotic mean length)<br>
 - $K_s$ = The VBGF Brody growth rate coefficient for stock $s$ (Exponential rate of approach to $L_{\infty}$)<br>
@@ -525,7 +525,7 @@ Where:
 - $CV_{s,a}$ = Coefficient of variation of length distribution at $KTime_{s,a}$ for stock $s$, age $a$<br>
 - $MinLength_{f,t}$ = Minimum size limit for fishery $f$, time step $t$<br>
 - $MeanLength_{s,a,t}$ = Mean total length of a fish of stock $s$ at age $a$ at time step $t$<br>
-- $z_{s,a,f,t}$ = The length z-score. It specifies the number of standard deviations the $MinLength$ is as away from the $MeanLength$<br>
+- $z_{s,a,f,t}$ = The length z-score. It specifies the number of standard deviations the $MinLength$ is away from the $MeanLength$<br>
 - $Absz$ = Absolute value of the z-score <br>
 
 For Chinook, the sub-legal and legal size encounters are stock- and age- specific and calculated using the VBGF described above. The calculations for sub-legal sized Chinook are shown below:
@@ -538,15 +538,19 @@ Where all components are defined previously and $(1-PV_{s,a,f,t})$ is the propor
 
 <u>Dealing with a Minimum Size Limit Change</u>
 
-<span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> uses different rates to model encounters of legal and sublegal fish. These rates are computed during the calibration process and are based on landed catch and encounter information during reference base period years. As such, they reflect the size limit conditions during the base period. If the size limit is changed, a portion of the population (with sizes between the old and the new size limit) that previously received a sublegal encounter rate will receive a legal encounter rate or vice versa. This leads to the total number of computed encounters varying with size limits, if effort remains constant.
+Size limits specify the minimum salmon length that is legal to be retained. Fish below the minimum size limit must be released. When size limits are modeled in Chinook FRAM, each fish smaller than the size limit is treated as a sub-legal fish. Conversely, each fish larger than the size limit is deemed legal.
 
-When size limits are modeled in FRAM, each fish smaller than the size limit is treated as a sub-legal fish. Sub-legal encounter rates are used to compute releases and release mortalities. Conversely, each fish larger than the size limit is deemed legal and legal encounter rates are used to estimate catch as well as releases and release mortalities in mark selective fisheries. 
+Mortalities of legal Chinook are calculated by applying a legal release mortality rate ($LegalReleaseMortalityRate_{f,t}$) to the catch equation (see equation **3**). 
 
-FRAM uses different rates to model encounters of legal and sub-legal fish. These rates are computed during the calibration process and are based on landed catch and encounter information during the base period years (2008-2013). As such, they reflect the size limit conditions as they existed at the time.
+Mortalities of sublegal Chinook are calculated as shaker mortalities (see equation **5**). This equation first computes encounters and then applies a sublegal release mortality rate ($ShakerReleaseMortalityRate_{f,t}$).
 
-Having differing rates for legal and sub-legal encounters results in an uneven distribution of legal and sub-legal fish for a stock and age. Therefore, modeling a size limit change using traditional equations (see descriptions at the beginning of this section) generally results in a change of total fishery encounters. This is a questionable outcome since the size limit is evaluated after a fish is encountered. Therefore, equations were incorporated into FRAM to hold encounters in a fishery constant, regardless of the size limit.
+FRAM uses different encounter rates to model legal and sub-legal fish. These rates are computed during the calibration process and are based on landed catch and encounter information during the reference base period years (2008-2013). As such, they reflect the size limit conditions existing at the time.
 
-The simplest approach for evaluating a size limit change from the base period is to calculate the legal and sub-legal encounters for both the base period and new minimum size limit and then adjust the differences so that total encounters remain constant. Encounter differences occur in the region between the base period size limit and the new minimum size limit (Figures 1-3).
+Having differing rates for legal and sub-legal encounters results in an uneven distribution of legal and sub-legal fish for a stock and age. Therefore, modeling a size limit change using traditional equations results in a change of total fishery encounters. This is a questionable outcome since the size limit is evaluated after a fish is encountered. Therefore, equations were incorporated into FRAM to hold encounters in a fishery constant, regardless of the size limit.
+
+The simplest approach for evaluating a size limit change from the base period is to calculate legal and sub-legal encounters for both the base period and new minimum size limit and then adjust the differences so that total encounters remain constant. Encounter differences occur in the region between the base period size limit and the new minimum size limit (Figures 1-3). 
+
+Figures 1 to 3 illustrate the case when sublegal encounter rates are larger than legal encounter rates, but in FRAM the reverse is also possible.
 
 ```{r legal sublegal fig1, echo = FALSE, fig.height = 6, fig.width = 8}
 tibble::tibble(
@@ -653,7 +657,6 @@ tibble::tibble(
     ggplot2::theme(legend.position = "bottom")
 ```
 
-
 **Figure 2.** Treatment of Legals and Sub-legals when the New Size Limit (FRAM SL) is smaller than the Base Period size limit. The shaded area designates the catch that FRAM is underestimating when the size limit is lowered.
 
 ```{r legal sublegal fig3, echo = FALSE, fig.height = 6, fig.width = 8}
@@ -719,7 +722,6 @@ tibble::tibble(
     ggplot2::theme(legend.position = "bottom")
 ```
 
-
 **Figure 3.** Treatment of Legals and Sub-legals when the New Size Limit (FRAM SL) is larger than the Base Period size limit. The shaded area designates the catch that FRAM is overestimating when the size limit is increased.
 
 When the new size limit is less than the base-period size limit, the difference in sub-legal encounters between the base length-limit and the new length-limit becomes legal encounter that is added to the legal encounters evaluated at the base-period size limit. The difference in encounters is used in this case because it incorporates the base-period sub-legal encounter rates, which are always different than the base period exploitation rates. It also allows for legal encounter estimates for stock and age combinations that do not have base-period exploitation rates because of the base-period minimum size limit restriction. This adds an important element of realism because there are stock-age combinations that would not have appeared in legal encounters under base period conditions, but may under the new limit. 
@@ -727,24 +729,24 @@ When the new size limit is less than the base-period size limit, the difference 
 When the new size limit is less than the base-period size limit, the correction can be calculated as:
 
 <p>**(39)**<div style = "text-align:center">
-$BaseSizeLimitSublegalMortality_{s,a,f,t} = SLER_{s,a,f,t} \times BaseSublegalPop_{s,a,t} \times ShakerReleaseMortalityRate_{f,t} \times FisheryScaler_{f,t}$ </div> </p>
+$BaseSizeLimitSublegalMortality_{s,a,f,t} =$ <u>$SLER$</u>$_{s,a,f,t} \times$ <u>$BaseSublegalPop$</u>$_{s,a,t} \times$ <u>$ShakerReleaseMortalityRate$</u>$_{f,t} \times FisheryScaler_{f,t}$ </div> </p>
 
-<p>**(40)**<div style = "text-align:center">$NewSizeLimitSublegalMortality_{s,a,f,t} = SLER_{s,a,f,t} \times NewSublegalPop_{s,a,t} \times ShakerReleaseMortalityRate_{f,t} * FisheryScalar_{f,t}$ </div> </p>
+<p>**(40)**<div style = "text-align:center">$NewSizeLimitSublegalMortality_{s,a,f,t} =$ <u>$SLER$</u>$_{s,a,f,t} \times NewSublegalPop_{s,a,t} \times$ <u>$ShakerReleaseMortalityRate$</u>$_{f,t} * FisheryScalar_{f,t}$ </div> </p>
 
-<p>**(41)**<div style = "text-align:center">$BaseSizeLimitSublegalEncounters_{s,a,f,t} =$ $\frac{BaseSizeLimitSublegalMortality_{s,a,f,t}}{ShakerReleaseMortalityRate_{f,t}}$ </div> </p>
+<p>**(41)**<div style = "text-align:center">$BaseSizeLimitSublegalEncounters_{s,a,f,t} =$ $\frac{BaseSizeLimitSublegalMortality_{s,a,f,t}}{\underline{ShakerReleaseMortalityRate}_{f,t}}$ </div> </p>
 
-<p>**(42)**<div style = "text-align:center">$NewSizeLimitSublegalEncounters_{s,a,f,t} =$ $\frac{NewLengthLimitSublegalMortality_{s,a,f,t}}{ShakerReleaseMortalityRate_{f,t}}$ </div> </p>
+<p>**(42)**<div style = "text-align:center">$NewSizeLimitSublegalEncounters_{s,a,f,t} =$ $\frac{NewSizeLimitSublegalMortality_{s,a,f,t}}{\underline{ShakerReleaseMortalityRate}_{f,t}}$ </div> </p>
 
 <p>**(43)**<div style = "text-align:center">$SublegalEncounterDiff_{s,a,f,t} = BaseSizeLimitSubEncounters_{s,a,f,t} - NewSizeLimitSubEncounters_{s,a,f,t}$ </div> </p>
 
-<p>**(44)**<div style = "text-align:center">$BaseSizeLimitLegalEncounters_{s,a,f,t} = Cohort_{s,a,t} \times BPER_{s,a,f,t} \times FisheryScaler_{f,t} \times BasePV_{s,a,t} \times SHRF_{s,f,t}$ </div> </p>
+<p>**(44)**<div style = "text-align:center">$BaseSizeLimitLegalEncounters_{s,a,f,t} = Cohort_{s,a,t} \times$ <u>$BPER$</u>$_{s,a,f,t} \times FisheryScaler_{f,t} \times$ <u>$BasePV$</u>$_{s,a,t} \times$ <b>$SHRF$</b>$_{s,f,t}$ </div> </p>
 
 <p>**(45)**<div style = "text-align:center">$NewLegalEncounters_{s,a,f,t} = BaseSizeLimitLegalEncounters_{s,a,f,t} + SublegalEncounterDiff_{s,a,f,t}$ </div> </p>
 
 When the new size limit is greater than the base-period size limit, the difference in legal encounters between the new size limit and the base-period size limit becomes sub-legal encounters. This encounter difference is added to the calculated sub-legal encounters from the base-period size limit to get total sub-legal encounters. The difference in legal encounters is used in this case because base-period CWT recoveries can be used to estimate an actual observed difference. The correction for when the new size limit is greater than the base-period size limit can be calculated as:
 
-<p>**(46)**<div style = "text-align:center">$NewSizeLimitLegalEncounters_{s,a,f,t} = Cohort_{s,a,t} * BPER_{s,a,f,t} * FisheryScalar_{f,t} * NewPV_{s,a,t} * SHRF_{s,f,t}$ </div> </p>
-<p>**(47)**<div style = "text-align:center">$LegalEncounterDiff_{s,a,f,t} = BaseSizeLimitLegalEncounters_{s,a,f,t} - NewSizeLimitSublegalEncounters_{s,a,f,t}$ </div> </p>
+<p>**(46)**<div style = "text-align:center">$NewSizeLimitLegalEncounters_{s,a,f,t} = Cohort_{s,a,t} \times$ <u>$BPER$</u>$_{s,a,f,t} \times FisheryScalar_{f,t} * NewPV_{s,a,t} \times$ <b>$SHRF$</b>$_{s,f,t}$ </div> </p>
+<p>**(47)**<div style = "text-align:center">$LegalEncounterDiff_{s,a,f,t} =$ $BaseSizeLimitLegalEncounters_{s,a,f,t} - NewSizeLimitSublegalEncounters_{s,a,f,t}$ </div> </p>
 
 <p>**(48)**<div style = "text-align:center">$NewSublegalEncounters_{s,a,f,t} = BaseSizeLimitSublegalEncounters_{s,a,f,t} + LegalEncounterDiff_{s,a,f,t}$ </div> </p>
 

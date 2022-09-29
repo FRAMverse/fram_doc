@@ -304,7 +304,7 @@ knitr::include_graphics(c("images/Coho_FRAM_process_schematic.PNG"))
 
 ## 4.5. Bias Corrected Mark-Selective Fishery Equations for Coho
 
-Mark-selective fisheries (MSF) allow anglers to keep legal-size, adipose-fin clipped hatchery fish (hereafter, "marked") and require the release of any fish with an adipose fin (hereafter, "unmarked"). Originally, both Chinook and Coho FRAM used estimates of release mortality ($\delta$) and time-period specific exploitation rates (ER) from non-selective fisheries as a surrogate for encounter rates of unmarked stocks to estimate the mortality of unmarked fish.
+Mark-selective fisheries (MSF) allow anglers to keep legal-size, adipose-fin clipped hatchery fish (hereafter, "marked") and require the release of any fish with an adipose fin (hereafter, "unmarked"). Originally, both Chinook and Coho FRAM used estimates of release mortality ($\delta$) and time-period specific exploitation rates (ER) from non-selective fisheries as a surrogate for encounter rates of unmarked stocks to estimate the mortality of unmarked fish (equations **9a** and **9b**).
 
 <p> (**16**) <div style = "text-align:center"> $EncounterRate_{Unmarked} = ER \times$ <b>$\delta$</b> </div> </p>
 
@@ -320,13 +320,15 @@ knitr::include_graphics(c("images/MSFbiasFig1.PNG"))
 
 The *biased* exploitation rate for a stock in a mark-selective fishery, shown in red, is simply the time-period-specific average exploitation rate from the base period multiplied by a scalar that relates the expected current year effort to the base period effort and a release mortality rate for the fishery.
 
+To simplify calculations, the $SHRF$, $mre$, and $ure$ were excluded from the calculations below:
+
 <p> (**17**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Marked} =$ <b>$FisheryScaler$</b> $\times$ <u>$BPER$</u> $\times 1$ </div> </p>
 
 <p> (**18**) <div style = "text-align:center"> <span style = "color: red;">$ER$</span>$_{Unmarked} =$ <b>$FisheryScaler$</b> $\times$ <u>$BPER$</u> $\times$ <b>$\delta$</b>  </div> </p>
 
 In the original biased equations, the exploitation rates of non-selective fisheries were the same as the marked exploitation rate ($ER_{Marked}$) in mark-selective fisheries. Subsequent unbiased equations were developed with a marked frame of reference. In the following equations, $ER_{Marked}$ is synonymous with the original non-selective exploitation rates.
 
-The equations above are biased as they approximate a nonlinear Baranov equation with a linear model. Conrad, Hagen-Breaux, and Yuen (2013) developed unbiased calculations for the number of unmarked mortalities when there are multiple MSF and NSF acting on a stock in a time period. This paper is summarized briefly here, see the publication for more detailed documentation. The MSF bias correction in FRAM was a result of demonstrating that unmarked mortalities were underestimated due to multiple encounter bias from mark-selective fisheries (Conrad 2010) and the desire to incorporate bias-corrected equations into FRAM (Conrad 2011), (Hagen-Breaux 2012).
+The equations above are biased as they approximate a nonlinear Baranov equation with a linear model. Conrad, Hagen-Breaux, and Yuen (2013) developed unbiased calculations for the number of unmarked mortalities when there are multiple MSF and NSF acting on a stock in a time period. This paper is summarized briefly here, see the publication for more detailed documentation. 
 
 When the only fishery acting on a stock in a time period is a MSF, the unbiased method for calculating the total unmarked exploitation rate is:
 
@@ -340,27 +342,27 @@ This becomes more complicated when there are multiple fisheries acting on an unm
 
 where $f$ is an individual fishery and $F$ is the set of all fisheries.
 
-In reality, in any given time period many stocks are subject to a mixture of NSF and MSF with varying release mortality rates, and mark-recognition is not perfect. Recognition errors for marked fish ($mre$, marked fish are identified as unmarked and released or release of marked fish is intentional) reduce the exploitation rate on the marked cohort and introduce bias in the exploitation rate calculation for the marked portion of the stock. Conversely, recognition errors for unmarked fish in MSF ($ure$, unmarked fish are kept) increase the exploitation rate on an unmarked cohort.
+In reality, in any given time period many stocks are subject to a mixture of NSF and MSF with varying release mortality rates, and mark-recognition is not perfect. Recognition errors for marked fish ($\gamma$, probability that a marked fish is correctly identified) reduce the exploitation rate on the marked cohort and introduce bias in the exploitation rate calculation for the marked portion of the stock. Conversely, recognition errors for unmarked fish in MSF ($\xi$, unmarked fish are kept) increase the exploitation rate on an unmarked cohort.
 
 An overall release mortality rate in fishery $f$ that accounts for mark-recognition error for a marked cohort ($\delta_{Marked,f}$) is defined by:
 
-<p> (**21**) <div style = "text-align:center"> $\delta_{Marked,f} =$ <b>$mre$</b>$_f + (1 -$ <b>$mre$</b>$_f)$  $\times$ <b>$\delta$</b>$_f$ </div> </p>
+<p> (**21**) <div style = "text-align:center"> $\delta_{Marked,f}$ $=$ $\gamma_f$ $\times$ <b>$\delta$</b>$_f$ $+$ $(1$ $-$ $\gamma_f)$ </div> </p>
 
 Similarly, for the unmarked cohort:
 
-<p> (**22**) <div style = "text-align:center"> $\delta_{Unmarked,f} = (1 -$ <b>$ure$</b>$_f) + ($<b>$ure$</b>$_f$  $\times$ <b>$\delta$</b>$_f)$ </div> </p>
+<p> (**22**) <div style = "text-align:center"> $\delta_{Unmarked,f}$ $=$ $(1$ $-$ $\xi_f)$ $\times$ <b>$\delta$</b>$_f$ $+ \xi_f$ </div> </p>
 
 Because of mark recognition error, weighted release mortality rates ($\delta^W$) across all fisheries in the modeled time period are calculated for marked and unmarked cohorts. These weighted release mortality rates are the ratio of the sum of the biased exploitation rate calculations, which account for release mortalities and the sum of the marked exploitation rates.
 
 Weighted release mortalities for marked and unmarked are calculated as:
 
 (**23**)
-$$\delta^{W}_{Marked} = \sum^{F}_{f}(\frac{ER_{Marked,f} \times \delta_{Marked,f}}{\sum^{F}_{f} ER_{Marked, f}}) = \sum^{F}_{f}(\frac{ER_{Marked,f} \times \{ \boldsymbol{mre}_f + ((1 - \boldsymbol{mre}_f) \times \boldsymbol{\delta}_f) \}}{\sum^{F}_{f} ER_{Marked,f}})$$
+$$\delta^{W}_{Marked} = \sum^{F}_{f}(\frac{ER_{Marked,f} \times \delta_{Marked,f}}{\sum^{F}_{f} ER_{Marked, f}}) = \sum^{F}_{f}(\frac{ER_{Marked,f} \times \{ \gamma_f \times \boldsymbol{\delta}_f + (1 - \gamma_f)\}}{\sum^{F}_{f} ER_{Marked,f}})$$
 
 (**24**)
 $$\delta^{W}_{Unmarked} = 
 \sum^{F}_{f}(\frac{ER_{Marked,f} \times \delta_{Unmarked,f}}{\sum^{F}_{f} ER_{Marked, f}}) =
-\sum^{F}_{f}(\frac{ER_{Marked,f} \times \{ (1 - \boldsymbol{ure}_f) + (\boldsymbol{ure}_f \times \boldsymbol{\delta}_f) \}}{\sum^{F}_{f} ER_{Marked,f}})$$
+\sum^{F}_{f}(\frac{ER_{Marked,f} \times \{ (1 - \xi_f) \times \boldsymbol{\delta}_f + \xi_f ) \}}{\sum^{F}_{f} ER_{Marked,f}})$$
 
 If there is no mark recognition error, bias-adjusted exploitation rates for marked and unmarked stock units are calculated as:
 
@@ -388,19 +390,19 @@ After total mortalities for a fishery have been calculated, they are assigned as
 
 For an unmarked cohort, landed catch for fishery $i$ ($\widehat D_{L, Unmarked, f}$) is calculated:
 
-<p> (**31**) <div style = "text-align:center"> $\widehat{D}_{L, Unmarked, f} = \widehat D_{Unmarked,f} \times \frac{1 - \boldsymbol{ure}_f}{(1-\boldsymbol{ure}_f) + (\boldsymbol{ure}_f \times \boldsymbol{\delta}_f)}$ </div> </p>
+<p> (**31**) <div style = "text-align:center"> $\widehat{D}_{L, Unmarked, f} = \widehat D_{Unmarked,f} \times \frac{\xi_f}{(1-\xi_f) \times \boldsymbol{\delta}_f + \xi_f}$ </div> </p>
 
 and non-landed mortality ($\widehat D_{N, Unmarked, f}$) is calculated as:
 
-<p> (**32**) <div style = "text-align:center"> $\widehat{D}_{N, Unmarked, f} = \widehat D_{Unmarked,f} \times \frac{\boldsymbol{ure}_f \times \boldsymbol{\delta}_f}{(1-\boldsymbol{ure}_f) + (\boldsymbol{ure}_f \times \boldsymbol{\delta}_f)}$ </div> </p>
+<p> (**32**) <div style = "text-align:center"> $\widehat{D}_{N, Unmarked, f} = \widehat D_{Unmarked,f} \times \frac{(1 - \xi_f) \times \boldsymbol{\delta}_f}{(1-\xi_f)  \times \boldsymbol{\delta}_f + \xi_f}$ </div> </p>
 
 Similarly, for a marked cohort:
 
-<p> (**33**) <div style = "text-align:center"> $\widehat D_{L, Marked, f} = \widehat D_{Marked,f} \times \frac{\boldsymbol{mre}_f}{\boldsymbol{mre}_f + (1 - \boldsymbol{mre}_f) \times \boldsymbol{\delta}_f}$ </div> </p>
+<p> (**33**) <div style = "text-align:center"> $\widehat D_{L, Marked, f} = \widehat D_{Marked,f} \times \frac{(1 - \gamma_f)}{\gamma_f \times \boldsymbol{\delta}_f + (1 - \gamma_f) }$ </div> </p>
 
 and non-landed mortality ($\widehat D_{N,Marked,f}$) is calculated as:
 
-<p> (**34**) <div style = "text-align:center"> $\widehat D_{N,Marked,f} = \widehat D_{Marked,f} \times \frac{(1 - \boldsymbol{mre}_f) \times \boldsymbol{\delta}_f}{\boldsymbol{mre}_f + (1 - \boldsymbol{mre}_f) \times \boldsymbol{\delta}_f}$ </div> </p>
+<p> (**34**) <div style = "text-align:center"> $\widehat D_{N,Marked,f} = \widehat D_{Marked,f} \times \frac{\gamma_f \times \boldsymbol{\delta}_f}{\gamma_f  \times \boldsymbol{\delta}_f + (1 - \gamma_f)}$ </div> </p>
 
 ***Applying MSF Bias Calculations to FRAM***
 
@@ -413,9 +415,9 @@ knitr::include_graphics(c("images/MSFbiasFig2.PNG"))
 
 If you would like to see the exact steps completed in FRAM (as shown in Figure 3), read on. Otherwise, stop here. All steps are completed for each stock. 
 
-Step 1: Calculate unbiased marked ($\widehat{ER}_{Marked,s,f,t}$) and unmarked ($\widehat{ER}_{Marked,s,f,t}$) exploitation rate for stock $s$ in time period $t$ using equations 24 and 25. During the first iteration, $ER_{Marked,s,f,t} = \overline{ER}_{s,f,t}^{Base}$.
+Step 1: Calculate unbiased marked ($\widehat{ER}_{Marked,s,f,t}$) and unmarked ($\widehat{ER}_{Marked,s,f,t}$) exploitation rate for stock $s$ in time period $t$ using equations **27** and **28** ($FisheryScaler = 1$). During the first iteration, $ER_{Marked,s,f,t}$ $=$ <u>$BPER$</u>$_{s,f,t}$.
 
-Step 2: Calculate total landed catch of marked ($D_{Marked,L,s,f,t}$) and unmarked ($D_{Unmarked,L,s,f,t}$) cohorts of stock $s$ using equations 28 and 30.
+Step 2: Calculate total landed catch of marked ($D_{Marked,L,s,f,t}$) and unmarked ($D_{Unmarked,L,s,f,t}$) cohorts of stock $s$ using equations **31** and **33**.
 
 Step 3: Calculate total landed catch across all stocks encountered in a fishery.
 
@@ -423,11 +425,13 @@ $$Catch_f = \sum_s{D_{Marked,L,s,f,t}} + \sum_s{D_{Unmarked,L,s,f,t}}$$
 
 Step 4: Calculate fishery scaler.
 
-$$FisheryScaler_f = \frac{Catch_f}{Baseperiodcatch_f}$$
+$$FisheryScaler_f = \frac{TargetCatch_f}{catch_f}$$
 
 Step 5: Scale base period exploitation rate.
 
-$$ER_{Marked,s,f} = FisheryScaler_f \times \overline{ER}_{s,f}^{Base}$$
+<div style = "text-align:center"> 
+$ER_{Marked,s,f} = FisheryScaler_f \times$ <u>$BPER$</u>$_{s,f}$
+</div>
 
 These steps are repeated until $Catch_f$ is equal to the target quota.
 
