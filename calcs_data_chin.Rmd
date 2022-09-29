@@ -251,14 +251,14 @@ These proportions are computed in three steps.
 *Step 1*: Compute legal and sublegal encounters by stock, age, fishery and time step as in equations 3 and 5 with a $FisheryScaler$ of 1 (i.e., at base period effort)
 
 <p>**(8a)** <div style = "text-align:center"> $LegalTempCatch_{s,a,f,t} = Cohort_{s,a,t}\times$ <span title = "Base period exploitation rate of stock s at age a in fishery f during time step t.
-Base period calculation"><u>$BPER$</u>$_{s,a,f,t}\times PV_{s,a,f,t} \times$ <span title = "Stock fishery rate scaler for stock s in fishery f at time step t.
-Input by user"><b>$SHRF$</b>$_{s,f,t} \times$ <span title = "Model-stock proportion of fishery f
-Base period calculation"><u>$MSP$</u>$_{f}$ </div> </p>
+Base period calculation"><u>$BPER$</u>$_{s,a,f,t}$</span> $\times PV_{s,a,f,t} \times$ <span title = "Stock fishery rate scaler for stock s in fishery f at time step t.
+Input by user"><b>$SHRF$</b>$_{s,f,t}$</span> $\times$ <span title = "Model-stock proportion of fishery f
+Base period calculation"><u>$MSP$</u>$_{f}$</span> </div> </p>
 
 <p>**(8b)** <div style = "text-align:center"> $SublegTempCatch_{s,a,f,t} = Cohort_{s,a,t}\times$ <span title = "Sublegal encounter rate of stock s at age a in fishery f during time step t.
-Base period calculation"><u>$SLER$</u>$_{s,a,f,t}\times (1-PV_{s,a,f,t}) \times$ <span title = "Stock fishery rate scaler for stock s in fishery f at time step t.
-Input by user"><b>$SHRF$</b>$_{s,f,t}\times$ <span title = "Model-stock proportion of fishery f
-Base period calculation"><u>$MSP$</u>$_{f}$ </div> </p>
+Base period calculation"><u>$SLER$</u>$_{s,a,f,t}$</span> $\times (1-PV_{s,a,f,t}) \times$ <span title = "Stock fishery rate scaler for stock s in fishery f at time step t.
+Input by user"><b>$SHRF$</b>$_{s,f,t}$</span> $\times$ <span title = "Model-stock proportion of fishery f
+Base period calculation"><u>$MSP$</u>$_{f}$ </span> </div> </p>
 
 *Step 2*: Compute the total fishery and time step catch by summing over stocks and ages.
 
@@ -340,7 +340,7 @@ This method requires a flag of "3" in the FRAM non-retention input user interfac
 Base period calculation"><u>$MSP$</u>$_{f}$ </div> </p>
 
 <p>**(12b)** <div style = "text-align:center"> $CNRSub_{s,a,f,t} =$ <b>$SublegEnc$</b>$_{f,t} \times SublegPropTempCatch_{s,a,f,t} \times$ <b>$ShakerReleaseMortalityRate$</b>$_{f,t} \times$ <span title = "Model-stock proportion of fishery f
-Base period calculation"><u>$MSP$</u>$_{f}$ </div> </p>
+Base period calculation"><u>$MSP$</u>$_{f}$ </span></div> </p>
 
 <u> CNR Method 4</u> - Computed from external estimates of total encounters
 For this method the modeler provides an external estimate of total fishery encounters ($TotalEstEnc_{f,t}$) in Field Value 1 with a flag of "4" in the FRAM non-retention input user interface. FRAM first computes legal and sublegal encounters using a fishery scaler of 1 (equations **10a** and **10b** above). Next, FRAM calculates a $CNRScaler$ to produce total encounters that match the target encounters ($TotalEstEnc$). After multiplying legal and sublegal encounters with the $CNRScaler$, a release mortality is applied to convert encounters into mortalities.
@@ -729,9 +729,11 @@ When the new size limit is less than the base-period size limit, the difference 
 When the new size limit is less than the base-period size limit, the correction can be calculated as:
 
 <p>**(39)**<div style = "text-align:center">
-$BaseSizeLimitSublegalMortality_{s,a,f,t} =$ <u>$SLER$</u>$_{s,a,f,t} \times$ <u>$BaseSublegalPop$</u>$_{s,a,t} \times$ <u>$ShakerReleaseMortalityRate$</u>$_{f,t} \times FisheryScaler_{f,t}$ </div> </p>
+$BaseSizeLimitSublegalMortality_{s,a,f,t} =$ <span title = "Sublegal encounter rate of stock s at age a in fishery f during time step t.
+Base period calculation"><u>$SLER$</u>$_{s,a,f,t}$</span> $\times$ <u>$BaseSublegalPop$</u>$_{s,a,t} \times$ <u>$ShakerReleaseMortalityRate$</u>$_{f,t} \times FisheryScaler_{f,t}$ </div> </p>
 
-<p>**(40)**<div style = "text-align:center">$NewSizeLimitSublegalMortality_{s,a,f,t} =$ <u>$SLER$</u>$_{s,a,f,t} \times NewSublegalPop_{s,a,t} \times$ <u>$ShakerReleaseMortalityRate$</u>$_{f,t} * FisheryScalar_{f,t}$ </div> </p>
+<p>**(40)**<div style = "text-align:center">$NewSizeLimitSublegalMortality_{s,a,f,t} =$ <span title = "Sublegal encounter rate of stock s at age a in fishery f during time step t.
+Base period calculation"><u>$SLER$</u>$_{s,a,f,t}$</span> $\times NewSublegalPop_{s,a,t} \times$ <u>$ShakerReleaseMortalityRate$</u>$_{f,t} * FisheryScalar_{f,t}$ </div> </p>
 
 <p>**(41)**<div style = "text-align:center">$BaseSizeLimitSublegalEncounters_{s,a,f,t} =$ $\frac{BaseSizeLimitSublegalMortality_{s,a,f,t}}{\underline{ShakerReleaseMortalityRate}_{f,t}}$ </div> </p>
 
@@ -739,13 +741,16 @@ $BaseSizeLimitSublegalMortality_{s,a,f,t} =$ <u>$SLER$</u>$_{s,a,f,t} \times$ <u
 
 <p>**(43)**<div style = "text-align:center">$SublegalEncounterDiff_{s,a,f,t} = BaseSizeLimitSubEncounters_{s,a,f,t} - NewSizeLimitSubEncounters_{s,a,f,t}$ </div> </p>
 
-<p>**(44)**<div style = "text-align:center">$BaseSizeLimitLegalEncounters_{s,a,f,t} = Cohort_{s,a,t} \times$ <u>$BPER$</u>$_{s,a,f,t} \times FisheryScaler_{f,t} \times$ <u>$BasePV$</u>$_{s,a,t} \times$ <b>$SHRF$</b>$_{s,f,t}$ </div> </p>
+<p>**(44)**<div style = "text-align:center">$BaseSizeLimitLegalEncounters_{s,a,f,t} = Cohort_{s,a,t} \times$ <span title = "Base period exploitation rate of stock s at age a in fishery f during time step t.
+Base period calculation"><u>$BPER$</u>$_{s,a,f,t}$</span> $\times FisheryScaler_{f,t} \times$ <span title = "Base period portion vulnerable of stock s at age a during time step t.
+Base period calculation"><u>$BasePV$</u>$_{s,a,t}$</span> $\times$ <b>$SHRF$</b>$_{s,f,t}$ </div> </p>
 
 <p>**(45)**<div style = "text-align:center">$NewLegalEncounters_{s,a,f,t} = BaseSizeLimitLegalEncounters_{s,a,f,t} + SublegalEncounterDiff_{s,a,f,t}$ </div> </p>
 
 When the new size limit is greater than the base-period size limit, the difference in legal encounters between the new size limit and the base-period size limit becomes sub-legal encounters. This encounter difference is added to the calculated sub-legal encounters from the base-period size limit to get total sub-legal encounters. The difference in legal encounters is used in this case because base-period CWT recoveries can be used to estimate an actual observed difference. The correction for when the new size limit is greater than the base-period size limit can be calculated as:
 
-<p>**(46)**<div style = "text-align:center">$NewSizeLimitLegalEncounters_{s,a,f,t} = Cohort_{s,a,t} \times$ <u>$BPER$</u>$_{s,a,f,t} \times FisheryScalar_{f,t} * NewPV_{s,a,t} \times$ <b>$SHRF$</b>$_{s,f,t}$ </div> </p>
+<p>**(46)**<div style = "text-align:center">$NewSizeLimitLegalEncounters_{s,a,f,t} = Cohort_{s,a,t} \times$ <span title = "Base period exploitation rate of stock s at age a in fishery f during time step t.
+Base period calculation"><u>$BPER$</u>$_{s,a,f,t}$</span> $\times FisheryScalar_{f,t} * NewPV_{s,a,t} \times$ <b>$SHRF$</b>$_{s,f,t}$ </div> </p>
 <p>**(47)**<div style = "text-align:center">$LegalEncounterDiff_{s,a,f,t} =$ $BaseSizeLimitLegalEncounters_{s,a,f,t} - NewSizeLimitSublegalEncounters_{s,a,f,t}$ </div> </p>
 
 <p>**(48)**<div style = "text-align:center">$NewSublegalEncounters_{s,a,f,t} = BaseSizeLimitSublegalEncounters_{s,a,f,t} + LegalEncounterDiff_{s,a,f,t}$ </div> </p>
