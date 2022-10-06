@@ -169,7 +169,7 @@ The starting cohort is generally calculated from pre-season forecasts or post-se
 
 <p>**(1)** <div style = "text-align:center"><span title = "Cohort abundance of stock s at age a during time step 1">$Cohort_{s,a,t\!=\!1}$</span> $=$ <span title = "Base period cohort abundance of stock s at age a.
 Base period calculation"><u>$BPCohort$</u>$_{s,a}$</span> $\times$ <span title = "Stock recruit scaler of stock s at age a.
-BkFRAM calculation" style = "color: blue;">$StockScaler_{s,a}$</span> </div> </p>
+BkFRAM calculation" style = "color: blue;">$StockScaler$</span>$_{s,a}$ </div> </p>
 where <span title = "Cohort abundance of stock s at age a during time step 1">$Cohort_{s,a,t\!=\!1}$</span> is the initial cohort size for stock *s*, age *a*, during time step *t*=1.
 
 The starting cohort abundance in all subsequent time steps is determined based on the remaining <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Immature" target = "_blank" title = "Immature">immature</a> cohort from the previous time step (see process 4 below).  Chinook age between time step 3 and 4, so that, for example, age 2 fish in time step 3 become age 3 fish in time step 4.  Since there are no age 1 fish in Chinook <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>, the age 2 cohort in time step 4 is the same as the age 2 cohort in time step 1. 
@@ -825,7 +825,8 @@ Post-season <span title = "BkFRAM: backwards FRAM">BkFRAM</span> runs are genera
 
 The Chinook algorithm uses forward (regular) <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> calculations to solve for the stock recruit scaler needed to obtain a target terminal run size, given known time step fishery catches, natural mortality rates, and maturation rates.  The only parameter changing between iterations are stock-specific catches, resulting in updated recruit scalers, resulting in new stock catches, etc.  
 
-<p>**(50)**<div style = "text-align:center"><span title = "Stock scaler for stock s at age a during time step 1">$StockScaler_{s,a,t \! = \! 1}$</span> $=$ <span title = "Backwards FRAM target size for stock s at age a.
+<p>**(50)**<div style = "text-align:center"><span title = "Stock recruit scaler of stock s at age a during time step t.
+BkFRAM calculation" style = "color: blue;">$StockScaler$</span>$_{s,a,t \! = \! 1}$</span> $=$ <span title = "Backwards FRAM target size for stock s at age a.
 Input by user">$(($<b>$BkTarget$</b>$_{s,a}$</span> $+$ <span title = "Total mortalities of stock s at age a during time step 1">$(TotMort_{s,a,t \! = \! 1}$</span> $\times$ <span title = "Maturation Rate of stock s at age a during time step 1.
 Base period calculation"><u>$MatRate$</u>$_{s,a,t \! = \! 1}$</span> $+$ <span title = "Total mortality of stock s at age a during time step 1">$(TotMort_{s,a,t \! = \! 1}$</span> $\times (1 \ -$ <span title = "Maturation Rate for stock s at age a during time step 1.
 Base period calculation"><u>$MatRate$</u>$_{s,a,t \! = \! 1})$</span> $\times (1 \ -$ <span title = "Discrete natural mortality rate at age a during time step 2.
