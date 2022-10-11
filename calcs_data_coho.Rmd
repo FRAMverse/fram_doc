@@ -345,27 +345,27 @@ This becomes more complicated when there are multiple fisheries acting on an unm
 
 where $f$ is an individual fishery and $F$ is the set of all fisheries.
 
-In reality, in any given time period many stocks are subject to a mixture of NSF and MSF with varying release mortality rates, and mark-recognition is not perfect. Recognition errors for marked fish ($\gamma$, probability that a marked fish is released) reduce the exploitation rate on the marked cohort and introduce bias in the exploitation rate calculation for the marked portion of the stock. Conversely, recognition errors for unmarked fish in MSF ($\xi$, unmarked fish are kept) increase the exploitation rate on an unmarked cohort.
+In reality, in any given time period many stocks are subject to a mixture of NSF and MSF with varying release mortality rates, and mark-recognition is not perfect. Recognition errors for marked fish ($mre$, probability that a marked fish is released) reduce the exploitation rate on the marked cohort and introduce bias in the exploitation rate calculation for the marked portion of the stock. Conversely, recognition errors for unmarked fish in MSF ($ure$, unmarked fish are kept) increase the exploitation rate on an unmarked cohort.
 
 An overall release mortality rate in fishery $f$ that accounts for mark-recognition error for a marked cohort ($\delta_{Marked,f}$) is defined by:
 
-<p> (**21**) <div style = "text-align:center"> $\delta_{Marked,f}$ $=$ $\gamma_f$ $\times$ <b>$\delta$</b>$_f$ $+$ $(1$ $-$ $\gamma_f)$ </div> </p>
+<p> (**21**) <div style = "text-align:center"> $\delta_{Marked,f}$ $=$ $mre_f$ $\times$ <b>$\delta$</b>$_f$ $+$ $(1$ $-$ $mre_f)$ </div> </p>
 
 Similarly, for the unmarked cohort:
 
-<p> (**22**) <div style = "text-align:center"> $\delta_{Unmarked,f}$ $=$ $(1$ $-$ $\xi_f)$ $\times$ <b>$\delta$</b>$_f$ $+ \xi_f$ </div> </p>
+<p> (**22**) <div style = "text-align:center"> $\delta_{Unmarked,f}$ $=$ $(1$ $-$ $ure_f)$ $\times$ <b>$\delta$</b>$_f$ $+ ure_f$ </div> </p>
 
 Because of mark recognition error, weighted release mortality rates ($\delta^W$) across all fisheries in the modeled time period are calculated for marked and unmarked cohorts. These weighted release mortality rates are the ratio of the sum of the biased exploitation rate calculations, which account for release mortalities and the sum of the marked exploitation rates.
 
 Weighted release mortalities for marked and unmarked are calculated as:
 
 (**23**)
-$$\delta^{W}_{Marked} = \sum^{F}_{f}(\frac{ER_{Marked,f} \times \delta_{Marked,f}}{\sum^{F}_{f} ER_{Marked, f}}) = \sum^{F}_{f}(\frac{ER_{Marked,f} \times \{ \gamma_f \times \boldsymbol{\delta}_f + (1 - \gamma_f)\}}{\sum^{F}_{f} ER_{Marked,f}})$$
+$$\delta^{W}_{Marked} = \sum^{F}_{f}(\frac{ER_{Marked,f} \times \delta_{Marked,f}}{\sum^{F}_{f} ER_{Marked, f}}) = \sum^{F}_{f}(\frac{ER_{Marked,f} \times \{ mre_f \times \boldsymbol{\delta}_f + (1 - mre_f)\}}{\sum^{F}_{f} ER_{Marked,f}})$$
 
 (**24**)
 $$\delta^{W}_{Unmarked} = 
 \sum^{F}_{f}(\frac{ER_{Marked,f} \times \delta_{Unmarked,f}}{\sum^{F}_{f} ER_{Marked, f}}) =
-\sum^{F}_{f}(\frac{ER_{Marked,f} \times \{ (1 - \xi_f) \times \boldsymbol{\delta}_f + \xi_f ) \}}{\sum^{F}_{f} ER_{Marked,f}})$$
+\sum^{F}_{f}(\frac{ER_{Marked,f} \times \{ (1 - ure_f) \times \boldsymbol{\delta}_f + ure_f ) \}}{\sum^{F}_{f} ER_{Marked,f}})$$
 
 If there is no mark recognition error, bias-adjusted exploitation rates for marked and unmarked stock units are calculated as:
 
@@ -393,19 +393,19 @@ After total mortalities for a fishery have been calculated, they are assigned as
 
 For an unmarked cohort, landed catch for fishery $i$ ($\widehat D_{L, Unmarked, f}$) is calculated:
 
-<p> (**31**) <div style = "text-align:center"> $\widehat{D}_{L, Unmarked, f} = \widehat D_{Unmarked,f} \times \frac{\xi_f}{(1-\xi_f) \times \boldsymbol{\delta}_f + \xi_f}$ </div> </p>
+<p> (**31**) <div style = "text-align:center"> $\widehat{D}_{L, Unmarked, f} = \widehat D_{Unmarked,f} \times \frac{ure_f}{(1-ure_f) \times \boldsymbol{\delta}_f + ure_f}$ </div> </p>
 
 and non-landed mortality ($\widehat D_{N, Unmarked, f}$) is calculated as:
 
-<p> (**32**) <div style = "text-align:center"> $\widehat{D}_{N, Unmarked, f} = \widehat D_{Unmarked,f} \times \frac{(1 - \xi_f) \times \boldsymbol{\delta}_f}{(1-\xi_f)  \times \boldsymbol{\delta}_f + \xi_f}$ </div> </p>
+<p> (**32**) <div style = "text-align:center"> $\widehat{D}_{N, Unmarked, f} = \widehat D_{Unmarked,f} \times \frac{(1 - ure_f) \times \boldsymbol{\delta}_f}{(1-ure_f)  \times \boldsymbol{\delta}_f + ure_f}$ </div> </p>
 
 Similarly, for a marked cohort:
 
-<p> (**33**) <div style = "text-align:center"> $\widehat D_{L, Marked, f} = \widehat D_{Marked,f} \times \frac{(1 - \gamma_f)}{\gamma_f \times \boldsymbol{\delta}_f + (1 - \gamma_f) }$ </div> </p>
+<p> (**33**) <div style = "text-align:center"> $\widehat D_{L, Marked, f} = \widehat D_{Marked,f} \times \frac{(1 - mre_f)}{mre_f \times \boldsymbol{\delta}_f + (1 - mre_f) }$ </div> </p>
 
 and non-landed mortality ($\widehat D_{N,Marked,f}$) is calculated as:
 
-<p> (**34**) <div style = "text-align:center"> $\widehat D_{N,Marked,f} = \widehat D_{Marked,f} \times \frac{\gamma_f \times \boldsymbol{\delta}_f}{\gamma_f  \times \boldsymbol{\delta}_f + (1 - \gamma_f)}$ </div> </p>
+<p> (**34**) <div style = "text-align:center"> $\widehat D_{N,Marked,f} = \widehat D_{Marked,f} \times \frac{mre_f \times \boldsymbol{\delta}_f}{mre_f  \times \boldsymbol{\delta}_f + (1 - mre_f)}$ </div> </p>
 
 ***Applying MSF Bias Calculations to FRAM***
 
