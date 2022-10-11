@@ -345,7 +345,7 @@ This becomes more complicated when there are multiple fisheries acting on an unm
 
 where $f$ is an individual fishery and $F$ is the set of all fisheries.
 
-In reality, in any given time period many stocks are subject to a mixture of NSF and MSF with varying release mortality rates, and mark-recognition is not perfect. Recognition errors for marked fish ($\gamma$, probability that a marked fish is correctly identified) reduce the exploitation rate on the marked cohort and introduce bias in the exploitation rate calculation for the marked portion of the stock. Conversely, recognition errors for unmarked fish in MSF ($\xi$, unmarked fish are kept) increase the exploitation rate on an unmarked cohort.
+In reality, in any given time period many stocks are subject to a mixture of NSF and MSF with varying release mortality rates, and mark-recognition is not perfect. Recognition errors for marked fish ($\gamma$, probability that a marked fish is released) reduce the exploitation rate on the marked cohort and introduce bias in the exploitation rate calculation for the marked portion of the stock. Conversely, recognition errors for unmarked fish in MSF ($\xi$, unmarked fish are kept) increase the exploitation rate on an unmarked cohort.
 
 An overall release mortality rate in fishery $f$ that accounts for mark-recognition error for a marked cohort ($\delta_{Marked,f}$) is defined by:
 
@@ -429,7 +429,7 @@ $$Catch_f = \sum_s{D_{Marked,L,s,f,t}} + \sum_s{D_{Unmarked,L,s,f,t}}$$
 
 Step 4: Calculate fishery scaler.
 
-$$FisheryScaler_f = \frac{TargetCatch_f}{catch_f}$$
+$$FisheryScaler_f = \frac{TargetCatch_f}{Catch_f}$$
 
 Step 5: Scale base period exploitation rate.
 
