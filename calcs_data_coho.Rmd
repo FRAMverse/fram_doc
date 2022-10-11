@@ -307,7 +307,7 @@ knitr::include_graphics(c("images/Coho_FRAM_process_schematic.PNG"))
 
 Mark-selective fisheries (MSF) allow anglers to keep legal-size, adipose-fin clipped hatchery fish (hereafter, "marked") and require the release of any fish with an adipose fin (hereafter, "unmarked"). Originally, both Chinook and Coho FRAM used estimates of release mortality ($\delta$) and time-period specific exploitation rates (ER) from non-selective fisheries as a surrogate for encounter rates of unmarked stocks to estimate the mortality of unmarked fish (equations **9a** and **9b**).
 
-<p> (**16**) <div style = "text-align:center"> $EncounterRate_{Unmarked} = ER \times$ <b>$\delta$</b> </div> </p>
+<p> (**16**) <div style = "text-align:center"> $SimpleExploitationRate_{Unmarked} = ER$ $\times$ <b>$\delta$</b> </div> </p>
 
 Chinook FRAM continues to rely on this method. However, the release of salmon causes bias in these linear exploitation rate calculations. The true mortality for unmarked fish is underestimated because it is an increasing function of time-period specific encounter rates. The unmarked-to-marked ratio of all fish in the pool increases over time as the result of selective removal of marked fish in MSFs and released unmarked fish that survive may encounter the fishing gear more than once during the time period (Figure 2). The original linear functions do not capture this process. Additionally, because all fisheries during a modeled time period are assumed to operate simultaneously on a single pool of fish, this bias also occurs in any modeled non-selective fisheries (NSF) that take place during the same model time period as the MSF.
 
