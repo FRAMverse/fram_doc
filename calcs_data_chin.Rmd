@@ -751,7 +751,7 @@ When the new size limit is greater than the base-period size limit, the differen
 
 <p>**(46)**<div style = "text-align:center">$NewSizeLimitLegalEncounters_{s,a,f,t} = Cohort_{s,a,t} \times$ <span title = "Base period exploitation rate of stock s at age a in fishery f during time step t.
 Base period calculation"><u>$BPER$</u>$_{s,a,f,t}$</span> $\times FisheryScalar_{f,t} * NewPV_{s,a,t} \times$ <b>$SHRF$</b>$_{s,f,t}$ </div> </p>
-<p>**(47)**<div style = "text-align:center">$LegalEncounterDiff_{s,a,f,t} =$ $BaseSizeLimitLegalEncounters_{s,a,f,t} - NewSizeLimitSublegalEncounters_{s,a,f,t}$ </div> </p>
+<p>**(47)**<div style = "text-align:center">$LegalEncounterDiff_{s,a,f,t} =$ $BaseSizeLimitLegalEncounters_{s,a,f,t} - NewSizeLimitLegalEncounters_{s,a,f,t}$ </div> </p>
 
 <p>**(48)**<div style = "text-align:center">$NewSublegalEncounters_{s,a,f,t} = BaseSizeLimitSublegalEncounters_{s,a,f,t} + LegalEncounterDiff_{s,a,f,t}$ </div> </p>
 
