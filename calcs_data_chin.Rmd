@@ -343,7 +343,7 @@ Base period calculation"><u>$MSP$</u>$_{f}$ </div> </p>
 Base period calculation"><u>$MSP$</u>$_{f}$ </span></div> </p>
 
 <u> CNR Method 4</u> - Computed from external estimates of total encounters
-For this method the modeler provides an external estimate of total fishery encounters ($TotalEstEnc_{f,t}$) in Field Value 1 with a flag of "4" in the FRAM non-retention input user interface. FRAM first computes legal and sublegal encounters using a fishery scaler of 1 (equations **10a** and **10b** above). Next, FRAM calculates a $CNRScaler$ to produce total encounters that match the target encounters ($TotalEstEnc$). After multiplying legal and sublegal encounters with the $CNRScaler$, a release mortality is applied to convert encounters into mortalities.
+For this method the modeler provides an external estimate of total fishery encounters ($TotalEstEnc_{f,t}$) in Field Value 1 with a flag of "4" in the FRAM non-retention input user interface. FRAM first computes legal and sublegal encounters using a fishery scaler of 1 (equations **8a** and **8b** above). Next, FRAM calculates a $CNRScaler$ to produce total encounters that match the target encounters ($TotalEstEnc$). After multiplying legal and sublegal encounters with the $CNRScaler$, a release mortality is applied to convert encounters into mortalities.
 
 <p>**(13a)** <div style = "text-align:center"> $CNRScaler_{f,t} =$ $\frac{\boldsymbol{TotalEstEnc}_{f,t} \times \underline{MSP}_{f}}{\sum_{s} \sum_{a} (LegalTempCatch_{s,a,f,t} + SublegTempCatch_{s,a,f,t})}$ </div> </p>
 
