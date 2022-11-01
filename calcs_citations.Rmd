@@ -10,19 +10,21 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=
 
 # Literature cited
 
-Conrad, R., Hagen-Breaux, A., & Yuen, H. (2013). Unbiased Methods for Calculating Mortality in Mark-Selctive Fisheries Models for Ocean Salmon. *North American Journal of Fisheries Management*. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/Conradetal_2013_Unbiased_Methods.pdf" target = "_blank" title = "Download PDF">Download PDF</a>] 
+Conrad, R., A. Hagen-Breaux, and H. Yuen. 2013. Unbiased Methods for Calculating Mortality in Mark-Selctive Fisheries Models for Ocean Salmon. *North American Journal of Fisheries Management*. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/Conradetal_2013_Unbiased_Methods.pdf" target = "_blank" title = "Download PDF">Download PDF</a>] 
 
 
-Hagen-Breaux, Angelika F., et al. *Correction to FRAM Algorithms for Modeling Size Limit Changes*. Portland, PFMC, 2013. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/Correction_to_FRAM_Algorithms_Evaluating_Size_Limit_Changes_final.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
+Hagen-Breaux, A. F., P. McHugh, and J. Packer. 2013. *Correction to FRAM Algorithms for Modeling Size Limit Changes*. Portland, PFMC. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/Correction_to_FRAM_Algorithms_Evaluating_Size_Limit_Changes_final.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
+
+McHugh, P., G. Johnson, and J. Schaffler. 2015. *Chinook FRAM Base Period Documentation: Growth Functions*. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/McHugh_et_al_2015.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
 Model Evaluation Workgroup (MEW).  2008.  *Chinook Fishery Regulation Assessment Model (FRAM)
     Base Data Development v. 3.0 (Auxiliary Report to FRAM Technical Documentation)*. (Document prepared for the Council and its advisory entities.) Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/chinook-fishery-regulation-assessment-model-fram-base-data-development-auxiliary-report-to-fram-technical-documentation-october-2008.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
-Morishima, G. S., and Henry, K. A.  2000.  The History and Status of Pacific Northwest Chinook and Coho Salmon Ocean Fisheries and Prospects for Sustainability.  Pages 219-235 *in* E. E. Knudsen, C. R. Stewart, D. D. MacDonald, J. E. Williams, and D. W. Reiser, editors.  Sustainable Fisheries Management, Pacific Salmon.  Lewis Publishers, New York. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/Morishima%20Henry%20scan.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
+Morishima, G. S., and K. A. Henry.  2000.  The History and Status of Pacific Northwest Chinook and Coho Salmon Ocean Fisheries and Prospects for Sustainability.  Pages 219-235 *in* E. E. Knudsen, C. R. Stewart, D. D. MacDonald, J. E. Williams, and D. W. Reiser, editors.  Sustainable Fisheries Management, Pacific Salmon.  Lewis Publishers, New York. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/Morishima%20Henry%20scan.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
 Pacific Salmon Commission (PSC). 2021. 2020 Exploitation Rate Analysis. Joint Chinook Technical Committee report. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/TCCHINOOK-21-05.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
-Packer, J. F., Haymes, J. D., and C. Cook-Tabor.  2007.  *Coho FRAM Base Period Development (Auxiliary Report to FRAM Technical Documentation)*.  Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/COHO_FRAM_Base_Data_Packer_0707.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
+Packer, J. F., J. D. Haymes, and C. Cook-Tabor.  2007.  *Coho FRAM Base Period Development (Auxiliary Report to FRAM Technical Documentation)*.  Pacific Fishery Management Council, 7700 NE Ambassador Place, Suite 101, Portland, Oregon 97220-1384. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/COHO_FRAM_Base_Data_Packer_0707.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
 Puget Sound Salmon Management Plan.  1985.  U.S. v. Washington No. 9213 Phase I (sub no. 85-2). [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/ps-salmon-management-plan-1985.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
