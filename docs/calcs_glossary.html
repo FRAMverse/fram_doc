@@ -13,7 +13,7 @@
 
 <title>Glossary</title>
 
-<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -187,8 +187,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -196,16 +196,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -434,39 +427,68 @@ div.tocify {
 <p><em>Terms are defined in the context of the FRAM model.</em></p>
 <div id="abundance-forecast" class="section level1">
 <h1><strong>Abundance Forecast</strong></h1>
-<p>Annually developed, stock-specific predictions of returning Chinook and Coho salmon.</p>
+<p>Annually developed, stock-specific predictions of returning Chinook
+and Coho salmon.</p>
 </div>
 <div id="adult-equivalent-aeq" class="section level1">
 <h1><strong>Adult Equivalent (AEQ)</strong></h1>
-<p>The potential for a Chinook of a given age to contribute to the mature run (spawning escapement) in the absence of fishing. Because of natural mortality and unaccounted losses, not all unharvested fish contribute to spawning escapement.</p>
+<p>The potential for a Chinook of a given age to contribute to the
+mature run (spawning escapement) in the absence of fishing. Because of
+natural mortality and unaccounted losses, not all unharvested fish
+contribute to spawning escapement.</p>
 </div>
 <div id="backwards-fram-bkfram" class="section level1">
 <h1><strong>Backwards FRAM (BkFRAM)</strong></h1>
-<p>A utility within the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model that calculates starting abundances when provided with estimates of catches and escapements.</p>
+<p>A utility within the <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model that
+calculates starting abundances when provided with estimates of catches
+and escapements.</p>
 </div>
 <div id="base-period" class="section level1">
 <h1><strong>Base Period</strong></h1>
-<p>A range of years from which <span title="CWT: Coded wire tag">CWT</span> data are used to estimate exploitation rates and other parameters through a process of cohort reconstruction. Resulting base period reference parameters are used to populate the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model to predict annual stock/fishery specific impacts.</p>
+<p>A range of years from which <span
+title="CWT: Coded wire tag">CWT</span> data are used to estimate
+exploitation rates and other parameters through a process of cohort
+reconstruction. Resulting base period reference parameters are used to
+populate the <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model to
+predict annual stock/fishery specific impacts.</p>
 </div>
 <div id="calibration" class="section level1">
 <h1><strong>Calibration</strong></h1>
-<p>Process creating base period exploitation rates by first selecting <span title="CWT: Coded wire tag">CWT</span> groups to represent <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks and then reconstructing the cohort. Once cohort sizes are established, stock/age/fishery/time step specific exploitation rates are computed.</p>
+<p>Process creating base period exploitation rates by first selecting
+<span title="CWT: Coded wire tag">CWT</span> groups to represent <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks and
+then reconstructing the cohort. Once cohort sizes are established,
+stock/age/fishery/time step specific exploitation rates are
+computed.</p>
 </div>
 <div id="cape-falcon" class="section level1">
 <h1><strong>Cape Falcon</strong></h1>
-<p>Cape in Northern Oregon defining an important <span title="PFMC: Pacific Fishery Management Council">PFMC</span> fishery management boundary (45°46’00”N).</p>
+<p>Cape in Northern Oregon defining an important <span
+title="PFMC: Pacific Fishery Management Council">PFMC</span> fishery
+management boundary (45°46’00”N).</p>
 </div>
-<div id="chinookcoho-non-retention-cnr-fisheries" class="section level1">
+<div id="chinookcoho-non-retention-cnr-fisheries"
+class="section level1">
 <h1><strong>Chinook/Coho Non-retention (CNR) Fisheries</strong></h1>
-<p>Fisheries where salmon fishing is allowed, but the retention of Chinook or Coho salmon is prohibited. Impacts in non-retention fisheries are calculated as encounters times release mortality.</p>
+<p>Fisheries where salmon fishing is allowed, but the retention of
+Chinook or Coho salmon is prohibited. Impacts in non-retention fisheries
+are calculated as encounters times release mortality.</p>
 </div>
 <div id="coded-wire-tag-cwt" class="section level1">
 <h1><strong>Coded-Wire Tag (CWT)</strong></h1>
-<p>Coded micro-wire implanted in juvenile salmon prior to release. When recovered, the binary code on the tag identifies the tag group, and thus provides information such as location and timing of release, special hatchery treatments, etc.</p>
+<p>Coded micro-wire implanted in juvenile salmon prior to release. When
+recovered, the binary code on the tag identifies the tag group, and thus
+provides information such as location and timing of release, special
+hatchery treatments, etc.</p>
 </div>
 <div id="cohort-analysis" class="section level1">
 <h1><strong>Cohort Analysis</strong></h1>
-<p>A sequential population analysis technique, also called Virtual Population Analysis, that is used during model calibration to reconstruct cohort size at age using life history parameters and exploitation of a population.</p>
+<p>A sequential population analysis technique, also called Virtual
+Population Analysis, that is used during model calibration to
+reconstruct cohort size at age using life history parameters and
+exploitation of a population.</p>
 </div>
 <div id="cohort-size" class="section level1">
 <h1><strong>Cohort Size</strong></h1>
@@ -474,7 +496,8 @@ div.tocify {
 </div>
 <div id="co-managers" class="section level1">
 <h1><strong>Co-managers</strong></h1>
-<p>Western Washington treaty Indian tribes and Washington Department of Fish and Wildlife officials jointly managing the salmon resource.</p>
+<p>Western Washington treaty Indian tribes and Washington Department of
+Fish and Wildlife officials jointly managing the salmon resource.</p>
 </div>
 <div id="deterministic-model" class="section level1">
 <h1><strong>Deterministic Model</strong></h1>
@@ -482,55 +505,91 @@ div.tocify {
 </div>
 <div id="directed-fishery" class="section level1">
 <h1><strong>Directed Fishery</strong></h1>
-<p>A fishery which directly targets a species or subgroup, i.e., hatchery or natural, as opposed to an incidental fishery that impacts a species or sub-group as a by-product of having a different target (bycatch).</p>
+<p>A fishery which directly targets a species or subgroup, i.e.,
+hatchery or natural, as opposed to an incidental fishery that impacts a
+species or sub-group as a by-product of having a different target
+(bycatch).</p>
 </div>
 <div id="discrete-model" class="section level1">
 <h1><strong>Discrete Model</strong></h1>
-<p>A model dealing with objects that can assume only distinct, separated values.</p>
+<p>A model dealing with objects that can assume only distinct, separated
+values.</p>
 </div>
 <div id="drop-off-mortality" class="section level1">
 <h1><strong>Drop-off Mortality</strong></h1>
-<p>Mortality of salmon that are lost from sport or troll hook-and-line type fishing gear before they are landed and die from their injuries prior to harvest or spawning. Also, the general term refers to both drop-off and drop-out mortality in this <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> documentation.</p>
+<p>Mortality of salmon that are lost from sport or troll hook-and-line
+type fishing gear before they are landed and die from their injuries
+prior to harvest or spawning. Also, the general term refers to both
+drop-off and drop-out mortality in this <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>
+documentation.</p>
 </div>
 <div id="drop-out-mortality" class="section level1">
 <h1><strong>Drop-out Mortality</strong></h1>
-<p>Mortality of salmon that die in a fishing net prior to harvest or salmon that disentangle from a net while in the water and die from their injuries prior to harvest or spawning. Referred to in this <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> documentation under the umbrella term of drop-off mortality.</p>
+<p>Mortality of salmon that die in a fishing net prior to harvest or
+salmon that disentangle from a net while in the water and die from their
+injuries prior to harvest or spawning. Referred to in this <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>
+documentation under the umbrella term of drop-off mortality.</p>
 </div>
 <div id="encounter" class="section level1">
 <h1><strong>Encounter</strong></h1>
-<p>An incident where an individual salmon makes contact with fishing gear resulting either in retention or release.</p>
+<p>An incident where an individual salmon makes contact with fishing
+gear resulting either in retention or release.</p>
 </div>
 <div id="encounter-rate-adjustment" class="section level1">
 <h1><strong>Encounter Rate Adjustment</strong></h1>
-<p>A variable used to adjust the number of sublegal Chinook encountered in a fishery and time step.</p>
+<p>A variable used to adjust the number of sublegal Chinook encountered
+in a fishery and time step.</p>
 </div>
 <div id="endangered-species-act-esa" class="section level1">
 <h1><strong>Endangered Species Act (ESA)</strong></h1>
-<p>Regulations used in the U.S. for the conservation of threatened and endangered plants and animals and the habitats in which they are found.</p>
+<p>Regulations used in the U.S. for the conservation of threatened and
+endangered plants and animals and the habitats in which they are
+found.</p>
 </div>
 <div id="escapement" class="section level1">
 <h1><strong>Escapement</strong></h1>
-<p>The number of mature salmon that are not caught in fisheries or die as a result of fisheries or natural mortality and return to the spawning grounds or hatcheries. Marine escapement describes the number of mature fish not caught in marine fisheries.</p>
+<p>The number of mature salmon that are not caught in fisheries or die
+as a result of fisheries or natural mortality and return to the spawning
+grounds or hatcheries. Marine escapement describes the number of mature
+fish not caught in marine fisheries.</p>
 </div>
 <div id="exploitation-rate-er" class="section level1">
 <h1><strong>Exploitation Rate (ER)</strong></h1>
-<p>When used to refer to model output, represents the total fishing mortality rate, calculated as the sum of all fishery-related mortalities divided by that sum plus escapement. Exploitation rates are <u>stock specific</u>.</p>
+<p>When used to refer to model output, represents the total fishing
+mortality rate, calculated as the sum of all fishery-related mortalities
+divided by that sum plus escapement. Exploitation rates are <u>stock
+specific</u>.</p>
 </div>
 <div id="extreme-terminal-run-size-etrs" class="section level1">
 <h1><strong>Extreme Terminal Run Size (ETRS)</strong></h1>
-<p>Run size including escapement, freshwater fishery mortalities, and fishery mortalities in those marine areas that are assumed to be 100% local stock due to river mouth proximity.</p>
+<p>Run size including escapement, freshwater fishery mortalities, and
+fishery mortalities in those marine areas that are assumed to be 100%
+local stock due to river mouth proximity.</p>
 </div>
-<div id="fishery-regulation-assessment-model-fram" class="section level1">
+<div id="fishery-regulation-assessment-model-fram"
+class="section level1">
 <h1><strong>Fishery Regulation Assessment Model (FRAM)</strong></h1>
-<p>The Fishery Regulation Assessment Model is a simulation model developed for fishery management and used to estimate the impacts of proposed Pacific Coast salmon fisheries on Chinook and Coho stocks of interest to fishery managers.</p>
+<p>The Fishery Regulation Assessment Model is a simulation model
+developed for fishery management and used to estimate the impacts of
+proposed Pacific Coast salmon fisheries on Chinook and Coho stocks of
+interest to fishery managers.</p>
 </div>
 <div id="fishery-scaler" class="section level1">
 <h1><strong>Fishery Scaler</strong></h1>
-<p>A multiplier, typically based on expected fishery effort or catch relative to base period effort or catch, used to estimate fishery impacts by adjusting the base period exploitation rates.</p>
+<p>A multiplier, typically based on expected fishery effort or catch
+relative to base period effort or catch, used to estimate fishery
+impacts by adjusting the base period exploitation rates.</p>
 </div>
 <div id="harvest-rate-hr" class="section level1">
 <h1><strong>Harvest Rate (HR)</strong></h1>
-<p>Catch or total fishing mortality in a fishery expressed as a proportion of the total fish abundance available in a given fishing area. Harvest rates are area specific. The catch is the total catch of all stocks in an area. Harvest rates are most often used for terminal fisheries, where the rate represents the terminal catch divided by the terminal abundance.</p>
+<p>Catch or total fishing mortality in a fishery expressed as a
+proportion of the total fish abundance available in a given fishing
+area. Harvest rates are area specific. The catch is the total catch of
+all stocks in an area. Harvest rates are most often used for terminal
+fisheries, where the rate represents the terminal catch divided by the
+terminal abundance.</p>
 </div>
 <div id="hatchery" class="section level1">
 <h1><strong>Hatchery</strong></h1>
@@ -546,15 +605,21 @@ div.tocify {
 </div>
 <div id="incidental-mortality" class="section level1">
 <h1><strong>Incidental Mortality</strong></h1>
-<p>In the context of this document, synonymous with drop-off or drop-out mortality. Mortality of non-landed salmon as result of encountering fishing gear.</p>
+<p>In the context of this document, synonymous with drop-off or drop-out
+mortality. Mortality of non-landed salmon as result of encountering
+fishing gear.</p>
 </div>
 <div id="instantaneous-equations" class="section level1">
 <h1><strong>Instantaneous Equations</strong></h1>
-<p>Equations predicting a continuous quantity at a particular moment.</p>
+<p>Equations predicting a continuous quantity at a particular
+moment.</p>
 </div>
 <div id="january-age-3-abundance-ja3" class="section level1">
 <h1><strong>January Age-3 Abundance (JA3)</strong></h1>
-<p>Starting unit of age-3 abundance in the Coho <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. Abundance at the beginning of January prior to fishing and natural mortality in a calendar year.</p>
+<p>Starting unit of age-3 abundance in the Coho <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. Abundance
+at the beginning of January prior to fishing and natural mortality in a
+calendar year.</p>
 </div>
 <div id="landed-catch" class="section level1">
 <h1><strong>Landed Catch</strong></h1>
@@ -562,95 +627,142 @@ div.tocify {
 </div>
 <div id="law-of-the-sea-convention" class="section level1">
 <h1><strong>Law of the Sea Convention</strong></h1>
-<p>A United Nations convention producing a comprehensive regime of law and order in the world’s oceans and seas, establishing rules governing all uses of the oceans and their resources.</p>
+<p>A United Nations convention producing a comprehensive regime of law
+and order in the world’s oceans and seas, establishing rules governing
+all uses of the oceans and their resources.</p>
 </div>
 <div id="legal-sized" class="section level1">
 <h1><strong>Legal-sized</strong></h1>
 <p>A Chinook salmon exceeding the regulatory minimum size limit.</p>
 </div>
-<div id="magnuson-stevens-fishery-conservation-and-management-act" class="section level1">
-<h1><strong>Magnuson-Stevens Fishery Conservation and Management Act</strong></h1>
-<p>The Magnuson-Stevens Act is the primary law governing marine fisheries management in U.S. federal waters.</p>
+<div id="magnuson-stevens-fishery-conservation-and-management-act"
+class="section level1">
+<h1><strong>Magnuson-Stevens Fishery Conservation and Management
+Act</strong></h1>
+<p>The Magnuson-Stevens Act is the primary law governing marine
+fisheries management in U.S. federal waters.</p>
 </div>
 <div id="mark-selective-fishing-bias" class="section level1">
 <h1><strong>Mark Selective Fishing Bias</strong></h1>
-<p>Exploitation rate bias caused when using linear equations with parameters derived from retention fisheries to estimate mortalities in fisheries where all or some of the fish encountered are released. When <span title="MSF: Mark-selective fishery">MSFs</span> operate during a modeled time step, mortalities are underestimated because released fish may encounter the fishing gear more than once during the modeled time step.</p>
+<p>Exploitation rate bias caused when using linear equations with
+parameters derived from retention fisheries to estimate mortalities in
+fisheries where all or some of the fish encountered are released. When
+<span title="MSF: Mark-selective fishery">MSFs</span> operate during a
+modeled time step, mortalities are underestimated because released fish
+may encounter the fishing gear more than once during the modeled time
+step.</p>
 </div>
 <div id="marked-recognition-error-rate" class="section level1">
 <h1><strong>Marked Recognition Error Rate</strong></h1>
-<p>The probability that a marked fish will be inadvertently or knowingly released in a mark-selective fishery.</p>
+<p>The probability that a marked fish will be inadvertently or knowingly
+released in a mark-selective fishery.</p>
 </div>
 <div id="marked" class="section level1">
 <h1><strong>Marked</strong></h1>
-<p>A Chinook or Coho that had its adipose fin removed; commonly a visual identifier of a hatchery fish that can be retained in a mark-selective fishery.</p>
+<p>A Chinook or Coho that had its adipose fin removed; commonly a visual
+identifier of a hatchery fish that can be retained in a mark-selective
+fishery.</p>
 </div>
 <div id="mark-selective-fishery-msf" class="section level1">
 <h1><strong>Mark-Selective Fishery (MSF)</strong></h1>
-<p>A fishery in which only marked (adipose fin-clipped) fish above the regulatory size limit may be retained.</p>
+<p>A fishery in which only marked (adipose fin-clipped) fish above the
+regulatory size limit may be retained.</p>
 </div>
 <div id="maturation" class="section level1">
 <h1><strong>Maturation</strong></h1>
-<p>Process of sexual development, signaling the return of a salmon to freshwater in order to spawn.</p>
+<p>Process of sexual development, signaling the return of a salmon to
+freshwater in order to spawn.</p>
 </div>
 <div id="model-stock-proportion-msp" class="section level1">
 <h1><strong>Model-Stock Proportion (MSP)</strong></h1>
-<p>Percentage of a fishery’s total catch that is accounted for by stocks modeled in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>.</p>
+<p>Percentage of a fishery’s total catch that is accounted for by stocks
+modeled in <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>.</p>
 </div>
 <div id="multiple-encounter" class="section level1">
 <h1><strong>Multiple Encounter</strong></h1>
-<p>The event of encountering a fish more than one time while fishing due to previous release or drop-off.</p>
+<p>The event of encountering a fish more than one time while fishing due
+to previous release or drop-off.</p>
 </div>
 <div id="natural-mortality" class="section level1">
 <h1><strong>Natural Mortality</strong></h1>
-<p>All mortality not resulting directly or indirectly from fisheries, including death resulting from predation, illness, malnutrition, lethal environmental conditions, etc.</p>
+<p>All mortality not resulting directly or indirectly from fisheries,
+including death resulting from predation, illness, malnutrition, lethal
+environmental conditions, etc.</p>
 </div>
 <div id="natural" class="section level1">
 <h1><strong>Natural</strong></h1>
-<p>A fish that was either reared in nature (as opposed to a hatchery) or returned to a natural environment to spawn.</p>
+<p>A fish that was either reared in nature (as opposed to a hatchery) or
+returned to a natural environment to spawn.</p>
 </div>
 <div id="non-landednon-retention-mortality" class="section level1">
 <h1><strong>Non-landed/Non-retention Mortality</strong></h1>
-<p>A category of fishery-related mortality where fish are not retained and die as a result of fishing-induced injury. Non-landed mortality includes hook-and-line drop-off, net gear drop-out, and release mortality.</p>
+<p>A category of fishery-related mortality where fish are not retained
+and die as a result of fishing-induced injury. Non-landed mortality
+includes hook-and-line drop-off, net gear drop-out, and release
+mortality.</p>
 </div>
 <div id="north-of-falcon-nof" class="section level1">
 <h1><strong>North of Falcon (NOF)</strong></h1>
-<p>Co-manager, annual, pre-season Puget Sound salmon fishery planning process; referencing the region north of Cape Falcon Oregon which marks the southern border of active management for Washington salmon stocks.</p>
+<p>Co-manager, annual, pre-season Puget Sound salmon fishery planning
+process; referencing the region north of Cape Falcon Oregon which marks
+the southern border of active management for Washington salmon
+stocks.</p>
 </div>
 <div id="ocean-age-3-abundance-oa3" class="section level1">
 <h1><strong>Ocean Age-3 Abundance (OA3)</strong></h1>
-<p>Abundance of age-3 Coho after natural mortality has occurred, but prior to any fishing related mortality in a calendar year.</p>
+<p>Abundance of age-3 Coho after natural mortality has occurred, but
+prior to any fishing related mortality in a calendar year.</p>
 </div>
 <div id="out-of-base-oob" class="section level1">
 <h1><strong>Out-of-Base (OOB)</strong></h1>
-<p>A time period outside of the established referenced base period years used to estimate base period parameters. This is usually necessary for stocks with insufficient <span title="CWT: Coded wire tag">CWT</span> recoveries during the base period.</p>
+<p>A time period outside of the established referenced base period years
+used to estimate base period parameters. This is usually necessary for
+stocks with insufficient <span title="CWT: Coded wire tag">CWT</span>
+recoveries during the base period.</p>
 </div>
-<div id="pacific-fishery-management-council-pfmc" class="section level1">
+<div id="pacific-fishery-management-council-pfmc"
+class="section level1">
 <h1><strong>Pacific Fishery Management Council (PFMC)</strong></h1>
-<p>Governing body for approximately 119 species of salmon, groundfish, coastal pelagic species, and highly migratory species on the West Coast of the United States established by Congress in 1976.</p>
+<p>Governing body for approximately 119 species of salmon, groundfish,
+coastal pelagic species, and highly migratory species on the West Coast
+of the United States established by Congress in 1976.</p>
 </div>
 <div id="pacific-salmon-commission-psc" class="section level1">
 <h1><strong>Pacific Salmon Commission (PSC)</strong></h1>
-<p>The body formed by the governments of Canada and the United States in 1985 to implement the Pacific Salmon Treaty.</p>
+<p>The body formed by the governments of Canada and the United States in
+1985 to implement the Pacific Salmon Treaty.</p>
 </div>
 <div id="parameter" class="section level1">
 <h1><strong>Parameter</strong></h1>
-<p>A variable whose measure is indicative of a quantity or function that cannot itself be precisely determined by direct methods; for example, exploitation rates and fishery scalers are parameters used to predict catch.</p>
+<p>A variable whose measure is indicative of a quantity or function that
+cannot itself be precisely determined by direct methods; for example,
+exploitation rates and fishery scalers are parameters used to predict
+catch.</p>
 </div>
 <div id="post-season" class="section level1">
 <h1><strong>Post-season</strong></h1>
-<p>After a fishing season has concluded and salmon have finished spawning. Post-season estimates are usually observed, sampled, or reported values.</p>
+<p>After a fishing season has concluded and salmon have finished
+spawning. Post-season estimates are usually observed, sampled, or
+reported values.</p>
 </div>
 <div id="pre-season" class="section level1">
 <h1><strong>Pre-season</strong></h1>
-<p>Before a fishing season has started. Pre-season estimates use a variety of forecasts, catch estimates and other parameters to predict expected mortalities and escapements.</p>
+<p>Before a fishing season has started. Pre-season estimates use a
+variety of forecasts, catch estimates and other parameters to predict
+expected mortalities and escapements.</p>
 </div>
 <div id="pre-terminal-fishery" class="section level1">
 <h1><strong>Pre-terminal Fishery</strong></h1>
-<p>In <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>, a fishery that operates on mixed maturity fish and/or in geographic areas distant to a natal origin river/stream.</p>
+<p>In <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>, a fishery
+that operates on mixed maturity fish and/or in geographic areas distant
+to a natal origin river/stream.</p>
 </div>
 <div id="proportion-vulnerable-pv" class="section level1">
 <h1><strong>Proportion Vulnerable (PV)</strong></h1>
-<p>Portion of a stock that is of legal size in a fishery and can be retained per regulations.</p>
+<p>Portion of a stock that is of legal size in a fishery and can be
+retained per regulations.</p>
 </div>
 <div id="quota" class="section level1">
 <h1><strong>Quota</strong></h1>
@@ -658,19 +770,32 @@ div.tocify {
 </div>
 <div id="recreational-fisheries" class="section level1">
 <h1><strong>Recreational Fisheries</strong></h1>
-<p>Also called sport fishing, is fishing for pleasure, competition, or non-commercial consumption. It can be contrasted with commercial fishing, which is professional fishing for profit. The most common form of recreational fishing is done with a rod, reel, line, hooks and any one of a wide range of baits.</p>
+<p>Also called sport fishing, is fishing for pleasure, competition, or
+non-commercial consumption. It can be contrasted with commercial
+fishing, which is professional fishing for profit. The most common form
+of recreational fishing is done with a rod, reel, line, hooks and any
+one of a wide range of baits.</p>
 </div>
 <div id="regional-mark-information-system-rmis" class="section level1">
 <h1><strong>Regional Mark Information System (RMIS)</strong></h1>
-<p>Data system providing services to international, state, federal, and tribal organizations involved in marking anadromous salmonids throughout the Pacific region. These services include regional coordination of tagging and fin marking programs, maintenance of databases for Coded Wire Tag Releases, Recoveries, and Locations, as well as the dissemination of reports.</p>
+<p>Data system providing services to international, state, federal, and
+tribal organizations involved in marking anadromous salmonids throughout
+the Pacific region. These services include regional coordination of
+tagging and fin marking programs, maintenance of databases for Coded
+Wire Tag Releases, Recoveries, and Locations, as well as the
+dissemination of reports.</p>
 </div>
 <div id="release-mortality" class="section level1">
 <h1><strong>Release Mortality</strong></h1>
-<p>Fish that are released back into the water due to size limit restrictions, mark status, or other reasons and die due to injury from gear or handling.</p>
+<p>Fish that are released back into the water due to size limit
+restrictions, mark status, or other reasons and die due to injury from
+gear or handling.</p>
 </div>
 <div id="reportdriver" class="section level1">
 <h1><strong>ReportDriver</strong></h1>
-<p>Instructions to the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> program used to produce customizable output reports.</p>
+<p>Instructions to the <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> program
+used to produce customizable output reports.</p>
 </div>
 <div id="river-run-size" class="section level1">
 <h1><strong>River Run Size</strong></h1>
@@ -678,100 +803,177 @@ div.tocify {
 </div>
 <div id="seed-run" class="section level1">
 <h1><strong>Seed Run</strong></h1>
-<p>A model run containing values used to initialize a new model run, i.e., a previous year’s final run is often used to initialize the first model run of the next year.</p>
+<p>A model run containing values used to initialize a new model run,
+i.e., a previous year’s final run is often used to initialize the first
+model run of the next year.</p>
 </div>
 <div id="shaker-mortality" class="section level1">
 <h1><strong>Shaker Mortality</strong></h1>
-<p>Chinook that are released from recreational and troll hook-and-line fisheries because they are below the regulatory size limit and die due to injuries from gear or handling.</p>
+<p>Chinook that are released from recreational and troll hook-and-line
+fisheries because they are below the regulatory size limit and die due
+to injuries from gear or handling.</p>
 </div>
 <div id="shaker" class="section level1">
 <h1><strong>Shaker</strong></h1>
-<p>A small size Chinook below the size limit set by fishery regulations.</p>
+<p>A small size Chinook below the size limit set by fishery
+regulations.</p>
 </div>
 <div id="single-pool-model" class="section level1">
 <h1><strong>Single Pool Model</strong></h1>
-<p>Model where all fisheries operate on the entire cohort simultaneously in each time step.</p>
+<p>Model where all fisheries operate on the entire cohort simultaneously
+in each time step.</p>
 </div>
 <div id="size-limit" class="section level1">
 <h1><strong>Size Limit</strong></h1>
-<p>Length of salmon defining the minimum size for legal retention in a fishery.</p>
+<p>Length of salmon defining the minimum size for legal retention in a
+fishery.</p>
 </div>
 <div id="snake-river-fall-chinook-index-srfi" class="section level1">
 <h1><strong>Snake River Fall Chinook Index (SRFI)</strong></h1>
-<p>A ratio that is calculated as the Snake River Fall Chinook ocean exploitation rate in the current model run divided by the exploitation rate during a reference period (1988-1993). The Snake River is in the interior Columbia River basin.</p>
+<p>A ratio that is calculated as the Snake River Fall Chinook ocean
+exploitation rate in the current model run divided by the exploitation
+rate during a reference period (1988-1993). The Snake River is in the
+interior Columbia River basin.</p>
 </div>
 <div id="starting-cohort" class="section level1">
 <h1><strong>Starting Cohort</strong></h1>
-<p>Abundance of salmon of the same stock and age prior to fishing and natural mortality.</p>
+<p>Abundance of salmon of the same stock and age prior to fishing and
+natural mortality.</p>
 </div>
 <div id="stock-fishery-rate-scaler-shrf" class="section level1">
 <h1><strong>Stock Fishery Rate Scaler (SHRF)</strong></h1>
-<p>A scaler used to deviate from the reference base period for individual stocks in a fishery and time step. A stock fishery rate scaler is optional and can be tied to an individual annual fishery input or remain as a static input to adjust the reference base period exploitation rate for a stock-fishery-time step.</p>
+<p>A scaler used to deviate from the reference base period for
+individual stocks in a fishery and time step. A stock fishery rate
+scaler is optional and can be tied to an individual annual fishery input
+or remain as a static input to adjust the reference base period
+exploitation rate for a stock-fishery-time step.</p>
 </div>
 <div id="stock-recruit-scaler" class="section level1">
 <h1><strong>Stock Recruit Scaler</strong></h1>
-<p>A scaler that relates the abundance of a stock and age to the abundance in the base period.</p>
+<p>A scaler that relates the abundance of a stock and age to the
+abundance in the base period.</p>
 </div>
 <div id="stock" class="section level1">
 <h1><strong>Stock</strong></h1>
-<p>A group of fish of the same species. There is no distinct single definition for stocks in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. Stocks are functional units that originate in the same geographic region and are sufficiently similar to receive identical base period parameters (if of the same age). Some salmon are grouped into a stock if they belong to the same ESA population. Other stock definitions are limited by the availability of coded-wire tag recoveries, etc.</p>
+<p>A group of fish of the same species. There is no distinct single
+definition for stocks in <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. Stocks
+are functional units that originate in the same geographic region and
+are sufficiently similar to receive identical base period parameters (if
+of the same age). Some salmon are grouped into a stock if they belong to
+the same ESA population. Other stock definitions are limited by the
+availability of coded-wire tag recoveries, etc.</p>
 </div>
 <div id="sublegal" class="section level1">
 <h1><strong>Sublegal</strong></h1>
-<p>A Chinook salmon that cannot be retained because it is smaller than the minimum size limit per fishery regulation.</p>
+<p>A Chinook salmon that cannot be retained because it is smaller than
+the minimum size limit per fishery regulation.</p>
 </div>
 <div id="taaetrslist" class="section level1">
 <h1><strong>TAAETRSList</strong></h1>
-<p>A table containing terminal area abundance (<span title="TAA: Terminal Area Abundance">TAA</span>) and extreme terminal run size (<span title="ETRS: Extreme Terminal Run Size">ETRS</span>) definitions specifying the Coho stocks and fisheries included in the terminal abundance used in <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title="TAMM: Terminal Area Management Module">TAMM</span> iterations.</p>
+<p>A table containing terminal area abundance (<span
+title="TAA: Terminal Area Abundance">TAA</span>) and extreme terminal
+run size (<span title="ETRS: Extreme Terminal Run Size">ETRS</span>)
+definitions specifying the Coho stocks and fisheries included in the
+terminal abundance used in <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span
+title="TAMM: Terminal Area Management Module">TAMM</span>
+iterations.</p>
 </div>
 <div id="tagged" class="section level1">
 <h1><strong>Tagged</strong></h1>
 <p>A salmon containing a coded-wire-tag.</p>
 </div>
 <div id="tamm-iterations" class="section level1">
-<h1><strong><span title="TAMM: Terminal Area Management Module">TAMM</span> Iterations</strong></h1>
-<p>Repetitive mathematical process used to find solutions for circular processes. Iterations terminate when <span title="TAMM: Terminal Area Management Module">TAMM</span> and <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> catches converge; also referred to as <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title="TAMM: Terminal Area Management Module">TAMM</span> iterations.</p>
+<h1><strong><span
+title="TAMM: Terminal Area Management Module">TAMM</span>
+Iterations</strong></h1>
+<p>Repetitive mathematical process used to find solutions for circular
+processes. Iterations terminate when <span
+title="TAMM: Terminal Area Management Module">TAMM</span> and <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> catches
+converge; also referred to as <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span
+title="TAMM: Terminal Area Management Module">TAMM</span>
+iterations.</p>
 </div>
 <div id="terminal-area-management-module-tamm" class="section level1">
-<h1><strong>Terminal Area Management Module (<span title="TAMM: Terminal Area Management Module">TAMM</span>)</strong></h1>
-<p>A Microsoft Excel file external to but integrated with <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> software that is used to: (1) provide input for <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> simulations regarding terminal area fisheries or stock-specific impacts; (2) process and summarize <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> outputs of mortalities and abundances.</p>
+<h1><strong>Terminal Area Management Module (<span
+title="TAMM: Terminal Area Management Module">TAMM</span>)</strong></h1>
+<p>A Microsoft Excel file external to but integrated with <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> software
+that is used to: (1) provide input for <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>
+simulations regarding terminal area fisheries or stock-specific impacts;
+(2) process and summarize <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> outputs of
+mortalities and abundances.</p>
 </div>
 <div id="terminal-fishery" class="section level1">
 <h1><strong>Terminal Fishery</strong></h1>
-<p>Definition 1 (<span title="TAMM: Terminal Area Management Module">TAMM</span> context): A fishery that is reported from <span title="TAMM: Terminal Area Management Module">TAMM</span> to <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> computes stock-specific impacts for these fisheries during an iterative process. <span title="TAMM: Terminal Area Management Module">TAMM</span> fisheries occur in marine terminal areas. For a list of <span title="TAMM: Terminal Area Management Module">TAMM</span> fisheries see <a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_3_Coho_FRAM_fisheries" target = "_blank" title = "Appendix 3: Coho FRAM fisheries">Appendix 3</a> for Coho and <a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_4_Chinook_FRAM_fisheries" target = "_blank" title = "Appendix 3: Coho FRAM fisheries">Appendix 4</a> for Chinook.</p>
-<p>Definition 2 (Mature fishery context): In <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>, a fishery that operates only on the mature cohort.</p>
+<p>Definition 1 (<span
+title="TAMM: Terminal Area Management Module">TAMM</span> context): A
+fishery that is reported from <span
+title="TAMM: Terminal Area Management Module">TAMM</span> to <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>. <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> computes
+stock-specific impacts for these fisheries during an iterative process.
+<span title="TAMM: Terminal Area Management Module">TAMM</span>
+fisheries occur in marine terminal areas. For a list of <span
+title="TAMM: Terminal Area Management Module">TAMM</span> fisheries see
+<a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_3_Coho_FRAM_fisheries" target = "_blank" title = "Appendix 3: Coho FRAM fisheries">Appendix
+3</a> for Coho and
+<a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_4_Chinook_FRAM_fisheries" target = "_blank" title = "Appendix 3: Coho FRAM fisheries">Appendix
+4</a> for Chinook.</p>
+<p>Definition 2 (Mature fishery context): In <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>, a fishery
+that operates only on the mature cohort.</p>
 </div>
 <div id="terminal-run-size" class="section level1">
 <h1><strong>Terminal Run Size</strong></h1>
-<p>This run size definition includes escapement, freshwater fishery mortalities, and fishery mortalities in terminal fisheries.</p>
+<p>This run size definition includes escapement, freshwater fishery
+mortalities, and fishery mortalities in terminal fisheries.</p>
 </div>
 <div id="time-step" class="section level1">
 <h1><strong>Time Step</strong></h1>
-<p>A continuous time period in the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model operating on the same abundance and using identical stock/fishery/age-specific parameters. Time steps in the model vary in length and by species.</p>
+<p>A continuous time period in the <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model
+operating on the same abundance and using identical
+stock/fishery/age-specific parameters. Time steps in the model vary in
+length and by species.</p>
 </div>
 <div id="treaty-fisheries" class="section level1">
 <h1><strong>Treaty Fisheries</strong></h1>
-<p>Fisheries conducted by members of the twenty-four Belloni and Boldt Case Area Tribes.</p>
+<p>Fisheries conducted by members of the twenty-four Belloni and Boldt
+Case Area Tribes.</p>
 </div>
 <div id="treaty-tribes" class="section level1">
 <h1><strong>Treaty Tribes</strong></h1>
-<p>Tribes belonging to the twenty-four Belloni and Boldt Case Area Indian Tribes with fishing rights in Washington State.</p>
+<p>Tribes belonging to the twenty-four Belloni and Boldt Case Area
+Indian Tribes with fishing rights in Washington State.</p>
 </div>
 <div id="troll-fishery" class="section level1">
 <h1><strong>Troll Fishery</strong></h1>
-<p>A commercial fishing method where one or more fishing lines, baited with lures or bait fish, are drawn through the water.</p>
+<p>A commercial fishing method where one or more fishing lines, baited
+with lures or bait fish, are drawn through the water.</p>
 </div>
 <div id="u.s.-national-bureau-of-standards" class="section level1">
 <h1><strong>U.S. National Bureau of Standards</strong></h1>
-<p>Institute promoting U.S. innovation and industrial competitiveness by advancing measurement science, standards, and technology.</p>
+<p>Institute promoting U.S. innovation and industrial competitiveness by
+advancing measurement science, standards, and technology.</p>
 </div>
 <div id="unmarked-retention-error-rate" class="section level1">
 <h1><strong>Unmarked Retention Error Rate</strong></h1>
-<p>The probability that an unmarked fish will be retained in a mark-selective fishery (e.g., the fisher fails to identify the mark (clipped adipose fin) or the fisher fails to comply with a release requirement).</p>
+<p>The probability that an unmarked fish will be retained in a
+mark-selective fishery (e.g., the fisher fails to identify the mark
+(clipped adipose fin) or the fisher fails to comply with a release
+requirement).</p>
 </div>
 <div id="unmarked" class="section level1">
 <h1><strong>Unmarked</strong></h1>
-<p>A salmon that has an intact adipose fin. In the context of mark-selective fisheries, an unmarked salmon with an intact adipose fin that has to be released.</p>
+<p>A salmon that has an intact adipose fin. In the context of
+mark-selective fisheries, an unmarked salmon with an intact adipose fin
+that has to be released.</p>
 </div>
 <div id="untagged" class="section level1">
 <h1><strong>Untagged</strong></h1>
@@ -779,15 +981,23 @@ div.tocify {
 </div>
 <div id="validation-runs" class="section level1">
 <h1><strong>Validation Runs</strong></h1>
-<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> model runs using post-season estimates of abundances, landed and non-landed mortalities, and other updated parameters to estimate realized exploitation rates.</p>
+<p><span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>
+model runs using post-season estimates of abundances, landed and
+non-landed mortalities, and other updated parameters to estimate
+realized exploitation rates.</p>
 </div>
 <div id="variance" class="section level1">
 <h1><strong>Variance</strong></h1>
-<p>Measure of dispersion, describing the size of the distribution of values expected for a particular variable.</p>
+<p>Measure of dispersion, describing the size of the distribution of
+values expected for a particular variable.</p>
 </div>
 <div id="von-bertalanffy-growth-function" class="section level1">
 <h1><strong>Von Bertalanffy Growth Function</strong></h1>
-<p>Type of growth curve for a time series. It is a special case of the generalized logistic function. The <a title = "VBGF" href = "https://en.wikipedia.org/wiki/Von_Bertalanffy_function" target="_blank">growth curve</a> is used to model mean length at age. The function is commonly applied in ecology to model fish growth.</p>
+<p>Type of growth curve for a time series. It is a special case of the
+generalized logistic function. The
+<a title = "VBGF" href = "https://en.wikipedia.org/wiki/Von_Bertalanffy_function" target="_blank">growth
+curve</a> is used to model mean length at age. The function is commonly
+applied in ecology to model fish growth.</p>
 </div>
 
 <footer>

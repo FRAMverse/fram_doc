@@ -1235,6 +1235,23 @@ Open the *.out file. Find the time step listed in the error message. Find the da
 
 Open the *.cmd file. Find the record number listed in error message. Correct formating issues.
 
+### Arithmetic operation resulted in an overflow
+
+This message can be triggered if an integer size exceeds 32 bits; i.e., catches calculated in FRAM are too large. The underlying problem can be a catch input that is too large or mis-flagged in TAMM. Check the modeled catches in FRAM’s user interface for unusually large values. Check the PopStat report for stocks with negative escapements. Also check the “Detail” of the error message to find out which procedure triggers the message. If it is a TAMM procedure, then error check TAMI (catches flagged as rates, etc.).
+
+### Stock xxx TStep yyy may produce negative escapements. Please finish the run and look for negative escapements in the PopStat report. 
+
+**Do not use this run for official results!**
+
+This message is triggered by a catch input that is too large to be supported by the abundances of the stocks in the fishery. Multiple stocks can be affected. Check the PopStat report for stocks with negative escapements. This most often occurs in wipe-out type fisheries such as 8D net or during the NALF run (New Abundances Last Year’s Fisheries). For coho, it can also occur when a quota fishery is flagged as a rate in TAMM.  Check fishery flagging in TAMM. Also examine large fisheries that most likely affect the stocks displaying negative escapements. 
+
+### The ER Exceeded 100% for the following stocks & time steps: Bias-corrected MSF calculations may be invalid.
+
+**Modify fishery inputs & re-run as necessary.**
+
+This message is triggered by a catch input that is too large to be supported by the abundances of the stocks in the fishery. Multiple stocks can be affected. Check the PopStat report for stocks with negative escapements. This most often occurs in wipe-out type fisheries such as 8D net or during the NALF run (New Abundances Last Year’s Fisheries). For coho, it can also occur when a quota fishery is flagged as a rate in TAMM.  Check fishery flagging in TAMM. Also examine large fisheries that most likely affect the stocks displaying negative escapements. 
+
+
 
 ## Other <span title = "FAQ: Frequently asked questions">FAQ</span>
 
@@ -1257,6 +1274,15 @@ Yes, <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> does 
 ### Can I run multiple instances of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> simultaneously?
 
 Yes, and modifications to the same project database will appear across open instances. But this is probably not a great idea for an analysis examining "directional" parameter changes (e.g., 20%, 40%, 60% and 80% changes within a given year), particularly as the same <span title = "TAMM: Terminal Area Management Module">TAMM</span> file cannot be used with multiple instances of <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>. However, this may be a plausibe approach given a "ready to go" project database and set of <span title = "TAMM: Terminal Area Management Module">TAMM</span> files corresponding to different model runs.
+
+### Coho FRAM continues to produce non-sensical results, even after input errors have been corrected.
+
+If running a Coho FRAM run, check the modeled catch in FRAM’s user interface for coastal fisheries. If some of these fisheries display large negative catches, then update fisheries 45-52, 54-56, 62, 63, 65, 68, 71, 73, 74 with a landed catch of 1 (or any other reasonable value). Run with “Coastal Iterations” selected to overwrite the catch inputs with values modeled in TAMM.
+
+### FRAM displays the same error message even after the error has been corrected.
+
+Go to “Task Manager” and manually close all instances of FRAM. Then re-open FRAM and run.
+
 
 <br>
 

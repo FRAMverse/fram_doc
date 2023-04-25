@@ -13,7 +13,7 @@
 
 <title>Coho Base Period</title>
 
-<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -187,8 +187,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -196,16 +196,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -435,11 +428,16 @@ div.tocify {
 Base period documentation is currently incomplete.
 </p>
 <p><br></p>
-<p><strong>To cite this page:</strong> <br> Salmon modeling and analysis workgroup. 2022. Coho Base Period <em>in</em> FRAM Documentation. <a href="https://framverse.github.io/fram_doc/" class="uri">https://framverse.github.io/fram_doc/</a> built October 14, 2022.</p>
+<p><strong>To cite this page:</strong> <br> Salmon modeling and analysis
+workgroup. 2023. Coho Base Period <em>in</em> FRAM Documentation. <a
+href="https://framverse.github.io/fram_doc/"
+class="uri">https://framverse.github.io/fram_doc/</a> built April 25,
+2023.</p>
 <p><br></p>
 <div id="previous-documentation" class="section level1">
 <h1>Previous Documentation</h1>
-<p><a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_COHO_Base_Data_DRAFT_0707.pdf" target = "_blank" title = "Coho FRAM Base Period Development 2007">Coho FRAM Base Period Development 2007</a></p>
+<p><a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/FRAM_COHO_Base_Data_DRAFT_0707.pdf" target = "_blank" title = "Coho FRAM Base Period Development 2007">Coho
+FRAM Base Period Development 2007</a></p>
 </div>
 
 <footer>

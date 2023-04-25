@@ -13,7 +13,7 @@
 
 <title>Chinook Base Period Update</title>
 
-<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -187,8 +187,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -196,16 +196,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -431,8 +424,15 @@ div.tocify {
 </div>
 
 
-<p>An update to the FRAM base period (BP) for Chinook salmon was used in the pre-season planning process in 2017. Ongoing QAQC has subsequently addressed various data revisions and errors.</p>
-<p>Prior to this work by the Puget Sound comanagers, the Chinook BP drew on data from the 1974-79 brood years, observed in fishing calendar years 1979-84. The revised BP utilizes data from 2005-2008 brood years in fishing calendar years 2007-2013. The update was undertaken to provide a more recent representation of the distribution of stocks and structure of fisheries.</p>
+<p>An update to the FRAM base period (BP) for Chinook salmon was used in
+the pre-season planning process in 2017. Ongoing QAQC has subsequently
+addressed various data revisions and errors.</p>
+<p>Prior to this work by the Puget Sound comanagers, the Chinook BP drew
+on data from the 1974-79 brood years, observed in fishing calendar years
+1979-84. The revised BP utilizes data from 2005-2008 brood years in
+fishing calendar years 2007-2013. The update was undertaken to provide a
+more recent representation of the distribution of stocks and structure
+of fisheries.</p>
 <div id="base-period-calibration" class="section level1">
 <h1>1. Base Period Calibration</h1>
 </div>

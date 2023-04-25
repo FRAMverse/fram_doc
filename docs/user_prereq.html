@@ -13,7 +13,7 @@
 
 <title>User Manual Prerequisites</title>
 
-<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -187,8 +187,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -196,16 +196,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -431,72 +424,217 @@ div.tocify {
 </div>
 
 
-<p>FRAM_VS is a Windows-based application that depends on Microsoft (<span title="MS: Microsoft">MS</span>) Access and Excel. It offers a means to view and adjust inputs, calculate and view outputs, and perform model-related file utilities.</p>
+<p>FRAM_VS is a Windows-based application that depends on Microsoft
+(<span title="MS: Microsoft">MS</span>) Access and Excel. It offers a
+means to view and adjust inputs, calculate and view outputs, and perform
+model-related file utilities.</p>
 <div id="program-installation" class="section level1">
 <h1>Program installation</h1>
-<p>The most recent compiled program executable (<code>.exe</code>) file is available within the <a href="https://github.com/FRAMverse/FRAM/tree/master/bin/Debug"><code>bin/Debug</code></a> subdirectory of the main <a href="https://github.com/FRAMverse/FRAM">source code repository</a> and will be titled <code>FRAMVS....exe</code> with <code>...</code> usually corresponding to a dated version such as <code>FramVS221Dec14.exe</code>. From the subdirectory view, this file can be directly downloaded via a right-click “save link as”. Alternatively, clicking the file link will produce a single file view with a “download” button.</p>
-<p>If <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> has never been installed, the user first needs to run a program <code>setup.exe</code> from the <a href="https://github.com/FRAMverse/FRAM/tree/master/publish"><code>publish</code></a> folder at the main repo. Downloaded and follow instructions to install directories, helper files, and references needed to run <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>.</p>
+<p>The most recent compiled program executable (<code>.exe</code>) file
+is available within the <a
+href="https://github.com/FRAMverse/FRAM/tree/master/bin/Debug"><code>bin/Debug</code></a>
+subdirectory of the main <a
+href="https://github.com/FRAMverse/FRAM">source code repository</a> and
+will be titled <code>FRAMVS....exe</code> with <code>...</code> usually
+corresponding to a dated version such as
+<code>FramVS221Dec14.exe</code>. From the subdirectory view, this file
+can be directly downloaded via a right-click “save link as”.
+Alternatively, clicking the file link will produce a single file view
+with a “download” button.</p>
+<p>If <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> has never
+been installed, the user first needs to run a program
+<code>setup.exe</code> from the <a
+href="https://github.com/FRAMverse/FRAM/tree/master/publish"><code>publish</code></a>
+folder at the main repo. Downloaded and follow instructions to install
+directories, helper files, and references needed to run <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>.</p>
 <p>Some known [Installation issues] have solutions.</p>
 </div>
 <div id="supporting-files" class="section level1">
 <h1>Supporting files</h1>
-<p>The files needed to run <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> are available on the <span title="NWIFC: Northwest Indian Fisheries Commission">NWIFC</span> <a href="https://fisheriesservices.nwifc.org/fram-model-runs/">Fisheries Services</a> website. Please note, that the file hosting sections of this site are password-protected. Please contact a member of the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> team at <span title="WDFW: Washington Department of Fish and Wildlife">WDFW</span> or <span title="NWIFC: Northwest Indian Fisheries Commission">NWIFC</span> for assistance if needed.</p>
-<p>The descriptions below highlight key file types for model runs, but are <strong>not a comprehensive inventory</strong> of the many data sources and analysis tools adopted by the salmon comanagers to generate individual model inputs and parameters.</p>
+<p>The files needed to run <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> are
+available on the <span
+title="NWIFC: Northwest Indian Fisheries Commission">NWIFC</span> <a
+href="https://fisheriesservices.nwifc.org/fram-model-runs/">Fisheries
+Services</a> website. Please note, that the file hosting sections of
+this site are password-protected. Please contact a member of the <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> team at
+<span
+title="WDFW: Washington Department of Fish and Wildlife">WDFW</span> or
+<span title="NWIFC: Northwest Indian Fisheries Commission">NWIFC</span>
+for assistance if needed.</p>
+<p>The descriptions below highlight key file types for model runs, but
+are <strong>not a comprehensive inventory</strong> of the many data
+sources and analysis tools adopted by the salmon comanagers to generate
+individual model inputs and parameters.</p>
 <div id="project-database" class="section level2">
 <h2>Project database</h2>
-<p>The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> software executable operates in conjunction with a <span title="MS: Microsoft">MS</span> Access <code>.mdb</code> database. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Strictly speaking, this is the only file <em>required</em> to perform model runs. The information in the database is organized into more than 20 tables. These [Project database tables] can be grouped into four main categories:</p>
+<p>The <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> software
+executable operates in conjunction with a <span
+title="MS: Microsoft">MS</span> Access <code>.mdb</code> database. <a
+href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Strictly
+speaking, this is the only file <em>required</em> to perform model runs.
+The information in the database is organized into more than 20 tables.
+These [Project database tables] can be grouped into four main
+categories:</p>
 <ol style="list-style-type: decimal">
-<li>Static, base period tables derived through the process of calibration. These tables provide the historical information the model is based on, such as base period exploitation rates, natural mortality rates, growth functions, etc.</li>
-<li>Annual stock and fishery input data, such as forecasts, quotas, size limits, etc.</li>
+<li>Static, base period tables derived through the process of
+calibration. These tables provide the historical information the model
+is based on, such as base period exploitation rates, natural mortality
+rates, growth functions, etc.</li>
+<li>Annual stock and fishery input data, such as forecasts, quotas, size
+limits, etc.</li>
 <li>Look-up tables</li>
 <li>Output tables</li>
 </ol>
-<p>At the beginning of the pre-season process, a <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> database is shared that contains the correct base period and starting model runs. Input tables are often edited through <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>’s user interface (details in [Edit model run]), but can also be edited directly in the database. Similarly, the metadata and controls associated with model runs and base period selection can be manipulated via <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>’s [Utilities] interface. Typically, a single <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> database will include numerous individual model runs distinguished by a unique <code>RunID</code> field. <code>RunID</code> values then link other sets of values across tables, such that a given input or output table can include multiple distinct runs. Chinook and coho modeling currently involve two separate database structures with different tables, and it is advisable to organize modeling files for each species separately.</p>
+<p>At the beginning of the pre-season process, a <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> database
+is shared that contains the correct base period and starting model runs.
+Input tables are often edited through <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>’s user
+interface (details in [Edit model run]), but can also be edited directly
+in the database. Similarly, the metadata and controls associated with
+model runs and base period selection can be manipulated via <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>’s
+[Utilities] interface. Typically, a single <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> database
+will include numerous individual model runs distinguished by a unique
+<code>RunID</code> field. <code>RunID</code> values then link other sets
+of values across tables, such that a given input or output table can
+include multiple distinct runs. Chinook and coho modeling currently
+involve two separate database structures with different tables, and it
+is advisable to organize modeling files for each species separately.</p>
 </div>
 <div id="tamm-file" class="section level2">
-<h2><span title="TAMM: Terminal Area Management Module">TAMM</span> file</h2>
-<p>While <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> can run independently of a <span title="MS: Microsoft">MS</span> Excel <span title="TAMM: Terminal Area Management Module">TAMM</span> <code>.xlsm</code> file, almost all modeling exercises will involve one or more of these files. An individual <span title="TAMM: Terminal Area Management Module">TAMM</span> workbook includes stock and fishery input values associated to a single <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> run/RunID. For preseason model runs, the typical naming convention follows slightly different patterns by species.</p>
-<p>For Chinook, files are named “ChinNNYY”, with a “comanager agreed” sequential run number (NN) and the 2-digit year (YY. For example, the final 2019 Chinook model run was “Chin2719”. For Coho, the naming convention is “CohoYYNN”, with “Coho” followed by the 2-digit year (YY) and a “co-manager agreed” sequential run number (NN). The final 2019 Coho model run was “Coho1925”. The sequential run numbers used for each species during a preseason process may not align depending on the number and timing of required model runs.</p>
+<h2><span title="TAMM: Terminal Area Management Module">TAMM</span>
+file</h2>
+<p>While <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> can run
+independently of a <span title="MS: Microsoft">MS</span> Excel <span
+title="TAMM: Terminal Area Management Module">TAMM</span>
+<code>.xlsm</code> file, almost all modeling exercises will involve one
+or more of these files. An individual <span
+title="TAMM: Terminal Area Management Module">TAMM</span> workbook
+includes stock and fishery input values associated to a single <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> run/RunID.
+For preseason model runs, the typical naming convention follows slightly
+different patterns by species.</p>
+<p>For Chinook, files are named “ChinNNYY”, with a “comanager agreed”
+sequential run number (NN) and the 2-digit year (YY. For example, the
+final 2019 Chinook model run was “Chin2719”. For Coho, the naming
+convention is “CohoYYNN”, with “Coho” followed by the 2-digit year (YY)
+and a “co-manager agreed” sequential run number (NN). The final 2019
+Coho model run was “Coho1925”. The sequential run numbers used for each
+species during a preseason process may not align depending on the number
+and timing of required model runs.</p>
 </div>
 <div id="model-run-transfer-file" class="section level2">
 <h2>Model run transfer file</h2>
-<p>Model run transfer files are typically named as such (e.g., “NewModelRunTransfer*.mdb”), and contain only a subset of tables in the encompassing project database. They enable sharing the relevant values for a single run without needing an entire (possibly large) project database. These files are not sufficient or necessary to execute a model run, but facilitate collaboration. A single model run transfer file can contain more than one model run.</p>
+<p>Model run transfer files are typically named as such (e.g.,
+“NewModelRunTransfer*.mdb”), and contain only a subset of tables in the
+encompassing project database. They enable sharing the relevant values
+for a single run without needing an entire (possibly large) project
+database. These files are not sufficient or necessary to execute a model
+run, but facilitate collaboration. A single model run transfer file can
+contain more than one model run.</p>
 </div>
 <div id="base-period-transfer-file" class="section level2">
 <h2>Base period transfer file</h2>
-<p>Similar to model run transfer files, base period transfer files contain a subset of tables that allow a project database to include relevant values for multiple distinct base periods (i.e. unique BaseID value). It is uncommon to need to incorporate alternative base period parameterizations, particularly within typical preseason modeling. The <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> [Utilities] section describes the creation and incorporation of these files.</p>
+<p>Similar to model run transfer files, base period transfer files
+contain a subset of tables that allow a project database to include
+relevant values for multiple distinct base periods (i.e. unique BaseID
+value). It is uncommon to need to incorporate alternative base period
+parameterizations, particularly within typical preseason modeling. The
+<span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>
+[Utilities] section describes the creation and incorporation of these
+files.</p>
 </div>
 <div id="framvstemplate-file" class="section level2">
 <h2>FRAMVSTemplate file</h2>
-<p>For both Chinook and Coho, there are option buttons within the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> program to call a Microsoft Excel spreadsheet file, referred to as the “FRAMVSTemplate” file, which can be used to either retrieve/import or store/export various types of fishery inputs from a single model run. The sheets within this workbook are labeled with the associated type of <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> fishery input:</p>
+<p>For both Chinook and Coho, there are option buttons within the <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> program to
+call a Microsoft Excel spreadsheet file, referred to as the
+“FRAMVSTemplate” file, which can be used to either retrieve/import or
+store/export various types of fishery inputs from a single model run.
+The sheets within this workbook are labeled with the associated type of
+<span title="FRAM: Fishery Regulation Assessment Model">FRAM</span>
+fishery input:</p>
 <ul>
 <li><em>FRAMInput</em> (main Quota/Scalers window)</li>
-<li><em>FRAM_MSF</em> (for mark-selective fishery window which is secondary to Quota/Scalers)</li>
+<li><em>FRAM_MSF</em> (for mark-selective fishery window which is
+secondary to Quota/Scalers)</li>
 <li><em>FRAM_CNR</em> (non-retention).</li>
-<li><em>FRAM_Recruits</em> (Stock Recruits for annual stock abundances)</li>
+<li><em>FRAM_Recruits</em> (Stock Recruits for annual stock
+abundances)</li>
 </ul>
-<p>A template option also exists for loading or exporting target escapement values used in Backwards <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> runs. Option buttons are available in the <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> input menus to utilize template files, which can be used to transfer values into or out of the relevant database tables. FRAMVSTemplate files are used to facilitate collaboration and for transparency and documentation of fishery inputs.</p>
+<p>A template option also exists for loading or exporting target
+escapement values used in Backwards <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> runs.
+Option buttons are available in the <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> input
+menus to utilize template files, which can be used to transfer values
+into or out of the relevant database tables. FRAMVSTemplate files are
+used to facilitate collaboration and for transparency and documentation
+of fishery inputs.</p>
 </div>
 <div id="runsheet-chinook" class="section level2">
 <h2>RunSheet (Chinook)</h2>
-<p>For Chinook, the model inputs for Washington state’s recreational marine fisheries in Areas 5-13 are currently developed via a separate Excel workbook that integrates data on observed catches, annual regulations, and post-season “validation” <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> runs. The typical naming convention used for this file is “RunNNYY”, with the Chinook sequential run number (NN) and the 2-digit year (YY). Current software versions (2.19b or higher) include utilities to transfer RunSheet values into the relevant database tables. The “Automate Pass 1 Pass 2 (Chin)” <span title="FRAM: Fishery Regulation Assessment Model">FRAM</span> utility invokes this file.</p>
+<p>For Chinook, the model inputs for Washington state’s recreational
+marine fisheries in Areas 5-13 are currently developed via a separate
+Excel workbook that integrates data on observed catches, annual
+regulations, and post-season “validation” <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> runs. The
+typical naming convention used for this file is “RunNNYY”, with the
+Chinook sequential run number (NN) and the 2-digit year (YY). Current
+software versions (2.19b or higher) include utilities to transfer
+RunSheet values into the relevant database tables. The “Automate Pass 1
+Pass 2 (Chin)” <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span> utility
+invokes this file.</p>
 </div>
 <div id="coweemans-chinook" class="section level2">
 <h2>Coweemans (Chinook)</h2>
-<p>An Excel workbook file used to calculate exploitation rate values related to Columbia River Chinook stocks and compliance with U.S. Endangered Species Act (<span title="ESA: Endangered Species Act">ESA</span>) guidance. The typical naming convention used for this file is “Coweeman_ChinNNYY.xlsx”, with the Chinook sequential run number (NN) and the 2-digit year (YY). These files are mainly used within the <span title="PFMC: Pacific Fishery Management Council">PFMC</span> process and only summarize model results.</p>
+<p>An Excel workbook file used to calculate exploitation rate values
+related to Columbia River Chinook stocks and compliance with U.S.
+Endangered Species Act (<span
+title="ESA: Endangered Species Act">ESA</span>) guidance. The typical
+naming convention used for this file is “Coweeman_ChinNNYY.xlsx”, with
+the Chinook sequential run number (NN) and the 2-digit year (YY). These
+files are mainly used within the <span
+title="PFMC: Pacific Fishery Management Council">PFMC</span> process and
+only summarize model results.</p>
 </div>
 <div id="snake-river-falls-index-chinook" class="section level2">
 <h2>Snake River Falls Index (Chinook)</h2>
-<p>An Excel workbook file is used to evaluate if planned fisheries are within the maximum allowed impacts for the Snake River Fall Chinook stock under the U.S. Endangered Species Act (<span title="ESA: Endangered Species Act">ESA</span>) guidance. The typical naming convention used for this file is “SRFI_ChinNNYY.xlsx”, with the Chinook sequential run number (NN) and the 2-digit year (YY). These files are mainly used within the <span title="PFMC: Pacific Fishery Management Council">PFMC</span> process and only summarize model results.</p>
+<p>An Excel workbook file is used to evaluate if planned fisheries are
+within the maximum allowed impacts for the Snake River Fall Chinook
+stock under the U.S. Endangered Species Act (<span
+title="ESA: Endangered Species Act">ESA</span>) guidance. The typical
+naming convention used for this file is “SRFI_ChinNNYY.xlsx”, with the
+Chinook sequential run number (NN) and the 2-digit year (YY). These
+files are mainly used within the <span
+title="PFMC: Pacific Fishery Management Council">PFMC</span> process and
+only summarize model results.</p>
 <p><br></p>
-<p><strong>To cite this page:</strong> <br> Salmon modeling and analysis workgroup. 2022. User Manual Prerequisites <em>in</em> FRAM Documentation. <a href="https://framverse.github.io/fram_doc/" class="uri">https://framverse.github.io/fram_doc/</a> built October 14, 2022.</p>
+<p><strong>To cite this page:</strong> <br> Salmon modeling and analysis
+workgroup. 2023. User Manual Prerequisites <em>in</em> FRAM
+Documentation. <a href="https://framverse.github.io/fram_doc/"
+class="uri">https://framverse.github.io/fram_doc/</a> built April 25,
+2023.</p>
 <p><br></p>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p>Note that these files may become larger than 100MB over the course of modeling several runs. However, the “Compact &amp; Repair” functionality in <span title="MS: Microsoft">MS</span> Access can often reduce file size, prior to any further compression.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>Note that these files may become larger than 100MB over
+the course of modeling several runs. However, the “Compact &amp; Repair”
+functionality in <span title="MS: Microsoft">MS</span> Access can often
+reduce file size, prior to any further compression.<a href="#fnref1"
+class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
