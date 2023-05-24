@@ -14,7 +14,7 @@ editor_options:
 # 1. Introduction
 
 ```{r buildnojekyll, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, results='hide'}
-file.create("O:/code/fram_doc/docs/.nojekyll") #relative path not working...
+file.create("O:/Fram_Markdown/fram_doc/docs/.nojekyll") #relative path not working...
 ```
 
 ```{r welcome, echo=FALSE, out.width='90%'}

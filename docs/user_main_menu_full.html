@@ -342,15 +342,6 @@ div.tocify {
     <li>
       <a href="calcs_data_coho.html">Coho</a>
     </li>
-    <li>
-      <a href="calcs_glossary.html">Glossary</a>
-    </li>
-    <li>
-      <a href="calcs_appendices.html">Appendices</a>
-    </li>
-    <li>
-      <a href="calcs_citations.html">Supporting Documents</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -401,6 +392,24 @@ div.tocify {
     </li>
     <li>
       <a href="user_main_menu_full.html">Main menu options</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    References
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="calcs_glossary.html">Glossary</a>
+    </li>
+    <li>
+      <a href="calcs_appendices.html">Appendices</a>
+    </li>
+    <li>
+      <a href="calcs_citations.html">Supporting Documents</a>
     </li>
   </ul>
 </li>
@@ -4370,6 +4379,20 @@ the parameter in the error message; i.e. if stock is the first parameter
 listed then stock number becomes X.</p>
 <p><br />
 </p>
+<div id="arithmetic-operation-resulted-in-an-overflow"
+class="section level3">
+<h3>“Arithmetic operation resulted in an overflow”</h3>
+<p>This message can be triggered if an integer size exceeds 32 bits;
+i.e., catches calculated in FRAM are too large. The underlying problem
+can be a catch input that is too large or mis-flagged in TAMM. Check the
+modeled catches in <span
+title="FRAM: Fishery Regulation Assessment Model">FRAM</span>’s user
+interface for unusually large values. Check the PopStat report for
+stocks with negative escapements. Also check the “Detail” of the error
+message to find out which procedure triggers the message. If it is a
+TAMM procedure, then error check TAMI (catches flagged as rates,
+etc.).</p>
+</div>
 <div
 id="bad-flag-value-input-fish-x-time-y.-please-change-and-re-save-form.-use-0127817182728-for-flag"
 class="section level3">
@@ -4493,6 +4516,22 @@ Requires ‘TaaETRSList’ in DataBase Table. Please Read Text File
 contain terminal run size definitions for Coho; i.e. stock and fishery
 numbers for run size defintions. Please import a valid “TAAETRSList”
 into the database.</p>
+</div>
+<div
+id="the-er-exceeded-100-for-the-following-stocks-time-steps-bias-corrected-msf-calculations-may-be-invalid."
+class="section level3">
+<h3>“The ER Exceeded 100% for the following stocks &amp; time steps:
+Bias-corrected MSF calculations may be invalid.”</h3>
+<p><strong>Modify fishery inputs &amp; re-run as necessary.</strong></p>
+<p>This message is triggered by a catch input that is too large to be
+supported by the abundances of the stocks in the fishery. Multiple
+stocks can be affected. Check the PopStat report for stocks with
+negative escapements. This most often occurs in wipe-out type fisheries
+such as 8D net or during the NALF run (New Abundances Last Year’s
+Fisheries). For coho, it can also occur when a quota fishery is flagged
+as a rate in TAMM. Check fishery flagging in TAMM. Also examine large
+fisheries that most likely affect the stocks displaying negative
+escapements.</p>
 </div>
 <div
 id="error-backwards-stock-flag-2-points-to-stock-scalers-zero-stock-name-x"
@@ -4641,6 +4680,22 @@ class="section level3">
 file “NewModelRunTransferX.mdb”. X stands for number 5 or higher.</p>
 </div>
 <div
+id="stock-xxx-tstep-yyy-may-produce-negative-escapements.-please-finish-the-run-and-look-for-negative-escapements-in-the-popstat-report."
+class="section level3">
+<h3>“Stock xxx TStep yyy may produce negative escapements. Please finish
+the run and look for negative escapements in the PopStat report.”</h3>
+<p><strong>Do not use this run for official results!</strong></p>
+<p>This message is triggered by a catch input that is too large to be
+supported by the abundances of the stocks in the fishery. Multiple
+stocks can be affected. Check the PopStat report for stocks with
+negative escapements. This most often occurs in wipe-out type fisheries
+such as 8D net or during the NALF run (New Abundances Last Year’s
+Fisheries). For coho, it can also occur when a quota fishery is flagged
+as a rate in TAMM. Check fishery flagging in TAMM. Also examine large
+fisheries that most likely affect the stocks displaying negative
+escapements.</p>
+</div>
+<div
 id="tamm-error-tamm-fishery-number-zero.-cannot-use-this-control-on-this-terminal-fishery"
 class="section level3">
 <h3>“<span title="TAMM: Terminal Area Management Module">TAMM</span>
@@ -4665,50 +4720,6 @@ class="section level3">
 <h3>“The COMMAND FILE file Selected has Format Problems RecNum=X”</h3>
 <p>Open the *.cmd file. Find the record number listed in error message.
 Correct formating issues.</p>
-</div>
-<div id="arithmetic-operation-resulted-in-an-overflow"
-class="section level3">
-<h3>Arithmetic operation resulted in an overflow</h3>
-<p>This message can be triggered if an integer size exceeds 32 bits;
-i.e., catches calculated in FRAM are too large. The underlying problem
-can be a catch input that is too large or mis-flagged in TAMM. Check the
-modeled catches in FRAM’s user interface for unusually large values.
-Check the PopStat report for stocks with negative escapements. Also
-check the “Detail” of the error message to find out which procedure
-triggers the message. If it is a TAMM procedure, then error check TAMI
-(catches flagged as rates, etc.).</p>
-</div>
-<div
-id="stock-xxx-tstep-yyy-may-produce-negative-escapements.-please-finish-the-run-and-look-for-negative-escapements-in-the-popstat-report."
-class="section level3">
-<h3>Stock xxx TStep yyy may produce negative escapements. Please finish
-the run and look for negative escapements in the PopStat report.</h3>
-<p><strong>Do not use this run for official results!</strong></p>
-<p>This message is triggered by a catch input that is too large to be
-supported by the abundances of the stocks in the fishery. Multiple
-stocks can be affected. Check the PopStat report for stocks with
-negative escapements. This most often occurs in wipe-out type fisheries
-such as 8D net or during the NALF run (New Abundances Last Year’s
-Fisheries). For coho, it can also occur when a quota fishery is flagged
-as a rate in TAMM. Check fishery flagging in TAMM. Also examine large
-fisheries that most likely affect the stocks displaying negative
-escapements.</p>
-</div>
-<div
-id="the-er-exceeded-100-for-the-following-stocks-time-steps-bias-corrected-msf-calculations-may-be-invalid."
-class="section level3">
-<h3>The ER Exceeded 100% for the following stocks &amp; time steps:
-Bias-corrected MSF calculations may be invalid.</h3>
-<p><strong>Modify fishery inputs &amp; re-run as necessary.</strong></p>
-<p>This message is triggered by a catch input that is too large to be
-supported by the abundances of the stocks in the fishery. Multiple
-stocks can be affected. Check the PopStat report for stocks with
-negative escapements. This most often occurs in wipe-out type fisheries
-such as 8D net or during the NALF run (New Abundances Last Year’s
-Fisheries). For coho, it can also occur when a quota fishery is flagged
-as a rate in TAMM. Check fishery flagging in TAMM. Also examine large
-fisheries that most likely affect the stocks displaying negative
-escapements.</p>
 </div>
 </div>
 <div id="other-faq" class="section level2">
@@ -4801,7 +4812,7 @@ re-open FRAM and run.</p>
 <p><strong>To cite this page:</strong> <br> Salmon modeling and analysis
 workgroup. 2023. User Manual Main Menu <em>in</em> FRAM Documentation.
 <a href="https://framverse.github.io/fram_doc/"
-class="uri">https://framverse.github.io/fram_doc/</a> built April 25,
+class="uri">https://framverse.github.io/fram_doc/</a> built May 24,
 2023.</p>
 <p><br></p>
 <div id="previous-documentation" class="section level4">

@@ -14,12 +14,6 @@ navbar:
           href: calcs_data_chin.html
         - text: "Coho"
           href: calcs_data_coho.html
-        - text: "Glossary"
-          href: calcs_glossary.html
-        - text: "Appendices"
-          href: calcs_appendices.html
-        - text: "Supporting Documents"
-          href: calcs_citations.html
     - text: "Pre and Post Season FRAM"
       menu: 
         - text: "Chinook"
@@ -42,6 +36,15 @@ navbar:
           href: user_basic_forward_run.html
         - text: "Main menu options"
           href: user_main_menu_full.html
+    - text: "References"
+      menu:
+        - text: "Glossary"
+          href: calcs_glossary.html
+        - text: "Appendices"
+          href: calcs_appendices.html
+        - text: "Supporting Documents"
+          href: calcs_citations.html
+        
   right:
     - icon: fa-github
       href: https://github.com/FRAMverse/fram_doc
