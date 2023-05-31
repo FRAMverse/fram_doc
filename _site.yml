@@ -28,11 +28,9 @@ navbar:
             - text: "Introduction"
               href: base_chin_doc_intro.html
             - text: "Calibration Processes"
-              href: bp_doc_intro.html
-            - text: "Model Input Data"
-              href: bp_doc_intro.html
-            - text: "Model Output Data"
-              href: bp_doc_intro.html
+              href: base_chin_doc_calibration.html
+            - text: "Model Data"
+              href: base_chin_doc_data.html
             - text: "QA/QC"
               href: bp_doc_intro.html
             - text: "Outreach"
