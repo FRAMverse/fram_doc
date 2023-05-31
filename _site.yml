@@ -31,20 +31,18 @@ navbar:
               href: base_chin_doc_calibration.html
             - text: "Model Data"
               href: base_chin_doc_data.html
-            - text: "QA/QC"
-              href: bp_doc_intro.html
-            - text: "Outreach"
-              href: bp_doc_intro.html
+            - text: "QA/QC - Outreach"
+              href: base_chin_doc_qaqc_or.html
             - text: "Program Descriptions"
-              href: bp_doc_intro.html
+              href: base_chin_doc_program_desc.html
             - text: "Update Cycle"
-              href: bp_doc_intro.html
+              href: base_chin_doc_update_cycle.html
             - text: "Implications"
-              href: bp_doc_intro.html
+              href: base_chin_doc_implications.html
             - text: "Results"
-              href: bp_doc_intro.html
+              href: base_chin_doc_results.html
             - text: "Appendices"
-              href: base_appendices.html
+              href: base_chin_doc_appendix.html
         - text: "Coho"
           href: base_coho.html
     - text: "User Manual"

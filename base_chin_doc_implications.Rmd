@@ -1,0 +1,21 @@
+```{r page title, include=FALSE}
+page_title <- "Base Period Documentation - Implications"
+```
+
+--- 
+title: `r page_title`
+author: ""
+date: ""
+description: "Getting to know the Fishery Regulation Assessment Model (FRAM)"
+editor_options: 
+  chunk_output_type: console
+---
+
+# 1. Implications
+Derek
+
+## 1.2 Management Objectives 
+
+## 1.3 Reevaluation of Fishery Scalers
+
+## 1.4 Maturation Rates

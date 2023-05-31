@@ -1,5 +1,5 @@
 ```{r page title, include=FALSE}
-page_title <- "Base Period Documentation - Introduction"
+page_title <- "Base Period Documentation - Data"
 ```
 
 --- 
