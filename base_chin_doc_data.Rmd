@@ -153,7 +153,7 @@ Angelika
 ### Incidental
 Angelika
 
-## 1.8 [Model Stock Proportion]{#MSP2}
+## 1.8 Model Stock Proportion
 Angelika
 
 ## 1.9 Target Encounter Rates
