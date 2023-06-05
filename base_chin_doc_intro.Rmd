@@ -38,6 +38,9 @@ MathJax = {
 </script>
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 </script>
+```{r}
+devtools::install_github("lbusett/insert_table")
+```
 
 
 # 1. Introduction
@@ -287,12 +290,11 @@ Using multivariate statistical methods, surrogate stocks were identified by expl
 
 Using STL as a surrogate for ELW assumes that the overall harvest distribution and maturation pattern for the two CWT indicator stocks is comparable. However, a priori, it was expected there would be inside (i.e., within US and Canadian Salish Sea net and sport fisheries) fishery impact differences (and by extension, possibly total ER differences) given that STL and ELW originate and return to different portions of the Salish Sea. Accordingly, to use STL CWT data as surrogate for ELW in the FRAM calibration process, it is necessary to account for this differential.
 
-It was decided to	modify STL recoveries for inside fisheries to reflect the expected ELW equivalents. This was achieved using a combination of the historic/OOB relationship between ELW and STL (i.e., estimated from the same broods reviewed above, 90, 92-93 brood years) tag recoveries in inside fisheries in the historic data and subsequently applying these values to contemporary STL recoveries. Importantly, for the ratio adjustments to work properly in a surrogate context, OOB ELW CWTs must first be re-scaled so that the total ELW fishery+escapement CWT abundance is on equal footing with the OOB STL dataset. Alterations to inside fishery recoveries in the surrogate STL dataset should be mirrored by a commensurate alteration to surrogate CWT escapement. For more information see ["FRAMbp_ElwhaSurrogate.docx"](xxx).
+It was decided to	modify STL recoveries for inside fisheries to reflect the expected ELW equivalents. This was achieved using a combination of the historic/OOB relationship between ELW and STL (i.e., estimated from the same broods reviewed above, 90, 92-93 brood years) tag recoveries in inside fisheries in the historic data and subsequently applying these values to contemporary STL recoveries. Importantly, for the ratio adjustments to work properly in a surrogate context, OOB ELW CWTs must first be re-scaled so that the total ELW fishery+escapement CWT abundance is on equal footing with the OOB STL dataset. Alterations to inside fishery recoveries in the surrogate STL dataset should be mirrored by a commensurate alteration to surrogate CWT escapement. For more information see [McHugh 2015, "FRAMbp_ElwhaSurrogate.docx"](xxx).
 
 For a long-term solution, beginning with the 2012 brood year, fingerling releases were marked and coded-wire-tagged. When a sufficient amount of CWTs are recovered for analysis, Elwha should be incorportated into the base period with a standard href="https://framverse.github.io/fram_doc/calcs_glossary.html#Out_of_Base_(OOB)" target="_blank">OOB</a> (xxx) procedure.
 
 #### Method for Creating Surrogate Elwha CWT Recoveries
-Note: Recoveries were not stratified by age or time step. <br>
 - Select OOB years with good recoveries of STL and ELW (1989, 1990, 1992, 1993, 1997, 2002).
 - Designate fisheries as 'inside' and 'outside' fisheries. North and south Georgia Strait sport, British Columbia Juan de Fuca sport, and all Puget Sound fisheries (FRAM Fishery ID 36-72; Tbl. (xxx)) were assigned to 'inside' fisheries.
 - Convert STL and ELW recoveries into rates by dividing recoveries in a fishery by abundance (recoveries in all fisheries plus escapement).
@@ -313,8 +315,11 @@ $$New.ELW.CWT_{esc} = Orig.ELW.CWT_{esc} * ELW.Esc.Scaler$$
 For more information see ["ELDU_CalibInputsRd7_GR-1-28-2020"](xxx)
 
 #### Elwha Age Composition
-After the new base period was first implemented, it was discovered that Elwha exploitation rates differed from Stillaguamish exploitation rates as a result of differing age compositions
-For more information see [ProposalForELDU_7-10-2019.docx](xxx).
+After the new base period was first implemented, it was discovered that ELW exploitation rates differed from STL exploitation rates, although STL CWTs were used as a surrogate for ELW. This was due to differing age compositions of the abundances going into FRAM. The original cluster and principal components analysis (McHugh 2015) and the historic ratio of simple ERs were not stratified by age or time-step, although the calibration inputs were.
+To meet the primary assumption of the surrogate procedure that STL 'outside' ER equals ELW 'outside' ER, ELW's age composition in FRAM is adjusted to reflect average STL age comp.  
+Terminal run size forecasts of ELW are re-distributed to a static age composition using the average STL 2007-2013 age composition from validation runs. 
+For more information see [ProposalForELDU_7-10-2019.docx](xxx) and [.xls](xxx).
+
 
 ### 10E Net 
 Sinclair Inlet fisheries encounter predominantly Gorst Creek hatchery Chinook. This stock is part of the the mid-Puget Sound (MPS) stock aggregate. Gorst Creek fish were not tagged during the base period, resulting in an improbably low MPS fishery contribution. An external 2012-2015 fishing year CWT based-analysis resulted in a MPS stock contribution estimate to Sinclair Inlet fisheries of 97%. Please see file ["10E_NewBPadjustmentWriteup_GordonRose11_4_2016.docx"](xxx) for more information.

@@ -1,0 +1,28 @@
+```{r page title, include=FALSE}
+page_title <- "Base Period Documentation - QA/QC"
+```
+
+--- 
+title: `r page_title`
+author: ""
+date: ""
+description: "Getting to know the Fishery Regulation Assessment Model (FRAM)"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# 1. QAQC
+Complex process. Many methods needed.
+Review programs, data input, data output 
+Compare output to other data sources (GSI, CTC)
+Recruit experts
+Look for implausible values (very high ERs, unlikely stock composition)
+Investigate and find solutions to identified problems
+
+# 2. Outreach
+Discussed project at co-manager meetings, methodology review, and with constituents
+Held a co-manger webinar to brief technical staff and solicit input
+Conducted a co-manger in-person meeting to solicit input and answer questions
+Many emails requesting input and review from regional experts
+Established website with educational PowerPoints, data summaries, base period documentation, output summary tables and graphs, model runs, program code, calibration database, etc.

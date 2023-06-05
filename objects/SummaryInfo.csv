@@ -1,0 +1,2 @@
+"ID","NumStk","NumFish","NumSteps","MaxAge","MinBroodYear","MaxBroodYear","ConvergenceTolerance","MaxAgeEncounterRate","BasePeriodID","MidPointT1","MidPointT2","MidPointT3","RunID","BaseYear","BasePeriodName","SpeciesName","BaseComments","FisheryVersion","StockVersion","TimeStepVersion","DateCreated"
+1,39,74,3,5,2002,2010,0.01,4,3,3.50,8.00,10.50,1,2010,"New2014BasePeriodRd6","CHINOOK","BPCatches by TS",1,5,1,

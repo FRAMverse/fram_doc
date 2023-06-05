@@ -1,0 +1,184 @@
+```{r page title, include=FALSE}
+page_title <- "Base Period Documentation - Data"
+```
+
+--- 
+title: `r page_title`
+author: ""
+date: ""
+description: "Getting to know the Fishery Regulation Assessment Model (FRAM)"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# 1. Model Data
+
+## 1.1 CWTs 
+Jon
+
+## 1.2 Landed Catch
+Derek
+
+## 1.3 CNR
+Derek
+
+## 1.4 Escapement
+
+
+## 1.5 Growth Functions
+
+### Background
+To model fisheries with minimum size limit regulations, FRAM is parameterized with growth functions for computing mean length (fork length, FL, in mm) by age and model time step, as well as supplementary inputs (coefficients of variation, CVs) for characterizing variability around these predictions. 
+Objectives of this effort: (1) Estimate parameters for stock-specific Von Bertalanffy growth functions (VBGFs), inclusive of an assessment of model fit diagnostics, etc.; and (2) Estimate stock-specific CVs associated with VBGF mean length-at-age predictions. 
+
+The approach taken differed from what had been done for prior base period (BP) calibrations in two important ways. Firstly, whereas past BPs included separate ‘mature’ (~terminal) and ‘mixed-maturity’ (~pre-terminal) VBGFs, a single pre-terminal model was deemed appropriate for contemporary modeling due to the lack of minimum size limits in terminal fisheries. Secondly, the estimation approach employed here addressed the fact that the data used to fit VBGFs (i.e., fishery recoveries) may be positively biased due to the release of sublegal/undersized (i.e., smaller than the minimum size limit) fish in fisheries with minimum size limit regulations.
+
+### Data Description
+
+The analysis was based on length observations associated with the coded-wire tag (CWT) recovery dataset selected for general base period calibration (i.e., exploitation rate estimation/cohort reconstruction) purposes. 
+Dataset details included:
+
+*	CWT recoveries for brood years 2005-2008 were included for all stocks. Additional CWT data were added to expand the sample size used to estimate VBGFs for the Washington Coast regional aggregate, as well as for the Sacramento/Central Valley stock; broods 2001-2004 were included for these two groups, as well as additional facilities for Washington Coast (Grays Harbor, Quinault, and Tsoo-Yess).
+
+*	Length data for CWTs processed via the CAS loading and FRAMBuilder mapping process were included in the analysis; ‘anomalous’ length data, such as from high-seas fisheries and/or research trawls, were excluded.
+
+*	Data collected in freshwater or extreme terminal fisheries, within which maturation-related changes in morphometry were expected to be well under way, were excluded from all analyses. Thus, although >90% of the dataset used here consists of pre-terminal recoveries, some terminal marine net recoveries were used in the final analysis.
+
+*	For cases in which CWT lengths were not reported in fork length (FL), conversions were made using the conversion equations of [Conrad and Gutman](#Conrad) (1996; total length) and [Pahlke](#Pahlke) (1989; other length types).
+
+*	Data were combined across brood years and grouped into coarser regional aggregates (Table \@ref(tab:fitset)) in order to facilitate VBGF estimation (described below); aggregates were selected based on those used during the estimation of growth parameters during the last Chinook FRAM calibration groupings and based on knowledge of stock relationships.
+
+* The final analysis used data from 658 CWT codes and N = 27,535 marine recoveries (25,606 pre-terminal; 1,929 marine terminal net). 
+
+### Estimating Growth Curve Parameters
+
+Growth functions for the Chinook FRAM Base Period project were estimated in a two-step approach. In the first step, mean ($μ_{sm}$) and SD ($σ_{sm}$) length-at-age individual stock aggregate–month (sm) combinations were estimated using the method of Satterthwaite et al. (2012). In brief, this approach treats individual length observations as samples from a truncated normal distribution, wherein the truncation point is governed by the minimum size limit of a fishery; accordingly, it returns mean/SD maximum likelihood estimates (MLEs) consistent with both the observed and unobserved portions of the underlying probability distribution. Thus, the probability of observing an individual length $l_{i}$ in a fishery with minimum length limit $msl_{i}$ is
+
+
+$$
+p(l_{i}│μ_{sm},σ_{sm},msl_i ) = \frac{Φ(l_{i}|μ_{sm},σ^2_{sm})}{1-Φ(msl_{i}|μ_{sm},σ^2_{sm})} 
+$$
+
+and the probability for observing the length dataset as a whole $\widetilde{l}$ given the collective of size regulations $\widetilde{msl}$ is simply the product of individual likelihood,i.e.,
+
+$$
+p(\widetilde{l}│μ_{sm},σ_{sm},\widetilde{msl})=∏_{i=1}^Np(l_i│μ_{sm},σ_{sm},msl_{i}) 
+$$
+
+MLEs ($μ_{sm},σ_{sm}$) were generated using this joint likelihood function and the ‘bbmle’ package in R. For estimation purposes, data were pooled across brood years without attempts to estimate $μ_{sm}$ and $σ_{sm}$ unless there were at least 20 observations per month–stock aggregate estimation stratum. The $μ_{sm}$ and $σ_{sm}$ estimates generated through analysis stage 1 are provided in Appendix A. With the exception of two suspected outliers, the MLEs were consistent with the expected growth pattern for Chinook salmon and differed in the manner expected relative to values estimated in the absence of size limit considerations.    
+In the second estimation stage, the parameters of stock-specific von Bertalanffy growth functions (VBGFs) were estimated that best described variation in mean length-at-age estimates generated during stage one (i.e., $μ_{sm}$). To do this, an approach was employed wherein VGBF parameters were modeled to be stock-varying realizations from a common distribution of VBGF parameters (i.e., $L_{∞}$, k, $t_{0}$):
+
+$$
+μ_{sm}=L_{∞_s}*[1-e^{-k_s[t-t_{os}]}]+ε_{sm} 
+$$
+
+Parameters were estimated using Bayesian methods in WinBUGS with uniformative priors (see [Appendix](#WB) for code, priors, and initial values). The final values proposed for inclusion in the Chinook FRAM BP are medians from a 1-in-50 sample of N = 31,000 MCMC iterations on each of three chains, less an N = 5,000 iteration burn-in period (i.e., N = 26K total per chain; (Table \@ref(tab:VBGF)). The fitted curves appear to describe well the variability in MLEs (stage 1 results), as well as raw length observations, on both a stock-by-stock (Figure \@ref(fig:ForkLength)) and overall (Figure \@ref(fig:ObsPreFL)) basis. Finally, while retaining them for the final estimation process, the sensitivity of stock-specific VBGF parameters to the inclusion/exclusion of two outliers (i.e., mean FL during at age 21 and 29 was lower than anticipated for Sacramento/CV stock; (Table \@ref(tab:LAge)) was explored. The omission of these points caused a small increase in the length-at-age prediction (fitted curve) for young Sacramento/CV fish and negligibly affected other stocks (Figure \@ref(fig:ForkLength))).
+In addition to mean length-at-age predictions, FRAM’s size limit algorithm requires an estimate of distributional spread around means. Two approaches towards fulfilling this BP information need were considered: (1) a constant CV approach, or (2) an age-varying CV approach. An inspection of stage 1 results (i.e., $μ_{sm}$,$σ_{sm}$)  revealed that the latter method best captured patterns in the data (Figure \@ref(fig:CVLengthAge)). Thus, ANCOVA was used to assess the relationship between CV(FL) and age (in months) and then the resulting model to compute CV(FL) on January 1 for age-2 to age-5 Chinook for use in modeling was used. ANCOVA results indicated that CV decreased significantly with increasing age overall (P < 0.001) and offered strong support for stock-specific intercepts (P < 0.001) but not slopes (P > 0.05). Thus, CV(FL) was computed, by age, for each regional aggregate based on an ‘equal slopes’ ANCOVA model (Table \@ref(tab:LAge)).
+
+### Future work
+While the inputs proposed here for use in Chinook FRAM BP calibration are robust descriptors of length-at-age patterns for Chinook FRAM’s model stocks, future work may consider improving on the present analysis in at least three ways. First, the estimation framework employed here necessitated that we group related stocks into larger regional aggregates, as was the case for previous base period calibrations. Although groupings were made with some consideration of stock relationships, a more objective approach guided by evidence in the length-at-age dataset may be preferable. This may, however, require an approach that avoids the two-stage analysis that introduced data restrictions here. Secondly, it may be possible to improve model accuracy, precision, and/or realism through the use of an alternative growth curve parameterization (e.g., with seasonally varying growth; [O’Farrell et al. 2012](#OF)). Although this may necessitate minor changes to FRAM algorithms, it may be beneficial, particularly if future changes alter FRAM’s temporal structure. Lastly, whereas the curves reported here describe well the length-at-age patterns Chinook ages relevant to FRAM (i.e., ages 2 to 5), their utility in describing growth patterns for younger fish remains uncertain. If future FRAM applications necessitate prediction for younger ages, other length observations (e.g., length at release, for age-1 research trawl recoveries, etc.) should either be included in the analysis or used to corroborate predictions. We suggest that improvements such as these be given consideration during the phase II of the Chinook FRAM base period calibration. 
+
+<br>
+
+```{r fitset,  results='asis'}
+growthcurvedata<-as.data.frame(read.csv("./objects/GrowthCurveData.csv", header = TRUE))|>
+  DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:fitset)",
+                      "Summary of data used to fit growth functions for FRAM model stock aggregates. Counts (N) are based on marine fishery recoveries for brood years 2005-2008 for all stocks except for Washington Coast and Sacramento/Central Valley, which include additional recoveries, and non-model stock CWT codes, for brood years 2001-2004.",
+                      "</caption>"),
+                      "</p>")
+growthcurvedata
+
+```
+
+```{r VBGF, results='asis'}
+VBparams<-as.data.frame(read.csv("./objects/VBparams.csv", header = TRUE))|>
+  DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:VBGF)",
+"Estimates of VBGF parameters by regional stock aggregate.Estimates are median values (95% credible intervals in parentheses) from a 1-in-50 sample of N = 26K MCMC iterations (i.e., 31K less 5K burn-in period) on each of three chains.",
+                      "</caption>"),
+                      "</p>")
+
+
+
+VBparams
+```
+
+
+<br>
+
+![Fork Length](./images/ForkLenght.png)
+
+Growth functions for regional aggregates of FRAM model stocks. In each figure, white circles represent individual observations whereas red triangles are monthly means for (min. month N = 20). Note, monthly means were estimated via maximum likelihood assuming that tags recovered in fisheries with minimum size restrictions are a truncated sample (see ‘Stage 1 analysis’ in text for details). The dashed line in each figure reflects the VBGF parameterization resulting from withholding two Sacramento outliers.
+
+<br>
+
+![???](./images/ObsPreFL.png)
+
+VBGF-predicted vs. observed fork length by stock-month observation. A posterior predictive check indicated good correspondence between the model and data (Bayesian P-value = 0.52).
+
+<br>
+
+![CV Length at Age](CV Lenght at Age.png)
+
+Coefficient of variation associated with monthly length-at-age estimates.
+
+## 1.6 Size Limits
+Angelika
+
+
+## 1.7 Mortality Rates
+Angelika
+
+### Sublegal
+Angelika
+
+### Natural
+Angelika
+
+### Incidental
+Angelika
+
+## 1.8 Model Stock Proportion
+Angelika
+
+## 1.9 Target Encounter Rates
+Derek
+
+## 1.10 Terminal Fishery Flags
+Angelika
+
+## 1.11 Time Steps
+Angelika
+
+# 2. Model Output Data
+Angelika
+
+## 2.1 Base period exploitation rates
+
+## 2.2 Sublegal encounter rates
+
+## 2.3 Maturation Rates
+
+## 2.4 AEQ Mortality Rates
+
+## 2.5 Base Period Cohort
+
+## 2.6 Fishery Model Stock Proportion
+
+
+<script>MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } }; </script><script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>

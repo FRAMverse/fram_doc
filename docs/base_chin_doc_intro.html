@@ -372,40 +372,28 @@ div.tocify {
           <a href="base_chin_doc_intro.html">Introduction</a>
         </li>
         <li>
-          <a href="bp_doc_intro.html">Overview</a>
+          <a href="base_chin_doc_calibration.html">Calibration Processes</a>
         </li>
         <li>
-          <a href="bp_doc_intro.html">Preparation</a>
+          <a href="base_chin_doc_data.html">Model Data</a>
         </li>
         <li>
-          <a href="bp_doc_intro.html">Calibration Processes</a>
+          <a href="base_chin_doc_qaqc_or.html">QA/QC - Outreach</a>
         </li>
         <li>
-          <a href="bp_doc_intro.html">Model Input Data</a>
+          <a href="base_chin_doc_program_desc.html">Program Descriptions</a>
         </li>
         <li>
-          <a href="bp_doc_intro.html">Model Output Data</a>
+          <a href="base_chin_doc_update_cycle.html">Update Cycle</a>
         </li>
         <li>
-          <a href="bp_doc_intro.html">QA/QC</a>
+          <a href="base_chin_doc_implications.html">Implications</a>
         </li>
         <li>
-          <a href="bp_doc_intro.html">Outreach</a>
+          <a href="base_chin_doc_results.html">Results</a>
         </li>
         <li>
-          <a href="bp_doc_intro.html">Program Descriptions</a>
-        </li>
-        <li>
-          <a href="bp_doc_intro.html">Update Cycle</a>
-        </li>
-        <li>
-          <a href="bp_doc_intro.html">Implications</a>
-        </li>
-        <li>
-          <a href="bp_doc_intro.html">Results</a>
-        </li>
-        <li>
-          <a href="base_appendices.html">Appendices</a>
+          <a href="base_chin_doc_appendix.html">Appendices</a>
         </li>
       </ul>
     </li>
@@ -474,8 +462,8 @@ Introduction</h1>
 </div>
 
 
-<div id="introduction" class="section level1">
-<h1>1. Introduction</h1>
+<div id="introduction-test" class="section level1">
+<h1>1. Introduction test</h1>
 <p>The Chinook base period consists of foundational Fishery Regulation
 Assessment Model (FRAM) data. The most important parameter, base period
 exploitation rates, is estimated from “base years” through
@@ -501,8 +489,9 @@ marked only</a>), 73 fisheries (Table @ref(tab:Fish)), and 3
 <p>In addition to CWT recovery data representing FRAM stocks, other key
 data needed for the development of the FRAM base period include: 1)
 escapements, 2) landed catch, 3) growth rates, and 4) fishery induced
-mortality rates. For a complete set of input data, see the section on <a
-href="#Data">data inputs</a>.</p>
+mortality rates. For a complete set of input data, see the section on
+<a href = "https://framverse.github.io/fram_doc/base_chin_doc_data.html" target = "_blank" title = "Chinook Time-Steps">data
+inputs</a>.</p>
 </div>
 <div id="overview" class="section level1">
 <h1>2. Overview</h1>
@@ -522,12 +511,14 @@ to match observed catches, and incorporating non-landed mortalities.</p>
 @ref(fig:cal-plot). This program flow works for all stocks with
 sufficient CWT representation in base period years (37 of the 38 FRAM
 stocks). For a description of how to handle CWT recoveries from
-“out-of-base” years see <a href="#OOB">Out-of-Base Procedures</a>.</p>
+“out-of-base” years see
+<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Out-of-Base_(OOB)" target = "_blank" title = "Out-of-base">out-of-base
+procedures</a>.</p>
 <p><img src="Calibration%20Overview.jpg" />(#fig:cal-plot)</p>
 <p><strong>Figure @ref(fig:cal-plot).</strong> Calibration Overview</p>
-<p>These steps will be described in detail in section <a
-href="#Calib">Calibration Procedures</a>.(XXX add chapter references to
-flow chart)</p>
+<p>These steps will be described in detail in section
+<a href = "https://framverse.github.io/fram_doc/base_chin_doc_calibration.html" target = "_blank" title = "Calibration Procedures">Calibration
+procedures</a></p>
 <p>The final step in the calibration cycle is the development of a
 completed “base period” input file used by FRAM. This file contains
 stock abundances, time-age-fishery specific harvest rates, maturation
@@ -548,15 +539,16 @@ CWT representation, and much more.</p>
 class="section level2">
 <h2>3.1 Assemble Team of Experts and Stakeholders</h2>
 <p>FRAM is used in several forums, such as the Pacific Fishery
-Management Council <a href="#PFMC">(PFMC)</a> and the Puget Sound
-co-manager process, by many different user groups from federal, state,
-and tribal organisations. Updates and changes to FRAM can have
-wide-ranging consequences and affect escapement estimates and management
-objectives for model stocks, many of them protected under the Endangered
-Species Act (ESA). FRAM changes, especially major modification,
-necessitate extensive buy-in and review and in some cases review by
-PFMC’s methodology review process. During the initial phase, a team of
-experts and stakeholders representing tribal, state, and federal
+Management Council
+<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Pacific_Fishery_Management_Council_(PFMC)" target="_blank">PFMC</a>
+and the Puget Sound co-manager process, by many different user groups
+from federal, state, and tribal organisations. Updates and changes to
+FRAM can have wide-ranging consequences and affect escapement estimates
+and management objectives for model stocks, many of them protected under
+the Endangered Species Act (ESA). FRAM changes, especially major
+modification, necessitate extensive buy-in and review and in some cases
+review by PFMC’s methodology review process. During the initial phase, a
+team of experts and stakeholders representing tribal, state, and federal
 entities was assembled. A base period work group was established that
 met at least monthly. The workgroup consisted of the following
 members:</p>
@@ -585,25 +577,26 @@ Canal Tribes)</li>
 </div>
 <div id="mass-marking-and-mark-selective-fisheries"
 class="section level2">
-<h2>3.2 <span id="MSFpara">Mass Marking and <a
-href="#MSF">Mark-Selective Fisheries</a></span></h2>
-<p>Development of exploitation rates relies on the recovery of <a
-href="#CWT">coded-wire-tags</a>. Coded micro-wire is implanted in the
-snout of juvenile salmon prior to release. When recovered, the binary or
-numeric code on the tag identifies the tag group, and thus provides
-information about the location and timing of release, special hatchery
-treatments, etc. This information is used to assign CWT recoveries to
-individual stocks. Prior to <a href="#MM">mass marking</a> a missing
-adipose fin was a visual indicator that a salmon contained a CWT. A
-sampler could then remove the snout and send it to the lab for
-extraction and analysis of the CWT. With mass-marking, this visual
-indicator was re-purposed as an identifier of a hatchery salmon. Having
-a method to distinguish hatchery from wild salmon ushered in an era of
-mark selective (MSF) fisheries, where anglers are required to identify
-(intact adipose fin) and release wild salmon. Unmarked Chinook are
-sporadically tagged as control groups, acting as surrogates for wild
-fish, to assess impacts of mark selective fisheries and mass marking
-(double index tag groups).</p>
+<h2>3.2 Mass Marking and Mark-Selective Fisheries</h2>
+<p>Development of exploitation rates relies on the recovery of
+<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" target = "_blank" title = "CWT">coded
+wire tags</a>. Coded micro-wire is implanted in the snout of juvenile
+salmon prior to release. When recovered, the binary or numeric code on
+the tag identifies the tag group, and thus provides information about
+the location and timing of release, special hatchery treatments, etc.
+This information is used to assign CWT recoveries to individual stocks.
+Prior to
+<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mass_Marking" target = "_blank" title = "Mass Marking">
+mass marking </a> a missing adipose fin was a visual indicator that a
+salmon contained a CWT. A sampler could then remove the snout and send
+it to the lab for extraction and analysis of the CWT. With mass-marking,
+this visual indicator was re-purposed as an identifier of a hatchery
+salmon. Having a method to distinguish hatchery from wild salmon ushered
+in an era of mark selective (MSF) fisheries, where anglers are required
+to identify (intact adipose fin) and release wild salmon. Unmarked
+Chinook are sporadically tagged as control groups, acting as surrogates
+for wild fish, to assess impacts of mark selective fisheries and mass
+marking (double index tag groups).</p>
 <p>While Washington State switched to electronic CWT detection by
 trained samplers a few years before full implementation of mass marking,
 some States and Canada were slow to adopt the new technology. Today,
@@ -633,13 +626,14 @@ to relate recoveries to encounters rather than landed catches and to
 incorporate mark-selective fishing parameters.</p>
 <p>Beyond calibration logistics, the “marked” frame of reference is
 preferable for other reasons. First, given the existence of a mix of
-non-selective and <a href="#MSF">mark-selective</a> regulations, the
-“marked” approach will yield cohort reconstructions results with less
-bias than the “total” approach. Second, even with full electronic
-sampling, sufficient DIT groups, and a means to integrate them into
-calibration, a “total” calibration would necessarily yield a base period
-built on specific MSF parameter assumptions (i.e., release mortality
-rates); these may or may not be consistent with future FRAM
+non-selective and
+<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "Mark-Selective">mark-selective</a>
+regulations, the “marked” approach will yield cohort reconstructions
+results with less bias than the “total” approach. Second, even with full
+electronic sampling, sufficient DIT groups, and a means to integrate
+them into calibration, a “total” calibration would necessarily yield a
+base period built on specific MSF parameter assumptions (i.e., release
+mortality rates); these may or may not be consistent with future FRAM
 applications. Lastly, the inputs to a “marked” calibration are likely to
 have more certainty associated with them than those for a “total”
 calibration for more information also see <a href="#xxx">“Develop the
@@ -654,14 +648,16 @@ period must be translated into something that can be applied on a
 “total” basis. Although this is straightforward for exploitation rates
 (i.e., ER for marked stocks become exploitation rates or encounter rates
 for unmarked stocks in NSF and MSF, respectively), “total” applications
-also require an estimate of <a href="#MSP">model stock proportion
-(MSP)</a>. MSP is the expected fraction of a fishery’s total catch that
-is comprised of model stocks. For these reasons, the calibration was
-performed on “marked only” catch and escapement values for the purpose
-of calculating exploitation rates and on “total” catch and escapement
-values for the purpose of calculating MSP.</p>
-<p>For more MSP information go to chapter <a href="#MSP2">Model Stock
-Proportion</a>.</p>
+also require an estimate of
+<a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Model-Stock_Proportion_(MSP)" target = "_blank" title = "Model Stock Proportion">model
+stock proportion (MSP)</a>. MSP is the expected fraction of a fishery’s
+total catch that is comprised of model stocks. For these reasons, the
+calibration was performed on “marked only” catch and escapement values
+for the purpose of calculating exploitation rates and on “total” catch
+and escapement values for the purpose of calculating MSP.</p>
+<p>For more MSP information go to chapter
+<a href = "https://framverse.github.io/fram_doc/base_chin_doc_data.html#18_Model_Stock_Proportion" target = "_blank" title = "Model Stock Proportion">Model
+Stock Proportion (MSP)</a>.</p>
 </div>
 <div id="updating-computer-programs" class="section level2">
 <h2>3.4 Updating Computer Programs</h2>
@@ -677,14 +673,15 @@ program in the estimation process. Any data or selection changes usually
 resulted in re-running of all components of the system.</p>
 <p>There are now just two programs to create a base period. Both
 programs are written in Visual Basic and interact with Microsoft Access
-databases for data storage and retrieval. The first program, <a
-href="#FB">FRAMBuilder</a> is used to process CWT data. This program
-error-checks, maps tags to stocks and fisheries, and summarized CWT data
-for the <a href="#CP">“Main Calibration Program”</a>. The “Main
-Calibration Program” conducts cohort reconstructions, calculates base
-period exploitation rates, produces all parameters for a new base
-period, and exports output directly into the FRAM database
-structure.</p>
+databases for data storage and retrieval. The first program,
+<a href = "https://framverse.github.io/fram_doc/base_chin_doc_program_desc.html#12_FRAM_Builder" target = "_blank" title = "FRAM Builder">FRAM
+Builder</a> is used to process CWT data. This program error-checks, maps
+tags to stocks and fisheries, and summarized CWT data for the
+<a href = "https://framverse.github.io/fram_doc/base_chin_doc_program_desc.html#13_Main_Calibration_Program" target = "_blank" title = "Main Calibration Program">Main
+Calibration Program</a>. The “Main Calibration Program” conducts cohort
+reconstructions, calculates base period exploitation rates, produces all
+parameters for a new base period, and exports output directly into the
+FRAM database structure.</p>
 <p>Both programs are described in detail in later sections of this
 documentation.</p>
 </div>
@@ -719,10 +716,11 @@ documentation of the data and sources for the data in the calibration.
 Data included, but not limited to, are list of tag codes for each stock,
 stock abundance estimates in the river return, landed catch and size
 limits in fisheries, and listing of adipose mark selective fisheries.
-For a complete description of stock profiles see <a
-href="#stockprofilesxxx">“2017ChinFRAMBP_StockProfilesJul24_2017xlsx.xlsx”</a>
-and <a href="#fisheryprofilesxxx">“FRAM fishery profiles summary draft
-06May2020 ahb.xlsx”</a>.</p>
+For a complete description of stock profiles see
+<a href="/objects/2017ChinFRAMBP_StockProfilesJul24_2017xlsx.xlsx">2017ChinFRAMBP_StockProfilesJul24_2017xlsx.xlsx</a>
+and
+<a href="/objects/FRAM fishery profiles summary draft 06May2020 ahb.xlsx">FRAM
+fishery profiles summary draft 06May2020 ahb.xlsx</a>.</p>
 </div>
 <div id="sublegal-stock--age-composition" class="section level2">
 <h2>3.7 Sublegal Stock-, Age-Composition</h2>
@@ -735,7 +733,7 @@ class="section level2">
 recoveries. These methods are documented here and captured in code as
 well as the relevant databases for reproducibility.</p>
 <div id="surrogate-fisheries" class="section level3">
-<h3><span id="SurFish">Surrogate Fisheries</span></h3>
+<h3>Surrogate Fisheries</h3>
 <div id="background" class="section level4">
 <h4>Background</h4>
 <p>Surrogate fisheries are used for fisheries with insufficient CWT
@@ -792,7 +790,8 @@ This fishery had only 3 recoveries in the new base period. WCVI sport
 was deemed unsuitable as a surrogate, because the net fishery is located
 much more terminally than the sport fishery. Instead, the current base
 period stock composition based on 175 recoveries (time 2) was used as a
-surrogate (see methods under paragraph “Surrogate Methods”).</p></li>
+surrogate (see methods under paragraph
+<a href="#surrogate-methods">“Surrogate Methods”</a>).</p></li>
 <li><p>Use out-of-base fishery method (OOBER) to obtain exploitation
 rates to impute CWT recoveries for the new base period. This method is
 similar to the method described above, but develops exploitation rates
@@ -835,7 +834,10 @@ and time step and divided by 1000. This results in a recipient fishery
 with an identical stock composition as the surrogate fishery but only
 1/1000 of the CWT catch of the surrogate.</p>
 <p>Equation @ref(eq:surrogate)</p>
-<p></p>
+<p><span class="math display">$$
+CWT_{s, a, RecipientFishery, RecipientTimeStep} = \frac{CWT_{s, a,
+SurrogateFishery, SurrogateTimeStep} }{1000} (\#eq:surrogate)
+$$</span></p>
 <p>The original intent of this division was to keep the recipient catch
 small under the assumption that a lack of sufficient CWT recoveries is
 due to small catches. This provides a fishery with a stock composition
@@ -891,8 +893,7 @@ over stocks and ages to compute the CWTCatch. Equation @ref(eq:Type92)
 </div>
 <div id="surrogate-fisheries-and-model-stock-proportions"
 class="section level4">
-<h4><span id="SurrogateMSP">Surrogate Fisheries and Model Stock
-Proportions</span></h4>
+<h4>Surrogate Fisheries and Model Stock Proportions</h4>
 <p>In the previous base period, CWT recoveries for recipient fisheries
 were either set to very small values (divide by 1000 in the out-of-base
 run) or adjusted to match base period catch (‘All-Stocks-Run’). As long
@@ -988,6 +989,19 @@ result. These manipulations were performed on tab ‘10Enet_CWTadj’.</p>
 </div>
 <div id="tulalip-net-t2-into-t3" class="section level3">
 <h3>Tulalip Net (T2 into T3)</h3>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
 </div>
 </div>
 </div>

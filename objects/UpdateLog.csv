@@ -1,0 +1,39 @@
+"UpdateDate","BPID","AccessDBName","TableUpdated","UpdateDescription","ReferenceFileName"
+1/6/2017 0:00:00,2,"CalibrationSupport_1.6.17","BPEscapements_Tot","Update escapements to reflect round 3->4 changes (NkSm FF, NFNK Sp, SFNK Sp, White SpF, Cow Sp, Will Sp, White SpY). Also updated SJDF due to a 10/24/16 change.","Valid2016_FRAM_StockData_1.3.2017.xlsm"
+1/6/2017 0:00:00,2,"CalibrationSupport_1.6.17","BPEscapements_Mrkd","Update escapements to reflect round 3->4 changes (NkSm FF, NFNK Sp, SFNK Sp, Cow Sp, Will Sp)","Valid2016_FRAM_StockData_1.3.2017.xlsm"
+1/6/2017 0:00:00,2,"CalibrationSupport_1.6.17","BasePeriodCatch_Tot","Update MSPs where CTC model output is being used (to correct a vlookup error)","ModelStkPPN_1.4.17.xlsx"
+8/18/2016 0:00:00,1,"CalibrationSupport_Aug_22 2016","BPEscapement","Used escapements from latest validatio run size spreadsheet",
+8/18/2016 0:00:00,1,"CalibrationSupport_Aug_22 2016","BPEscapements Mrkd","Used escapements from latest validatio run size spreadsheet",
+9/27/2016 0:00:00,2,"CalibrationSupport_9.27.16","BPEscapement_Tot","Updated total escapement for SPS FF with values from latest BKFRAM file (dated 9.21.16) - incorporates updates to 13C net catch","BKFRAM-all-stocks-VALID2016-9.21.16"
+9/27/2016 0:00:00,2,"CalibrationSupport_9.27.16","BPEscapement_Mrkd","Updated marked escapement for SPS FF with values from latest BKFRAM file (dated 9.21.16) - incorporates updates to 13C net catch","BKFRAM-all-stocks-VALID2016-9.21.16"
+10/24/2016 0:00:00,2,"CalibrationSupport_10.24.16","BasePeriodCatch_Tot","Updated MSP for fisheries with flag=2 to reflect recent model output; update MSP for fishery 24 to 0.5*MSP of fishery 23",
+10/24/2016 0:00:00,2,"CalibrationSupport_10.24.16","BPSizeLimits","Correct size limit for fish=17 TS=1/4 from 570 to 520",
+10/24/2016 0:00:00,2,"CalibrationSupport_10.24.16","SizeLimits","Correct size limits for fishery 17: TS 1/4 = 520 in all years, TS 2/3 = 570 in all years",
+10/25/2016 0:00:00,2,"CalibrationSupport_10.24.16","BPEscapements_Mrkd & BPEscapements_Tot","Update escapements for stock 36 (GH net revisions) and 13 (marked only; Minter BY mark rate update)","BKFRAM-all-stocks-VALID2016-10.24.16; 'BaseEscape' tab"
+10/31/2016 0:00:00,2,"CalibrationSupport_10.31.16","TerminalFisheryFlag","Remove terminal flag for fisheries 51 & 52 in TS 2",
+11/1/2016 0:00:00,2,"CalibrationSupport_11.1.16","CWTAll","Update CWTAll table with new FRAMBuilder output","Calibration_CWT_Inputs; 11.1.16.xlsx"
+11/1/2016 0:00:00,2,"CalibrationSupport_11.1.16","CWT_WhiteOOB","Update CWT_WhiteOOB table with new FRAMBuilder output","Calibration_CWT_Inputs; 11.1.16.xlsx"
+11/6/2016 0:00:00,2,"CalibrationSupport_11.1.16","BasePeriodCatch_Tot","Update MSP for fisheries 17, 18, 21 based on new output, update flag to 3 for fishery 18 (to assign MSP to that of fishery 17)","ModelStkPPN_11.9.16.xlsx"
+11/16/2016 0:00:00,2,"CalibrationSupport_11.16.16","BPEscapements_Mrkd","Update Wa N Coast escapement to exclude GH net","N WA Falls TRS by age_11.16.16.xlsx"
+11/16/2016 0:00:00,2,"CalibrationSupport_11.16.16","BPEscapements_Tot","Update Wa N Coast escapement to exclude GH net","N WA Falls TRS by age_11.16.16.xlsx"
+11/16/2016 0:00:00,2,"CalibrationSupport_11.16.16","CWTAll","Updated table to address unrealistic Age 5 BPER issue","Calibration_CWT_Inputs; 11.16.16.xlsx"
+11/21/2016 0:00:00,2,"CalibrationSupport_11.21.16","CWTAll","Updated table to include imputed WNC recoveries in GH net","Calibration_CWT_Inputs; 11.21.16.xlsx"
+11/21/2016 0:00:00,2,"CalibrationSupport_11.21.16","BasePeriodCatch_Tot","Update WCVI sport catch to include ISBM catch","WCVISportInputs.xlsx"
+11/21/2016 0:00:00,2,"CalibrationSupport_11.21.16","BasePeriodCatch_Mrkd","Update WCVI sport catch to include ISBM catch","WCVISportInputs.xlsx"
+1/6/2017 0:00:00,2,"CalibrationSupport_1.6.17","ImputeRecoveries","Update StSn Net (Fish49, 50) to remove Type=9 records and add a record to use F=49 TS=3 as surrogate for F=50 TS=3",
+1/6/2017 0:00:00,2,"CalibrationSupport_1.6.17","TargetEncounterRates","Update target encounter rates to correct 2007-2013 average values","Final SL Ratios For New Base Period 1.4.17.xlsx"
+1/11/2017 0:00:00,2,"CalibrationSupport_1.11.17","BPEscapements_Tot","Update NFNK Sp and SFSK Sp escapements to reflect changes to updated 2010-14 escapements","Valid2016_FRAM_StockData_1.11.17.xlsm"
+1/11/2017 0:00:00,2,"CalibrationSupport_1.11.17","BPEscapements_Mrkd","Update NFNK Sp and SFSK Sp escapements to reflect changes to updated 2010-14 escapements","Valid2016_FRAM_StockData_1.11.17.xlsm"
+1/11/2017 0:00:00,2,"CalibrationSupport_1.11.17","CWTAll","Replace CWTAll table with new values that include updated NFNK & SFNK CWT esc data","Calibration_CWT_Inputs; 1.11.17.xlsx"
+1/11/2017 0:00:00,2,"CalibrationSupport_1.11.17","CWT_WhiteOOB","Replace CWT_WhiteOOB table with results from new FRAMBuilder output (includes modification to 8-1 sport recovery)","Calibration_CWT_Inputs; 1.11.17.xlsx"
+7/24/2017 0:00:00,2,"CalibrationSupport_Round_5_Prep","BPEscapements_Mrkd","Update BP avg marked escapement for Stilly, MPS, & SPS Yearlings","Valid2016_FRAM_StockData_7.24.17.xlsm"
+7/24/2017 0:00:00,2,"CalibrationSupport_Round_5_Prep","BPEscapements_Tot","Update BP avg total escapement for Stilly, MPS, & SPS Yearlings","Valid2016_FRAM_StockData_7.24.17.xlsm"
+7/24/2017 0:00:00,2,"CalibrationSupport_Round_5_Prep","TerminalFisheryFlag","Add record for Willapa Bay Net (Fishery 35), Time Step 3","NA"
+7/24/2017 0:00:00,2,"CalibrationSupport_Round_5_Prep","SizeLimits, BPSizeLimits","Updated size limits for Fishery 55 to 100","NA"
+8/2/2017 0:00:00,2,"CalibrationSupport_Round_5_Prep","TargetEncounterRate","Updated Target Encoutner Rates to account for all Sport and Troll fishery/time steps with BPERs","Final SL Ratios For New Base Period 8.1.17.xlsx"
+8/2/2017 0:00:00,2,"CalibrationSupport_Round_5_Prep","CWTAll, CWT_WhiteOOB","Updated CWT input data to account for sublegal exclusions","Calibration_CWT_Inputs; 7.17.17"
+8/2/2017 0:00:00,2,"CalibrationSupport_Round_5_Prep","BasePeriodCatch_Tot","Update MSP flag from 3 to 2 for fishery 11, to allow program to set MSP","ModelStkPPN_XX.XX.XX.xlsx"
+9/28/2020 0:00:00,3,"CalibrationSupport_0923_2020","NonRetention, BPCatch, BPEscape, CWTALL, CWT_Whitee_OOB, TargetEncRates, CWTforSPS_Sur,","Completely updated all input parameters for round 7","see TableProperties for file names"
+10/5/2020 0:00:00,3,"CalibrationSupport_1005_2020","CWTAll","updated age 5 from 4s CWTs with new regression","Age 5 BPER Adjustment_9.30.2020.xlsx"
+11/10/2020 0:00:00,3,"CalibrationSupport_2020_Rd7_V2_I1.mdb","Total & Marked BPCatch","Updated mark rates using output from the latest round of BP validation runs","2007_14BPLandedbyMRandTS110420 .xlsm"
+11/18/2020 0:00:00,3,"CalibrationSupport_2020_Rd7_V2_It1.mdb","Total & Marked BPCatch","updated WCVI troll landed total and marked","""WCVI_troll_catches.xlsx"
