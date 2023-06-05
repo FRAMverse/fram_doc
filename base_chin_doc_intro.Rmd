@@ -273,11 +273,50 @@ Angelika
 Derek
 
 ### Grays Harbor
-Angelika
+The majority of the catch in Grays Harbor net fisheries is comprised of the local Chehalis and Humptulips stock. These two stocks are part of FRAM's Washington North Coast stock aggregate. This aggregate is represented by Queets CWT recoveries which are rarely recovered in Grays Harbor net. While Queets may provide good representation of Washington North Coast exploitation in pre-terminal fisheries, it is inadequate for these terminal net fisheries, because Queets Chinook have already segregated from the local stocks.
+During the base period years, there were zero Queets recoveries in Grays Harbor net fisheries.
+For Grays Harbor non-treaty net, local stock CWTs were imputed assuming that any catch not accounted for by non local stocks should be assigned to the Washington North Coast stock.
+$$GH.Net.Mrkd.Landed_{f,t} - GH.Mrkd.Landed_{nonlocal.stock,f,t} = GH.Mrkd.Landed_{local.stock,f,t}$$
+The marked landed catch is an input located in the Access database, the marked landed catch of the local stock can be computed from output of the calibration program.
+Treaty net fishery CWTs for the Washington North Coast stock where computed by assuming that the non-local stock proportion is half (4.3%) of the non-treaty value (8.6%). For more information see ["Calibration_CWT_Inputs; Rnd7_9.30.20"](xxx) tab `Impute WNC in GH Net` and ["Modeling Grays Harbor Net Fishery and Washington North Coast stock BkFRAM Abundance (2).docx"](xxx).
 
-### [Stock Surrogate for Strait of Juan de Fuca]{#JDF_Sur}
+### [Stock Surrogate for Elwha]{#JDF_Sur}
+Elwha Hatchery (ELW) CWT releases that occurred during brood years (2005-2008) were not adipose clipped in order to minimize exposure to mark-selective fisheries and reduce ocean interception rates during the early restoration phases for Elwha and Dungeness Chinook (Strait of Juan de Fuca stock aggregate). Therefore CWTs cannot be used for cohort analysis/calibration purposes (i.e., due to the lack of CWT recoveries, not impacts, in many northern fisheries for which catch is sampled visually only). Further, due to poor CWT survival and limited ocean recovery data, relatively few href="https://framverse.github.io/fram_doc/calcs_glossary.html#Out_of_Base_(OOB)" target="_blank">out-of-base</a> (xxx) AD+CWT code options existed that could inform stock inclusion via existing OOB procedures. 1990, 1992, and 1993 brood Elwha CWT recoveries could not be used for OOB procedures, because FRAM validation runs do not go back this far in time. However, these recoveries could be used to investigate similarities to other stocks for a potential stock surrogate in outside fisheries.  
 
-### 10E Net Gordon
+Using multivariate statistical methods, surrogate stocks were identified by exploring similarity in the harvest distribution patterns for individual stock-brood year observations. Specifically, principal components analysis (PCA) and cluster analysis were selected to identify the stock groups with harvest patterns most similar to those of ELW for the three brood years in question. Visualizing patterns based on PCA illustrated that ELW are indeed unique among the stocks considered, reflecting a variable presence in both NBC, SEAK, and WCVI fisheries. However, PCA results also suggested, and cluster analysis results further confirmed that among Salish Sea stocks the Stillaguamish (STL) indicator stock was the closest in multidimensional ‘harvest space’.
+
+Using STL as a surrogate for ELW assumes that the overall harvest distribution and maturation pattern for the two CWT indicator stocks is comparable. However, a priori, it was expected there would be inside (i.e., within US and Canadian Salish Sea net and sport fisheries) fishery impact differences (and by extension, possibly total ER differences) given that STL and ELW originate and return to different portions of the Salish Sea. Accordingly, to use STL CWT data as surrogate for ELW in the FRAM calibration process, it is necessary to account for this differential.
+
+It was decided to	modify STL recoveries for inside fisheries to reflect the expected ELW equivalents. This was achieved using a combination of the historic/OOB relationship between ELW and STL (i.e., estimated from the same broods reviewed above, 90, 92-93 brood years) tag recoveries in inside fisheries in the historic data and subsequently applying these values to contemporary STL recoveries. Importantly, for the ratio adjustments to work properly in a surrogate context, OOB ELW CWTs must first be re-scaled so that the total ELW fishery+escapement CWT abundance is on equal footing with the OOB STL dataset. Alterations to inside fishery recoveries in the surrogate STL dataset should be mirrored by a commensurate alteration to surrogate CWT escapement. For more information see ["FRAMbp_ElwhaSurrogate.docx"](xxx).
+
+For a long-term solution, beginning with the 2012 brood year, fingerling releases were marked and coded-wire-tagged. When a sufficient amount of CWTs are recovered for analysis, Elwha should be incorportated into the base period with a standard href="https://framverse.github.io/fram_doc/calcs_glossary.html#Out_of_Base_(OOB)" target="_blank">OOB</a> (xxx) procedure.
+
+#### Method for Creating Surrogate Elwha CWT Recoveries
+Note: Recoveries were not stratified by age or time step. <br>
+- Select OOB years with good recoveries of STL and ELW (1989, 1990, 1992, 1993, 1997, 2002).
+- Designate fisheries as 'inside' and 'outside' fisheries. North and south Georgia Strait sport, British Columbia Juan de Fuca sport, and all Puget Sound fisheries (FRAM Fishery ID 36-72; Tbl. (xxx)) were assigned to 'inside' fisheries.
+- Convert STL and ELW recoveries into rates by dividing recoveries in a fishery by abundance (recoveries in all fisheries plus escapement).
+- For inside fisheries calculate a ratio as:
+$$ ELW.STL.Ratio_f = \frac{ELW.ER_f}{STL.ER_f}$$
+Calculate Elwha recoveries as:
+$$ELW.CWT_f = STL.CWT_f * ELW.STL.Ratio_f $$
+- For outside fisheries (use STL directly for Elwha): 
+$$ELW.CWT_f = STL.CWT_f$$
+- Recompute Elwha escapement CWTs:
+Assumption: Adopting outside fishery CWTs for ELW without manipulations from STL CWTs assumes that both stocks are exploited equally in outside fisheries. This can only occur if ELW abundance equals STL abundance. <br>
+Thus, ELW escapement is calculated as STL abundance minus ELW fisheries.
+$$ELW.CWT_{esc} = \sum (STL.CWT_f+STL.CWT_{esc}) - ELW.CWT_f$$
+Calculate an escapement CWT scale factor for Elwha as:
+$$ELW.Esc.Scaler = \frac{ELW.CWT_{esc}}{STL.CWT_{esc}}$$
+Adjust Elwha escapement CWTs as:
+$$New.ELW.CWT_{esc} = Orig.ELW.CWT_{esc} * ELW.Esc.Scaler$$
+For more information see ["ELDU_CalibInputsRd7_GR-1-28-2020"](xxx)
+
+#### Elwha Age Composition
+After the new base period was first implemented, it was discovered that Elwha exploitation rates differed from Stillaguamish exploitation rates as a result of differing age compositions
+For more information see [ProposalForELDU_7-10-2019.docx](xxx).
+
+### 10E Net 
 Sinclair Inlet fisheries encounter predominantly Gorst Creek hatchery Chinook. This stock is part of the the mid-Puget Sound (MPS) stock aggregate. Gorst Creek fish were not tagged during the base period, resulting in an improbably low MPS fishery contribution. An external 2012-2015 fishing year CWT based-analysis resulted in a MPS stock contribution estimate to Sinclair Inlet fisheries of 97%. Please see file ["10E_NewBPadjustmentWriteup_GordonRose11_4_2016.docx"](xxx) for more information.
 CWT output from Frambuilder was externally manipulated in ["Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx"](xxx) to achieve this ratio for MPS by adjusting non-MPS CWTs to 3% of the contribution. All non-MPS stocks were divided by the same ratio (0.019) to achieve the desired result. These manipulations were performed on tab `10Enet_CWTadj`.
 
