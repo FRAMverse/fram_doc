@@ -1,5 +1,5 @@
 ```{r page title, include=FALSE}
- page_title <- "Base Period Documentation - Introduction"
+page_title <- "Base Period Documentation - Implications"
 ```
 
 --- 
@@ -7,23 +7,10 @@ title: `r page_title`
 author: ""
 date: ""
 description: "Getting to know the Fishery Regulation Assessment Model (FRAM)"
-output:
-  bookdown::html_document2:
-    fig_caption: yes
-    theme: cerulean
-    toc: yes
-    toc_depth: 4
-    toc_float: yes
-    code_folding: hide
-    df_print: paged
-  html_document:
-    toc: yes
-    toc_depth: '4'
-    df_print: paged
-  word_document: null
-always_allow_html: yes
 editor_options: 
   chunk_output_type: console
+---
+
 
 
 <script>
@@ -38,9 +25,7 @@ MathJax = {
 </script>
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 </script>
-```{r}
-devtools::install_github("lbusett/insert_table")
-```
+
 
 
 # 1. Introduction
@@ -284,15 +269,15 @@ The marked landed catch is an input located in the Access database, the marked l
 Treaty net fishery CWTs for the Washington North Coast stock where computed by assuming that the non-local stock proportion is half (4.3%) of the non-treaty value (8.6%). For more information see ["Calibration_CWT_Inputs; Rnd7_9.30.20"](xxx) tab `Impute WNC in GH Net` and ["Modeling Grays Harbor Net Fishery and Washington North Coast stock BkFRAM Abundance (2).docx"](xxx).
 
 ### [Stock Surrogate for Elwha]{#JDF_Sur}
-Elwha Hatchery (ELW) CWT releases that occurred during brood years (2005-2008) were not adipose clipped in order to minimize exposure to mark-selective fisheries and reduce ocean interception rates during the early restoration phases for Elwha and Dungeness Chinook (Strait of Juan de Fuca stock aggregate). Therefore CWTs cannot be used for cohort analysis/calibration purposes (i.e., due to the lack of CWT recoveries, not impacts, in many northern fisheries for which catch is sampled visually only). Further, due to poor CWT survival and limited ocean recovery data, relatively few href="https://framverse.github.io/fram_doc/calcs_glossary.html#Out_of_Base_(OOB)" target="_blank">out-of-base</a> (xxx) AD+CWT code options existed that could inform stock inclusion via existing OOB procedures. 1990, 1992, and 1993 brood Elwha CWT recoveries could not be used for OOB procedures, because FRAM validation runs do not go back this far in time. However, these recoveries could be used to investigate similarities to other stocks for a potential stock surrogate in outside fisheries.  
+Elwha Hatchery (ELW) CWT releases that occurred during brood years (2005-2008) were not adipose clipped in order to minimize exposure to mark-selective fisheries and reduce ocean interception rates during the early restoration phases for Elwha and Dungeness Chinook (Strait of Juan de Fuca stock aggregate). Therefore CWTs cannot be used for cohort analysis/calibration purposes (i.e., due to the lack of CWT recoveries, not impacts, in many northern fisheries for which catch is sampled visually only). Further, due to poor CWT survival and limited ocean recovery data, relatively few <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Out-of-Base_(OOB)" target="_blank">out-of-base</a> AD+CWT code options existed that could inform stock inclusion via existing OOB procedures. 1990, 1992, and 1993 brood Elwha CWT recoveries could not be used for OOB procedures, because FRAM validation runs do not go back this far in time. However, these recoveries could be used to investigate similarities to other stocks for a potential stock surrogate in outside fisheries.  
 
 Using multivariate statistical methods, surrogate stocks were identified by exploring similarity in the harvest distribution patterns for individual stock-brood year observations. Specifically, principal components analysis (PCA) and cluster analysis were selected to identify the stock groups with harvest patterns most similar to those of ELW for the three brood years in question. Visualizing patterns based on PCA illustrated that ELW are indeed unique among the stocks considered, reflecting a variable presence in both NBC, SEAK, and WCVI fisheries. However, PCA results also suggested, and cluster analysis results further confirmed that among Salish Sea stocks the Stillaguamish (STL) indicator stock was the closest in multidimensional ‘harvest space’.
 
 Using STL as a surrogate for ELW assumes that the overall harvest distribution and maturation pattern for the two CWT indicator stocks is comparable. However, a priori, it was expected there would be inside (i.e., within US and Canadian Salish Sea net and sport fisheries) fishery impact differences (and by extension, possibly total ER differences) given that STL and ELW originate and return to different portions of the Salish Sea. Accordingly, to use STL CWT data as surrogate for ELW in the FRAM calibration process, it is necessary to account for this differential.
 
-It was decided to	modify STL recoveries for inside fisheries to reflect the expected ELW equivalents. This was achieved using a combination of the historic/OOB relationship between ELW and STL (i.e., estimated from the same broods reviewed above, 90, 92-93 brood years) tag recoveries in inside fisheries in the historic data and subsequently applying these values to contemporary STL recoveries. Importantly, for the ratio adjustments to work properly in a surrogate context, OOB ELW CWTs must first be re-scaled so that the total ELW fishery+escapement CWT abundance is on equal footing with the OOB STL dataset. Alterations to inside fishery recoveries in the surrogate STL dataset should be mirrored by a commensurate alteration to surrogate CWT escapement. For more information see [McHugh 2015, "FRAMbp_ElwhaSurrogate.docx"](xxx).
+It was decided to	modify STL recoveries for inside fisheries to reflect the expected ELW equivalents. This was achieved using a combination of the historic/OOB relationship between ELW and STL (i.e., estimated from the same broods reviewed above, 90, 92-93 brood years) tag recoveries in inside fisheries in the historic data and subsequently applying these values to contemporary STL recoveries. Importantly, for the ratio adjustments to work properly in a surrogate context, OOB ELW CWTs must first be re-scaled so that the total ELW fishery+escapement CWT abundance is on equal footing with the OOB STL dataset. Alterations to inside fishery recoveries in the surrogate STL dataset should be mirrored by a commensurate alteration to surrogate CWT escapement. For more information see <a href="literature/FRAMbp_ElwhaSurrogate.docx"> McHugh 2015 </a>.
 
-For a long-term solution, beginning with the 2012 brood year, fingerling releases were marked and coded-wire-tagged. When a sufficient amount of CWTs are recovered for analysis, Elwha should be incorportated into the base period with a standard href="https://framverse.github.io/fram_doc/calcs_glossary.html#Out_of_Base_(OOB)" target="_blank">OOB</a> (xxx) procedure.
+For a long-term solution, beginning with the 2012 brood year, fingerling releases were marked and coded-wire-tagged. When a sufficient amount of CWTs are recovered for analysis, Elwha should be incorportated into the base period with a standard <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Out-of-Base_(OOB)" target="_blank">OOB</a> procedure.
 
 #### Method for Creating Surrogate Elwha CWT Recoveries
 - Select OOB years with good recoveries of STL and ELW (1989, 1990, 1992, 1993, 1997, 2002).
@@ -315,10 +300,21 @@ $$New.ELW.CWT_{esc} = Orig.ELW.CWT_{esc} * ELW.Esc.Scaler$$
 For more information see ["ELDU_CalibInputsRd7_GR-1-28-2020"](xxx)
 
 #### Elwha Age Composition
-After the new base period was first implemented, it was discovered that ELW exploitation rates differed from STL exploitation rates, although STL CWTs were used as a surrogate for ELW. This was due to differing age compositions of the abundances going into FRAM. The original cluster and principal components analysis (McHugh 2015) and the historic ratio of simple ERs were not stratified by age or time-step, although the calibration inputs were.
+After the new base period was first implemented, it was discovered that ELW exploitation rates differed from STL exploitation rates, although STL CWTs were used as a surrogate for ELW. This was due to differing age compositions of the abundances going into FRAM. The original cluster and principal components analysis (<a href="literature/FRAMbp_ElwhaSurrogate.docx"> McHugh 2015 </a>) and the historic ratio of simple ERs were not stratified by age or time-step, although the calibration inputs were.
 To meet the primary assumption of the surrogate procedure that STL 'outside' ER equals ELW 'outside' ER, ELW's age composition in FRAM is adjusted to reflect average STL age comp.  
 Terminal run size forecasts of ELW are re-distributed to a static age composition using the average STL 2007-2013 age composition from validation runs. 
-For more information see [ProposalForELDU_7-10-2019.docx](xxx) and [.xls](xxx).
+For more information see <a href="literature/ProposalForELDU_7-10-2019.docx"> ProposalForELDU_7-10-2019.docx </a> and [.xls](xxx).
+
+```{r JDFAgePPN, echo=FALSE,include = TRUE, results='asis'}
+dplyr::tibble(
+  `Age` = c(3, 4, 5),
+  `Proportion` = c("45%","55%","4%")
+) |>
+  gt::gt() |>
+  gt::cols_label(.list = list(`Age` = gt::md("**Age**"),
+                              `Proportion` = gt::md("**Proportion**"))) |>
+  gt::tab_header(title = "JDF Age Comp using STL as Surrogate")
+```
 
 
 ### 10E Net 
