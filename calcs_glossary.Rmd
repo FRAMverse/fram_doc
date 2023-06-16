@@ -289,6 +289,9 @@ Definition 2 (Mature fishery context): In <span title = "FRAM: Fishery Regulatio
 # **Terminal Run Size**
 This run size definition includes escapement, freshwater fishery mortalities, and fishery mortalities in terminal fisheries.
 
+# **Terminal Type**
+In FRAM, calculations are classified as pre-terminal (terminal type = 0) or terminal (terminal type = 1) depending on the fishery and time step. A "terminal" fishery usually occurs in a fishery defined and flagged as <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Fishery" target="_blank">terminal</a> during time step 3 (July-September). Terminal catch is subtracted from the abundance after maturation and not <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Adult_Equivalent_(AEQ)" target="_blank">AEQed</a>, whereas a preterminal fishery occurs prior to maturation and mortalities are AEQed.
+
 # **Time Step**
 A continuous time period in the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model operating on the same abundance and using identical stock/fishery/age-specific parameters. Time steps in the model vary in length and by species.
 
