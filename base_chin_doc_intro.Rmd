@@ -45,11 +45,13 @@ In addition to CWT recovery data representing FRAM stocks, other key data needed
 # 2. Overview
 The main objective of a calibration is to estimate stock-fishery specific exploitation rates by averaging CWT recoveries over base period years and conducting a cohort analysis. Exploitation rates are estimated by <a href = "https://framverse.github.io/fram_doc/calcs_data_chin.html#13_Time_Steps" target = "_blank" title = "Chinook Time-Steps">time-step</a> and age. A cohort and exploitation rate analysis necessitates full accounting of **all fishery related mortality** along a stock's migration path. While the basic processes for a cohort reconstruction are quite simple, much of the work of constructing a new base period lies in data preparation, dealing with missing coded-wire-tag recoveries, handling exceptions, adjusting CWT recoveries to match observed catches, and incorporating non-landed mortalities.
 
-A simple diagram of the calibration process is presented in Figure \@ref(fig:cal-plot). This program flow works for all stocks with sufficient CWT representation in base period years (37 of the 38 FRAM stocks). For a description of how to handle CWT recoveries from "out-of-base" years see [Out-of-Base Procedures](xxx).
+A simple diagram of the calibration process is presented in Figurexxx. This program flow works for all stocks with sufficient CWT representation in base period years (37 of the 38 FRAM stocks). For a description of how to handle CWT recoveries from "out-of-base" years see [Out-of-Base Procedures](xxx).
 
-![](Calibration Overview.jpg)(\#fig:cal-plot)
+```{r CalOver, echo = FALSE, fig.cap=c("Figurxxx Calibration Overview"),fig.pos='H', out.height = "550px", out.width='700px'}
 
-**Figure \@ref(fig:cal-plot).** Calibration Overview
+knitr::include_graphics("images/Calibration Overview.jpg")
+
+```
 
 These steps will be described in detail in section [Calibration Procedures](#Calib).(XXX)
 
@@ -278,8 +280,12 @@ knitr::include_graphics("literature/Age5EscAdjust.pdf")
 
 For more information see <a href="literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx"> Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a>) tab `ImputeAge5Esc`.
 
-### Missing Canadian CWTs 
+### Missing Canadian Catches 
 Derek
+For more information see <a href="literature/
+2020-06-19 BC_Data_Request_With_pre-2012.xlsx
+RE BC Data Request - Update.msg
+short description Chinook Canadian catch imputation for post-season runs_Updated_For_Documentation_in_6.2023.docx
 
 ### Grays Harbor
 The majority of the catch in Grays Harbor net fisheries is comprised of the local Chehalis and Humptulips stock. These two stocks are part of FRAM's Washington North Coast stock aggregate. This aggregate is represented by Queets CWT recoveries which are rarely recovered in Grays Harbor net. While Queets may provide good representation of Washington North Coast exploitation in pre-terminal fisheries, it is inadequate for these terminal net fisheries, because Queets Chinook have already segregated from the local stocks.
@@ -324,12 +330,12 @@ For more information see ["ELDU_CalibInputsRd7_GR-1-28-2020"](xxx)
 After the new base period was first implemented, it was discovered that ELW exploitation rates differed from STL exploitation rates, although STL CWTs were used as a surrogate for ELW. This was due to differing age compositions of the abundances going into FRAM. The original cluster and principal components analysis (<a href="literature/FRAMbp_ElwhaSurrogate.docx"> McHugh 2015 </a>) and the historic ratio of simple ERs were not stratified by age or time-step, although the calibration inputs were.
 To meet the primary assumption of the surrogate procedure that STL 'outside' ER equals ELW 'outside' ER, ELW's age composition in FRAM was adjusted to reflect average STL age comp.  
 Terminal run size forecasts of ELW were re-distributed to a static age composition using the average STL 2007-2013 age composition from validation runs. 
-For more information see <a href="literature/ProposalForELDU_7-10-2019.docx"> ProposalForELDU_7-10-2019.docx </a>.
+For more information see <a href="literature/ProposalForELDU_7-10-2019.docx"> ProposalForELDU_7-10-2019.docx </a> and <a href="literature/draft_revised_stilly_age_comp.xlsx"> draft_revised_stilly_age_comp.xlsx </a>.
 
 ```{r JDFAgePPN, echo=FALSE,include = TRUE, results='asis'}
 dplyr::tibble(
   `Age` = c(3, 4, 5),
-  `Proportion` = c("45%","55%","4%")
+  `Proportion` = c("38.2%","58.0%","3.8%")
 ) |>
   gt::gt() |>
   gt::cols_label(.list = list(`Age` = gt::md("**Age**"),

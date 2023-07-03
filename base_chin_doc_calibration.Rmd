@@ -1,5 +1,5 @@
 ```{r page title, include=FALSE}
-page_title <- "Base Period Documentation - Introduction"
+page_title <- "Base Period Documentation - Calibration"
 ```
 
 --- 
@@ -26,12 +26,6 @@ MathJax = {
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 </script>
-
-$$
-PEF_s=\frac{TotalBPEsc_s}{\sum_{a=3-5,t=1-3}CWTEscape_{s,a,t}}
-$$
-
-
 
 
 # Calibration Processes
@@ -87,12 +81,19 @@ For methods to address low or missing fishery CWT recoveries see the paragraph a
 ### Check Legal Status of Age Group
 The calibration program eliminates CWT if a stock/age recovery is not of legal size. For each stock and age, the calibration program calculates a proportion legal given the size limit in the fishery. If the legal proportion given the stock, age, and size limit is zero, the tag recovery is purged from the data. The program creates a message to inform the user that there were instances of recoveries for stocks without a legal population size. The program also creates a summary of these recoveries in a text file, called "errfile.txt".
 
-## Main Calibration Procedures
+## [Main Calibration Procedures]{#MCP}
 The purpose of a calibration is to produce base period exploitation rates for each stock and fishery in the FRAM model. To this end, marked CWTs from base period years (brood years 2005-2008) were analyzed and summarized to reconstruct cohorts.
 At the completion of the base data development process, each FRAM stock-age cohort is doubled, with half the cohort being assigned to “unmarked” and the other half to “marked” components to allow for processing of mark-selective fisheries in “forward-projection” runs of FRAM used in preseason fishery modeling. 
 The final step in the calibration cycle is the development of a completed “base period” input file used by FRAM.  This file contains stock abundances, time-age-fishery specific harvest rates, maturation rates, growth rates, and various fishery related parameters such as hooking mortality rates. A new calibration of FRAM is warranted when there are changes to the input data and/or model structure.  Examples include changes to stocks, fisheries, CWT groups, time structure, and growth, natural, and fishery related handling mortality rates.   All of these elements influence the estimates of the cohort sizes calculated during cohort analysis and the corresponding estimates of exploitation rates.
 
 Cohort reconstruction involves several steps described below and illustrated by Figure \@ref(fig:cal-plot). This process is augmented for stocks with insufficient CWT recoveries in the existing base period. For these out-of-base stocks, a different range of years with sufficient CWT recoveries stands-in to provide the needed tag recovery resolution. These tag recoveries are adjusted in an iterative process to simulate the recoveries that would have occurred given the magnitude of the fisheries in the selected base period (see [Out-of-Base Procedures](#OOB)). Once adjusted, these CWTs are combined with the "in-base" recoveries and processed.
+
+Figurexxx presents an overview of calibration steps
+```{r CalOver, echo = FALSE, fig.cap=c("Figurexxx Calibration Overview"),fig.pos='H', out.height = "550px", out.width='700px'}
+
+knitr::include_graphics("images/Calibration Overview.jpg")
+
+```
 
 ### Variables and Notation
 
@@ -108,26 +109,35 @@ Cohort reconstruction involves several steps described below and illustrated by 
 
 * **BPTermCatch~s,a,f,t~:**	Base period CWT recoveries in terminal fisheries by stock, age, and time step estimated using forward cohort analysis and exploitation rate scale factors.
 
+* **CNRLeg~s,a,f,t~:** Legal-size release mortality of a stock and age in a non-retention fishery and time step.
+
 * **CNRMorts~s,a,f,t~:**	Non-retention mortalities by stock, age, fishery, and time step.
+
+* **CNRSub~s,a,f,t~:** Sublegal-size release mortality of a stock and age in a non-retention fishery and time step.
 
 * **Cohort~s,a,TerminalType,t~:**
 Pre-fishing abundance of a stock at age a and time step t. If terminal type =0 then abundance is before maturation, if terminal type =1 then after maturation.
 
 * **CV~s,a~:**	Coefficient of variation in length-at-age by stock and age.
 
-* **CWTCatch~s,a,f,t~:**	Observed CWT recoveries by stock, age, fishery, and timestep expanded for sampling fraction.
+* **CWTCatch~s,a,f,t~:**	CWT recoveries by stock, age, fishery, and timestep expanded for sampling fraction.
 
-* **CWTEscape~s,a,t~:**	CWTs by stock, age, and time step recovered in escapement past all fisheries expanded for sampling fraction.
+* **CWTEscape~s,a,t~:**	CWTs by stock, age, and time step recovered in escapement and freshwater fisheries expanded for sampling fraction.
 
 * **DropOff~f~:** Dropoff mortality rate by fishery.
 
-* **EncAdj~f,t~:**	Encounter Rate Adjustment factor by fishery and time step.
+* **EncAdj~f,t~:**	Encounter Rate Adjustment factor by fishery and time step. A variable used to adjust the number of sublegal Chinook encountered in a fishery and time step. This rate is the same as the sublelgal to legal ratio. It is usually estimated from test fisheries or angler interviews.
 
 * **ExpRate~s,a,f,t~:**	The fraction of the vulnerable cohort by stock, age, fishery, and time step, after natural mortality, taken as catch in a fishery.
 f	Fishery number.  There are currently 74 “fisheries” in CHCAL where fishery 74 is the number of CWT recoveries in escapement.
 
-* **LandedCatch~s,a,f,t~:** Estimated total catch of a stock in a fishery by age and time step.  Contrast with CWTCatch.		
+* **LandedCatch~s,a,f,t~:** Estimated total catch of a stock in a fishery by age and time step. This catch is calculated by expanding CWTCatch by escapement and fishery expansion. 
+
+* **LegalEnc~s,a,f,t~:** Legal encounters in a non-retention fishery.
+
 * **LegalProp~s,a,f,t~:** Proportion of the cohort (terminal or preterminal) which is above the legal size limit by stock, age, fishery, and time step.
+
+* **LegalRelaseMortalityRate_f:** Legal release mortality rate in a fishery.
 
 * **MatCohort~s,a,t~:** The ‘mature’ cohort, i.e., the number of fish by stock, age, and time step destined to spawn in the current year in the absence of further fishing.
 
@@ -135,13 +145,21 @@ f	Fishery number.  There are currently 74 “fisheries” in CHCAL where fishery
 
 * **Mean~s,a,t~:**	Mean fork length of a fish by stock, age, and time step.
 
-* **MinSize~a,f,t~:**Minimum size limit in a fishery by age, fishery, and timestep.  The age subscript is carried but not used in computations. 
+* **MinSize~a,f,t~:** Minimum size limit in a fishery by age, fishery, and timestep.  The age subscript is carried but not used in computations. 
 
 * **ModelRatio~f~:**	The proportion of the observed catch in a fishery that can be accounted for by stocks in the model (output to the OUT file as Recovery Adjustment Factor).
 
+* **MSP~f,t~:** Model-stock proportion. Percentage of a fishery’s total catch that is accounted for by stocks modeled in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>.
+
 * **PEF~s~:** Stock specific Production Expansion Factor. The ratio of total stock escapement to the escapement of the CWTed population.
 
+* **PropLegCatch~s,a~** The proportion of the legal catch in a fishery and time step that is of a given stock and age.
+
+* **PropSubCatch~s,a~** The proportion of the sublegal encounters in a fishery and time step that is of a given stock and age.
+
 * **PTCohort~s,a,t~:**	The preterminal (immature) ocean cohort size by stock, age, and time step.
+
+* **PTER~s,a,f,t~:** Exploitation rate in preterminal fishery by stock, age, and time step
 
 * **PTMorts~s,a,t~:** Total mortalities of CWTed fish in preterminal fisheries by stock, age, and time step.
 
@@ -155,15 +173,19 @@ f	Fishery number.  There are currently 74 “fisheries” in CHCAL where fishery
 
 * **ShakEnc~s,a,f,t~:** The fraction of the sublegal cohort, after natural mortality, encountered in a fishery by stock, age, fishery, and time step.
 
-* **ShakMortRate~f~:**	Fishery specific shaker mortality rate (input from section 6 of the CAL file).
+* **ShakerReleaseMortalityRate~f~:**	Fishery specific shaker mortality rate. 
 
-* **SLProp~s,a,f,t~:**	The proportion, by stock and age, of the total sublegal population across all fisheries in a time step which is below the legal size limit in a given fishery and time step.
+* **SRate~a,t~:** 	Survival rate by age and time step. The survival rate equals 1 - natural mortality rate.
 
-* **SRate~a,t~:** 	Compliment of the natural mortality rate by age and time step.
+* **SublegalEnc~s,a,f,t~:** Sublegal encounters in a non-retention fishery.
 
 * **SubLegProp~s,a,f,t~:**	Proportion of the total cohort size by stock and age (terminal or preterminal) which is below the legal size limit in a given fishery and time step.
 
 * **t:**	Time step. There are 3 time steps per ‘year’ Oct – Apr, May – June, and July – Sept. 
+
+* **TargEncRate~f,t~:** Sublegal to legal ratio in a fishery and time step. This rate is used to calculate the number of sublegal encounters when the legal retained catch is known.
+
+* **TermER~s,a,f,t~:** Exploitation rate in terminal fishery by stock, age, and time step
 
 * **TMorts~s,a,t~:**  	Total mortalities of CWTed  fish in terminal fisheries by stock, age, and time step.
 
@@ -173,16 +195,19 @@ f	Fishery number.  There are currently 74 “fisheries” in CHCAL where fishery
 
 * **TotalSLPop~f,t~:**	The total number of sublegal fish, by time step, across stocks, available to a fishery.
 
+* **TotCatch~f,t~:** Total landed catch summed over stocks and ages for a fishery and time step.
 
-### Expand CWTs to Total Production
-The purpose of this first step is to estimate the total size of the stock aggregate by accounting for un-tagged segments of the aggregate; i.e, the South Puget Sound Chinook stock aggregate is comprised of tagged Nisqually and Chambers hatchery Chinook, but also includes untagged Tumwater Falls hatchery and wild Nisqually Fall Chinook. To make estimates for the entire stock aggregate, the [production expansion factor (PEF)](#PEF) is calculated as the ratio of adult escapement accounted for with CWTs to the total adult escapement of a stock. 
+* **TotEncounters~f,t~:** Total encounters in a fishery and time step. For non-retention calculations this value can be provided as an input.
 
-Equation \@ref(eq:PEF)
 
-\begin{equation}
-PEF_s=\frac{TotalBPEsc_s}{\sum_{a=3-5,t=1-3}CWTEscape_{s,a,t}} (\#eq:PEF) 
-\end{equation}
+### [Expand CWTs to Total Production]{#EscExpand}
+The purpose of this first step is to estimate the total size of the stock aggregate by accounting for un-tagged segments of the aggregate; i.e, the South Puget Sound Chinook stock aggregate is comprised of tagged Nisqually and Chambers hatchery Chinook, but also includes untagged Tumwater Falls hatchery and wild Nisqually Fall Chinook. To make estimates for the entire stock aggregate, the [production expansion factor (PEF)](#PEF) is calculated as the ratio of adult escapement accounted for with CWTs to the total adult escapement of a stock. <br>
 
+Equationxxx
+
+$$
+PEF_s=\frac{TotalBPEsc_s}{\sum_{a=3-5,t=1-3}CWTEscape_{s,a,t}}
+$$
 
 
 Note that if a ‘large’ CWT group is used to represent the catch distribution of a ‘small’ hatchery stock, the expansion factors may be less than 1.0 ([MEW,2008](#MEW1)).  
@@ -241,8 +266,6 @@ Equation \@ref(eq:StkFishLanded)
 LandedCatch_{s,a,f,t}=CWTCatch_{s,a,f,t}*PEF_s*MSP_f (\#eq:StkFishLanded) 
 \end{equation}
 
-
-
 The current calibration only uses the MSP calculation as described in equation (\#eq:ModelRatio) for a few fisheries, because of the high variance associated with estimating the parameters entering the calculation of CWTCatch~f,t~. When flagged as "2", if the MSP exceeds 100% of the BPObsCatch~f~, the program scales CWTCatch~s,a,f,t~ to sum to 1.
 
 Summary of MSP flags:
@@ -289,89 +312,162 @@ knitr::include_graphics("./literature/MSPSummary.pdf")
 Prior to the [PEF expansion](#PEFExp) and the [fishery expansion](#FishExp) described in the last two paragraph, CWTs are subjected to two other expansions. The first expansion occurs in [RMIS](#RMIS) and is called a sampling expansion. It is calculated as the total catch in a fishery/time step divided by the sampled catch in a fishery/time step. This results in the number of CWTs that would have been recovered if 100% of the fishery had been sampled. 
 A second expansion, the brood year expansion, is applied within [FRAMBuilder](#xxx) to CWTs that have already received a sampling expansion. The default method gives equal weight to all brood years within the model, but users can also specify brood year weights. The brood year expansion is specific to individual brood years. To calculate the expansion rate, the total number of tags for each brood year is summed. The brood year with the largest number of recoveries is then divided by the sum of tags from the brood year of interest. This expansion factor is then applied to all the CWT recoveries of the brood year to be manipulated.
 
-### [Backwards Cohort Reconstruction #CoRecon
+### [Backwards Cohort Reconstruction]{#CoRecon}
 After all CWT expansions have been applied, Cohort reconstruction occurs “backwards” such that, for each stock, it begins with age 5 Chinook in the final time step, progressing through descending time steps and ages with the age 2, time step 1 cohort calculated last.  First, escapement of age 5 Chinook in time step 3 for a given stock is calculated by summing over escapement CWT recoveries. Note that escapement recoveries also include recoveries from freshwater fisheries (see [FRAMBuilder](#xxx)). This is used as a starting value to which terminal fishery mortalities are later added. Total pre-terminal and terminal mortalities are calculated separately by looping through every fishery within a time step and adding expanded CWTs adjusted for other mortality (dropoff/dropout; expressed as a percentage of catch; found in the [IncidentalRate](#Inc) table of the Calibration Support data base) and by adding sublegal mortalities (see [sublegal mortality](##SubRate) section below for additional details as to how this is calculated) and Chinook Non-Retention Mortality (CNR).
 
-#### Cohort Reconstruction Example
+#### Cohort Reconstruction Steps
 
+* Compute terminal and preterminal mortalities for each stock by summing over fisheries within an age and time step. Summation is performed on expanded CWT recoveries.<br>
+Equationxxx
+$$TMorts_{s,a,t} = \sum_{TFisheries} (LandedCatch_{s,a,f,t}*(1+DropOff_f)+Shakers_{s,a,f,t}+CNRMorts_{s,a,f,t})$$
+Equationxxx
+$$PTMorts_{s,a,t} = \sum_{PTFisheries} (LandedCatch_{s,a,f,t}*(1+DropOff_f)+Shakers_{s,a,f,t}+CNRMorts_{s,a,f,t})$$
 
-![](CohortReconExample.JPG)(\#fig:corecx)
+* Compute the terminal or mature cohort by age and time step<br>
+Equationxxx
+$$MatCohort_{s,a,t}=TMorts_{s,a,t}+CWTEscape_{s,a,t}*PEF_s$$
 
-**Figure \@ref(fig:corecx).** Cohort Reconstruction Example
+* Starting with age 5 time step 3, the preterminal cohort after natural mortality is computed as: <br>
+Equationxxx
+$$PTCohort_{s,a=5,t=3}=MatCohort_{s,a=5,t=3}+PTMorts_{s,a=5,t=3}$$
+*Assumption: 100% of the preterminal cohort matures.*
 
+* The cohort size for all ages in earlier time steps is computed as:<br>
+Equationxxx
+$$PTCohort_{s,a,t}=\frac{PTCohort_{s,a,t+1}}{SRate_{a,t+1}}+MatCohort_{s,a,t}+PTMorts_{s,a,t}$$
 
-#### Simple Cohort Reconstruction without Expansions and Non-landed Mortalities
+* The cohort size for the younger ages in the final time step is computed as:<br>
+Equationxxx
+$$PTCohort_{s,a,t=3}=\frac{PTCohort_{s,a+1,t=1}}{SRate_{a+1,t=1}}+MatCohort_{s,a,t}+PTMorts_{s,a,t}$$
 
-## Estimating Sublegal Mortalities - Galen
+```{r CohortRecon, echo = FALSE, fig.cap=c("Table xxx Cohort Reconstruction Example"),fig.pos='H', out.height = "250px", out.width='700px'}
 
-## Estimating Non-Retention Mortalities
+knitr::include_graphics("images/CohortReconExample.JPG")
 
-## Calculating Exploitation Rates (Forward Cohort Reconstruction)
+```
 
-### Calculating Sublegal Encounter Rates
+Once an initial estimate of preterminal and terminal CWT cohort sizes have been made, sublegal (shaker) and CNR mortalities by fishery, age, and time period can be estimated.  
 
-## Maturation Rate Calculations
+The sublegal and non-retention mortalities by stock and age are a function of cohort size and cohort size is a function of sublegal and non-retention mortalities, hence an **iterative process** is required to calculate cohorts and incidental mortalities by stock and age.
+
+#### Estimating Sublegal Mortalities 
+Sublegal or shaker mortalities result from the release of sublegal sized (below the minimum size limit) Chinook encountered during a fishery.
+Encounters are estimated as:<br>
+Equationxxx
+$$Encounters_{f,t}=\sum_{s,a}CWTCatch_{s,a,f,t} * EncAdj_{f,t}$$
+
+#### Estimating Non-Retention Mortalities (CNR)
+Table `NonRetention` of the calibration database contains non-retention inputs and flagging. Depending on the value of the `NonRetentionFlag`the inputs will either be modeled using external values of legal and sublegal encounters (flag 3) or an external value of total encounters (flag 4).
+CNR impacts can only be calculated if a landed catch value and associated CWT recoveries exist for a fishery. A CNR fishery without pre-existing landed catch can be modeled with a catch of 1. This will only minutely affect cohort sizes, but allow for the calculation of stock-specific BPERs.
+CNR calculations assign encounter estimates to stocks and ages.
+See chapter <a href="https://framverse.github.io/fram_doc/base_chin_doc_data.html#Non_Retention_Encounters"> Non Retention Encounters </a> for more information.
+
+**Calculations when legal and sublegal encounters are provided:**<br>
+
+* Calculate the stock-, age-composition of legal encounters<br>
+Equationxxx
+$$PropLegCatch_{s,a,f,t}=\frac{LandedCatch_{s,a,f,t}}{TotCatch_{f,t}}$$
+
+* Calculate the stock-, age-composition of sublegal encounters<br>
+Equationxxx
+$$PropSubCatch_{s,a,f,t}=\frac{SublegalEncounter_{s,a,f,t}}{TotSublegalEncounters_{f,t}}$$
+
+* Calculate legal mortalities by stock and age<br>
+Equationxxx
+$$CNRLegal_{s,a,f,t}=LegalEnc_{f,t} * PropLegCatch_{s,a,f,t} * LegalReleaseMortalityRate_{f} * MSP_f$$
+* Calculate sublegal mortalities by stock and age<br>
+Equationxxx
+$$CNRSub_{s,a,f,t}=SublegEnc_{f,t} * PropSubCatch_{s,a,f,t} * ShakerReleaseMortalityRate_{f} * MSP_f$$
+* Calculate total CNR mortality by stock and age<br>
+Equationxxx
+$$CNRMorts_{s,a,f,t}=CNRLegal_{s,a,f,t}+CNRSub_{s,a,f,t}$$
+**Calculations when total encounters are provided:**<br>
+
+* For each fishery/time step, calculate PropLegCatch and PropSubCatch as in equations xxx and xxx above.
+
+* Calculate the proportion of the encounter that is legal as: <br>
+Equationxxx
+$$PropLeg_{f,t}=\frac{1}{1+TargEncRate_{f,t}}$$
+Please see <a href="https://framverse.github.io/fram_doc/base_chin_doc_data.html#Target_Encounter_Rates"> Target Encounter Rates </a>for more information.
+
+* Calculate legal and sublegal encounters<br>
+Equationxxx
+$$LegalEnc_{f,t}=TotEncounters_{f,t}*PropLeg_{f,t}$$
+Equationxxx
+$$SublegalEnc_{f,t}=TotEncounters_{f,t}*(1-PropLeg_{f,t})$$
+
+* Calculate legal mortalities by stock and age<br>
+Equationxxx
+$$CNRLegal_{s,a,f,t}=LegalEnc_{f,t} * PropLegCatch_{s,a,f,t} * LegalReleaseMortalityRate_{f} * MSP_f$$
+
+* Calculate sublegal mortalities by stock and age<br>
+Equationxxx
+$$CNRSub_{s,a,f,t}=SublegEnc_{f,t} * PropSubCatch_{s,a,f,t} * ShakerReleaseMortalityRate_{f} * MSP_f$$
+
+* Calculate total CNR mortality by stock and age<br>
+Equationxxx
+$$CNRMorts_{s,a,f,t}=CNRLegal_{s,a,f,t}+CNRSub_{s,a,f,t}$$
+
+### Calculating Exploitation Rates 
+Once iterations have concluded and cohort sizes stabilized, exploitation rates can be calculated. These exploitation rates are the foundational data of a FRAM run. Preterminal ERs are calculated for preterminal fisheries and have the preterminal cohort size in the denominator. Terminal ERs are calculated for terminal fisheries and have the cohort size post maturation in the denominator. <br>
+Equationxxx
+$$PTER_{s,a,f,t} = \frac{LandedCatch_{s,a,f=pterm,t}}{PTCohort_{s,a,t}*LegalProp}$$
+Equationxxx
+$$TermER_{s,a,f,t} = \frac{LandedCatch_{s,a,f=term,t}}{MatCohort_{s,a,t}*LegalProp}$$
+
+### Maturation Rate Calculations
 
 Once cohort sizes are available, maturation rates by age and time step can be computed.  The maturation rate for the oldest age in the final time step is assumed to be 1.0
 
 In the last time step, compute the total cohort after fishing mortality.
 
-Equation \@ref(eq:TotCohort)
+Equationxxx
 
-\begin{equation}
-TotalCohort_{s,a,t=3}=MatCohort_{s,a,t=3}+\frac{PTCohort_{s,a+1,t=1}}{SRate_{s,a+1,t=1}}
-(\#eq:TotCohort)
-\end{equation} 
+$$TotalCohort_{s,a,t=3}=MatCohort_{s,a,t=3}+\frac{PTCohort_{s,a+1,t=1}}{SRate_{s,a+1,t=1}}$$
+ 
 
-And the Maturation rate is simply the proportion of the mature portion of the total cohort after fishing.  
-Equation \@ref(eq:MatRate)
+And the maturation rate is simply the proportion of the mature portion of the total cohort after fishing.  
+Equationxxx
 
-\begin{equation}
-MatRate_{s,a,t=3} = \frac{MatCohort_{s,a,t=3}}{TotalCohort_{s,a,t=3}}(\#eq:MatRate)
-\end{equation} 
+$$
+MatRate_{s,a,t=3} = \frac{MatCohort_{s,a,t=3}}{TotalCohort_{s,a,t=3}}$$
 	 
 
 For earlier time steps, maturation rates are computed in a similar way as:
-Equation \@ref(eq:TotCohort2)
+Equationxxx
 
-\begin{equation}
+$$
 TotalCohort_{s,a,t} = MatCohort_{s,a,t}+\frac{PTCohort_{s,a,t+1}}{SRate_{s,a,t+1}}
-(\#eq:TotCohort2)
-\end{equation} 
+$$
 
-Equation \@ref(eq:MatRate2)
+Equationxxx
 
-\begin{equation}
-MatRate_{s,a,t} = \frac{MatCohort_{s,a,t}}{TotalCohort_{s,a,t}}(\#eq:MatRate2)
-\end{equation} 
+$$
+MatRate_{s,a,t} = \frac{MatCohort_{s,a,t}}{TotalCohort_{s,a,t}}$$
 
-## Adult Aquivalency (AEQ)(xxx) Calculations
+### Adult Aquivalency (AEQ)(xxx) Calculations
 Once maturation rates are available, adult equivalence (AEQ) can be computed. AEQ is the probability that a fish of a certain age will survive to spawn, in the absence of future fishing. AEQs are a function of the maturation rate of the stock and therefore are stock specific. AEQ is defined as 1.0 for the oldest age class at the final time step ([MEW, 2008](#MEW1)). 
 
-Equation \@ref(eq:AEQCalc1)
+Equationxxx
 
-\begin{equation}
-AEQ_{a=5,t=3}=1 (\#eq:AEQCalc1) 
-\end{equation}
+$$
+AEQ_{a=5,t=3}=1 $$
 
 In earlier time steps, for all ages, AEQ is computed as 
 
-Equation \@ref(eq:AEQCalc2)
+Equationxxx
 
-\begin{equation}
-AEQ_{a,t}=MatRate_{s,a,t}+(1-MatRate_{s,a,t})*SRate_{a+1,t}*AEQ_{s,a,t+1} (\#eq:AEQCalc2) 
-\end{equation}
+$$
+AEQ_{a,t}=MatRate_{s,a,t}+(1-MatRate_{s,a,t})*SRate_{a+1,t}*AEQ_{s,a,t+1}$$
 
-## Adjustments
-
-## Out-of-Base Procedures
+### Out-of-Base Procedures
 For stocks without representative CWT release groups during the base period, OOB CWT 
 groups were used and their recoveries were simulated back into the base period in a process of calibration. 
 Calibration involves iterative passes adjusting CWT recoveries for OOB tag groups back to the base 
 period using FRAM derived fishery effort scalars from FRAM “validation” runs. 
 
-(xxx)
-```{r OOBProc, echo = FALSE, fig.cap=c("Figure xxx Out-of-Base Procedures"),fig.pos='H', out.height = "800px", out.width='800px'}
+
+```{r OOBProc, echo = FALSE, fig.cap=c("Figure xxx Out-of-Base Procedures"),fig.pos='H', out.height = "550px", out.width='700px'}
 
 knitr::include_graphics("images/OOBProcedures.jpg")
 
@@ -379,33 +475,104 @@ knitr::include_graphics("images/OOBProcedures.jpg")
 
 **OOB Procedure Steps**
 
-- Sum CWTs from FRAMBuilder over fisheries and escapement without further expanding (no escapement and fisheries expansions). 
-- Compute sublegal mortalities
-For OOB stocks sublegal encounters of the stock in a fishery are set at the landed catch; i.e., CWT recoveries from FRAMBuilder summed within a fishery and time step.
-These encounters are then split into ages by calculating the proportion of stock/age that is of sublegal size and multiplying times the cohort size of the stock age.
-$$Sublegals_{a} = Cohort_{a} * SubLegProp_{a} $$
-(xxx)
-Where the proportion sublegal (SubLegProp) is calculated as in chapter <a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#45_Size_Limit_Evaluations"> Size Limit Evaluations </a> (xxx)
-When summed over all ages, the age proportions are then calculated as:
-$$Proportion_{a} = \frac{Sublegals_a}{\sum_a Sublegals_a}$$
-(xxx)
-Sublegal mortalities are then calculated as:
-$$Shakers_{s,a,f,t} = Encounters_{s,f,t} * Proportion_a * ShakerReleaseMortalityRate_{f,t}$$ 
-(xxx)
+* Sum CWTs from FRAMBuilder over fisheries and escapement without further expanding (no escapement and fisheries expansions). 
+* Compute sublegal mortalities
 
-- <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Backwards Cohort Reconstruction"> Calculate Cohort </a>(xxx)
+    + For OOB stocks sublegal encounters of the stock in a fishery are set at the landed catch; i.e., CWT recoveries from FRAMBuilder summed within a fishery and time step.
+These encounters are then split into ages by calculating the proportion of stock/age that is of sublegal size and multiplying times the cohort size of the stock age. <br>
+Equationxxx
+$$Sublegals_{a} = Cohort_{a} * SubLegProp_{a}$$
+Where the proportion sublegal (SubLegProp) is calculated as in chapter <a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#45_Size_Limit_Evaluations"> Size Limit Evaluations </a> (equation xxx)
 
-- Check Convergence
-Steps 2 and 3 are iterative, because sublegal mortalities are a function of the cohort size and the cohort size is dependent on sublegal mortalities. These steps are repeated until age-2 abundances converge. This occurs when abundances differ by less than 1%.
+    + When summed over all ages, the age proportions are then calculated as:<br>
+    equation xxx
+$$Proportion_{a} = \frac{Sublegals_a}{\sum_a Sublegals_a}$$ 
 
-- Calculate Maturation Rates and OOB Exploitation Rates. 
+    + Sublegal mortalities are then calculated as: <br>
+    equation xxx
+$$Shakers_{s,a,f,t} = Encounters_{s,f,t} * Proportion_a * ShakerReleaseMortalityRate_{f,t}$$
+
+- Cohort reconstruction<br>
+The cohort is reconstructed as described in chapter <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Backwards_Cohort_Reconstruction"> Backwards Cohort Reconstruction </a>. The cohort size is needed to calculate sublegal encounters, legal exploitation rates, and maturation rates.
+
+- Check convergence   <br>
+Computing sublegal mortalities and calculating the cohort are iterative steps, because sublegal mortalities are a function of the cohort size and the cohort size is dependent on sublegal mortalities. These steps are repeated until age-2 abundances converge. This occurs when abundances differ by less than 1%.
+
+- Calculate maturation rates and OOB exploitation rates   
 See <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Calculating Exploitation Rates"> Maturation Rates </a>(xxx) and <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Maturation Rate Calculations"> Exploitation Rates </a>(xxx) for calculations.
 
-- Adjust OOB Exploitation Rates to New Base Period Exploitation Rates and Calculate Catches and Escapements
-    + Calculate adjusted for base period effort exploitation rates 
+- Start iterative cycle to integrate OOB catches with in-base CWTs
 
-The program adjusts exploitation rates for a fishery and time step if the summed
+    + Conduct a "Forward Cohort Reconstruction" <br>
+The purpose of the forward cohort reconstruction (start with age 2 time 1) is to produce catches and escapements that are adjusted for in-base fishing effort (new base period) in order to combine them with in-base CWT recoveries.
 
+      - Begin with age-2 time 1 starting cohort and remove natural mortality
+    $$PTCohort_{a,t}=TotalCohort_{a,t} * SRate_{a,t}$$
+      - Calculate adjusted exploitation rates (AdjustedER) <br>
+    Forward cohort reconstruction requires fishery effort scalers that are derived from the new base period in a laborious iterative process.<br>
+    Initialize fishery efforts scalers (FisheryScaler) with values derived from regular FRAM validation runs (using best estimates of actual catches and abundances). Runs need to be conducted for all fishing years affected by OOB brood years; i.e., if 2002-2005 brood years (BY) were selected for OOB recoveries, then 2004 (2-year-olds) to 2010 (5-year-olds) fishing years (FY) ) are required to obtain fishery effort scalers. These effort scalers are then manually transferred from the validation run database to the calibration database. Since effort scalers are a function of BPERs and OOB BPERs are influenced by effort scalers, the process is iterative, but requires a starting values for the OOB stock in the validation runs. These ERs can be initialized with a value of 1 or left at the values of the previous base period for the first model run. Subsequent runs use the OOB BPERs from the first completed calibration cycle. For more information of how fishery effort scalers are calculated see <a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#42_Computational_Processes"> computational processes </a>. <br>
+      equationxxx
+$$AdjustedER_{a,f,t} =\frac{OOB.ER_{a,f,t}}{FisheryScaler_{Year,f,t}}$$ 
+Where, the "Year" equals brood year plus age; i.e., if the CWT was recovered for a 4-year old Chinook of brood year 2004, then the fishing year would be 2008 (2004 + 4).<br>
+<br>
+      - Sum adjusted OOB ER's over all fisheries within an age and time step and adjust if the sum exceeds 100%. <br>
+    Do this separately for terminal and preterminal fisheries.<br>
+    Equationxxx
+    $$AdjustedER_{a,t} = \sum_{f} AdjustedER_{a,f,t}$$
+When adjusting OOB ERs in the previous step by dividing by FishScaler, it is possible that ERs exceed 100% for the OOB stock and age when summed over all fisheries within a time step. To avoid this, the component ERs are scale to sum to 95%.<br>
+equationxxx
+$$AdjustedER_{a,f,t}= AdjustedER_{a,f,t} * \frac{0.95}{AdjustedER_{a,t}}$$
+      - Compute preterminal catch<br>
+Equation xxx
+$$PTCatch_{a,f,t} = PTCohort_{a,t} * LegalProp_{a,f,t} * AdjustedER_{a,f,t}$$
+Where, LegalProp is computed as the <a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#45_Size_Limit_Evaluations"> proportion vulnerable (PV) </a>.
+
+      - Compute mature cohort <br>
+    For an age and time step, the mature cohort is computed by subtracting the catch from preterminal fisheries from the preterminal cohort size and multipliying times maturation rate.<br>
+    Equationxxx
+    $$MatCohort_{a,t} = (PTCohort_{a,t} - \sum_f PTCatch_{a,f,t}) * MatRate_{a,t}$$
+      - Compute terminal catch<br>
+    Equation xxx
+$$TermCatch_{a,f,t} = MatCohort_{a,t} * LegalProp_{a,f,t} * AdjustedER_{a,f,t}$$
+
+      - Compute escapement<br>
+<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target="_blank">Escapement</a> is calculated by subtracting natural and fishery mortality from the mature cohort size. <br>
+Equationxxx
+$$Escapement_{a,t} = MatCohort_{a,t} - \sum_f TermCatch_{a,f,t}$$
+
+      - Compute the preterminal cohort for the next time step (if time step is less than 3)<br>
+    equationxxx
+    $$ TotalCohort_{a,t+1} = \frac{PTCohort_{a,t} - \sum_f PTCatch_{a,f,t}}{(1-MatRate_{a,t})}$$
+    
+      - Compute the preterminal cohort for age+1 (if time step is 3)
+    equationxxx
+    $$ TotalCohort_{a+1,t} = \frac{PTCohort_{a,t} - \sum_f PTCatch_{a,f,t}}{(1-MatRate_{a,t})}$$
+    
+    + Merge OOB CWTs over brood years<br>
+During the "Merge" subroutine OOB catches (Catch~BY,a,f,t~) will be combined over brood years (BY) for the same age, fishery, and time step. The user has the option to weight different brood years. <br>
+Equationxxx
+$$MergedCatch_{a,f,t}=\sum_{BY}Catch_{BY,a,f,t}*Weight_{BY}$$
+Brood years can either be merged unweighted (BYFlag = 1). In this case catches will simply be summed (BYWeight = 1).
+Each brood year can receive equal weights (BYFlag = 0). In this case the catch from a brood year, when summed over all fisheries and time steps, is expanded to match the catch of the brood year with the highest catch.
+Or brood years can receive a custom weight (BYFlag = 2). <br>
+    Equation xxx
+    $$Catch_{BY,a,f,t} = Catch_{BY,a,f,t} * BYWeight$$
+
+    + Merge OOB CWTs with inbase CWTs<br>
+Combine simulated CWTs as computed in previous steps with inbase CWT recoveries.
+
+    + Run through regular (inbase) procedures to create new base period exploitation rates<br>
+This is accomplished by following the steps as outline under [Main Calibration Procedures](#MCP).
+During initial calibration steps CWTs are [expanded](#EscExpand) to reflect the run size of the OOB stocks during in-base years.
+
+    + Import BPERs into validation runs<br>
+See chapter xxx for exporting base period data from the calibration database and importing the new base period into a validation run database.
+
+    + Produce new fishery effort scalers
+The new fishery effort scalers are stored in the validation run database in table "FisheryScalers" after running select years (OOB brood years plus age) of the validation runs. These scalers are copied into the calibration database.
+
+    + Iterate<br>
+Iterate until OOB ERs stabilize
 
 
 

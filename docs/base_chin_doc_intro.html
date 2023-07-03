@@ -482,9 +482,13 @@ MathJax = {
 <div id="overview" class="section level1">
 <h1>2. Overview</h1>
 <p>The main objective of a calibration is to estimate stock-fishery specific exploitation rates by averaging CWT recoveries over base period years and conducting a cohort analysis. Exploitation rates are estimated by <a href = "https://framverse.github.io/fram_doc/calcs_data_chin.html#13_Time_Steps" target = "_blank" title = "Chinook Time-Steps">time-step</a> and age. A cohort and exploitation rate analysis necessitates full accounting of <strong>all fishery related mortality</strong> along a stock’s migration path. While the basic processes for a cohort reconstruction are quite simple, much of the work of constructing a new base period lies in data preparation, dealing with missing coded-wire-tag recoveries, handling exceptions, adjusting CWT recoveries to match observed catches, and incorporating non-landed mortalities.</p>
-<p>A simple diagram of the calibration process is presented in Figure @ref(fig:cal-plot). This program flow works for all stocks with sufficient CWT representation in base period years (37 of the 38 FRAM stocks). For a description of how to handle CWT recoveries from “out-of-base” years see <a href="xxx">Out-of-Base Procedures</a>.</p>
-<p><img src="Calibration%20Overview.jpg" />(#fig:cal-plot)</p>
-<p><strong>Figure @ref(fig:cal-plot).</strong> Calibration Overview</p>
+<p>A simple diagram of the calibration process is presented in Figurexxx. This program flow works for all stocks with sufficient CWT representation in base period years (37 of the 38 FRAM stocks). For a description of how to handle CWT recoveries from “out-of-base” years see <a href="xxx">Out-of-Base Procedures</a>.</p>
+<div class="figure">
+<img src="images/Calibration%20Overview.jpg" alt="Figurxxx Calibration Overview" width="700px" height="550px" />
+<p class="caption">
+Figurxxx Calibration Overview
+</p>
+</div>
 <p>These steps will be described in detail in section <a href="#Calib">Calibration Procedures</a>.(XXX)</p>
 <p>The final step in the calibration cycle is the development of a completed “base period” input file used by FRAM. This file contains stock abundances, time-age-fishery specific harvest rates, maturation rates, growth rates, and various fishery related parameters such as hooking mortality rates covering the base period fishing years.</p>
 </div>
@@ -636,7 +640,7 @@ Stocks/Fisheries/TimeSteps with Adjusted Age-5 BPERs
 <p>Four stocks also received Age-5 escapement adjustments, because they entirely lacked escapement recoveries for this age group. These stocks were Tulalip, Oregon Tules, Bonneville, and Central Valley. For these stocks age-5 escapement recoveries (AdjustedCWTEscapement) were imputed using the ratio of age-4 to age-5 Chinook <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Run_Size" target="_blank">terminal run sizes</a> (TRSEst) times age-4 CWT recoveries.</p>
 <p>Equation @ref(eq:EscAdjust)xxx</p>
 <p></p>
-<p>Figure xxx. Age-5 Adjusted Escapements and Age-4 to Age-5 TRS Ratios</p>
+<p>Table xxx. Age-5 Adjusted Escapements and Age-4 to Age-5 TRS Ratios</p>
 <div class="figure">
 <embed src="literature/Age5EscAdjust.pdf" title="Age-5 Adjusted Escapements" width="800px" height="800px" type="application/pdf" />
 <p class="caption">
@@ -674,13 +678,13 @@ Age-5 Adjusted Escapements
 <div id="elwha-age-composition" class="section level4">
 <h4>Elwha Age Composition</h4>
 <p>After the new base period was first implemented, it was discovered that ELW exploitation rates differed from STL exploitation rates, although STL CWTs were used as a surrogate for ELW. This was due to differing age compositions of the abundances going into FRAM. The original cluster and principal components analysis (<a href="literature/FRAMbp_ElwhaSurrogate.docx"> McHugh 2015 </a>) and the historic ratio of simple ERs were not stratified by age or time-step, although the calibration inputs were. To meet the primary assumption of the surrogate procedure that STL ‘outside’ ER equals ELW ‘outside’ ER, ELW’s age composition in FRAM was adjusted to reflect average STL age comp.<br />
-Terminal run size forecasts of ELW were re-distributed to a static age composition using the average STL 2007-2013 age composition from validation runs. For more information see <a href="literature/ProposalForELDU_7-10-2019.docx"> ProposalForELDU_7-10-2019.docx </a>.</p>
-<div id="oktasuvnyy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+Terminal run size forecasts of ELW were re-distributed to a static age composition using the average STL 2007-2013 age composition from validation runs. For more information see <a href="literature/ProposalForELDU_7-10-2019.docx"> ProposalForELDU_7-10-2019.docx </a> and <a href="literature/draft_revised_stilly_age_comp.xlsx"> draft_revised_stilly_age_comp.xlsx </a>.</p>
+<div id="utargzbcue" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#oktasuvnyy .gt_table {
+#utargzbcue .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -705,7 +709,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-left-color: #D3D3D3;
 }
 
-#oktasuvnyy .gt_heading {
+#utargzbcue .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -717,7 +721,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-right-color: #D3D3D3;
 }
 
-#oktasuvnyy .gt_title {
+#utargzbcue .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -729,7 +733,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-bottom-width: 0;
 }
 
-#oktasuvnyy .gt_subtitle {
+#utargzbcue .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -741,13 +745,13 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-top-width: 0;
 }
 
-#oktasuvnyy .gt_bottom_border {
+#utargzbcue .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oktasuvnyy .gt_col_headings {
+#utargzbcue .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -762,7 +766,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-right-color: #D3D3D3;
 }
 
-#oktasuvnyy .gt_col_heading {
+#utargzbcue .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -782,7 +786,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   overflow-x: hidden;
 }
 
-#oktasuvnyy .gt_column_spanner_outer {
+#utargzbcue .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -794,15 +798,15 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 4px;
 }
 
-#oktasuvnyy .gt_column_spanner_outer:first-child {
+#utargzbcue .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oktasuvnyy .gt_column_spanner_outer:last-child {
+#utargzbcue .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oktasuvnyy .gt_column_spanner {
+#utargzbcue .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -814,7 +818,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   width: 100%;
 }
 
-#oktasuvnyy .gt_group_heading {
+#utargzbcue .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -839,7 +843,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   vertical-align: middle;
 }
 
-#oktasuvnyy .gt_empty_group_heading {
+#utargzbcue .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -854,15 +858,15 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   vertical-align: middle;
 }
 
-#oktasuvnyy .gt_from_md > :first-child {
+#utargzbcue .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oktasuvnyy .gt_from_md > :last-child {
+#utargzbcue .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oktasuvnyy .gt_row {
+#utargzbcue .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -881,7 +885,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   overflow-x: hidden;
 }
 
-#oktasuvnyy .gt_stub {
+#utargzbcue .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -894,7 +898,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 5px;
 }
 
-#oktasuvnyy .gt_stub_row_group {
+#utargzbcue .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -908,11 +912,11 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   vertical-align: top;
 }
 
-#oktasuvnyy .gt_row_group_first td {
+#utargzbcue .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oktasuvnyy .gt_summary_row {
+#utargzbcue .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -922,16 +926,16 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 5px;
 }
 
-#oktasuvnyy .gt_first_summary_row {
+#utargzbcue .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oktasuvnyy .gt_first_summary_row.thick {
+#utargzbcue .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oktasuvnyy .gt_last_summary_row {
+#utargzbcue .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -941,7 +945,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-bottom-color: #D3D3D3;
 }
 
-#oktasuvnyy .gt_grand_summary_row {
+#utargzbcue .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -951,7 +955,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 5px;
 }
 
-#oktasuvnyy .gt_first_grand_summary_row {
+#utargzbcue .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -961,11 +965,11 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-top-color: #D3D3D3;
 }
 
-#oktasuvnyy .gt_striped {
+#utargzbcue .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oktasuvnyy .gt_table_body {
+#utargzbcue .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -974,7 +978,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-bottom-color: #D3D3D3;
 }
 
-#oktasuvnyy .gt_footnotes {
+#utargzbcue .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -988,7 +992,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-right-color: #D3D3D3;
 }
 
-#oktasuvnyy .gt_footnote {
+#utargzbcue .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -997,7 +1001,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 5px;
 }
 
-#oktasuvnyy .gt_sourcenotes {
+#utargzbcue .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1011,7 +1015,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-right-color: #D3D3D3;
 }
 
-#oktasuvnyy .gt_sourcenote {
+#utargzbcue .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1019,36 +1023,36 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 5px;
 }
 
-#oktasuvnyy .gt_left {
+#utargzbcue .gt_left {
   text-align: left;
 }
 
-#oktasuvnyy .gt_center {
+#utargzbcue .gt_center {
   text-align: center;
 }
 
-#oktasuvnyy .gt_right {
+#utargzbcue .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oktasuvnyy .gt_font_normal {
+#utargzbcue .gt_font_normal {
   font-weight: normal;
 }
 
-#oktasuvnyy .gt_font_bold {
+#utargzbcue .gt_font_bold {
   font-weight: bold;
 }
 
-#oktasuvnyy .gt_font_italic {
+#utargzbcue .gt_font_italic {
   font-style: italic;
 }
 
-#oktasuvnyy .gt_super {
+#utargzbcue .gt_super {
   font-size: 65%;
 }
 
-#oktasuvnyy .gt_two_val_uncert {
+#utargzbcue .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1057,31 +1061,31 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   margin-left: 0.1em;
 }
 
-#oktasuvnyy .gt_footnote_marks {
+#utargzbcue .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#oktasuvnyy .gt_asterisk {
+#utargzbcue .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oktasuvnyy .gt_slash_mark {
+#utargzbcue .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#oktasuvnyy .gt_fraction_numerator {
+#utargzbcue .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#oktasuvnyy .gt_fraction_denominator {
+#utargzbcue .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1102,11 +1106,11 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   </thead>
   <tbody class="gt_table_body">
     <tr><td class="gt_row gt_right">3</td>
-<td class="gt_row gt_left">45%</td></tr>
+<td class="gt_row gt_left">38.2%</td></tr>
     <tr><td class="gt_row gt_right">4</td>
-<td class="gt_row gt_left">55%</td></tr>
+<td class="gt_row gt_left">58.0%</td></tr>
     <tr><td class="gt_row gt_right">5</td>
-<td class="gt_row gt_left">4%</td></tr>
+<td class="gt_row gt_left">3.8%</td></tr>
   </tbody>
   
   

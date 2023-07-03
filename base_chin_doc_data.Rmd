@@ -12,23 +12,24 @@ editor_options:
 ---
 
 
-# 1. Model Data
+# Model Data
+A large amount of data is required to create a new base period. These input data are stored in tables of the calibration database. All calibration input and output tables can be viewed in the <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html:" target="_blank">Appendix</a>.
 
-## 1.1 CWTs 
+## CWTs 
 Jon
 
-## 1.2 Landed Catch
+## Landed Catch
 Derek
 
-## 1.3 CNR
+## CNR
 Derek
 
-## 1.4 Escapement
+## Escapements
+<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement:" target="_blank">Escapement</a> are needed to estimate the total size of the stock aggregate by accounting for un-tagged segments of the aggregate. A production expansion factor is computed that relates the run size accounted for with CWTs to the run size of the marked stock aggregate. For the purpose of calibration, escapement includes freshwater catch. Marked as well as total age 3 to 5 escapements were provided by regional experts. Escapements were averaged over base period years and compiled in file <a href="https://framverse.github.io/fram_doc/literature/“Escapements for Calibration 09302020.xlsx"> “Escapements for Calibration 09302020.xlsx” </a>. 
+For a list of escapements used for the calibration see <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period Marked_Escapements:" target="_blank">Base Period Marked Escapements</a> and <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Escapements:" target="_blank">Base Period Total Escapements</a> in Appendix.
 
 
-## 1.5 Growth Functions
-
-### Background
+## Growth Functions
 To model fisheries with minimum size limit regulations, FRAM is parameterized with growth functions for computing mean length (fork length, FL, in mm) by age and model time step, as well as supplementary inputs (coefficients of variation, CVs) for characterizing variability around these predictions. 
 Objectives of this effort: (1) Estimate parameters for stock-specific Von Bertalanffy growth functions (VBGFs), inclusive of an assessment of model fit diagnostics, etc.; and (2) Estimate stock-specific CVs associated with VBGF mean length-at-age predictions. 
 
@@ -137,48 +138,65 @@ VBGF-predicted vs. observed fork length by stock-month observation. A posterior 
 
 Coefficient of variation associated with monthly length-at-age estimates.
 
-## 1.6 Size Limits
-Angelika
+## Minimum Size Limit
+The proportion of Chinook encounters that can legally be retained in a fishery is a function of the <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Size_Limit:" target="_blank">Minimum Size Limits</a>. Minimum size limits by fishery, year, and time step are stored for all inbase and OOB fishing years in database table `SizeLimits` of the calibration database.
+See Appendix for <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Minimum Size Limits:" target="_blank">Minimum Size Limits</a>.
 
+## Incidental Mortality
+Fishery related mortality factors include hook and release mortality, hook and line drop-off, and net drop-out.  Rates associated with these factors are used for the base period data development process and the associated cohort reconstruction.  
+Hook and release mortality rates can vary by region (e.g. ocean vs. Puget Sound), fishery type (commercial troll vs. sport), and gear type (barbed hooks vs. barbless).  Hook and release mortality rates are usually based on an ‘average’ value from a variety of separate studies. For Puget Sound sport fisheries the legal size release mortality is set at half of the sublegal rate (10% vs. 20%).<br>
+Hook and line drop-off and net drop-out are mortality types caused by gear contact with fish that are not brought to the boat.  Drop-off and drop-out mortality may also includes marine mammal predation on gear entangled fish and loss from noncompliance with regulations.  In FRAM, drop-off and drop-out rates were primarily based on agreed values rather than specific studies.  Hook and line drop-off mortality rates are calculated as 5% of landed catch.  Net drop-out mortality rates vary between 0-3% of landed catch depending on whether gear is purse seine, gill net or reef net. 
+See Appendix for <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Incidental_Mortality_Rates:" target="_blank">drop-off/drop-out mortality rates</a>.
+See Appendix for <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Sublegal_Mortality_Rates:" target="_blank">release mortality rates</a>.
 
-## 1.7 Mortality Rates
-Angelika
+## Natural Mortality
+Rates for Chinook are age and time period specific and yield the same total annual natural mortality rate used in the <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Pacific_Salmon_Commission_(PSC):" target="_blank">PSC</a> Exploitation Rate Analysis. Rates are constants that when summed over all time steps result in natural mortalities of 10% for age-5s, 20% for age-4s, 30% for age-3s and 40% for age-2s.
+See Appendix for <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Natural_Mortality_Rates:" target="_blank">natural mortality rates</a>.
 
-### Sublegal
-Angelika
+## Non Retention Encounters
 
-### Natural
-Angelika
+## Model Stock Proportion (MSP)
+[MSP](#MSP) (xxx) is the percentage of a fishery accounted for by stocks in the model. For a detailed description of MSP consult chapter [Model Stock Proportion](#MSP2).
+MSPs are listed by fishery in tables `BasePeriodCatch` and `BasePeriodCatch_Tot`. Proportions are the same for all time steps of a fishery.
+See Appendix for <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Catch:" target="_blank">marked MSP</a> and <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Catch:" target="_blank">total (marked + unmarked) MSP</a>.
 
-### Incidental
-Angelika
-
-## 1.8 Model Stock Proportion
-Angelika
-
-## 1.9 Target Encounter Rates
+## Target Encounter Rates
 Derek
 
-## 1.10 Terminal Fishery Flags
+## Terminal Fishery Flags
+Terminal fishery flags designate a fishery as terminal (flag 1) or pre-terminal (flag 0). Terminal fisheries operate on "mature" abundances and are therefore processed after maturation occurs. For a definition of terminal fisheries see the <a href="https://framverse.github.io/fram_doc/base_chin_doc_glossary.html#Terminal_Fishery:" target="_blank">Glossary</a>. Terminal fisheries are listed in table `TerminalFisheryFlag` of the calibration database. 
+See Appendix <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Terminal_Fishery_Flags:" target="_blank">Terminal Fishery Flags</a> for a list of terminal fisheries.
+
+## Time Steps
+Chinook FRAM consists of four time periods. Because the fishery management cycle year (May 1 to April 30) for Chinook is out of sync with the time at which most Chinook in the model age up (October 1), Chinook FRAM both begins and ends with an October to April time step.
+
+```{r TimeStepTbl, echo=FALSE,include = TRUE, results='asis'}
+dplyr::tibble(
+  `TimeSteps` = c(1, 2, 3, 4),
+  `Months` = c("Preceding Oct-Apr","May-Jun","Jul-Sep","Oct-Apr")
+) |>
+  gt::gt() |>
+  gt::cols_label(.list = list(`TimeSteps` = gt::md("**TimeSteps**"),
+                              `Months` = gt::md("**Months**"))) |>
+  gt::tab_header(title = "FRAM Time Steps")
+```
+
+See chapter <a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#Time_Steps:" target="_blank">Time Steps</a> under Model Detail for more information.
+
+# Model Output Data
 Angelika
 
-## 1.11 Time Steps
-Angelika
+## Base Period Exploitation Rates
 
-# 2. Model Output Data
-Angelika
+## Sublegal Encounter Rates
 
-## 2.1 Base period exploitation rates
+## Maturation Rates
 
-## 2.2 Sublegal encounter rates
+## AEQ Mortality Rates
 
-## 2.3 Maturation Rates
+## Base Period Cohort
 
-## 2.4 AEQ Mortality Rates
-
-## 2.5 Base Period Cohort
-
-## 2.6 Fishery Model Stock Proportion
+## Fishery Model Stock Proportion
 
 
 <script>MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } }; </script><script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
