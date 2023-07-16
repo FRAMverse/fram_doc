@@ -33,7 +33,7 @@ MathJax = {
 
 
 
-# 1. Introduction
+# Introduction
 The Chinook base period consists of foundational Fishery Regulation Assessment Model (FRAM) data. The most important parameter, base period exploitation rates, is estimated from "base years" through stock-specific <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" target = "_blank" title = "CWT">CWT</a> recovery analysis and a process of [cohort reconstruction](#CR). Base period data represent all the static information that has been averaged over a range of catch years. Resulting base period reference parameters are used to populate the FRAM model to predict annual stock/fishery specific impacts.
 
 Fishing years 2007-2013 were chosen as base years, because they reflected the most contemporary period at the time the project commenced and additionally had good numbers of CWT recoveries from recently implemented <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "Mark-Selective">mark-selective</a> sport fisheries. 
@@ -42,7 +42,7 @@ The process of creating the latest base period is also called the "2014 Calibrat
 
 In addition to CWT recovery data representing FRAM stocks, other key data needed for the development of the FRAM base period include: 1) escapements, 2) landed catch, 3) growth rates, and 4) fishery induced mortality rates. For a complete set of input data, see the section on [data inputs](#Data). 
 
-# 2. Overview
+# Overview
 The main objective of a calibration is to estimate stock-fishery specific exploitation rates by averaging CWT recoveries over base period years and conducting a cohort analysis. Exploitation rates are estimated by <a href = "https://framverse.github.io/fram_doc/calcs_data_chin.html#13_Time_Steps" target = "_blank" title = "Chinook Time-Steps">time-step</a> and age. A cohort and exploitation rate analysis necessitates full accounting of **all fishery related mortality** along a stock's migration path. While the basic processes for a cohort reconstruction are quite simple, much of the work of constructing a new base period lies in data preparation, dealing with missing coded-wire-tag recoveries, handling exceptions, adjusting CWT recoveries to match observed catches, and incorporating non-landed mortalities.
 
 A simple diagram of the calibration process is presented in Figurexxx. This program flow works for all stocks with sufficient CWT representation in base period years (37 of the 38 FRAM stocks). For a description of how to handle CWT recoveries from "out-of-base" years see [Out-of-Base Procedures](xxx).
@@ -58,11 +58,11 @@ These steps will be described in detail in section [Calibration Procedures](#Cal
 The final step in the calibration cycle is the development of a completed “base period” input file used by FRAM. This file contains stock 
 abundances, time-age-fishery specific harvest rates, maturation rates, growth rates, and various fishery related parameters such as hooking mortality rates covering the base period fishing years. 
 
-# 3. Preparation
+# Preparation
 Much effort went into planning the new Chinook base period in an environment with many stakeholders and new challenges.The original base period was over 30 years old with sparse documentation, lost institutional knowledge, and defunct and fragmented computer programs.
 During the initial phase, a team of expert discussed how to conduct base period outreach and review, evaluate CWT sample sizes, address challenges due to mark-selective fisheries, outdated programs, missing CWT representation, and much more.
 
-## 3.1 Assemble Team of Experts and Stakeholders
+## ssemble Team of Experts and Stakeholders
 FRAM is used in several forums, such as the Pacific Fishery Management Council [(PFMC)](#PFMC) and the Puget Sound co-manager process, by many different user groups from federal, state, and tribal organisations. Updates and changes to FRAM can have wide-ranging consequences and affect escapement estimates and management objectives for model stocks, many of them protected under the Endangered Species Act (ESA). FRAM changes, especially major modification, necessitate extensive buy-in and review and in some cases review by PFMC's methodology review process. During the initial phase, a team of experts and stakeholders representing tribal, state, and federal entities was assembled. A base period work group was established that met at least monthly. 
 The workgroup consisted of the following members:
 
@@ -83,7 +83,7 @@ The workgroup consisted of the following members:
 - Schmidt, Casey (Suquamish Tribe, fisheries biologist)
 - Shrovnal, Jeremiah (WDFW, Chinook modeler)
 
-## 3.2 [Mass Marking and [Mark-Selective Fisheries](#MSF)]{#MSFpara}
+## [Mass Marking and [Mark-Selective Fisheries](#MSF)]{#MSFpara}
 
 Development of exploitation rates relies on the recovery of [coded-wire-tags](#CWT). Coded micro-wire is implanted in the snout of juvenile salmon prior to release. When recovered, the binary or numeric code on the tag identifies the tag group, and thus provides information about the location and timing of release, special hatchery treatments, etc. This information is used to assign CWT recoveries to individual stocks. 
 Prior to [mass marking](#MM) a missing adipose fin was a visual indicator that a salmon contained a CWT. A sampler could then remove the snout and send it to the lab for extraction and analysis of the CWT. With mass-marking, this visual indicator was re-purposed as an identifier of a hatchery salmon. Having a method to distinguish hatchery from wild salmon ushered in an era of mark selective (MSF) fisheries, where anglers are required to identify (intact adipose fin) and release wild salmon. Unmarked Chinook are sporadically tagged as control groups, acting as surrogates for wild fish, to assess impacts of mark selective fisheries and mass marking (double index tag groups).
@@ -100,7 +100,7 @@ Despite its merits, the “marked” calibration approach introduces its own cha
 
 For more MSP information go to chapter [Model Stock Proportion](#MSP2).
 
-## 3.4 Updating Computer Programs
+## Updating Computer Programs
 
 A major task of the new base period project was to create an efficient, easy-to-use programs for base period development and CWT processing. The original base period necessitated approximately a dozen programs. These programs were written in QBasic. The file editing process was prone to transcription errors and the formats of the various input files were undocumented and typically contained several disjointed sections where parameter values had to be entered. In many cases the output from one program was used to create the input file for the next program in the estimation process.  Any data or selection changes usually resulted in re-running of all components of the system.  
 
@@ -108,18 +108,18 @@ There are now just two programs to create a base period. Both programs are writt
 
 Both programs are described in detail in later sections of this documentation.
 
-## 3.5 Base Period Years
+## Base Period Years
 The Chinook FRAM base period project began in 2014 with the investigation of the feasibility of developing a dataset based on the analysis of coded-wire tag (CWT) recoveries from recent year releases of tag groups. The previous base dataset was derived from CWT recoveries and stock and fishery information from the late 1970s to the early 1980s. Significant changes have occurred in stock abundances, fishing seasons, and fishery structure since this time frame which have necessitated several ad-hoc modifications to FRAM (and/or its inputs) to keep pace. Brood years 2005 through 2008 contributing to 2007-2013 fisheries were selected as the time period most appropriate for developing a contemporary base dataset. For Central Valley Falls, brood years 2007-2009 were chosen, because of extensive fishery closures affecting this stock during 2008-2009 fishing years.
 During initial feasibility assessments where CWTs by stock and fishery were enumerated, these brood years had a sufficient number of CWT recoveries on par with the previous base period for many stocks and fisheries. Additionally, many Puget Sound sport fisheries had recently re-opened under <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "Mark-Selective">mark-selective</a> regulation, providing a valuable source of CWT recoveries.
 
-## 3.6 Stock and Fishery Profiles
+## Stock and Fishery Profiles
 For each FRAM stock and fishery, metadata are recorded on the associated information used in the calibration process. These stock and fishery profiles are in spreadsheet form and become the basis for documentation of the data and sources for the data in the calibration. Data included, but not limited to, are list of tag codes for each stock, stock abundance estimates in the river return, landed catch and size limits in fisheries, and listing of adipose mark selective fisheries. 
 For a complete description of stock profiles see ["2017ChinFRAMBP_StockProfilesJul24_2017xlsx.xlsx"](#stockprofilesxxx) and ["FRAM fishery profiles summary draft 06May2020 ahb.xlsx"](#fisheryprofilesxxx).
 
-## 3.7 Sublegal Stock-, Age-Composition
+## Sublegal Stock-, Age-Composition
 Galen
 
-## 3.8 Addressing Sparse or Missing CWT Recoveries 
+## Addressing Sparse or Missing CWT Recoveries 
 Developing a new base period representing the necessary, stock, age, fishery, time step resolution can be immensely challenging. 
 A variety of traditional and new methods were used to address sparse and missing CWT recoveries. These methods are documented here and captured in code as well as the relevant databases for reproducibility. 
 

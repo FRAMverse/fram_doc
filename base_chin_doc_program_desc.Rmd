@@ -226,6 +226,64 @@ Open the `RunID` table.  For any existing model runs stored in the database that
 
 ### Code Description
 
+#### General Overview
+The primary objective of the calibration program is to use externally provided inputs, such as coded wire tag (CWT) recoveries, fishery catch estimates, and incidental mortality rates, to calculate stock/age specific exploitation rates for each FRAM fishery and time step. 
+It is important to note that the calibration program can be run on either the “marked only” portion of a stock and catch, or on the “total” portion (marked + unmarked) portion of a stock and catch. There are strengths and weaknesses to each approach and more information is available on this topic in the  <a href = "https://framverse.github.io/fram_doc/base_chin_doc_intro.html#Mass_Marking" target = "_blank" >Mass Marking and Mark Selective Fisheries</a> chapter. In general, “total” runs are used to designate MSPs, whereas “marked only” runs are used to calculate BPERs, base period cohort sizes, AEQ rates, and maturation rates.
+
+#### Program Flow
+
+1. Load Data: <br>
+After the calibration run is initialized, the program proceeds to loading essential data from the `Calibration Support` database.
+2. Error Check (ChDat): 
+    a. Impute CWT recoveries using surrogate fisheries and methods outlined in <a href = "https://framverse.github.io/fram_doc/base_chin_doc_intro.html#Addressing_Sparse_or_Missing_CWT_Recoveries" target = "_blank" >Addressing Sparse or Missing CWT Recoveries</a> according to instructions in the `ImputeRecoveries` table.
+    b. Eliminate CWT recoveries for stocks and ages within fishery/time steps without a legal population size size (e.g., if all age 2s are sublegal in a fishery, remove any age 2 recoveries from the fishery) using the `CheckLeg.vb` module.
+3. OOB Calculations:     <br>
+OOB stock calculations are completed prior to “all stock” calculations in the `MainForm.vb` module.  <br>
+    a. Calculate escapements: <br>
+Escapement (defined as escapement + freshwater sport catch + freshwater net catch) is calculated for each OOB stock-age-time step combination within the `CompEscape()` subroutine. 
+    b. Add catches: <br>
+`AddCatch()` is called to calculate OOB catches using CWTs that have received sampling and brood year expansions, but not fishery, escapement, or OOB expansions. <br>
+    c. Cohort reconstruction: <br>
+`CompCohort()` is called and calculates a cohort using catch values that have not received fishery, escapement, or OOB expansions.  <br>
+    d. Calculate incidental mortalities: <br>
+An iterative process is initiated, where `IncMort()`, `CompCohort()`, and `CohortCheck()` are called several times until convergence is achieved <br>
+    e. Calculate maturation rates: <br>
+`MaturationRate()` is called to get maturation rates for OOB stocks within the OOB brood years.  
+    f. Calculate exploitation rates:<br>
+`ExploitationRate()` is called to compute exploitation rates for OOB stocks within the OOB brood years.   
+    g. Compute simulated CWT recoveries:         
+The last module called to process OOB stocks is `Forward()`. It uses CWT recoveries in conjunction with fishery scalars from the out of base years to simulate the number of CWT recoveries that would have occurred given base period fishing effort.  Fishery scalars used in this calculation must be derived from post-season FRAM runs.  `The Forward()` module also ensures that OOB exploitation rates do not exceed 100% and saves OOB exploitation rates to a list for later use. A Forward Cohort reconstruction, starting with age-2 time pre-fishing abundance and working forward through age-5 escapement, is conducted in order to translate exploitation rates into simulated base period CWT recoveries. After `Forward()` is complete a list of OOB CWTs representing catches and escapements that have been adjusted to the base period are saved in table `CWTOOBMerged` of the calibration data base.<br> 
+*Note: Fishery scalars are computed iteratively by providing calibration output parameters (base period exploitation rates, maturation rates, etc.) to post-season FRAM runs. The new base period exploitation rates will affect fishery scalars (fishing effort) needed to achieve estimated post-season catches. The new fishery scalars will in turn affect simulated CWT recoveries and consequently base period exploitation rates, etc. Iterations are terminated manually when fishery scalars vary no more than approximately 1% between iterations.*    
+
+4. "All Stocks" Calculations: <br>
+After the OOB calculations are complete, computations for the “all stocks” run begin in the `MainForm.vb` module.  
+    a. Merge OOB and in-base CWTS: <br>
+First, simulated OOB CWTs are merged with base period CWTs. 
+    b. Calculate escapement expansions:<br>
+The program calculates escapement expansions as the ratio of Observed Escapement to CWT Escapement using the `CompExpFact()` subroutine.  The escapement expansion is applied to all CWT recoveries in order to account for the entire stock, rather than just the CWT’ed component. 
+    c. Add catches:<br>
+The `Addcatch()` subroutine is called, which computes catch by stock/age/fishery/time step specific subgroupings.  The first call of `Addcatch()` is used to get “Annual Catch”.
+    d. Adjust catches:<br>
+The `Adjcatch()` subroutine is used to get fishery expansion factors as the ratio of "Observed Catch" to “Annual Catch”. Note that "Observed Catch" may be adjusted according to the information provided in chapter <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Fishery_Model_Stock_Proportion" target="_blank">Fishery Model Stock Proportion</a>. 
+    d. Add catches:<br>
+`Addcatch()` is called again, to calculate fisheries catch using CWTs that have all expansions applied (sampling, brood year, escapement, fishery).  
+    e. Cohort reconstruction:<br>
+The `CompCohort()` subroutine is called to calculate terminal and pre-terminal cohort sizes in a process referred to as backwards cohort reconstruction – starting with age-5 escapement and working backwards to age-2 pre-fishing abundance.
+    f. Calculate incidental mortalities: <br>
+See chapters <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Estimating_Sublegal_Mortalities" target="_blank">Estimating Sublegal Mortalities </a> and <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration#Estimating_Non-Retention_Mortalities" target="_blank">Estimating Non-Retention Mortalities </a> about detailed calculations.<br>
+Incidental mortalities are computed in subrountine `IncMort()` which calls subroutines `CompShakers()` for sublegal mortality estimates and `CompCNR()` for non-retention mortality estimates. As sublegal mortality and fisheries catch computations are updated, the cohort size must be updated.  After the cohort size is updated, sublegal mortality and fisheries catch must be updated. This necessitates multiple iterations of this calculation loop to ensure accurate sublegal mortality, and fishery catch results.
+During this iterative portion of the calibration program a convergence criteria is used to terminate calculations. First, catch is imputed for fishery-time steps that use surrogate exploitation rates from the old base period.  Next, incidental mortalities within each fishery-time step are recalculated.  The current cohort is saved within the `SaveCohort()` subroutine so that it can be compared to a newly calculated cohort later in the program.  Then, `CompCohort()` is called and recalculates the cohort using new estimates of catch and incidental mortality. The `CohortCheck()` subroutine is called, checking the newly calculated age 2 cohort size for each stock and comparing them against the cohort sizes saved prior to catch and incidental mortality updates.  If differences in age 2 cohorts across all stocks are less than a specified allowable tolerance (the default tolerance is set at 1% within the SummaryInfo table of the Calibration Support data base), then the calibration program proceeds to the next step.  If the difference is greater than the allowable tolerance, the program loops back through the processes described in this paragraph until tolerance thresholds are met.
+    g. Compute calibration output:<br>
+Subsequent to iterations, the main calibration outputs such as AEQ values, maturation rates, base period cohort sizes, MSPs, and BPERs are calculated in subroutine `SaveDat()`.  
+5. Save output to calibration database:<br>
+Parameters from step 4g get saved into their associated tables in the Calibration Support data base within the “MainForm.vb” module.
+
+```{r Calib111, echo = FALSE, fig.cap=c("Figure xxx. Calibration Program Flow"),fig.pos='H', out.height = "600px", out.width='600px'}
+
+knitr::include_graphics("./images/ProgramFlow.JPG")
+
+```
+
 ### Instructions for Producing a New Base Period (specific)
 The following instructions are specific to the steps needed to produce base period 7.1.
 

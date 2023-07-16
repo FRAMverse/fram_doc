@@ -14,7 +14,7 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=
 Annually developed, stock-specific predictions of returning Chinook and Coho salmon.
 
 # **Adipose Mark**
-A missing adipose fin on salmon as a result of clipping by a hatchery program. Commonly, a visual identifier of a hatchery fish that can be retained in a <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" title="Mark-Selective Fishery">mark-selective fishery</a>. The use of "marked" and "clipped" is used interchangeably within the document.
+A missing adipose fin on salmon as a result of clipping by a hatchery program. Commonly, a visual identifier of a hatchery fish that can be retained in a <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" title="Mark-Selective Fishery" >mark-selective fishery</a>. The use of "marked" and "clipped" is used interchangeably within the document.
 
 # **Adult Equivalent (AEQ)**
 The potential for a Chinook of a given age to contribute to the mature run (spawning escapement) in the absence of fishing.  Because of natural mortality and unaccounted losses, not all unharvested fish contribute to spawning escapement. 
