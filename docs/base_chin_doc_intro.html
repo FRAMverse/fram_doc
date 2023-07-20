@@ -473,16 +473,16 @@ MathJax = {
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 </script>
 <div id="introduction" class="section level1">
-<h1>1. Introduction</h1>
-<p>The Chinook base period consists of foundational Fishery Regulation Assessment Model (FRAM) data. The most important parameter, base period exploitation rates, is estimated from “base years” through stock-specific <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" target = "_blank" title = "CWT">CWT</a> recovery analysis and a process of <a href="#CR">cohort reconstruction</a>. Base period data represent all the static information that has been averaged over a range of catch years. Resulting base period reference parameters are used to populate the FRAM model to predict annual stock/fishery specific impacts.</p>
+<h1>Introduction</h1>
+<p>The Chinook base period consists of foundational Fishery Regulation Assessment Model (FRAM) data. The most important parameter, base period exploitation rates, is estimated from “base years” through stock-specific <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" target = "_blank" title = "CWT">CWT</a> recovery analysis and a process of <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Analysis" target = "_blank" >Cohort Reconstruction</a>. Base period data are averaged base period years and reprent all the static information needed for a model run. Resulting base period reference parameters are used to populate the FRAM model to predict annual stock/fishery specific impacts.</p>
 <p>Fishing years 2007-2013 were chosen as base years, because they reflected the most contemporary period at the time the project commenced and additionally had good numbers of CWT recoveries from recently implemented <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "Mark-Selective">mark-selective</a> sport fisheries.</p>
-<p>The process of creating the latest base period is also called the “2014 Calibration Process”. The calibration followed the existing data structure of 38 stocks (Table @ref(tab:Stocks)) (<a href="#M">adipose marked only</a>), 73 fisheries (Table @ref(tab:Fish)), and 3 <a href = "https://framverse.github.io/fram_doc/calcs_data_chin.html#13_Time_Steps" target = "_blank" title = "Chinook Time-Steps">time-steps</a> (Table @ref(tab:TimeSteps)).</p>
+<p>The process of creating the latest base period is also called the “2014 Calibration Process”. The calibration followed the existing data structure of 38 <a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_2_Chinook_FRAM_stocks" target = "_blank" >stocks</a> <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html##Adipose_Mark" target = "_blank" >(adipose marked)</a>, 73 <a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_4_Chinook_FRAM_fisheries" target = "_blank" >fisheries</a>, and 3 <a href = "https://framverse.github.io/fram_doc/calcs_data_chin.html#13_Time_Steps" target = "_blank" title = "Chinook Time-Steps">time-steps</a>.</p>
 <p>In addition to CWT recovery data representing FRAM stocks, other key data needed for the development of the FRAM base period include: 1) escapements, 2) landed catch, 3) growth rates, and 4) fishery induced mortality rates. For a complete set of input data, see the section on <a href="#Data">data inputs</a>.</p>
 </div>
 <div id="overview" class="section level1">
-<h1>2. Overview</h1>
-<p>The main objective of a calibration is to estimate stock-fishery specific exploitation rates by averaging CWT recoveries over base period years and conducting a cohort analysis. Exploitation rates are estimated by <a href = "https://framverse.github.io/fram_doc/calcs_data_chin.html#13_Time_Steps" target = "_blank" title = "Chinook Time-Steps">time-step</a> and age. A cohort and exploitation rate analysis necessitates full accounting of <strong>all fishery related mortality</strong> along a stock’s migration path. While the basic processes for a cohort reconstruction are quite simple, much of the work of constructing a new base period lies in data preparation, dealing with missing coded-wire-tag recoveries, handling exceptions, adjusting CWT recoveries to match observed catches, and incorporating non-landed mortalities.</p>
-<p>A simple diagram of the calibration process is presented in Figurexxx. This program flow works for all stocks with sufficient CWT representation in base period years (37 of the 38 FRAM stocks). For a description of how to handle CWT recoveries from “out-of-base” years see <a href="xxx">Out-of-Base Procedures</a>.</p>
+<h1>Overview</h1>
+<p>The main objective of a calibration is to estimate stock-fishery specific exploitation rates by averaging CWT recoveries over base period years and conducting a cohort analysis. Exploitation rates are estimated by <a href = "https://framverse.github.io/fram_doc/calcs_data_chin.html#13_Time_Steps" target = "_blank" title = "Chinook Time-Steps">time-step</a> and age. A cohort and exploitation rate analysis necessitates full accounting of <strong>all fishery related mortalities</strong> along a stock’s migration path. While the basic processes for a cohort reconstruction are quite simple, much of the work of constructing a new base period lies in data preparation, dealing with missing coded-wire-tag recoveries, handling exceptions, adjusting CWT recoveries to match observed catches, and incorporating non-landed mortalities.</p>
+<p>A simple diagram of the calibration process is presented in Figurexxx. This program flow works for all stocks with sufficient CWT representation in base period years (37 of the 38 FRAM stocks). For a description of how to handle CWT recoveries from “out-of-base” years see <a href = "https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Out-of-Base_Procedures" target = "_blank" >Out-of-Base Procedures</a>.</p>
 <div class="figure">
 <img src="images/Calibration%20Overview.jpg" alt="Figurxxx Calibration Overview" width="700px" height="550px" />
 <p class="caption">
@@ -493,10 +493,10 @@ Figurxxx Calibration Overview
 <p>The final step in the calibration cycle is the development of a completed “base period” input file used by FRAM. This file contains stock abundances, time-age-fishery specific harvest rates, maturation rates, growth rates, and various fishery related parameters such as hooking mortality rates covering the base period fishing years.</p>
 </div>
 <div id="preparation" class="section level1">
-<h1>3. Preparation</h1>
+<h1>Preparation</h1>
 <p>Much effort went into planning the new Chinook base period in an environment with many stakeholders and new challenges.The original base period was over 30 years old with sparse documentation, lost institutional knowledge, and defunct and fragmented computer programs. During the initial phase, a team of expert discussed how to conduct base period outreach and review, evaluate CWT sample sizes, address challenges due to mark-selective fisheries, outdated programs, missing CWT representation, and much more.</p>
-<div id="assemble-team-of-experts-and-stakeholders" class="section level2">
-<h2>3.1 Assemble Team of Experts and Stakeholders</h2>
+<div id="ssemble-team-of-experts-and-stakeholders" class="section level2">
+<h2>ssemble Team of Experts and Stakeholders</h2>
 <p>FRAM is used in several forums, such as the Pacific Fishery Management Council <a href="#PFMC">(PFMC)</a> and the Puget Sound co-manager process, by many different user groups from federal, state, and tribal organisations. Updates and changes to FRAM can have wide-ranging consequences and affect escapement estimates and management objectives for model stocks, many of them protected under the Endangered Species Act (ESA). FRAM changes, especially major modification, necessitate extensive buy-in and review and in some cases review by PFMC’s methodology review process. During the initial phase, a team of experts and stakeholders representing tribal, state, and federal entities was assembled. A base period work group was established that met at least monthly. The workgroup consisted of the following members:</p>
 <ul>
 <li>Auerbach, Dan (Washington Department of Fish and Wildlife (WDFW), lead Coho modeler)</li>
@@ -518,7 +518,7 @@ Figurxxx Calibration Overview
 </ul>
 </div>
 <div id="mass-marking-and-mark-selective-fisheries" class="section level2">
-<h2>3.2 <span id="MSFpara">Mass Marking and <a href="#MSF">Mark-Selective Fisheries</a></span></h2>
+<h2><span id="MSFpara">Mass Marking and <a href="#MSF">Mark-Selective Fisheries</a></span></h2>
 <p>Development of exploitation rates relies on the recovery of <a href="#CWT">coded-wire-tags</a>. Coded micro-wire is implanted in the snout of juvenile salmon prior to release. When recovered, the binary or numeric code on the tag identifies the tag group, and thus provides information about the location and timing of release, special hatchery treatments, etc. This information is used to assign CWT recoveries to individual stocks. Prior to <a href="#MM">mass marking</a> a missing adipose fin was a visual indicator that a salmon contained a CWT. A sampler could then remove the snout and send it to the lab for extraction and analysis of the CWT. With mass-marking, this visual indicator was re-purposed as an identifier of a hatchery salmon. Having a method to distinguish hatchery from wild salmon ushered in an era of mark selective (MSF) fisheries, where anglers are required to identify (intact adipose fin) and release wild salmon. Unmarked Chinook are sporadically tagged as control groups, acting as surrogates for wild fish, to assess impacts of mark selective fisheries and mass marking (double index tag groups).</p>
 <p>While Washington State switched to electronic CWT detection by trained samplers a few years before full implementation of mass marking, some States and Canada were slow to adopt the new technology. Today, there are still several fisheries along the migration path of Washington native Chinook that are solely visually sampled. This results in not detecting CWT’s of adipose present (unmarked) salmon and thus biases exploitation rate analyses of unmarked Chinook. Additionally, even with electronic sampling, the recovery of CWT’s from unmarked fish is biased, because they are no longer retained in mark-selective fisheries. For these reasons, similar to the previous Chinook base period, it was decided to limit CWTs to recoveries from adipose marked salmon. Therefore, marked Chinook represent both marked and unmarked components of the same stock in both base periods.</p>
 <p>In developing the previous base period, CWT recoveries were related to total catches and total escapements to compute exploitation rates (“Total” frame of reference). Due to the influence of mark-selective fisheries in recent years, the new base period relates CWT recoveries to marked catches and marked escapement only (“Marked” frame of reference). The latter data manipulation allows for calibration under contemporary fishery conditions using the same calibration algorithms and procedures that have been used in the past; it simply views everything as a non-selective fishery (NSF) in a world populated by marked fish only. Doing otherwise (i.e., using total catches in mark-selective fisheries), would necessitate time consuming changes to calibration algorithms and infrastructure (i.e., databases, pre-processing programs/files) in order to relate recoveries to encounters rather than landed catches and to incorporate mark-selective fishing parameters.</p>
@@ -527,25 +527,25 @@ Figurxxx Calibration Overview
 <p>For more MSP information go to chapter <a href="#MSP2">Model Stock Proportion</a>.</p>
 </div>
 <div id="updating-computer-programs" class="section level2">
-<h2>3.4 Updating Computer Programs</h2>
+<h2>Updating Computer Programs</h2>
 <p>A major task of the new base period project was to create an efficient, easy-to-use programs for base period development and CWT processing. The original base period necessitated approximately a dozen programs. These programs were written in QBasic. The file editing process was prone to transcription errors and the formats of the various input files were undocumented and typically contained several disjointed sections where parameter values had to be entered. In many cases the output from one program was used to create the input file for the next program in the estimation process. Any data or selection changes usually resulted in re-running of all components of the system.</p>
 <p>There are now just two programs to create a base period. Both programs are written in Visual Basic and interact with Microsoft Access databases for data storage and retrieval. The first program, <a href="#FB">FRAMBuilder</a> is used to process CWT data. This program error-checks, maps tags to stocks and fisheries, and summarized CWT data for the <a href="#CP">“Main Calibration Program”</a>. The “Main Calibration Program” conducts cohort reconstructions, calculates base period exploitation rates, produces all parameters for a new base period, and exports output directly into the FRAM database structure.</p>
 <p>Both programs are described in detail in later sections of this documentation.</p>
 </div>
 <div id="base-period-years" class="section level2">
-<h2>3.5 Base Period Years</h2>
+<h2>Base Period Years</h2>
 <p>The Chinook FRAM base period project began in 2014 with the investigation of the feasibility of developing a dataset based on the analysis of coded-wire tag (CWT) recoveries from recent year releases of tag groups. The previous base dataset was derived from CWT recoveries and stock and fishery information from the late 1970s to the early 1980s. Significant changes have occurred in stock abundances, fishing seasons, and fishery structure since this time frame which have necessitated several ad-hoc modifications to FRAM (and/or its inputs) to keep pace. Brood years 2005 through 2008 contributing to 2007-2013 fisheries were selected as the time period most appropriate for developing a contemporary base dataset. For Central Valley Falls, brood years 2007-2009 were chosen, because of extensive fishery closures affecting this stock during 2008-2009 fishing years. During initial feasibility assessments where CWTs by stock and fishery were enumerated, these brood years had a sufficient number of CWT recoveries on par with the previous base period for many stocks and fisheries. Additionally, many Puget Sound sport fisheries had recently re-opened under <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "Mark-Selective">mark-selective</a> regulation, providing a valuable source of CWT recoveries.</p>
 </div>
 <div id="stock-and-fishery-profiles" class="section level2">
-<h2>3.6 Stock and Fishery Profiles</h2>
+<h2>Stock and Fishery Profiles</h2>
 <p>For each FRAM stock and fishery, metadata are recorded on the associated information used in the calibration process. These stock and fishery profiles are in spreadsheet form and become the basis for documentation of the data and sources for the data in the calibration. Data included, but not limited to, are list of tag codes for each stock, stock abundance estimates in the river return, landed catch and size limits in fisheries, and listing of adipose mark selective fisheries. For a complete description of stock profiles see <a href="#stockprofilesxxx">“2017ChinFRAMBP_StockProfilesJul24_2017xlsx.xlsx”</a> and <a href="#fisheryprofilesxxx">“FRAM fishery profiles summary draft 06May2020 ahb.xlsx”</a>.</p>
 </div>
 <div id="sublegal-stock--age-composition" class="section level2">
-<h2>3.7 Sublegal Stock-, Age-Composition</h2>
+<h2>Sublegal Stock-, Age-Composition</h2>
 <p>Galen</p>
 </div>
 <div id="addressing-sparse-or-missing-cwt-recoveries" class="section level2">
-<h2>3.8 Addressing Sparse or Missing CWT Recoveries</h2>
+<h2>Addressing Sparse or Missing CWT Recoveries</h2>
 <p>Developing a new base period representing the necessary, stock, age, fishery, time step resolution can be immensely challenging. A variety of traditional and new methods were used to address sparse and missing CWT recoveries. These methods are documented here and captured in code as well as the relevant databases for reproducibility.</p>
 <div id="surrogate-fisheries" class="section level3">
 <h3><span id="SurFish">Surrogate Fisheries</span></h3>
@@ -649,9 +649,9 @@ Age-5 Adjusted Escapements
 </div>
 <p>For more information see <a href="literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx"> Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a>) tab <code>ImputeAge5Esc</code>.</p>
 </div>
-<div id="missing-canadian-cwts" class="section level3">
-<h3>Missing Canadian CWTs</h3>
-<p>Derek</p>
+<div id="missing-canadian-catches" class="section level3">
+<h3>Missing Canadian Catches</h3>
+<p>Derek For more information see &lt;a href=“literature/ 2020-06-19 BC_Data_Request_With_pre-2012.xlsx RE BC Data Request - Update.msg short description Chinook Canadian catch imputation for post-season runs_Updated_For_Documentation_in_6.2023.docx</p>
 </div>
 <div id="grays-harbor" class="section level3">
 <h3>Grays Harbor</h3>
@@ -679,12 +679,12 @@ Age-5 Adjusted Escapements
 <h4>Elwha Age Composition</h4>
 <p>After the new base period was first implemented, it was discovered that ELW exploitation rates differed from STL exploitation rates, although STL CWTs were used as a surrogate for ELW. This was due to differing age compositions of the abundances going into FRAM. The original cluster and principal components analysis (<a href="literature/FRAMbp_ElwhaSurrogate.docx"> McHugh 2015 </a>) and the historic ratio of simple ERs were not stratified by age or time-step, although the calibration inputs were. To meet the primary assumption of the surrogate procedure that STL ‘outside’ ER equals ELW ‘outside’ ER, ELW’s age composition in FRAM was adjusted to reflect average STL age comp.<br />
 Terminal run size forecasts of ELW were re-distributed to a static age composition using the average STL 2007-2013 age composition from validation runs. For more information see <a href="literature/ProposalForELDU_7-10-2019.docx"> ProposalForELDU_7-10-2019.docx </a> and <a href="literature/draft_revised_stilly_age_comp.xlsx"> draft_revised_stilly_age_comp.xlsx </a>.</p>
-<div id="utargzbcue" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ijwagwiowe" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#utargzbcue .gt_table {
+#ijwagwiowe .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -709,7 +709,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-left-color: #D3D3D3;
 }
 
-#utargzbcue .gt_heading {
+#ijwagwiowe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -721,7 +721,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-right-color: #D3D3D3;
 }
 
-#utargzbcue .gt_title {
+#ijwagwiowe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -733,7 +733,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-bottom-width: 0;
 }
 
-#utargzbcue .gt_subtitle {
+#ijwagwiowe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -745,13 +745,13 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-top-width: 0;
 }
 
-#utargzbcue .gt_bottom_border {
+#ijwagwiowe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#utargzbcue .gt_col_headings {
+#ijwagwiowe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -766,7 +766,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-right-color: #D3D3D3;
 }
 
-#utargzbcue .gt_col_heading {
+#ijwagwiowe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -786,7 +786,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   overflow-x: hidden;
 }
 
-#utargzbcue .gt_column_spanner_outer {
+#ijwagwiowe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -798,15 +798,15 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 4px;
 }
 
-#utargzbcue .gt_column_spanner_outer:first-child {
+#ijwagwiowe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#utargzbcue .gt_column_spanner_outer:last-child {
+#ijwagwiowe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#utargzbcue .gt_column_spanner {
+#ijwagwiowe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -818,7 +818,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   width: 100%;
 }
 
-#utargzbcue .gt_group_heading {
+#ijwagwiowe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -843,7 +843,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   vertical-align: middle;
 }
 
-#utargzbcue .gt_empty_group_heading {
+#ijwagwiowe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -858,15 +858,15 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   vertical-align: middle;
 }
 
-#utargzbcue .gt_from_md > :first-child {
+#ijwagwiowe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#utargzbcue .gt_from_md > :last-child {
+#ijwagwiowe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#utargzbcue .gt_row {
+#ijwagwiowe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -885,7 +885,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   overflow-x: hidden;
 }
 
-#utargzbcue .gt_stub {
+#ijwagwiowe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -898,7 +898,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 5px;
 }
 
-#utargzbcue .gt_stub_row_group {
+#ijwagwiowe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -912,11 +912,11 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   vertical-align: top;
 }
 
-#utargzbcue .gt_row_group_first td {
+#ijwagwiowe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#utargzbcue .gt_summary_row {
+#ijwagwiowe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -926,16 +926,16 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 5px;
 }
 
-#utargzbcue .gt_first_summary_row {
+#ijwagwiowe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#utargzbcue .gt_first_summary_row.thick {
+#ijwagwiowe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#utargzbcue .gt_last_summary_row {
+#ijwagwiowe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -945,7 +945,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-bottom-color: #D3D3D3;
 }
 
-#utargzbcue .gt_grand_summary_row {
+#ijwagwiowe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -955,7 +955,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 5px;
 }
 
-#utargzbcue .gt_first_grand_summary_row {
+#ijwagwiowe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -965,11 +965,11 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-top-color: #D3D3D3;
 }
 
-#utargzbcue .gt_striped {
+#ijwagwiowe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#utargzbcue .gt_table_body {
+#ijwagwiowe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -978,7 +978,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-bottom-color: #D3D3D3;
 }
 
-#utargzbcue .gt_footnotes {
+#ijwagwiowe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -992,7 +992,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-right-color: #D3D3D3;
 }
 
-#utargzbcue .gt_footnote {
+#ijwagwiowe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1001,7 +1001,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 5px;
 }
 
-#utargzbcue .gt_sourcenotes {
+#ijwagwiowe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1015,7 +1015,7 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   border-right-color: #D3D3D3;
 }
 
-#utargzbcue .gt_sourcenote {
+#ijwagwiowe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1023,36 +1023,36 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   padding-right: 5px;
 }
 
-#utargzbcue .gt_left {
+#ijwagwiowe .gt_left {
   text-align: left;
 }
 
-#utargzbcue .gt_center {
+#ijwagwiowe .gt_center {
   text-align: center;
 }
 
-#utargzbcue .gt_right {
+#ijwagwiowe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#utargzbcue .gt_font_normal {
+#ijwagwiowe .gt_font_normal {
   font-weight: normal;
 }
 
-#utargzbcue .gt_font_bold {
+#ijwagwiowe .gt_font_bold {
   font-weight: bold;
 }
 
-#utargzbcue .gt_font_italic {
+#ijwagwiowe .gt_font_italic {
   font-style: italic;
 }
 
-#utargzbcue .gt_super {
+#ijwagwiowe .gt_super {
   font-size: 65%;
 }
 
-#utargzbcue .gt_two_val_uncert {
+#ijwagwiowe .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1061,31 +1061,31 @@ Terminal run size forecasts of ELW were re-distributed to a static age compositi
   margin-left: 0.1em;
 }
 
-#utargzbcue .gt_footnote_marks {
+#ijwagwiowe .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#utargzbcue .gt_asterisk {
+#ijwagwiowe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#utargzbcue .gt_slash_mark {
+#ijwagwiowe .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#utargzbcue .gt_fraction_numerator {
+#ijwagwiowe .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#utargzbcue .gt_fraction_denominator {
+#ijwagwiowe .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;

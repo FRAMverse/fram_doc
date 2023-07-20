@@ -27,7 +27,7 @@ MathJax = {
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 </script>
 
-```{r}
+```{r include=FALSE} 
 library("tidyverse")
 library("gt")
 ```
@@ -85,7 +85,7 @@ For methods to address low or missing fishery CWT recoveries see the paragraph a
 ### Check Legal Status of Age Group
 The calibration program eliminates CWT if a stock/age recovery is not of legal size. For each stock and age, the calibration program calculates a proportion legal given the size limit in the fishery. If the legal proportion given the stock, age, and size limit is zero, the tag recovery is purged from the data. The program creates a message to inform the user that there were instances of recoveries for stocks without a legal population size. The program also creates a summary of these recoveries in a text file, called "errfile.txt".
 
-## [Main Calibration Procedures]{#MCP}
+## Main Calibration Procedures
 The purpose of a calibration is to produce base period exploitation rates for each stock and fishery in the FRAM model. To this end, marked CWTs from base period years (brood years 2005-2008) were analyzed and summarized to reconstruct cohorts.
 At the completion of the base data development process, each FRAM stock-age cohort is doubled, with half the cohort being assigned to “unmarked” and the other half to “marked” components to allow for processing of mark-selective fisheries in “forward-projection” runs of FRAM used in preseason fishery modeling. 
 The final step in the calibration cycle is the development of a completed “base period” input file used by FRAM.  This file contains stock abundances, time-age-fishery specific harvest rates, maturation rates, growth rates, and various fishery related parameters such as hooking mortality rates. A new calibration of FRAM is warranted when there are changes to the input data and/or model structure.  Examples include changes to stocks, fisheries, CWT groups, time structure, and growth, natural, and fishery related handling mortality rates.   All of these elements influence the estimates of the cohort sizes calculated during cohort analysis and the corresponding estimates of exploitation rates.
@@ -175,8 +175,6 @@ f	Fishery number.  There are currently 74 “fisheries” in CHCAL where fishery
 
 * **Shakers~s,a,f,t~:**	Total mortalities of sublegal fish by stock, age, fishery, and time step.
 
-* **ShakEnc~s,a,f,t~:** The fraction of the sublegal cohort, after natural mortality, encountered in a fishery by stock, age, fishery, and time step.
-
 * **ShakerReleaseMortalityRate~f~:**	Fishery specific shaker mortality rate. 
 
 * **SRate~a,t~:** 	Survival rate by age and time step. The survival rate equals 1 - natural mortality rate.
@@ -220,18 +218,14 @@ Note that if a ‘large’ CWT group is used to represent the catch distribution
 Depending on the setting of an input flag, the observed base period CWT recoveries are adjusted so that the sum across stocks in each fishery, expanded by [PEFs](#PEF) (xxx) equals the total observed catch in each fishery.  
 Equation for fisheries where model stocks account for 100% of the landed catch: 
 
-Equation \@ref(eq:CWTCatch)
+Equationxxx
 
-\begin{equation}
-CWTCatch_{f,t}=\sum_{s,a}(CWTCatch_{s,a,f,t}*PEF_{s}) (\#eq:CWTCatch)
-\end{equation}
+$$
+CWTCatch_{f,t}=\sum_{s,a}(CWTCatch_{s,a,f,t}*PEF_{s}) $$
 
-Equation \@ref(eq:FishExpansion)
+Equationxxx
 
-\begin{equation}
-FishExpansion_{f,t}=\frac{BPObsCatch_{f,t}}{CWTCatch_{f,t}} (\#eq:FishExpansion)
-\end{equation}
-
+$$FishExpansion_{f,t}=\frac{BPObsCatch_{f,t}}{CWTCatch_{f,t}}$$
 
 ### Fishery Model Stock Proportion (MSP)
 [MSP](#MSP) (xxx) is the percentage of a fishery accounted for by stocks in the model. Chinook FRAM does not contain all the stocks impacted by FRAM fisheries. A portion of the stocks, particularly those affecting northern fisheries (Alaska, Canada) are missing from the model. For these fisheries, FRAM assigns a constant proportion of the catch to non-model stocks. 
@@ -243,34 +237,27 @@ The previous calibration predominantly relied on estimating the MSP as the propo
 
 Where
 
-Equation \@ref(eq:BPObsCatchf)
+Equationxxx
 
-\begin{equation}
-BPObsCatch_f=\sum_{t}BPObsCatch_{f,t} (\#eq:BPObsCatchf)
-\end{equation}
+$$BPObsCatch_f=\sum_{t}BPObsCatch_{f,t}$$
 
-Equation \@ref(eq:CWTCatchf)
+Equationxxx
 
-\begin{equation}
-CWTCatch_f=\sum_{t}CWTCatch_{f,t} (\#eq:CWTCatchf)
-\end{equation}
+$$CWTCatch_f=\sum_{t}CWTCatch_{f,t}$$
 
-Equation \@ref(eq:ModelRatio)
+Equatioxxx
 
-\begin{equation}
-MSP_f=\frac{BPObsCatch_f}{CWTCatch_{f}} (\#eq:ModelRatio)
-\end{equation}
+$$MSP_f=\frac{BPObsCatch_f}{CWTCatch_{f}}$$
 
 
 The landed catch of a stock at age a in a fishery and time step becomes:
 
-Equation \@ref(eq:StkFishLanded)
+Equationxxx
 
-\begin{equation}
-LandedCatch_{s,a,f,t}=CWTCatch_{s,a,f,t}*PEF_s*MSP_f (\#eq:StkFishLanded) 
-\end{equation}
+$$
+LandedCatch_{s,a,f,t}=CWTCatch_{s,a,f,t}*PEF_s*MSP_f $$
 
-The current calibration only uses the MSP calculation as described in equation (\#eq:ModelRatio) for a few fisheries, because of the high variance associated with estimating the parameters entering the calculation of CWTCatch~f,t~. When flagged as "2", if the MSP exceeds 100% of the BPObsCatch~f~, the program scales CWTCatch~s,a,f,t~ to sum to 1.
+The current calibration only uses the MSP calculation as described in equationxxx for a few fisheries, because of the high variance associated with estimating the parameters entering the calculation of CWTCatch~f,t~. When flagged as "2", if the MSP exceeds 100% of the BPObsCatch~f~, the program scales CWTCatch~s,a,f,t~ to sum to 1.
 
 Summary of MSP flags:
 
@@ -284,21 +271,20 @@ A flag of "1" is the default setting for all Puget Sound fisheries. Using this f
 
 For many fisheries outside Puget Sound a flag of "3" was used. This method relies on external estimates of MSP. CWT recoveries are then adjusted to sum to observed catch times MSP.
 
-Equation \@ref(eq:MSP3)
+Equationxxx
 
-\begin{equation}
-CWTCatch_f= BPObsCatch_f * ModelStockProportion_f (\#eq:MSP3)
-\end{equation}
+$$
+CWTCatch_f= BPObsCatch_f * ModelStockProportion_f$$
 
 #### External MSP Data Sources
 As described above, the MSP can be calculated by the calibration program. This method was infrequently used due to the high variance associated with the estimates. The following external approaches were used depending on availability.
 
 ##### Default of 100% MSP
 All Puget Sound fisheries were assumed to be completely represented by model stocks. This was also assumed for Georgia Strait net, North Washington Coast net, and Grays Harbor net.
-Additionally, the marked catch in most fisheries was assumed to be completely accounted for by the hatchery stocks in the model. This was frequently not the case for unmarked stocks in a fishery, particularly if comprised of difficult to enumerate wild stocks or stock components. To achieve an MSP of 100%, a fishery expansion factor was calculated as in equation (\#eq:FishExpansion).
+Additionally, the marked catch in most fisheries was assumed to be completely accounted for by the hatchery stocks in the model. This was frequently not the case for unmarked stocks in a fishery, particularly if comprised of difficult to enumerate wild stocks or stock components. To achieve an MSP of 100%, a fishery expansion factor was calculated as in equation (equationxxx).
 
 ##### Chinook Technical Committee (CTC) MSP #####
-For some northern fisheries, we used output from the 2014 calibration (CLB 1402) of the [Pacific Salmon Commission (PSC)](#PSC) Chinook model to calculate fishery model stock proportions. Details of this calibrationcan can be found in PSC Joint Chinook Technical Committee reports [TCCHINOOK (15)-1 V1] (https://www.psc.org/publications/technical-reports/technical-committee-reports/chinook/) and [TCCHINOOK (15)-1 V2](https://www.psc.org/publications/technical-reports/technical-committee-reports/chinook/).  First, for each PSC Chinook Model stock we determined whether it was represented by FRAM model stocks.  Then, for each relevant PSC Chinook model fishery, we summed the total stock specific catch across 2007 - 2013 (FRAM base period catch years) based on whether or not the stock was represented in FRAM. From this we calculated the FRAM base period fishery model stock proportion by dividing the total catch of stocks represented in FRAM by the total catch of all stocks.
+For some northern fisheries, we used output from the 2014 calibration (CLB 1402) of the [Pacific Salmon Commission (PSC)](#PSC) Chinook model to calculate fishery model stock proportions. Details of this calibrationcan can be found in PSC Joint Chinook Technical Committee report [TCCHINOOK (15)-1 V1 and V2](https://www.psc.org/publications/technical-reports/technical-committee-reports/chinook/). First, for each PSC Chinook Model stock we determined whether it was represented by FRAM model stocks.  Then, for each relevant PSC Chinook model fishery, we summed the total stock specific catch across 2007 - 2013 (FRAM base period catch years) based on whether or not the stock was represented in FRAM. From this we calculated the FRAM base period fishery model stock proportion by dividing the total catch of stocks represented in FRAM by the total catch of all stocks.
 
 ##### Genetic Stock Identification (GSI)
 Similar to the method evaluating the MSP using the CTC data, we allocated GSI stock assignments to FRAM and non-FRAM model stock. 
@@ -474,7 +460,7 @@ Equationxxx
 $$TotalCohort_{s,a,t=3}=MatCohort_{s,a,t=3}+\frac{PTCohort_{s,a+1,t=1}}{SRate_{s,a+1,t=1}}$$
  
 
-And the maturation rate is simply the proportion of the mature portion of the total cohort after fishing.  
+The maturation rate is simply the proportion of the mature portion of the total cohort after fishing.  
 Equationxxx
 
 $$
