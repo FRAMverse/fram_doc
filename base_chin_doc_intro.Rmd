@@ -33,7 +33,7 @@ MathJax = {
 
 
 
-# Introduction
+# Introduction test
 The Chinook base period consists of foundational Fishery Regulation Assessment Model (FRAM) data. The most important parameter, base period exploitation rates, is estimated from "base years" through stock-specific <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" target = "_blank" title = "CWT">CWT</a> recovery analysis and a process of <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Analysis" target = "_blank" >Cohort Reconstruction</a>. Base period data are averaged base period years and reprent all the static information needed for a model run. Resulting base period reference parameters are used to populate the FRAM model to predict annual stock/fishery specific impacts.
 
 Fishing years 2007-2013 were chosen as base years, because they reflected the most contemporary period at the time the project commenced and additionally had good numbers of CWT recoveries from recently implemented <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "Mark-Selective">mark-selective</a> sport fisheries. 
