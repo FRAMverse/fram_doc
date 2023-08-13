@@ -33,7 +33,7 @@ MathJax = {
 
 
 
-# Introduction test
+# Introduction
 The Chinook base period consists of foundational Fishery Regulation Assessment Model (FRAM) data. The most important parameter, base period exploitation rates, is estimated from "base years" through stock-specific <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" target = "_blank" title = "CWT">CWT</a> recovery analysis and a process of <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Analysis" target = "_blank" >Cohort Reconstruction</a>. Base period data are averaged base period years and reprent all the static information needed for a model run. Resulting base period reference parameters are used to populate the FRAM model to predict annual stock/fishery specific impacts.
 
 Fishing years 2007-2013 were chosen as base years, because they reflected the most contemporary period at the time the project commenced and additionally had good numbers of CWT recoveries from recently implemented <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "Mark-Selective">mark-selective</a> sport fisheries. 
@@ -234,6 +234,7 @@ A single recovery of brood year 1996 White River Spring fingerlings in the marin
 See tab `WhiteR_A8Sport` in file <a href="https://framverse.github.io/fram_doc/literature/“Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx"> *“Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx”* </a>.
 
 **White River in Canadian Fisheries**
+Derek
 <a href="literature/“WhiteRiverWriteUp.docx"> “WhiteRiverWriteUp.docx" </a>
 
 ### Impute FW sport
@@ -249,36 +250,31 @@ The adjustment was calculated as:
 
 Equation \@ref(eq:CWTAdjust)xxx
 
-$$
-AdjustedCWTCatch_{s,age=5,f,t}=\frac{ER.Target_{s,a=5,f,t}}{CWTCatch_{s,a=5,f,t}}$$
-
-Figure xxx. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in Fisheries and Escapement 
-
-```{r Age5BPER, echo = FALSE, fig.cap=c("Stocks/Fisheries/TimeSteps with Adjusted Age-5 BPERs"),fig.pos='H', out.height = "800px", out.width='800px'}
-
-knitr::include_graphics("literature/Age5BPERAdjustments.pdf")
-
+$$AdjustedCWTCatch_{s,age=5,f,t}=\frac{ER.Target_{s,a=5,f,t}}{CWTCatch_{s,a=5,f,t}}$$
+Table xxx. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in Fisheries and Escapement
+```{r Age5BPER, echo = FALSE, fig.cap=c("Table xxx. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in Fisheries and Escapement "),fig.pos='H'}
+knitr::include_graphics("literature/Age5BPERAdjustments.jpg")
+#knitr::include_graphics("literature/Age5BPERAdjustments.pdf")
 ```
 
-For more information see ["Age 5 BPER Adjustment_9.30.2020.xlsx"](xxx) and ["Age 5 BPER Adjustment.docx"](xxx).
+For more information see <a href="https://framverse.github.io/fram_doc/literature/Calibration_CWT_Inputs; Age 5 BPER Adjustment_9.30.2020.xlsx"> *“Age 5 BPER Adjustment_9.30.2020.xlsx”* </a> and <a href="https://framverse.github.io/fram_doc/literature/Calibration_CWT_Inputs; Age 5 BPER Adjustment.docx"> *“Age 5 BPER Adjustment.docx”* </a>.
 
-Four stocks also received Age-5 escapement adjustments, because they entirely lacked escapement recoveries for this age group. These stocks were Tulalip, Oregon Tules, Bonneville, and Central Valley. For these stocks age-5 escapement recoveries (AdjustedCWTEscapement) were imputed using the ratio of age-4 to age-5 Chinook <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Run_Size" target="_blank">terminal run sizes</a> (TRSEst) times age-4 CWT recoveries.
+Four stocks also received Age-5 escapement adjustments because they entirely lacked escapement recoveries for this age group. These stocks were Tulalip, Oregon Tules, Bonneville, and Central Valley. For these stocks age-5 escapement recoveries (AdjustedCWTEscapement) were imputed using the ratio of age-4 to age-5 Chinook <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Run_Size" target="_blank">terminal run sizes</a> (TRSEst) times age-4 CWT recoveries.
 
 Equation \@ref(eq:EscAdjust)xxx
 
-\begin{equation}
-AdjustedCWTEscapement_{s,age=5,esc}=\frac_{TRSEst_{s,a=5,esc}}{TRS_{s,a=4,esc}}* CWTEscapement_{s,age=4,esc}(\#eq:EscAdjust)
-\end{equation}
+$$AdjustedCWTEscapement_{s,age=5,esc} =\frac{TRSEst_{s,a=5,esc}}{TRS_{s,a=4,esc}}* CWTEscapement_{s,age=4,esc}$$
+
 
 Table xxx. Age-5 Adjusted Escapements and Age-4 to Age-5 TRS Ratios
 
-```{r Age5Esc, echo = FALSE, fig.cap=c("Age-5 Adjusted Escapements"),fig.pos='H', out.height = "800px", out.width='800px'}
+```{r Age5Esc, echo = FALSE, fig.pos='H'}
 
-knitr::include_graphics("literature/Age5EscAdjust.pdf")
+knitr::include_graphics("literature/Age5EscAdjust.jpg")
 
 ```
 
-For more information see <a href="literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx"> Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a>) tab `ImputeAge5Esc`.
+For more information see <a href="literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx"> Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a> tab `ImputeAge5Esc`.
 
 ### Missing Canadian Catches 
 Derek
