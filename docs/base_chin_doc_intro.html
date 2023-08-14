@@ -1052,13 +1052,13 @@ average expansion accounted for base period fishing effort and brood
 year weight. See tab <code>WhiteR_A8Sport</code> in file
 <a href="https://framverse.github.io/fram_doc/literature/“Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx">
 <em>“Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx”</em> </a>.</p>
-<p><strong>White River in Canadian Fisheries</strong> Derek
-<a href="literature/“WhiteRiverWriteUp.docx"> “WhiteRiverWriteUp.docx”
-</a></p>
+<p><strong>White River in Canadian Fisheries</strong>
+<strong>Derek</strong> <a href="literature/“WhiteRiverWriteUp.docx">
+“WhiteRiverWriteUp.docx” </a></p>
 </div>
 <div id="impute-fw-sport" class="section level3">
 <h3>Impute FW sport</h3>
-<p>Jon</p>
+<p><strong>Jon</strong></p>
 </div>
 <div id="age-5-recoveries-in-fisheries-and-escapement"
 class="section level3">
@@ -1116,14 +1116,15 @@ Ratios</p>
 <p><img src="literature/Age5EscAdjust.jpg" /><!-- --></p>
 <p>For more information see
 <a href="literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx">
-Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a>) tab
+Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a> tab
 <code>ImputeAge5Esc</code>.</p>
 </div>
 <div id="missing-canadian-catches" class="section level3">
 <h3>Missing Canadian Catches</h3>
-<p>Derek For more information see &lt;a href=“literature/ 2020-06-19
-BC_Data_Request_With_pre-2012.xlsx RE BC Data Request - Update.msg short
-description Chinook Canadian catch imputation for post-season
+<p><strong>Dere</strong>k<br> For more information see &lt;a
+href=“literature/ 2020-06-19 BC_Data_Request_With_pre-2012.xlsx RE BC
+Data Request - Update.msg short description Chinook Canadian catch
+imputation for post-season
 runs_Updated_For_Documentation_in_6.2023.docx</p>
 </div>
 <div id="grays-harbor" class="section level3">
@@ -1144,7 +1145,7 @@ class="math display"><em>G</em><em>H</em>.<em>N</em><em>e</em><em>t</em>.<em>M</
 The marked landed catch is an input located in the Access database, the
 marked landed catch of the local stock can be computed from output of
 the calibration program. Treaty net fishery CWTs for the Washington
-North Coast stock where computed by assuming that the non-local stock
+North Coast stock were computed by assuming that the non-local stock
 proportion is half (4.3%) of the non-treaty value (8.6%). For more
 information see
 <a href="literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx">
@@ -1156,13 +1157,13 @@ Harbor Net Fishery and Washington North Coast stock BkFRAM Abundance
 <div id="stock-surrogate-for-elwha" class="section level3">
 <h3><span id="JDF_Sur">Stock Surrogate for Elwha</span></h3>
 <p>Elwha Hatchery (ELW) CWT releases that occurred during brood years
-(2005-2008) were not adipose clipped, in order to minimize exposure to
+(2005-2008) were not adipose clipped in order to minimize exposure to
 mark-selective fisheries and reduce ocean interception rates during the
 early restoration phases for Elwha and Dungeness Chinook (Strait of Juan
-de Fuca stock aggregate). Therefore, CWTs could be used for cohort
+de Fuca stock aggregate). Therefore, CWTs could not be used for cohort
 analysis/calibration purposes (i.e., due to the lack of CWT recoveries,
 not impacts, in many northern fisheries for which catch is sampled
-visually only). Further, due to poor CWT survival and limited ocean
+visually only). Furthermore, due to poor CWT survival and limited ocean
 recovery data, relatively few
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Out-of-Base_(OOB)" target="_blank">out-of-base</a>
 AD+CWT code options existed that could inform stock inclusion via
@@ -1223,25 +1224,29 @@ to ‘inside’ fisheries.</li>
 <li>Convert STL and ELW recoveries into rates by dividing recoveries in
 a fishery by abundance (recoveries in all fisheries plus
 escapement).</li>
-<li>For inside fisheries calculate a ratio as: <span
+<li>For inside fisheries calculate a ratio as:<br> Equation xxx: <span
 class="math display">$$ ELW.STL.Ratio_f =
-\frac{ELW.ER_f}{STL.ER_f}$$</span> Calculate Elwha recoveries as: <span
+\frac{ELW.ER_f}{STL.ER_f}$$</span> Calculate Elwha recoveries as:<br>
+Equation xxx: <span
 class="math display"><em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub> = <em>S</em><em>T</em><em>L</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub> * <em>E</em><em>L</em><em>W</em>.<em>S</em><em>T</em><em>L</em>.<em>R</em><em>a</em><em>t</em><em>i</em><em>o</em><sub><em>f</em></sub></span></li>
-<li>For outside fisheries (use STL directly for Elwha): <span
+<li>For outside fisheries (use STL directly for Elwha): <br> Equation
+xxx: <span
 class="math display"><em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub> = <em>S</em><em>T</em><em>L</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub></span></li>
-<li>Recompute Elwha escapement CWTs: Assumption: Adopting outside
+<li>Recompute Elwha escapement CWTs:<br> Assumption: Adopting outside
 fishery CWTs for ELW without manipulations from STL CWTs assumes that
 both stocks are exploited equally in outside fisheries. This can only
 occur if ELW abundance equals STL abundance. <br> Thus, ELW escapement
-is calculated as STL abundance minus ELW fisheries. <span
+is calculated as STL abundance minus ELW fisheries.<br> Equation xxx:
+<span
 class="math display"><em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>e</em><em>s</em><em>c</em></sub> = ∑(<em>S</em><em>T</em><em>L</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub>+<em>S</em><em>T</em><em>L</em>.<em>C</em><em>W</em><em>T</em><sub><em>e</em><em>s</em><em>c</em></sub>) − <em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub></span>
-Calculate an escapement CWT scale factor for Elwha as: <span
-class="math display">$$ELW.Esc.Scaler =
+Calculate an escapement CWT scale factor for Elwha as:<br> Equationxx:
+<span class="math display">$$ELW.Esc.Scaler =
 \frac{ELW.CWT_{esc}}{STL.CWT_{esc}}$$</span> Adjust Elwha escapement
-CWTs as: <span
+CWTs as:<br> <span
 class="math display"><em>N</em><em>e</em><em>w</em>.<em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>e</em><em>s</em><em>c</em></sub> = <em>O</em><em>r</em><em>i</em><em>g</em>.<em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>e</em><em>s</em><em>c</em></sub> * <em>E</em><em>L</em><em>W</em>.<em>E</em><em>s</em><em>c</em>.<em>S</em><em>c</em><em>a</em><em>l</em><em>e</em><em>r</em></span>
-For more information see <a
-href="xxx">“ELDU_CalibInputsRd7_GR-1-28-2020”</a></li>
+For more information see
+<a href="https://framverse.github.io/fram_doc/literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx">
+<em>“Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx”</em> </a>.</li>
 </ul>
 </div>
 <div id="elwha-age-composition" class="section level4">
@@ -1264,23 +1269,23 @@ validation runs. For more information see
 ProposalForELDU_7-10-2019.docx </a> and
 <a href="literature/draft_revised_stilly_age_comp.xlsx">
 draft_revised_stilly_age_comp.xlsx </a>.</p>
-<div id="ehvfsscztx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ehvfsscztx table {
+<div id="reyiltysvg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#reyiltysvg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ehvfsscztx thead, #ehvfsscztx tbody, #ehvfsscztx tfoot, #ehvfsscztx tr, #ehvfsscztx td, #ehvfsscztx th {
+#reyiltysvg thead, #reyiltysvg tbody, #reyiltysvg tfoot, #reyiltysvg tr, #reyiltysvg td, #reyiltysvg th {
   border-style: none;
 }
 
-#ehvfsscztx p {
+#reyiltysvg p {
   margin: 0;
   padding: 0;
 }
 
-#ehvfsscztx .gt_table {
+#reyiltysvg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1306,12 +1311,12 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-left-color: #D3D3D3;
 }
 
-#ehvfsscztx .gt_caption {
+#reyiltysvg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ehvfsscztx .gt_title {
+#reyiltysvg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1323,7 +1328,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-bottom-width: 0;
 }
 
-#ehvfsscztx .gt_subtitle {
+#reyiltysvg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1335,7 +1340,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-top-width: 0;
 }
 
-#ehvfsscztx .gt_heading {
+#reyiltysvg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1347,13 +1352,13 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#ehvfsscztx .gt_bottom_border {
+#reyiltysvg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ehvfsscztx .gt_col_headings {
+#reyiltysvg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1368,7 +1373,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#ehvfsscztx .gt_col_heading {
+#reyiltysvg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1388,7 +1393,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   overflow-x: hidden;
 }
 
-#ehvfsscztx .gt_column_spanner_outer {
+#reyiltysvg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1400,15 +1405,15 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 4px;
 }
 
-#ehvfsscztx .gt_column_spanner_outer:first-child {
+#reyiltysvg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ehvfsscztx .gt_column_spanner_outer:last-child {
+#reyiltysvg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ehvfsscztx .gt_column_spanner {
+#reyiltysvg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1420,11 +1425,11 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   width: 100%;
 }
 
-#ehvfsscztx .gt_spanner_row {
+#reyiltysvg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ehvfsscztx .gt_group_heading {
+#reyiltysvg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1450,7 +1455,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   text-align: left;
 }
 
-#ehvfsscztx .gt_empty_group_heading {
+#reyiltysvg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1465,15 +1470,15 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   vertical-align: middle;
 }
 
-#ehvfsscztx .gt_from_md > :first-child {
+#reyiltysvg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ehvfsscztx .gt_from_md > :last-child {
+#reyiltysvg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ehvfsscztx .gt_row {
+#reyiltysvg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1492,7 +1497,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   overflow-x: hidden;
 }
 
-#ehvfsscztx .gt_stub {
+#reyiltysvg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1505,7 +1510,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#ehvfsscztx .gt_stub_row_group {
+#reyiltysvg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1519,15 +1524,15 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   vertical-align: top;
 }
 
-#ehvfsscztx .gt_row_group_first td {
+#reyiltysvg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ehvfsscztx .gt_row_group_first th {
+#reyiltysvg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ehvfsscztx .gt_summary_row {
+#reyiltysvg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1537,16 +1542,16 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#ehvfsscztx .gt_first_summary_row {
+#reyiltysvg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ehvfsscztx .gt_first_summary_row.thick {
+#reyiltysvg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ehvfsscztx .gt_last_summary_row {
+#reyiltysvg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1556,7 +1561,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ehvfsscztx .gt_grand_summary_row {
+#reyiltysvg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1566,7 +1571,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#ehvfsscztx .gt_first_grand_summary_row {
+#reyiltysvg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1576,7 +1581,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-top-color: #D3D3D3;
 }
 
-#ehvfsscztx .gt_last_grand_summary_row_top {
+#reyiltysvg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1586,11 +1591,11 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ehvfsscztx .gt_striped {
+#reyiltysvg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ehvfsscztx .gt_table_body {
+#reyiltysvg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1599,7 +1604,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ehvfsscztx .gt_footnotes {
+#reyiltysvg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1613,7 +1618,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#ehvfsscztx .gt_footnote {
+#reyiltysvg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1622,7 +1627,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#ehvfsscztx .gt_sourcenotes {
+#reyiltysvg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1636,7 +1641,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#ehvfsscztx .gt_sourcenote {
+#reyiltysvg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1644,63 +1649,63 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#ehvfsscztx .gt_left {
+#reyiltysvg .gt_left {
   text-align: left;
 }
 
-#ehvfsscztx .gt_center {
+#reyiltysvg .gt_center {
   text-align: center;
 }
 
-#ehvfsscztx .gt_right {
+#reyiltysvg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ehvfsscztx .gt_font_normal {
+#reyiltysvg .gt_font_normal {
   font-weight: normal;
 }
 
-#ehvfsscztx .gt_font_bold {
+#reyiltysvg .gt_font_bold {
   font-weight: bold;
 }
 
-#ehvfsscztx .gt_font_italic {
+#reyiltysvg .gt_font_italic {
   font-style: italic;
 }
 
-#ehvfsscztx .gt_super {
+#reyiltysvg .gt_super {
   font-size: 65%;
 }
 
-#ehvfsscztx .gt_footnote_marks {
+#reyiltysvg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ehvfsscztx .gt_asterisk {
+#reyiltysvg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ehvfsscztx .gt_indent_1 {
+#reyiltysvg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ehvfsscztx .gt_indent_2 {
+#reyiltysvg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ehvfsscztx .gt_indent_3 {
+#reyiltysvg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ehvfsscztx .gt_indent_4 {
+#reyiltysvg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ehvfsscztx .gt_indent_5 {
+#reyiltysvg .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1737,13 +1742,16 @@ aggregate. Gorst Creek fish were not tagged during the base period,
 resulting in an improbably low MPS fishery contribution. An external
 2012-2015 fishing year CWT based-analysis resulted in a MPS stock
 contribution estimate to Sinclair Inlet fisheries of 97%. Please see
-file <a
-href="xxx">“10E_NewBPadjustmentWriteup_GordonRose11_4_2016.docx”</a> for
+file
+<a href="https://framverse.github.io/fram_doc/literature/Calibration_CWT_Inputs; 10E_NewBPadjustmentWriteup_GordonRose11_4_2016.docx">
+<em>“10E_NewBPadjustmentWriteup_GordonRose11_4_2016.docx”</em> </a> for
 more information. CWT output from Frambuilder was externally manipulated
-in <a href="xxx">“Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx”</a> to
-achieve this ratio for MPS by adjusting non-MPS CWTs to 3% of the
-contribution. All non-MPS stocks were divided by the same ratio (0.019)
-to achieve the desired result. These manipulations were performed on tab
+in
+<a href="https://framverse.github.io/fram_doc/literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx">
+<em>“Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx”</em> </a> to achieve
+this ratio for MPS by adjusting non-MPS CWTs to 3% of the contribution.
+All non-MPS stocks were divided by the same ratio (0.019) to achieve the
+desired result. These manipulations were performed on tab
 <code>10Enet_CWTadj</code>.</p>
 </div>
 <div id="tulalip-net-cwt-shifts-to-time-step-3" class="section level3">
@@ -1763,6 +1771,7 @@ Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a> tab
 </div>
 <div id="wcvi-sport-inside-outside" class="section level3">
 <h3>WCVI Sport Inside Outside</h3>
+<p><strong>Jon</strong></p>
 </div>
 <div id="upper-columbia-river-summer-chinook-in-central-oregon-troll"
 class="section level3">
