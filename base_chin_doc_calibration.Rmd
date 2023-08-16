@@ -1,5 +1,5 @@
 ```{r page title, include=FALSE}
-page_title <- "Base Period Documentation - Calibration"
+page_title <- "Calibration Processes"
 ```
 
 --- 
@@ -32,22 +32,29 @@ library("tidyverse")
 library("gt")
 ```
 
-# Calibration Processes
+
 The primary purpose of a calibration pass is to create a CWT recovery data set that contains the number of CWT recoveries for stocks that were tagged in the base period with a simulated number of CWT recoveries for those stocks that were not tagged during the base period.
 
-While it is possible, and perhaps even preferable, to conduct a cohort reconstruction on a single stock basis, the original base period calibration was conceived with the goal to reconstruct observed fishery catches with the CWTs in-hand. Therefore, when summing CWT recoveries of all stocks in a fishery, the expanded CWT catch should match the observed catch. This introduces an element of realism into the calibration, but also adds a significant amount of complexity to the calibration process. In order to reconstruct the catch in a fishery, several CWT expansions are necessary. All CWTs are initially expanded to account for the sampling rate to estimate the number of CWTs that would have been recovered had 100% of the catch and escapement been sampled. The next expansion, the escapement expansion, accounts for the relationship between CWTed releases and the total production. 
+The CWTs are subjected to several expansions to turn them into surrogates for stock specific catches and escapements. These expanded recoveries are then utilized to <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Analysis" target="_blank">reconstruct cohorts</a> by adding catches and escapements for each age group with the goal of estimating stock- and age-specific pre-fishing abundances. Once abundances are available fishery specific exploitation rates can be computed as catch divided by abundances. These stock-, age-, fishery- specific exploitation rates become the foundational data of FRAM.
 
+While it is possible, and perhaps even preferable, to conduct a cohort reconstruction on a single stock basis, the original base period calibration was conceived with the goal to reconstruct observed fishery catches with the CWTs in-hand. Therefore, when summing CWT recoveries of all stocks in a fishery, the expanded CWT catch should match the observed catch. This introduces an element of realism into the calibration, but also adds a significant amount of complexity to the calibration process. 
 
 ## Data Cleaning and Pre-Processing
-To conduct a new base period calibration a vast amount of data is compiled, processed, summarized, and analyzed. For CWT data this is described in detail in the [FRAMBuilder](#FB) paragraph.
-In addition to CWT recovery data representing FRAM stocks, other key data needed for development of the FRAM base period data set includes: 1) stock abundances/recruitment to fisheries and escapements, 2) life history information on maturation, age structure, natural mortality, and growth rates, 3) fishery landings or effort indices, and 4) fishery related mortality factors for fish released or fish encountering the gear. 
+To conduct a new base period calibration a vast amount of data is compiled, processed, summarized, and analyzed. For CWT data this is described in detail in the <a href="https:// framverse.github.io/fram_doc/docs/base_chin_doc_program_desc.html#FRAMBuilder " target="_blank">FRAMBuilder </a> section.
+In addition to CWT recovery data representing FRAM stocks, other key data needed for the development of the FRAM base period data set include: 
+
+- Escapements
+- Life history information on maturation, age structure, natural mortality, and growth rates
+- Fishery catches or effort indices
+- Fishery related mortality factors for fish released or fish encountering gear. 
 
 ### Analyzing CWT Recovery Patterns
-CWT groups were identified representing 36 of the 38 FRAM stock units (Table \@ref(tab:Stocks)). White River and Strait of Juan de Fuca stocks were not marked during the base period and thus in need of alternative representation (see [White River](#WhiteOOB) and [JDF Surrogate](#JDF_Sur) paragraphs for more information). Marked CWT groups from hatcheries within a FRAM stock basin were used to represent both hatchery and naturally produced fish.  Selected CWT groups were usually from “production” or “indicator” tag groups that were considered similar to the stock ancestry and freshwater and marine life history of the local natural stock.  Estimated recoveries (observed expanded by sampling rates) from these tag groups were downloaded from the Regional Mark Information System of the Pacific States Marine Fisheries Commission website.  For each of the FRAM stock CWT group aggregates, the “raw” recoveries were run through the program [FRAMBuilder](#FB) which maps the estimated age-specific CWT recoveries to FRAM fishery and time strata. 
+A panel of <a href="https:// framverse.github.io/fram_doc/base_chin_doc_intro.html#Assemble_a_Team_of_Experts_and_Stakeholders " target="_blank">experts </a> determined the stock groupings for the new base period. 
+CWT groups were identified representing 38 of the 39 FRAM <a href="https:// framverse.github.io/fram_doc/docs/base_chin_doc_appendix.html#FRAM_Chinook_Stocks" target="_blank">stock units </a>. White River and Strait of Juan de Fuca stocks were not marked during the base period and thus in need of alternative representation (see <a href="https:// https://framverse.github.io/fram_doc /base_chin_doc_intro.html#Processing_White_River_Spring_Chinook_Out-Of-Base_CWT_Recoveries" target="_blank"> White River</a> and <a href="https:// https://framverse.github.io/fram_doc /base_chin_doc_intro.html#Method_for Creating_Surrogate_Elwha_CWT_Recoveries" target="_blank"> JDF Surrogate</a> paragraphs for more information). Marked CWT groups from hatcheries within a FRAM stock basin were used to represent both hatchery and naturally produced fish.  Selected CWT groups were usually from “production” or “indicator” tag groups that were considered similar to the stock ancestry and freshwater and marine life history of the local natural stock.  Estimated recoveries (observed expanded by sampling rates) from these tag groups were downloaded from the [Regional Mark Information System](https://www.rmpc.org/) of the Pacific States Marine Fisheries Commission website.  For each of the FRAM stock CWT group aggregates, the “raw” recoveries were run through the program <a href="https:// framverse.github.io/fram_doc/docs/base_chin_doc_program_desc.html#FRAMBuilder " target="_blank">FRAMBuilder </a> which maps the estimated age-specific CWT recoveries to FRAM fishery and time strata. 
 These mapped CWT recoveries were then summarized in a stock matrix and a fishery matrix to assess whether there were sufficient raw un-expanded CWTs when summed over all base period years in each stock/fishery/time step stratum.
 
-CWT Stock Inventory 
-```{r StockInventory, echo = FALSE, fig.cap=c("Stock Inventory"),fig.pos='H', out.height = "800px", out.width='800px'}
+Tablexxx. CWT Stock Inventory 
+```{r StockInventory, echo = FALSE, fig.pos='H', out.height = "800px", out.width='800px'}
 
 knitr::include_graphics("./literature/FRAM_CWTInventorySmall_updated--updated2008Jun82015.pdf")
 
@@ -60,40 +67,35 @@ General status of CWT recoveries in the new base period (stock summary):
 * 50/50 mix of better/worse cases for old versus new base period comparison; BUT all are as good or better with escapement
 
 
-CWT Fishery Inventory
-```{r FishInventory, echo = FALSE, fig.cap=c("Fishery Inventory"),fig.pos='H', out.height = "800px", out.width='800px'}
+Tablexxx. CWT Fishery Inventory
+```{r FishInventory, echo = FALSE, fig.pos='H', out.height = "800px", out.width='800px'}
 
 knitr::include_graphics("./literature/FRAM_CWTInventorySmall_updated--Fisheries.pdf")
 
 ```
 
-General status of CWT recoveries in the new base period (fishery summary: 
+General status of CWT recoveries in the new base period (fishery summary): 
 
 * Northern Fisheries: Solid, except fisheries that are a shadow of their past.
-
 * Puget Sound Fisheries: 
-
   + Sport: With the exception of Area 13 as good or better than in the past.
-
   + Net: Several fisheries with insufficient recoveries
+* <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Pacific_Fishery_Management_Council_(PFMC)" target="_blank">Pacific Fishery Management Council (PFMC)</a> Fisheries: Much improved, despite the 2008-2009 restrictions.
 
-* [Pacific Fishery Management Council (PFMC)](#PFMC) Fisheries: Much improved, despite the 2008-2009 restrictions.
-
-For methods to address low or missing fishery CWT recoveries see the paragraph about [surrogate fisheries](#SurFish).
+For methods to address low or missing fishery CWT recoveries see the paragraph about <a href="https:// https://framverse.github.io/fram_doc /base_chin_doc_intro.html#Surrogate_Fisheries" target="_blank">Surrogate Fisheries</a>.
 
 
 ### Check Legal Status of Age Group
-The calibration program eliminates CWT if a stock/age recovery is not of legal size. For each stock and age, the calibration program calculates a proportion legal given the size limit in the fishery. If the legal proportion given the stock, age, and size limit is zero, the tag recovery is purged from the data. The program creates a message to inform the user that there were instances of recoveries for stocks without a legal population size. The program also creates a summary of these recoveries in a text file, called "errfile.txt".
+The calibration program eliminates CWTs if a stock/age recovery is not of legal size. For each stock and age, the calibration program calculates a proportion legal given the size limit in the fishery. If the legal proportion given the stock, age, and size limit is zero, the tag recovery is purged from the data. The program creates a message to inform the user that there were instances of recoveries for stocks without a legal population size. The program also creates a summary of these recoveries in an output file called "errfile.txt".
 
 ## Main Calibration Procedures
-The purpose of a calibration is to produce base period exploitation rates for each stock and fishery in the FRAM model. To this end, marked CWTs from base period years (brood years 2005-2008) were analyzed and summarized to reconstruct cohorts.
+The purpose of a calibration is to produce base period exploitation rates for each stock and fishery in the FRAM model. To this end, marked CWTs from base period years (brood years 2005-2008) were analyzed and summarized to <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Analysis" target="_blank">reconstruct cohorts</a>.<br>
 At the completion of the base data development process, each FRAM stock-age cohort is doubled, with half the cohort being assigned to “unmarked” and the other half to “marked” components to allow for processing of mark-selective fisheries in “forward-projection” runs of FRAM used in preseason fishery modeling. 
-The final step in the calibration cycle is the development of a completed “base period” input file used by FRAM.  This file contains stock abundances, time-age-fishery specific harvest rates, maturation rates, growth rates, and various fishery related parameters such as hooking mortality rates. A new calibration of FRAM is warranted when there are changes to the input data and/or model structure.  Examples include changes to stocks, fisheries, CWT groups, time structure, and growth, natural, and fishery related handling mortality rates.   All of these elements influence the estimates of the cohort sizes calculated during cohort analysis and the corresponding estimates of exploitation rates.
+The final step in the calibration cycle is the development of a completed <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Base_Period" target="_blank">base period</a> input file used by FRAM.  This file contains stock abundances, time-age-fishery specific harvest rates, maturation rates, growth rates, and various fishery related parameters such as hooking mortality rates. A new calibration of FRAM is warranted when there are changes to the input data and/or model structure.  Examples include changes to stocks, fisheries, CWT groups, time structure, and growth, natural, and fishery related handling mortality rates.   All of these elements influence the estimates of the cohort sizes calculated during <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Analysis" target="_blank"> cohorts analysis</a> and the corresponding estimates of exploitation rates.
 
-Cohort reconstruction involves several steps described below and illustrated by Figure \@ref(fig:cal-plot). This process is augmented for stocks with insufficient CWT recoveries in the existing base period. For these out-of-base stocks, a different range of years with sufficient CWT recoveries stands-in to provide the needed tag recovery resolution. These tag recoveries are adjusted in an iterative process to simulate the recoveries that would have occurred given the magnitude of the fisheries in the selected base period (see [Out-of-Base Procedures](#OOB)). Once adjusted, these CWTs are combined with the "in-base" recoveries and processed.
+Cohort reconstruction involves several steps described below and illustrated by Figurecalplotxxx. This process is augmented for stocks with insufficient CWT recoveries in the existing base period. For these out-of-base stocks, a different range of years with sufficient CWT recoveries stands-in to provide the needed tag recovery resolution. These tag recoveries are adjusted in an iterative process to simulate the recoveries that would have occurred given the magnitude of the fisheries in the selected base period (see [Out-of-Base Procedures](#OOB)). Once adjusted, these CWTs are combined with the "in-base" recoveries and processed.
 
-Figurexxx presents an overview of calibration steps
-```{r CalOver, echo = FALSE, fig.cap=c("Figurexxx Calibration Overview"),fig.pos='H', out.height = "550px", out.width='700px'}
+```{r CalOver, echo = FALSE, fig.cap=c("Figurecalplotxxx Calibration Overview"),fig.pos='H', out.height = "550px", out.width='700px'}
 
 knitr::include_graphics("images/Calibration Overview.jpg")
 
@@ -105,51 +107,52 @@ knitr::include_graphics("images/Calibration Overview.jpg")
 
 * **AEQ~s,a,t~:**	Adult Equivalence by stock, age, and time step.  The probability that a fish will survive to spawn in the absence of future fishing (output to the OUT file).
 
-* **BPEscape~s,a,t~:**	Base period CWT recoveries by stock, age, and time step in escapement estimated using forward cohort analysis and exploitation rate scale factors.
+* **BPEscape~s,a,t~:**	Base period CWT recoveries by stock, age, and time step in <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target="_blank">escapement</a> estimated using forward cohort analysis and exploitation rate scale factors.
 
-* **BPObsCatch~f~:**	Observed catch by fishery during the base period (input from section 10 of the CAL file).
+* **BPObsCatch~f~:**	Observed catch by fishery during the base period (input).
 
-* **BPPTCatch~s,a,f,t~:** Base period CWT recoveries in preterminal fisheries by stock, age, and time step estimated using forward cohort analysis and exploitation rate scale factors.
+* **BPPTCatch~s,a,f,t~:** Base period CWT recoveries in <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Pre-terminal_Fishery" target="_blank">preterminal</a> fisheries by stock, age, and time step estimated using forward cohort analysis and exploitation rate scale factors.
 
-* **BPTermCatch~s,a,f,t~:**	Base period CWT recoveries in terminal fisheries by stock, age, and time step estimated using forward cohort analysis and exploitation rate scale factors.
+* **BPTermCatch~s,a,f,t~:**	Base period CWT recoveries in <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Fishery" target="_blank">terminal</a> fisheries by stock, age, and time step estimated using forward cohort analysis and exploitation rate scale factors.
 
-* **CNRLeg~s,a,f,t~:** Legal-size release mortality of a stock and age in a non-retention fishery and time step.
+* **CNRLeg~s,a,f,t~:** <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">Legal size</a> release mortality of a stock and age in a non-retention fishery and time step.
 
 * **CNRMorts~s,a,f,t~:**	Non-retention mortalities by stock, age, fishery, and time step.
 
-* **CNRSub~s,a,f,t~:** Sublegal-size release mortality of a stock and age in a non-retention fishery and time step.
+* **CNRSub~s,a,f,t~:** <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">Sublegal size</a> release mortality of a stock and age in a non-retention fishery and time step.
 
 * **Cohort~s,a,TerminalType,t~:**
-Pre-fishing abundance of a stock at age a and time step t. If terminal type =0 then abundance is before maturation, if terminal type =1 then after maturation.
+Pre-fishing abundance of a stock at age a and time step t. If terminal type =0 then abundance is before <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Maturation" target="_blank">maturation</a>, if terminal type =1 then after maturation.
 
 * **CV~s,a~:**	Coefficient of variation in length-at-age by stock and age.
 
-* **CWTCatch~s,a,f,t~:**	CWT recoveries by stock, age, fishery, and timestep expanded for sampling fraction.
+* **CWTCatch~s,a,f,t~:**	CWT recoveries by stock, age, fishery, and time step expanded for sampling fraction.
 
-* **CWTEscape~s,a,t~:**	CWTs by stock, age, and time step recovered in escapement and freshwater fisheries expanded for sampling fraction.
+* **CWTEscape~s,a,t~:**	CWTs by stock, age, and time step recovered in <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target="_blank">escapement</a> and freshwater fisheries expanded for sampling fraction.
 
-* **DropOff~f~:** Dropoff mortality rate by fishery.
+* **DropOff~f~:** <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Drop-off_Mortality" target="_blank">Dropoff</a> mortality rate by fishery.
 
-* **EncAdj~f,t~:**	Encounter Rate Adjustment factor by fishery and time step. A variable used to adjust the number of sublegal Chinook encountered in a fishery and time step. This rate is the same as the sublelgal to legal ratio. It is usually estimated from test fisheries or angler interviews.
+* **EncAdj~f,t~:**	Encounter Rate Adjustment factor by fishery and time step. A variable used to adjust the number of <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">sublegal</a> Chinook encountered in a fishery and time step. This rate is the same as the sublelgal to legal ratio. It is usually estimated from test fisheries or angler interviews.
 
-* **ExpRate~s,a,f,t~:**	The fraction of the vulnerable cohort by stock, age, fishery, and time step, after natural mortality, taken as catch in a fishery.
-f	Fishery number.  There are currently 74 “fisheries” in CHCAL where fishery 74 is the number of CWT recoveries in escapement.
+* **ExpRate~s,a,f,t~:**	The fraction of the vulnerable (<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">legal</a>) cohort by stock, age, fishery, and time step, after natural mortality, taken as catch in a 
 
-* **LandedCatch~s,a,f,t~:** Estimated total catch of a stock in a fishery by age and time step. This catch is calculated by expanding CWTCatch by escapement and fishery expansion. 
+* **f**. Fishery. There are currently 74 <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Fisheries" target="_blank">FRAM Chinook Fisheries </a>. Fishery 74 is escapement.
 
-* **LegalEnc~s,a,f,t~:** Legal encounters in a non-retention fishery.
+* **LandedCatch~s,a,f,t~:** Estimated total catch of a stock in a fishery by age and time step. This catch is calculated by expanding CWTCatch using the [escapement expansion](#EscExpand) and the [fishery expansion](#FishExpand). 
 
-* **LegalProp~s,a,f,t~:** Proportion of the cohort (terminal or preterminal) which is above the legal size limit by stock, age, fishery, and time step.
+* **LegalEnc~s,a,f,t~:** <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">Legal</a> encounters in a non-retention fishery.
 
-* **LegalRelaseMortalityRate_f:** Legal release mortality rate in a fishery.
+* **LegalProp~s,a,f,t~:** Proportion of the cohort (terminal or preterminal) which is above the <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">legal</a> <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Size_Limit" target="_blank">size limit</a> by stock, age, fishery, and time step.
 
-* **MatCohort~s,a,t~:** The ‘mature’ cohort, i.e., the number of fish by stock, age, and time step destined to spawn in the current year in the absence of further fishing.
+* **LegalRelaseMortalityRate_f:** Release mortality rate of <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">legal sized</a> Chinook in a fishery.
 
-* **MatRate~s,a,t~:** The fraction of the cohort by stock and age that matures in a given time step.
+* **MatCohort~s,a,t~:** The <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Maturation" target="_blank">mature</a> cohort, i.e., the number of fish by stock, age, and time step destined to spawn in the current year in the absence of further fishing.
+
+* **MatRate~s,a,t~:** The fraction of the cohort by stock and age that <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Maturation" target="_blank">matures</a> in a given time step.
 
 * **Mean~s,a,t~:**	Mean fork length of a fish by stock, age, and time step.
 
-* **MinSize~a,f,t~:** Minimum size limit in a fishery by age, fishery, and timestep.  The age subscript is carried but not used in computations. 
+* **MinSize~a,f,t~:** Minimum <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Size_Limit" target="_blank">size limit</a> in a fishery by age, fishery, and time step. The age subscript is carried but not used in computations. 
 
 * **ModelRatio~f~:**	The proportion of the observed catch in a fishery that can be accounted for by stocks in the model (output to the OUT file as Recovery Adjustment Factor).
 
@@ -157,45 +160,45 @@ f	Fishery number.  There are currently 74 “fisheries” in CHCAL where fishery
 
 * **PEF~s~:** Stock specific Production Expansion Factor. The ratio of total stock escapement to the escapement of the CWTed population.
 
-* **PropLegCatch~s,a~** The proportion of the legal catch in a fishery and time step that is of a given stock and age.
+* **PropLegCatch~s,a~** The proportion of the <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">legal</a> catch in a fishery and time step that is of a given stock and age.
 
-* **PropSubCatch~s,a~** The proportion of the sublegal encounters in a fishery and time step that is of a given stock and age.
+* **PropSubCatch~s,a~** The proportion of the <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">sublegal</a> encounters in a fishery and time step that is of a given stock and age.
 
-* **PTCohort~s,a,t~:**	The preterminal (immature) ocean cohort size by stock, age, and time step.
+* **PTCohort~s,a,t~:**	The <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Pre-terminal_Fishery" target="_blank">preterminal</a> (immature) ocean cohort size by stock, age, and time step.
 
-* **PTER~s,a,f,t~:** Exploitation rate in preterminal fishery by stock, age, and time step
+* **PTER~s,a,f,t~:** Exploitation rate in <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Pre-terminal_Fishery" target="_blank">preterminal</a> fishery by stock, age, and time step
 
-* **PTMorts~s,a,t~:** Total mortalities of CWTed fish in preterminal fisheries by stock, age, and time step.
+* **PTMorts~s,a,t~:** Total mortalities of CWTed fish in <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Pre-terminal_Fishery" target="_blank">preterminal</a> fisheries by stock, age, and time step.
 
-* **s:** Stock number. There are currently 38 stocks in the model.
+* **s:** Stock number. There are currently 39 <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Stocks" target="_blank">stocks </a> in the model.
 
-* **ScaleFactor~f,t~:** Fishery and time step specific ratio of fishery exploitation rate during the CWT recovery year to the fishery exploitation rate during the base (input from the SIM file).
+* **ScaleFactor~f,t~:** Fishery and time step specific ratio of fishery exploitation rate during the CWT recovery year to the fishery exploitation rate during the base.
 
-* **SD~s,a~:**	Standard Deviation by stock and age of the total length distribution of a fish.
+* **SD~s,a~:**	Standard deviation by stock and age of the total length distribution of a fish.
 
-* **Shakers~s,a,f,t~:**	Total mortalities of sublegal fish by stock, age, fishery, and time step.
+* **Shakers~s,a,f,t~:**	Total mortalities of <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">sublegal</a> fish by stock, age, fishery, and time step.
 
-* **ShakerReleaseMortalityRate~f~:**	Fishery specific shaker mortality rate. 
+* **ShakerReleaseMortalityRate~f~:**	Fishery specific shaker (<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">sublegal</a>) mortality rate. 
 
-* **SRate~a,t~:** 	Survival rate by age and time step. The survival rate equals 1 - natural mortality rate.
+* **SRate~a,t~:** 	Survival rate by age and time step. The survival rate equals 1 minus natural mortality rate.
 
-* **SublegalEnc~s,a,f,t~:** Sublegal encounters in a non-retention fishery.
+* **SublegalEnc~s,a,f,t~:** <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">Sublegal</a> encounters in a non-retention fishery.
 
-* **SubLegProp~s,a,f,t~:**	Proportion of the total cohort size by stock and age (terminal or preterminal) which is below the legal size limit in a given fishery and time step.
+* **SubLegProp~s,a,f,t~:**	Proportion of the total cohort size by stock and age (terminal or preterminal) which is below the <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">legal</a> size limit in a given fishery and time step.
 
-* **t:**	Time step. There are 3 time steps per ‘year’ Oct – Apr, May – June, and July – Sept. 
+* **t:**	Time step. There are 3 <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Time_Steps" target="_blank">time steps </a> per 'year': Oct – Apr, May – June, and July – Sept. 
 
-* **TargEncRate~f,t~:** Sublegal to legal ratio in a fishery and time step. This rate is used to calculate the number of sublegal encounters when the legal retained catch is known.
+* **TargEncRate~f,t~:** <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">Sublegal</a> to <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">legal</a> ratio in a fishery and time step. This rate is used to calculate the number of sublegal encounters when the legal retained catch is known.
 
-* **TermER~s,a,f,t~:** Exploitation rate in terminal fishery by stock, age, and time step
+* **TermER~s,a,f,t~:** Exploitation rate in <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Fishery" target="_blank">terminal</a> fishery by stock, age, and time step
 
-* **TMorts~s,a,t~:**  	Total mortalities of CWTed  fish in terminal fisheries by stock, age, and time step.
+* **TMorts~s,a,t~:**  	Total mortalities of CWTed  fish in <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Fishery" target="_blank">terminal</a> fisheries by stock, age, and time step.
 
-* **TotalBPEsc~s~:**	Adult total escapement by stock during the base period (input from the CWT file).
+* **TotalBPEsc~s~:**	Adult total <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target="_blank">escapement</a> by stock during the base period (input from the CWT file).
 
-* **TotalCohort~s,a,t~:**	The total cohort available at the start of each time period, before natural mortality by stock, age, and time step.
+* **TotalCohort~s,a,t~:**	The total <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Size" target="_blank">cohort</a> available at the start of each time period, before natural mortality by stock, age, and time step.
 
-* **TotalSLPop~f,t~:**	The total number of sublegal fish, by time step, across stocks, available to a fishery.
+* **TotalSLPop~f,t~:**	The total number of <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">Sublegal</a> fish, by time step, across stocks, available to a fishery.
 
 * **TotCatch~f,t~:** Total landed catch summed over stocks and ages for a fishery and time step.
 
@@ -214,7 +217,7 @@ $$
 
 Note that if a ‘large’ CWT group is used to represent the catch distribution of a ‘small’ hatchery stock, the expansion factors may be less than 1.0 ([MEW,2008](#MEW1)).  
 
-### Expand CWTs to Match Fishery Catch
+### [Expand CWTs to Match Fishery Catch]{#FishExpand}
 Depending on the setting of an input flag, the observed base period CWT recoveries are adjusted so that the sum across stocks in each fishery, expanded by [PEFs](#PEF) (xxx) equals the total observed catch in each fishery.  
 Equation for fisheries where model stocks account for 100% of the landed catch: 
 
@@ -401,7 +404,7 @@ $$CNRMorts_{s,a,f,t}=CNRLegal_{s,a,f,t}+CNRSub_{s,a,f,t}$$
 ### [Backwards Cohort Reconstruction]{#CoRecon}
 After all CWT expansions have been applied, Cohort reconstruction occurs “backwards” such that, for each stock, it begins with age 5 Chinook in the final time step, progressing through descending time steps and ages with the age 2, time step 1 cohort calculated last.  First, escapement of age 5 Chinook in time step 3 for a given stock is calculated by summing over escapement CWT recoveries. Note that escapement recoveries also include recoveries from freshwater fisheries (see [FRAMBuilder](#xxx)). This is used as a starting value to which terminal fishery mortalities are later added. Total pre-terminal and terminal mortalities are calculated separately by looping through every fishery within a time step and adding expanded CWTs adjusted for other mortality (dropoff/dropout; expressed as a percentage of catch; found in the [IncidentalRate](#Inc) table of the Calibration Support data base) and by adding sublegal mortalities (see [sublegal mortality](##SubRate) section below for additional details as to how this is calculated) and Chinook Non-Retention Mortality (CNR).
 
-#### Cohort Reconstruction Steps
+#### <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Analysis" target="_blank">Cohort Reconstruction</a> Steps
 
 * Compute terminal and preterminal mortalities for each stock by summing over fisheries within an age and time step. Summation is performed on expanded CWT recoveries.<br>
 Equationxxx
@@ -497,7 +500,7 @@ Equationxxx
 
 $$AEQ_{a,t}=MatRate_{s,a,t}+(1-MatRate_{s,a,t})*SRate_{a,t+1}*AEQ_{s,a,t+1}$$
 
-### Out-of-Base Procedures
+### [Out-of-Base Procedures]{#OOB}
 For stocks without representative CWT release groups during the base period, OOB CWT 
 groups were used and their recoveries were simulated back into the base period in a process of calibration. 
 Calibration involves iterative passes adjusting CWT recoveries for OOB tag groups back to the base 

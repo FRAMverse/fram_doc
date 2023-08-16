@@ -184,7 +184,11 @@ dplyr::tibble(
 See chapter <a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#Time_Steps:" target="_blank">Time Steps</a> under Model Detail for more information.
 
 # Model Output Data
-Angelika
+Angelika<br>
+The main product of a calibration are base period exploitation rates that enable assignments of fishery catches to individual stocks. Similarly, the calibration also produces encounter rates on <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">sublegal</a> fish. Since sublegal fish are released, encounter rates can be converted to exploitation rates by applying a release mortality rate. Other outputs are maturation rates, AEQ mortality rates, and base period cohort sizes. All output parameters are discussed in the <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html:" target="_blank">Calibration Processing</a> section of this documentation.
+
+After output parameters are computed in the calibration, they are <a href="https:// framverse.github.io/fram_doc/base_chin_doc_program_desc.html#Transferring_Output" target="_blank">exported to a transfer file</a> for easy import into FRAM. During this step the **39 marked calibration <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Stocks" target="_blank">stocks </a> are converted into 78 marked and unmarked FRAM stocks**. This is accomplished by **duplicating** all stock specific parameters; i.e., calibration stock 1 Nooksack/Samish becomes FRAM stock 1 (unmarked Nooksack/Samish) and 2 (marked Nooksack/Samish). 
+
 
 ## Base Period Exploitation Rates
 

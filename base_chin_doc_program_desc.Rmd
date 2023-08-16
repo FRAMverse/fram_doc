@@ -344,6 +344,6 @@ This situation is typically caused by a fish scalar of zero during a time with c
 
 2.)	Terminal run size does not converge with the terminal run size inputs during BKFRAM
 
-This is typically caused by incorrect BKFRAM flags. For the stock that does not converge, identify the stock ID in terms of its BKFRAM stock ID. This is done by taking the stock number in the 38 stock format and multiplying it by 3 (total; times 3+1 for unmarked; times 3+2 for marked).  For example, Willapa is stock 37 and becomes stocks 111-113 in BKFRAM.  Convergence issues can generally be fixed by changing the BKtarget flag from a 3->1 within the validation run database.  If the flag is already a 1, and there are convergence issues, replace it with a 3.
+This is typically caused by incorrect BKFRAM flags. For the stock that does not converge, identify the stock ID in terms of its BKFRAM stock ID. This is done by taking the stock number in the 39 stock format and multiplying it by 3 (total; times 3+1 for unmarked; times 3+2 for marked).  For example, Willapa is stock 37 and becomes stocks 111-113 in BKFRAM.  Convergence issues can generally be fixed by changing the BKtarget flag from a 3->1 within the validation run database.  If the flag is already a 1, and there are convergence issues, replace it with a 3.
 
 
