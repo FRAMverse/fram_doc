@@ -206,7 +206,7 @@ Pre-fishing abundance of a stock at age a and time step t. If terminal type =0 t
 
 
 ### [Expand CWTs to Total Production]{#EscExpand}
-The purpose of this first step is to estimate the total size of the stock aggregate by accounting for un-tagged segments of the aggregate; i.e, the South Puget Sound Chinook stock aggregate is comprised of tagged Nisqually and Chambers hatchery Chinook, but also includes untagged Tumwater Falls hatchery and wild Nisqually Fall Chinook. To make estimates for the entire stock aggregate, the [production expansion factor (PEF)](#PEF) is calculated as the ratio of adult escapement accounted for with CWTs to the total adult escapement of a stock. <br>
+The purpose of this expansion is to estimate the total size of the stock aggregate by accounting for un-tagged segments of the aggregate; i.e, the South Puget Sound Chinook stock aggregate is comprised of tagged Nisqually and Chambers hatchery Chinook, but also includes untagged Tumwater Falls hatchery and wild Nisqually Fall Chinook. To make estimates for the entire stock aggregate, the [production expansion factor (PEF)](#PEF) is calculated as the ratio of adult escapement accounted for with CWTs to the total adult escapement of a stock. <br>
 
 Equationxxx
 
@@ -215,26 +215,24 @@ PEF_s=\frac{TotalBPEsc_s}{\sum_{a=3-5,t=1-3}CWTEscape_{s,a,t}}
 $$
 
 
-Note that if a ‘large’ CWT group is used to represent the catch distribution of a ‘small’ hatchery stock, the expansion factors may be less than 1.0 ([MEW,2008](#MEW1)).  
+Note that if a ‘large’ CWT group is used to represent the catch distribution of a ‘small’ hatchery stock, the expansion factors may be less than 1.0 <a href="https://framverse.github.io/fram_doc/literature/FRAM_Chinook_Base_Data_Final_1008.PDF"> MEW, 2008</a>.  
 
 ### [Expand CWTs to Match Fishery Catch]{#FishExpand}
-Depending on the setting of an input flag, the observed base period CWT recoveries are adjusted so that the sum across stocks in each fishery, expanded by [PEFs](#PEF) (xxx) equals the total observed catch in each fishery.  
+Depending on the setting of an input flag, observed base period CWT recoveries are adjusted so that the sum across stocks in each fishery, expanded by [PEFs](#EscExpand) equals the total observed catch in each fishery.  
 Equation for fisheries where model stocks account for 100% of the landed catch: 
 
 Equationxxx
 
-$$
-CWTCatch_{f,t}=\sum_{s,a}(CWTCatch_{s,a,f,t}*PEF_{s}) $$
+$$CWTCatch_{f,t}=\sum_{s,a}(CWTCatch_{s,a,f,t}*PEF_{s})$$
 
-Equationxxx
+Equation22xxx
 
 $$FishExpansion_{f,t}=\frac{BPObsCatch_{f,t}}{CWTCatch_{f,t}}$$
 
-### Fishery Model Stock Proportion (MSP)
-[MSP](#MSP) (xxx) is the percentage of a fishery accounted for by stocks in the model. Chinook FRAM does not contain all the stocks impacted by FRAM fisheries. A portion of the stocks, particularly those affecting northern fisheries (Alaska, Canada) are missing from the model. For these fisheries, FRAM assigns a constant proportion of the catch to non-model stocks. 
-While the calibration is conducted in a "marked frame of reference", a FRAM run requires MSPs as a proportion of the total (marked + unmarked) catch (see [Mass Marking and Mark-Selective Fisheries](#MSFpara) paragraph). For this reason an input file was created processing CWT recoveries, catches, and escapements in a "total" frame of reference. 
+The MSP is the percentage of a fishery accounted for by stocks includedin the model. Chinook FRAM does not contain all the stocks impacted by FRAM fisheries. A portion of the stocks, particularly those affecting northern fisheries (Alaska, Canada) are missing from the model. For each of these fisheries, FRAM utilizes a constant proportion to account for non-model stock impacts, frequently using an independent estimate of this quantity, such as genetic data.
+While the calibration is conducted in a "marked frame of reference", a FRAM run requires MSPs as a proportion of the total (marked + unmarked) catch (see <a href=" https://framverse.github.io/fram_doc /base_chin_doc_intro.html#Mass_Marking_and" target="_blank">Mass Marking and Mark Selective Fisheries </a> paragraph). For this reason an input file was created processing CWT recoveries, catches, and escapements in a "total" frame of reference. 
 Additionally, for the purpose of calculating exploitation rates in a "marked frame of reference", MSP is also needed as the proportion of the marked catch.
-Tables `BasePeriodCatch`\@ref(tab:MrkCatch) and `BasePeriodCatch_Tot` \@ref(tab:TotalCatch) contain model stock proportions and flags for marked and total (marked + unmarked) fisheries.
+Tables <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Catches" target="_blank"> Base Period Marked Catches </a> and <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Catches" target="_blank">Base Period Total Catches</a> contain model stock proportions and flags for marked and total (marked + unmarked) fisheries.
 
 The previous calibration predominantly relied on estimating the MSP as the proportion of the catch accounted for by CWTs.
 
@@ -248,7 +246,7 @@ Equationxxx
 
 $$CWTCatch_f=\sum_{t}CWTCatch_{f,t}$$
 
-Equatioxxx
+Equatio33xxx
 
 $$MSP_f=\frac{BPObsCatch_f}{CWTCatch_{f}}$$
 
@@ -257,10 +255,9 @@ The landed catch of a stock at age a in a fishery and time step becomes:
 
 Equationxxx
 
-$$
-LandedCatch_{s,a,f,t}=CWTCatch_{s,a,f,t}*PEF_s*MSP_f $$
+$$LandedCatch_{s,a,f,t}=CWTCatch_{s,a,f,t}*PEF_s*MSP_f $$
 
-The current calibration only uses the MSP calculation as described in equationxxx for a few fisheries, because of the high variance associated with estimating the parameters entering the calculation of CWTCatch~f,t~. When flagged as "2", if the MSP exceeds 100% of the BPObsCatch~f~, the program scales CWTCatch~s,a,f,t~ to sum to 1.
+The current calibration only uses the MSP calculation as described in equation33xxx for a few fisheries, because of the high variance associated with estimating the parameters entering the calculation of CWTCatch~f,t~. When flagged as "2", if the MSP exceeds 100% of the BPObsCatch~f~, the program scales the CWTCatch~s,a,f,t~ when summed over stocks and ages to 1.
 
 Summary of MSP flags:
 
@@ -276,25 +273,24 @@ For many fisheries outside Puget Sound a flag of "3" was used. This method relie
 
 Equationxxx
 
-$$
-CWTCatch_f= BPObsCatch_f * ModelStockProportion_f$$
+$$CWTCatch_f= BPObsCatch_f * ModelStockProportion_f$$
 
 #### External MSP Data Sources
 As described above, the MSP can be calculated by the calibration program. This method was infrequently used due to the high variance associated with the estimates. The following external approaches were used depending on availability.
 
 ##### Default of 100% MSP
 All Puget Sound fisheries were assumed to be completely represented by model stocks. This was also assumed for Georgia Strait net, North Washington Coast net, and Grays Harbor net.
-Additionally, the marked catch in most fisheries was assumed to be completely accounted for by the hatchery stocks in the model. This was frequently not the case for unmarked stocks in a fishery, particularly if comprised of difficult to enumerate wild stocks or stock components. To achieve an MSP of 100%, a fishery expansion factor was calculated as in equation (equationxxx).
+Additionally, the marked catch in most fisheries was assumed to be completely accounted for by the hatchery stocks in the model. This was frequently not the case for unmarked stocks in a fishery, particularly if comprised of difficult to enumerate wild stocks or stock components. To achieve an MSP of 100%, a fishery expansion factor was calculated as in equation (equation22xxx).
 
 ##### Chinook Technical Committee (CTC) MSP #####
-For some northern fisheries, we used output from the 2014 calibration (CLB 1402) of the [Pacific Salmon Commission (PSC)](#PSC) Chinook model to calculate fishery model stock proportions. Details of this calibrationcan can be found in PSC Joint Chinook Technical Committee report [TCCHINOOK (15)-1 V1 and V2](https://www.psc.org/publications/technical-reports/technical-committee-reports/chinook/). First, for each PSC Chinook Model stock we determined whether it was represented by FRAM model stocks.  Then, for each relevant PSC Chinook model fishery, we summed the total stock specific catch across 2007 - 2013 (FRAM base period catch years) based on whether or not the stock was represented in FRAM. From this we calculated the FRAM base period fishery model stock proportion by dividing the total catch of stocks represented in FRAM by the total catch of all stocks.
+For some northern fisheries, we used output from the 2014 calibration (CLB 1402) of the <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Pacific_Salmon_Commission_(PSC)" target="_blank">PSC</a> Chinook model to calculate fishery model stock proportions. Details of this calibrationcan can be found in PSC Joint Chinook Technical Committee report [TCCHINOOK (15)-1 V1 and V2](https://www.psc.org/publications/technical-reports/technical-committee-reports/chinook/). First, for each PSC Chinook Model stock we determined whether it was represented by FRAM model stocks.  Then, for each relevant PSC Chinook model fishery, we summed the total stock specific catch across 2007 - 2013 (FRAM base period catch years) based on whether or not the stock was represented in FRAM. From this we calculated the FRAM base period fishery model stock proportion by dividing the total catch of stocks represented in FRAM by the total catch of all stocks.
 
 ##### Genetic Stock Identification (GSI)
 Similar to the method evaluating the MSP using the CTC data, we allocated GSI stock assignments to FRAM and non-FRAM model stock. 
-For Washington, Oregon, and California fisheries, GSI data originated from [Bellinger,2015](#Bellinger), [Moran, 2017](#Moran) and personal communication with Dr. Michael O'Farrell. We averaged fishing year 2012-2013 stock proportions for FRAM model stocks (for more information please see [FRAM-GSI MSPs new_Cent_Valley_Fix.xlsx](#xxxFisheriesServices should not be publicly accessible)). An additional adjustment was made to eliminate San Joachin stock from the GSI stock aggregate for Central Valley.  
-For NCBC sport and troll we averaged 2007 to 2014 stock proportions for FRAM model stocks (for more information please see [ModelStkPPN_9.27.20](#xxx)).
+For Washington, Oregon, and California fisheries, GSI data originated from [Bellinger,2015](#Bellinger), [Moran, 2017](#Moran) and personal communication with Dr. Michael O'Farrell. We averaged fishing year 2012-2013 stock proportions for FRAM model stocks (for more information please see "FRAM-GSI MSPs new_Cent_Valley_Fix.xlsx" (#xxxshould not be publicly accessible, but referenced here for "insiders). An additional adjustment was made to eliminate San Joachin stock from the GSI stock aggregate for Central Valley.  
+For NCBC sport and troll we averaged 2007 to 2014 stock proportions for FRAM model stocks (for more information please see <a href="https://framverse.github.io/fram_doc/literature/>ModelStkPPN_9.27.20.xlsx" target="_blank">ModelStkPPN_9.27.20</a> (xxx please make sure this reference works!!!).
 
-**Table summarizing MSPs, flags, and data sources by fishery for "Total" and "Marked" frame of reference calibration runs.**
+Table xxx. MSPs, flags, and data sources by fishery for "Total" and "Marked" frame of reference calibration runs.
 ```{r MSPTable, echo = FALSE, fig.cap=c("MSP Summary Table. The number next to the source references associated files listed below the table."),fig.pos='H', out.height = "800px", out.width='800px'}
 
 knitr::include_graphics("./literature/MSPSummary.pdf")
@@ -302,8 +298,11 @@ knitr::include_graphics("./literature/MSPSummary.pdf")
 ```
 
 ### Summary of CWT Expansions
-Prior to the [PEF expansion](#PEFExp) and the [fishery expansion](#FishExp) described in the last two paragraph, CWTs are subjected to two other expansions. The first expansion occurs in [RMIS](#RMIS) and is called a sampling expansion. It is calculated as the total catch in a fishery/time step divided by the sampled catch in a fishery/time step. This results in the number of CWTs that would have been recovered if 100% of the fishery had been sampled. 
-A second expansion, the brood year expansion, is applied within [FRAMBuilder](#xxx) to CWTs that have already received a sampling expansion. The default method gives equal weight to all brood years within the model, but users can also specify brood year weights. The brood year expansion is specific to individual brood years. To calculate the expansion rate, the total number of tags for each brood year is summed. The brood year with the largest number of recoveries is then divided by the sum of tags from the brood year of interest. This expansion factor is then applied to all the CWT recoveries of the brood year to be manipulated.
+Prior to the [PEF expansion](#EscExpand) and the [fishery expansion](#FishExpand) described in the last two paragraphs, CWTs are subjected to two other expansions. <br>
+
+The first expansion occurs in <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Regional_Mark_Information_System_(RMIS)" target="_blank"> RMIS</a> and is called a sampling expansion. It is calculated as the total catch in a fishery/time step divided by the sampled catch in a fishery/time step. This results in the number of CWTs that would have been recovered if 100% of the fishery had been sampled. 
+
+A second expansion, the brood year expansion, is applied within <a href=" https://framverse.github.io/fram_doc /base_chin_doc_program_desc.html#FRAMBuilder " target="_blank">FRAMBuilder </a> to CWTs that have already received a sampling expansion. The default method gives equal weight to all brood years within the model, but users can also specify brood year weights. The brood year expansion is specific to individual brood years. To calculate the expansion rate, the total number of tags for each brood year is summed. The brood year with the largest number of recoveries is then divided by the sum of tags from the brood year of interest. This expansion factor is then applied to all the CWT recoveries of the brood year to be manipulated.
 To better demonstrate the expansion process, an age 3 Mid Puget Sound tag (CWT code: 633285) that was recovered in Area 7 Sport on February 17th, 2008 will be used as an example.  First, a sampling expansion is pre-applied within RMIS and is a function of the total number of Chinook caught during the sampling period divided by the number of Chinook sampled during the sampling period.  The following information comes from [RMIS](https://www.rmpc.org/) Catch/Sample queries. 
 
 
@@ -318,9 +317,9 @@ tibble("Species"=1,
                      "Estimated" =6.97)|>
   gt::gt()
 ```
-The sampling expansion of 6.97 is calculated as 2643/379. Further information pertaining to the sampling expansion can be found on page 9 [here:] (http://www.rmpc.org/files/Nandor_et.al.Chap02.pdf) or on page 21 [here:] (http://www.rmpc.org/files/RegionalOverviewProfPaper-30May04.pdf).
+The sampling expansion of 6.97 is calculated as 2643/379. Further information pertaining to the sampling expansion can be found on page 9 [here](http://www.rmpc.org/files/Nandor_et.al.Chap02.pdf) or on page 21 [here](http://www.rmpc.org/files/RegionalOverviewProfPaper-30May04.pdf).
 
-A second expansion, the brood year expansion, is applied within FRAMBuilder. The default method gives equal weight to all brood years within the model, but users can also specify brood year weights. The brood year expansion is specific to individual brood years and applied to every tag within a given brood year.  To calculate the expansion rate, the total number of sampling expanded tags for each brood year should be summed. The total sum of sampling expanded tags within the brood year with the largest number of recoveries is then divided by the total sum of sampling expanded tags within the brood year of interest. For our example tag, the table below demonstrates that the brood year expansion applied should be 1.02. The brood year expanded value of the example recovery becomes 7.11 (6.97 * 1.02).
+For the example tag, the table below demonstrates that the brood year expansion applied should be 1.02. The brood year expanded value of the example recovery becomes 7.11 (6.97 * 1.02).
 
 ```{r, results='asis', echo=FALSE}
 
@@ -331,7 +330,7 @@ tibble(               "Year"=c(2005,2006,2007,2008),
   gt::gt()
 ```
 
-After the expansion is applied, tags recovered for a given stock, age, fishery, time step are summed across brood years. At this point, three additional tags, including two from the 2007 brood year and one from the 2006 brood year are added to the example tag, resulting in a merged expanded value of **16.6**. For additional information about the brood year expansion and merging process, please refer to the FRAMBuilder sectionxxx of the base period documentation.
+After the expansion is applied, tags recovered for a given stock, age, fishery, time step are summed across brood years. At this point, three additional tags, including two from the 2007 brood year and one from the 2006 brood year are added to the example tag, resulting in a merged expanded value of **16.6**.
 
 The final two expansions are applied within the calibration program. The first, an escapement expansion, adjusts the total number of CWTs in escapement to match the escapement estimates provided by regional biologists. This expansion accounts for untagged production part of the stock grouping, but also grounds the brood year weighted recoveries by establishing a direct linking to escapement. The escapement expansion is applied within the `CompExpFactMod.vb` module. For the Mid-Puget Sound aggregate, CWT escapement is 12,418 and observed escapement is 30,785.  Thus, the escapement expansion is **2.48**.  
 
