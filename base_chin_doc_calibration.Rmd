@@ -334,32 +334,32 @@ After the expansion is applied, tags recovered for a given stock, age, fishery, 
 
 The final two expansions are applied within the calibration program. The first, an escapement expansion, adjusts the total number of CWTs in escapement to match the escapement estimates provided by regional biologists. This expansion accounts for untagged production part of the stock grouping, but also grounds the brood year weighted recoveries by establishing a direct linking to escapement. The escapement expansion is applied within the `CompExpFactMod.vb` module. For the Mid-Puget Sound aggregate, CWT escapement is 12,418 and observed escapement is 30,785.  Thus, the escapement expansion is **2.48**.  
 
-The final expansion applied is a fishery expansion, which adjusts recoveries in a specific fishery-time step combination to match actual fishery catch. In this step, the actual fisheries catch is divided by the CWT expanded catch. The fishery expansion can be found within the calibration code in the `AdjCatch.vb` module. In the example fishery-time step, the fishery expansion is **1.37**.
+The final expansion is a fishery expansion, which adjusts recoveries in a specific fishery-time step combination to match actual fishery catch. In this step, the actual fisheries catch is divided by the CWT expanded catch. The fishery expansion can be found within the calibration code in the `AdjCatch.vb` module. In the example fishery-time step, the fishery expansion is **1.37**.
 
 $$TotalExpansion = BroodYearExpandedTags * FisheryExpansion_{f,t} * EscapementExpansion_s$$
 $$TotalExpansion = 16.6 * 1.37 * 2.48 = 56.4$$
 
 ### Estimating Sublegal Mortalities 
-Sublegal or shaker mortalities result from the release of sublegal sized (below the minimum size limit) Chinook encountered during a fishery.
-First, the total number of sublegal encounters for the fishery-time step are calculated by taking the legal catch from the fishery-time step and multiplying it by an externally provided sublegal:legal ratio (found in the `TargetEncounterRates` table of the `Calibration Support` data base).<br>
+<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">Sublegal</a> or shaker mortalities result from the release of sublegal sized (below the minimum size limit) Chinook encountered during a fishery.
+First, the total number of sublegal encounters for the fishery-time step are calculated by taking the <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">legal</a> catch from the fishery-time step (found in the <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Catches" target="_blank">`BasePeriodCatch`</a> table for marked and <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Catches" target="_blank">`BasePeriodCatch_Tot`</a> tables for total catches) and multiplying it by an externally provided sublegal:legal ratio (found in the <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Target_Encounter_Rates" target="_blank">`TargetEncounterRates`</a> table of the `Calibration Support` data base).<br>
 
 Equationxxx
 $$Encounters_{f,t}=\sum_{s,a}CWTCatch_{s,a,f,t} * TargetEncounterRate_{f,t}$$
-For more information about how to allocate total encounters to stocks and ages, please see <a href="https://framverse.github.io/fram_doc/base_chin_doc_intro.html#Sublegal_Stock-, Age-Composition"> Sublegal Stock-, Age-Composition </a>. For more information about the computation of the proportion legal/sublegal of a stock-age using the Von Bertalannfy growth equation please see  <a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#45_Size_Limit_Evaluations"> Size Limit Caluations</a>.
+For more information about how to allocate total encounters to stocks and ages, please see <a href="https://framverse.github.io/fram_doc/base_chin_doc_intro.html#Sublegal_Stock-, Age-Composition"> Sublegal Stock-, Age-Composition</a>. For more information about the computation of the proportion legal/sublegal of a stock-age using the Von Bertalanffy growth equation see  <a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#45_Size_Limit_Evaluations"> Size Limit Caluations</a>.
 
 ### Estimating Non-Retention Mortalities (CNR)
-Table `NonRetention` of the calibration database contains non-retention inputs and flagging. Depending on the value of the `NonRetentionFlag` the inputs will either be modeled using external values of legal and sublegal encounters (flag 3) or an external value of total encounters (flag 4).
+Tables <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Marked_Non-Retention_Chinook_Encounters" target="_blank">`NonRetention`</a> and  <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Total_(Marked_+_Unmarked)_Non-Retention_Chinook_Encounters" target="_blank">`NonRetention_Tot`</a> (the former for marked the latter for marked + unmarked) of the calibration database contain non-retention inputs and flagging. The primary non-retention input is an estimate of encounters rather than landed catch. Depending on the value of the `NonRetentionFlag` the inputs will either be modeled using external values of legal and sublegal encounters (flag 3) or an external value of total encounters (flag 4).
 CNR impacts can only be calculated if a landed catch value and associated CWT recoveries exist for a fishery. A CNR fishery without pre-existing landed catch can be modeled with a catch of 1. This will only minutely affect cohort sizes, but allow for the calculation of stock-specific BPERs.
 CNR calculations assign encounter estimates to stocks and ages.
 
-**Calculations when legal and sublegal encounters are provided:**<br>
+**Calculations when legal and sublegal encounters are provided (flag 3):**<br>
 
 * Calculate the stock-, age-composition of legal encounters<br>
-Equationxxx
+Equation44xxx
 $$PropLegCatch_{s,a,f,t}=\frac{LandedCatch_{s,a,f,t}}{TotCatch_{f,t}}$$
 
 * Calculate the stock-, age-composition of sublegal encounters<br>
-Equationxxx
+Equation45xxx
 $$PropSubCatch_{s,a,f,t}=\frac{SublegalEncounter_{s,a,f,t}}{TotSublegalEncounters_{f,t}}$$
 
 * Calculate legal mortalities by stock and age<br>
@@ -372,9 +372,9 @@ $$CNRSub_{s,a,f,t}=SublegEnc_{f,t} * PropSubCatch_{s,a,f,t} * ShakerReleaseMorta
 Equationxxx
 $$CNRMorts_{s,a,f,t}=CNRLegal_{s,a,f,t}+CNRSub_{s,a,f,t}$$
 
-**Calculations when total encounters are provided:**<br>
+**Calculations when total encounters are provided (flag 4):**<br>
 
-* For each fishery/time step, calculate PropLegCatch and PropSubCatch as in equations xxx and xxx above.
+* For each fishery/time step, calculate PropLegCatch and PropSubCatch as in equations 44xxx and 4511111111111111123xxx above.
 
 * Calculate the proportion of the encounter that is legal as: <br>
 Equationxxx

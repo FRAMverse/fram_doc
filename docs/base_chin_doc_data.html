@@ -486,22 +486,27 @@ div.tocify {
 <p>A large amount of data is required to create a new base period. These
 input data are stored in tables of the calibration database. All
 calibration input and output tables can be viewed in the
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html:" target="_blank">Appendix</a>.</p>
-<div id="cwts" class="section level2">
-<h2>CWTs</h2>
-<p>Jon</p>
-</div>
-<div id="landed-catch" class="section level2">
-<h2>Landed Catch</h2>
-<p>Derek</p>
-</div>
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html" target="_blank">Appendix</a>.</p>
 <div id="cnr" class="section level2">
 <h2>CNR</h2>
-<p>Derek</p>
+<p>Derek<br> Tables
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Marked_Non-Retention_Chinook_Encounters" target="_blank">Marked
+Non-Retention Chinook Encounters</a> and
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Total_(Marked_+_Unmarked)_Non-Retention_Chinook_Encounters" target="_blank">Total
+(Marked + Unmarked) Non-Retention Chinook Encounters</a> in
+Appendix.</p>
+</div>
+<div id="cwts" class="section level2">
+<h2>CWTs</h2>
+<p>Jon<br> Tables
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Coded-Wire-Tag_Recovery_Data" target="_blank">Coded-Wire-Tag
+Recovery Data</a> and
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Out-of-Base_CWTs_for_White_River" target="_blank">Out-of-Base
+CWTs for White River</a> in Appendix.</p>
 </div>
 <div id="escapements" class="section level2">
 <h2>Escapements</h2>
-<p><a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement:" target="_blank">Escapement</a>
+<p><a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target="_blank">Escapement</a>
 are needed to estimate the total size of the stock aggregate by
 accounting for un-tagged segments of the aggregate. A production
 expansion factor is computed that relates the run size accounted for
@@ -512,10 +517,16 @@ Escapements were averaged over base period years and compiled in file
 <a href="https://framverse.github.io/fram_doc/literature/“Escapements for Calibration 09302020.xlsx">
 “Escapements for Calibration 09302020.xlsx” </a>. For a list of
 escapements used for the calibration see
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period Marked_Escapements:" target="_blank">Base
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Escapements" target="_blank">Base
 Period Marked Escapements</a> and
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Escapements:" target="_blank">Base
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Escapements" target="_blank">Base
 Period Total Escapements</a> in Appendix.</p>
+</div>
+<div id="fisheries" class="section level2">
+<h2>Fisheries</h2>
+<p>Appendix
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Fisheries" target="_blank">FRAM
+Chinook Fisheries</a></p>
 </div>
 <div id="growth-functions" class="section level2">
 <h2>Growth Functions</h2>
@@ -523,11 +534,12 @@ Period Total Escapements</a> in Appendix.</p>
 parameterized with growth functions for computing mean length (fork
 length, FL, in mm) by age and model time step, as well as supplementary
 inputs (coefficients of variation, CVs) for characterizing variability
-around these predictions. Objectives of this effort: (1) Estimate
-parameters for stock-specific Von Bertalanffy growth functions (VBGFs),
-inclusive of an assessment of model fit diagnostics, etc.; and (2)
-Estimate stock-specific CVs associated with VBGF mean length-at-age
-predictions.</p>
+around these predictions (see table
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Von_Bertalaffy_Growth_Parameters" target="_blank"><code>Von Bertalaffy Growth Parameters</code></a>).
+Objectives of this effort: (1) Estimate parameters for stock-specific
+Von Bertalanffy growth functions (VBGFs), inclusive of an assessment of
+model fit diagnostics, etc.; and (2) Estimate stock-specific CVs
+associated with VBGF mean length-at-age predictions.</p>
 <p>The approach taken differed from what had been done for prior base
 period (BP) calibrations in two important ways. Firstly, whereas past
 BPs included separate ‘mature’ (~terminal) and ‘mixed-maturity’
@@ -720,8 +732,8 @@ non-model stock CWT codes, for brood years 2001-2004.
 </caption>
 </p>
 <pre class="r"><code>growthcurvedata</code></pre>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e616afb8bc93967e021f" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-e616afb8bc93967e021f">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"234\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13"],["Columbia River tule stocks","Columbia River bright stocks","Fraser Early","Fraser Late","Lower Columbia R. spring","Lower Georgia Strait","North Puget Sound spring","Oregon Coast","Puget Sound/Hood Canal summer/fall fingerling","Puget Sound/Hood Canal summer/fall yearling","Sacramento/Central Valley","Washington Coast","West Coast Vancouver Island"],["ColRTule","ColRUpriver","FraserEarly","FraserLate","LColRSpr","LGS","NPSSprng","ORCoast","PSHCfng","PSHCyrl","Sacramento","WACoast","WCVI"],[102,36,1,33,5,51,14,3,156,4,234,13,7],["1,037","1,307","225","729","192","315","265","215","3,024","226","3,313","229","79"],["265","2,883","385","321","580","220","229","992","2,196","349","296","2,901","414"],["26","590","7","5","156","9","21","407","74","24","2","2,253","115"],["Lower River hatchery and natural tules, Bonneville Pool tules","All Columbia River bright stocks (URB, upper Col. R summers, Lower R. wild)","Fraser Early all","Fraser Late all","Lower Columbia (Cowlitz, Kalama, Lewis) and Willamette spring stocks","Lower Georgia Strait hatchery/natural fall stocks","Skagit, Nooksack spring stocks","Oregon Coast fall stocks (NOC/MOC)","All Puget Sound/Hood Canal summer/fall fingerling stocks","All Puget Sound/Hood Canal summer/fall yearling stocks","Sacramento/Central Valley stocks","Willapa Bay, Grays Harbor, WA North Coast, etc.","West Coast Vancouver Island hatchery/natural (Robertson stock)"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Regional.Aggregate<\/th>\n      <th>Region<\/th>\n      <th>N.Age.2<\/th>\n      <th>N.Age.3<\/th>\n      <th>N.Age.4<\/th>\n      <th>N.Age.5.<\/th>\n      <th>Stocks.included<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","buttons":["copy","csv","excel","pdf","print"],"columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4aac5e2fb628054572db" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-4aac5e2fb628054572db">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"234\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13"],["Columbia River tule stocks","Columbia River bright stocks","Fraser Early","Fraser Late","Lower Columbia R. spring","Lower Georgia Strait","North Puget Sound spring","Oregon Coast","Puget Sound/Hood Canal summer/fall fingerling","Puget Sound/Hood Canal summer/fall yearling","Sacramento/Central Valley","Washington Coast","West Coast Vancouver Island"],["ColRTule","ColRUpriver","FraserEarly","FraserLate","LColRSpr","LGS","NPSSprng","ORCoast","PSHCfng","PSHCyrl","Sacramento","WACoast","WCVI"],[102,36,1,33,5,51,14,3,156,4,234,13,7],["1,037","1,307","225","729","192","315","265","215","3,024","226","3,313","229","79"],["265","2,883","385","321","580","220","229","992","2,196","349","296","2,901","414"],["26","590","7","5","156","9","21","407","74","24","2","2,253","115"],["Lower River hatchery and natural tules, Bonneville Pool tules","All Columbia River bright stocks (URB, upper Col. R summers, Lower R. wild)","Fraser Early all","Fraser Late all","Lower Columbia (Cowlitz, Kalama, Lewis) and Willamette spring stocks","Lower Georgia Strait hatchery/natural fall stocks","Skagit, Nooksack spring stocks","Oregon Coast fall stocks (NOC/MOC)","All Puget Sound/Hood Canal summer/fall fingerling stocks","All Puget Sound/Hood Canal summer/fall yearling stocks","Sacramento/Central Valley stocks","Willapa Bay, Grays Harbor, WA North Coast, etc.","West Coast Vancouver Island hatchery/natural (Robertson stock)"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Regional.Aggregate<\/th>\n      <th>Region<\/th>\n      <th>N.Age.2<\/th>\n      <th>N.Age.3<\/th>\n      <th>N.Age.4<\/th>\n      <th>N.Age.5.<\/th>\n      <th>Stocks.included<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","buttons":["copy","csv","excel","pdf","print"],"columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>VBparams&lt;-as.data.frame(read.csv(&quot;./objects/VBparams.csv&quot;, header = TRUE))|&gt;
   DT::datatable(filter = &#39;top&#39;,
                 extensions = &#39;Buttons&#39;,
@@ -744,12 +756,12 @@ less 5K burn-in period) on each of three chains.
 </caption>
 </p>
 <pre class="r"><code>VBparams</code></pre>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-24c59d4160ad52586b22" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-24c59d4160ad52586b22">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13"],["ColRTule","ColRUpriver","FraserEarly","FraserLate","LColRSpr","LGS","NPSSprng","ORCoast","PSHCfng","PSHCyrl","Sacramento","WACoast","WCVI"],["988  (854-1228)","950  (856-1166)","982  (842-1223)","1060  (926-1441)","1003  (871-1233)","955  (835-1152)","965  (836-1227)","954  (869-1123)","957  (841-1210)","960  (828-1292)","1134  (995-1483)","992  (907-1171)","964  (842-1166)"],["0.043  (0.024-0.071)","0.037  (0.022-0.053)","0.042  (0.024-0.07)","0.039  (0.02-0.058)","0.045  (0.026-0.077)","0.043  (0.025-0.071)","0.039  (0.022-0.058)","0.041  (0.024-0.061)","0.04  (0.023-0.062)","0.038  (0.021-0.057)","0.039  (0.021-0.056)","0.04  (0.024-0.057)","0.042  (0.024-0.065)"],["5.4  (-2.1-10.3)","7  (-0.7-12.7)","4.9  (-4.3-11.1)","6.3  (-1.3-11.9)","3  (-5.4-9.1)","4.4  (-4.0-9.7)","6.4  (-1.7-12.2)","5.4  (-4.3-11.6)","5.3  (-1.2-9.5)","7.1  (-0.6-13.9)","8.4  (2.8-11.6)","6.3  (-2.7-12)","5.3  (-4.7-11.5)"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Region<\/th>\n      <th>l.<\/th>\n      <th>k<\/th>\n      <th>t0<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","rownames":false,"buttons":["copy","csv","excel","pdf","print"],"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7f2d825ef4ec0fe8eb9e" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7f2d825ef4ec0fe8eb9e">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13"],["ColRTule","ColRUpriver","FraserEarly","FraserLate","LColRSpr","LGS","NPSSprng","ORCoast","PSHCfng","PSHCyrl","Sacramento","WACoast","WCVI"],["988  (854-1228)","950  (856-1166)","982  (842-1223)","1060  (926-1441)","1003  (871-1233)","955  (835-1152)","965  (836-1227)","954  (869-1123)","957  (841-1210)","960  (828-1292)","1134  (995-1483)","992  (907-1171)","964  (842-1166)"],["0.043  (0.024-0.071)","0.037  (0.022-0.053)","0.042  (0.024-0.07)","0.039  (0.02-0.058)","0.045  (0.026-0.077)","0.043  (0.025-0.071)","0.039  (0.022-0.058)","0.041  (0.024-0.061)","0.04  (0.023-0.062)","0.038  (0.021-0.057)","0.039  (0.021-0.056)","0.04  (0.024-0.057)","0.042  (0.024-0.065)"],["5.4  (-2.1-10.3)","7  (-0.7-12.7)","4.9  (-4.3-11.1)","6.3  (-1.3-11.9)","3  (-5.4-9.1)","4.4  (-4.0-9.7)","6.4  (-1.7-12.2)","5.4  (-4.3-11.6)","5.3  (-1.2-9.5)","7.1  (-0.6-13.9)","8.4  (2.8-11.6)","6.3  (-2.7-12)","5.3  (-4.7-11.5)"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Region<\/th>\n      <th>l.<\/th>\n      <th>k<\/th>\n      <th>t0<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","rownames":false,"buttons":["copy","csv","excel","pdf","print"],"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
 <p><br></p>
 <div class="float">
-<img src="images/ForkLenght.png" alt="Fork Length" />
-<div class="figcaption">Fork Length</div>
+<img src="images/ForkLenght.png" alt="Figurexxx. Fork Length" />
+<div class="figcaption">Figurexxx. Fork Length</div>
 </div>
 <p>Growth functions for regional aggregates of FRAM model stocks. In
 each figure, white circles represent individual observations whereas red
@@ -761,31 +773,23 @@ reflects the VBGF parameterization resulting from withholding two
 Sacramento outliers.</p>
 <p><br></p>
 <div class="float">
-<img src="images/ObsPreFL.png" alt="???" />
-<div class="figcaption">???</div>
+<img src="images/ObsPreFL.png"
+alt="Figurexxx. Oberved vs. Predicted Fork Lenghts" />
+<div class="figcaption">Figurexxx. Oberved vs. Predicted Fork
+Lenghts</div>
 </div>
 <p>VBGF-predicted vs. observed fork length by stock-month observation. A
 posterior predictive check indicated good correspondence between the
 model and data (Bayesian P-value = 0.52).</p>
 <p><br></p>
 <div class="float">
-<img src="CV%20Lenght%20at%20Age.png" alt="CV Length at Age" />
-<div class="figcaption">CV Length at Age</div>
+<img src="CV%20Lenght%20at%20Age.png"
+alt="Figurexxx.CV Length at Age" />
+<div class="figcaption">Figurexxx.CV Length at Age</div>
 </div>
 <p>Coefficient of variation associated with monthly length-at-age
 estimates.</p>
 </div>
-</div>
-<div id="minimum-size-limit" class="section level2">
-<h2>Minimum Size Limit</h2>
-<p>The proportion of Chinook encounters that can legally be retained in
-a fishery is a function of the
-<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Size_Limit:" target="_blank">Minimum
-Size Limits</a>. Minimum size limits by fishery, year, and time step are
-stored for all inbase and OOB fishing years in database table
-<code>SizeLimits</code> of the calibration database. See Appendix for
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Minimum Size Limits:" target="_blank">Minimum
-Size Limits</a>.</p>
 </div>
 <div id="incidental-mortality" class="section level2">
 <h2>Incidental Mortality</h2>
@@ -808,41 +812,100 @@ studies. Hook and line drop-off mortality rates are calculated as 5% of
 landed catch. Net drop-out mortality rates vary between 0-3% of landed
 catch depending on whether gear is purse seine, gill net or reef net.
 See Appendix for
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Incidental_Mortality_Rates:" target="_blank">drop-off/drop-out
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Incidental_Mortality_Rates" target="_blank">drop-off/drop-out
 mortality rates</a>. See Appendix for
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Sublegal_Mortality_Rates:" target="_blank">release
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Sublegal_Mortality_Rates" target="_blank">release
 mortality rates</a>.</p>
+</div>
+<div id="landed-catch" class="section level2">
+<h2>Landed Catch</h2>
+<p>Derek<br>
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Catches" target="_blank">Base
+Period Marked Catches</a> table for marked and
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Catches" target="_blank">Base
+Period Total Catches</a> for total (marked + unmarked) in Appendix.</p>
+</div>
+<div id="minimum-size-limit" class="section level2">
+<h2>Minimum Size Limit</h2>
+<p>The proportion of Chinook encounters that can legally be retained in
+a fishery is a function of the
+<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Size_Limit" target="_blank">Minimum
+Size Limits</a>. Minimum size limits by fishery, year, and time step are
+stored for all inbase and OOB fishing years in database table
+<code>SizeLimits</code> of the calibration database. See Appendix for
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Minimum Size Limits" target="_blank">Minimum
+Size Limits</a>.</p>
+</div>
+<div id="model-stock-proportion-msp" class="section level2">
+<h2>Model Stock Proportion (MSP)</h2>
+<p>MSP is the percentage of a fishery accounted for by stocks in the
+model. For a detailed description of MSP consult chapter
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Expand_CWTs_to_Match_Fishery_Catch" target="_blank">Expand
+CWTs to Match Fishery Catch</a>. MSPs are listed by fishery in tables
+<code>BasePeriodCatch</code> and <code>BasePeriodCatch_Tot</code>.
+Proportions are the same for all time steps of a fishery. See Appendix
+for
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Catches" target="_blank">marked
+MSP</a> and
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Catches" target="_blank">total
+(marked + unmarked) MSP</a>.</p>
 </div>
 <div id="natural-mortality" class="section level2">
 <h2>Natural Mortality</h2>
 <p>Rates for Chinook are age and time period specific and yield the same
 total annual natural mortality rate used in the
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Pacific_Salmon_Commission_(PSC):" target="_blank">PSC</a>
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Pacific_Salmon_Commission_(PSC)" target="_blank">PSC</a>
 Exploitation Rate Analysis. Rates are constants that when summed over
 all time steps result in natural mortalities of 10% for age-5s, 20% for
 age-4s, 30% for age-3s and 40% for age-2s. See Appendix for
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Natural_Mortality_Rates:" target="_blank">natural
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Natural_Mortality_Rates" target="_blank">natural
 mortality rates</a>.</p>
 </div>
 <div id="non-retention-encounters" class="section level2">
 <h2>Non Retention Encounters</h2>
+<p>See Appendix
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Marked_Non-Retention_Chinook_Encounters" target="_blank">Marked
+Non-Retention Chinook Encounters</a> and
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Total_(Marked_+_Unmarked)_Non-Retention_Chinook_Encounters" target="_blank">Total
+Non-Retention Chinook Encounters</a>.</p>
 </div>
-<div id="model-stock-proportion-msp" class="section level2">
-<h2>Model Stock Proportion (MSP)</h2>
-<p><a href="#MSP">MSP</a> (xxx) is the percentage of a fishery accounted
-for by stocks in the model. For a detailed description of MSP consult
-chapter <a href="#MSP2">Model Stock Proportion</a>. MSPs are listed by
-fishery in tables <code>BasePeriodCatch</code> and
-<code>BasePeriodCatch_Tot</code>. Proportions are the same for all time
-steps of a fishery. See Appendix for
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Catch:" target="_blank">marked
-MSP</a> and
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Catch:" target="_blank">total
-(marked + unmarked) MSP</a>.</p>
+<div id="stocks" class="section level2">
+<h2>Stocks</h2>
+<p>39 stock groups are represented in the calibration. Unlike the FRAM
+model that contains marked and unmarked stock components (for a total of
+78 stocks), each calibration stock is only represented by its marked
+component. When data is exported to FRAM, each marked stock is split
+into two identical units representing marked and unmarked stock
+components. See chapter
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_program_desc.html#Transferring_Output" target="_blank">Transferring
+Output</a> for more information.</p>
+<p>Model stocks may represent an individual salmon stock or an aggregate
+of stocks from the same region. Stock units represented in FRAM were
+chosen based on the level of management interest, their contribution to
+PFMC fisheries, and the availability of representative coded-wire tag
+(CWT) recoveries in the Regional Mark Information System (RMIS). For
+Chinook stock profiles listing hatcheries selected to represent the
+stock aggregate during calibration, tag codes, growth functions, etc,
+see Base Period Stock Profiles.</p>
+<p>Chinook FRAM includes most stock groups originating from the
+California Central Valley (Sacramento River), Oregon coast, Columbia
+River, Washington coast, Puget Sound, and Southern British Columbia.
+However, not all stocks along the West Coast of North America are
+represented. Some of the stocks that are not represented in Chinook FRAM
+include all those originating from California with the exception of
+Sacramento River fall Chinook, Oregon stocks originating south of Elk
+River, Mid and Upper Columbia River spring Chinook, Snake River spring
+and summer Chinook, and Canadian stocks originating north of Georgia
+Strait.</p>
+<p>Appendix
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Stocks" target="_blank">FRAM
+Chinook Stocks</a></p>
 </div>
 <div id="target-encounter-rates" class="section level2">
 <h2>Target Encounter Rates</h2>
-<p>Derek</p>
+<p>Derek&lt;&gt; Appendix table
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Target_Encounter_Rates" target="_blank">Target
+Encounter Rates</a></p>
 </div>
 <div id="terminal-fishery-flags" class="section level2">
 <h2>Terminal Fishery Flags</h2>
@@ -850,10 +913,11 @@ MSP</a> and
 pre-terminal (flag 0). Terminal fisheries operate on “mature” abundances
 and are therefore processed after maturation occurs. For a definition of
 terminal fisheries see the
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_glossary.html#Terminal_Fishery:" target="_blank">Glossary</a>.
-Terminal fisheries are listed in table <code>TerminalFisheryFlag</code>
-of the calibration database. See Appendix
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Terminal_Fishery_Flags:" target="_blank">Terminal
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_glossary.html#Terminal_Fishery" target="_blank">Terminal
+Fishery</a> description in the Glossary. Terminal fisheries are listed
+in table <code>TerminalFisheryFlag</code> of the calibration database.
+See Appendix
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Terminal_Fishery_Flags" target="_blank">Terminal
 Fishery Flags</a> for a list of terminal fisheries.</p>
 </div>
 <div id="time-steps" class="section level2">
@@ -863,23 +927,23 @@ management cycle year (May 1 to April 30) for Chinook is out of sync
 with the time at which most Chinook in the model age up (October 1),
 Chinook FRAM both begins and ends with an October to April time
 step.</p>
-<div id="owwroiywkf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#owwroiywkf table {
+<div id="gjtasozauk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gjtasozauk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#owwroiywkf thead, #owwroiywkf tbody, #owwroiywkf tfoot, #owwroiywkf tr, #owwroiywkf td, #owwroiywkf th {
+#gjtasozauk thead, #gjtasozauk tbody, #gjtasozauk tfoot, #gjtasozauk tr, #gjtasozauk td, #gjtasozauk th {
   border-style: none;
 }
 
-#owwroiywkf p {
+#gjtasozauk p {
   margin: 0;
   padding: 0;
 }
 
-#owwroiywkf .gt_table {
+#gjtasozauk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -905,12 +969,12 @@ step.</p>
   border-left-color: #D3D3D3;
 }
 
-#owwroiywkf .gt_caption {
+#gjtasozauk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#owwroiywkf .gt_title {
+#gjtasozauk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -922,7 +986,7 @@ step.</p>
   border-bottom-width: 0;
 }
 
-#owwroiywkf .gt_subtitle {
+#gjtasozauk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -934,7 +998,7 @@ step.</p>
   border-top-width: 0;
 }
 
-#owwroiywkf .gt_heading {
+#gjtasozauk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -946,13 +1010,13 @@ step.</p>
   border-right-color: #D3D3D3;
 }
 
-#owwroiywkf .gt_bottom_border {
+#gjtasozauk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#owwroiywkf .gt_col_headings {
+#gjtasozauk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -967,7 +1031,7 @@ step.</p>
   border-right-color: #D3D3D3;
 }
 
-#owwroiywkf .gt_col_heading {
+#gjtasozauk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -987,7 +1051,7 @@ step.</p>
   overflow-x: hidden;
 }
 
-#owwroiywkf .gt_column_spanner_outer {
+#gjtasozauk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -999,15 +1063,15 @@ step.</p>
   padding-right: 4px;
 }
 
-#owwroiywkf .gt_column_spanner_outer:first-child {
+#gjtasozauk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#owwroiywkf .gt_column_spanner_outer:last-child {
+#gjtasozauk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#owwroiywkf .gt_column_spanner {
+#gjtasozauk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1019,11 +1083,11 @@ step.</p>
   width: 100%;
 }
 
-#owwroiywkf .gt_spanner_row {
+#gjtasozauk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#owwroiywkf .gt_group_heading {
+#gjtasozauk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1049,7 +1113,7 @@ step.</p>
   text-align: left;
 }
 
-#owwroiywkf .gt_empty_group_heading {
+#gjtasozauk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1064,15 +1128,15 @@ step.</p>
   vertical-align: middle;
 }
 
-#owwroiywkf .gt_from_md > :first-child {
+#gjtasozauk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#owwroiywkf .gt_from_md > :last-child {
+#gjtasozauk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#owwroiywkf .gt_row {
+#gjtasozauk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1091,7 +1155,7 @@ step.</p>
   overflow-x: hidden;
 }
 
-#owwroiywkf .gt_stub {
+#gjtasozauk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1104,7 +1168,7 @@ step.</p>
   padding-right: 5px;
 }
 
-#owwroiywkf .gt_stub_row_group {
+#gjtasozauk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1118,15 +1182,15 @@ step.</p>
   vertical-align: top;
 }
 
-#owwroiywkf .gt_row_group_first td {
+#gjtasozauk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#owwroiywkf .gt_row_group_first th {
+#gjtasozauk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#owwroiywkf .gt_summary_row {
+#gjtasozauk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1136,16 +1200,16 @@ step.</p>
   padding-right: 5px;
 }
 
-#owwroiywkf .gt_first_summary_row {
+#gjtasozauk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#owwroiywkf .gt_first_summary_row.thick {
+#gjtasozauk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#owwroiywkf .gt_last_summary_row {
+#gjtasozauk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1155,7 +1219,7 @@ step.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#owwroiywkf .gt_grand_summary_row {
+#gjtasozauk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1165,7 +1229,7 @@ step.</p>
   padding-right: 5px;
 }
 
-#owwroiywkf .gt_first_grand_summary_row {
+#gjtasozauk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1175,7 +1239,7 @@ step.</p>
   border-top-color: #D3D3D3;
 }
 
-#owwroiywkf .gt_last_grand_summary_row_top {
+#gjtasozauk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1185,11 +1249,11 @@ step.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#owwroiywkf .gt_striped {
+#gjtasozauk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#owwroiywkf .gt_table_body {
+#gjtasozauk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1198,7 +1262,7 @@ step.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#owwroiywkf .gt_footnotes {
+#gjtasozauk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1212,7 +1276,7 @@ step.</p>
   border-right-color: #D3D3D3;
 }
 
-#owwroiywkf .gt_footnote {
+#gjtasozauk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1221,7 +1285,7 @@ step.</p>
   padding-right: 5px;
 }
 
-#owwroiywkf .gt_sourcenotes {
+#gjtasozauk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1235,7 +1299,7 @@ step.</p>
   border-right-color: #D3D3D3;
 }
 
-#owwroiywkf .gt_sourcenote {
+#gjtasozauk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1243,63 +1307,63 @@ step.</p>
   padding-right: 5px;
 }
 
-#owwroiywkf .gt_left {
+#gjtasozauk .gt_left {
   text-align: left;
 }
 
-#owwroiywkf .gt_center {
+#gjtasozauk .gt_center {
   text-align: center;
 }
 
-#owwroiywkf .gt_right {
+#gjtasozauk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#owwroiywkf .gt_font_normal {
+#gjtasozauk .gt_font_normal {
   font-weight: normal;
 }
 
-#owwroiywkf .gt_font_bold {
+#gjtasozauk .gt_font_bold {
   font-weight: bold;
 }
 
-#owwroiywkf .gt_font_italic {
+#gjtasozauk .gt_font_italic {
   font-style: italic;
 }
 
-#owwroiywkf .gt_super {
+#gjtasozauk .gt_super {
   font-size: 65%;
 }
 
-#owwroiywkf .gt_footnote_marks {
+#gjtasozauk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#owwroiywkf .gt_asterisk {
+#gjtasozauk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#owwroiywkf .gt_indent_1 {
+#gjtasozauk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#owwroiywkf .gt_indent_2 {
+#gjtasozauk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#owwroiywkf .gt_indent_3 {
+#gjtasozauk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#owwroiywkf .gt_indent_4 {
+#gjtasozauk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#owwroiywkf .gt_indent_5 {
+#gjtasozauk .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1329,21 +1393,22 @@ step.</p>
 </table>
 </div>
 <p>See chapter
-<a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#Time_Steps:" target="_blank">Time
+<a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#Time_Steps" target="_blank">Time
 Steps</a> under Model Detail for more information.</p>
 </div>
 </div>
 <div id="model-output-data" class="section level1">
 <h1>Model Output Data</h1>
-<p>The main product of a calibration are base period exploitation rates
-that enable assignments of fishery catches to individual stocks.
-Similarily, the calibration also produces encounter rates on
+<p>Angelika<br> The main product of a calibration are base period
+exploitation rates that enable assignments of fishery catches to
+individual stocks. Similarly, the calibration also produces encounter
+rates on
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">sublegal</a>
 fish. Since sublegal fish are released, encounter rates can be converted
 to exploitation rates by applying a release mortality rate. Other
 outputs are maturation rates, AEQ mortality rates, and base period
 cohort sizes. All output parameters are discussed in the
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html:" target="_blank">Calibration
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html" target="_blank">Calibration
 Processing</a> section of this documentation.</p>
 <p>After output parameters are computed in the calibration, they are
 <a href="https:// framverse.github.io/fram_doc/base_chin_doc_program_desc.html#Transferring_Output" target="_blank">exported
@@ -1353,25 +1418,24 @@ to a transfer file</a> for easy import into FRAM. During this step the
 </a> are converted into 78 marked and unmarked FRAM stocks</strong>.
 This is accomplished by <strong>duplicating</strong> all stock specific
 parameters; i.e., calibration stock 1 Nooksack/Samish becomes FRAM stock
-1 (unmarked Nooksack/Samish) and 2 (marked Nooksack/Samish).
-Angelika</p>
-<div id="base-period-exploitation-rates" class="section level2">
-<h2>Base Period Exploitation Rates</h2>
-</div>
-<div id="sublegal-encounter-rates" class="section level2">
-<h2>Sublegal Encounter Rates</h2>
-</div>
-<div id="maturation-rates" class="section level2">
-<h2>Maturation Rates</h2>
-</div>
+1 (unmarked Nooksack/Samish) and 2 (marked Nooksack/Samish).</p>
 <div id="aeq-mortality-rates" class="section level2">
 <h2>AEQ Mortality Rates</h2>
 </div>
 <div id="base-period-cohort" class="section level2">
 <h2>Base Period Cohort</h2>
 </div>
+<div id="base-period-exploitation-rates" class="section level2">
+<h2>Base Period Exploitation Rates</h2>
+</div>
 <div id="fishery-model-stock-proportion" class="section level2">
 <h2>Fishery Model Stock Proportion</h2>
+</div>
+<div id="maturation-rates" class="section level2">
+<h2>Maturation Rates</h2>
+</div>
+<div id="sublegal-encounter-rates" class="section level2">
+<h2>Sublegal Encounter Rates</h2>
 <script>MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } }; </script>
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </div>
