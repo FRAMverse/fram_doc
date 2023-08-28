@@ -529,7 +529,7 @@ SizeL
 
 #### FRAM Chinook Stocks
 ```{r Stocks,  results='asis'}
-Stocks<-as.data.frame(read.csv("objects/Stock.csv"), header = TRUE)|>
+Stocks<-as.data.frame(read.csv("objects/Stocks.csv"), header = TRUE)|>
  	 DT::datatable(filter = 'top',
                 extensions = 'Buttons',
                 options = list(

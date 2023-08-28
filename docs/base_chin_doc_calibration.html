@@ -630,28 +630,38 @@ Figurecalplotxxx Calibration Overview
 <div id="variables-and-notation" class="section level3">
 <h3>Variables and Notation</h3>
 <ul>
-<li><p><strong>a:</strong> Age in years (2 to 5) ‘Birthday’ is assumed
-to occur on October 1.</p></li>
+<li><p><strong>a:</strong>
+<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Age" target="_blank">Age</a>
+in years (2 to 5).</p></li>
 <li><p><strong>AEQ<sub>s,a,t</sub>:</strong> Adult Equivalence by stock,
 age, and time step. The probability that a fish will survive to spawn in
-the absence of future fishing (output to the OUT file).</p></li>
-<li><p><strong>BPEscape<sub>s,a,t</sub>:</strong> Base period CWT
-recoveries by stock, age, and time step in
-<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target="_blank">escapement</a>
-estimated using forward cohort analysis and exploitation rate scale
-factors.</p></li>
+the absence of future fishing (calibration output). For more information
+see
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_data.html#AEQ_Mortality_Rates" target="_blank">AEQ_Mortality_Rates</a>
+in the Data chapter.</p></li>
+<li><p><strong>BPEscape<sub>s</sub>:</strong>Marked as well as total
+<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target="_blank">escapements</a>
+were provided by regional experts for each Chinook stock.For the purpose
+of calibration, escapement includes freshwater catch. For more
+escapement information see
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_data.html#Escapements" target="_blank">Escapements</a>
+in the “Data” chapter.</p></li>
 <li><p><strong>BPObsCatch<sub>f</sub>:</strong> Observed catch by
-fishery during the base period (input).</p></li>
-<li><p><strong>BPPTCatch<sub>s,a,f,t</sub>:</strong> Base period CWT
+fishery during the base period (input). For more information see
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_data.html#Landed_Catch" target="_blank">Landed
+Catch</a> in the “Data” chapter.</p></li>
+<li><p><strong>BPPTCatch<sub>s,a,f,t</sub>:</strong> Base period
+<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" title="blank" >CWT</a>
 recoveries in
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Pre-terminal_Fishery" target="_blank">preterminal</a>
 fisheries by stock, age, and time step estimated using forward cohort
 analysis and exploitation rate scale factors.</p></li>
-<li><p><strong>BPTermCatch<sub>s,a,f,t</sub>:</strong> Base period CWT
+<li><p><strong>BPTermCatch<sub>s,a,f,t</sub>:</strong> Base period
+<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" title="blank" >CWT</a>
 recoveries in
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Fishery" target="_blank">terminal</a>
-fisheries by stock, age, and time step estimated using forward cohort
-analysis and exploitation rate scale factors.</p></li>
+fisheries by stock, age, and time step estimated using cohort
+analysis.</p></li>
 <li><p><strong>CNRLeg<sub>s,a,f,t</sub>:</strong>
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">Legal
 size</a> release mortality of a stock and age in a non-retention fishery
@@ -1002,23 +1012,23 @@ within RMIS and is a function of the total number of Chinook caught
 during the sampling period divided by the number of Chinook sampled
 during the sampling period. The following information comes from <a
 href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
-<div id="wzppwvqgif" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wzppwvqgif table {
+<div id="boqaitgvef" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#boqaitgvef table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wzppwvqgif thead, #wzppwvqgif tbody, #wzppwvqgif tfoot, #wzppwvqgif tr, #wzppwvqgif td, #wzppwvqgif th {
+#boqaitgvef thead, #boqaitgvef tbody, #boqaitgvef tfoot, #boqaitgvef tr, #boqaitgvef td, #boqaitgvef th {
   border-style: none;
 }
 
-#wzppwvqgif p {
+#boqaitgvef p {
   margin: 0;
   padding: 0;
 }
 
-#wzppwvqgif .gt_table {
+#boqaitgvef .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1044,12 +1054,12 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-left-color: #D3D3D3;
 }
 
-#wzppwvqgif .gt_caption {
+#boqaitgvef .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wzppwvqgif .gt_title {
+#boqaitgvef .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1061,7 +1071,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-bottom-width: 0;
 }
 
-#wzppwvqgif .gt_subtitle {
+#boqaitgvef .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1073,7 +1083,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-top-width: 0;
 }
 
-#wzppwvqgif .gt_heading {
+#boqaitgvef .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1085,13 +1095,13 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-right-color: #D3D3D3;
 }
 
-#wzppwvqgif .gt_bottom_border {
+#boqaitgvef .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wzppwvqgif .gt_col_headings {
+#boqaitgvef .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1106,7 +1116,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-right-color: #D3D3D3;
 }
 
-#wzppwvqgif .gt_col_heading {
+#boqaitgvef .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1126,7 +1136,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   overflow-x: hidden;
 }
 
-#wzppwvqgif .gt_column_spanner_outer {
+#boqaitgvef .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1138,15 +1148,15 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 4px;
 }
 
-#wzppwvqgif .gt_column_spanner_outer:first-child {
+#boqaitgvef .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wzppwvqgif .gt_column_spanner_outer:last-child {
+#boqaitgvef .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wzppwvqgif .gt_column_spanner {
+#boqaitgvef .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1158,11 +1168,11 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   width: 100%;
 }
 
-#wzppwvqgif .gt_spanner_row {
+#boqaitgvef .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wzppwvqgif .gt_group_heading {
+#boqaitgvef .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1188,7 +1198,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   text-align: left;
 }
 
-#wzppwvqgif .gt_empty_group_heading {
+#boqaitgvef .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1203,15 +1213,15 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   vertical-align: middle;
 }
 
-#wzppwvqgif .gt_from_md > :first-child {
+#boqaitgvef .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wzppwvqgif .gt_from_md > :last-child {
+#boqaitgvef .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wzppwvqgif .gt_row {
+#boqaitgvef .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1230,7 +1240,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   overflow-x: hidden;
 }
 
-#wzppwvqgif .gt_stub {
+#boqaitgvef .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1243,7 +1253,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 5px;
 }
 
-#wzppwvqgif .gt_stub_row_group {
+#boqaitgvef .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1257,15 +1267,15 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   vertical-align: top;
 }
 
-#wzppwvqgif .gt_row_group_first td {
+#boqaitgvef .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wzppwvqgif .gt_row_group_first th {
+#boqaitgvef .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wzppwvqgif .gt_summary_row {
+#boqaitgvef .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1275,16 +1285,16 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 5px;
 }
 
-#wzppwvqgif .gt_first_summary_row {
+#boqaitgvef .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wzppwvqgif .gt_first_summary_row.thick {
+#boqaitgvef .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wzppwvqgif .gt_last_summary_row {
+#boqaitgvef .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1294,7 +1304,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#wzppwvqgif .gt_grand_summary_row {
+#boqaitgvef .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1304,7 +1314,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 5px;
 }
 
-#wzppwvqgif .gt_first_grand_summary_row {
+#boqaitgvef .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1314,7 +1324,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-top-color: #D3D3D3;
 }
 
-#wzppwvqgif .gt_last_grand_summary_row_top {
+#boqaitgvef .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1324,11 +1334,11 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#wzppwvqgif .gt_striped {
+#boqaitgvef .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wzppwvqgif .gt_table_body {
+#boqaitgvef .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1337,7 +1347,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#wzppwvqgif .gt_footnotes {
+#boqaitgvef .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1351,7 +1361,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-right-color: #D3D3D3;
 }
 
-#wzppwvqgif .gt_footnote {
+#boqaitgvef .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1360,7 +1370,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 5px;
 }
 
-#wzppwvqgif .gt_sourcenotes {
+#boqaitgvef .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1374,7 +1384,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-right-color: #D3D3D3;
 }
 
-#wzppwvqgif .gt_sourcenote {
+#boqaitgvef .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1382,63 +1392,63 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 5px;
 }
 
-#wzppwvqgif .gt_left {
+#boqaitgvef .gt_left {
   text-align: left;
 }
 
-#wzppwvqgif .gt_center {
+#boqaitgvef .gt_center {
   text-align: center;
 }
 
-#wzppwvqgif .gt_right {
+#boqaitgvef .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wzppwvqgif .gt_font_normal {
+#boqaitgvef .gt_font_normal {
   font-weight: normal;
 }
 
-#wzppwvqgif .gt_font_bold {
+#boqaitgvef .gt_font_bold {
   font-weight: bold;
 }
 
-#wzppwvqgif .gt_font_italic {
+#boqaitgvef .gt_font_italic {
   font-style: italic;
 }
 
-#wzppwvqgif .gt_super {
+#boqaitgvef .gt_super {
   font-size: 65%;
 }
 
-#wzppwvqgif .gt_footnote_marks {
+#boqaitgvef .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wzppwvqgif .gt_asterisk {
+#boqaitgvef .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wzppwvqgif .gt_indent_1 {
+#boqaitgvef .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wzppwvqgif .gt_indent_2 {
+#boqaitgvef .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wzppwvqgif .gt_indent_3 {
+#boqaitgvef .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wzppwvqgif .gt_indent_4 {
+#boqaitgvef .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wzppwvqgif .gt_indent_5 {
+#boqaitgvef .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1476,23 +1486,23 @@ href="http://www.rmpc.org/files/RegionalOverviewProfPaper-30May04.pdf">here</a>.
 <p>For the example tag, the table below demonstrates that the brood year
 expansion applied should be 1.02. The brood year expanded value of the
 example recovery becomes 7.11 (6.97 * 1.02).</p>
-<div id="fiqkavuecg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fiqkavuecg table {
+<div id="cuknjqbzjm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cuknjqbzjm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fiqkavuecg thead, #fiqkavuecg tbody, #fiqkavuecg tfoot, #fiqkavuecg tr, #fiqkavuecg td, #fiqkavuecg th {
+#cuknjqbzjm thead, #cuknjqbzjm tbody, #cuknjqbzjm tfoot, #cuknjqbzjm tr, #cuknjqbzjm td, #cuknjqbzjm th {
   border-style: none;
 }
 
-#fiqkavuecg p {
+#cuknjqbzjm p {
   margin: 0;
   padding: 0;
 }
 
-#fiqkavuecg .gt_table {
+#cuknjqbzjm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1518,12 +1528,12 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-left-color: #D3D3D3;
 }
 
-#fiqkavuecg .gt_caption {
+#cuknjqbzjm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fiqkavuecg .gt_title {
+#cuknjqbzjm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1535,7 +1545,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-bottom-width: 0;
 }
 
-#fiqkavuecg .gt_subtitle {
+#cuknjqbzjm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1547,7 +1557,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-top-width: 0;
 }
 
-#fiqkavuecg .gt_heading {
+#cuknjqbzjm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1559,13 +1569,13 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-right-color: #D3D3D3;
 }
 
-#fiqkavuecg .gt_bottom_border {
+#cuknjqbzjm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fiqkavuecg .gt_col_headings {
+#cuknjqbzjm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1580,7 +1590,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-right-color: #D3D3D3;
 }
 
-#fiqkavuecg .gt_col_heading {
+#cuknjqbzjm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1600,7 +1610,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   overflow-x: hidden;
 }
 
-#fiqkavuecg .gt_column_spanner_outer {
+#cuknjqbzjm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1612,15 +1622,15 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 4px;
 }
 
-#fiqkavuecg .gt_column_spanner_outer:first-child {
+#cuknjqbzjm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fiqkavuecg .gt_column_spanner_outer:last-child {
+#cuknjqbzjm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fiqkavuecg .gt_column_spanner {
+#cuknjqbzjm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1632,11 +1642,11 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   width: 100%;
 }
 
-#fiqkavuecg .gt_spanner_row {
+#cuknjqbzjm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fiqkavuecg .gt_group_heading {
+#cuknjqbzjm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1662,7 +1672,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   text-align: left;
 }
 
-#fiqkavuecg .gt_empty_group_heading {
+#cuknjqbzjm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1677,15 +1687,15 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   vertical-align: middle;
 }
 
-#fiqkavuecg .gt_from_md > :first-child {
+#cuknjqbzjm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fiqkavuecg .gt_from_md > :last-child {
+#cuknjqbzjm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fiqkavuecg .gt_row {
+#cuknjqbzjm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1704,7 +1714,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   overflow-x: hidden;
 }
 
-#fiqkavuecg .gt_stub {
+#cuknjqbzjm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1717,7 +1727,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 5px;
 }
 
-#fiqkavuecg .gt_stub_row_group {
+#cuknjqbzjm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1731,15 +1741,15 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   vertical-align: top;
 }
 
-#fiqkavuecg .gt_row_group_first td {
+#cuknjqbzjm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fiqkavuecg .gt_row_group_first th {
+#cuknjqbzjm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fiqkavuecg .gt_summary_row {
+#cuknjqbzjm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1749,16 +1759,16 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 5px;
 }
 
-#fiqkavuecg .gt_first_summary_row {
+#cuknjqbzjm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fiqkavuecg .gt_first_summary_row.thick {
+#cuknjqbzjm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fiqkavuecg .gt_last_summary_row {
+#cuknjqbzjm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1768,7 +1778,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fiqkavuecg .gt_grand_summary_row {
+#cuknjqbzjm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1778,7 +1788,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 5px;
 }
 
-#fiqkavuecg .gt_first_grand_summary_row {
+#cuknjqbzjm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1788,7 +1798,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-top-color: #D3D3D3;
 }
 
-#fiqkavuecg .gt_last_grand_summary_row_top {
+#cuknjqbzjm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1798,11 +1808,11 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fiqkavuecg .gt_striped {
+#cuknjqbzjm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fiqkavuecg .gt_table_body {
+#cuknjqbzjm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1811,7 +1821,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fiqkavuecg .gt_footnotes {
+#cuknjqbzjm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1825,7 +1835,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-right-color: #D3D3D3;
 }
 
-#fiqkavuecg .gt_footnote {
+#cuknjqbzjm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1834,7 +1844,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 5px;
 }
 
-#fiqkavuecg .gt_sourcenotes {
+#cuknjqbzjm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1848,7 +1858,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-right-color: #D3D3D3;
 }
 
-#fiqkavuecg .gt_sourcenote {
+#cuknjqbzjm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1856,63 +1866,63 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 5px;
 }
 
-#fiqkavuecg .gt_left {
+#cuknjqbzjm .gt_left {
   text-align: left;
 }
 
-#fiqkavuecg .gt_center {
+#cuknjqbzjm .gt_center {
   text-align: center;
 }
 
-#fiqkavuecg .gt_right {
+#cuknjqbzjm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fiqkavuecg .gt_font_normal {
+#cuknjqbzjm .gt_font_normal {
   font-weight: normal;
 }
 
-#fiqkavuecg .gt_font_bold {
+#cuknjqbzjm .gt_font_bold {
   font-weight: bold;
 }
 
-#fiqkavuecg .gt_font_italic {
+#cuknjqbzjm .gt_font_italic {
   font-style: italic;
 }
 
-#fiqkavuecg .gt_super {
+#cuknjqbzjm .gt_super {
   font-size: 65%;
 }
 
-#fiqkavuecg .gt_footnote_marks {
+#cuknjqbzjm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fiqkavuecg .gt_asterisk {
+#cuknjqbzjm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fiqkavuecg .gt_indent_1 {
+#cuknjqbzjm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fiqkavuecg .gt_indent_2 {
+#cuknjqbzjm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fiqkavuecg .gt_indent_3 {
+#cuknjqbzjm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fiqkavuecg .gt_indent_4 {
+#cuknjqbzjm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fiqkavuecg .gt_indent_5 {
+#cuknjqbzjm .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2062,16 +2072,16 @@ class="math display"><em>C</em><em>N</em><em>R</em><em>M</em><em>o</em><em>r</em
 </div>
 <div id="backwards-cohort-reconstruction" class="section level3">
 <h3><span id="CoRecon">Backwards Cohort Reconstruction</span></h3>
-<p>After all CWT expansions have been applied, Cohort reconstruction
-occurs “backwards” such that, for each stock, it begins with age 5
-Chinook in the final time step, progressing through descending time
-steps and ages with the age 2, time step 1 cohort calculated last.
-First, escapement of age 5 Chinook in time step 3 for a given stock is
-calculated by summing over escapement CWT recoveries. Note that
-escapement recoveries also include recoveries from freshwater fisheries
-(see <a href="#xxx">FRAMBuilder</a>). This is used as a starting value
-to which terminal fishery mortalities are later added. Total
-pre-terminal and terminal mortalities are calculated separately by
+<p>After all CWT expansions have been applied, a traditional cohort
+reconstruction occurs “backwards” such that for each stock, it begins
+with age 5 Chinook in the final time step, progressing through
+descending time steps and ages with the age 2, time step 1 cohort
+calculated last. First, escapement of age 5 Chinook in time step 3 for a
+given stock is calculated by summing over escapement CWT recoveries.
+Note that escapement recoveries also include recoveries from freshwater
+fisheries (see <a href="#xxx">FRAMBuilder</a>). This is used as a
+starting value to which terminal fishery mortalities are later added.
+Total pre-terminal and terminal mortalities are calculated separately by
 looping through every fishery within a time step and adding expanded
 CWTs adjusted for other mortality (dropoff/dropout; expressed as a
 percentage of catch; found in the <a href="#Inc">IncidentalRate</a>
@@ -2202,55 +2212,18 @@ FRAM “validation” runs.</p>
 Figure xxx Out-of-Base Procedures
 </p>
 </div>
-<p><strong>OOB Procedure Steps</strong></p>
-<ul>
-<li><p>Sum CWTs from FRAMBuilder over fisheries and escapement without
-further expanding (no escapement and fisheries expansions).</p></li>
-<li><p>Compute sublegal mortalities</p>
-<ul>
-<li><p>For OOB stocks sublegal encounters of the stock in a fishery are
-set at the landed catch; i.e., CWT recoveries from FRAMBuilder summed
-within a fishery and time step. These encounters are then split into
-ages by calculating the proportion of stock/age that is of sublegal size
-and multiplying times the cohort size of the stock age. <br> Equationxxx
-<span
-class="math display"><em>S</em><em>u</em><em>b</em><em>l</em><em>e</em><em>g</em><em>a</em><em>l</em><em>s</em><sub><em>a</em></sub> = <em>C</em><em>o</em><em>h</em><em>o</em><em>r</em><em>t</em><sub><em>a</em></sub> * <em>S</em><em>u</em><em>b</em><em>L</em><em>e</em><em>g</em><em>P</em><em>r</em><em>o</em><em>p</em><sub><em>a</em></sub></span>
-Where the proportion sublegal (SubLegProp) is calculated as in chapter
-<a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#45_Size_Limit_Evaluations">
-Size Limit Evaluations </a> (equation xxx)</p></li>
-<li><p>When summed over all ages, the age proportions are then
-calculated as:<br> equation xxx <span
-class="math display">$$Proportion_{a} = \frac{Sublegals_a}{\sum_a
-Sublegals_a}$$</span></p></li>
-<li><p>Sublegal mortalities are then calculated as: <br> equation xxx
-<span
-class="math display"><em>S</em><em>h</em><em>a</em><em>k</em><em>e</em><em>r</em><em>s</em><sub><em>s</em>, <em>a</em>, <em>f</em>, <em>t</em></sub> = <em>E</em><em>n</em><em>c</em><em>o</em><em>u</em><em>n</em><em>t</em><em>e</em><em>r</em><em>s</em><sub><em>s</em>, <em>f</em>, <em>t</em></sub> * <em>P</em><em>r</em><em>o</em><em>p</em><em>o</em><em>r</em><em>t</em><em>i</em><em>o</em><em>n</em><sub><em>a</em></sub> * <em>S</em><em>h</em><em>a</em><em>k</em><em>e</em><em>r</em><em>R</em><em>e</em><em>l</em><em>e</em><em>a</em><em>s</em><em>e</em><em>M</em><em>o</em><em>r</em><em>t</em><em>a</em><em>l</em><em>i</em><em>t</em><em>y</em><em>R</em><em>a</em><em>t</em><em>e</em><sub><em>f</em>, <em>t</em></sub></span></p></li>
-</ul></li>
-<li><p>Cohort reconstruction<br> The cohort is reconstructed as
-described in chapter
+<div id="forward-cohort-reconstruction" class="section level4">
+<h4>Forward Cohort Reconstruction</h4>
+<p>The “Forward Cohort Reconstruction” is unique to out-of-base
+procedures. The method is instrumental to calculating simulated CWT
+recoveries. Unlike the
 <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Backwards_Cohort_Reconstruction">
-Backwards Cohort Reconstruction </a>. The cohort size is needed to
-calculate sublegal encounters, legal exploitation rates, and maturation
-rates.</p></li>
-<li><p>Check convergence <br> Computing sublegal mortalities and
-calculating the cohort are iterative steps, because sublegal mortalities
-are a function of the cohort size and the cohort size is dependent on
-sublegal mortalities. These steps are repeated until age-2 abundances
-converge. This occurs when abundances differ by less than 1%.</p></li>
-<li><p>Calculate maturation rates and OOB exploitation rates<br />
-See
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Calculating Exploitation Rates">
-Maturation Rates </a>(xxx) and
-<a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Maturation Rate Calculations">
-Exploitation Rates </a>(xxx) for calculations.</p></li>
-<li><p>Start iterative cycle to integrate OOB catches with in-base
-CWTs</p>
-<ul>
-<li><p>Conduct a “Forward Cohort Reconstruction” <br> The purpose of the
-forward cohort reconstruction (start with age 2 time 1) is to produce
-catches and escapements that are adjusted for in-base fishing effort
-(new base period) in order to combine them with in-base CWT
-recoveries.</p>
+Backwards Cohort Reconstruction </a> which starts with age 5 time step 3
+the forward cohort reconstruction starts with age 2 time step 1. The
+purpose of the forward cohort reconstruction (start with age 2 time 1)
+is to produce catches and escapements that are adjusted for in-base
+fishing effort (new base period) in order to combine them with in-base
+CWT recoveries.</p>
 <ul>
 <li><p>Begin with age-2 time 1 starting cohort and remove natural
 mortality <span
@@ -2289,8 +2262,8 @@ it is possible that ERs exceed 100% for the OOB stock and age when
 summed over all fisheries within a time step. To avoid this, the
 component ERs are scale to sum to 95%.<br> equationxxx <span
 class="math display">$$AdjustedER_{a,f,t}= AdjustedER_{a,f,t} *
-\frac{0.95}{AdjustedER_{a,t}}$$</span></p></li>
-<li><p>Compute preterminal catch<br> Equation xxx <span
+\frac{0.95}{AdjustedER_{a,t}}$$</span> - Compute preterminal catch<br>
+Equation xxx <span
 class="math display"><em>P</em><em>T</em><em>C</em><em>a</em><em>t</em><em>c</em><em>h</em><sub><em>a</em>, <em>f</em>, <em>t</em></sub> = <em>P</em><em>T</em><em>C</em><em>o</em><em>h</em><em>o</em><em>r</em><em>t</em><sub><em>a</em>, <em>t</em></sub> * <em>L</em><em>e</em><em>g</em><em>a</em><em>l</em><em>P</em><em>r</em><em>o</em><em>p</em><sub><em>a</em>, <em>f</em>, <em>t</em></sub> * <em>A</em><em>d</em><em>j</em><em>u</em><em>s</em><em>t</em><em>e</em><em>d</em><em>E</em><em>R</em><sub><em>a</em>, <em>f</em>, <em>t</em></sub></span>
 Where, LegalProp is computed as the
 <a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#45_Size_Limit_Evaluations">
@@ -2315,7 +2288,54 @@ PTCatch_{a,f,t}}{(1-MatRate_{a,t})}$$</span></p></li>
 equationxxx <span class="math display">$$ TotalCohort_{a+1,t} =
 \frac{PTCohort_{a,t} - \sum_f
 PTCatch_{a,f,t}}{(1-MatRate_{a,t})}$$</span></p></li>
+</ul>
+<p><strong>OOB Procedure Steps</strong></p>
+<ul>
+<li><p>Sum CWTs from FRAMBuilder over fisheries and escapement without
+further expanding (no escapement and fisheries expansions).</p></li>
+<li><p>Compute sublegal mortalities</p>
+<ul>
+<li><p>For OOB stocks sublegal encounters of the stock in a fishery are
+set at the landed catch; i.e., CWT recoveries from FRAMBuilder summed
+within a fishery and time step. These encounters are then split into
+ages by calculating the proportion of stock/age that is of sublegal size
+and multiplying times the cohort size of the stock age. <br> Equationxxx
+<span
+class="math display"><em>S</em><em>u</em><em>b</em><em>l</em><em>e</em><em>g</em><em>a</em><em>l</em><em>s</em><sub><em>a</em></sub> = <em>C</em><em>o</em><em>h</em><em>o</em><em>r</em><em>t</em><sub><em>a</em></sub> * <em>S</em><em>u</em><em>b</em><em>L</em><em>e</em><em>g</em><em>P</em><em>r</em><em>o</em><em>p</em><sub><em>a</em></sub></span>
+Where the proportion sublegal (SubLegProp) is calculated as in chapter
+<a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#45_Size_Limit_Evaluations">
+Size Limit Evaluations </a> (equation xxx)</p></li>
+<li><p>When summed over all ages, the age proportions are then
+calculated as:<br> equation xxx <span
+class="math display">$$Proportion_{a} = \frac{Sublegals_a}{\sum_a
+Sublegals_a}$$</span></p></li>
+<li><p>Sublegal mortalities are then calculated as: <br> equation xxx
+<span
+class="math display"><em>S</em><em>h</em><em>a</em><em>k</em><em>e</em><em>r</em><em>s</em><sub><em>s</em>, <em>a</em>, <em>f</em>, <em>t</em></sub> = <em>E</em><em>n</em><em>c</em><em>o</em><em>u</em><em>n</em><em>t</em><em>e</em><em>r</em><em>s</em><sub><em>s</em>, <em>f</em>, <em>t</em></sub> * <em>P</em><em>r</em><em>o</em><em>p</em><em>o</em><em>r</em><em>t</em><em>i</em><em>o</em><em>n</em><sub><em>a</em></sub> * <em>S</em><em>h</em><em>a</em><em>k</em><em>e</em><em>r</em><em>R</em><em>e</em><em>l</em><em>e</em><em>a</em><em>s</em><em>e</em><em>M</em><em>o</em><em>r</em><em>t</em><em>a</em><em>l</em><em>i</em><em>t</em><em>y</em><em>R</em><em>a</em><em>t</em><em>e</em><sub><em>f</em>, <em>t</em></sub></span></p></li>
 </ul></li>
+<li><p>Cohort Reconstruction<br> The cohort is reconstructed as
+described in chapter
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Backwards_Cohort_Reconstruction">
+Backwards Cohort Reconstruction </a>. The cohort size is needed to
+calculate sublegal encounters, legal exploitation rates, and maturation
+rates.</p></li>
+<li><p>Check convergence <br> Computing sublegal mortalities and
+calculating the cohort are iterative steps, because sublegal mortalities
+are a function of the cohort size and the cohort size is dependent on
+sublegal mortalities. These steps are repeated until age-2 abundances
+converge. This occurs when abundances differ by less than 1%.</p></li>
+<li><p>Calculate maturation rates and OOB exploitation rates<br />
+See
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Calculating Exploitation Rates">
+Maturation Rates </a>(xxx) and
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Maturation Rate Calculations">
+Exploitation Rates </a>(xxx) for calculations.</p></li>
+<li><p>Start iterative cycle to integrate OOB catches with in-base
+CWTs</p>
+<ul>
+<li><p>Conduct a
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Forward_Cohort_Reconstruction" target="_blank">Forward
+Cohort Reconstruction</a> <br></p></li>
 <li><p>Merge OOB CWTs over brood years<br> During the “Merge” subroutine
 OOB catches (Catch<sub>BY,a,f,t</sub>) will be combined over brood years
 (BY) for the same age, fishery, and time step. The user has the option
@@ -2345,6 +2365,7 @@ runs. These scalers are copied into the calibration database.</p></li>
 <li><p>Iterate<br> Iterate until OOB ERs stabilize</p></li>
 </ul></li>
 </ul>
+</div>
 </div>
 </div>
 

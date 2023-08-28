@@ -173,8 +173,7 @@ Model stocks may represent an individual salmon stock or an aggregate of stocks 
 
 Chinook FRAM includes most stock groups originating from the California Central Valley (Sacramento River), Oregon coast, Columbia River, Washington coast, Puget Sound, and Southern British Columbia. However, not all stocks along the West Coast of North America are represented. Some of the stocks that are not represented in Chinook FRAM include all those originating from California with the exception of Sacramento River fall Chinook, Oregon stocks originating south of Elk River, Mid and Upper Columbia River spring Chinook, Snake River spring and summer Chinook, and Canadian stocks originating north of Georgia Strait.
 
-
-Appendix <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Stocks" target="_blank">FRAM Chinook Stocks</a>
+See Appendix <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Stocks" target="_blank">FRAM Chinook Stocks</a> for a table of calibration Chinook stocks.
 
 ## Target Encounter Rates
 Derek<>
