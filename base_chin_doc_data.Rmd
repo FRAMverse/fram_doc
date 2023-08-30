@@ -28,7 +28,8 @@ Tables <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.htm
 For a list of escapements used for the calibration see <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Escapements" target="_blank">Base Period Marked Escapements</a> and <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Escapements" target="_blank">Base Period Total Escapements</a> in Appendix.
 
 ## Fisheries
-Appendix <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Fisheries" target="_blank">FRAM Chinook Fisheries</a>
+A take of fish. Fisheries are generally characterized by a delineated fishing area, target species, and gear type (sport, net, troll, etc). They are frequently also differentiated by user group (Treaty, all citizen). Fisheries are often broken out into <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Time_Step" target="_blank">Time Steps</a>. The calibration has 74 fisheries covering the pacific West Coast from Alaska to California. For the purpose of the calibration, fisheries 72 (freshwater sport) and 73 (freshwater net) are combined with fishery 74 (escapement) into the escapement category. For a list of fisheries see 
+Appendix <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Fisheries" target="_blank">FRAM Chinook Fisheries</a>.
 
 ## Growth Functions
 To model fisheries with minimum size limit regulations, FRAM is parameterized with growth functions for computing mean length (fork length, FL, in mm) by age and model time step, as well as supplementary inputs (coefficients of variation, CVs) for characterizing variability around these predictions (see table <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Von_Bertalaffy_Growth_Parameters" target="_blank">`Von Bertalaffy Growth Parameters`</a>). 
