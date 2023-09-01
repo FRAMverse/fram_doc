@@ -751,40 +751,67 @@ in a non-retention fishery. Stock specific encounters are calculated
 during the calibration by splitting total encounters into stocks and
 ages. For more information see
 <a href="https:// framverse.github.io/fram_doc/base_chin_doc_data.html#Non Retention Encounters" target="_blank">Non
-Retention Encounterss</a> in the Data chapter.</p></li>
+Retention Encounters</a> in the Data chapter.</p></li>
 <li><p><strong>LegalProp<sub>s,a,f,t</sub>:</strong> Proportion of the
-cohort (terminal or preterminal) which is above the
+cohort which is above the
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">legal</a>
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Size_Limit" target="_blank">size
-limit</a> by stock, age, fishery, and time step.</p></li>
+limit</a> by stock, age, fishery, and time step. The legal proportion is
+caluclated during the calibration. For more information about the
+computation of the proportion legal/sublegal of a stock-age using the
+Von Bertalanffy growth equation see
+<a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#45_Size_Limit_Evaluations">
+Size Limit Calculations</a>.</p></li>
 <li><p><strong>LegalRelaseMortalityRate_f:</strong> Release mortality
 rate of
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">legal
-sized</a> Chinook in a fishery.</p></li>
+sized</a> Chinook in a fishery. This is a calibration input. For more
+information see
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_data.html#Incidental_Mortality" target="_blank">Incidental
+Mortality</a> in the Data chapter.</p></li>
 <li><p><strong>MatCohort<sub>s,a,t</sub>:</strong> The
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Maturation" target="_blank">mature</a>
 cohort, i.e., the number of fish by stock, age, and time step destined
-to spawn in the current year in the absence of further fishing.</p></li>
+to spawn in the current year in the absence of further fishing. This
+parameter is a calibration output. For more information see
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_data.html#Maturation_Rates" target="_blank">Maturation
+Rates</a> in the Data chapter.</p></li>
 <li><p><strong>MatRate<sub>s,a,t</sub>:</strong> The fraction of the
 cohort by stock and age that
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Maturation" target="_blank">matures</a>
-in a given time step.</p></li>
+in a given time step. For more information see
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_data.html#Maturation_Rates" target="_blank">Maturation
+Rates</a> in the Data chapter.</p></li>
 <li><p><strong>Mean<sub>s,a,t</sub>:</strong> Mean fork length of a fish
-by stock, age, and time step.</p></li>
+by stock, age, and time step. For more information about the computation
+of the mean length using the Von Bertalanffy growth equation see
+<a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#45_Size_Limit_Evaluations">
+Size Limit Calculations</a>.</p></li>
 <li><p><strong>MinSize<sub>a,f,t</sub>:</strong> Minimum
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Size_Limit" target="_blank">size
 limit</a> in a fishery by age, fishery, and time step. The age subscript
-is carried but not used in computations.</p></li>
+is carried but not used in computations. This is a calibration input.
+For more information see
+<a href="https:// framverse.github.io/fram_doc/base_chin_doc_data.html#Minimum_Size_Limit" target="_blank">Minimum
+Size Limit</a> in the Data chapter.</p></li>
 <li><p><strong>ModelRatio<sub>f</sub>:</strong> The proportion of the
 observed catch in a fishery that can be accounted for by stocks in the
-model (output to the OUT file as Recovery Adjustment Factor).</p></li>
+model. It is frequently referred to as the Mode Stock Proportion (MSP).
+This can either be a data input or output. For the calculation of the
+model ratio see
+<a href = "https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Fishery_Model_Stock_Proportion_(MSP)" target = "_blank" >Model
+Stock Proportion(MSP) </a>.</p></li>
 <li><p><strong>MSP<sub>f,t</sub>:</strong> Model-stock proportion.
 Percentage of a fishery’s total catch that is accounted for by stocks
-modeled in <span
-title="FRAM: Fishery Regulation Assessment Model">FRAM</span>.</p></li>
+modeled in FRAM. For the calculation of the model stock proportion see
+<a href = "https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Fishery_Model_Stock_Proportion_(MSP)" target = "_blank" >Model
+Stock Proportion(MSP) </a>.</p></li>
 <li><p><strong>PEF<sub>s</sub>:</strong> Stock specific Production
 Expansion Factor. The ratio of total stock escapement to the escapement
-of the CWTed population.</p></li>
+of the CWTed population. It is calculated during the calibration. For
+more information see
+<a href = "https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Expand_CWTs_to_Total_Production" target = "_blank" >Expand
+CWTs to Total Production</a></p></li>
 <li><p><strong>PropLegCatch<sub>s,a</sub></strong> The proportion of the
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Legal-sized" target="_blank">legal</a>
 catch in a fishery and time step that is of a given stock and
@@ -1053,23 +1080,23 @@ within RMIS and is a function of the total number of Chinook caught
 during the sampling period divided by the number of Chinook sampled
 during the sampling period. The following information comes from <a
 href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
-<div id="bxsvmgodlz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bxsvmgodlz table {
+<div id="yqtnashjak" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yqtnashjak table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bxsvmgodlz thead, #bxsvmgodlz tbody, #bxsvmgodlz tfoot, #bxsvmgodlz tr, #bxsvmgodlz td, #bxsvmgodlz th {
+#yqtnashjak thead, #yqtnashjak tbody, #yqtnashjak tfoot, #yqtnashjak tr, #yqtnashjak td, #yqtnashjak th {
   border-style: none;
 }
 
-#bxsvmgodlz p {
+#yqtnashjak p {
   margin: 0;
   padding: 0;
 }
 
-#bxsvmgodlz .gt_table {
+#yqtnashjak .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1095,12 +1122,12 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-left-color: #D3D3D3;
 }
 
-#bxsvmgodlz .gt_caption {
+#yqtnashjak .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bxsvmgodlz .gt_title {
+#yqtnashjak .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1112,7 +1139,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-bottom-width: 0;
 }
 
-#bxsvmgodlz .gt_subtitle {
+#yqtnashjak .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1124,7 +1151,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-top-width: 0;
 }
 
-#bxsvmgodlz .gt_heading {
+#yqtnashjak .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1136,13 +1163,13 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-right-color: #D3D3D3;
 }
 
-#bxsvmgodlz .gt_bottom_border {
+#yqtnashjak .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bxsvmgodlz .gt_col_headings {
+#yqtnashjak .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1157,7 +1184,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-right-color: #D3D3D3;
 }
 
-#bxsvmgodlz .gt_col_heading {
+#yqtnashjak .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1177,7 +1204,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   overflow-x: hidden;
 }
 
-#bxsvmgodlz .gt_column_spanner_outer {
+#yqtnashjak .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1189,15 +1216,15 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 4px;
 }
 
-#bxsvmgodlz .gt_column_spanner_outer:first-child {
+#yqtnashjak .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bxsvmgodlz .gt_column_spanner_outer:last-child {
+#yqtnashjak .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bxsvmgodlz .gt_column_spanner {
+#yqtnashjak .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1209,11 +1236,11 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   width: 100%;
 }
 
-#bxsvmgodlz .gt_spanner_row {
+#yqtnashjak .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bxsvmgodlz .gt_group_heading {
+#yqtnashjak .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1239,7 +1266,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   text-align: left;
 }
 
-#bxsvmgodlz .gt_empty_group_heading {
+#yqtnashjak .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1254,15 +1281,15 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   vertical-align: middle;
 }
 
-#bxsvmgodlz .gt_from_md > :first-child {
+#yqtnashjak .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bxsvmgodlz .gt_from_md > :last-child {
+#yqtnashjak .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bxsvmgodlz .gt_row {
+#yqtnashjak .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1281,7 +1308,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   overflow-x: hidden;
 }
 
-#bxsvmgodlz .gt_stub {
+#yqtnashjak .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1294,7 +1321,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 5px;
 }
 
-#bxsvmgodlz .gt_stub_row_group {
+#yqtnashjak .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1308,15 +1335,15 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   vertical-align: top;
 }
 
-#bxsvmgodlz .gt_row_group_first td {
+#yqtnashjak .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bxsvmgodlz .gt_row_group_first th {
+#yqtnashjak .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bxsvmgodlz .gt_summary_row {
+#yqtnashjak .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1326,16 +1353,16 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 5px;
 }
 
-#bxsvmgodlz .gt_first_summary_row {
+#yqtnashjak .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bxsvmgodlz .gt_first_summary_row.thick {
+#yqtnashjak .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bxsvmgodlz .gt_last_summary_row {
+#yqtnashjak .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1345,7 +1372,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#bxsvmgodlz .gt_grand_summary_row {
+#yqtnashjak .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1355,7 +1382,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 5px;
 }
 
-#bxsvmgodlz .gt_first_grand_summary_row {
+#yqtnashjak .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1365,7 +1392,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-top-color: #D3D3D3;
 }
 
-#bxsvmgodlz .gt_last_grand_summary_row_top {
+#yqtnashjak .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1375,11 +1402,11 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#bxsvmgodlz .gt_striped {
+#yqtnashjak .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bxsvmgodlz .gt_table_body {
+#yqtnashjak .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1388,7 +1415,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#bxsvmgodlz .gt_footnotes {
+#yqtnashjak .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1402,7 +1429,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-right-color: #D3D3D3;
 }
 
-#bxsvmgodlz .gt_footnote {
+#yqtnashjak .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1411,7 +1438,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 5px;
 }
 
-#bxsvmgodlz .gt_sourcenotes {
+#yqtnashjak .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1425,7 +1452,7 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   border-right-color: #D3D3D3;
 }
 
-#bxsvmgodlz .gt_sourcenote {
+#yqtnashjak .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1433,63 +1460,63 @@ href="https://www.rmpc.org/">RMIS</a> Catch/Sample queries.</p>
   padding-right: 5px;
 }
 
-#bxsvmgodlz .gt_left {
+#yqtnashjak .gt_left {
   text-align: left;
 }
 
-#bxsvmgodlz .gt_center {
+#yqtnashjak .gt_center {
   text-align: center;
 }
 
-#bxsvmgodlz .gt_right {
+#yqtnashjak .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bxsvmgodlz .gt_font_normal {
+#yqtnashjak .gt_font_normal {
   font-weight: normal;
 }
 
-#bxsvmgodlz .gt_font_bold {
+#yqtnashjak .gt_font_bold {
   font-weight: bold;
 }
 
-#bxsvmgodlz .gt_font_italic {
+#yqtnashjak .gt_font_italic {
   font-style: italic;
 }
 
-#bxsvmgodlz .gt_super {
+#yqtnashjak .gt_super {
   font-size: 65%;
 }
 
-#bxsvmgodlz .gt_footnote_marks {
+#yqtnashjak .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bxsvmgodlz .gt_asterisk {
+#yqtnashjak .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bxsvmgodlz .gt_indent_1 {
+#yqtnashjak .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bxsvmgodlz .gt_indent_2 {
+#yqtnashjak .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bxsvmgodlz .gt_indent_3 {
+#yqtnashjak .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bxsvmgodlz .gt_indent_4 {
+#yqtnashjak .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bxsvmgodlz .gt_indent_5 {
+#yqtnashjak .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1527,23 +1554,23 @@ href="http://www.rmpc.org/files/RegionalOverviewProfPaper-30May04.pdf">here</a>.
 <p>For the example tag, the table below demonstrates that the brood year
 expansion applied should be 1.02. The brood year expanded value of the
 example recovery becomes 7.11 (6.97 * 1.02).</p>
-<div id="iubuvllyfi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#iubuvllyfi table {
+<div id="alezmgfahq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#alezmgfahq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#iubuvllyfi thead, #iubuvllyfi tbody, #iubuvllyfi tfoot, #iubuvllyfi tr, #iubuvllyfi td, #iubuvllyfi th {
+#alezmgfahq thead, #alezmgfahq tbody, #alezmgfahq tfoot, #alezmgfahq tr, #alezmgfahq td, #alezmgfahq th {
   border-style: none;
 }
 
-#iubuvllyfi p {
+#alezmgfahq p {
   margin: 0;
   padding: 0;
 }
 
-#iubuvllyfi .gt_table {
+#alezmgfahq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1569,12 +1596,12 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-left-color: #D3D3D3;
 }
 
-#iubuvllyfi .gt_caption {
+#alezmgfahq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#iubuvllyfi .gt_title {
+#alezmgfahq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1586,7 +1613,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-bottom-width: 0;
 }
 
-#iubuvllyfi .gt_subtitle {
+#alezmgfahq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1598,7 +1625,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-top-width: 0;
 }
 
-#iubuvllyfi .gt_heading {
+#alezmgfahq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1610,13 +1637,13 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-right-color: #D3D3D3;
 }
 
-#iubuvllyfi .gt_bottom_border {
+#alezmgfahq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iubuvllyfi .gt_col_headings {
+#alezmgfahq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1631,7 +1658,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-right-color: #D3D3D3;
 }
 
-#iubuvllyfi .gt_col_heading {
+#alezmgfahq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1651,7 +1678,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   overflow-x: hidden;
 }
 
-#iubuvllyfi .gt_column_spanner_outer {
+#alezmgfahq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1663,15 +1690,15 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 4px;
 }
 
-#iubuvllyfi .gt_column_spanner_outer:first-child {
+#alezmgfahq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iubuvllyfi .gt_column_spanner_outer:last-child {
+#alezmgfahq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iubuvllyfi .gt_column_spanner {
+#alezmgfahq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1683,11 +1710,11 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   width: 100%;
 }
 
-#iubuvllyfi .gt_spanner_row {
+#alezmgfahq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#iubuvllyfi .gt_group_heading {
+#alezmgfahq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1713,7 +1740,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   text-align: left;
 }
 
-#iubuvllyfi .gt_empty_group_heading {
+#alezmgfahq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1728,15 +1755,15 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   vertical-align: middle;
 }
 
-#iubuvllyfi .gt_from_md > :first-child {
+#alezmgfahq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iubuvllyfi .gt_from_md > :last-child {
+#alezmgfahq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iubuvllyfi .gt_row {
+#alezmgfahq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1755,7 +1782,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   overflow-x: hidden;
 }
 
-#iubuvllyfi .gt_stub {
+#alezmgfahq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1768,7 +1795,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 5px;
 }
 
-#iubuvllyfi .gt_stub_row_group {
+#alezmgfahq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1782,15 +1809,15 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   vertical-align: top;
 }
 
-#iubuvllyfi .gt_row_group_first td {
+#alezmgfahq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iubuvllyfi .gt_row_group_first th {
+#alezmgfahq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#iubuvllyfi .gt_summary_row {
+#alezmgfahq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1800,16 +1827,16 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 5px;
 }
 
-#iubuvllyfi .gt_first_summary_row {
+#alezmgfahq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iubuvllyfi .gt_first_summary_row.thick {
+#alezmgfahq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iubuvllyfi .gt_last_summary_row {
+#alezmgfahq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1819,7 +1846,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-bottom-color: #D3D3D3;
 }
 
-#iubuvllyfi .gt_grand_summary_row {
+#alezmgfahq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1829,7 +1856,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 5px;
 }
 
-#iubuvllyfi .gt_first_grand_summary_row {
+#alezmgfahq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1839,7 +1866,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-top-color: #D3D3D3;
 }
 
-#iubuvllyfi .gt_last_grand_summary_row_top {
+#alezmgfahq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1849,11 +1876,11 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-bottom-color: #D3D3D3;
 }
 
-#iubuvllyfi .gt_striped {
+#alezmgfahq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iubuvllyfi .gt_table_body {
+#alezmgfahq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1862,7 +1889,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-bottom-color: #D3D3D3;
 }
 
-#iubuvllyfi .gt_footnotes {
+#alezmgfahq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1876,7 +1903,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-right-color: #D3D3D3;
 }
 
-#iubuvllyfi .gt_footnote {
+#alezmgfahq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1885,7 +1912,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 5px;
 }
 
-#iubuvllyfi .gt_sourcenotes {
+#alezmgfahq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1899,7 +1926,7 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   border-right-color: #D3D3D3;
 }
 
-#iubuvllyfi .gt_sourcenote {
+#alezmgfahq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1907,63 +1934,63 @@ example recovery becomes 7.11 (6.97 * 1.02).</p>
   padding-right: 5px;
 }
 
-#iubuvllyfi .gt_left {
+#alezmgfahq .gt_left {
   text-align: left;
 }
 
-#iubuvllyfi .gt_center {
+#alezmgfahq .gt_center {
   text-align: center;
 }
 
-#iubuvllyfi .gt_right {
+#alezmgfahq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iubuvllyfi .gt_font_normal {
+#alezmgfahq .gt_font_normal {
   font-weight: normal;
 }
 
-#iubuvllyfi .gt_font_bold {
+#alezmgfahq .gt_font_bold {
   font-weight: bold;
 }
 
-#iubuvllyfi .gt_font_italic {
+#alezmgfahq .gt_font_italic {
   font-style: italic;
 }
 
-#iubuvllyfi .gt_super {
+#alezmgfahq .gt_super {
   font-size: 65%;
 }
 
-#iubuvllyfi .gt_footnote_marks {
+#alezmgfahq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#iubuvllyfi .gt_asterisk {
+#alezmgfahq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iubuvllyfi .gt_indent_1 {
+#alezmgfahq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iubuvllyfi .gt_indent_2 {
+#alezmgfahq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iubuvllyfi .gt_indent_3 {
+#alezmgfahq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iubuvllyfi .gt_indent_4 {
+#alezmgfahq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iubuvllyfi .gt_indent_5 {
+#alezmgfahq .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
