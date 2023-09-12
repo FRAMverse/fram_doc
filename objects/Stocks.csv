@@ -1,0 +1,40 @@
+Species,StockVersion,StockID,ProductionRegionNumber,ManagementUnitNumber,StockName,StockLongName
+CHINOOK,5,1,1,1,NkSm FF,Nooksack/Samish Fall
+CHINOOK,5,2,1,3,NFNK Sp,NF Nooksack Spr
+CHINOOK,5,3,1,5,SFNK Sp,SF Nooksack Spr
+CHINOOK,5,4,2,1,Skag FF,Skagit Summer/Fall Fing
+CHINOOK,5,5,2,3,SkagFYr,Skagit Summer/Fall Year
+CHINOOK,5,6,2,5,SkagSpY,Skagit Spring Year
+CHINOOK,5,7,3,1,Snoh FF,Snohomish Fall Fing
+CHINOOK,5,8,3,3,SnohFYr,Snohomish Fall Year
+CHINOOK,5,9,3,5,Stil FF,Stillaguamish Fall Fing
+CHINOOK,5,10,3,7,Tula FF,Tulalip Fall Fing
+CHINOOK,5,11,4,1,MidPSFF,Mid PS Fall Fing
+CHINOOK,5,12,4,3,UWAc FF,UW Accelerated
+CHINOOK,5,13,4,5,SPSd FF,South Puget Sound Fall Fing
+CHINOOK,5,14,4,7,SPS Fyr,South Puget Sound Fall Year
+CHINOOK,5,15,4,9,WhiteSp,White River Spring Fing
+CHINOOK,5,16,5,1,HdCl FF,Hood Canal Fall Fing
+CHINOOK,5,17,5,3,HdCl FY,Hood Canal Fall Year
+CHINOOK,5,18,6,1,SJDF FF,JDF Tribs. Fall
+CHINOOK,5,19,8,1,OR Tule,CR Oregon Hatchery Tule
+CHINOOK,5,20,8,3,WA Tule,CR Washington Hatchery Tule
+CHINOOK,5,21,8,5,LCRWild,Lower Columbia River Wild
+CHINOOK,5,22,8,7,BPHTule,CR Bonneville Pool Hatchery
+CHINOOK,5,23,8,9,UpCR Su,Columbia R Upriver Summer
+CHINOOK,5,24,8,11,UpCR Br,Columbia R Upriver Bright
+CHINOOK,5,25,8,13,Cowl Sp,Cowlitz River Spring
+CHINOOK,5,26,8,15,Will Sp,Willamette River Spring
+CHINOOK,5,27,8,17,Snake F,Snake River Fall
+CHINOOK,5,28,9,1,OR No F,Oregon North Coast Fall
+CHINOOK,5,29,12,1,WCVI Tl,WCVI Total Fall
+CHINOOK,5,30,11,1,FrasRLt,Fraser River Late
+CHINOOK,5,31,11,3,FrasREr,Fraser River Early
+CHINOOK,5,32,11,5,LwGeo S,Lower Georgia Strait
+CHINOOK,5,33,4,11,WhtSpYr,White River Spring Year
+CHINOOK,5,34,8,19,LColNat,Lower Columbia Naturals
+CHINOOK,5,35,10,1,CentVal,Central Valley Fall
+CHINOOK,5,36,7,1,WA NCst,WA North Coast Fall
+CHINOOK,5,37,7,3,Willapa,Willapa Bay
+CHINOOK,5,38,6,3,Hoko Rv,Hoko River
+CHINOOK,5,39,9,1,MidORCst,Mid Oregon Coast Fall

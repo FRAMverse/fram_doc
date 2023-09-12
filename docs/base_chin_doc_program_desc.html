@@ -9,12 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="" />
 
 
 <title>Base Period Documentation - Program Descriptions</title>
 
-<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.22/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -30,7 +29,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -38,8 +37,8 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -455,34 +454,288 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Base Period Documentation - Program
-Descriptions</h1>
+<h1 class="title toc-ignore">Base Period Documentation - Program Descriptions</h1>
 <h4 class="author"></h4>
 
 </div>
 
 
 <div id="program-descriptions" class="section level1">
-<h1>1. Program Descriptions</h1>
+<h1>Program Descriptions</h1>
 <p>Angelika</p>
-<div id="fram-builder" class="section level2">
-<h2>1.2 FRAM Builder</h2>
+<div id="frambuilder" class="section level2">
+<h2>FRAMBuilder</h2>
 <div id="requirements" class="section level3">
 <h3>Requirements</h3>
 </div>
 </div>
 <div id="main-calibration-program" class="section level2">
-<h2>1.3 <span id="CP">Main Calibration Program</span></h2>
+<h2><span id="CP">Main Calibration Program</span></h2>
+<p>For the development of the new base period, the original calibration programs were rewritten using “Visual Studio.net”. The original programs were developped in QBasic and fragmented into many separate programs, requiring substantial user effort to create and edit program input files. Various processes were undocumented and disjointed. In many cases the output from one program was used to create the input file for the next program in the estimation process. Any data or selection changes usually resulted in re-running all components of the system. The new program was written in Visual Basic and consolidated the entire calibration into one application. Input and output is now stored in the same Access database. Data editing between runs is kept to a minimum. Once the required data is updated in the database, a new base period can be created in minutes. The new program has two main functions:</p>
+<ul>
+<li><p>Produce all the output data needed to populate the FRAM model with a new base period<br> The program can be run with 4 different options</p>
+<ul>
+<li><p>Out-of-Base (OOB) run</p></li>
+<li><p>First OOB then all-stocks run</p></li>
+<li><p>All-stocks run</p></li>
+<li><p>Run without escapement and fishery expansions</p></li>
+</ul></li>
+<li><p>Create a transfer database for easy import of base period data into the main FRAM database The user has several options to create output</p></li>
+</ul>
 <div id="requirments" class="section level3">
 <h3>Requirments</h3>
+<p>The code for the program is posted in a <a href="https://github.com/Angelikahagen/MainCalibrationProgram">GitHub repository</a>. <br> To produce a new base period two files are required:</p>
+<ul>
+<li><p>Executable: MainCalibration.exe <br> Please see <a href="https://github.com/Angelikahagen/MainCalibrationProgram/blob/master/bin/x86/Debug/MainCalibration.exe">the GitHub repositiory</a> to download the executable.</p></li>
+<li><p>Access Calibration Database: CalibrationSupport_xxx.mdb. <br> Please see chapter <a href="https://github.com/FRAMverse/fram_doc/tree/bp_documentation/docs/base_chin_doc_appendix.html#Database_Tables" target="_blank">Database Tables </a> for a description of the tables. Please contact a member of the FRAM team at WDFW or NWIFC for assistance with obtaining this file.</p></li>
+</ul>
+<p>To transfer calibration output into FRAM an additional transfer database is required.</p>
+<ul>
+<li>Access Transfer Database: NewCalibrationBasePeriodTransfer.mdb<br> Please contact a member of the FRAM team at WDFW or NWIFC for assistance with obtaining this file.</li>
+</ul>
+</div>
+<div id="prerequisites" class="section level3">
+<h3>Prerequisites</h3>
+<p>Update all input database tables of the calibration database. These are listed in Appendix table <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Table_Description"> Table Description </a>.</p>
+<p>Make sure that tables <code>CWT_AllOOB</code> and <code>CWTAll</code> contain the latest FRAMBuilder output.</p>
+</div>
+<div id="considerations" class="section level3">
+<h3>Considerations</h3>
+<p>For an OOB run the <code>FishScaler</code> table is updated in an iterative process whereupon calibration output is imported into FRAM, FRAM is run (see chapter <a href="https://framverse.github.io/fram_doc/base_chin_doc_program.html#Instructions_for_Producing_a_New_Base_Period_(specific)"> Instructions for Producing a New Base Period </a>) and updated fish scalers from these runs are pasted into the calibration database.</p>
+<p>In order to update the <a href="https://framverse.github.io/fram_doc/base_chin_doc_glossary.html#Model-Stock_Proportion_(MSP)">MSP</a> conduct a “Total Run”. There are three tables in the calibration database that exisit in a “marked version” and a “total version”. These tables are <code>BasePeriodCatch</code>, <code>BasePeriodEscapements</code>, and <code>NonRetention</code>. When running a “TotalRun”, the tables with the total (marked + unmarked) values, need to have these names, when running a “Marked Run” the marked tables need to have these names. This will sometimes require renaming <code>BasePeriodCatch_Tot</code> to <code>BasePeriodCatch</code>, <code>BasePeriodEscapements_Tot</code> to <code>BasePeriodEscapements</code>, and <code>NonRetention_Tot</code> to <code>NonRetention</code>. <br> Run the calibration program. This will updated <code>ModelStockProportion</code> in table <code>BasePeriodCatch</code>. Before running the main (marked only) calibration, rename the tables with the marked values to the original table names. For more information visit sections <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Fishery Model_Stock_Proportion_(MSP)">Fishery Model Stock Proportion</a> and <a href="https://framverse.github.io/fram_doc/base_chin_doc_program_desc.html#Instructions_for_Producing_a_New_Base_Period_(specific)">Instructions for Producing a New Base Period</a>.</p>
+</div>
+<div id="conducting-a-run-generic" class="section level3">
+<h3>Conducting a Run (generic)</h3>
+<p>Upon selecting the executable, the program opens to the Main Menu also titled “Start Form”.</p>
+<div class="figure">
+<img src="images/CalProg1.JPG" alt="Figure xxx. Main Menu" width="400px" height="300px" />
+<p class="caption">
+Figure xxx. Main Menu
+</p>
+</div>
+<p>The user is presented with four run options.<br></p>
+<ul>
+<li><p>Process only Out of Base Stocks When this option is selected the program only processes OOB stocks. The user selects the database table with the OOB Frambuilder recoveries. The program runs <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Out-of-Base_Procedures" target="_blank">OOB procedures</a> to the step where OOB recoveries are merged over brood years. At this point the user has the option to provide brood year weights. If no weights are provided each year receives the same weight.</p>
+<div class="figure">
+<img src="images/CalProg13.JPG" alt="Figure xxx. Brood Year Weighting Menu" width="400px" height="300px" />
+<p class="caption">
+Figure xxx. Brood Year Weighting Menu
+</p>
+</div>
+<p>Selecting <code>Update</code> processes the new weights, <code>Cancel</code>clears out updated weights, and <code>Close</code>uses the existing (not updated) weights. Please see chapter <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Merge_OOB_CWTs_over_brood_years" target="_blank">Merging OOB CWTs over brood years</a>for more information about merging CWT recoveries. After merging estimated CWT recoveries over brood years, the program saves them in table <code>CWTOOBMerged</code> of the calibration database.</p></li>
+<li><p>Process Out of Base Stocks then All Stocks<br> This option represents a typical calibration cycle that contains in-base as well as OOB stocks. The program first processes OOB recoveries, before merging them into the dataset with the in-base recoveries and conducting a calibration as described in the <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html" target="_blank">calibration </a> section of this documentation.</p></li>
+<li><p>Process only All Stocks<br> If the calibration does not contain OOB stocks, then this option will produce a complete base period without running OOB procedures.</p></li>
+<li><p>Cohort Reconstruction w/o expansions<br> Selecting this option produces cohort reconstructions and base period exploitation rates without escapement and fishery expansions; i.e., expansions are set to 1. <strong>Each stock can be processed independent of other stocks</strong> as the program does not expand recoveries to match the catch of all the stocks in a fishery. This procedure is akin to how the <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Chinook_Technical_Committee_(CTC)" target="_blank">CTC</a> conducts its exploitation rate analysis.</p></li>
+</ul>
+After selecting a run option the user presses the “Run” button. This will open the file selection menu.
+<div class="figure">
+<img src="images/CalProg2.JPG" alt="Figure xxx. File Selection Menu" width="400px" height="300px" />
+<p class="caption">
+Figure xxx. File Selection Menu
+</p>
+</div>
+<p>Select <code>Open Support File</code>. This brings up a file explorer. Navigate to the directory with the calibration support database, select, and press <code>Open</code>. You will be prompted to select the table with the CWT recoveries for the desired run type.</p>
+<div class="figure">
+<img src="images/CalProg3.JPG" alt="Figure xxx. Prompt to Select CWT Table" width="500px" height="400px" />
+<p class="caption">
+Figure xxx. Prompt to Select CWT Table
+</p>
+</div>
+<p>The database table names and fields are loaded into the screen. Select the table and hit <code>Run</code>.</p>
+<div class="figure">
+<img src="images/CalProg4.JPG" alt="Figure xxx. Populated File Selection Menu" width="500px" height="400px" />
+<p class="caption">
+Figure xxx. Populated File Selection Menu
+</p>
+</div>
+<p>While the program runs, it may provide several feedback messages. The first message results from error check procedures. The program eliminates CWT recoveries of stocks without a legal population size for the age, fishery, and time step combination the recovery was made. The warning message prompts the user to examine an output file, errfile.txt, for more information about eliminated recoveries.</p>
+<div class="figure">
+<img src="images/CalProg5.JPG" alt="Figure xxx. Warning Message No Legal Population Size" width="500px" height="200px" />
+<p class="caption">
+Figure xxx. Warning Message No Legal Population Size
+</p>
+</div>
+<p>Another warning message occurs if catch is missing for a fishery and time step that has actual or surrogate recoveries. Without catch, the program cannot produce base period exploitation rates. A small catch will remedy this situation and provide an exploitation rate without greatly affecting cohort sizes. This situation can occur for non-retention fisheries, where catch is illegal to retain, but BPERs are desirable to model non-retention impacts. These fisheries are usually modeled through the use of surrogate fisheries that provides the necessary CWT recoveries.</p>
+<div class="figure">
+<img src="images/CalProg6.JPG" alt="Figure xxx. Warning Message Missing Catch" width="500px" height="200px" />
+<p class="caption">
+Figure xxx. Warning Message Missing Catch
+</p>
+</div>
+<p>A message is also produced for fisheries and time steps where base period catch exists, but CWT recoveries are lacking. These are usually fisheries that have designated surrogates. If this is not the case, a surrogate needs to be introduced.</p>
+<div class="figure">
+<img src="images/CalProg7.JPG" alt="Figure xxx. Warning Message Missing CWTs" width="500px" height="200px" />
+<p class="caption">
+Figure xxx. Warning Message Missing CWTs
+</p>
+</div>
+<p>When the run has completed in returns to the main menu where the user can exit the program or produce output for the newly created base period.</p>
 </div>
 <div id="transferring-output" class="section level3">
 <h3>Transferring Output</h3>
+<p>When selecting <code>Export</code> on the main menu screen, the program transfers new base period output into a separate database used to easily import the new base period into a FRAM database. At this stage, model output is converted from a marked 39 stock structure to a marked and unmarked 78 stock structure. Each stock is divided into an unmarked (uneven stock ID) and a marked (even stock ID) component, effectively doubling the number of stocks. The transfer function re-numbers the stocks such that the new stock number equals old stock number * 2 -1 for unmarked, and old stock number * 2 for marked. The new unmarked cohort size is the same as the marked cohort size, thus doubling cohort sizes. This is un-problematic as cohort sizes are recomputed at the beginning of every FRAM run. All other variables that have a stock-specific parameter (BPERs, growth functions, maturation rates, etc.) are also doubled to have values for unmarked stock components. The values are again recycled from the marked stock components. This handling follows one of the main modeling assumptions; that marked stock components are acceptable surrogates for unmarked populations.</p>
+Select the name of an empty transfer database
+<div class="figure">
+<img src="images/CalProg8.JPG" alt="Figure xxx. Transfer File Selection Menu" width="600px" height="400px" />
+<p class="caption">
+Figure xxx. Transfer File Selection Menu
+</p>
 </div>
-<div id="running-the-main-calibration-program" class="section level3">
-<h3>Running the Main Calibration Program</h3>
+The program prompts the user to select the calibration database containing the base period data to be exported.
+<div class="figure">
+<img src="images/CalProg9.JPG" alt="Figure xxx. Propmpt to select the calibration database" width="300px" height="150px" />
+<p class="caption">
+Figure xxx. Propmpt to select the calibration database
+</p>
+</div>
+Select the desired base period and press <code>Transfer Selection Done</code>.
+<div class="figure">
+<img src="images/CalProg10.JPG" alt="Figure xxx. Base Period Selection Screen" width="400px" height="300px" />
+<p class="caption">
+Figure xxx. Base Period Selection Screen
+</p>
+</div>
+The user is prompted to rename the transfer database.
+<div class="figure">
+<img src="images/CalProg11.JPG" alt="Figure xxx. Prompt to name the new transfer database" width="300px" height="150px" />
+<p class="caption">
+Figure xxx. Prompt to name the new transfer database
+</p>
+</div>
+Enter a new filename into the name field of the file dialog screen and press <code>Save</code>.
+<div class="figure">
+<img src="images/CalProg12.JPG" alt="Figure xxx. File Dialog Rename and Save Screen" width="600px" height="350px" />
+<p class="caption">
+Figure xxx. File Dialog Rename and Save Screen
+</p>
+</div>
 <div id="importing-base-period-data-into-fram" class="section level4">
 <h4>Importing Base Period Data Into FRAM</h4>
+A new base period can be imported into a FRAM Access database by selecting <code>FRAM Utilities</code> on the <code>Main Menu</code>. Next choose <code>Get Base Period Transfer</code>, select the transfer database and press <code>Open</code>. <br> This opens the following window:
+<div class="figure">
+<img src="images/BPTransfer.JPG" alt="Figure xxx. Base Period Import Screen" width="500px" height="300px" />
+<p class="caption">
+Figure xxx. Base Period Import Screen
+</p>
+</div>
+<p>Fisheries and Time Steps are identical between the new and old base period. However, there are differences in Base Period Size Limits and Stocks. Check the boxes for “Base Period Size Limits” and “Stocks” to also import this information, then select <code>Done</code>. <br> The new base period will be added to the existing base period tables with a new (incremented by 1) base period ID. When data import is completed the “FRAM Utilities” page will reappear.<br> To ensure the import was successful, it is good practice to check whether data exists for the new BasePeriodID in the appropriate tables. The following tables include data from the base period dataset:</p>
+<ul>
+<li><p>AEQ</p></li>
+<li><p>BaseCohort</p></li>
+<li><p>BaseExploitationRate</p></li>
+<li><p>EncounterRateAdjustment</p></li>
+<li><p>FisheryModelStockProportion</p></li>
+<li><p>Growth</p></li>
+<li><p>IncidentalRate</p></li>
+<li><p>MaturationRate</p></li>
+<li><p>NaturalMortality</p></li>
+<li><p>ShakerMortRate</p></li>
+</ul>
+<p>Now there are just a few additional steps needed to update the <code>StockVersion</code> and link runs to the newly imported base period.<br> Retrieve the stock version number from FRAM’s database. This number is located in the <code>Stock</code> table <code>StockVersion</code> field.<br> Next, in the Access database, open the <code>BaseID</code> table and identify the <code>BasePeriodID</code> for the record that was just added (check the <code>DateCreated</code> field for help). For this record, update the value in the <code>StockVersion</code> field to the value from the <code>Stock</code> table.<br> Open the <code>RunID</code> table. For any existing model runs stored in the database that you wish to run with the new base period data set, update the value in the <code>BasePeriodID</code> field to the new BaseID.<br></p>
+</div>
+</div>
+<div id="code-description" class="section level3">
+<h3>Code Description</h3>
+<div id="general-overview" class="section level4">
+<h4>General Overview</h4>
+<p>The primary objective of the calibration program is to use externally provided inputs, such as coded wire tag (CWT) recoveries, fishery catch estimates, and incidental mortality rates, to calculate stock/age specific exploitation rates for each FRAM fishery and time step. It is important to note that the calibration program can be run on either the “marked only” portion of a stock and catch, or on the “total” portion (marked + unmarked) portion of a stock and catch. There are strengths and weaknesses to each approach and more information is available on this topic in the <a href = "https://framverse.github.io/fram_doc/base_chin_doc_intro.html#Mass_Marking" target = "_blank" >Mass Marking and Mark Selective Fisheries</a> chapter. In general, “total” runs are used to designate MSPs, whereas “marked only” runs are used to calculate BPERs, base period cohort sizes, AEQ rates, and maturation rates.</p>
+</div>
+<div id="program-flow" class="section level4">
+<h4>Program Flow</h4>
+<ol style="list-style-type: decimal">
+<li>Load Data: <br> After the calibration run is initialized, the program proceeds to loading essential data from the <code>Calibration Support</code> database.</li>
+<li>Error Check (ChDat):
+<ol style="list-style-type: lower-alpha">
+<li>Impute CWT recoveries using surrogate fisheries and methods outlined in <a href = "https://framverse.github.io/fram_doc/base_chin_doc_intro.html#Addressing_Sparse_or_Missing_CWT_Recoveries" target = "_blank" >Addressing Sparse or Missing CWT Recoveries</a> according to instructions in the <code>ImputeRecoveries</code> table.</li>
+<li>Eliminate CWT recoveries for stocks and ages within fishery/time steps without a legal population size size (e.g., if all age 2s are sublegal in a fishery, remove any age 2 recoveries from the fishery) using the <code>CheckLeg.vb</code> module.</li>
+</ol></li>
+<li>OOB Calculations: <br> OOB stock calculations are completed prior to “all stock” calculations in the <code>MainForm.vb</code> module. <br>
+<ol style="list-style-type: lower-alpha">
+<li>Calculate escapements: <br> Escapement (defined as escapement + freshwater sport catch + freshwater net catch) is calculated for each OOB stock-age-time step combination within the <code>CompEscape()</code> subroutine.</li>
+<li>Add catches: <br> <code>AddCatch()</code> is called to calculate OOB catches using CWTs that have received sampling and brood year expansions, but not fishery, escapement, or OOB expansions. <br></li>
+<li>Cohort reconstruction: <br> <code>CompCohort()</code> is called and calculates a cohort using catch values that have not received fishery, escapement, or OOB expansions. <br></li>
+<li>Calculate incidental mortalities: <br> An iterative process is initiated, where <code>IncMort()</code>, <code>CompCohort()</code>, and <code>CohortCheck()</code> are called several times until convergence is achieved <br></li>
+<li>Calculate maturation rates: <br> <code>MaturationRate()</code> is called to get maturation rates for OOB stocks within the OOB brood years.<br />
+</li>
+<li>Calculate exploitation rates:<br> <code>ExploitationRate()</code> is called to compute exploitation rates for OOB stocks within the OOB brood years.<br />
+</li>
+<li>Compute simulated CWT recoveries:<br />
+The last module called to process OOB stocks is <code>Forward()</code>. It uses CWT recoveries in conjunction with fishery scalars from the out of base years to simulate the number of CWT recoveries that would have occurred given base period fishing effort. Fishery scalars used in this calculation must be derived from post-season FRAM runs. <code>The Forward()</code> module also ensures that OOB exploitation rates do not exceed 100% and saves OOB exploitation rates to a list for later use. A Forward Cohort reconstruction, starting with age-2 time pre-fishing abundance and working forward through age-5 escapement, is conducted in order to translate exploitation rates into simulated base period CWT recoveries. After <code>Forward()</code> is complete a list of OOB CWTs representing catches and escapements that have been adjusted to the base period are saved in table <code>CWTOOBMerged</code> of the calibration data base.<br> <em>Note: Fishery scalars are computed iteratively by providing calibration output parameters (base period exploitation rates, maturation rates, etc.) to post-season FRAM runs. The new base period exploitation rates will affect fishery scalars (fishing effort) needed to achieve estimated post-season catches. The new fishery scalars will in turn affect simulated CWT recoveries and consequently base period exploitation rates, etc. Iterations are terminated manually when fishery scalars vary no more than approximately 1% between iterations.</em></li>
+</ol></li>
+<li>“All Stocks” Calculations: <br> After the OOB calculations are complete, computations for the “all stocks” run begin in the <code>MainForm.vb</code> module.
+<ol style="list-style-type: lower-alpha">
+<li>Merge OOB and in-base CWTS: <br> First, simulated OOB CWTs are merged with base period CWTs.</li>
+<li>Calculate escapement expansions:<br> The program calculates escapement expansions as the ratio of Observed Escapement to CWT Escapement using the <code>CompExpFact()</code> subroutine. The escapement expansion is applied to all CWT recoveries in order to account for the entire stock, rather than just the CWT’ed component.</li>
+<li>Add catches:<br> The <code>Addcatch()</code> subroutine is called, which computes catch by stock/age/fishery/time step specific subgroupings. The first call of <code>Addcatch()</code> is used to get “Annual Catch”.</li>
+<li>Adjust catches:<br> The <code>Adjcatch()</code> subroutine is used to get fishery expansion factors as the ratio of “Observed Catch” to “Annual Catch”. Note that “Observed Catch” may be adjusted according to the information provided in chapter <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Fishery_Model_Stock_Proportion" target="_blank">Fishery Model Stock Proportion</a>.</li>
+<li>Add catches:<br> <code>Addcatch()</code> is called again, to calculate fisheries catch using CWTs that have all expansions applied (sampling, brood year, escapement, fishery).<br />
+</li>
+<li>Cohort reconstruction:<br> The <code>CompCohort()</code> subroutine is called to calculate terminal and pre-terminal cohort sizes in a process referred to as backwards cohort reconstruction – starting with age-5 escapement and working backwards to age-2 pre-fishing abundance.</li>
+<li>Calculate incidental mortalities: <br> See chapters <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Estimating_Sublegal_Mortalities" target="_blank">Estimating Sublegal Mortalities </a> and <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration#Estimating_Non-Retention_Mortalities" target="_blank">Estimating Non-Retention Mortalities </a> about detailed calculations. Incidental mortalities are computed in subrountine <code>IncMort()</code> which calls subroutines <code>CompShakers()</code> for sublegal mortality estimates and <code>CompCNR()</code> for non-retention mortality estimates. As sublegal mortality and fisheries catch computations are updated, the cohort size must be updated. After the cohort size is updated, sublegal mortality and fisheries catch must be updated. This necessitates multiple iterations of this calculation loop to ensure accurate sublegal mortality, and fishery catch results. During this iterative portion of the calibration program a convergence criteria is used to terminate calculations. First, catch is imputed for fishery-time steps that use surrogate exploitation rates from the old base period. Next, incidental mortalities within each fishery-time step are recalculated. The current cohort is saved within the <code>SaveCohort()</code> subroutine so that it can be compared to a newly calculated cohort later in the program. Then, <code>CompCohort()</code> is called and recalculates the cohort using new estimates of catch and incidental mortality. The <code>CohortCheck()</code> subroutine is called, checking the newly calculated age 2 cohort size for each stock and comparing them against the cohort sizes saved prior to catch and incidental mortality updates. If differences in age 2 cohorts across all stocks are less than a specified allowable tolerance (the default tolerance is set at 1% within the SummaryInfo table of the Calibration Support data base), then the calibration program proceeds to the next step. If the difference is greater than the allowable tolerance, the program loops back through the processes described in this paragraph until tolerance thresholds are met.</li>
+<li>Compute calibration output:<br> Subsequent to iterations, the main calibration outputs such as AEQ values, maturation rates, base period cohort sizes, MSPs, and BPERs are calculated in subroutine <code>SaveDat()</code>.<br />
+</li>
+</ol></li>
+<li>Save output to calibration database:<br> Parameters from step 4g get saved into their associated tables in the Calibration Support data base within the “MainForm.vb” module.</li>
+</ol>
+<div class="figure">
+<img src="images/ProgramFlow.JPG" alt="Figure xxx. Calibration Program Flow" width="600px" height="600px" />
+<p class="caption">
+Figure xxx. Calibration Program Flow
+</p>
+</div>
+</div>
+</div>
+<div id="instructions-for-producing-a-new-base-period-specific" class="section level3">
+<h3>Instructions for Producing a New Base Period (specific)</h3>
+<p>The following instructions are specific to the steps needed to produce base period 7.1.</p>
+<div id="compile-and-update-data" class="section level4">
+<h4>Compile and update data</h4>
+<p>Update all data needed for calibration and FRAM validation databases.</p>
+</div>
+<div id="produce-validation-runs" class="section level4">
+<h4>Produce Validation Runs</h4>
+<p>Validation runs must be completed with the newest year first, going backwards consecutively, because the 2s from 3s method designates abundance values for 2 year olds for a given year based upon the abundance values of 3 year olds in year + 1.</p>
+<div id="normal-running-procedures" class="section level5">
+<h5>Normal Running Procedures</h5>
+<ol style="list-style-type: decimal">
+<li><p>Open FRAM</p></li>
+<li><p>Click the green <code>Open Database</code> button. Select the desired validation run database and click <code>Open</code>. Select the desired year to run.</p></li>
+<li><p>Click the green <code>Run Model</code> button. Ensure that the <code>Size Limit Fix</code> box is checked. Click the green <code>Run Model</code> button</p></li>
+<li><p>Click the green <code>Post Season Run</code> button. Edit the number of iterations as you see fit (40 iterations is normally acceptable, but always double check results). Click the green <code>Start Iterations</code> button. Use TAMI Catches if this is your first set of validation runs for the data base. Otherwise, do not use TAMI catches.</p></li>
+<li><p>After BKFRAM is complete (this process generally takes 1-5 minutes), complete the “BKFRAM Targets vs. Outputs” QAQC as described <a href="#QAQC">below</a>. If there were no errors during BKFRAM QAQC, continue to the next step. If there were errors, see the <a href="#errors">Errors</a> section below.</p></li>
+<li><p>Click the green <code>Save Model Run Inputs</code> button and on the next screen click the green <code>Replace Current Model Run</code> button.</p></li>
+<li><p>Click the green <code>Run Model</code> button. Ensure that the <code>Size Limit Fix</code> box is checked. Click the green <code>Run Model</code> button.</p></li>
+<li><p>Next, we must perform the age 2s from 3s procedure. If this is the first (i.e., most recent) year in the validation runs, press the green <code>FRAM Utilities</code> button. Press the green <code>Compute 2s From 3s (Chin)</code> button. When the pop up appears, click <code>Yes</code>. On the next pop up, click the green <code>Replace Current Model Run</code> button. In the next window click the green <code>EXIT</code> button. Proceed to the next step. If the year you’re currently on is NOT the most recent year in validation runs, age 2s from 3s should be calculated using the age 3 abundances from year +1. We recommend using the supplied R code. See <a href="literature/“BY Age 2 from 3.R"> “BY Age 2 from 3.R” </a> for more information. To use the code properly, make sure the file path and name in code line 22 matches the location and name of the validation data base. Also, ensure that the year in line 19 correctly matches the year you’re on.</p></li>
+<li><p>Click the green <code>Run Model</code> button. Ensure that the <code>Size Limit Fix</code> box is checked. Click the green <code>Select TAMM</code> button. Choose the TAMM associated with the year being run. Click the green <code>Run Model</code> button. When the pop up appears, click <code>Yes</code> to paste values into the TAMM.</p></li>
+<li><p>After the run is complete, open the TAMM on your task bar, and navigate to the <code>ER_ESC_Overview(ifanyMSF)</code> tab. Check for ER differences with the previous run in cells AC7:AF35. If ER differences are minor (I usually aim for less than 5 thousandths of a percent in all stocks), move to the next year (year = year - 1). If they are greater than 5 thousandths of a percent, cells B7:E35 should be copied and pasted into cells AH6:AK35. Then steps 4-10 should be repeated until ER differences are less than 5 thousandths of a percent for all stocks.</p></li>
+<li><p>Implement additional TAMM procedures<br></p></li>
+</ol>
+<ul>
+<li>South Puget Sound Iterations</li>
+<li>North of Ayock/South of Ayock Splits</li>
+</ul>
+<p>See <a href="https://framverse.github.io/fram_doc/user_main_menu_full.html#Chinook70" target="_blank">User Manual </a> for more information.</p>
+</div>
+<div id="new-base-period-running-procedures" class="section level5">
+<h5>New Base Period Running Procedures</h5>
+<p>Complete steps above, but do not check size limit box.</p>
+</div>
+<div id="qaqc" class="section level5">
+<h5><span id="QAQC">QAQC</span></h5>
+<ul>
+<li>Check BKFRAM Targets vs. Outputs</li>
+<li>Check 2s from 3s</li>
+<li>Check TAMM ERs vs. Last Iteration</li>
+</ul>
+</div>
+<div id="errors-encountered" class="section level5">
+<h5><span id="errors">Errors Encountered</span></h5>
+<p>The purpose of this section is to describe errors encountered during post-season runs, potential causes, and potential solutions. This is an incomplete list and it is possible to experience problems that differ from those described below.</p>
+<p>1.) Error message while conducting a forward run with TAMM</p>
+<p>TAMM values not converging<br> This situation is typically caused by a fish scalar of zero during a time with catch in the validation run database/TAMM. To identify where the issue occurs, see the FRAMcheck.txt file in the folder where the validation run database is located. By scrolling through the text file, it is possible to identify the fishery for which values do not converge. Once the fishery has been identified, ensure that the fishery flags are correct in the validation run database and that the scalar is not equal to 0 (for a fix set to 1).</p>
+<p>2.) Terminal run size does not converge with the terminal run size inputs during BKFRAM</p>
+<p>This is typically caused by incorrect BKFRAM flags. For the stock that does not converge, identify the stock ID in terms of its BKFRAM stock ID. This is done by taking the stock number in the 38 stock format and multiplying it by 3 (total; times 3+1 for unmarked; times 3+2 for marked). For example, Willapa is stock 37 and becomes stocks 111-113 in BKFRAM. Convergence issues can generally be fixed by changing the BKtarget flag from a 3-&gt;1 within the validation run database. If the flag is already a 1, and there are convergence issues, replace it with a 3.</p>
+</div>
 </div>
 </div>
 </div>

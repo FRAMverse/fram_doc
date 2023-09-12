@@ -21,7 +21,7 @@ editor_options:
 ## 1.2 Fishery Profiles Oliver
 
 ## 1.3 Database Tables
-All the input and output data for a calibration is located in an Access database titled "CalibrationSupport_xxxx", where the "xxxx" signifies a name/date that uniquely identifies the calibration. An effort was made to capture nearly all input data and manipulations in the database and program code for documentation and reproducibility purposes.
+All the input and output data for a calibration is located in an Access database titled "CalibrationSupport_xx.mdb", where the "xx" signifies a name/date that uniquely identifies the calibration. An effort was made to capture nearly all input data and manipulations in the database and program code for documentation and reproducibility purposes.
 
 ### Table Description
 Input tables are 'blue', output tables are 'green', and legacy tables that are no longer used are 'white'.
@@ -529,7 +529,7 @@ SizeL
 
 #### FRAM Chinook Stocks
 ```{r Stocks,  results='asis'}
-Stocks<-as.data.frame(read.csv("objects/Stock.csv"), header = TRUE)|>
+Stocks<-as.data.frame(read.csv("objects/Stocks.csv"), header = TRUE)|>
  	 DT::datatable(filter = 'top',
                 extensions = 'Buttons',
                 options = list(
