@@ -31,7 +31,7 @@ knitr::include_graphics("literature/CalibrationDB Table Description.pdf")
 
 ```
 
-#### [AEQs](#AEQ) 
+#### AEQs
  
 ```{r AEQTable,  results='asis'}
 AEQTable<-as.data.frame(read.csv("objects/AEQ.csv"), header = TRUE)|>
