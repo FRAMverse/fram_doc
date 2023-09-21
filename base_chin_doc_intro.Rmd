@@ -1,8 +1,3 @@
----
-output:
-  word_document: default
-  html_document: default
----
 ```{r page title, include=FALSE}
 page_title <- "Base Period Documentation - Introduction"
 ```
