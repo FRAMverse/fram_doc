@@ -24,10 +24,27 @@ navbar:
       menu:
         - text: "Chinook"
           href: base_chin.html
+          menu: 
+            - text: "Introduction"
+              href: base_chin_doc_intro.html
+            - text: "Calibration Processes"
+              href: base_chin_doc_calibration.html
+            - text: "Model Data"
+              href: base_chin_doc_data.html
+            - text: "QA/QC - Outreach"
+              href: base_chin_doc_qaqc_or.html
+            - text: "Program Descriptions"
+              href: base_chin_doc_program_desc.html
+            - text: "Update Cycle"
+              href: base_chin_doc_update_cycle.html
+            - text: "Implications"
+              href: base_chin_doc_implications.html
+            - text: "Results"
+              href: base_chin_doc_results.html
+            - text: "Appendices"
+              href: base_chin_doc_appendix.html
         - text: "Coho"
           href: base_coho.html
-        - text: "Appendices"
-          href: base_appendices.html
     - text: "User Manual"
       menu:
         - text: "Prerequisites"

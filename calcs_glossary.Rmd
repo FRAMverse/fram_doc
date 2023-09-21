@@ -13,8 +13,14 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height=9, fig.width=
 # **Abundance Forecast**
 Annually developed, stock-specific predictions of returning Chinook and Coho salmon.
 
+# **Adipose Mark**
+A missing adipose fin on salmon as a result of clipping by a hatchery program. Commonly, a visual identifier of a hatchery fish that can be retained in a <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" title="Mark-Selective Fishery" >mark-selective fishery</a>. The use of "marked" and "clipped" is used interchangeably within the document.
+
 # **Adult Equivalent (AEQ)**
 The potential for a Chinook of a given age to contribute to the mature run (spawning escapement) in the absence of fishing.  Because of natural mortality and unaccounted losses, not all unharvested fish contribute to spawning escapement. 
+
+# **Age**
+Age is calculated as catch year minus brood year. This information is usually derived from <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Regional_Mark_Information_System_(RMIS)" title="blank" >RMIS</a> <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" title="blank" >CWT</a> recovery information. The calibration works with ages 2 to 5. Chinook older than 5 are assigned to age 5. Chinook younger than age 2 are excluded from the calibration.
 
 # **Backwards FRAM (BkFRAM)**
 A utility within the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model that calculates starting abundances when provided with estimates of catches and escapements.
@@ -22,11 +28,17 @@ A utility within the <span title = "FRAM: Fishery Regulation Assessment Model">F
 # **Base Period**
 A range of years from which <span title = "CWT: Coded wire tag">CWT</span> data are used to estimate exploitation rates and other parameters through a process of cohort reconstruction. Resulting base period reference parameters are used to populate the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model to predict annual stock/fishery specific impacts.
 
+# **Base Period Exploitation Rate (BPER)**
+The total fishing mortality rate, calculated as the sum of all fishery-related mortalities divided by that sum plus escapement using data from base period years. These rates become the basis for estimating stock specific exploitation rates in annual FRAM runs when used in conjunction with annual forecasts of abundances and fishing effort.
+
 # **Calibration**
 Process creating base period exploitation rates by first selecting <span title = "CWT: Coded wire tag">CWT</span> groups to represent <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> stocks and then reconstructing the cohort. Once cohort sizes are established, stock/age/fishery/time step specific exploitation rates are computed.
 
 # **Cape Falcon**
 Cape in Northern Oregon defining an important <span title = "PFMC: Pacific Fishery Management Council">PFMC</span> fishery management boundary (45&deg;46'00"N).
+
+# **Catch Record Cards (CRC)**
+Catch Record Cards are used to estimate the recreational catch of salmon, steelhead, sturgeon, halibut and Puget Sound Dungeness crab. The CRC system houses the recreational catch estimates.
 
 # **Chinook/Coho Non-retention (CNR) Fisheries**
 Fisheries where salmon fishing is allowed, but the retention of Chinook or Coho salmon is prohibited. Impacts in non-retention fisheries are calculated as encounters times release mortality.
@@ -37,11 +49,17 @@ Coded micro-wire implanted in juvenile salmon prior to release.  When recovered,
 # **Cohort Analysis**
 A sequential population analysis technique, also called Virtual Population Analysis, that is used during model calibration to reconstruct cohort size at age using life history parameters and exploitation of a population.
 
+# **Coho Technical Committee (CoTC)**
+Technical committee formed by the [Pacific Salmon Commission](#PSC) providing the panels with scientific data to make decisions affecting Southern Coho salmon.
+
 # **Cohort Size**
 The total number of fish of a given age and stock.
 
 # **Co-managers**
 Western Washington treaty Indian tribes and Washington Department of Fish and Wildlife officials jointly managing the salmon resource.
+
+# **Chinook Technical Committee (CTC)**
+The Chinook Technical Committee (CTC) is a body of the Pacific Salmon Commission. It's members are comprised of U.S. and Canadian members. The committee reports annually on catches, harvest rate indices, estimates of incidental mortality, and exploitation rates for all Chinook fisheries and stocks within the [Pacific Salmon Treaty](#PST) area.
 
 # **Deterministic Model**
 A model predicting the outcome without estimates of variance.
@@ -73,6 +91,9 @@ The number of mature salmon that are not caught in fisheries or die as a result 
 # **Exploitation Rate (ER)**
 When used to refer to model output, represents the total fishing mortality rate, calculated as the sum of all fishery-related mortalities divided by that sum plus escapement. Exploitation rates are <u>stock specific</u>.
 
+# **Extreme Terminal**
+Marine area directly adjacent to salmon native streams with a very high proportion of catch made up of the "local stock" due to river mouth proximity, i.e., Elliott Bay is the extreme terminal area for Green River Chinook and Coho.
+
 # **Extreme Terminal Run Size (ETRS)**
 Run size including escapement, freshwater fishery mortalities, and fishery mortalities in those marine areas that are assumed to be 100% local stock due to river mouth proximity.
 
@@ -81,6 +102,9 @@ The Fishery Regulation Assessment Model is a simulation model developed for fish
 
 # **Fishery Scaler**
 A multiplier, typically based on expected fishery effort or catch relative to base period effort or catch, used to estimate fishery impacts by adjusting the base period exploitation rates. 
+
+# **Genetic Stock Identification (GSI)**
+Genetic stock identification (GSI) estimates stock proportions and individual assignments through comparison of genetic markers with reference populations.
 
 # **Harvest Rate (HR)**
 Catch or total fishing mortality in a fishery expressed as a proportion of the total fish abundance available in a given fishing area. Harvest rates are area specific. The catch is the total catch of all stocks in an area. Harvest rates are most often used for terminal fisheries, where the rate represents the terminal catch divided by the terminal abundance.
@@ -118,6 +142,9 @@ The Magnuson-Stevens Act is the primary law governing marine fisheries managemen
 # **Mark Selective Fishing Bias**
 Exploitation rate bias caused when using linear equations with parameters derived from retention fisheries to estimate mortalities in fisheries where all or  some of the fish encountered are released. When <span title = "MSF: Mark-selective fishery">MSFs</span> operate during a modeled time step, mortalities are underestimated because released fish may encounter the fishing gear more than once during the modeled time step.
 
+# **Mark Rate**
+The mark rate of a fishery is computed as [adipose marked](#M) landed catch or encounters divided by total landed catch or total encounters in the fishery.
+
 # **Marked Recognition Error Rate**
 The probability that a marked fish will be inadvertently or knowingly released in a mark-selective fishery.
 
@@ -130,8 +157,14 @@ A fishery in which only marked (adipose fin-clipped) fish above the regulatory s
 # **Maturation**
 Process of sexual development, signaling the return of a salmon to freshwater in order to spawn.
 
+# **Mass Marking**
+Removal of the adipose fin as a visual indicator of a hatchery salmon. Virtually all coho and Chinook salmon produced in Washington hatcheries are "marked". 
+
+# **Mixed Stock Model (MSM)**
+Main computer program used to build the current Coho [base period](#BP). Model inputs included [coded-wire tags](#CWT) and estimated catches and escapements of Coho coast-wide from catch years 1986-1992. Model output includes base period [exploitation rates](#ER) utilized in contemporary [FRAM](#FRAM) runs.
+
 # **Model-Stock Proportion (MSP)**
-Percentage of a fishery’s total catch that is accounted for by stocks modeled in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>.
+Percentage of a fishery’s total catch that is accounted for by stocks modeled in <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Fishery_Regulation_Assessment_Model_(FRAM)" target="_blank">FRAM</a>.
 
 # **Multiple Encounter**
 The event of encountering a fish more than one time while fishing due to previous release or drop-off.
@@ -160,8 +193,12 @@ Governing body for approximately 119 species of salmon, groundfish, coastal pela
 # **Pacific Salmon Commission (PSC)**
 The body formed by the governments of Canada and the United States in 1985 to implement the Pacific Salmon Treaty.
 
+# **Pacific Salmon Treaty (PST)**
+Treaty between the Governments of Canada and the United States of America concerning Pacific Salmon. <br>
+<a href="https://www.psc.org/about-us/history-purpose/pacific-salmon-treaty/"></a>
+
 # **Parameter**
-A variable whose measure is indicative of a quantity or function that cannot itself be precisely determined by direct methods; for example, exploitation rates and fishery scalers are parameters used to predict catch.
+A variable whose measure is indicative of a quantity or function that cannot itself be precisely determined by direct methods; for example, exploitation rates and fishery scalars are parameters used to predict catch.
 
 # **Post-season**
 After a fishing season has concluded and salmon have finished spawning. Post-season estimates are usually observed, sampled, or reported values.
@@ -171,6 +208,9 @@ Before a fishing season has started. Pre-season estimates use a variety of forec
 
 # **Pre-terminal Fishery**
 In <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>, a fishery that operates on mixed maturity fish and/or in geographic areas distant to a natal origin river/stream.
+
+# **Production Expansion Factor (PEF)**
+Stock specific factor. The ratio of total stock escapement to the escapement of the CWTed population. This factor is needed to account for untagged portions of a stock aggregate.
 
 # **Proportion Vulnerable (PV)**
 Portion of a stock that is of legal size in a fishery and can be retained per regulations.
@@ -211,6 +251,9 @@ Length of salmon defining the minimum size for legal retention in a fishery.
 # **Snake River Fall Chinook Index (SRFI)**
 A ratio that is calculated as the Snake River Fall Chinook ocean exploitation rate in the current model run divided by the exploitation rate during a reference period (1988-1993). The Snake River is in the interior Columbia River basin.
 
+# **South of Falcon (SOF)**
+Referencing the region South of Cape Falcon, Oregon, which marks the southern border of active management for Washington State salmon stocks.
+
 # **Starting Cohort**
 Abundance of salmon of the same stock and age prior to fishing and natural mortality.
 
@@ -229,6 +272,9 @@ A Chinook salmon that cannot be retained because it is smaller than the minimum 
 # **TAAETRSList**
 A table containing terminal area abundance (<span title = "TAA: Terminal Area Abundance">TAA</span>) and extreme terminal run size (<span title = "ETRS: Extreme Terminal Run Size">ETRS</span>) definitions specifying the Coho stocks and fisheries included in the terminal abundance used in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>-<span title = "TAMM: Terminal Area Management Module">TAMM</span> iterations.
 
+# **Tag Code**
+A numeric or binary code on the coded micro-wire implanted in juvenile salmon prior to release. The code on the tag identifies the tag group and provides information such as location and timing of release, special hatchery treatments, etc. 
+
 # **Tagged**
 A salmon containing a coded-wire-tag.
 
@@ -245,6 +291,9 @@ Definition 2 (Mature fishery context): In <span title = "FRAM: Fishery Regulatio
 
 # **Terminal Run Size**
 This run size definition includes escapement, freshwater fishery mortalities, and fishery mortalities in terminal fisheries.
+
+# **Terminal Type**
+In FRAM, calculations are classified as pre-terminal (terminal type = 0) or terminal (terminal type = 1) depending on the fishery and time step. A "terminal" fishery usually occurs in a fishery defined and flagged as <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Fishery" target="_blank">terminal</a> during time step 3 (July-September). Terminal catch is subtracted from the abundance after maturation and not <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Adult_Equivalent_(AEQ)" target="_blank">AEQed</a>, whereas a preterminal fishery occurs prior to maturation and mortalities are AEQed.
 
 # **Time Step**
 A continuous time period in the <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span> model operating on the same abundance and using identical stock/fishery/age-specific parameters. Time steps in the model vary in length and by species.

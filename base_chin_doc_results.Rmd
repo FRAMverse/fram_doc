@@ -1,0 +1,16 @@
+
+```{r page title, include=FALSE}
+page_title <- "Base Period Documentation - Results"
+```
+
+--- 
+title: `r page_title`
+author: ""
+date: ""
+description: "Getting to know the Fishery Regulation Assessment Model (FRAM)"
+editor_options: 
+  chunk_output_type: console
+---
+
+# Results
+Ty

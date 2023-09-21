@@ -1,0 +1,30 @@
+```{r page title, include=FALSE}
+page_title <- "Base Period Documentation - Update Cycle"
+```
+
+--- 
+title: `r page_title`
+author: ""
+date: ""
+description: "Getting to know the Fishery Regulation Assessment Model (FRAM)"
+editor_options: 
+  chunk_output_type: console
+---
+
+# 1. Update Cycle
+Galen
+A new calibration of FRAM is warranted when there are changes to the input data and/or model structure. 
+Examples include changes to stocks, fisheries, CWT groups, time structure, and growth, natural, and 
+fishery related handling mortality rates. All of these elements influence the estimates of the cohort sizes 
+calculated during cohort analysis and the corresponding estimates of exploitation rates
+
+## 1.2 Every 10 years, etc.
+
+# 2. Implications
+Derek
+
+## 2.1 Management Objectives 
+
+## 2.2 Reevaluation of Fishery Scalers
+
+## 2.3 Maturation Rates

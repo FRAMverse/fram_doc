@@ -1,0 +1,768 @@
+```{r page title, include=FALSE}
+page_title <- "Base Period Documentation - Appendix"
+```
+
+--- 
+title: `r page_title`
+author: ""
+date: ""
+description: "Getting to know the Fishery Regulation Assessment Model (FRAM)"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+
+# 1. Appendix
+
+## 1.1 Stock Profiles Jon
+
+## 1.2 Fishery Profiles Oliver
+
+## 1.3 Database Tables
+All the input and output data for a calibration is located in an Access database titled "CalibrationSupport_xx.mdb", where the "xx" signifies a name/date that uniquely identifies the calibration. An effort was made to capture nearly all input data and manipulations in the database and program code for documentation and reproducibility purposes.
+
+### Table Description
+Input tables are 'blue', output tables are 'green', and legacy tables that are no longer used are 'white'.
+```{r DBTables, echo = FALSE, fig.cap=c("Calibration Database Table Descriptions"),fig.pos='H', out.height = "800px", out.width='800px'}
+
+knitr::include_graphics("literature/CalibrationDB Table Description.pdf")
+
+```
+
+#### AEQs
+ 
+```{r AEQTable,  results='asis'}
+AEQTable<-as.data.frame(read.csv("objects/AEQ.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:AEQTable)",
+                      "Adult Equivalent Values",
+                      "</caption>"),
+                      "</p>")
+AEQTable
+
+```
+
+#### Base Period Cohort Sizes 
+
+```{r BPCohortTable,  results='asis'}
+BPCohortTable<-as.data.frame(read.csv("objects/BaseCohort.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:BPCohortTable)",
+                      "Base Period Cohort Sizes",
+                      "</caption>"),
+                      "</p>")
+BPCohortTable
+```
+
+#### Base Period Exploitation Rates
+
+```{r BPRate,  results='asis'}
+BPRate<-as.data.frame(read.csv("objects/BaseExploitationRate.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:BPRate)",
+                      "Base Period Exploitation Rates",
+                      "</caption>"),
+                      "</p>")
+BPRate
+
+```
+
+#### Base Period Marked Catches
+```{r MrkCatch,  results='asis'}
+MrkCatch<-as.data.frame(read.csv("objects/BasePeriodCatch.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:MrkCatch)",
+                      "Base Period Marked Catches",
+                      "</caption>"),
+                      "</p>")
+MrkCatch
+
+```
+
+#### Base Period Total Catches
+```{r TotalCatch,  results='asis'}
+TotalCatch<-as.data.frame(read.csv("objects/BasePeriodCatch_Tot.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:TotalCatch)",
+                      "Base Period Total Catches (Marked + Unmarked)",
+                      "</caption>"),
+                      "</p>")
+TotalCatch
+
+```
+
+#### Base Period Marked Escapements
+```{r MrkEscape,  results='asis'}
+MrkEscape<-as.data.frame(read.csv("objects/BPEscapements.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:MrkEscape)",
+                      "Base Period Marked Escapements",
+                      "</caption>"),
+                      "</p>")
+MrkEscape
+
+```
+
+#### Base Period Total Escapements
+```{r TotalEscape,  results='asis'}
+TotalEscape<-as.data.frame(read.csv("objects/BPEscapements_Tot.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:TotalEscape)",
+                      "Base Period Total Escapements (Marked + Unmarked)",
+                      "</caption>"),
+                      "</p>")
+TotalEscape
+
+```
+
+#### Coded-Wire-Tag Adjustments for Sinclair Inlet (Area 10E)
+```{r Sinclair,  results='asis'}
+Sinclair<-as.data.frame(read.csv("objects/CWT 10E adjustments.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:Sinclair)",
+                      "Sinclair Inlet CWT Adjustments",
+                      "</caption>"),
+                      "</p>")
+Sinclair
+```
+
+#### Out-of-Base CWTs for White River 
+```{r WhiteOOB,  results='asis'}
+WhiteOOB<-as.data.frame(read.csv("objects/CWT_WhiteOOB.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:WhieOOB)",
+                      "White River Out-of-Base CWT Recoveries",
+                      "</caption>"),
+                      "</p>")
+WhiteOOB
+```
+
+#### Coded-Wire-Tag Recovery Data
+```{r CWTAll,  results='asis'}
+CWTAll<-as.data.frame(read.csv("objects/CWTAll.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:CWTAll)",
+                      "Coded-Wire-Tag Recovery Data",
+                      "</caption>"),
+                      "</p>")
+CWTAll
+```
+
+#### Coded-Wire-Tags for South Puget Sound Surrogate Method
+```{r CWTSPS,  results='asis'}
+CWTSPS<-as.data.frame(read.csv("objects/CWTforSPS_SurroagteMethod.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:CWTSPS)",
+                      "South Sound Coded-Wire-Tags",
+                      "</caption>"),
+                      "</p>")
+CWTSPS
+```
+
+#### Coded-Wire-Tags to Impute Age 5 Recoveries
+```{r CWTAge5,  results='asis'}
+CWTAge5<-as.data.frame(read.csv("objects/CWTImputedAge5.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:CWTAge5)",
+                      "Coded-Wire-Tags to Impute Age 5 Recoveries",
+                      "</caption>"),
+                      "</p>")
+CWTAge5
+```
+
+
+#### Coded-Wire-Tags Recoveries for Strait of Juan de Fuca (JDF) 
+```{r CWTJDF,  results='asis'}
+CWTJDF<-as.data.frame(read.csv("objects/CWTJDFSurrogate071816.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:CWTJDF)",
+                      "JDF Surrogate CWTs",
+                      "</caption>"),
+                      "</p>")
+CWTJDF
+```
+
+#### Base Period Coded-Wire-Tags Recoveries Merged with Out-Of-Base Recoveries
+```{r CWTMerged,  results='asis'}
+CWTMerged<-as.data.frame(read.csv("objects/CWTOOBMerged.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:CWTMerged)",
+                      "Base Period CWTs Merged with Out-Of-Base Recoveries",
+                      "</caption>"),
+                      "</p>")
+CWTMerged
+```
+
+#### FRAM Chinook Fisheries
+```{r Fish,  results='asis'}
+Fish<-as.data.frame(read.csv("objects/Fishery.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:Fish)",
+                      "JDF Surrogate CWTs",
+                      "</caption>"),
+                      "</p>")
+Fish
+```
+
+#### Marked Fishery Model Stock Proportions 
+```{r MSP,  results='asis'}
+MSP<-as.data.frame(read.csv("objects/FisheryModelStockProportion.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:MSP)",
+                      "Marked Model Stock Proportions",
+                      "</caption>"),
+                      "</p>")
+MSP
+```
+
+#### Total (Marked + Unmarked) Fishery Model Stock Proportions 
+```{r MSPTot,  results='asis'}
+MSPTot<-as.data.frame(read.csv("objects/FisheryModelStockProportion_Tot.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:MSPTot)",
+                      "Total (Marked + Unmarked) Model Stock Proportions",
+                      "</caption>"),
+                      "</p>")
+MSPTot
+```
+
+#### Fishery Scalers
+```{r FishScaler,  results='asis'}
+FishScaler<-as.data.frame(read.csv("objects/FishScalar.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:FishScaler)",
+                      "Fishery Scalers",
+                      "</caption>"),
+                      "</p>")
+FishScaler
+```
+
+#### Von Bertalaffy Growth Parameters
+```{r VBGrowth,  results='asis'}
+VBGrowth<-as.data.frame(read.csv("objects/Growth.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:VBGrowth)",
+                      "Von Bertalaffy Growth Parameters",
+                      "</caption>"),
+                      "</p>")
+VBGrowth
+```
+
+#### Instructions for Imputing Surrogate CWT Recoveries
+```{r CWTSurrogate,  results='asis'}
+CWTSurrogate<-as.data.frame(read.csv("objects/ImputeRecoveries.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:CWTSurrogate)",
+                      "Instructions for Imputing Surrogate CWT Recoveries",
+                      "</caption>"),
+                      "</p>")
+CWTSurrogate
+```
+
+#### [Incidental Mortality Rates]{#Inc}
+```{r Incidental,  results='asis'}
+Incidental<-as.data.frame(read.csv("objects/IncidentalRate.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:Incidental)",
+                      "Incidental Mortality Rates",
+                      "</caption>"),
+                      "</p>")
+Incidental
+```
+
+#### Maturation Rates
+```{r MatRate,  results='asis'}
+MatRate<-as.data.frame(read.csv("objects/MaturationRate.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:MatRate)",
+                      "Maturation Rates",
+                      "</caption>"),
+                      "</p>")
+MatRate
+```
+
+#### Natural Mortality Rates
+```{r NatRate,  results='asis'}
+NatRate<-as.data.frame(read.csv("objects/NaturalMortality.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:NatRate)",
+                      "Natural Mortality Rates",
+                      "</caption>"),
+                      "</p>")
+NatRate
+```
+
+#### Marked Non-Retention Chinook Encounters
+```{r NR,  results='asis'}
+NR<-as.data.frame(read.csv("objects/NonRetention.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:NR)",
+                      "Marked Non-Retention Chinook Encounters",
+                      "</caption>"),
+                      "</p>")
+NR
+```
+
+#### Total (Marked + Unmarked) Non-Retention Chinook Encounters
+```{r NRTot,  results='asis'}
+NRTot<-as.data.frame(read.csv("objects/NonRetention_Tot.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:NRTot)",
+                      "Total (Marked + Unmarked) Non-Retention Chinook Encounters",
+                      "</caption>"),
+                      "</p>")
+NRTot
+```
+
+#### [Sublegal Mortality Rates]{#SubRate}
+```{r SLRate,  results='asis'}
+SLRate<-as.data.frame(read.csv("objects/ShakerMortRate.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:SLRate)",
+                      "Sublegal Mortality Rates",
+                      "</caption>"),
+                      "</p>")
+SLRate
+```
+
+#### Minimum Size Limits
+```{r SizeL,  results='asis'}
+SizeL<-as.data.frame(read.csv("objects/SizeLimits.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:SizeL)",
+                      "Minimum Size Limits",
+                      "</caption>"),
+                      "</p>")
+SizeL
+```
+
+#### FRAM Chinook Stocks
+```{r Stocks,  results='asis'}
+Stocks<-as.data.frame(read.csv("objects/Stocks.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:Stocks)",
+                      "Maturation Rates",
+                      "</caption>"),
+                      "</p>")
+Stocks
+```
+
+#### Run Summary Information
+```{r Run,  results='asis'}
+Run<-as.data.frame(read.csv("objects/SummaryInfo.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:Run)",
+                      "Run Summary Information",
+                      "</caption>"),
+                      "</p>")
+Run
+```
+
+#### Surrogate Fishery Base Period Exploitation Rates
+```{r SurrogateBPER,  results='asis'}
+SurrogateBPER<-as.data.frame(read.csv("objects/SurrogateFishBPER.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:SurrogateBPER)",
+                      "Surrogate Fishery Base Period Exploitation Rates",
+                      "</caption>"),
+                      "</p>")
+SurrogateBPER
+```
+
+#### Target Encounter Rates
+```{r TargetER,  results='asis'}
+TargetER<-as.data.frame(read.csv("objects/TargetEncounterRates.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:TargetER)",
+                      "Target Encounter Rates",
+                      "</caption>"),
+                      "</p>")
+TargetER
+```
+
+#### Terminal Fishery Flags
+```{r TermFlags,  results='asis'}
+TermFlags<-as.data.frame(read.csv("objects/TerminalFisheryFlag.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:TermFlags)",
+                      "Terminal Fishery Flags",
+                      "</caption>"),
+                      "</p>")
+TermFlags
+```
+
+#### FRAM Time Steps
+```{r TimeSteps,  results='asis'}
+TimeSteps<-as.data.frame(read.csv("objects/TimeStep.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:TimeSteps)",
+                      "FRAM Time Steps",
+                      "</caption>"),
+                      "</p>")
+TimeSteps
+```
+
+#### Base Period Update Log
+```{r Log,  results='asis'}
+Log<-as.data.frame(read.csv("objects/UpdateLog.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:Log)",
+                      "Base Period Update Log",
+                      "</caption>"),
+                      "</p>")
+Log
+```
+
+#### CWT Weighting
+```{r Weighting,  results='asis'}
+Weighting<-as.data.frame(read.csv("objects/Weighting.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:Weighting)",
+                      "CWT Weighting",
+                      "</caption>"),
+                      "</p>")
+Weighting
+```
+
+#### White River Maturation Rates
+```{r WhiteMatR,  results='asis'}
+WhiteMatR<-as.data.frame(read.csv("objects/WhiteMatRate.csv"), header = TRUE)|>
+ 	 DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  rownames = FALSE,
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:WhiteMatR)",
+                      "White River Maturation Rates",
+                      "</caption>"),
+                      "</p>")
+WhiteMatR
+```
+
+
+## 1.4 Length-At-Age Distribution Parmeters
+
+```{r LAge, results='asis'}
+lengthtable<-as.data.frame(read.csv("objects/Length at Age.csv", header = TRUE))|>
+  DT::datatable(filter = 'top',
+                extensions = 'Buttons',
+                options = list(
+                  dom = 'Bfrtip',
+                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+
+cat("<p>", paste0("<caption>",
+                      "(#tab:LAge)",
+                      "Length-At-Age Distribution Parameters
+Stage 1 analysis results. Maximum likelihood estimates of the mean, SD, and CV of fork length (FL, mm) by age (in months) for stock-time estimation strata for which sufficient records occurred to estimate distributional parameters (N = 20). Note, the two suspected outliers that were included in VBGF estimation but not in the CV function analysis are denoted by ‘**’; columns ‘Age’ and ‘Mean FL (cm)’ are the values used for fitting VBGFs.",
+                      "</caption>"),
+                      "</p>")
+
+lengthtable
+```
+
+
+## 1.4 WinBUGS Code for Fitting Growth Functions {#WB}
+
+```{r eval = FALSE, echo=TRUE}
+##WinBUGS code for VB Growth fxn  #####
+### Specs for FRAM VBGF parameter estimation: 
+## N = 3 chains, thinned to 1 in 50
+## N = 31k total interations (1k initial, 30k thereafter, summarize 5001+)
+model 
+{
+	# priors
+	mu.a0~dnorm(0, 0.001) # Mean hyperparameter for a0
+	mu.Linf~dnorm(0, 0.001) # Mean hyperparameter for Linf
+	mu.k~dnorm(0, 0.001) # Mean hyperparameter for k
+	sigma.a0~dunif(0, 10000) # SD hyperparameter for a0
+	sigma.Linf~dunif(0, 10000) # SD hyperparameter for Linf
+	sigma.k~dunif(0, 10000) # SD hyperparameter for k
+	sigma~dunif(0, 10000) # Residual standard deviation
+	tau.a0 <- 1/(sigma.a0*sigma.a0)
+	tau.Linf <- 1/(sigma.Linf*sigma.Linf)
+	tau.k <- 1/(sigma.k*sigma.k)
+	tau <- 1/(sigma*sigma) # Residual precision
+
+	# hierarchical parmeters
+	for (i in 1:P) {
+   		Linf[i]~dnorm(mu.Linf, tau.Linf) 
+   		k[i]~dnorm(mu.k, tau.k)#I(0,)
+   		a0[i]~dnorm(mu.a0, tau.a0) 
+	}
+
+	# likelihood
+	for (i in 1:N) {
+		li[i] ~ dnorm(Lai[i],tau)
+		Lai[i]<-Linf[pop[i]]*(1-exp(-k[pop[i]]*(ai[i]-a0[pop[i]])))  
+		# Observation-level GOF calcs
+		pred[i] <- Lai[i]
+		rep_li[i] ~ dnorm(pred[i], tau)   #simulate perfect dataset
+		rep_resid[i] <- rep_li[i]-pred[i]   #calc resid for simulated data
+		resid[i] <- li[i] - pred[i]   #calc resid for actual data
+		sq[i] <- pow(resid[i],2)  #calc squared resids for actual data 								sq_new[i] <- pow(rep_resid[i],2)   #calc squared resids for simulated data
+	}
+	# Dataset-level GOF calcs
+	fit<-sum(sq[]) #sum squared resids for actual data
+	fit_new<-sum(sq_new[]) #sum squared resids for simulated data
+	test<-step(fit_new-fit) #determine which is greater (0s and 1s)
+	bpvalue<-mean(test) #mean of 0,1 gives Bayesian P-value
+}	
+
+# inits
+list(a0=c(-5,-5,-5,-5,-5,-5,-5,-5,-5,-5,-5,-5,-5), k=c(0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03), Linf=c(950,950,950,950,950,950,950,950,950,950,950,950,950),mu.a0=-5,mu.k=0.03,mu.Linf=950,sigma.a0=1,sigma.Linf=1,sigma.k=1,sigma=1)
+
+#data -- also must load secondary data file (Appendix A) with stock-month means
+list(N=164, P=13) #n is 165 observations (0 indexed) and 13 stock aggregates
+
+
+```

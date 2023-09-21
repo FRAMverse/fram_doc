@@ -15,6 +15,8 @@ Conrad, R., A. Hagen-Breaux, and H. Yuen. 2013. Unbiased Methods for Calculating
 
 Hagen-Breaux, A. F., P. McHugh, and J. Packer. 2013. *Correction to FRAM Algorithms for Modeling Size Limit Changes*. Portland, PFMC. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/Correction_to_FRAM_Algorithms_Evaluating_Size_Limit_Changes_final.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
+Johnson, G., A. Hagen-Breaux, P. McHugh, J. Carey, L. LaVoy. *2015. Chinook FRAM Base Period Documentation: Sublegal Stock and Age Assignments*. Portland PFMC. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/Johnson_et_al_2015.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
+
 McHugh, P., G. Johnson, and J. Schaffler. 2015. *Chinook FRAM Base Period Documentation: Growth Functions*. [<a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/McHugh_et_al_2015.pdf" target = "_blank" title = "Download PDF">Download PDF</a>]
 
 Model Evaluation Workgroup (MEW).  2008.  *Chinook Fishery Regulation Assessment Model (FRAM)
