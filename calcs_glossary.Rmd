@@ -164,7 +164,7 @@ Removal of the adipose fin as a visual indicator of a hatchery salmon. Virtually
 Main computer program used to build the current Coho [base period](#BP). Model inputs included [coded-wire tags](#CWT) and estimated catches and escapements of Coho coast-wide from catch years 1986-1992. Model output includes base period [exploitation rates](#ER) utilized in contemporary [FRAM](#FRAM) runs.
 
 # **Model-Stock Proportion (MSP)**
-Percentage of a fishery’s total catch that is accounted for by stocks modeled in <span title = "FRAM: Fishery Regulation Assessment Model">FRAM</span>.
+Percentage of a fishery’s total catch that is accounted for by stocks modeled in <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Fishery_Regulation_Assessment_Model_(FRAM)" target="_blank">FRAM</a>.
 
 # **Multiple Encounter**
 The event of encountering a fish more than one time while fishing due to previous release or drop-off.

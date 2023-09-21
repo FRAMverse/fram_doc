@@ -117,6 +117,17 @@ For a complete description of stock profiles see <a href="literature/“2017Chin
 
 ## Sublegal Stock-, Age-Composition
 Galen
+As part of developing this base period, procedures for allocating sublegal encounters to stocks and ages were revised. 
+
+In FRAM, the number of Chinook encounters below the size limit in a fishery (sublegals) is calculated as the number of encounters with fish at or above the size limit in a fishery (legals) times an average sublegals/legals ratio from that fishery. Because CWTs are not recovered from non-landed encounters, such as those with sublegals, methods are needed to infer stock and age composition of sublegal encounters in a fishery. Sublegal encounters are assigned only to stocks caught in the fishery (or a surrogate fishery) and may include sublegals from ages present in the legal catch as well as younger ages with few or no legals. The revised method assigns sublegal encounters to stocks and ages by applying the stock and age specific legal encounter rates to the sublegal population of a stock and scaling these estimated encounters to match the total number of sublegal encounters. In cases where an age class is not encountered, the encounter rate of the next highest age is applied. 
+
+
+
+
+
+
+
+Please see <a href = "https://github.com/FRAMverse/fram_doc/raw/master/literature/Johnson_et_al_2015.pdf" target = "_blank" title = "blank" >Chinook FRAM Base Period Documentation: Sublegal Stock and Age Assignments</a>.
 
 ## Addressing Sparse or Missing CWT Recoveries 
 Developing a new base period representing the necessary stock, age, fishery, time step resolution can be immensely challenging. 
