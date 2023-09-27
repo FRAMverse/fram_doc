@@ -165,7 +165,7 @@ knitr::include_graphics("literature/SurrogateFisheries.pdf")
 For documentation and replicability purposes all surrogate fisheries are processed in module “ImputeRecov” of the “MainCalibration” program. Instruction for surrogate fisheries are located in table <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#instructions-for-imputing-surrogate-cwt-recoveries" target="_blank"> `Impute Recoveries` </a> of the “CalibrationSupport” database. The `Type` column of the `ImputeRecoveries` table specifies the method, whereas the columns `RecipientFishery` and `RecipientTimeStep` specify the fishery number and time step receiving CWT information from a surrogate (donor) fishery (column `SurrogateFishery`) and surrogate time step (column `SurrogateTimeStep`).
 Unless otherwise specified CWTs from the recipient fishery and time step are replaced with CWTs from the surrogate fishery and time step and divided by 1000. This results in a recipient fishery with an identical stock composition as the surrogate fishery but only 1/1000 of the CWT catch of the surrogate. 
 
-Equationxxx
+Equation 1:
 $$CWT_{s, a, RecipientFishery, RecipientTimeStep} = \frac{CWT_{s, a, SurrogateFishery, SurrogateTimeStep} }{1000}$$ 
 
 The intent of this division is to keep the recipient catch small under the assumption that a lack of sufficient CWT recoveries is due to small catches. This provides a fishery with a stock composition for modeling, while minimally influencing the cohort reconstruction. For <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Out-of-Base_Procedures" target="_blank">Out-of-Base Runs</a>, the recipient fishery is not re-adjusted and hence stays at the low value. For the “All Stocks” run, CWTs from the recipient fishery are later adjusted so that the CWT catch matches the estimated catch in the fishery. This produces a model stock proportion of 100% for all recipient fisheries. For this calibration, algorithms were further adjusted to allow the incorporation of an external model stock proportion (see paragraph [“Surrogate Fisheries and Model Stock Proportion”](#SurrogateMSP)).
@@ -179,7 +179,7 @@ $$CWT_{s, a, RecipientFishery, RecipientTimeStep} = 0$$
 
 - **Type 9:** This method uses base period exploitation rates from the previous calibration or the out-of-base fishery method (Table 1) to impute CWT recoveries for the recipient fishery. These base period exploitation rates are stored in table <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Surrogate_Fishery_Base_Period_Exploitation_Rates" target="_blank">`SurrogateFishBPER`</a> of the “CalibrationSupport” database. The <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Instructions_for_Imputing_Surrogate_CWT_Recoveries" target="_blank">`ImputeRecoveries`</a> table designates the surrogate fishery and time step for use of base period exploitation rates. The base period exploitation rates are applied to the legal cohort sizes of the exploited stocks in the fishery.
 For Type 9 the following equations are applied:<br>
-Equationxxx \@ref(eq:Type91)
+Equation 2:
 $$
 CWT_{s,a,RecipientFishery,RecipientTimeStep} = Cohort_{s,a,t} * SurrogateFishery BPER_{s,a,SurrogateFishery,SurrogateTimeStep} * LegalProportion_{s,a,f,t}$$
 For a recipient fishery and time step the imputed CWT recoveries are summed over stocks and ages to compute the CWTCatch.
@@ -206,7 +206,7 @@ This method develops exploitation rates for select fisheries from brood years th
 8.	Set flagging in table <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#instructions-for-imputing-surrogate-cwt-recoveries" target="_blank"> `Impute Recoveries` </a> to “Type 9”.
 These ERs (SurrogateFishBPERs) are then used by the calibration program to compute CWT recoveries in subroutine `ImputeOldBPERs`.
 
-Equation xxx
+Equation 3:
 $$CWT_{s,a,f,t} = Cohort_{s,a,TerminalType,t} * SurrogateFishBPER_{s,a,f,t} * LegalProp_{s,a,f,t}$$
 where,
 
@@ -261,8 +261,7 @@ If the age-5 base period exploitation rate in a pre-terminal fishery/time step w
 Age-5 CWTs were adjusted based on the relationship between age 4 and 5 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Base_Period_Exploitation_Rate_(BPER)" target="_blank">BPERs</a>. The initial dataset to generate the age-4 to age-5 BPER relationship included all age-4 and age-5 BPERs for stocks where there were greater than 100 age 5 escapement recoveries. The dataset was then filtered to instances where both the age-4 and age-5 BPER was greater than zero for any given stock-fishery-time step. A regression analysis was performed using log-transformed age-4 BPERs as the predictor variable and log-transformed age-5 BPER as the response variable. Using the resulting intercept and slope, an Age-5 exploitation rate target (ER.Target) was computed. In an iterative process expanded CWT recoveries (CWTCatch) were adjusted in the `Catch` column of the `CWTAll` table of the "Calibration Support" database. After approximately five iterations the resulting BPER matched the ER target to the fourth decimal.
 The adjustment was calculated as:
 
-Equation \@ref(eq:CWTAdjust)xxx
-
+Equation 4:
 $$AdjustedCWTCatch_{s,age=5,f,t}=\frac{ER.Target_{s,a=5,f,t}}{CWTCatch_{s,a=5,f,t}}$$
 Table 3. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in Fisheries and Escapement
 ```{r Age5BPER, echo = FALSE, fig.cap=c("Table xxx. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in Fisheries and Escapement "),fig.pos='H'}
@@ -274,8 +273,7 @@ For more information see <a href="https://framverse.github.io/fram_doc/literatur
 
 Four stocks also received Age-5 escapement adjustments because they entirely lacked escapement recoveries for this age group. These stocks were Tulalip, Oregon Tules, Bonneville, and Central Valley. For these stocks age-5 escapement recoveries (AdjustedCWTEscapement) were imputed using the ratio of age-4 to age-5 Chinook <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Run_Size" target="_blank">terminal run sizes</a> (TRSEst) times age-4 CWT recoveries.
 
-Equation \@ref(eq:EscAdjust)xxx
-
+Equation 5:
 $$AdjustedCWTEscapement_{s,age=5,esc} =\frac{TRSEst_{s,a=5,esc}}{TRS_{s,a=4,esc}}* CWTEscapement_{s,age=4,esc}$$
 
 
@@ -320,21 +318,21 @@ For a long-term solution, beginning with the 2012 brood year, fingerling release
 - Designate fisheries as 'inside' and 'outside' fisheries. North and south Georgia Strait sport, British Columbia Juan de Fuca sport, and all Puget Sound fisheries (FRAM Fishery ID 36-72; Tbl. (xxx)) were assigned to 'inside' fisheries.
 - Convert STL and ELW recoveries into rates by dividing recoveries in a fishery by abundance (recoveries in all fisheries plus escapement).
 - For inside fisheries calculate a ratio as:<br>
-Equation xxx:
+Equation 6:
 $$ ELW.STL.Ratio_f = \frac{ELW.ER_f}{STL.ER_f}$$
 Calculate Elwha recoveries as:<br>
-Equation xxx:
+Equation 7:
 $$ELW.CWT_f = STL.CWT_f * ELW.STL.Ratio_f $$
 - For outside fisheries (use STL directly for Elwha): <br>
-Equation xxx:
+Equation 8:
 $$ELW.CWT_f = STL.CWT_f$$
 - Recompute Elwha escapement CWTs:<br>
 Assumption: Adopting outside fishery CWTs for ELW without manipulations from STL CWTs assumes that both stocks are exploited equally in outside fisheries. This can only occur if ELW abundance equals STL abundance. <br>
 Thus, ELW escapement is calculated as STL abundance minus ELW fisheries.<br>
-Equation xxx:
+Equation 9:
 $$ELW.CWT_{esc} = \sum (STL.CWT_f+STL.CWT_{esc}) - ELW.CWT_f$$
 Calculate an escapement CWT scale factor for Elwha as:<br>
-Equationxx:
+Equation 10:
 $$ELW.Esc.Scaler = \frac{ELW.CWT_{esc}}{STL.CWT_{esc}}$$
 Adjust Elwha escapement CWTs as:<br>
 $$New.ELW.CWT_{esc} = Orig.ELW.CWT_{esc} * ELW.Esc.Scaler$$
