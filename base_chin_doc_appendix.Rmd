@@ -1,5 +1,6 @@
 ```{r page title, include=FALSE}
 page_title <- "Base Period Documentation - Appendix"
+##### TOO MUCH DATA IS BEING LOADED INTO THIS PAGE, RENDERED VERSION IS CRASHING - Ty
 ```
 
 --- 
