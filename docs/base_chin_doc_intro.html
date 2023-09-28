@@ -585,11 +585,14 @@ modeler)</li>
 <li>Miler, Oliver (NWIFC, lead Chinook modeler)</li>
 <li>Packer, James (WDFW, main FRAM coder)</li>
 <li>Rankis, Andy (NWIFC, lead coho modeler)</li>
+<li>Richardson, Sarah (WDFW, fisheries biologist)</li>
+<li>Roose, Robert (Stillaguamish Tribe, fisheries biologist)</li>
 <li>Rose, Gordon (NWIFC, representing Strait of Juan de Fuca and Hood
 Canal Tribes)</li>
-<li>Schaffler, Jason (Muckleshoot Tribe,fisheries biologist)</li>
+<li>Schaffler, Jason (Muckleshoot Tribe, fisheries biologist)</li>
 <li>Schmidt, Casey (Suquamish Tribe, fisheries biologist)</li>
 <li>Shrovnal, Jeremiah (WDFW, Chinook modeler)</li>
+<li>Thurner, Stephanie (NWIFC, lead Coho modeler)</li>
 </ul>
 </div>
 <div id="mass-marking-and-mark-selective-fisheries-msf"
@@ -741,7 +744,7 @@ fisheries. For a complete description of stock profiles see
 </div>
 <div id="sublegal-stock--age-composition" class="section level2">
 <h2>Sublegal Stock-, Age-Composition</h2>
-<p><br> <span style="color:red;font-size:300%;">Galen</span></p>
+<p><br> <span style="color:red;">Galen</span></p>
 <p>As part of developing this base period, procedures for allocating
 sublegal encounters to stocks and ages were revised.</p>
 <p>In FRAM, the number of Chinook encounters below the size limit in a
@@ -879,9 +882,10 @@ replaced with CWTs from the surrogate fishery and time step and divided
 by 1000. This results in a recipient fishery with an identical stock
 composition as the surrogate fishery but only 1/1000 of the CWT catch of
 the surrogate.</p>
-<p>Equationxxx <span class="math display">$$CWT_{s, a, RecipientFishery,
-RecipientTimeStep} = \frac{CWT_{s, a, SurrogateFishery,
-SurrogateTimeStep} }{1000}$$</span></p>
+<p>Equation 1: <span class="math display">$$
+CWT_{s, a, RecipientFishery, RecipientTimeStep} = \frac{CWT_{s, a,
+SurrogateFishery, SurrogateTimeStep} }{1000}
+$$</span></p>
 <p>The intent of this division is to keep the recipient catch small
 under the assumption that a lack of sufficient CWT recoveries is due to
 small catches. This provides a fishery with a stock composition for
@@ -918,8 +922,9 @@ time step with another time step and/or fishery and uses the divide by
 method is used for most fisheries and conforms to the standard surrogate
 fishery replacement concept.</p></li>
 <li><p><strong>Type 3:</strong> This method eliminates a fishery and
-time step <span
-class="math display"><em>C</em><em>W</em><em>T</em><sub><em>s</em>, <em>a</em>, <em>R</em><em>e</em><em>c</em><em>i</em><em>p</em><em>i</em><em>e</em><em>n</em><em>t</em><em>F</em><em>i</em><em>s</em><em>h</em><em>e</em><em>r</em><em>y</em>, <em>R</em><em>e</em><em>c</em><em>i</em><em>p</em><em>i</em><em>e</em><em>n</em><em>t</em><em>T</em><em>i</em><em>m</em><em>e</em><em>S</em><em>t</em><em>e</em><em>p</em></sub> = 0</span></p></li>
+time step <span class="math display">$$
+CWT_{s, a, RecipientFishery, RecipientTimeStep} = 0\phantom{\frac{1}{1}}
+$$</span></p></li>
 <li><p><strong>Type 9:</strong> This method uses base period
 exploitation rates from the previous calibration or the out-of-base
 fishery method (Table 1) to impute CWT recoveries for the recipient
@@ -930,14 +935,18 @@ of the “CalibrationSupport” database. The
 table designates the surrogate fishery and time step for use of base
 period exploitation rates. The base period exploitation rates are
 applied to the legal cohort sizes of the exploited stocks in the
-fishery. For Type 9 the following equations are applied:<br> Equationxxx
-@ref(eq:Type91) <span
-class="math display"><em>C</em><em>W</em><em>T</em><sub><em>s</em>, <em>a</em>, <em>R</em><em>e</em><em>c</em><em>i</em><em>p</em><em>i</em><em>e</em><em>n</em><em>t</em><em>F</em><em>i</em><em>s</em><em>h</em><em>e</em><em>r</em><em>y</em>, <em>R</em><em>e</em><em>c</em><em>i</em><em>p</em><em>i</em><em>e</em><em>n</em><em>t</em><em>T</em><em>i</em><em>m</em><em>e</em><em>S</em><em>t</em><em>e</em><em>p</em></sub> = <em>C</em><em>o</em><em>h</em><em>o</em><em>r</em><em>t</em><sub><em>s</em>, <em>a</em>, <em>t</em></sub> * <em>S</em><em>u</em><em>r</em><em>r</em><em>o</em><em>g</em><em>a</em><em>t</em><em>e</em><em>F</em><em>i</em><em>s</em><em>h</em><em>e</em><em>r</em><em>y</em><em>B</em><em>P</em><em>E</em><em>R</em><sub><em>s</em>, <em>a</em>, <em>S</em><em>u</em><em>r</em><em>r</em><em>o</em><em>g</em><em>a</em><em>t</em><em>e</em><em>F</em><em>i</em><em>s</em><em>h</em><em>e</em><em>r</em><em>y</em>, <em>S</em><em>u</em><em>r</em><em>r</em><em>o</em><em>g</em><em>a</em><em>t</em><em>e</em><em>T</em><em>i</em><em>m</em><em>e</em><em>S</em><em>t</em><em>e</em><em>p</em></sub> * <em>L</em><em>e</em><em>g</em><em>a</em><em>l</em><em>P</em><em>r</em><em>o</em><em>p</em><em>o</em><em>r</em><em>t</em><em>i</em><em>o</em><em>n</em><sub><em>s</em>, <em>a</em>, <em>f</em>, <em>t</em></sub></span>
-For a recipient fishery and time step the imputed CWT recoveries are
-summed over stocks and ages to compute the CWTCatch.</p></li>
+fishery. For Type 9 the following equations are applied:<br> Equation 2:
+<span class="math display">$$
+CWT_{s,a,RecipientFishery,RecipientTimeStep} = Cohort_{s,a,t} *
+SurrogateFishery BPER_{s,a,SurrogateFishery,SurrogateTimeStep} *
+LegalProportion_{s,a,f,t}\phantom{\frac{1}{1}}
+$$</span> For a recipient fishery and time step the imputed CWT
+recoveries are summed over stocks and ages to compute the
+CWTCatch.</p></li>
 </ul>
-<p><span
-class="math display"><em>C</em><em>W</em><em>T</em><em>C</em><em>a</em><em>t</em><em>c</em><em>h</em><sub><em>f</em>, <em>t</em></sub> = ∑<sub><em>s</em>, <em>a</em></sub><em>C</em><em>W</em><em>T</em><sub><em>s</em>, <em>a</em>, <em>f</em>, <em>t</em></sub></span></p>
+<p><span class="math display">$$
+CWTCatch_{f,t} = \sum_{s,a}CWT_{s,a,f,t}\phantom{\frac{1}{1}}
+$$</span></p>
 </div>
 <div id="surrogate-fisheries-and-model-stock-proportions"
 class="section level4">
@@ -1001,9 +1010,10 @@ fisheries and time steps into table
 (SurrogateFishBPERs) are then used by the calibration program to compute
 CWT recoveries in subroutine <code>ImputeOldBPERs</code>.</li>
 </ol>
-<p>Equation xxx <span
-class="math display"><em>C</em><em>W</em><em>T</em><sub><em>s</em>, <em>a</em>, <em>f</em>, <em>t</em></sub> = <em>C</em><em>o</em><em>h</em><em>o</em><em>r</em><em>t</em><sub><em>s</em>, <em>a</em>, <em>T</em><em>e</em><em>r</em><em>m</em><em>i</em><em>n</em><em>a</em><em>l</em><em>T</em><em>y</em><em>p</em><em>e</em>, <em>t</em></sub> * <em>S</em><em>u</em><em>r</em><em>r</em><em>o</em><em>g</em><em>a</em><em>t</em><em>e</em><em>F</em><em>i</em><em>s</em><em>h</em><em>B</em><em>P</em><em>E</em><em>R</em><sub><em>s</em>, <em>a</em>, <em>f</em>, <em>t</em></sub> * <em>L</em><em>e</em><em>g</em><em>a</em><em>l</em><em>P</em><em>r</em><em>o</em><em>p</em><sub><em>s</em>, <em>a</em>, <em>f</em>, <em>t</em></sub></span>
-where,</p>
+<p>Equation 3: <span class="math display">$$
+CWT_{s,a,f,t} = Cohort_{s,a,TerminalType,t} *
+SurrogateFishBPER_{s,a,f,t} * LegalProp_{s,a,f,t}\phantom{\frac{1}{1}}
+$$</span> where,</p>
 <ul>
 <li><p><a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Fishery" target="_blank">TerminalType</a></p></li>
 <li><p><a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#legal_prop_calibration" target="_blank">LegalProp</a></p></li>
@@ -1073,13 +1083,13 @@ for base period fishing effort and brood year weight. See tab
 <a href="https://framverse.github.io/fram_doc/literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx">
 <em>“Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx”</em> </a>.</p>
 <p><strong>White River in Canadian Fisheries</strong> <br> <span
-style="color:red;font-size:300%;">Derek</span></p>
+style="color:red;">Derek</span></p>
 <p><a href="https://framverse.github.io/fram_doc/literature/WhiteRiverWriteUp.docx">
 “WhiteRiverWriteUp.docx” </a></p>
 </div>
 <div id="impute-fw-sport" class="section level3">
 <h3>Impute FW sport</h3>
-<p><br> <span style="color:red;font-size:300%;">Jon</span></p>
+<p><br> <span style="color:red;">Jon</span></p>
 </div>
 <div id="age-5-recoveries-in-fisheries-and-escapement"
 class="section level3">
@@ -1109,11 +1119,11 @@ were adjusted in the <code>Catch</code> column of the
 <code>CWTAll</code> table of the “Calibration Support” database. After
 approximately five iterations the resulting BPER matched the ER target
 to the fourth decimal. The adjustment was calculated as:</p>
-<p>Equation @ref(eq:CWTAdjust)xxx</p>
-<p><span
-class="math display">$$AdjustedCWTCatch_{s,age=5,f,t}=\frac{ER.Target_{s,a=5,f,t}}{CWTCatch_{s,a=5,f,t}}$$</span>
-Table 3. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in
-Fisheries and Escapement <img src="literature/Age5BPERAdjustments.jpg"
+<p>Equation 4: <span class="math display">$$
+AdjustedCWTCatch_{s,age=5,f,t}=\frac{ER.Target_{s,a=5,f,t}}{CWTCatch_{s,a=5,f,t}}
+$$</span> Table 3. Age-5 BPERs Pre- and Post Adjustment and CWT
+Recoveries in Fisheries and Escapement <img
+src="literature/Age5BPERAdjustments.jpg"
 alt="Table xxx. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in Fisheries and Escapement" /></p>
 <p>For more information see
 <a href="https://framverse.github.io/fram_doc/literature/Age%205%20BPER%20Adjustment_9.30.2020.xlsx">
@@ -1127,10 +1137,10 @@ stocks age-5 escapement recoveries (AdjustedCWTEscapement) were imputed
 using the ratio of age-4 to age-5 Chinook
 <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Run_Size" target="_blank">terminal
 run sizes</a> (TRSEst) times age-4 CWT recoveries.</p>
-<p>Equation @ref(eq:EscAdjust)xxx</p>
-<p><span class="math display">$$AdjustedCWTEscapement_{s,age=5,esc}
-=\frac{TRSEst_{s,a=5,esc}}{TRS_{s,a=4,esc}}*
-CWTEscapement_{s,age=4,esc}$$</span></p>
+<p>Equation 5: <span class="math display">$$
+AdjustedCWTEscapement_{s,age=5,esc}
+=\frac{TRSEst_{s,a=5,esc}}{TRS_{s,a=4,esc}}* CWTEscapement_{s,age=4,esc}
+$$</span></p>
 <p>Table 4. Age-5 Adjusted Escapements and Age-4 to Age-5 TRS Ratios</p>
 <p><img src="literature/Age5EscAdjust.jpg" /><!-- --></p>
 <p>For more information see
@@ -1140,8 +1150,7 @@ Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a> tab
 </div>
 <div id="missing-canadian-catches" class="section level3">
 <h3>Missing Canadian Catches</h3>
-<p><br> <span style="color:red;font-size:300%;">Derek</span> For more
-information see
+<p><br> <span style="color:red;">Derek</span> For more information see
 <a href="https://framverse.github.io/fram_doc/literature/2020-06-19%20BC_Data_Request_With_pre-2012.xlsx">
 RE BC Data Request - Update.msg short description Chinook Canadian catch
 imputation for post-season
@@ -1161,14 +1170,15 @@ segregated from the local stocks. During the base period years, there
 were zero Queets recoveries in Grays Harbor net fisheries. For Grays
 Harbor non-treaty net, local stock CWTs were imputed assuming that any
 catch not accounted for by non local stocks should be assigned to the
-Washington North Coast stock. <span
-class="math display"><em>G</em><em>H</em>.<em>N</em><em>e</em><em>t</em>.<em>M</em><em>r</em><em>k</em><em>d</em>.<em>L</em><em>a</em><em>n</em><em>d</em><em>e</em><em>d</em><sub><em>f</em>, <em>t</em></sub> − <em>G</em><em>H</em>.<em>M</em><em>r</em><em>k</em><em>d</em>.<em>L</em><em>a</em><em>n</em><em>d</em><em>e</em><em>d</em><sub><em>n</em><em>o</em><em>n</em><em>l</em><em>o</em><em>c</em><em>a</em><em>l</em>.<em>s</em><em>t</em><em>o</em><em>c</em><em>k</em>, <em>f</em>, <em>t</em></sub> = <em>G</em><em>H</em>.<em>M</em><em>r</em><em>k</em><em>d</em>.<em>L</em><em>a</em><em>n</em><em>d</em><em>e</em><em>d</em><sub><em>l</em><em>o</em><em>c</em><em>a</em><em>l</em>.<em>s</em><em>t</em><em>o</em><em>c</em><em>k</em>, <em>f</em>, <em>t</em></sub></span>
-The marked landed catch is an input located in the Access database, the
-marked landed catch of the local stock can be computed from output of
-the calibration program. Treaty net fishery CWTs for the Washington
-North Coast stock were computed by assuming that the non-local stock
-proportion is half (4.3%) of the non-treaty value (8.6%). For more
-information see
+Washington North Coast stock. <span class="math display">$$
+GH.Net.Mrkd.Landed_{f,t} - GH.Mrkd.Landed_{nonlocal.stock,f,t} =
+GH.Mrkd.Landed_{local.stock,f,t}\phantom{\frac{1}{1}}
+$$</span> The marked landed catch is an input located in the Access
+database, the marked landed catch of the local stock can be computed
+from output of the calibration program. Treaty net fishery CWTs for the
+Washington North Coast stock were computed by assuming that the
+non-local stock proportion is half (4.3%) of the non-treaty value
+(8.6%). For more information see
 <a href="https://framverse.github.io/fram_doc/literature/Calibration_CWT_Inputs;%20Rnd7_9.30.20.xlsx">
 Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a> tab
 <code>Impute WNC in GH Net</code> and
@@ -1246,27 +1256,34 @@ to ‘inside’ fisheries.</li>
 <li>Convert STL and ELW recoveries into rates by dividing recoveries in
 a fishery by abundance (recoveries in all fisheries plus
 escapement).</li>
-<li>For inside fisheries calculate a ratio as:<br> Equation xxx: <span
-class="math display">$$ ELW.STL.Ratio_f =
-\frac{ELW.ER_f}{STL.ER_f}$$</span> Calculate Elwha recoveries as:<br>
-Equation xxx: <span
-class="math display"><em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub> = <em>S</em><em>T</em><em>L</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub> * <em>E</em><em>L</em><em>W</em>.<em>S</em><em>T</em><em>L</em>.<em>R</em><em>a</em><em>t</em><em>i</em><em>o</em><sub><em>f</em></sub></span></li>
-<li>For outside fisheries (use STL directly for Elwha): <br> Equation
-xxx: <span
-class="math display"><em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub> = <em>S</em><em>T</em><em>L</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub></span></li>
+<li>For inside fisheries calculate a ratio as:<br> Equation 6: <span
+class="math display">$$
+ELW.STL.Ratio_f = \frac{ELW.ER_f}{STL.ER_f}\phantom{\frac{1}{1}}
+$$</span> Calculate Elwha recoveries as:<br> Equation 7: <span
+class="math display">$$
+ELW.CWT_f = STL.CWT_f * ELW.STL.Ratio_f\phantom{\frac{1}{1}}
+$$</span></li>
+<li>For outside fisheries (use STL directly for Elwha): <br> Equation 8:
+<span class="math display">$$
+ELW.CWT_f = STL.CWT_f\phantom{\frac{1}{1}}
+$$</span></li>
 <li>Recompute Elwha escapement CWTs:<br> Assumption: Adopting outside
 fishery CWTs for ELW without manipulations from STL CWTs assumes that
 both stocks are exploited equally in outside fisheries. This can only
 occur if ELW abundance equals STL abundance. <br> Thus, ELW escapement
-is calculated as STL abundance minus ELW fisheries.<br> Equation xxx:
-<span
-class="math display"><em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>e</em><em>s</em><em>c</em></sub> = ∑(<em>S</em><em>T</em><em>L</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub>+<em>S</em><em>T</em><em>L</em>.<em>C</em><em>W</em><em>T</em><sub><em>e</em><em>s</em><em>c</em></sub>) − <em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>f</em></sub></span>
-Calculate an escapement CWT scale factor for Elwha as:<br> Equationxx:
-<span class="math display">$$ELW.Esc.Scaler =
-\frac{ELW.CWT_{esc}}{STL.CWT_{esc}}$$</span> Adjust Elwha escapement
-CWTs as:<br> <span
-class="math display"><em>N</em><em>e</em><em>w</em>.<em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>e</em><em>s</em><em>c</em></sub> = <em>O</em><em>r</em><em>i</em><em>g</em>.<em>E</em><em>L</em><em>W</em>.<em>C</em><em>W</em><em>T</em><sub><em>e</em><em>s</em><em>c</em></sub> * <em>E</em><em>L</em><em>W</em>.<em>E</em><em>s</em><em>c</em>.<em>S</em><em>c</em><em>a</em><em>l</em><em>e</em><em>r</em></span>
-For more information see
+is calculated as STL abundance minus ELW fisheries.<br> Equation 9:
+<span class="math display">$$
+ELW.CWT_{esc} = \sum (STL.CWT_f+STL.CWT_{esc}) -
+ELW.CWT_f\phantom{\frac{1}{1}}
+$$</span> Calculate an escapement CWT scale factor for Elwha as:<br>
+Equation 10: <span class="math display">$$
+ELW.Esc.Scaler =
+\frac{ELW.CWT_{esc}}{STL.CWT_{esc}}\phantom{\frac{1}{1}}
+$$</span> Adjust Elwha escapement CWTs as:<br> <span
+class="math display">$$
+New.ELW.CWT_{esc} = Orig.ELW.CWT_{esc} *
+ELW.Esc.Scaler\phantom{\frac{1}{1}}
+$$</span> For more information see
 <a href="https://framverse.github.io/fram_doc/literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx">
 <em>“Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx”</em> </a>.</li>
 </ul>
@@ -1292,12 +1309,12 @@ validation runs. For more information see
 </a> and
 <a href="https://framverse.github.io/fram_doc/literature/draft_revised_stilly_age_comp.xlsx">
 draft_revised_stilly_age_comp.xlsx </a>.</p>
-<div id="wrgrvwolxa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="afyalpgpjx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#wrgrvwolxa .gt_table {
+#afyalpgpjx .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1322,7 +1339,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-left-color: #D3D3D3;
 }
 
-#wrgrvwolxa .gt_heading {
+#afyalpgpjx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1334,12 +1351,12 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#wrgrvwolxa .gt_caption {
+#afyalpgpjx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wrgrvwolxa .gt_title {
+#afyalpgpjx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1351,7 +1368,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-bottom-width: 0;
 }
 
-#wrgrvwolxa .gt_subtitle {
+#afyalpgpjx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1363,13 +1380,13 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-top-width: 0;
 }
 
-#wrgrvwolxa .gt_bottom_border {
+#afyalpgpjx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wrgrvwolxa .gt_col_headings {
+#afyalpgpjx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1384,7 +1401,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#wrgrvwolxa .gt_col_heading {
+#afyalpgpjx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1404,7 +1421,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   overflow-x: hidden;
 }
 
-#wrgrvwolxa .gt_column_spanner_outer {
+#afyalpgpjx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1416,15 +1433,15 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 4px;
 }
 
-#wrgrvwolxa .gt_column_spanner_outer:first-child {
+#afyalpgpjx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wrgrvwolxa .gt_column_spanner_outer:last-child {
+#afyalpgpjx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wrgrvwolxa .gt_column_spanner {
+#afyalpgpjx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1436,7 +1453,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   width: 100%;
 }
 
-#wrgrvwolxa .gt_group_heading {
+#afyalpgpjx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1462,7 +1479,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   text-align: left;
 }
 
-#wrgrvwolxa .gt_empty_group_heading {
+#afyalpgpjx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1477,15 +1494,15 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   vertical-align: middle;
 }
 
-#wrgrvwolxa .gt_from_md > :first-child {
+#afyalpgpjx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wrgrvwolxa .gt_from_md > :last-child {
+#afyalpgpjx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wrgrvwolxa .gt_row {
+#afyalpgpjx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1504,7 +1521,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   overflow-x: hidden;
 }
 
-#wrgrvwolxa .gt_stub {
+#afyalpgpjx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1517,7 +1534,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#wrgrvwolxa .gt_stub_row_group {
+#afyalpgpjx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1531,11 +1548,11 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   vertical-align: top;
 }
 
-#wrgrvwolxa .gt_row_group_first td {
+#afyalpgpjx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wrgrvwolxa .gt_summary_row {
+#afyalpgpjx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1545,16 +1562,16 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#wrgrvwolxa .gt_first_summary_row {
+#afyalpgpjx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wrgrvwolxa .gt_first_summary_row.thick {
+#afyalpgpjx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wrgrvwolxa .gt_last_summary_row {
+#afyalpgpjx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1564,7 +1581,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#wrgrvwolxa .gt_grand_summary_row {
+#afyalpgpjx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1574,7 +1591,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#wrgrvwolxa .gt_first_grand_summary_row {
+#afyalpgpjx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1584,11 +1601,11 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-top-color: #D3D3D3;
 }
 
-#wrgrvwolxa .gt_striped {
+#afyalpgpjx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wrgrvwolxa .gt_table_body {
+#afyalpgpjx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1597,7 +1614,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#wrgrvwolxa .gt_footnotes {
+#afyalpgpjx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1611,7 +1628,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#wrgrvwolxa .gt_footnote {
+#afyalpgpjx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1620,7 +1637,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#wrgrvwolxa .gt_sourcenotes {
+#afyalpgpjx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1634,7 +1651,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#wrgrvwolxa .gt_sourcenote {
+#afyalpgpjx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1642,64 +1659,64 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#wrgrvwolxa .gt_left {
+#afyalpgpjx .gt_left {
   text-align: left;
 }
 
-#wrgrvwolxa .gt_center {
+#afyalpgpjx .gt_center {
   text-align: center;
 }
 
-#wrgrvwolxa .gt_right {
+#afyalpgpjx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wrgrvwolxa .gt_font_normal {
+#afyalpgpjx .gt_font_normal {
   font-weight: normal;
 }
 
-#wrgrvwolxa .gt_font_bold {
+#afyalpgpjx .gt_font_bold {
   font-weight: bold;
 }
 
-#wrgrvwolxa .gt_font_italic {
+#afyalpgpjx .gt_font_italic {
   font-style: italic;
 }
 
-#wrgrvwolxa .gt_super {
+#afyalpgpjx .gt_super {
   font-size: 65%;
 }
 
-#wrgrvwolxa .gt_footnote_marks {
+#afyalpgpjx .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#wrgrvwolxa .gt_asterisk {
+#afyalpgpjx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wrgrvwolxa .gt_indent_1 {
+#afyalpgpjx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wrgrvwolxa .gt_indent_2 {
+#afyalpgpjx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wrgrvwolxa .gt_indent_3 {
+#afyalpgpjx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wrgrvwolxa .gt_indent_4 {
+#afyalpgpjx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wrgrvwolxa .gt_indent_5 {
+#afyalpgpjx .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1766,14 +1783,14 @@ Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a> tab
 </div>
 <div id="wcvi-sport-inside-outside" class="section level3">
 <h3>WCVI Sport Inside Outside</h3>
-<p><br> <span style="color:red;font-size:300%;">Jon</span></p>
+<p><br> <span style="color:red;">Jon</span></p>
 </div>
 <div id="upper-columbia-river-summer-chinook-in-central-oregon-troll"
 class="section level3">
 <h3>Upper Columbia River Summer Chinook in Central Oregon Troll</h3>
-<p><span style="color:red;font-size:300%;">Angelika or someone
-else</span> describe incorporation of dam loss and corrections to
-Central Valley model stock proportion</p>
+<p><span style="color:red;">Angelika or someone else</span> describe
+incorporation of dam loss and corrections to Central Valley model stock
+proportion</p>
 </div>
 </div>
 </div>
