@@ -73,10 +73,13 @@ The workgroup consisted of the following members:
 - Miler, Oliver (NWIFC, lead Chinook modeler)
 - Packer, James (WDFW, main FRAM coder)
 - Rankis, Andy (NWIFC, lead coho modeler)
+- Richardson, Sarah (WDFW, fisheries biologist)
+- Roose, Robert (Stillaguamish Tribe, fisheries biologist)
 - Rose, Gordon (NWIFC, representing Strait of Juan de Fuca and Hood Canal Tribes)
-- Schaffler, Jason (Muckleshoot Tribe,fisheries biologist)
+- Schaffler, Jason (Muckleshoot Tribe, fisheries biologist)
 - Schmidt, Casey (Suquamish Tribe, fisheries biologist)
 - Shrovnal, Jeremiah (WDFW, Chinook modeler)
+- Thurner, Stephanie (NWIFC, lead Coho modeler)
 
 ## Mass Marking and <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target="_blank">Mark-Selective Fisheries (MSF)</a>
 
