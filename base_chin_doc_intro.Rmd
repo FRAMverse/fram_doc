@@ -115,7 +115,7 @@ For a complete description of stock profiles see <a href="literature/2017ChinFRA
 
 ## Sublegal Stock-, Age-Composition
 <br>
-<span style='color:red;font-size:300%;'>Galen</span>
+<span style='color:red;'>Galen</span>
 
 
 As part of developing this base period, procedures for allocating sublegal encounters to stocks and ages were revised. 
@@ -256,13 +256,13 @@ See tab `WhiteR_A8Sport` in file <a href="https://framverse.github.io/fram_doc/l
 
 **White River in Canadian Fisheries**
 <br>
-<span style='color:red;font-size:300%;'>Derek</span>
+<span style='color:red;'>Derek</span>
 
 <a href="https://framverse.github.io/fram_doc/literature/WhiteRiverWriteUp.docx"> “WhiteRiverWriteUp.docx" </a>
 
 ### Impute FW sport
 <br>
-<span style='color:red;font-size:300%;'>Jon</span>
+<span style='color:red;'>Jon</span>
 
 
 ### Age 5 Recoveries in Fisheries and Escapement
@@ -305,7 +305,7 @@ For more information see <a href="literature/Calibration_CWT_Inputs; Rnd7_9.30.2
 
 ### Missing Canadian Catches 
 <br>
-<span style='color:red;font-size:300%;'>Derek</span>
+<span style='color:red;'>Derek</span>
 For more information see <a href="https://framverse.github.io/fram_doc/literature/2020-06-19%20BC_Data_Request_With_pre-2012.xlsx">
 RE BC Data Request - Update.msg
 short description Chinook Canadian catch imputation for post-season runs_Updated_For_Documentation_in_6.2023.docx</a> <!-- THIS LINK/PARAGRAPH IS AWKWARD -->
@@ -396,10 +396,10 @@ Tulalip Chinook are an early timed run. The Tulalip Bay net fishery occurs as ea
 
 ### WCVI Sport Inside Outside
 <br>
-<span style='color:red;font-size:300%;'>Jon</span>
+<span style='color:red;'>Jon</span>
 
 
 
 ### Upper Columbia River Summer Chinook in Central Oregon Troll
-<span style='color:red;font-size:300%;'>Angelika or someone else</span>
+<span style='color:red;'>Angelika or someone else</span>
 describe incorporation of dam loss and corrections to Central Valley model stock proportion
