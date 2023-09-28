@@ -73,10 +73,13 @@ The workgroup consisted of the following members:
 - Miler, Oliver (NWIFC, lead Chinook modeler)
 - Packer, James (WDFW, main FRAM coder)
 - Rankis, Andy (NWIFC, lead coho modeler)
+- Richardson, Sarah (WDFW, fisheries biologist)
+- Roose, Robert (Stillaguamish Tribe, fisheries biologist)
 - Rose, Gordon (NWIFC, representing Strait of Juan de Fuca and Hood Canal Tribes)
-- Schaffler, Jason (Muckleshoot Tribe,fisheries biologist)
+- Schaffler, Jason (Muckleshoot Tribe, fisheries biologist)
 - Schmidt, Casey (Suquamish Tribe, fisheries biologist)
 - Shrovnal, Jeremiah (WDFW, Chinook modeler)
+- Thurner, Stephanie (NWIFC, lead Coho modeler)
 
 ## Mass Marking and <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target="_blank">Mark-Selective Fisheries (MSF)</a>
 
@@ -112,7 +115,7 @@ For a complete description of stock profiles see <a href="literature/2017ChinFRA
 
 ## Sublegal Stock-, Age-Composition
 <br>
-<span style='color:red;font-size:300%;'>Galen</span>
+<span style='color:red;'>Galen</span>
 
 
 As part of developing this base period, procedures for allocating sublegal encounters to stocks and ages were revised. 
@@ -166,7 +169,9 @@ For documentation and replicability purposes all surrogate fisheries are process
 Unless otherwise specified CWTs from the recipient fishery and time step are replaced with CWTs from the surrogate fishery and time step and divided by 1000. This results in a recipient fishery with an identical stock composition as the surrogate fishery but only 1/1000 of the CWT catch of the surrogate. 
 
 Equation 1:
-$$CWT_{s, a, RecipientFishery, RecipientTimeStep} = \frac{CWT_{s, a, SurrogateFishery, SurrogateTimeStep} }{1000}$$ 
+$$
+CWT_{s, a, RecipientFishery, RecipientTimeStep} = \frac{CWT_{s, a, SurrogateFishery, SurrogateTimeStep} }{1000}
+$$ 
 
 The intent of this division is to keep the recipient catch small under the assumption that a lack of sufficient CWT recoveries is due to small catches. This provides a fishery with a stock composition for modeling, while minimally influencing the cohort reconstruction. For <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Out-of-Base_Procedures" target="_blank">Out-of-Base Runs</a>, the recipient fishery is not re-adjusted and hence stays at the low value. For the “All Stocks” run, CWTs from the recipient fishery are later adjusted so that the CWT catch matches the estimated catch in the fishery. This produces a model stock proportion of 100% for all recipient fisheries. For this calibration, algorithms were further adjusted to allow the incorporation of an external model stock proportion (see paragraph [“Surrogate Fisheries and Model Stock Proportion”](#SurrogateMSP)).
 The following surrogate methods are available:
@@ -175,16 +180,21 @@ The following surrogate methods are available:
 - **Type 1:** Combines recoveries for a fishery from different time steps and/or fisheries. The surrogate fishery and/or time step is deleted. Recipient CWTs are not divided by 1000. This method is commonly used to edit CWT recoveries in cases where recoveries were reported in the wrong time step. These recoveries are added to the correct time step and zeroed out in the incorrect time step. This method is also used to combine recoveries from multiple fisheries and time step to gain an adequate number of recoveries for analysis; i.e. deep SPS (Area 13+) net and sport. 
 - **Type 2:** This is the same method as 'Type 0', but used for "in-base" CWTs. It allows for the replacement of a fishery and time step with another time step and/or fishery and uses the divide by 1000 equation to scale recoveries (equationxxx \@ref(eq:surrogate)). This method is used for most fisheries and conforms to the standard surrogate fishery replacement concept.
 - **Type 3:** This method eliminates a fishery and time step
-$$CWT_{s, a, RecipientFishery, RecipientTimeStep} = 0$$
+$$
+CWT_{s, a, RecipientFishery, RecipientTimeStep} = 0\phantom{\frac{1}{1}}
+$$
 
 - **Type 9:** This method uses base period exploitation rates from the previous calibration or the out-of-base fishery method (Table 1) to impute CWT recoveries for the recipient fishery. These base period exploitation rates are stored in table <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Surrogate_Fishery_Base_Period_Exploitation_Rates" target="_blank">`SurrogateFishBPER`</a> of the “CalibrationSupport” database. The <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Instructions_for_Imputing_Surrogate_CWT_Recoveries" target="_blank">`ImputeRecoveries`</a> table designates the surrogate fishery and time step for use of base period exploitation rates. The base period exploitation rates are applied to the legal cohort sizes of the exploited stocks in the fishery.
 For Type 9 the following equations are applied:<br>
 Equation 2:
 $$
-CWT_{s,a,RecipientFishery,RecipientTimeStep} = Cohort_{s,a,t} * SurrogateFishery BPER_{s,a,SurrogateFishery,SurrogateTimeStep} * LegalProportion_{s,a,f,t}$$
+CWT_{s,a,RecipientFishery,RecipientTimeStep} = Cohort_{s,a,t} * SurrogateFishery BPER_{s,a,SurrogateFishery,SurrogateTimeStep} * LegalProportion_{s,a,f,t}\phantom{\frac{1}{1}}
+$$
 For a recipient fishery and time step the imputed CWT recoveries are summed over stocks and ages to compute the CWTCatch.
 
-$$CWTCatch_{f,t} = \sum_{s,a}CWT_{s,a,f,t}$$
+$$
+CWTCatch_{f,t} = \sum_{s,a}CWT_{s,a,f,t}\phantom{\frac{1}{1}}
+$$
 
 
 #### [Surrogate Fisheries and Model Stock Proportions]{#SurrogateMSP}
@@ -207,7 +217,9 @@ This method develops exploitation rates for select fisheries from brood years th
 These ERs (SurrogateFishBPERs) are then used by the calibration program to compute CWT recoveries in subroutine `ImputeOldBPERs`.
 
 Equation 3:
-$$CWT_{s,a,f,t} = Cohort_{s,a,TerminalType,t} * SurrogateFishBPER_{s,a,f,t} * LegalProp_{s,a,f,t}$$
+$$
+CWT_{s,a,f,t} = Cohort_{s,a,TerminalType,t} * SurrogateFishBPER_{s,a,f,t} * LegalProp_{s,a,f,t}\phantom{\frac{1}{1}}
+$$
 where,
 
 - <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Fishery" target="_blank">TerminalType</a>
@@ -244,13 +256,13 @@ See tab `WhiteR_A8Sport` in file <a href="https://framverse.github.io/fram_doc/l
 
 **White River in Canadian Fisheries**
 <br>
-<span style='color:red;font-size:300%;'>Derek</span>
+<span style='color:red;'>Derek</span>
 
 <a href="https://framverse.github.io/fram_doc/literature/WhiteRiverWriteUp.docx"> “WhiteRiverWriteUp.docx" </a>
 
 ### Impute FW sport
 <br>
-<span style='color:red;font-size:300%;'>Jon</span>
+<span style='color:red;'>Jon</span>
 
 
 ### Age 5 Recoveries in Fisheries and Escapement
@@ -262,7 +274,9 @@ Age-5 CWTs were adjusted based on the relationship between age 4 and 5 <a href="
 The adjustment was calculated as:
 
 Equation 4:
-$$AdjustedCWTCatch_{s,age=5,f,t}=\frac{ER.Target_{s,a=5,f,t}}{CWTCatch_{s,a=5,f,t}}$$
+$$
+AdjustedCWTCatch_{s,age=5,f,t}=\frac{ER.Target_{s,a=5,f,t}}{CWTCatch_{s,a=5,f,t}}
+$$
 Table 3. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in Fisheries and Escapement
 ```{r Age5BPER, echo = FALSE, fig.cap=c("Table xxx. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in Fisheries and Escapement "),fig.pos='H'}
 knitr::include_graphics("literature/Age5BPERAdjustments.jpg")
@@ -274,7 +288,9 @@ For more information see <a href="https://framverse.github.io/fram_doc/literatur
 Four stocks also received Age-5 escapement adjustments because they entirely lacked escapement recoveries for this age group. These stocks were Tulalip, Oregon Tules, Bonneville, and Central Valley. For these stocks age-5 escapement recoveries (AdjustedCWTEscapement) were imputed using the ratio of age-4 to age-5 Chinook <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Terminal_Run_Size" target="_blank">terminal run sizes</a> (TRSEst) times age-4 CWT recoveries.
 
 Equation 5:
-$$AdjustedCWTEscapement_{s,age=5,esc} =\frac{TRSEst_{s,a=5,esc}}{TRS_{s,a=4,esc}}* CWTEscapement_{s,age=4,esc}$$
+$$
+AdjustedCWTEscapement_{s,age=5,esc} =\frac{TRSEst_{s,a=5,esc}}{TRS_{s,a=4,esc}}* CWTEscapement_{s,age=4,esc}
+$$
 
 
 Table 4. Age-5 Adjusted Escapements and Age-4 to Age-5 TRS Ratios
@@ -289,7 +305,7 @@ For more information see <a href="literature/Calibration_CWT_Inputs; Rnd7_9.30.2
 
 ### Missing Canadian Catches 
 <br>
-<span style='color:red;font-size:300%;'>Derek</span>
+<span style='color:red;'>Derek</span>
 For more information see <a href="https://framverse.github.io/fram_doc/literature/2020-06-19%20BC_Data_Request_With_pre-2012.xlsx">
 RE BC Data Request - Update.msg
 short description Chinook Canadian catch imputation for post-season runs_Updated_For_Documentation_in_6.2023.docx</a> <!-- THIS LINK/PARAGRAPH IS AWKWARD -->
@@ -298,7 +314,9 @@ short description Chinook Canadian catch imputation for post-season runs_Updated
 The majority of the catch in Grays Harbor net fisheries is comprised of the local Chehalis and Humptulips stock. These two stocks are part of FRAM's Washington North Coast stock aggregate. This aggregate is represented by Queets CWT recoveries which are rarely recovered in Grays Harbor net. While Queets may provide good representation of Washington North Coast exploitation in pre-terminal fisheries, it is inadequate for these terminal net fisheries, because Queets Chinook have already segregated from the local stocks.
 During the base period years, there were zero Queets recoveries in Grays Harbor net fisheries.
 For Grays Harbor non-treaty net, local stock CWTs were imputed assuming that any catch not accounted for by non local stocks should be assigned to the Washington North Coast stock.
-$$GH.Net.Mrkd.Landed_{f,t} - GH.Mrkd.Landed_{nonlocal.stock,f,t} = GH.Mrkd.Landed_{local.stock,f,t}$$
+$$
+GH.Net.Mrkd.Landed_{f,t} - GH.Mrkd.Landed_{nonlocal.stock,f,t} = GH.Mrkd.Landed_{local.stock,f,t}\phantom{\frac{1}{1}}
+$$
 The marked landed catch is an input located in the Access database, the marked landed catch of the local stock can be computed from output of the calibration program.
 Treaty net fishery CWTs for the Washington North Coast stock were computed by assuming that the non-local stock proportion is half (4.3%) of the non-treaty value (8.6%). For more information see <a href="https://framverse.github.io/fram_doc/literature/Calibration_CWT_Inputs;%20Rnd7_9.30.20.xlsx"> Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a> tab `Impute WNC in GH Net` and <a href="https://framverse.github.io/fram_doc/literature/Modeling%20Grays%20Harbor%20Net%20Fishery%20and%20Washington%20North%20Coast%20stock%20BkFRAM%20Abundance%20(2).docx"> Modeling Grays Harbor Net Fishery and Washington North Coast stock BkFRAM Abundance (2).docx </a>
 
@@ -319,23 +337,35 @@ For a long-term solution, beginning with the 2012 brood year, fingerling release
 - Convert STL and ELW recoveries into rates by dividing recoveries in a fishery by abundance (recoveries in all fisheries plus escapement).
 - For inside fisheries calculate a ratio as:<br>
 Equation 6:
-$$ ELW.STL.Ratio_f = \frac{ELW.ER_f}{STL.ER_f}$$
+$$
+ELW.STL.Ratio_f = \frac{ELW.ER_f}{STL.ER_f}\phantom{\frac{1}{1}}
+$$
 Calculate Elwha recoveries as:<br>
 Equation 7:
-$$ELW.CWT_f = STL.CWT_f * ELW.STL.Ratio_f $$
+$$
+ELW.CWT_f = STL.CWT_f * ELW.STL.Ratio_f\phantom{\frac{1}{1}}
+$$
 - For outside fisheries (use STL directly for Elwha): <br>
 Equation 8:
-$$ELW.CWT_f = STL.CWT_f$$
+$$
+ELW.CWT_f = STL.CWT_f\phantom{\frac{1}{1}}
+$$
 - Recompute Elwha escapement CWTs:<br>
 Assumption: Adopting outside fishery CWTs for ELW without manipulations from STL CWTs assumes that both stocks are exploited equally in outside fisheries. This can only occur if ELW abundance equals STL abundance. <br>
 Thus, ELW escapement is calculated as STL abundance minus ELW fisheries.<br>
 Equation 9:
-$$ELW.CWT_{esc} = \sum (STL.CWT_f+STL.CWT_{esc}) - ELW.CWT_f$$
+$$
+ELW.CWT_{esc} = \sum (STL.CWT_f+STL.CWT_{esc}) - ELW.CWT_f\phantom{\frac{1}{1}}
+$$
 Calculate an escapement CWT scale factor for Elwha as:<br>
 Equation 10:
-$$ELW.Esc.Scaler = \frac{ELW.CWT_{esc}}{STL.CWT_{esc}}$$
+$$
+ELW.Esc.Scaler = \frac{ELW.CWT_{esc}}{STL.CWT_{esc}}\phantom{\frac{1}{1}}
+$$
 Adjust Elwha escapement CWTs as:<br>
-$$New.ELW.CWT_{esc} = Orig.ELW.CWT_{esc} * ELW.Esc.Scaler$$
+$$
+New.ELW.CWT_{esc} = Orig.ELW.CWT_{esc} * ELW.Esc.Scaler\phantom{\frac{1}{1}}
+$$
 For more information see <a href="https://framverse.github.io/fram_doc/literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx"> *“Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx”* </a>.
 
 
@@ -366,10 +396,10 @@ Tulalip Chinook are an early timed run. The Tulalip Bay net fishery occurs as ea
 
 ### WCVI Sport Inside Outside
 <br>
-<span style='color:red;font-size:300%;'>Jon</span>
+<span style='color:red;'>Jon</span>
 
 
 
 ### Upper Columbia River Summer Chinook in Central Oregon Troll
-<span style='color:red;font-size:300%;'>Angelika or someone else</span>
+<span style='color:red;'>Angelika or someone else</span>
 describe incorporation of dam loss and corrections to Central Valley model stock proportion
