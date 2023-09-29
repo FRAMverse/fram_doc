@@ -700,7 +700,8 @@ The cohort is reconstructed as described in chapter <a href="https://framverse.g
 - Check convergence   <br>
 Computing sublegal mortalities and calculating the cohort are iterative steps, because sublegal mortalities are a function of the cohort size and the cohort size is dependent on sublegal mortalities. These steps are repeated until age-2 abundances converge. This occurs when abundances differ by less than 1%.
 
-- Calculate maturation rates and OOB exploitation rates   
+- Calculate maturation rates and OOB exploitation rates 
+<!-- Don't know where these sections are -->
 See <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Calculating Exploitation Rates"> Maturation Rates </a>(xxx) and <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Maturation Rate Calculations"> Exploitation Rates </a>(xxx) for calculations.
 
 - Start iterative cycle to integrate OOB catches with in-base CWTs

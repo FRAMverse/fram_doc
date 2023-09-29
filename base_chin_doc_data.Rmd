@@ -17,14 +17,14 @@ A large amount of data is required to create a new base period. These input data
 
 ## CNR
 Derek<br>
-Tables <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Marked_Non-Retention_Chinook_Encounters" target="_blank">Marked Non-Retention Chinook Encounters</a> and  <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Total_(Marked_+_Unmarked)_Non-Retention_Chinook_Encounters" target="_blank">Total (Marked + Unmarked) Non-Retention Chinook Encounters</a> in Appendix. 
+Tables <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Marked_Non-Retention_Chinook_Encounters" target="_blank">Marked Non-Retention Chinook Encounters</a> and  <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Total_(Marked_+_Unmarked)_Non-Retention_Chinook_Encounters" target="_blank">Total (Marked + Unmarked) Non-Retention Chinook Encounters</a> in Appendix. 
 
 ## CWTs 
 Jon<br>
-Tables <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Coded-Wire-Tag_Recovery_Data" target="_blank">Coded-Wire-Tag Recovery Data</a> and <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Out-of-Base_CWTs_for_White_River" target="_blank">Out-of-Base CWTs for White River</a> in Appendix.
+Tables <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Coded-Wire-Tag_Recovery_Data" target="_blank">Coded-Wire-Tag Recovery Data</a> and <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Out-of-Base_CWTs_for_White_River" target="_blank">Out-of-Base CWTs for White River</a> in Appendix.
 
 ## Escapements
-<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target="_blank">Escapement</a> are needed to estimate the total size of the stock aggregate by accounting for un-tagged segments of the aggregate. A production expansion factor is computed that relates the run size accounted for with CWTs to the run size of the marked stock aggregate. For the purpose of calibration, escapement includes freshwater catch. Marked as well as total age 3 to 5 escapements were provided by regional experts. Escapements were averaged over base period years and compiled in file <a href="https://framverse.github.io/fram_doc/literature/“Escapements for Calibration 09302020.xlsx"> “Escapements for Calibration 09302020.xlsx” </a>. 
+<a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Escapement" target="_blank">Escapement</a> are needed to estimate the total size of the stock aggregate by accounting for un-tagged segments of the aggregate. A production expansion factor is computed that relates the run size accounted for with CWTs to the run size of the marked stock aggregate. For the purpose of calibration, escapement includes freshwater catch. Marked as well as total age 3 to 5 escapements were provided by regional experts. Escapements were averaged over base period years and compiled in file <a href="https://framverse.github.io/fram_doc/literature/Escapements%20for%20Calibration%2009302020.xlsx"> “Escapements for Calibration 09302020.xlsx” </a>. 
 For a list of escapements used for the calibration see <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Escapements" target="_blank">Base Period Marked Escapements</a> and <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Escapements" target="_blank">Base Period Total Escapements</a> in Appendix.
 
 ## Fisheries
@@ -32,7 +32,7 @@ A take of fish. Fisheries are generally characterized by a delineated fishing ar
 Appendix <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Fisheries" target="_blank">FRAM Chinook Fisheries</a>.
 
 ## Fishery Scalers
-A multiplier, typically based on expected fishery effort or catch relative to base period effort or catch, used to estimate fishery impacts by adjusting base period exploitation rates. Fisheries can be modeled in FRAM as either quotas or fishery scalers. If modeled as a scaler this parameter becomes an input, if the fishery is modeled as a quota, this parameter is calculated in FRAM. For the purpose of the calibration the fishery scaler is an input derived during Chinook validation runs. Fishery scalers are used to scale <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#OOB_Procedure_Steps" target="_blank">out-of-base effort</a> to effort during the base period. For a table of <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Fishery_Scalers" target="_blank">Fishery Scalers</a> see 
+A multiplier, typically based on expected fishery effort or catch relative to base period effort or catch, used to estimate fishery impacts by adjusting base period exploitation rates. Fisheries can be modeled in FRAM as either quotas or fishery scalers. If modeled as a scaler this parameter becomes an input, if the fishery is modeled as a quota, this parameter is calculated in FRAM. For the purpose of the calibration the fishery scaler is an input derived during Chinook validation runs. Fishery scalers are used to scale <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#oob-procedure-steps" target="_blank">out-of-base effort</a> to effort during the base period. For a table of <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Fishery_Scalers" target="_blank">Fishery Scalers</a> see 
 Appendix. For more information about the fishery scaler see <a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#42_Computational_Processes" target="_blank">Computational Processes</a>.
 
 ## Growth Functions
@@ -88,7 +88,7 @@ While the inputs proposed here for use in Chinook FRAM BP calibration are robust
 
 <br>
 
-```{r fitset,  results='asis'}
+```{r fitset,  results='asis', echo=FALSE}
 growthcurvedata<-as.data.frame(read.csv("./objects/GrowthCurveData.csv", header = TRUE))|>
   DT::datatable(filter = 'top',
                 extensions = 'Buttons',
@@ -97,7 +97,6 @@ growthcurvedata<-as.data.frame(read.csv("./objects/GrowthCurveData.csv", header 
                   buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
 
 cat("<p>", paste0("<caption>",
-                      "(#tab:fitset)",
                       "Summary of data used to fit growth functions for FRAM model stock aggregates. Counts (N) are based on marine fishery recoveries for brood years 2005-2008 for all stocks except for Washington Coast and Sacramento/Central Valley, which include additional recoveries, and non-model stock CWT codes, for brood years 2001-2004.",
                       "</caption>"),
                       "</p>")
@@ -105,7 +104,7 @@ growthcurvedata
 
 ```
 
-```{r VBGF, results='asis'}
+```{r VBGF, results='asis', echo=FALSE}
 VBparams<-as.data.frame(read.csv("./objects/VBparams.csv", header = TRUE))|>
   DT::datatable(filter = 'top',
                 extensions = 'Buttons',
@@ -115,7 +114,6 @@ VBparams<-as.data.frame(read.csv("./objects/VBparams.csv", header = TRUE))|>
                   buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
 
 cat("<p>", paste0("<caption>",
-                      "(#tab:VBGF)",
 "Estimates of VBGF parameters by regional stock aggregate.Estimates are median values (95% credible intervals in parentheses) from a 1-in-50 sample of N = 26K MCMC iterations (i.e., 31K less 5K burn-in period) on each of three chains.",
                       "</caption>"),
                       "</p>")
@@ -153,7 +151,7 @@ See Appendix for <a href="https://framverse.github.io/fram_doc/base_chin_doc_app
 
 ## Landed Catch
 Derek<br>
-<a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Catches" target="_blank">Base Period Marked Catches</a> table for marked and <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Catches" target="_blank">Base Period Total Catches</a> for total (marked + unmarked) in Appendix.
+<a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Catches" target="_blank">Base Period Marked Catches</a> table for marked and <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Catches" target="_blank">Base Period Total Catches</a> for total (marked + unmarked) in Appendix.
 
 ## Minimum Size Limit
 The proportion of Chinook encounters that can legally be retained in a fishery is a function of the <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Size_Limit" target="_blank">Minimum Size Limits</a>. Minimum size limits by fishery, year, and time step are stored for all inbase and OOB fishing years in database table `SizeLimits` of the calibration database.
@@ -169,10 +167,10 @@ Rates for Chinook are age and time period specific and yield the same total annu
 See Appendix for <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Natural_Mortality_Rates" target="_blank">natural mortality rates</a>.
 
 ## Non Retention Encounters
-See Appendix <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Marked_Non-Retention_Chinook_Encounters" target="_blank">Marked Non-Retention Chinook Encounters</a> and  <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Total_(Marked_+_Unmarked)_Non-Retention_Chinook_Encounters" target="_blank">Total Non-Retention Chinook Encounters</a>.
+See Appendix <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Marked_Non-Retention_Chinook_Encounters" target="_blank">Marked Non-Retention Chinook Encounters</a> and  <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Total_(Marked_+_Unmarked)_Non-Retention_Chinook_Encounters" target="_blank">Total Non-Retention Chinook Encounters</a>.
 
 ## Stocks
-39 stock groups are represented in the calibration. Unlike the FRAM model that contains marked and unmarked stock components (for a total of 78 stocks), each calibration stock is only represented by its marked component. When data is exported to FRAM, each marked stock is split into two identical units representing marked and unmarked stock components. See chapter <a href="https:// framverse.github.io/fram_doc/base_chin_doc_program_desc.html#Transferring_Output" target="_blank">Transferring Output</a> for more information.
+39 stock groups are represented in the calibration. Unlike the FRAM model that contains marked and unmarked stock components (for a total of 78 stocks), each calibration stock is only represented by its marked component. When data is exported to FRAM, each marked stock is split into two identical units representing marked and unmarked stock components. See chapter <a href="https://framverse.github.io/fram_doc/base_chin_doc_program_desc.html#Transferring_Output" target="_blank">Transferring Output</a> for more information.
 
 Model stocks may represent an individual salmon stock or an aggregate of stocks from the same region. Stock units represented in FRAM were chosen based on the level of management interest, their contribution to PFMC fisheries, and the availability of representative coded-wire tag (CWT) recoveries in the Regional Mark Information System (RMIS). For Chinook stock profiles listing hatcheries selected to represent the stock aggregate during calibration, tag codes, growth functions, etc, see Base Period Stock Profiles.
 
@@ -182,7 +180,7 @@ See Appendix <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendi
 
 ## Target Encounter Rates
 Derek<>
-Appendix table <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Target_Encounter_Rates" target="_blank">Target Encounter Rates</a>
+Appendix table <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Target_Encounter_Rates" target="_blank">Target Encounter Rates</a>
 
 ## Terminal Fishery Flags
 Terminal fishery flags designate a fishery as terminal (flag 1) or pre-terminal (flag 0). Terminal fisheries operate on "mature" abundances and are therefore processed after maturation occurs. For a definition of terminal fisheries see the <a href="https://framverse.github.io/fram_doc/base_chin_doc_glossary.html#Terminal_Fishery" target="_blank">Terminal Fishery</a> description in the Glossary. Terminal fisheries are listed in table `TerminalFisheryFlag` of the calibration database. 
@@ -207,30 +205,30 @@ See chapter <a href="https://framverse.github.io/fram_doc/calcs_data_chin.html#T
 # Model Output Data
 Calibration output becomes the foundational data for the <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Fishery_Regulation_Assessment_Model_(FRAM)" target="_blank">FRAM</a> model. The main purpose of FRAM is the assessment of fishery impacts on the status of individual stock units through the use of base period exploitation rates. The calibration also produces encounter rates on <a href="https://framverse.github.io/fram_doc/calcs_glossary.html#Sublegal" target="_blank">sublegal</a> fish. Since sublegal fish are released, encounter rates can be converted to exploitation rates by applying a release mortality rate. Other outputs are maturation rates, AEQ mortality rates, and base period cohort sizes. All output parameters are discussed in the <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html" target="_blank">Calibration Processing</a> section of this documentation.
 
-After output parameters are computed in the calibration, they are <a href="https:// framverse.github.io/fram_doc/base_chin_doc_program_desc.html#Transferring_Output" target="_blank">exported to a transfer file</a> for easy import into FRAM. During this step the **39 marked calibration <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Stocks" target="_blank">stocks </a> are converted into 78 marked and unmarked FRAM stocks**. This is accomplished by **duplicating** all stock specific parameters; i.e., calibration stock 1 Nooksack/Samish becomes FRAM stock 1 (unmarked Nooksack/Samish) and 2 (marked Nooksack/Samish). 
+After output parameters are computed in the calibration, they are <a href="https://framverse.github.io/fram_doc/base_chin_doc_program_desc.html#Transferring_Output" target="_blank">exported to a transfer file</a> for easy import into FRAM. During this step the **39 marked calibration <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#FRAM_Chinook_Stocks" target="_blank">stocks </a> are converted into 78 marked and unmarked FRAM stocks**. This is accomplished by **duplicating** all stock specific parameters; i.e., calibration stock 1 Nooksack/Samish becomes FRAM stock 1 (unmarked Nooksack/Samish) and 2 (marked Nooksack/Samish). 
 
 ## Adult Equivalency (AEQ) Mortality Rates
-AEQs provide the average likelihood for a Chinook of a given age to contribute to the mature run (spawning escapement) in the absence of fishing.  Because of natural mortality and unaccounted losses, not all unharvested fish contribute to spawning escapement. AEQs are calculated by the calibration program during cohort reconstruction. For a table of adult equivalency rates see <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#AEQs" target="_blank">AEQs</a>. For the calculation of AEQs see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Adult_Aquivalency_(AEQ)_Calculations" target="_blank">Adult Aquivalency (AEQ) Calculations</a>.
+AEQs provide the average likelihood for a Chinook of a given age to contribute to the mature run (spawning escapement) in the absence of fishing.  Because of natural mortality and unaccounted losses, not all unharvested fish contribute to spawning escapement. AEQs are calculated by the calibration program during cohort reconstruction. For a table of adult equivalency rates see <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#AEQs" target="_blank">AEQs</a>. For the calculation of AEQs see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Adult_Aquivalency_(AEQ)_Calculations" target="_blank">Adult Aquivalency (AEQ) Calculations</a>.
 
 ## Base Period Cohort
 The base period cohort is the average run size of a stock and age during the base period prior to natural mortality. It is calculated during cohort reconstruction.
-For a table of base period cohort sizes see <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Cohort_Sizes" target="_blank">Base Period Cohort Sizes</a>. For the calculation of cohort size see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Backwards_Cohort_Reconstruction" target="_blank">Backwards Cohort Reconstruction</a>. 
+For a table of base period cohort sizes see <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Cohort_Sizes" target="_blank">Base Period Cohort Sizes</a>. For the calculation of cohort size see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Backwards_Cohort_Reconstruction" target="_blank">Backwards Cohort Reconstruction</a>. 
 
 ## Base Period Exploitation Rates
 Exploitation rates are the average base period mortalities of a stock and age in a fishery and time step divided by the legal-sized abundance of the stock and age in a time step. They are needed to produce stock/age specific mortalities during a fishery. When these mortalities are summed for a stock over all fisheries, ages, and time steps they can provide stock specific exploitation rates, the metric to evaluate management objectives, in FRAM.
-For a table of of base period exploitation rates see <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Exploitation_Rates" target="_blank">Base Period Exploitation Rates</a>. For the calculation of exploitation rates see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Calculating_Exploitation_Rates" target="_blank">Calculating Exploitation Rates</a>.
+For a table of of base period exploitation rates see <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Exploitation_Rates" target="_blank">Base Period Exploitation Rates</a>. For the calculation of exploitation rates see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Calculating_Exploitation_Rates" target="_blank">Calculating Exploitation Rates</a>.
 
 ## Fishery Model Stock Proportion (MSP)
 The MSP is the percentage of a fishery’s total catch that is accounted for by stocks modeled in FRAM. MSP can be calculated during the calibration or provided to the calibration program from an external data source.
-For marked model stock proportions see <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Catches" target="_blank">Base Period Marked Catches</a> and for total model stock proportions see <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Catches" target="_blank">Base Period Total Catches</a>. For the calculation of fishery mode stock proportion see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#[Expand_CWTs_to_Total_Production]{#EscExpand}" target="_blank">Expand CWTs to Total Production</a>.
+For marked model stock proportions see <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Marked_Catches" target="_blank">Base Period Marked Catches</a> and for total model stock proportions see <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Total_Catches" target="_blank">Base Period Total Catches</a>. For the calculation of fishery mode stock proportion see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Expand_CWTs_to_Total_Production" target="_blank">Expand CWTs to Total Production</a>.
 
 ## Maturation Rates
 The maturation rate is the proportion of the stock and age that returns to spawn in a given year. The rate increases with the age of Chinook and is set to 1 for age 5 and older fish. Fish that don't mature age up (age = age+1) after the mature time step and can be caught in subsequent fisheries.
-For a table of maturation rates see <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Maturation_Rates" target="_blank">Maturation Rates</a>. For the calculation of maturation rates see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Maturation_Rate_Calculations" target="_blank">Maturation Rate Calculations</a>.
+For a table of maturation rates see <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Maturation_Rates" target="_blank">Maturation Rates</a>. For the calculation of maturation rates see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Maturation_Rate_Calculations" target="_blank">Maturation Rate Calculations</a>.
 
 ## Sublegal Encounter Rates
 Rate at which sublegal Chinook (fish smaller than the legal size limit) are encountered during a fishery and time step. Encounter rates are by stock, age, fishery, and time step. These rates are converted to mortalities through he use of a release mortality rate.
-For a table of sublegal encounter rates see <a href="https:// framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Exploitation_Rates" target="_blank">Base Period Exploitation Rates</a>. For the calculation of sublegal encounter rates see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Estimating_Sublegal_Mortalities" target="_blank">Estimating Sublegal Mortalities</a>.
+For a table of sublegal encounter rates see <a href="https://framverse.github.io/fram_doc/base_chin_doc_appendix.html#Base_Period_Exploitation_Rates" target="_blank">Base Period Exploitation Rates</a>. For the calculation of sublegal encounter rates see <a href="https://framverse.github.io/fram_doc/base_chin_doc_calibration.html#Estimating_Sublegal_Mortalities" target="_blank">Estimating Sublegal Mortalities</a>.
 
 
 <script>MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } }; </script><script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
