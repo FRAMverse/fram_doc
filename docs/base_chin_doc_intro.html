@@ -14,7 +14,7 @@
 
 <title>Base Period Documentation - Introduction</title>
 
-<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -151,15 +151,11 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -188,8 +184,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -197,9 +193,16 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
+  content: "&#xe258;";
   border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -476,26 +479,28 @@ MathJax = {
 </script>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>The Chinook base period consists of foundational Fishery Regulation
+<p>The Chinook base period comprises the foundational Fishery Regulation
 Assessment Model (FRAM) data. The most important parameter, base period
 exploitation rates, is estimated from “base years” through
 stock-specific
 <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Coded-Wire_Tag_(CWT)" target = "_blank" title = "CWT">CWT</a>
 recovery analysis and a process of
 <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Cohort_Analysis" target = "_blank" >Cohort
-Reconstruction</a>. Base period data are averaged base period years and
-represent all the static information needed for a model run. Resulting
-base period reference parameters are used to populate the FRAM model to
-predict annual stock/fishery specific impacts.</p>
-<p>Fishing years 2007-2013 were chosen as base years, because they
-reflected the most contemporary period at the time the project commenced
-and additionally had good numbers of CWT recoveries from recently
-implemented
+Reconstruction</a>. Base period data are averaged across base period
+years and represent all the static information needed for a model run.
+Resulting base period reference parameters are used to populate the FRAM
+model to predict annual stock/fishery specific impacts.</p>
+<p>Fishing years 2007-2013 were chosen as the base period years, because
+they reflected the most contemporary period at the time the project
+commenced and additionally had good numbers of CWT recoveries from
+recently implemented
 <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Mark-Selective_Fishery_(MSF)" target = "_blank" title = "Mark-Selective">mark-selective</a>
 sport fisheries.</p>
 <p>The process of creating the latest base period is also called the
-“2014 Calibration Process”. The calibration followed the existing data
-structure of 39
+“calibration process”. There are two portions to the calibration
+process, data preparation (also called the “FRAMBuilder process”) and
+running the calibration program. The calibration followed the existing
+data structure of 39
 <a href = "https://framverse.github.io/fram_doc/calcs_appendices.html#Appendix_2_Chinook_FRAM_stocks" target = "_blank" >stocks</a>
 <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Adipose_Mark" target = "_blank" >(adipose
 marked)</a>, 73
@@ -505,8 +510,8 @@ and 3
 <p>In addition to CWT recovery data representing FRAM stocks, other key
 data needed for the development of the FRAM base period include: 1)
 escapements, 2) landed catch, 3) growth rates, and 4) fishery induced
-mortality rates. For a complete set of input data, see the section on
-<a href="/base_chin_doc_data.html"> data inputs</a>.</p>
+mortality rates. For a complete set of input data, see the
+<a href="/base_chin_doc_data.html"> data inputs</a> section.</p>
 </div>
 <div id="overview" class="section level1">
 <h1>Overview</h1>
@@ -522,9 +527,9 @@ reconstruction are quite simple, much of the work of constructing a new
 base period lies in data preparation, dealing with missing
 coded-wire-tag recoveries, handling exceptions, adjusting CWT recoveries
 to match observed catches, and incorporating non-landed mortalities.</p>
-<p>A simple diagram of the calibration process is presented in
-Figurexxx. This program flow works for all stocks with sufficient CWT
-representation in base period years (38 of the 39 FRAM stocks). For a
+<p>A simple diagram of the calibration process is presented in Figure 1.
+This program flow works for all stocks with sufficient CWT
+representation in base period years (37 of the 39 FRAM stocks). For a
 description of how to handle CWT recoveries from “out-of-base” years see
 <a href = "https://framverse.github.io/fram_doc/calcs_glossary.html#Out-of-Base_(OOB)" target = "_blank" >Out-of-Base
 Procedures</a>.</p>
@@ -569,30 +574,28 @@ and stakeholders representing tribal, state, and federal entities was
 assembled. A base period work group was established that met at least
 monthly. The workgroup consisted of the following members:</p>
 <ul>
-<li>Auerbach, Dan (Washington Department of Fish and Wildlife (WDFW),
-lead Coho modeler)</li>
-<li>Bellman, Marlene (Northwest Indian Fisheries Commission (NWIFC),
-lead coho modeler)</li>
-<li>Carey, Jon (National Marine Fisheries Service (NMFS, lead FRAM
-modeler)</li>
-<li>Dapp, Derek (WDFW, lead Chinook modeler)</li>
-<li>Garber, Ty (WDFW, lead Coho modeler)</li>
-<li>Hagen-Breaux, Angelika (WDFW, modeling unit lead)</li>
-<li>Howard, Jilian (Muckleshoot Tribe, fisheries biologist)</li>
-<li>Johnson, Galen (NWIFC, statistician)</li>
-<li>LaVoy, Larrie (NMFS, main FRAM modeler)</li>
-<li>McHugh, Pete (WDFW, FRAM modeler)</li>
-<li>Miler, Oliver (NWIFC, lead Chinook modeler)</li>
-<li>Packer, James (WDFW, main FRAM coder)</li>
-<li>Rankis, Andy (NWIFC, lead coho modeler)</li>
-<li>Richardson, Sarah (WDFW, fisheries biologist)</li>
-<li>Roose, Robert (Stillaguamish Tribe, fisheries biologist)</li>
-<li>Rose, Gordon (NWIFC, representing Strait of Juan de Fuca and Hood
-Canal Tribes)</li>
-<li>Schaffler, Jason (Muckleshoot Tribe, fisheries biologist)</li>
-<li>Schmidt, Casey (Suquamish Tribe, fisheries biologist)</li>
-<li>Shrovnal, Jeremiah (WDFW, Chinook modeler)</li>
-<li>Thurner, Stephanie (NWIFC, lead Coho modeler)</li>
+<li>Auerbach, Dan (Washington Department of Fish and Wildlife
+(WDFW))</li>
+<li>Bellman, Marlene (Northwest Indian Fisheries Commission
+(NWIFC))</li>
+<li>Carey, Jon (National Marine Fisheries Service (NMFS))</li>
+<li>Dapp, Derek (WDFW)</li>
+<li>Garber, Ty (WDFW)</li>
+<li>Hagen-Breaux, Angelika (WDFW)</li>
+<li>Howard, Jilian (Muckleshoot Indian Tribe (MIT))</li>
+<li>Johnson, Galen (NWIFC)</li>
+<li>LaVoy, Larrie (NMFS)</li>
+<li>McHugh, Pete (WDFW)</li>
+<li>Miler, Oliver (NWIFC)</li>
+<li>Packer, James (WDFW)</li>
+<li>Rankis, Andy (NWIFC)</li>
+<li>Richardson, Sarah (WDFW)</li>
+<li>Roose, Robert (Stillaguamish Tribe of Indians)</li>
+<li>Rose, Gordon (NWIFC)</li>
+<li>Schaffler, Jason (MIT)</li>
+<li>Schmidt, Casey (Suquamish Tribe)</li>
+<li>Shrovnal, Jeremiah (WDFW)</li>
+<li>Thurner, Stephanie (NWIFC)</li>
 </ul>
 </div>
 <div id="mass-marking-and-mark-selective-fisheries-msf"
@@ -621,17 +624,18 @@ fish, to assess impacts of mark selective fisheries and mass marking
 (double index tag groups).</p>
 <p>While Washington State switched to electronic CWT detection by
 trained samplers a few years before full implementation of mass marking,
-some States and Canada were slow to adopt the new technology. Today,
-there are still several fisheries along the migration path of Washington
-native Chinook that are solely visually sampled. This results in not
-detecting CWT’s of adipose present (unmarked) salmon and thus biases
-exploitation rate analyses of unmarked Chinook. Additionally, even with
-electronic sampling, the recovery of CWT’s from unmarked fish is biased,
-because they are no longer retained in mark-selective fisheries. For
-these reasons, similar to the previous Chinook base period, it was
-decided to limit CWTs to recoveries from adipose marked salmon.
-Therefore, marked Chinook represent both marked and unmarked components
-of the same stock in both base periods.</p>
+some States and Canada did not switch to this method of detection.
+Today, there are still several fisheries along the migration path of
+Washington native Chinook that are solely visually sampled. This results
+in not detecting CWT’s of adipose present (unmarked) salmon and thus
+biases exploitation rate analyses of unmarked Chinook. Additionally,
+even with electronic sampling, the recovery of CWT’s from unmarked fish
+is biased, because they are no longer retained in mark-selective
+fisheries. For these reasons, similar to the previous Chinook base
+period, it was decided to limit CWTs to recoveries from adipose marked
+salmon. Therefore, marked Chinook represent both marked and unmarked
+components of the same stock in new and old versions of base
+periods.</p>
 <p>In developing the previous base period, CWT recoveries were related
 to total catches and total escapements to compute exploitation rates
 (“Total” frame of reference). Due to the influence of mark-selective
@@ -744,7 +748,8 @@ fisheries. For a complete description of stock profiles see
 </div>
 <div id="sublegal-stock--age-composition" class="section level2">
 <h2>Sublegal Stock-, Age-Composition</h2>
-<p><br> <span style="color:red;">Galen</span></p>
+<p><br> <span style="color:red;">This section is under
+construction</span></p>
 <p>As part of developing this base period, procedures for allocating
 sublegal encounters to stocks and ages were revised.</p>
 <p>In FRAM, the number of Chinook encounters below the size limit in a
@@ -852,7 +857,7 @@ years with adequate sampling was selected to represent exploitation rate
 patterns for this fishery.</p></li>
 </ul>
 <div class="figure">
-<embed src="literature/SurrogateFisheries.pdf" title="Table 1. Surrogate Fisheries Matrix: Average marked (Mrk) and total (Tot) catches in the new base period, raw unexpanded CWT recoveries by time step (T), surrogate matrix, and comments. The surrogate matrix lists the number of CWT recoveries by time step for fisheries without a surrogate. For fisheries with surrogates the matrix lists the surrogate fishery number (F), and/or time step number (T), or “BPER” for fisheries where the previous base period exploitation rate is used as a surrogate." width="800px" height="800px" type="application/pdf" />
+<img src="literature/SurrogateFisheries.pdf" alt="Table 1. Surrogate Fisheries Matrix: Average marked (Mrk) and total (Tot) catches in the new base period, raw unexpanded CWT recoveries by time step (T), surrogate matrix, and comments. The surrogate matrix lists the number of CWT recoveries by time step for fisheries without a surrogate. For fisheries with surrogates the matrix lists the surrogate fishery number (F), and/or time step number (T), or “BPER” for fisheries where the previous base period exploitation rate is used as a surrogate." width="800px" height="800px" />
 <p class="caption">
 Table 1. Surrogate Fisheries Matrix: Average marked (Mrk) and total
 (Tot) catches in the new base period, raw unexpanded CWT recoveries by
@@ -1083,13 +1088,14 @@ for base period fishing effort and brood year weight. See tab
 <a href="https://framverse.github.io/fram_doc/literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx">
 <em>“Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx”</em> </a>.</p>
 <p><strong>White River in Canadian Fisheries</strong> <br> <span
-style="color:red;">Derek</span></p>
+style="color:red;">This section is under construction.</span></p>
 <p><a href="https://framverse.github.io/fram_doc/literature/WhiteRiverWriteUp.docx">
 “WhiteRiverWriteUp.docx” </a></p>
 </div>
 <div id="impute-fw-sport" class="section level3">
 <h3>Impute FW sport</h3>
-<p><br> <span style="color:red;">Jon</span></p>
+<p><br> <span style="color:red;">This section is under
+construction.</span></p>
 </div>
 <div id="age-5-recoveries-in-fisheries-and-escapement"
 class="section level3">
@@ -1119,12 +1125,17 @@ were adjusted in the <code>Catch</code> column of the
 <code>CWTAll</code> table of the “Calibration Support” database. After
 approximately five iterations the resulting BPER matched the ER target
 to the fourth decimal. The adjustment was calculated as:</p>
-<p>Equation 4: <span class="math display">$$
+Equation 4: <span class="math display">$$
 AdjustedCWTCatch_{s,age=5,f,t}=\frac{ER.Target_{s,a=5,f,t}}{CWTCatch_{s,a=5,f,t}}
 $$</span> Table 3. Age-5 BPERs Pre- and Post Adjustment and CWT
-Recoveries in Fisheries and Escapement <img
-src="literature/Age5BPERAdjustments.jpg"
-alt="Table xxx. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in Fisheries and Escapement" /></p>
+Recoveries in Fisheries and Escapement
+<div class="figure">
+<img src="literature/Age5BPERAdjustments.JPG" alt="Table xxx. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in Fisheries and Escapement " width="438" />
+<p class="caption">
+Table xxx. Age-5 BPERs Pre- and Post Adjustment and CWT Recoveries in
+Fisheries and Escapement
+</p>
+</div>
 <p>For more information see
 <a href="https://framverse.github.io/fram_doc/literature/Age%205%20BPER%20Adjustment_9.30.2020.xlsx">
 <em>“Age 5 BPER Adjustment_9.30.2020.xlsx”</em> </a> and
@@ -1142,7 +1153,7 @@ AdjustedCWTEscapement_{s,age=5,esc}
 =\frac{TRSEst_{s,a=5,esc}}{TRS_{s,a=4,esc}}* CWTEscapement_{s,age=4,esc}
 $$</span></p>
 <p>Table 4. Age-5 Adjusted Escapements and Age-4 to Age-5 TRS Ratios</p>
-<p><img src="literature/Age5EscAdjust.jpg" /><!-- --></p>
+<p><img src="literature/Age5EscAdjust.JPG" width="369" /></p>
 <p>For more information see
 <a href="literature/Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx">
 Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a> tab
@@ -1150,12 +1161,72 @@ Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a> tab
 </div>
 <div id="missing-canadian-catches" class="section level3">
 <h3>Missing Canadian Catches</h3>
-<p><br> <span style="color:red;">Derek</span> For more information see
-<a href="https://framverse.github.io/fram_doc/literature/2020-06-19%20BC_Data_Request_With_pre-2012.xlsx">
-RE BC Data Request - Update.msg short description Chinook Canadian catch
-imputation for post-season
-runs_Updated_For_Documentation_in_6.2023.docx</a>
-<!-- THIS LINK/PARAGRAPH IS AWKWARD --></p>
+<p><br> <span style="color:red;">This section is still under
+construction; should add email message from DFO for a record of
+this.</span></p>
+<p>In 2017, an error in the catch numbers reported in Canadian sport
+fisheries was identified. There were periods where catch sampling did
+not occur, but the fishery was confirmed as open and voluntary CWT
+recoveries were returned. In the absence of sampling, DFO reported no
+catch in these periods. Using the new iREC system (<a
+href="http://dfo-mpo.gc.ca/videos/survey-recreation-sondage-eng.html"
+class="uri">http://dfo-mpo.gc.ca/videos/survey-recreation-sondage-eng.html</a>),
+DFO has updated catch estimates for 2012 catch years onward, but years
+prior to 2012 had a recorded catch of zero. There was a need to develop
+catch estimates for these periods to use in FRAM to properly account for
+northern impacts.</p>
+<p>Two methods to impute missing Canadian catches for FRAM post-season
+validation runs (unofficial catches for SUS domestic management) were
+proposed to Fisheries and Oceans Canada (DFO) by the SMAWG:</p>
+<ol style="list-style-type: decimal">
+<li><p>Fill in missing catch periods according to monthly proportions of
+the annual catch (in the above Excel File below; see cells B42:AW95).
+The idea for the first method was simplistic – it was to use iREC data
+to get an estimate of how much catch each month contributed to the
+annual catch on average in 2013 through 2018. Using the average
+percentage of annual catch in each month, when there were months of
+missing data, it was presumed that the amount missing relative to the
+total catch recorded was represented by the average percentage of annual
+catch in that month. For example, if March was the only month missing
+and March represents 3% of the annual catch on average, and if the total
+catch for the other 11 months of the year recorded was 97 fish, then we
+estimated that there were 3 fish that were unaccounted for in March.
+There are a few strengths with this method – it uses the iREC data
+directly, it accounts for differences in annual abundance (if annual
+catch is high or low relative to other years, so will the catch from
+missing months be high or low), and it is not dependent on mark rates.
+There are also a few weaknesses, with the main one being that it assumes
+the monthly catch proportions have not shifted and that those in
+2013-2018 are representative of earlier years. There are many reasons
+why this may not be true, including shifts in stock distributions,
+stock-abundances across years, and regulation changes. With that said,
+looking at earlier years where complete annual data (1985-1989) were not
+available versus the more recent iREC years (2013-2018), the averages in
+the October-April period did not differ strongly substantially (summed =
+5.6% annual catch versus 7.9%; see cells B189:R208 if
+interested).</p></li>
+<li><p>Use the rates of voluntary return from the iREC period to expand
+the voluntary returns during time periods of missing catch (see cells
+B98:AS151). The second method was designed to use actual data
+(recoveries) from periods of missing catch in conjunction with
+catch:voluntary return ratios from the iREC period to estimate periods
+of missing catch. For example, if the average (2013-18) number of
+Chinook caught per voluntary return was 100 in January and there were 2
+voluntary returns in January 2005 (but a catch estimate of 0), then the
+estimated catch for January 2005 would be 200.</p></li>
+</ol>
+<p>DFO recommended to use Method 1 due to a higher confidence in its
+major assumption, that the monthly pattern of catch for the 2013-18
+period is similar to that for earlier years (and the comparison with the
+earliest years does seem to support this). According to DFO, for method
+2 to work, the assumptions of similar submission rates, and mark rates,
+seem difficult to support. Submission rates have been reduced by Mass
+Marking (MM) induced increases in mark rates (exhaustion,
+misunderstanding of the need for similar submission rates), and
+possiblymaybe by the cancellation of prizes for head submissions circa
+2010.</p>
+<p><a href="https://framverse.github.io/fram_doc/literature/2020-06-19%20BC_Data_Request_With_pre-2012.xlsx">Primary
+calculations file</a></p>
 </div>
 <div id="grays-harbor" class="section level3">
 <h3>Grays Harbor</h3>
@@ -1309,12 +1380,12 @@ validation runs. For more information see
 </a> and
 <a href="https://framverse.github.io/fram_doc/literature/draft_revised_stilly_age_comp.xlsx">
 draft_revised_stilly_age_comp.xlsx </a>.</p>
-<div id="afyalpgpjx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="yfcmwxrutx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#afyalpgpjx .gt_table {
+#yfcmwxrutx .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1339,7 +1410,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-left-color: #D3D3D3;
 }
 
-#afyalpgpjx .gt_heading {
+#yfcmwxrutx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1351,12 +1422,12 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#afyalpgpjx .gt_caption {
+#yfcmwxrutx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#afyalpgpjx .gt_title {
+#yfcmwxrutx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1368,7 +1439,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-bottom-width: 0;
 }
 
-#afyalpgpjx .gt_subtitle {
+#yfcmwxrutx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1380,13 +1451,13 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-top-width: 0;
 }
 
-#afyalpgpjx .gt_bottom_border {
+#yfcmwxrutx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#afyalpgpjx .gt_col_headings {
+#yfcmwxrutx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1401,7 +1472,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#afyalpgpjx .gt_col_heading {
+#yfcmwxrutx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1421,7 +1492,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   overflow-x: hidden;
 }
 
-#afyalpgpjx .gt_column_spanner_outer {
+#yfcmwxrutx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1433,15 +1504,15 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 4px;
 }
 
-#afyalpgpjx .gt_column_spanner_outer:first-child {
+#yfcmwxrutx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#afyalpgpjx .gt_column_spanner_outer:last-child {
+#yfcmwxrutx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#afyalpgpjx .gt_column_spanner {
+#yfcmwxrutx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1453,7 +1524,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   width: 100%;
 }
 
-#afyalpgpjx .gt_group_heading {
+#yfcmwxrutx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1479,7 +1550,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   text-align: left;
 }
 
-#afyalpgpjx .gt_empty_group_heading {
+#yfcmwxrutx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1494,15 +1565,15 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   vertical-align: middle;
 }
 
-#afyalpgpjx .gt_from_md > :first-child {
+#yfcmwxrutx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#afyalpgpjx .gt_from_md > :last-child {
+#yfcmwxrutx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#afyalpgpjx .gt_row {
+#yfcmwxrutx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1521,7 +1592,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   overflow-x: hidden;
 }
 
-#afyalpgpjx .gt_stub {
+#yfcmwxrutx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1534,7 +1605,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#afyalpgpjx .gt_stub_row_group {
+#yfcmwxrutx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1548,11 +1619,11 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   vertical-align: top;
 }
 
-#afyalpgpjx .gt_row_group_first td {
+#yfcmwxrutx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#afyalpgpjx .gt_summary_row {
+#yfcmwxrutx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1562,16 +1633,16 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#afyalpgpjx .gt_first_summary_row {
+#yfcmwxrutx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#afyalpgpjx .gt_first_summary_row.thick {
+#yfcmwxrutx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#afyalpgpjx .gt_last_summary_row {
+#yfcmwxrutx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1581,7 +1652,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#afyalpgpjx .gt_grand_summary_row {
+#yfcmwxrutx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1591,7 +1662,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#afyalpgpjx .gt_first_grand_summary_row {
+#yfcmwxrutx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1601,11 +1672,11 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-top-color: #D3D3D3;
 }
 
-#afyalpgpjx .gt_striped {
+#yfcmwxrutx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#afyalpgpjx .gt_table_body {
+#yfcmwxrutx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1614,7 +1685,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#afyalpgpjx .gt_footnotes {
+#yfcmwxrutx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1628,7 +1699,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#afyalpgpjx .gt_footnote {
+#yfcmwxrutx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1637,7 +1708,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#afyalpgpjx .gt_sourcenotes {
+#yfcmwxrutx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1651,7 +1722,7 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#afyalpgpjx .gt_sourcenote {
+#yfcmwxrutx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1659,64 +1730,64 @@ draft_revised_stilly_age_comp.xlsx </a>.</p>
   padding-right: 5px;
 }
 
-#afyalpgpjx .gt_left {
+#yfcmwxrutx .gt_left {
   text-align: left;
 }
 
-#afyalpgpjx .gt_center {
+#yfcmwxrutx .gt_center {
   text-align: center;
 }
 
-#afyalpgpjx .gt_right {
+#yfcmwxrutx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#afyalpgpjx .gt_font_normal {
+#yfcmwxrutx .gt_font_normal {
   font-weight: normal;
 }
 
-#afyalpgpjx .gt_font_bold {
+#yfcmwxrutx .gt_font_bold {
   font-weight: bold;
 }
 
-#afyalpgpjx .gt_font_italic {
+#yfcmwxrutx .gt_font_italic {
   font-style: italic;
 }
 
-#afyalpgpjx .gt_super {
+#yfcmwxrutx .gt_super {
   font-size: 65%;
 }
 
-#afyalpgpjx .gt_footnote_marks {
+#yfcmwxrutx .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#afyalpgpjx .gt_asterisk {
+#yfcmwxrutx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#afyalpgpjx .gt_indent_1 {
+#yfcmwxrutx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#afyalpgpjx .gt_indent_2 {
+#yfcmwxrutx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#afyalpgpjx .gt_indent_3 {
+#yfcmwxrutx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#afyalpgpjx .gt_indent_4 {
+#yfcmwxrutx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#afyalpgpjx .gt_indent_5 {
+#yfcmwxrutx .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1783,14 +1854,15 @@ Calibration_CWT_Inputs; Rnd7_9.30.20.xlsx </a> tab
 </div>
 <div id="wcvi-sport-inside-outside" class="section level3">
 <h3>WCVI Sport Inside Outside</h3>
-<p><br> <span style="color:red;">Jon</span></p>
+<p><br> <span style="color:red;">This section is under
+construction.</span></p>
 </div>
 <div id="upper-columbia-river-summer-chinook-in-central-oregon-troll"
 class="section level3">
 <h3>Upper Columbia River Summer Chinook in Central Oregon Troll</h3>
-<p><span style="color:red;">Angelika or someone else</span> describe
-incorporation of dam loss and corrections to Central Valley model stock
-proportion</p>
+<p><span style="color:red;">This section is under construction.</span>
+describe incorporation of dam loss and corrections to Central Valley
+model stock proportion</p>
 </div>
 </div>
 </div>
