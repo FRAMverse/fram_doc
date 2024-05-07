@@ -27,8 +27,8 @@ Early in the development of FRAMBuilder and the overall CWT mapping workflow, th
 
 The following provides
 
-  - a roadmap of the process from raw RMIS CWT release/recovery data to something useable in a FRAM calibration
-  - basic documentation on the structure/function of the FRAMBuilder program, its companion FRAM-CAS database, and the ruleset it follows to get CWT recoveries from the initial CAS stage of mapping to a final FRAM fishery/time step state. As for the tools ‘borrowed’ from the CTC (i.e., CAS.exe), we provide only a brief sketch here and refer the reader to CTC resources for further documentation.
+- a roadmap of the process from raw RMIS CWT release/recovery data to something useable in a FRAM calibration
+- basic documentation on the structure/function of the FRAMBuilder program, its companion FRAM-CAS database, and the ruleset it follows to get CWT recoveries from the initial CAS stage of mapping to a final FRAM fishery/time step state. As for the tools ‘borrowed’ from the CTC (i.e., CAS.exe), we provide only a brief sketch here and refer the reader to CTC resources for further documentation.
 
 
 ### Overview
